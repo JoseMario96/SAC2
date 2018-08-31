@@ -131,19 +131,12 @@
     <Content Include="js\modernizr-2.6.2.min.js" />
     <Content Include="js\respond.min.js" />
     <Content Include="sass\untitled.html" />
-    <Content Include="Tratamiento.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="conexion\conexion.cs" />
+    <Compile Include="consulta\consulta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tratamiento.aspx.cs">
-      <DependentUpon>Tratamiento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Tratamiento.aspx.designer.cs">
-      <DependentUpon>Tratamiento.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\blue.css.map" />
@@ -254,7 +247,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="metodos\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
