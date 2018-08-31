@@ -1,33 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
 namespace SAC.conexion
 {
     public class conexion
     {
-        private MySqlConnection con;
+        MySql.Data.MySqlClient.MySqlConnection conn;
 
-        public MySqlConnection Abrir_conexion()
+        private string myConnectionString = "server=127.0.0.1;user=root;database=bd_sac;password=dtrejos95;SslMode=none";
+
+        public MySqlConnection abrir_conexion()
         {
             try
             {
-                con = new MySqlConnection("server=localhost;user id=root;password=Jose.150396;database=bd_sac; SslMode=none");
-                con.Open();
+                conn = new MySqlConnection(myConnectionString);
+                conn.Open();
             }
             catch (MySqlException)
             {
-                con = null;
+                conn = null;
             }
-            return con;
+            return conn;
         }
 
-        public MySqlConnection Cerrar_conexion()
+        public MySqlConnection cerrar_Conexion()
         {
-            con.Close();
-            return con;
+            conn.Close();
+            return conn;
         }
     }
 }
