@@ -2,7 +2,7 @@
 using System;
 
 
-namespace SAC.metodosPaciente
+namespace SAC.metodos
 {
     public class metodosPaciente
     {

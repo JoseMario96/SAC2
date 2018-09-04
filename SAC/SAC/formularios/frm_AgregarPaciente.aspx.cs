@@ -9,13 +9,14 @@ namespace SAC.formularios
 {
     public partial class frm_AgregarPaciente : System.Web.UI.Page
     {
-        metodos.metodos agregar = new metodos.metodosPaciente();
+        metodos.metodosPaciente agregarP = new metodos.metodosPaciente();
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
         public void agregarPaciente()
         {
+
             
         }
     }
