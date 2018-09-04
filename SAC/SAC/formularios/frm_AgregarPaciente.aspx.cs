@@ -12,11 +12,13 @@ namespace SAC.formularios
         metodos.metodosPaciente agregarP = new metodos.metodosPaciente();
         protected void Page_Load(object sender, EventArgs e)
         {
+            
 
         }
         public void agregarPaciente()
         {
-
+            string x = cedula.Value;
+            agregarP.actualizarPaciente();
             
         }
     }

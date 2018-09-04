@@ -20,25 +20,25 @@
         <div class="row">
             <form class="col s12" runat="server">
                 <div class="input-field col s6">
-                    <input placeholder="Cédula" id="Cedula" type="text" class="validate" />
+                    <input placeholder="Cédula" id="cedula" type="text" runat="server" class="validate" />
                     <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Primer nombre" id="nombre1" type="text" class="validate" />
+                    <input placeholder="Primer nombre" id="nombre1" type="text" runat="server"  class="validate" />
                     <%--<label for="first_name">Primer Apellido</label>--%>
-                    <input placeholder="Segundo nombre" id="nombre2" type="text" class="validate" />
+                    <input placeholder="Segundo nombre" id="nombre2" type="text" runat="server"  class="validate" />
                     <%--<label for="first_name">Primer Apellido</label>--%>
-                    <input placeholder="Primer apellido" id="apellido1" type="text" class="validate" />
+                    <input placeholder="Primer apellido" id="apellido1" type="text" runat="server"  class="validate" />
                     <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Segundo apellido" id="apellido2" type="text" class="validate" />
+                    <input placeholder="Segundo apellido" id="apellido2" type="text" runat="server"  class="validate" />
                     <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Número de teléfono" id="telefono" type="text" class="validate" />
+                    <input placeholder="Número de teléfono" id="telefono" type="text" runat="server"  class="validate" />
                     <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Número de celular" id="celular" type="text" class="validate" />
+                    <input placeholder="Número de celular" id="celular" type="text" runat="server" class="validate" />
                     <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Dirección" id="direccion" type="text" class="validate" />
+                    <input placeholder="Dirección" id="direccion" type="text" runat="server" class="validate" />
                     <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Cédula del encargado" id="cedula_encargado" type="text" class="validate" />
+                    <input placeholder="Cédula del encargado" id="cedula_encargado" type="text" runat="server" class="validate" />
                     <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Correo electrónico" id="correo" type="email" class="validate" />
+                    <input placeholder="Correo electrónico" id="correo" type="email" runat="server" class="validate" />
                     <div>
                         <label>Género </label>
                         <br />
