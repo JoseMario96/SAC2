@@ -18,7 +18,7 @@ namespace SAC.formularios
         public void agregarPaciente()
         {
             string x = cedula.Value;
-            agregarP.actualizarPaciente();
+            
             
         }
     }
