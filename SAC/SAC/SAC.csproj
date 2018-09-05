@@ -145,6 +145,7 @@
     <Compile Include="formularios\frm_AgregarPaciente.aspx.designer.cs">
       <DependentUpon>frm_AgregarPaciente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="limpiar\limpiar.cs" />
     <Compile Include="metodos\metodosExpediente.cs" />
     <Compile Include="metodos\metodosPaciente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
