@@ -17,7 +17,8 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -90,6 +91,7 @@
     <Content Include="fonts\icomoon\icomoon\Read Me.txt" />
     <Content Include="fonts\icomoon\icomoon\style.css" />
     <Content Include="fonts\simple-line-icons\Simple-Line-Icons.svg" />
+    <Content Include="formularios\frm_ActualizarPaciente.aspx" />
     <Content Include="formularios\frm_AgregarPaciente.aspx" />
     <Content Include="images\actualizar.png" />
     <Content Include="images\agregar.png" />
@@ -138,6 +140,13 @@
   <ItemGroup>
     <Compile Include="conexion\conexion.cs" />
     <Compile Include="consulta\consulta.cs" />
+    <Compile Include="formularios\frm_ActualizarPaciente.aspx.cs">
+      <DependentUpon>frm_ActualizarPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\frm_ActualizarPaciente.aspx.designer.cs">
+      <DependentUpon>frm_ActualizarPaciente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="formularios\frm_AgregarPaciente.aspx.cs">
       <DependentUpon>frm_AgregarPaciente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
