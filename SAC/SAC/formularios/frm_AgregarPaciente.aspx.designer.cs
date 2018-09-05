@@ -85,15 +85,6 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputText direccion;
         
         /// <summary>
-        /// Control cedula_encargado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText cedula_encargado;
-        
-        /// <summary>
         /// Control correo.
         /// </summary>
         /// <remarks>
@@ -101,6 +92,15 @@ namespace SAC.formularios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl correo;
+        
+        /// <summary>
+        /// Control cedula_encargado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText cedula_encargado;
         
         /// <summary>
         /// Control masculino.
@@ -148,15 +148,6 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl fecha_ingreso;
         
         /// <summary>
-        /// Control Cancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Cancelar;
-        
-        /// <summary>
         /// Control Guardar.
         /// </summary>
         /// <remarks>
@@ -164,5 +155,14 @@ namespace SAC.formularios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Guardar;
+        
+        /// <summary>
+        /// Control Cancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Cancelar;
     }
 }

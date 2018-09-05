@@ -19,26 +19,61 @@
 
         <div class="row">
             <form class="col s12" runat="server">
-                <div class="input-field col s6">
-                    <input placeholder="Cédula" id="cedula" type="text" runat="server" class="validate" />
-                    <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Primer nombre" id="nombre1" type="text" runat="server"  class="validate" />
-                    <%--<label for="first_name">Primer Apellido</label>--%>
-                    <input placeholder="Segundo nombre" id="nombre2" type="text" runat="server"  class="validate" />
-                    <%--<label for="first_name">Primer Apellido</label>--%>
-                    <input placeholder="Primer apellido" id="apellido1" type="text" runat="server"  class="validate" />
-                    <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Segundo apellido" id="apellido2" type="text" runat="server"  class="validate" />
-                    <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Número de teléfono" id="telefono" type="text" runat="server"  class="validate" />
-                    <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Número de celular" id="celular" type="text" runat="server" class="validate" />
-                    <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Dirección" id="direccion" type="text" runat="server" class="validate" />
-                    <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Cédula del encargado" id="cedula_encargado" type="text" runat="server" class="validate" />
-                    <%--<label for="last_name">Nombre completo </label>--%>
-                    <input placeholder="Correo electrónico" id="correo" type="email" runat="server" class="validate" />
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="cedula" type="text" runat="server" class="validate" />
+                        <label class="active" for="cedula">Cédula </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="nombre1" type="text" runat="server"  class="validate" />
+                        <label class="active" for="nombre1">Primer Nombre</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="nombre2" type="text" runat="server"  class="validate" />
+                        <label class="active" for="nombre2">Segundo Nombre</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="apellido1" type="text" runat="server"  class="validate" />
+                        <label class="active" for="apellido1">Primer Apellido </label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="apellido2" type="text" runat="server"  class="validate" />
+                        <label class="active" for="apellido2">Segundo Apellido </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="telefono" type="text" runat="server"  class="validate" />
+                        <label class="active" for="telefono">Teléfono</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="celular" type="text" runat="server" class="validate" />
+                        <label class="active" for="celular">Celular</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input id="direccion" type="text" runat="server" class="validate" />
+                        <label class="active" for="direcion">Dirección</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input id="correo" type="email" runat="server" class="validate" />
+                        <label class="active" for="correo">Correo electrónico</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="cedula_encargado" type="text" runat="server" class="validate" />
+                        <label class="active" for="cedula_encargado">Cédula del encargado</label>
+                    </div>
+                </div>
+                    
                     <div>
                         <label>Género </label>
                         <br />
@@ -61,10 +96,23 @@
                             </label>
                         </p>
                     </div>
-                    <input id="fecha_nacimiento" type="date" runat="server" name="fecha" />
-                    <input id="fecha_ingreso" type="date" runat="server" name="fecha" />
-                    <asp:Button ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
-                    <asp:Button ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="fecha_nacimiento" type="date" runat="server" name="fecha" />
+                        <label class="active" for="fecha_nacimiento">Fecha de nacimiento</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="fecha_ingreso" type="date" runat="server" name="fecha" />
+                        <label class="active" for="fecha_ingreso">Fecha de ingreso</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
+                    </div>
+                    <div class="input-field col s4">
+                        <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
+                    </div>
                 </div>
             </form>
         </div>
