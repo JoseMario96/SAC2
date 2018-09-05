@@ -11,7 +11,7 @@ namespace SAC.metodos
 
         public void agregarPaciente(String ced, String nom1, String nom2, String ape1, String ape2, String gen, String tel, String cel, String dir, String enc, String corr, String fechN, String fechI)
         {
-            MySqlDataReader agregar = consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_paciente` (`cedulaPaciente`, `nombre1Paciente`, `nombre2Paciente`, `apellido1Paciente`, `apellido2Paciente`, `generoPaciente`, `telefonoPaciente`, `celularPaciente`, `direccionPaciente`, `encargadoPaciente`, `correoPaciente`, `fechaNacimientoPaciente`, `fechaInscripcionPaciente`) VALUES(' " + ced + " ', ' " + nom1 + " ', ' " + nom2 + " ', ' " + ape1 + " '' " + ape2 + " ',' " + gen + " ',' " + tel + " ',' " + cel + " ',' " + dir + " ',' " + enc + " ',' " + corr + " ',' " + fechN + " ',' " + fechI + " ');", con.abrir_conexion()).ExecuteReader();
+            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_paciente` (`cedulaPaciente`, `nombre1Paciente`, `nombre2Paciente`, `apellido1Paciente`, `apellido2Paciente`, `generoPaciente`, `telefonoPaciente`, `celularPaciente`, `direccionPaciente`, `cedulaEncargado`,`correoPaciente`, `fechaNacimientoPaciente`, `fechaInscripcionPaciente`) VALUES(' " + ced + " ', ' " + nom1 + " ', ' " + nom2 + " ', ' " + ape1 + " ',' " + ape2 + " ',' " + gen + " ',' " + tel + " ',' " + cel + " ',' " + dir + " ',' " + enc + " ',' " + corr + " ',' " + fechN + " ',' " + fechI + " ');", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
         public void actualizarPaciente(String ced, String nom1, String nom2, String ape1, String ape2, String gen, String tel, String cel, String dir, String enc, String corr, String fechN, String fechI)

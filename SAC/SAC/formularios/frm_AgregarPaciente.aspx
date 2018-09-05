@@ -44,27 +44,27 @@
                         <br />
                         <p>
                             <label>
-                                <input class="with-gap" name="group3" type="radio" id="masculino" />
+                                <input class="with-gap" name="group3" runat="server" type="radio" id="masculino" />
                                 <span>Masculino</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input class="with-gap" name="group3" type="radio" id="femenino" />
+                                <input class="with-gap" name="group3" runat="server" type="radio" id="femenino" />
                                 <span>Femenino</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input class="with-gap" name="group3" type="radio" id="otro" />
+                                <input class="with-gap" name="group3" runat="server" type="radio" id="otro" />
                                 <span>Otro</span>
                             </label>
                         </p>
                     </div>
-                    <input id="fecha_nacimiento" type="date" name="fecha" />
-                    <input id="fecha_ingreso" type="date" name="fecha" />
-                    <asp:Button ID="Guardar" runat="server" Text="Guardar" />
-                    <asp:Button ID="Cancelar" runat="server" Text="Cancelar" />
+                    <input id="fecha_nacimiento" type="date" runat="server" name="fecha" />
+                    <input id="fecha_ingreso" type="date" runat="server" name="fecha" />
+                    <asp:Button ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
+                    <asp:Button ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
                 </div>
             </form>
         </div>

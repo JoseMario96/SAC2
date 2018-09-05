@@ -17,9 +17,42 @@ namespace SAC.formularios
         }
         public void agregarPaciente()
         {
-            string x = cedula.Value;
+            string tipo ="";
+            if (masculino.Checked) {
+                tipo = "masculino";
+                                            }
+            else if (femenino.Checked)
+            {
+                tipo = "femenino";
+            }
+            else if (otro.Checked)
+            {
+                tipo = "otro";
+            }
+            else
+            {
+                string script = @"<script type='text/javascript'>
+                alert('Seleccione un género');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
+            //if(cedula_encargado.Value.Equals)
+            agregarP.agregarPaciente(cedula.Value, nombre1.Value,nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value,celular.Value, direccion.Value, cedula_encargado.Value, correo.Value,fecha_nacimiento.Value,fecha_ingreso.Value);
             
-            
+        }
+
+        protected void Guardar_Click(object sender, EventArgs e)
+        {
+            agregarPaciente();
+            string script = @"<script type='text/javascript'>
+                alert('Se registro la información correctamente');
+                </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+        }
+
+        protected void Cancelar_Click(object sender, EventArgs e)
+        {
+            nombre1.Value = cedula_encargado.Value;
         }
     }
 }
