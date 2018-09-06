@@ -40,9 +40,26 @@ namespace SAC.metodos
             con.cerrar_Conexion();
         }
 
-        public DataTable Paciente(String dato)
+        ////public String[] buscarPaciente()
+        ////{
+        ////    string[] arrayPaciente = new string[4];
+        ////  //  MySqlDataReader session = consultar.ejecutar_consulta(;", con.abrir_conexion()).ExecuteReader();
+        ////    MySqlDataReader session = consultar.ejecutar_consulta("SELECT cedulaPaciente , nombre1Paciente, apellido1Paciente, apellido2Paciente FROM tbl_paciente;", con.abrir_conexion()).ExecuteReader();
+        ////    while (session.Read())
+        ////    {
+        ////        arrayPaciente[0] = session.GetString(0);
+        ////        arrayPaciente[1] = session.GetString(1);
+        ////        arrayPaciente[2] = session.GetString(2);
+        ////        arrayPaciente[3] = session.GetString(3);
+
+        ////    }
+        ////    con.cerrar_Conexion();
+        ////    return arrayPaciente;
+
+        ////}
+        public DataTable Paciente()
         {
-            string consulta = "SELECT cedulaPaciente AS 'Cédula', nombre1Paciente AS 'Primer Nombre', apellido1Paciente AS 'Primer Apellido', apellido2Paciente AS 'Segundo Apellido' FROM tbl_paciente where cedulaPaciente like '" + dato + "%'; ";
+            string consulta = "SELECT cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente FROM tbl_paciente; ";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())

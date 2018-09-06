@@ -15,24 +15,17 @@ namespace SAC.formularios
     {
         metodos.metodosPaciente objeto = new metodos.metodosPaciente();
 
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!this.IsPostBack)
             {
-                DataTable dt = new DataTable();
-                dt.Columns.AddRange(new DataColumn[3] { new DataColumn("Id", typeof(int)),
-                        new DataColumn("Name", typeof(string)),
-                        new DataColumn("Country",typeof(string)) });
-                dt.Rows.Add(1, "John Hammond", "United States");
-                dt.Rows.Add(2, "Mudassar Khan", "India");
-                dt.Rows.Add(3, "Suzanne Mathews", "France");
-                dt.Rows.Add(4, "Robert Schidner", "Russia");
-                GridView1.DataSource = dt;
+                GridView1.DataSource = objeto.Paciente();
                 GridView1.DataBind();
+
             }
         }
+
         protected void OnDataBound(object sender, EventArgs e)
         {
             GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);

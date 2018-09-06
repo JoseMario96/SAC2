@@ -9,22 +9,32 @@ namespace SAC.formularios
 {
     public partial class frmBuscar : System.Web.UI.Page
     {
-        metodos.Buscar objeto = new metodos.Buscar();
+        metodos.metodosPaciente objeto = new metodos.metodosPaciente();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (!this.IsPostBack)
+            {
+                GridView1.DataSource = objeto.Paciente();
+                GridView1.DataBind();
+
+            }
         }
 
-        protected void txt_cedula_TextChanged(object sender, EventArgs e)
+        protected void OnDataBound(object sender, EventArgs e)
         {
-            GridView1.DataSource = objeto.Filtrar(txt_cedula.Text);
-            GridView1.DataBind();
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            GridView1.DataSource = objeto.Filtrar(txt_cedula.Text);
-            GridView1.DataBind();
+            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                TableHeaderCell cell = new TableHeaderCell();
+                TextBox txtSearch = new TextBox();
+                txtSearch.Attributes["placeholder"] = GridView1.Columns[i].HeaderText;
+                txtSearch.CssClass = "search_textbox";
+                cell.Controls.Add(txtSearch);
+                row.Controls.Add(cell);
+            }
+            GridView1.HeaderRow.Parent.Controls.AddAt(1, row);
         }
     }
 }
