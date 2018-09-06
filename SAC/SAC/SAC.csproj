@@ -93,6 +93,7 @@
     <Content Include="fonts\simple-line-icons\Simple-Line-Icons.svg" />
     <Content Include="formularios\frm_ActualizarPaciente.aspx" />
     <Content Include="formularios\frm_AgregarPaciente.aspx" />
+    <Content Include="formularios\Prueba.aspx" />
     <Content Include="images\actualizar.png" />
     <Content Include="images\agregar.png" />
     <Content Include="images\buscar.png" />
@@ -135,7 +136,9 @@
     <Content Include="js\respond.min.js" />
     <Content Include="prueba.html" />
     <Content Include="sass\untitled.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="conexion\conexion.cs" />
@@ -153,6 +156,13 @@
     </Compile>
     <Compile Include="formularios\frm_AgregarPaciente.aspx.designer.cs">
       <DependentUpon>frm_AgregarPaciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\Prueba.aspx.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\Prueba.aspx.designer.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
     </Compile>
     <Compile Include="limpiar\limpiar.cs" />
     <Compile Include="metodos\metodosExpediente.cs" />
