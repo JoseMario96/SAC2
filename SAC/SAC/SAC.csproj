@@ -94,6 +94,7 @@
     <Content Include="formularios\frm_BuscarPaciente.aspx" />
     <Content Include="formularios\frm_ActualizarPaciente.aspx" />
     <Content Include="formularios\frm_AgregarPaciente.aspx" />
+    <Content Include="formularios\Prueba.aspx" />
     <Content Include="images\actualizar.png" />
     <Content Include="images\agregar.png" />
     <Content Include="images\buscar.png" />
@@ -163,6 +164,13 @@
     </Compile>
     <Compile Include="formularios\frm_AgregarPaciente.aspx.designer.cs">
       <DependentUpon>frm_AgregarPaciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\Prueba.aspx.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\Prueba.aspx.designer.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
     </Compile>
     <Compile Include="limpiar\limpiar.cs" />
     <Compile Include="metodos\Buscar.cs" />

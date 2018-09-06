@@ -1,6 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-
+using System.Data;
 
 namespace SAC.metodos
 {
@@ -38,6 +38,19 @@ namespace SAC.metodos
         {
             MySqlDataReader agregar = consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_encargado` SET `nombre1Encargado`= ' " + nom1 + " ', `nombre2Encargado`= ' " + nom2 + " ', `apellido1Encargado`= ' " + ape1 + " ', `apellido2Encargado`= ' " + ape2 + " ', `generoEncargado`= ' " + gen + " ', `telefonoEncargado`= ' " + tel + " ', `celularEncargado`= ' " + cel + " ', `direccionEncargado`= ' " + dir + " ', `parentescoEncargado`= ' " + par + " ', `correoEncargado`= ' " + corr + " ' WHERE `cedulaEncargado`=' " + ced + " ';);", con.abrir_conexion()).ExecuteReader();
             con.cerrar_Conexion();
+        }
+
+        public DataTable Paciente(String dato)
+        {
+            string consulta = "SELECT cedulaPaciente AS 'Cédula', nombre1Paciente AS 'Primer Nombre', apellido1Paciente AS 'Primer Apellido', apellido2Paciente AS 'Segundo Apellido' FROM tbl_paciente where cedulaPaciente like '" + dato + "%'; ";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+
         }
     }
 }
