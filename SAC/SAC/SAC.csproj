@@ -136,7 +136,9 @@
     <Content Include="js\respond.min.js" />
     <Content Include="prueba.html" />
     <Content Include="sass\untitled.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="conexion\conexion.cs" />
@@ -163,6 +165,7 @@
       <DependentUpon>frm_AgregarPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="limpiar\limpiar.cs" />
+    <Compile Include="metodos\Buscar.cs" />
     <Compile Include="metodos\metodosExpediente.cs" />
     <Compile Include="metodos\metodosPaciente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

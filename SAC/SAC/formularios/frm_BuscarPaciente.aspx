@@ -18,9 +18,10 @@
             <form class="col s12" runat="server">
                 <div class="row">
                     <div class="input-field col s4">
-                        <asp:TextBox ID="txt_cedula" runat="server" class="validate" OnTextChanged="txt_cedula_TextChanged"></asp:TextBox>
+                        <asp:TextBox ID="txt_cedula" runat="server" class="validate" OnTextChanged="txt_cedula_TextChanged" AutoPostBack="True"></asp:TextBox>
                         <label class="active" for="txt_cedula">Cédula </label>
                     </div>
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
                 </div>
                 <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" />
