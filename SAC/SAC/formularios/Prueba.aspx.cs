@@ -21,32 +21,17 @@ namespace SAC.formularios
         {
             if (!this.IsPostBack)
             {
-                this.Pacientes("");
+                DataTable dt = new DataTable();
+                dt.Columns.AddRange(new DataColumn[3] { new DataColumn("Id", typeof(int)),
+                        new DataColumn("Name", typeof(string)),
+                        new DataColumn("Country",typeof(string)) });
+                dt.Rows.Add(1, "John Hammond", "United States");
+                dt.Rows.Add(2, "Mudassar Khan", "India");
+                dt.Rows.Add(3, "Suzanne Mathews", "France");
+                dt.Rows.Add(4, "Robert Schidner", "Russia");
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
             }
-            //Pacientes("");
-            { }
-            //if (!this.IsPostBack)
-            //{
-            //    string constr = ConfigurationManager.ConnectionStrings["bd_sacPaciente"].ConnectionString;
-            //    using (MySqlConnection con = new MySqlConnection(constr))
-            //    {
-            //        using (MySqlCommand cmd = new MySqlCommand("SELECT cedulaPaciente, nombre1Paciente, apellido1Paciente, apellido2Paciente FROM tbl_paciente"))
-            //        {
-            //            using (MySqlDataAdapter da = new MySqlDataAdapter())
-            //            {
-            //                cmd.Connection = con;
-            //                da.SelectCommand = cmd;
-            //                using (DataTable dt = new DataTable())
-            //                {
-            //                    da.Fill(dt);
-            //                    GridView1.DataSource = dt;
-            //                    GridView1.DataBind();
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-
         }
         protected void OnDataBound(object sender, EventArgs e)
         {
@@ -61,26 +46,6 @@ namespace SAC.formularios
                 row.Controls.Add(cell);
             }
             GridView1.HeaderRow.Parent.Controls.AddAt(1, row);
-        }
-        private void Prueba_Load(object sender, EventArgs e)
-        {
-            Pacientes("");
-        }
-        public void Pacientes(String busqueda)
-        {
-            busqueda = txt_busqueda.Text;
-            GridView1.DataSource = objeto.Paciente(busqueda);
-            GridView1.DataBind();
-        }
-        protected void txt_busqueda_TextChanged(object sender, EventArgs e)
-        {
-            Pacientes(txt_busqueda.Text);
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            //GridView1.DataSource = objeto.Paciente(txt_busqueda.Text, "cedulaPaciente");
-            //GridView1.DataBind();
         }
     }
 }

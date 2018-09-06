@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head runat="server">
+<head runat="server">
     <title></title>
     <style type="text/css">
         body
@@ -39,9 +39,9 @@
             <asp:BoundField DataField="Country" HeaderText="Country" ItemStyle-Width="100" />
         </Columns>
     </asp:GridView>
-        <asp:TextBox ID="txt_busqueda" runat="server"></asp:TextBox>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript" src="quicksearch.js"></script>
+    <script type="text/javascript" src="../js/quicksearch.js"></script>
+
     <script type="text/javascript">
         $(function () {
             $('.search_textbox').each(function (i) {

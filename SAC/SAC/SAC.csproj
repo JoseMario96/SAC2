@@ -121,6 +121,7 @@
     <Content Include="images\work_8.jpg" />
     <Content Include="index.html" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\quicksearch.js" />
     <Content Include="js\google_map.js" />
     <Content Include="js\jquery.countTo.js" />
     <Content Include="js\jquery.easing.1.3.js" />
