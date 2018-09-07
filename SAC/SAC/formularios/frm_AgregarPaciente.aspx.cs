@@ -65,7 +65,8 @@ namespace SAC.formularios
 
         protected void Cancelar_Click(object sender, EventArgs e)
         {
-            nombre1.Value = cedula_encargado.Value;
+            //  string script = "window.close();";
+            Response.Write("<script>javascript:window.close();</script>");
         }
     }
 }

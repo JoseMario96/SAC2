@@ -45,6 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=8.0.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -68,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="close.html" />
     <Content Include="css\animate.css" />
     <Content Include="css\blue.css" />
     <Content Include="css\bootstrap.css" />
@@ -90,6 +92,7 @@
     <Content Include="fonts\icomoon\icomoon\style.css" />
     <Content Include="fonts\simple-line-icons\Simple-Line-Icons.svg" />
     <Content Include="formularios\frm_AgregarPaciente.aspx" />
+    <Content Include="formularios\index.aspx" />
     <Content Include="images\actualizar.png" />
     <Content Include="images\agregar.png" />
     <Content Include="images\buscar.png" />
@@ -134,6 +137,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="conexion\conexion.cs" />
+    <Compile Include="consulta\consulta.cs" />
     <Compile Include="formularios\frm_AgregarPaciente.aspx.cs">
       <DependentUpon>frm_AgregarPaciente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -141,6 +146,14 @@
     <Compile Include="formularios\frm_AgregarPaciente.aspx.designer.cs">
       <DependentUpon>frm_AgregarPaciente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="formularios\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="metodos\metodosPaciente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

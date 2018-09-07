@@ -2661,10 +2661,10 @@ a {
 }
 
 /* 24dp elevation */
-.z-depth-5, .modal {
+/*.z-depth-5, .modal {
   -webkit-box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
           box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
-}
+}*/
 
 .hoverable {
   -webkit-transition: -webkit-box-shadow .25s;
@@ -4467,7 +4467,7 @@ nav .input-field label.active i {
   z-index: 997;
 }
 
-.navbar-fixed nav {
+./*nav*/bar-fixed nav {
   position: fixed;
 }
 
@@ -5748,17 +5748,17 @@ body.keyboard-focused .dropdown-content li:focus {
   z-index: -1;
 }
 
-.modal {
+/*.modal {
   display: none;
   position: fixed;
   left: 0;
   right: 0;
   background-color: #fafafa;
   padding: 0;
-  max-height: 70%;
-  width: 55%;
+  max-height: 100% !important;
+  width: 75% !important;
   margin: auto;
-  overflow-y: auto;
+  overflow-y: hidden !important;
   border-radius: 2px;
   will-change: top, opacity;
 }
@@ -5769,7 +5769,7 @@ body.keyboard-focused .dropdown-content li:focus {
 
 @media only screen and (max-width: 992px) {
   .modal {
-    width: 80%;
+    width: 100%;
   }
 }
 
@@ -5789,7 +5789,7 @@ body.keyboard-focused .dropdown-content li:focus {
   border-radius: 0 0 2px 2px;
   background-color: #fafafa;
   padding: 4px 6px;
-  height: 56px;
+  height: 80px;
   width: 100%;
   text-align: right;
 }
@@ -5836,10 +5836,10 @@ body.keyboard-focused .dropdown-content li:focus {
   bottom: -100%;
   margin: 0;
   width: 100%;
-  max-height: 45%;
+  max-height: 65%;
   border-radius: 0;
   will-change: bottom, opacity;
-}
+}*/
 
 .collapsible {
   border-top: 1px solid #ddd;
@@ -8630,7 +8630,7 @@ input[type=range]::-ms-thumb {
 }
 
 /* Modal */
-.datepicker-modal {
+/*.datepicker-modal {
   max-width: 325px;
   min-width: 300px;
   max-height: none;
@@ -8647,7 +8647,7 @@ input[type=range]::-ms-thumb {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 0;
-}
+}*/
 
 .datepicker-controls {
   display: -webkit-box;
@@ -8847,12 +8847,12 @@ input[type=range]::-ms-thumb {
 }
 
 /* Timepicker Containers */
-.timepicker-modal {
+/*.timepicker-modal {
   max-width: 325px;
   max-height: none;
-}
+}*/
 
-.timepicker-container.modal-content {
+/*.timepicker-container.modal-content {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -8863,7 +8863,7 @@ input[type=range]::-ms-thumb {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 0;
-}
+}*/
 
 .text-primary {
   color: white;
@@ -9043,7 +9043,7 @@ input[type=range]::-ms-thumb {
 }
 
 /* Media Queries */
-@media only screen and (min-width: 601px) {
+/*@media only screen and (min-width: 601px) {
   .timepicker-modal {
     max-width: 600px;
   }
@@ -9064,4 +9064,4 @@ input[type=range]::-ms-thumb {
     text-align: center;
     margin-top: 1.2rem;
   }
-}
+}*/
