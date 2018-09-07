@@ -27,27 +27,27 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="nombre1" type="text" runat="server"  class="validate" />
+                        <input id="nombre1" type="text" runat="server" class="validate" />
                         <label class="active" for="nombre1">Primer Nombre</label>
                     </div>
                     <div class="input-field col s4">
-                        <input id="nombre2" type="text" runat="server"  class="validate" />
+                        <input id="nombre2" type="text" runat="server" class="validate" />
                         <label class="active" for="nombre2">Segundo Nombre</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="apellido1" type="text" runat="server"  class="validate" />
+                        <input id="apellido1" type="text" runat="server" class="validate" />
                         <label class="active" for="apellido1">Primer Apellido </label>
                     </div>
                     <div class="input-field col s4">
-                        <input id="apellido2" type="text" runat="server"  class="validate" />
+                        <input id="apellido2" type="text" runat="server" class="validate" />
                         <label class="active" for="apellido2">Segundo Apellido </label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="telefono" type="text" runat="server"  class="validate" />
+                        <input id="telefono" type="text" runat="server" class="validate" />
                         <label class="active" for="telefono">Teléfono</label>
                     </div>
                     <div class="input-field col s4">
@@ -69,33 +69,56 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="cedula_encargado" type="text" runat="server" class="validate" />
+                        <%--                        <input id="cedula_encargado" type="text" runat="server" class="validate"  onchage="mostrar(this.value)"/>--%>
+                        <asp:TextBox ID="cedula_encargado" runat="server" class="validate" OnTextChanged="cedula_encargado_TextChanged"></asp:TextBox>
                         <label class="active" for="cedula_encargado">Cédula del encargado</label>
                     </div>
                 </div>
-                    
-                    <div>
-                        <label>Género </label>
-                        <br />
-                        <p>
-                            <label>
-                                <input class="with-gap" name="group3" runat="server" type="radio" id="masculino" />
-                                <span>Masculino</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input class="with-gap" name="group3" runat="server" type="radio" id="femenino" />
-                                <span>Femenino</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input class="with-gap" name="group3" runat="server" type="radio" id="otro" />
-                                <span>Otro</span>
-                            </label>
-                        </p>
+                <div id="encargado" style="display: none">
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <input id="nombre1_encargado" type="text" runat="server" class="validate" />
+                            <label class="active" for="nombre1_encargado">Primer nombre</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input id="nombre2_encargado" type="text" runat="server" class="validate" />
+                            <label class="active" for="nombre2_encargado">Segundo nombre</label>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <input id="apellido1_encargado" type="text" runat="server" class="validate" />
+                            <label class="active" for="apellido1_encargado">Primer apellido</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input id="apellido2_encargado" type="text" runat="server" class="validate" />
+                            <label class="active" for="apellido2_encargado">Segundo apellido</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label>Género </label>
+                    <br />
+                    <p>
+                        <label>
+                            <input class="with-gap" name="group3" runat="server" type="radio" id="masculino" />
+                            <span>Masculino</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="group3" runat="server" type="radio" id="femenino" />
+                            <span>Femenino</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="group3" runat="server" type="radio" id="otro" />
+                            <span>Otro</span>
+                        </label>
+                    </p>
+                </div>
                 <div class="row">
                     <div class="input-field col s4">
                         <input id="fecha_nacimiento" type="date" runat="server" name="fecha" />
@@ -117,7 +140,12 @@
             </form>
         </div>
     </div>
-
+    <script type="text/javascript">
+        function ocultar() {
+            document.getElementById('encargado').style.display = 'block';
+            alert('No se regisasdgsdghdghbzdfbgzdgzdfghdftamente');
+        }
+    </script>
     <script src="js/materialize.min.js"></script>
 
 </body>

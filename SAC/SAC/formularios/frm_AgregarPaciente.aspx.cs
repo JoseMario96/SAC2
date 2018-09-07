@@ -38,7 +38,7 @@ namespace SAC.formularios
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             }
             //if(cedula_encargado.Value.Equals)
-            agregarP.agregarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargado.Value, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value);
+            agregarP.agregarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargado.Text, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value);
 
         }
 
@@ -65,7 +65,15 @@ namespace SAC.formularios
 
         protected void Cancelar_Click(object sender, EventArgs e)
         {
-            nombre1.Value = cedula_encargado.Value;
+            nombre1.Value = cedula_encargado.Text;
+        }
+
+        protected void cedula_encargado_TextChanged(object sender, EventArgs e)
+        {
+            string script = @"<script type='text/javascript'>
+                document.getElementById('encargado').style.display = 'block';
+                </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
         }
     }
 }
