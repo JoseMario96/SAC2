@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,7 +11,7 @@ namespace SAC.formularios
     public partial class frmBuscar : System.Web.UI.Page
     {
         metodos.metodosPaciente objeto = new metodos.metodosPaciente();
-
+        string consulta = "";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -35,6 +36,28 @@ namespace SAC.formularios
                 row.Controls.Add(cell);
             }
             GridView1.HeaderRow.Parent.Controls.AddAt(1, row);
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //consulta = GridView1.SelectedRow.Cells[0].Text;
+                //Response.Redirect("frm_ActualizarPaciente.aspx? cedulaPaciente = " + consulta);
+            }
+            catch (System.Exception)
+            {
+            }
+
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(GridView1, "Select$" + e.Row.RowIndex);
+                e.Row.ToolTip = "Click to select this row.";
+            }
         }
     }
 }
