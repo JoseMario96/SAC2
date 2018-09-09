@@ -13,8 +13,10 @@ namespace SAC.formularios
         metodos.metodosPaciente objeto = new metodos.metodosPaciente();
         protected void Page_Load(object sender, EventArgs e)
         {
+         
             if (!this.IsPostBack)
             {
+
                 GridView1.DataSource = objeto.Paciente();
                 GridView1.DataBind();
 
@@ -23,6 +25,13 @@ namespace SAC.formularios
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            GridView1.DataSource = objeto.Paciente();
+            GridView1.DataBind();
+            string script = @"<script type='text/javascript'>
+                document.getElementById('formularioP').style.display = 'block';
+                </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
             foreach (GridViewRow row in GridView1.Rows)
             {
                 if (row.RowIndex == GridView1.SelectedIndex)
@@ -31,30 +40,6 @@ namespace SAC.formularios
                     row.ToolTip = string.Empty;
                     String ced;
                     ced = row.Cells[0].Text;
-                    String nom1;
-                    nom1 = row.Cells[1].Text;
-                    String nom2;
-                    nom2 = row.Cells[2].Text;
-                    String ape1;
-                    ape1 = row.Cells[3].Text;
-                    String ape2;
-                    ape2 = row.Cells[4].Text;
-                    String gen;
-                    gen = row.Cells[5].Text;
-                    String tel;
-                    tel = row.Cells[6].Text;
-                    String cel;
-                    cel = row.Cells[7].Text;
-                    String dir;
-                    dir = row.Cells[8].Text;
-                    String cedE;
-                    cedE = row.Cells[9].Text;
-                    String corr;
-                    corr = row.Cells[10].Text;
-                    String fechN;
-                    fechN = row.Cells[11].Text;
-                    String fechI;
-                    fechI = row.Cells[12].Text;
                 }
                 else
                 {
@@ -62,18 +47,23 @@ namespace SAC.formularios
                     row.ToolTip = "Click to select this row.";
                 }
             }
+
         }
 
+        //Metodo para seleccionar una tabla
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                //e.Row.Attributes["onmouseover"] = "this.style.backgroundColor='aquamarine';";
+                //e.Row.Attributes["onmouseout"] = "this.style.backgroundColor='white';";
                 e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(GridView1, "Select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click to select this row.";
+
             }
         }
 
-
+        // Metodo con el header de la tabla para la busqueda
         protected void OnDataBound(object sender, EventArgs e)
         {
             GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
@@ -87,6 +77,11 @@ namespace SAC.formularios
                 row.Controls.Add(cell);
             }
             GridView1.HeaderRow.Parent.Controls.AddAt(1, row);
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
