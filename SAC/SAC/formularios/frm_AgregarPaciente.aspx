@@ -18,53 +18,61 @@
 
 
         <div class="row">
-            <form class="col s12" runat="server">
+            <form runat="server">
                 <div class="row">
-                    <div class="input-field col s4">
-                        <input id="cedula" type="text" runat="server" class="validate" maxlength="14" required />
+                    <div class="col s6">
                         <label class="active" for="cedula">Cédula </label>
+                        <input id="cedula" type="text" runat="server" class="validate" maxlength="14" required />                        
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
-                        <input id="nombre1" type="text" runat="server" class="validate" maxlength="44" required />
+                    <div class="col s6">
                         <label class="active" for="nombre1">Primer Nombre</label>
+                        <input id="nombre1" type="text" runat="server" class="validate" maxlength="44" required />
+                        
                     </div>
-                    <div class="input-field col s4">
-                        <input id="nombre2" type="text" runat="server" class="validate" maxlength="44" required />
+                    <div class="col s6">
                         <label class="active" for="nombre2">Segundo Nombre</label>
+                        <input id="nombre2" type="text" runat="server" class="validate" maxlength="44" required />
+                        
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
-                        <input id="apellido1" type="text" runat="server" class="validate" maxlength="44" required />
+                    <div class="col s6">
                         <label class="active" for="apellido1">Primer Apellido </label>
+                        <input id="apellido1" type="text" runat="server" class="validate" maxlength="44" required />
+                        
                     </div>
-                    <div class="input-field col s4">
-                        <input id="apellido2" type="text" runat="server" class="validate" maxlength="44" required />
+                    <div class="col s6">
                         <label class="active" for="apellido2">Segundo Apellido </label>
+                        <input id="apellido2" type="text" runat="server" class="validate" maxlength="44" required />
+                        
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
-                        <input id="telefono" type="number" runat="server" class="validate" maxlength="14" required />
+                    <div class="col s6">
                         <label class="active" for="telefono">Teléfono</label>
+                        <input id="telefono" type="number" runat="server" class="validate" maxlength="14" required />
+                        
                     </div>
-                    <div class="input-field col s4">
-                        <input id="celular" type="number" runat="server" class="validate" maxlength="14" required />
+                    <div class="col s6">
                         <label class="active" for="celular">Celular</label>
+                        <input id="celular" type="number" runat="server" class="validate" maxlength="14" required />
+                        
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s8">
-                        <input id="direccion" type="text" runat="server" class="validate" maxlength="249" required />
+                    <div class="col s12">
                         <label class="active" for="direcion">Dirección</label>
+                        <input id="direccion" type="text" runat="server" class="validate" maxlength="249" required />
+                        
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s8">
-                        <input id="correo" type="email" runat="server" class="validate" maxlength="44" required />
+                    <div class="col s12 m6 13">
                         <label class="active" for="correo">Correo electrónico</label>
+                        <input id="correo" type="email" runat="server" class="validate" maxlength="44" required />
+                        
                     </div>
                 </div>
                 <div>
@@ -91,12 +99,14 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="fecha_nacimiento" type="date" runat="server" name="fecha" required />
                         <label class="active" for="fecha_nacimiento">Fecha de nacimiento</label>
+                        <input id="fecha_nacimiento" type="date" runat="server" name="fecha" required />
+                        
                     </div>
                     <div class="input-field col s4">
-                        <input id="fecha_ingreso" type="date" runat="server" name="fecha" required />
                         <label class="active" for="fecha_ingreso">Fecha de ingreso</label>
+                        <input id="fecha_ingreso" type="date" runat="server" name="fecha" required />
+                        
                     </div>
                 </div>
                 <div>
@@ -118,57 +128,65 @@
                 </div>
                 <div id="encargado" style="display: none">
                     <div class="row">
-                        <div class="input-field col s4">
-                            <input id="cedula_encargado" type="text" runat="server" class="validate" maxlength="14" />
+                        <div class="col s12 m6 13">
                             <label class="active" for="cedula_encargado">Cédula del encargado</label>
+                            <input id="cedula_encargado" type="text" runat="server" class="validate" maxlength="14" />
+                            
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s4">
-                            <input id="nombre1_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                        <div class="col s6">
                             <label class="active" for="nombre1_encargado">Primer nombre</label>
+                            <input id="nombre1_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                            
                         </div>
-                        <div class="input-field col s4">
-                            <input id="nombre2_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                        <div class="col s6">
                             <label class="active" for="nombre2_encargado">Segundo nombre</label>
+                            <input id="nombre2_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                            
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s4">
-                            <input id="apellido1_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                        <div class="col s6">
                             <label class="active" for="apellido1_encargado">Primer apellido</label>
+                            <input id="apellido1_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                            
                         </div>
-                        <div class="input-field col s4">
-                            <input id="apellido2_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                        <div class="col s6">
                             <label class="active" for="apellido2_encargado">Segundo apellido</label>
+                            <input id="apellido2_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                            
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s4">
-                            <input id="telefono_encargado" type="number" runat="server" class="validate" maxlength="14" />
+                        <div class="col s6">
                             <label class="active" for="telefono_encargado">Teléfono</label>
+                            <input id="telefono_encargado" type="number" runat="server" class="validate" maxlength="14" />
+                            
                         </div>
-                        <div class="input-field col s4">
-                            <input id="celular_encargado" type="number" runat="server" class="validate" maxlength="14" />
+                        <div class="col s6">
                             <label class="active" for="celular_encargado">Celular</label>
+                            <input id="celular_encargado" type="number" runat="server" class="validate" maxlength="14" />
+                            
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s8">
-                            <input id="direccion_encargado" type="text" runat="server" class="validate" maxlength="249" />
+                        <div class="col s12">
                             <label class="active" for="direccion_encargado">Dirección</label>
+                            <input id="direccion_encargado" type="text" runat="server" class="validate" maxlength="249" />
+                            
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s8">
-                            <input id="correo_encargado" type="email" runat="server" class="validate" maxlength="44" />
+                        <div class="col s6">
                             <label class="active" for="correo_encargado">Correo electrónico</label>
+                            <input id="correo_encargado" type="email" runat="server" class="validate" maxlength="44" />
+                            
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s8">
-                            <input id="parentezco" type="text" runat="server" class="validate" maxlength="44" />
+                        <div class="col s6">
                             <label class="active" for="parentezco">Parentezco con el menor</label>
+                            <input id="parentezco" type="text" runat="server" class="validate" maxlength="44" />
+                            
                         </div>
                     </div>
                     <div>
