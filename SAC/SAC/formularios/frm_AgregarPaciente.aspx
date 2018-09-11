@@ -21,49 +21,49 @@
             <form class="col s12" runat="server">
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="cedula" type="text" runat="server" class="validate" />
+                        <input id="cedula" type="text" runat="server" class="validate" required />
                         <label class="active" for="cedula">Cédula </label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="nombre1" type="text" runat="server" class="validate" />
+                        <input id="nombre1" type="text" runat="server" class="validate" required />
                         <label class="active" for="nombre1">Primer Nombre</label>
                     </div>
                     <div class="input-field col s4">
-                        <input id="nombre2" type="text" runat="server" class="validate" />
+                        <input id="nombre2" type="text" runat="server" class="validate" required />
                         <label class="active" for="nombre2">Segundo Nombre</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="apellido1" type="text" runat="server" class="validate" />
+                        <input id="apellido1" type="text" runat="server" class="validate" required />
                         <label class="active" for="apellido1">Primer Apellido </label>
                     </div>
                     <div class="input-field col s4">
-                        <input id="apellido2" type="text" runat="server" class="validate" />
+                        <input id="apellido2" type="text" runat="server" class="validate" required />
                         <label class="active" for="apellido2">Segundo Apellido </label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="telefono" type="number" runat="server" class="validate" />
+                        <input id="telefono" type="number" runat="server" class="validate" required />
                         <label class="active" for="telefono">Teléfono</label>
                     </div>
                     <div class="input-field col s4">
-                        <input id="celular" type="number" runat="server" class="validate" />
+                        <input id="celular" type="number" runat="server" class="validate" required />
                         <label class="active" for="celular">Celular</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s8">
-                        <input id="direccion" type="text" runat="server" class="validate" />
+                        <input id="direccion" type="text" runat="server" class="validate" required />
                         <label class="active" for="direcion">Dirección</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s8">
-                        <input id="correo" type="email" runat="server" class="validate" />
+                        <input id="correo" type="email" runat="server" class="validate" required />
                         <label class="active" for="correo">Correo electrónico</label>
                     </div>
                 </div>
@@ -91,11 +91,11 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="fecha_nacimiento" type="date" runat="server" name="fecha" />
+                        <input id="fecha_nacimiento" type="date" runat="server" name="fecha" required />
                         <label class="active" for="fecha_nacimiento">Fecha de nacimiento</label>
                     </div>
                     <div class="input-field col s4">
-                        <input id="fecha_ingreso" type="date" runat="server" name="fecha" />
+                        <input id="fecha_ingreso" type="date" runat="server" name="fecha" required />
                         <label class="active" for="fecha_ingreso">Fecha de ingreso</label>
                     </div>
                 </div>
