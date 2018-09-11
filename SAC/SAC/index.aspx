@@ -375,7 +375,7 @@
                         </div>--%>
             <div class="row row-bottom-padded-sm">
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                   <a href="#popup" class="popup-link fh5co-project-item">
+                 <a href="#popup" class="popup-link fh5co-project-item">
                         <center><img src="../images/agregar.png" alt="Image" class="img-responsive "/></center>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Agregar</h2>
@@ -393,7 +393,7 @@
 
                 <%--Actualizar--%>
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="#popup1" class="popup1-link fh5co-project-item ">
+                    <%--<a href="#popup1" class="popup-link fh5co-project-item ">
                         <center><img src="../images/actualizar.png" alt="Image" class="img-responsive" /></center>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Actualizar</h2>
@@ -406,12 +406,12 @@
                                 <a class="popup-cerrar" href="#work">X</a>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
 
                 <%--Buscar--%>
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="#popup2" class="popup1-link fh5co-project-item ">
+                   <%-- <a href="#popup2" class="popup-link fh5co-project-item ">
                         <center><img src="../images/buscar.png" alt="Image" class="img-responsive" /></center>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Buscar</h2>
@@ -424,7 +424,7 @@
                                 <a class="popup-cerrar" href="#work">X</a>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>
