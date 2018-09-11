@@ -354,9 +354,7 @@
             </div>
 
             <%--Agregar--%>
-            <div class="row col-xxs-12">
-                <div class="col-md-4">
-                    <%-- <a href="javascript:popUp('frm_AgregarPaciente.aspx')" class="modal-trigger fh5co-project-item" id="boton">
+            <%-- <a href="javascript:popUp('frm_AgregarPaciente.aspx')" class="modal-trigger fh5co-project-item" id="boton">
                         <center><img src="../images/agregar.png" alt="Image" class="img-responsive "/></center>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Agregar</h2>
@@ -369,8 +367,14 @@
 
                     <%--  <div class="modal-footer">
                             <a href="#!" class="modal-close waves-effect waves-green btn-flat letra ">Agree</a>
-                        </div>--%>
 
+
+                        row col-xxs-12
+                        col-md-4
+
+                        </div>--%>
+            <div class="row row-bottom-padded-sm">
+                <div class="col-md-3 col-sm-6 col-xxs-12">
                    <a href="#popup" class="popup-link fh5co-project-item">
                         <center><img src="../images/agregar.png" alt="Image" class="img-responsive "/></center>
                         <div class="fh5co-text">
@@ -388,7 +392,7 @@
                 </div>
 
                 <%--Actualizar--%>
-                <div class="col-md-4">
+                <div class="col-md-3 col-sm-6 col-xxs-12">
                     <a href="#popup1" class="popup1-link fh5co-project-item ">
                         <center><img src="../images/actualizar.png" alt="Image" class="img-responsive" /></center>
                         <div class="fh5co-text">
@@ -406,7 +410,7 @@
                 </div>
 
                 <%--Buscar--%>
-                <div class="col-md-4 ">
+                <div class="col-md-3 col-sm-6 col-xxs-12">
                     <a href="#popup2" class="popup1-link fh5co-project-item ">
                         <center><img src="../images/buscar.png" alt="Image" class="img-responsive" /></center>
                         <div class="fh5co-text">
