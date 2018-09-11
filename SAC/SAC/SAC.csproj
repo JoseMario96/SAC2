@@ -119,7 +119,7 @@
     <Content Include="images\work_6.jpg" />
     <Content Include="images\work_7.jpg" />
     <Content Include="images\work_8.jpg" />
-    <Content Include="index.html" />
+    <Content Include="index.aspx" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\quicksearch.js" />
     <Content Include="js\google_map.js" />
@@ -172,6 +172,13 @@
     </Compile>
     <Compile Include="formularios\Prueba.aspx.designer.cs">
       <DependentUpon>Prueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="limpiar\limpiar.cs" />
     <Compile Include="metodos\Buscar.cs" />
