@@ -71,11 +71,9 @@ namespace SAC.formularios
                         telefono.Value = datos[6];
                         celular.Value = datos[7];
                         direccion.Value = datos[8];
-                        //cedula_encargado.Value = datos[9];
                         correo.Value = datos[10];
                         fechaN.Value = datos[11].Substring(0, 9);
                         fechaI.Value = datos[12].Substring(0, 9);
-
 
                     }
                     else
@@ -95,9 +93,6 @@ namespace SAC.formularios
                         correo.Value = datos[10];
                         fechaN.Value = datos[11].Substring(0, 9);
                         fechaI.Value = datos[12].Substring(0, 9);
-                        //fechaN.Value = datos[11];
-                        ////DateTime parsedDate = DateTime.Parse(fechaN.Value);      
-                        //fechaI.Value = datos[12];
 
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "mostrar()", true);
 
@@ -181,7 +176,7 @@ namespace SAC.formularios
 
             objeto.actualizarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, genero.Value, telefono.Value, celular.Value, direccion.Value, correo.Value, fN,fI);
 
-            objeto.actualizarEncargado(cedula_encargado.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, "Femenino", telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, parentezco.Value, correo_encargado.Value);
+            objeto.actualizarEncargado(cedula_encargado.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoE, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, parentezco.Value, correo_encargado.Value);
             GridView1.DataSource = objeto.Paciente();
             GridView1.DataBind();
             string script = @"<script type='text/javascript'>
