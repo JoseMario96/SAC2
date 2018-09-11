@@ -112,6 +112,51 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl correo;
         
         /// <summary>
+        /// Control genero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText genero;
+        
+        /// <summary>
+        /// Control fechaN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText fechaN;
+        
+        /// <summary>
+        /// Control fechaI.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText fechaI;
+        
+        /// <summary>
+        /// Control SiE.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton SiE;
+        
+        /// <summary>
+        /// Control NoE.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton NoE;
+        
+        /// <summary>
         /// Control cedula_encargado.
         /// </summary>
         /// <remarks>
@@ -121,49 +166,112 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputText cedula_encargado;
         
         /// <summary>
-        /// Control masculino.
+        /// Control nombre1_encargado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton masculino;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText nombre1_encargado;
         
         /// <summary>
-        /// Control femenino.
+        /// Control nombre2_encargado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton femenino;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText nombre2_encargado;
         
         /// <summary>
-        /// Control otro.
+        /// Control apellido1_encargado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton otro;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText apellido1_encargado;
         
         /// <summary>
-        /// Control fecha_nacimiento.
+        /// Control apellido2_encargado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl fecha_nacimiento;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText apellido2_encargado;
         
         /// <summary>
-        /// Control fecha_ingreso.
+        /// Control telefono_encargado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl fecha_ingreso;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl telefono_encargado;
+        
+        /// <summary>
+        /// Control celular_encargado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl celular_encargado;
+        
+        /// <summary>
+        /// Control direccion_encargado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText direccion_encargado;
+        
+        /// <summary>
+        /// Control correo_encargado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl correo_encargado;
+        
+        /// <summary>
+        /// Control parentezco.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText parentezco;
+        
+        /// <summary>
+        /// Control generoEM.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton generoEM;
+        
+        /// <summary>
+        /// Control generoEF.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton generoEF;
+        
+        /// <summary>
+        /// Control generoEO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton generoEO;
         
         /// <summary>
         /// Control Guardar.
