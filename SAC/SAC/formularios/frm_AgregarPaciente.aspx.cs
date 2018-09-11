@@ -10,9 +10,10 @@ namespace SAC.formularios
     public partial class frm_AgregarPaciente : System.Web.UI.Page
     {
         metodos.metodosPaciente agregarP = new metodos.metodosPaciente();
+        limpiar.limpiar limpieza = new limpiar.limpiar();
         protected void Page_Load(object sender, EventArgs e)
         {
-            cedula.Focus();
+
 
         }
         public void agregarPaciente()
@@ -105,7 +106,7 @@ namespace SAC.formularios
 
         protected void Cancelar_Click(object sender, EventArgs e)
         {
-            nombre1.Value = cedula_encargado.Value;
+            //limpieza.CleanControl();
         }
     }
 }
