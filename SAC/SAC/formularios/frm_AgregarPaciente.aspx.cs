@@ -12,8 +12,6 @@ namespace SAC.formularios
         metodos.metodosPaciente agregarP = new metodos.metodosPaciente();
         protected void Page_Load(object sender, EventArgs e)
         {
-            cedula.Focus();
-
         }
         public void agregarPaciente()
         {
