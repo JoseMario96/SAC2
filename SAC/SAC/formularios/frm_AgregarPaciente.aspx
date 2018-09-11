@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div >
+                    <div>
                         <input id="direccion" type="text" runat="server" class="validate" />
                         <label class="active" for="direcion">Dirección</label>
                     </div>
