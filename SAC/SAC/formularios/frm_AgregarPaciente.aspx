@@ -217,7 +217,7 @@
                         <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
                     </div>
                     <div class="input-field col s4">
-                        <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
+                        <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Limpiar" OnClick="Cancelar_Click" />
                     </div>
                 </div>
             </form>
