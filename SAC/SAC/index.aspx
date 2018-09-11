@@ -153,25 +153,9 @@
                 outline: none;
             }
 
-        /*.modal-open {
-            width: 80%;
-            max-height: 80%;
-            height: 80%;
-            top: 0 !important;
-            color: #000000
-        }*/
-
         .letra {
             color: black
         }
-
-        /*.imagen {
-            width: 100%;
-            height: 100%;
-            display: block;
-            margin: auto;
-            vertical-align: middle
-        }*/
 
         #popup, #popup1, #popup2 {
             visibility: hidden;
@@ -254,12 +238,13 @@
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
+
                             <li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
-                            <li><a href="#" data-nav-section="citas"><span>Citas</span></a></li>
+                            <li><a href="#" data-nav-section="contact"><span>Citas</span></a></li>
                             <li><a href="#" data-nav-section="work"><span>Pacientes</span></a></li>
                             <li><a href="#" data-nav-section="testimonials"><span>Expedientes</span></a></li>
                             <li><a href="#" data-nav-section="factura"><span>Factura</span></a></li>
-                            <li><a href="#" data-nav-section="usuario"><span>Usuarios</span></a></li>
+                            <li><a href="#" data-nav-section="about"><span>Usuarios</span></a></li>
                             <li><a href="#" data-nav-section=""><span>Cerrar sesión</span></a></li>
                         </ul>
                     </div>
@@ -268,7 +253,7 @@
         </div>
     </header>
 
-    <%--<form id="form1" runat="server">--%>
+
     <section id="fh5co-home" data-section="home" style="background-image: url(images/diente.jpg);" data-stellar-background-ratio="0.5">
         <div class="gradient"></div>
         <div class="container">
@@ -286,11 +271,12 @@
         <div class="slant"></div>
     </section>
 
+
     <%--  <section id="fh5co-intro">
 	</section>--%>
 
     <%------------------------------------------------------------------Citas---------------------------------------------------------------------------%>
-    <section id="fh5co-contact" data-section="citas">
+    <section id="fh5co-contact" data-section="contact">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 section-heading text-center">
@@ -360,12 +346,12 @@
                             <h2 style="text-align: center;">Agregar</h2>
                         </div>
                     </a>--%>
-                    <%--  <div id="modal1" class="modal modal-content letra">
+            <%--  <div id="modal1" class="modal modal-content letra">
 
                      <div id="cargaexterna">--%>
-                    <%--<iframe width="800" height="800" src="frm_AgregarPaciente.aspx"></iframe>--%>
+            <%--<iframe width="800" height="800" src="frm_AgregarPaciente.aspx"></iframe>--%>
 
-                    <%--  <div class="modal-footer">
+            <%--  <div class="modal-footer">
                             <a href="#!" class="modal-close waves-effect waves-green btn-flat letra ">Agree</a>
 
 
@@ -373,9 +359,10 @@
                         col-md-4
 
                         </div>--%>
+
             <div class="row row-bottom-padded-sm">
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                 <a href="#popup" class="popup-link fh5co-project-item">
+                    <a href="#popup" class="popup-link fh5co-project-item">
                         <center><img src="../images/agregar.png" alt="Image" class="img-responsive "/></center>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Agregar</h2>
@@ -393,7 +380,7 @@
 
                 <%--Actualizar--%>
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <%--<a href="#popup1" class="popup-link fh5co-project-item ">
+                    <a href="#popup1" class="popup-link fh5co-project-item ">
                         <center><img src="../images/actualizar.png" alt="Image" class="img-responsive" /></center>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Actualizar</h2>
@@ -406,12 +393,12 @@
                                 <a class="popup-cerrar" href="#work">X</a>
                             </div>
                         </div>
-                    </div>--%>
+                    </div>
                 </div>
 
                 <%--Buscar--%>
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                   <%-- <a href="#popup2" class="popup-link fh5co-project-item ">
+                    <a href="#popup2" class="popup-link fh5co-project-item ">
                         <center><img src="../images/buscar.png" alt="Image" class="img-responsive" /></center>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Buscar</h2>
@@ -424,7 +411,7 @@
                                 <a class="popup-cerrar" href="#work">X</a>
                             </div>
                         </div>
-                    </div>--%>
+                    </div>
                 </div>
             </div>
         </div>
@@ -636,57 +623,57 @@
         </div>
     </section>--%>
     <%--------------------------------------------------------------Usuario---------------------------------------------------------------------%>
-    <section id="fh5co-about" style="background-image: url(images/full_image_1.jpg);" data-stellar-background-ratio="0.5" data-section="usuario">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 section-heading text-center">
-                        <h2 class="to-animate">Usuario</h2>
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2 subtext to-animate">
-                                <h3>En esta sección se puede agregar, buscar, actualizar y eliminar los usuarios del sistema</h3>
-                            </div>
+    <section id="fh5co-about" data-section="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-heading text-center">
+                    <h2 class="to-animate">Usuario</h2>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 subtext to-animate">
+                            <h3>En esta sección se puede agregar, buscar, actualizar y eliminar los usuarios del sistema</h3>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="row row-bottom-padded-sm">
-                    <div class="col-md-3 col-sm-6 col-xxs-12">
-                        <a href="../images/agregar.png" class="fh5co-project-item">
-                            <img src="../images/agregar.png" alt="Image" class="imagen img-responsive" />
-                            <div class="fh5co-text">
-                                <h2 style="text-align: center;">Agregar</h2>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xxs-12">
-                      <a href="../images/actualizar.png" class="fh5co-project-item">
-                            <img src="../images/actualizar.png" alt="Image" class="imagen img-responsive" />
-                            <div class="fh5co-text">
-                                <h2 style="text-align: center;">Actualizar</h2>
-                            </div>
-                        </a>
-                    </div>
-             
-                    <div class="col-md-3 col-sm-6 col-xxs-12">
-                        <a href="../images/buscar.png"  class="fh5co-project-item">
-                            <img src="../images/buscar.png"  alt="Image" class="imagen img-responsive" />
-                            <div class="fh5co-text">
-                                <h2 style="text-align: center;">Buscar</h2>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 col-xxs-12">
-                        <a href="../images/buscar.png" class="fh5co-project-item">
-                            <img src="../images/buscar.png" alt="Image" class="imagen img-responsive" />
-                            <div class="fh5co-text">
-                                <h2 style="text-align: center;">Eliminar</h2>
-                            </div>
-                        </a>
-                    </div>
-
+            <div class="row row-bottom-padded-sm">
+                <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <a href="../images/agregar.png" class="fh5co-project-item">
+                        <img src="../images/agregar.png" alt="Image" class="imagen img-responsive" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Agregar</h2>
+                        </div>
+                    </a>
                 </div>
-                <%-- <div class="container">
+                <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <a href="../images/actualizar.png" class="fh5co-project-item">
+                        <img src="../images/actualizar.png" alt="Image" class="imagen img-responsive" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Actualizar</h2>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <a href="../images/buscar.png" class="fh5co-project-item">
+                        <img src="../images/buscar.png" alt="Image" class="imagen img-responsive" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Buscar</h2>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <a href="../images/buscar.png" class="fh5co-project-item">
+                        <img src="../images/buscar.png" alt="Image" class="imagen img-responsive" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Eliminar</h2>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <%-- <div class="container">
             <div class="row">
                 <div class="col-md-12 section-heading text-center to-animate">
                     <h2>Usuarios</h2>
@@ -723,7 +710,7 @@
                 </div>
             </div>
         </div>--%>
-            </div>
+        </div>
     </section>
 
     <footer id="footer" role="contentinfo">

@@ -137,7 +137,7 @@
     <Content Include="js\modernizr-2.6.2.min.js" />
     <Content Include="js\respond.min.js" />
     <Content Include="prueba.html" />
-    <Content Include="sass\untitled.html" />
+    <Content Include="sass\bootstrap\untitled.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -187,12 +187,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\blue.css.map" />
-    <Content Include="css\bootstrap.css.map" />
-    <Content Include="css\style.css.map" />
-    <Content Include="css\style2.css.map" />
-    <Content Include="css\style3.css.map" />
-    <Content Include="css\style4.css.map" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.woff" />
@@ -208,16 +202,13 @@
     <Content Include="fonts\simple-line-icons\Simple-Line-Icons.ttf" />
     <Content Include="fonts\simple-line-icons\Simple-Line-Icons.woff" />
     <Content Include="fonts\simple-line-icons\Simple-Line-Icons.woff2" />
+    <Content Include="css\blue.css.map" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="css\style.css.map" />
+    <Content Include="css\style2.css.map" />
+    <Content Include="css\style3.css.map" />
+    <Content Include="css\style4.css.map" />
     <None Include="packages.config" />
-    <Content Include="sass\blue.scss" />
-    <Content Include="sass\bootstrap.scss" />
-    <Content Include="sass\style.scss" />
-    <Content Include="sass\style2.scss" />
-    <Content Include="sass\style3.scss" />
-    <Content Include="sass\style4.scss" />
-    <Content Include="sass\_bootstrap-compass.scss" />
-    <Content Include="sass\_bootstrap-mincer.scss" />
-    <Content Include="sass\_bootstrap-sprockets.scss" />
     <Content Include="sass\bootstrap\_alerts.scss" />
     <Content Include="sass\bootstrap\_badges.scss" />
     <Content Include="sass\bootstrap\_breadcrumbs.scss" />
@@ -288,6 +279,15 @@
     <Content Include="sass\bootstrap\mixins\_text-emphasis.scss" />
     <Content Include="sass\bootstrap\mixins\_text-overflow.scss" />
     <Content Include="sass\bootstrap\mixins\_vendor-prefixes.scss" />
+    <Content Include="sass\bootstrap\blue.scss" />
+    <Content Include="sass\bootstrap\bootstrap.scss" />
+    <Content Include="sass\bootstrap\style.scss" />
+    <Content Include="sass\bootstrap\style2.scss" />
+    <Content Include="sass\bootstrap\style3.scss" />
+    <Content Include="sass\bootstrap\style4.scss" />
+    <Content Include="sass\bootstrap\_bootstrap-compass.scss" />
+    <Content Include="sass\bootstrap\_bootstrap-mincer.scss" />
+    <Content Include="sass\bootstrap\_bootstrap-sprockets.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

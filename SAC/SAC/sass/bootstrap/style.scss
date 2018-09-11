@@ -942,13 +942,13 @@ h1, h2, h3, h4, h5, h6 {
 
 	overflow: hidden;
 	position: relative;
-	color: rgba(255,255,255,.8);
+	color: #000;
 	@include fh5co-gradient;
 	a {
-		color: rgba(255,255,255,.5);
+		color: #000;
 		text-decoration: underline;
 		&:hover {
-			color: rgba(255,255,255,1);
+			color: #000;
 		}
 	}
 	&:before, &:after {
@@ -958,7 +958,7 @@ h1, h2, h3, h4, h5, h6 {
 		-webkit-transform: rotate(-1.7deg);
 		-o-transform: rotate(-1.7deg);
 		-moz-transform: rotate(-1.7deg);
-		background-color: #fff;
+		background-color: rgba(255,255,255,.5);
 		content: "";
 		z-index: 3;
 		display: inline-block;
@@ -992,7 +992,7 @@ h1, h2, h3, h4, h5, h6 {
 		width: 100%;
 		position: relative;
 		top: 0;
-		background: $brand-white;
+		background: #fff;
 		overflow: hidden;
 		z-index: 9;
 		
