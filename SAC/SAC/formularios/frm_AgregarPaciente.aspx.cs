@@ -18,6 +18,25 @@ namespace SAC.formularios
         public void agregarPaciente()
         {
             string generoEncargado = "";
+            if (Radio3.Checked)
+            {
+                generoEncargado = "masculino";
+            }
+            else if (Radio4.Checked)
+            {
+                generoEncargado = "femenino";
+            }
+            else if (Radio5.Checked)
+            {
+                generoEncargado = "otro";
+            }
+            else
+            {
+                string script = @"<script type='text/javascript'>
+                alert('Seleccione un género para el encargado');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
             string tipo = "";
             if (masculino.Checked)
             {
@@ -34,7 +53,7 @@ namespace SAC.formularios
             else
             {
                 string script = @"<script type='text/javascript'>
-                alert('Seleccione un género');
+                alert('Seleccione un género para el paciente');
                 </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             }
