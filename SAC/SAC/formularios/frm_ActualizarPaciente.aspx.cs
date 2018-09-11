@@ -12,7 +12,8 @@ namespace SAC.formularios
     public partial class frm_ActualizarPaciente : System.Web.UI.Page
     {
         metodos.metodosPaciente objeto = new metodos.metodosPaciente();
-        public string generoE;
+        public static string generoE;
+        public static string genero;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -28,7 +29,7 @@ namespace SAC.formularios
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             String ced;
-            
+
             String[] datos = new String[13];
             String[] datos2 = new String[10];
             GridView1.DataSource = objeto.Paciente();
@@ -67,7 +68,27 @@ namespace SAC.formularios
                         nombre2.Value = datos[2];
                         apellido1.Value = datos[3];
                         apellido2.Value = datos[4];
-                        genero.Value = datos[5];
+                        if (datos[5].Equals("Masculino"))
+                        {
+                            TextBox1.Text = "fsmksmlk";
+                            generoF.Checked = false;
+                            generoO.Checked = false;
+                            generoM.Checked = true;
+
+
+                        }
+                        if (datos[5].Equals("Femenino"))
+                        {
+                            generoM.Checked = false;
+                            generoO.Checked = false;
+                            generoF.Checked = true;
+                        }
+                        if (datos[5].Equals("Otro"))
+                        {
+                            generoM.Checked = false;
+                            generoF.Checked = false;
+                            generoO.Checked = true;
+                        }
                         telefono.Value = datos[6];
                         celular.Value = datos[7];
                         direccion.Value = datos[8];
@@ -86,7 +107,27 @@ namespace SAC.formularios
                         nombre2.Value = datos[2];
                         apellido1.Value = datos[3];
                         apellido2.Value = datos[4];
-                        genero.Value = datos[5];
+                        if (datos[5].Equals("Masculino"))
+                        {
+                            TextBox1.Text = "fsmksmlk";
+                            generoF.Checked = false;
+                            generoO.Checked = false;
+                            generoM.Checked = true;
+
+
+                        }
+                        if (datos[5].Equals("Femenino"))
+                        {
+                            generoM.Checked = false;
+                            generoO.Checked = false;
+                            generoF.Checked = true;
+                        }
+                        if (datos[5].Equals("Otro"))
+                        {
+                            generoM.Checked = false;
+                            generoF.Checked = false;
+                            generoO.Checked = true;
+                        }
                         telefono.Value = datos[6];
                         celular.Value = datos[7];
                         direccion.Value = datos[8];
@@ -105,19 +146,21 @@ namespace SAC.formularios
                         apellido2_encargado.Value = datos2[4];
                         if (datos2[5].Equals("Masculino"))
                         {
+                            generoEF.Checked = false;
+                            generoEO.Checked = false;
                             generoEM.Checked = true;
-                            generoE = "Masculino";
-
                         }
                         else if (datos2[5].Equals("Femenino"))
                         {
+                            generoEM.Checked = false;
+                            generoEO.Checked = false;
                             generoEF.Checked = true;
-                            generoE = "Femenino";
                         }
                         else if (datos2[5].Equals("Otro"))
                         {
+                            generoEM.Checked = false;
+                            generoEF.Checked = false;
                             generoEO.Checked = true;
-                            generoE = "Otro";
                         }
                         telefono_encargado.Value = datos2[6];
                         celular_encargado.Value = datos2[7];
@@ -168,17 +211,49 @@ namespace SAC.formularios
 
         protected void Guardar_Click(object sender, EventArgs e)
         {
+            if (generoEM.Checked)
+            {
+                //generoEM.Checked = true;
+                generoE = "Masculino";
+            }
+            else if (generoEF.Checked)
+            {
+                //generoEF.Checked = true;
+                generoE = "Femenino";
+            }
+            else if (generoEO.Checked)
+            {
+                //generoEO.Checked = true;
+                generoE = "Otro";
+            }
+
+            if (generoM.Checked)
+            {
+                //generoM.Checked = true;
+                genero = "Masculino";
+            }
+            else if (generoF.Checked)
+            {
+                //generoF.Checked = true;
+                genero = "Femenino";
+            }
+            else if (generoO.Checked)
+            {
+                //generoO.Checked = true;
+                genero = "Otro";
+            }
+
             DateTime dt = Convert.ToDateTime(fechaN.Value);
             string fN = dt.ToString("yyyy-MM-dd");
-
             DateTime dt2 = Convert.ToDateTime(fechaI.Value);
             string fI = dt.ToString("yyyy-MM-dd");
 
-            objeto.actualizarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, genero.Value, telefono.Value, celular.Value, direccion.Value, correo.Value, fN,fI);
-
+            objeto.actualizarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, genero, telefono.Value, celular.Value, direccion.Value, correo.Value, fN, fI);
             objeto.actualizarEncargado(cedula_encargado.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoE, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, parentezco.Value, correo_encargado.Value);
+
             GridView1.DataSource = objeto.Paciente();
             GridView1.DataBind();
+
             string script = @"<script type='text/javascript'>
                 alert('Se han actualizado adecuadamente los datos');
                 </script>";

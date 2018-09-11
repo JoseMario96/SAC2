@@ -93,8 +93,26 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s8">
-                        <input id="genero" type="text" runat="server" class="validate" />
-                        <label class="active" for="genero">Genero</label>
+                        <label>Género </label>
+                    <br />
+                    <p>
+                        <label>
+                            <input class="with-gap" name="group6" runat="server" type="radio" id="generoM" />
+                            <span>Masculino</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="group6" runat="server" type="radio" id="generoF" />
+                            <span>Femenino</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="group6" runat="server" type="radio" id="generoO" />
+                            <span>Otro</span>
+                        </label>
+                    </p>
                     </div>
                 </div>
 
@@ -130,7 +148,7 @@
             <div id="encargado" style="display: none">
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="cedula_encargado" type="text" readonly="readonly" runat="server" class="validate" />
+                        <input id="cedula_encargado" type="text" runat="server" class="validate" />
                         <label class="active" for="cedula_encargado">Cédula del encargado</label>
                     </div>
                 </div>
@@ -233,8 +251,8 @@
                     </div>
                     <div class="input-field col s4">
                         <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
+                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                     </div>
-                     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                 </div>
             </div>
         </form>
