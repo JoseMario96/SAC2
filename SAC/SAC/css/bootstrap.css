@@ -1278,9 +1278,9 @@ th {
   content: "\e236";
 }
 
-/*.glyphicon-modal-window:before {
+.glyphicon-modal-window:before {
   content: "\e237";
-}*/
+}
 
 .glyphicon-oil:before {
   content: "\e238";
@@ -6389,11 +6389,11 @@ button.close {
   -webkit-appearance: none;
 }
 
-/*.modal-open {
+.modal-open {
   overflow: hidden;
 }
 
-/*.modal {
+.modal {
   display: none;
   overflow: hidden;
   position: fixed;
@@ -6404,8 +6404,8 @@ button.close {
   z-index: 1050;
   -webkit-overflow-scrolling: touch;
   outline: 0;
-}*/
-./*modal.fade .modal-dialog {
+}
+.modal.fade .modal-dialog {
   -webkit-transform: translate(0, -25%);
   -ms-transform: translate(0, -25%);
   -o-transform: translate(0, -25%);
@@ -6533,7 +6533,7 @@ button.close {
   .modal-lg {
     width: 900px;
   }
-}*/
+}
 .tooltip {
   position: absolute;
   z-index: 1070;

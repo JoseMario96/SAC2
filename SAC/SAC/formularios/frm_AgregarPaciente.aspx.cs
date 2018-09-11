@@ -63,10 +63,42 @@ namespace SAC.formularios
 
         }
 
-        protected void Cancelar_Click(object sender, EventArgs e)
+        protected void limpiar_Click(object sender, EventArgs e)
         {
-            //  string script = "window.close();";
-            Response.Write("<script>javascript:window.close();</script>");
+
         }
+
+        //protected void Cancelar_Click(object sender, EventArgs e)
+        //{
+        //    string script = "<script type=text/javascript>urlVolver();</script>";
+        //       ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", script, true);
+        //}
+
+        //protected void Cancelar_Click(object sender, EventArgs e)
+        //{
+        //    //  string script = "window.close();";
+        //    //  ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Pop", "$('#myModal').modal('hide');", true);
+        //    //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#myModal').modal('hide');", true);
+        //    //ClientScript.RegisterStartupScript(this.GetType(), "Close", "CloseDialog();", true);
+        //    //ScriptManager.RegisterStartupScript(this, GetType(), "Close Modal Popup", "Closepopup();", true);
+        //    ////ScriptManager.RegisterStartupScript(this, GetType(), "Close Modal Popup", "Closepopup();", true);
+        //    ////ScriptManager.RegisterStartupScript(this, GetType(), "Close Modal Popup", "CloseDialog();", true);
+        //    //ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Pop", "$('#myModal').modal('hide');", true);
+        //    ////ScriptManager.RegisterStartupScript(this, GetType(), "script", "window.close();", true);
+        //    //string script = @"<script type='text/javascript'>
+        //    //   $('#addPayment').modal('close');
+        //    //    </script>";
+        //    //ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
+        //    //Response.Write("<script>window.close();</script>");
+
+        //    string script = "window.close();";
+
+        //    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "closewindows", script, true);
+
+
+
+
+        //}
     }
 }
