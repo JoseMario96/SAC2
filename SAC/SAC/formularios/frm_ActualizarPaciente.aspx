@@ -7,28 +7,27 @@
     <title></title>
     <link href="../css/materialize.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-            <script type="text/javascript" src="../js/quicksearch.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/quicksearch.js"></script>
 
-            <script type="text/javascript">
-                $(function () {
-                    $('.search_textbox').each(function (i) {
-                        $(this).quicksearch("[id*=GridView1] tr:not(:has(th))", {
-                            'testQuery': function (query, txt, row) {
-                                return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
-                            }
-                        });
-                    });
+    <script type="text/javascript">
+        $(function () {
+            $('.search_textbox').each(function (i) {
+                $(this).quicksearch("[id*=GridView1] tr:not(:has(th))", {
+                    'testQuery': function (query, txt, row) {
+                        return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                    }
                 });
-            </script>
+            });
+        });
+    </script>
 </head>
 <body>
 
     <div class="container">
 
         <form id="form1" runat="server">
-
-            <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White"
+            <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#0080ff " HeaderStyle-ForeColor="White"
                 runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="520px">
                 <Columns>
                     <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />
@@ -46,7 +45,7 @@
 
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="cedula" type="text" runat="server" class="validate" />
+                        <input id="cedula" readonly="readonly" type="text" runat="server" class="validate" />
                         <label class="active" for="cedula">Cédula </label>
                     </div>
                 </div>
@@ -93,56 +92,133 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
-                        <input id="cedula_encargado" type="text" runat="server" class="validate" />
-                        <label class="active" for="cedula_encargado">Cédula del encargado</label>
+                    <div class="input-field col s8">
+                        <input id="genero" type="text" runat="server" class="validate" />
+                        <label class="active" for="genero">Genero</label>
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="fechaN" type="text" maxlength="9" runat="server" class="validate" />
+
+                    </div>
+                   
+                    <div class="input-field col s4">
+                        <input id="fechaI" type="text" maxlength="9" runat="server" class="validate" />
+                    </div>
+                </div>
+                <div id="BuscarE" >
+                <label>Encargado </label>
+                <br />
+                <p>
+                    <label>
+                        <input class="with-gap" name="group4" runat="server" type="radio" id="SiE" onclick="mostrar()" />
+                        <span>Sí</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input class="with-gap" name="group4" runat="server" type="radio" id="NoE" onclick="ocultar()" />
+                        <span>No</span>
+                    </label>
+                </p>
+            </div>
+            </div>
+            
+
+            <div id="encargado" style="display: none">
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="cedula_encargado" type="text" readonly="readonly" runat="server" class="validate" />
+                        <label class="active" for="cedula_encargado">Cédula del encargado</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="nombre1_encargado" type="text" runat="server" class="validate" />
+                        <label class="active" for="nombre1_encargado">Primer nombre</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="nombre2_encargado" type="text" runat="server" class="validate" />
+                        <label class="active" for="nombre2_encargado">Segundo nombre</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="apellido1_encargado" type="text" runat="server" class="validate" />
+                        <label class="active" for="apellido1_encargado">Primer apellido</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="apellido2_encargado" type="text" runat="server" class="validate" />
+                        <label class="active" for="apellido2_encargado">Segundo apellido</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="telefono_encargado" type="number" runat="server" class="validate" />
+                        <label class="active" for="telefono_encargado">Teléfono</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="celular_encargado" type="number" runat="server" class="validate" />
+                        <label class="active" for="celular_encargado">Celular</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input id="direccion_encargado" type="text" runat="server" class="validate" />
+                        <label class="active" for="direccion_encargado">Dirección</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input id="correo_encargado" type="email" runat="server" class="validate" />
+                        <label class="active" for="correo_encargado">Correo electrónico</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input id="parentezco" type="text" runat="server" class="validate" />
+                        <label class="active" for="parentezco">Parentezco con el menor</label>
+                    </div>
+                </div>
                 <div>
                     <label>Género </label>
                     <br />
                     <p>
                         <label>
-                            <input class="with-gap" name="group3" runat="server" type="radio" id="masculino" />
+                            <input class="with-gap" name="group5" runat="server" type="radio" id="generoEM" />
                             <span>Masculino</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input class="with-gap" name="group3" runat="server" type="radio" id="femenino" />
+                            <input class="with-gap" name="group5" runat="server" type="radio" id="generoEF" />
                             <span>Femenino</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input class="with-gap" name="group3" runat="server" type="radio" id="otro" />
+                            <input class="with-gap" name="group5" runat="server" type="radio" id="generoEO" />
                             <span>Otro</span>
                         </label>
                     </p>
                 </div>
-                <div class="row">
-                    <div class="input-field col s4">
-                        <input id="fecha_nacimiento" type="date" runat="server" name="fecha" />
-                        <label class="active" for="fecha_nacimiento">Fecha de nacimiento</label>
-                    </div>
-                    <div class="input-field col s4">
-                        <input id="fecha_ingreso" type="date" runat="server" name="fecha" />
-                        <label class="active" for="fecha_ingreso">Fecha de ingreso</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s4">
-                        <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" />
-                    </div>
-                    <div class="input-field col s4">
-                        <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" />
-                    </div>
-                </div>
             </div>
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 
-<%--            <script type="text/javascript">
+            <script type="text/javascript">
+                function mostrar() {
+                    document.getElementById('encargado').style.display = 'block';
+
+                }
+            </script>
+            <script type="text/javascript">
+                function ocultar() {
+                    document.getElementById('encargado').style.display = 'none';
+
+                }
+            </script>
+            <%--            <script type="text/javascript">
                 function onEnter(_input) {
                     _input.style.backgroundColor = "yellow";
                 }
@@ -150,9 +226,22 @@
                     _input.style.backgroundColor = "blue";
                 }
             </script>--%>
+            <div id="Botones">
+                <div class="row">
+                    <div class="input-field col s4">
+                        <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
+                    </div>
+                    <div class="input-field col s4">
+                        <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
+                    </div>
+                     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                </div>
+            </div>
         </form>
     </div>
     <script src="js/materialize.min.js"></script>
+
+
 
 </body>
 </html>
