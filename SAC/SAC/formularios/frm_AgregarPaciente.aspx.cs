@@ -17,6 +17,7 @@ namespace SAC.formularios
         }
         public void agregarPaciente()
         {
+            string generoEncargado = "";
             string tipo = "";
             if (masculino.Checked)
             {
@@ -37,8 +38,7 @@ namespace SAC.formularios
                 </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             }
-            //if(cedula_encargado.Value.Equals)
-            agregarP.agregarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargado.Value, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value);
+            agregarP.agregarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargado.Value, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
 
         }
 
