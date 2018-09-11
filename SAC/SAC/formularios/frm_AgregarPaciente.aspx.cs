@@ -82,22 +82,22 @@ namespace SAC.formularios
 
         protected void Guardar_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 agregarPaciente();
                 string script = @"<script type='text/javascript'>
                 alert('Se registro la información correctamente');
                 </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             //Response.Redirect("Index.aspx");
-        //}
-        //    catch
-        //    {
-        //        string script = @"<script type='text/javascript'>
-        //            alert('No se registro la información correctamente');
-        //            </script>";
-        //ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-        //}
+        }
+            catch
+            {
+                string script = @"<script type='text/javascript'>
+                    alert('No se registro la información correctamente');
+                    </script>";
+        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+        }
 
     }
 
