@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SAC.formularios {
+namespace SAC {
     
     
     public partial class index {

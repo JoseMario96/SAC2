@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="SAC.formularios.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="SAC.index" %>
 
 <!DOCTYPE html>
 
@@ -173,13 +173,13 @@
             vertical-align: middle
         }*/
 
-        #popup, #popup1 {
+        #popup, #popup1, #popup2 {
             visibility: hidden;
             opacity: 0;
             margin-top: -300px;
         }
 
-            #popup:target, #popup1:target {
+            #popup:target, #popup1:target, #popup2:target {
                 visibility: visible;
                 opacity: 1;
                 background-color: rgba(0,0,0,0.8);
@@ -380,7 +380,7 @@
                     <div class="modal-wrapper" id="popup">
                         <div class="popup-contenedor">
                             <div class="responsiveContent">
-                                <iframe src="frm_AgregarPaciente.aspx"></iframe>
+                                <iframe src="formularios/frm_AgregarPaciente.aspx"></iframe>
                                 <a class="popup-cerrar" href="#work">X</a>
                             </div>
                         </div>
@@ -398,7 +398,7 @@
                     <div id="popup1" class="modal-wrapper">
                         <div class="popup-contenedor">
                             <div class="responsiveContent">
-                                <iframe src="index.aspx"></iframe>
+                                <iframe src="formularios/frm_ActualizarPaciente.aspx"></iframe>
                                 <a class="popup-cerrar" href="#work">X</a>
                             </div>
                         </div>
@@ -407,12 +407,20 @@
 
                 <%--Buscar--%>
                 <div class="col-md-4 ">
-                    <a href="../images/buscar.png" class="fh5co-project-item">
+                    <a href="#popup2" class="popup1-link fh5co-project-item ">
                         <center><img src="../images/buscar.png" alt="Image" class="img-responsive" /></center>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Buscar</h2>
                         </div>
                     </a>
+                    <div id="popup2" class="modal-wrapper">
+                        <div class="popup-contenedor">
+                            <div class="responsiveContent">
+                                <iframe src="formularios/frm_BuscarPaciente.aspx"></iframe>
+                                <a class="popup-cerrar" href="#work">X</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
