@@ -139,22 +139,22 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl fecha_ingreso;
         
         /// <summary>
-        /// Control Radio1.
+        /// Control siE.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton Radio1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton siE;
         
         /// <summary>
-        /// Control Radio2.
+        /// Control noE.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton Radio2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton noE;
         
         /// <summary>
         /// Control cedula_encargado.
@@ -247,31 +247,31 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputText parentezco;
         
         /// <summary>
-        /// Control Radio3.
+        /// Control masculinoE.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton Radio3;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton masculinoE;
         
         /// <summary>
-        /// Control Radio4.
+        /// Control femeninoE.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton Radio4;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton femeninoE;
         
         /// <summary>
-        /// Control Radio5.
+        /// Control otroE.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton Radio5;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton otroE;
         
         /// <summary>
         /// Control Guardar.

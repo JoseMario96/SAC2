@@ -46,48 +46,49 @@ namespace SAC.formularios
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 masculino.Focus();
             }
-            if (Radio1.Checked)
+            if (siE.Checked)
             {
+
                 if (cedula_encargado.Value != "" & nombre1_encargado.Value != "" & nombre2_encargado.Value != "" & apellido1_encargado.Value != "" & apellido2_encargado.Value != "" & celular_encargado.Value != "" & direccion_encargado.Value != "" & correo_encargado.Value != "" & parentezco.Value != "")
                 {
                     validar3 = true;
                 }
                 else
                 {
-                    string script = @"<script type='text/javascript'>
+                    string informacionE = @"<script type='text/javascript'>
                 alert('Complete la información del encargado');
                 </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", informacionE, false);
                 }
-                if (Radio3.Checked)
+                if (masculinoE.Checked)
                 {
                     generoEncargado = "Masculino";
                     validar2 = true;
                 }
-                else if (Radio4.Checked)
+                else if (femeninoE.Checked)
                 {
                     generoEncargado = "Femenino";
                     validar2 = true;
                 }
-                else if (Radio5.Checked)
+                else if (otroE.Checked)
                 {
                     generoEncargado = "Otro";
                     validar2 = true;
                 }
                 else
                 {
-                    string script = @"<script type='text/javascript'>
+                    string Msgenero = @"<script type='text/javascript'>
                 alert('Seleccione un género para el encargado');
                 </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                    Radio3.Focus();
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", Msgenero, false);
+                    masculinoE.Focus();
                 }
             }
-            if (validar == true & Radio2.Checked)
+            if (validar == true & noE.Checked)
             {
                 agregarP.agregarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargado.Value, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
             }
-            else if (Radio1.Checked & validar2 == true)
+            else if (siE.Checked & validar2 == true & validar3 == true & validar == true)
             {
                 agregarP.agregarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargado.Value, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
 
@@ -100,14 +101,14 @@ namespace SAC.formularios
             try
             {
                 agregarPaciente();
-                
+
                 string script = @"<script type='text/javascript'>
                 alert('Se registro la información correctamente');
                 </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 //Response.Redirect("Index.aspx");
-                this.Controls.Clear();
-                Response.Redirect("frm_AgregarPaciente.aspx");
+                //this.Controls.Clear();
+                //Response.Redirect("frm_AgregarPaciente.aspx");
             }
             catch
             {

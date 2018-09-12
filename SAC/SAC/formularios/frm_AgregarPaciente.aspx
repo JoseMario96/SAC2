@@ -115,18 +115,18 @@
                     <br />
                     <p>
                         <label>
-                            <input class="with-gap" name="group4" runat="server" type="radio" id="Radio1" onclick="mostrar()" />
+                            <input class="with-gap" name="group4" runat="server" type="radio" id="siE" checked onclick="mostrar()" />
                             <span>Sí</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input class="with-gap" name="group4" runat="server" type="radio" id="Radio2" checked onclick="ocultar()" />
+                            <input class="with-gap" name="group4" runat="server" type="radio" id="noE" onclick="ocultar()" />
                             <span>No</span>
                         </label>
                     </p>
                 </div>
-                <div id="encargado" style="display: none">
+                <div id="encargado">
                     <div class="row">
                         <div class="col s12 m6 13">
                             <label class="active" for="cedula_encargado">Cédula del encargado</label>
@@ -194,19 +194,19 @@
                         <br />
                         <p>
                             <label>
-                                <input class="with-gap" name="group5" runat="server" type="radio" id="Radio3" />
+                                <input class="with-gap" name="group5" runat="server" type="radio" id="masculinoE" />
                                 <span>Masculino</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input class="with-gap" name="group5" runat="server" type="radio" id="Radio4" />
+                                <input class="with-gap" name="group5" runat="server" type="radio" id="femeninoE" />
                                 <span>Femenino</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input class="with-gap" name="group5" runat="server" type="radio" id="Radio5" />
+                                <input class="with-gap" name="group5" runat="server" type="radio" id="otroE" />
                                 <span>Otro</span>
                             </label>
                         </p>
