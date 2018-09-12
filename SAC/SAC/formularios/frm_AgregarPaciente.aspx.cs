@@ -100,11 +100,14 @@ namespace SAC.formularios
             try
             {
                 agregarPaciente();
+                
                 string script = @"<script type='text/javascript'>
                 alert('Se registro la información correctamente');
                 </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 //Response.Redirect("Index.aspx");
+                this.Controls.Clear();
+                Response.Redirect("frm_AgregarPaciente.aspx");
             }
             catch
             {
