@@ -52,12 +52,12 @@
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="telefono">Teléfono</label>
-                        <input id="telefono" type="number" runat="server" class="validate" maxlength="14" required />
+                        <input id="telefono" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required />
                         
                     </div>
                     <div class="col s6">
                         <label class="active" for="celular">Celular</label>
-                        <input id="celular" type="number" runat="server" class="validate" maxlength="14" required />
+                        <input id="celular" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required />
                         
                     </div>
                 </div>
@@ -161,12 +161,12 @@
                     <div class="row">
                         <div class="col s6">
                             <label class="active" for="telefono_encargado">Teléfono</label>
-                            <input id="telefono_encargado" type="number" runat="server" class="validate" maxlength="14" />
+                            <input id="telefono_encargado" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             
                         </div>
                         <div class="col s6">
                             <label class="active" for="celular_encargado">Celular</label>
-                            <input id="celular_encargado" type="number" runat="server" class="validate" maxlength="14" />
+                            <input id="celular_encargado" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             
                         </div>
                     </div>
@@ -217,7 +217,7 @@
                         <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
                     </div>
                     <div class="input-field col s4">
-                        <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
+                        <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Limpiar" OnClick="Cancelar_Click" />
                     </div>
                 </div>
             </form>
@@ -227,10 +227,45 @@
         function mostrar() {
             document.getElementById('encargado').style.display = 'block';
         }
-    </script>
-    <script type="text/javascript">
         function ocultar() {
             document.getElementById('encargado').style.display = 'none';
+        }
+
+
+        function solonumeros(e) {
+            key = e.keyCoden || e.which;
+            teclado = String.fromCharCode(key);
+            numero = "1234567890";
+            especiales = "8-37-38-46";
+            teclado_especial = false;
+            for(var i in especiales){
+                if(key==especiales[i]){
+                    teclado_especial = true;
+                }
+            }
+            if(numero.indexOf(teclado)==-1 && !teclado_especial){
+                return false;
+            }
+        }
+
+        function sololetras(e) {
+            key = e.keyCoden || e.which;
+            teclado = String.fromCharCode(key).toLowerCase();
+            letras = " abcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-38-46-164";
+            teclado_especial = false;
+
+            for(var i in especiales){
+                if(key==especiales[i]){
+                    teclado_especial = true; break;
+                   
+                }
+                
+            }
+            if(letras.indexOf(teclado)==-1 && !teclado_especial){
+                return false;
+               
+            }
         }
     </script>
     <script src="js/materialize.min.js"></script>
