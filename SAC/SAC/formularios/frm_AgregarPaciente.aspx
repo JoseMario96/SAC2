@@ -28,24 +28,24 @@
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="nombre1">Primer Nombre</label>
-                        <input id="nombre1" type="text" runat="server" class="validate" maxlength="44" required />
+                        <input id="nombre1" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
                         
                     </div>
                     <div class="col s6">
                         <label class="active" for="nombre2">Segundo Nombre</label>
-                        <input id="nombre2" type="text" runat="server" class="validate" maxlength="44" required />
+                        <input id="nombre2" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
                         
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="apellido1">Primer Apellido </label>
-                        <input id="apellido1" type="text" runat="server" class="validate" maxlength="44" required />
+                        <input id="apellido1" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
                         
                     </div>
                     <div class="col s6">
                         <label class="active" for="apellido2">Segundo Apellido </label>
-                        <input id="apellido2" type="text" runat="server" class="validate" maxlength="44" required />
+                        <input id="apellido2" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
                         
                     </div>
                 </div>
@@ -137,24 +137,24 @@
                     <div class="row">
                         <div class="col s6">
                             <label class="active" for="nombre1_encargado">Primer nombre</label>
-                            <input id="nombre1_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                            <input id="nombre1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
                             
                         </div>
                         <div class="col s6">
                             <label class="active" for="nombre2_encargado">Segundo nombre</label>
-                            <input id="nombre2_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                            <input id="nombre2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
                             
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s6">
                             <label class="active" for="apellido1_encargado">Primer apellido</label>
-                            <input id="apellido1_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                            <input id="apellido1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
                             
                         </div>
                         <div class="col s6">
                             <label class="active" for="apellido2_encargado">Segundo apellido</label>
-                            <input id="apellido2_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                            <input id="apellido2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
                             
                         </div>
                     </div>
@@ -185,7 +185,7 @@
                         </div>
                         <div class="col s6">
                             <label class="active" for="parentezco">Parentezco con el menor</label>
-                            <input id="parentezco" type="text" runat="server" class="validate" maxlength="44" />
+                            <input id="parentezco" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
                             
                         </div>
                     </div>

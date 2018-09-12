@@ -59,21 +59,21 @@
                 </div>
                 <div class="row">
                     <div class="col s6">
-                        <input id="nombre1" type="text" runat="server" class="validate" maxlength="44" required />
+                        <input id="nombre1" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
                         <label class="active" for="nombre1">Primer Nombre</label>
                     </div>
                     <div class="col s6">
-                        <input id="nombre2" type="text" runat="server" class="validate" maxlength="44" required />
+                        <input id="nombre2" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
                         <label class="active" for="nombre2">Segundo Nombre</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
-                        <input id="apellido1" type="text" runat="server" class="validate" maxlength="44" required />
+                        <input id="apellido1" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
                         <label class="active" for="apellido1">Primer Apellido </label>
                     </div>
                     <div class="col s6">
-                        <input id="apellido2" type="text" runat="server" class="validate" maxlength="44" required />
+                        <input id="apellido2" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
                         <label class="active" for="apellido2">Segundo Apellido </label>
                     </div>
                 </div>
@@ -161,21 +161,21 @@
                 </div>
                 <div class="row">
                     <div class="col s6">
-                        <input id="nombre1_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                        <input id="nombre1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
                         <label class="active" for="nombre1_encargado">Primer nombre</label>
                     </div>
                     <div class="col s6">
-                        <input id="nombre2_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                        <input id="nombre2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
                         <label class="active" for="nombre2_encargado">Segundo nombre</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
-                        <input id="apellido1_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                        <input id="apellido1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
                         <label class="active" for="apellido1_encargado">Primer apellido</label>
                     </div>
                     <div class=" col s6">
-                        <input id="apellido2_encargado" type="text" runat="server" class="validate" maxlength="44" />
+                        <input id="apellido2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
                         <label class="active" for="apellido2_encargado">Segundo apellido</label>
                     </div>
                 </div>
@@ -255,6 +255,26 @@
                     }
                     if (numero.indexOf(teclado) == -1 && !teclado_especial) {
                         return false;
+                    }
+                }
+
+                function sololetras(e) {
+                    key = e.keyCoden || e.which;
+                    teclado = String.fromCharCode(key).toLowerCase();
+                    letras = " abcdefghijklmnñopqrstuvwxyz";
+                    especiales = "8-37-38-46-164";
+                    teclado_especial = false;
+
+                    for (var i in especiales) {
+                        if (key == especiales[i]) {
+                            teclado_especial = true; break;
+
+                        }
+
+                    }
+                    if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                        return false;
+
                     }
                 }
             </script>
