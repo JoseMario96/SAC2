@@ -191,7 +191,7 @@
                 </div>
                 <div class="row">
                     <div class="col s12">
-                        <input id="direccion_encargado" type="text" runat="server" class="validate" maxlength="249" maxlength="44" />
+                        <input id="direccion_encargado" type="text" runat="server" class="validate" maxlength="249" />
                         <label class="active" for="direccion_encargado">Dirección</label>
                     </div>
                 </div>

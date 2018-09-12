@@ -636,7 +636,7 @@
         </div>
     </section>--%>
     <%--------------------------------------------------------------Usuario---------------------------------------------------------------------%>
-    <section id="fh5co-about" style="background-image: url(images/full_image_1.jpg);" data-stellar-background-ratio="0.5" data-section="usuario">
+    <section id="fh5co-about" data-section="usuario">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 section-heading text-center">
@@ -727,7 +727,7 @@
     </section>
 
     <footer id="footer" role="contentinfo">
-        <a href="#" class="gotop js-gotop">Regresar<i class="icon-arrow-up2">al inicio</i></a>
+        <a href="#" class="gotop js-gotop"><i class="icon-arrow-up2">Inicio</i></a>
         <%--     <div class="container">
             <div class="">
                 <div class="col-md-12 text-center">
