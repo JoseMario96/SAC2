@@ -259,6 +259,8 @@ namespace SAC.formularios
         {
             GridView1.DataSource = objeto.Paciente();
             GridView1.DataBind();
+            this.Controls.Clear();
+            Response.Redirect("frm_ActualizarPaciente.aspx");
         }
     }
 }

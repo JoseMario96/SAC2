@@ -118,7 +118,9 @@ namespace SAC.formularios
 
         protected void Cancelar_Click(object sender, EventArgs e)
         {
-            limpieza.CleanControl(this.Controls);
+            //limpieza.CleanControl(this.Controls);
+            this.Controls.Clear();
+            Response.Redirect("frm_AgregarPaciente.aspx");
         }
     }
 }
