@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="cedula">Cédula </label>
-                        <input id="cedula" type="text" runat="server" class="validate" maxlength="14" required />                        
+                        <input id="cedula" type="text" runat="server" class="validate" maxlength="14" required onkeypress="return solonumeros(event)" />                        
                     </div>
                 </div>
                 <div class="row">
@@ -130,7 +130,7 @@
                     <div class="row">
                         <div class="col s12 m6 13">
                             <label class="active" for="cedula_encargado">Cédula del encargado</label>
-                            <input id="cedula_encargado" type="text" runat="server" class="validate" maxlength="14" />
+                            <input id="cedula_encargado" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" />
                             
                         </div>
                     </div>
