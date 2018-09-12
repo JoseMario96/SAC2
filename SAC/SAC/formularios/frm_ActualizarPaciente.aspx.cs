@@ -205,6 +205,7 @@ namespace SAC.formularios
 
         protected void Guardar_Click(object sender, EventArgs e)
         {
+            String[] datos = new String[13];
             if (generoEM.Checked)
             {
                 //generoEM.Checked = true;
@@ -236,7 +237,7 @@ namespace SAC.formularios
                 //generoO.Checked = true;
                 genero = "Otro";
             }
-            Boolean validar3 = false;
+            
             DateTime dt = Convert.ToDateTime(fechaN.Value);
             string fN = dt.ToString("yyyy-MM-dd");
             DateTime dt2 = Convert.ToDateTime(fechaI.Value);
@@ -263,11 +264,15 @@ namespace SAC.formularios
                 objeto.actualizarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, genero, telefono.Value, celular.Value, direccion.Value, correo.Value, fN, fI);
 
             }
+            datos = objeto.buscarPaciente(cedula.Value);
+            if (datos[9] == null & SiE.Checked & cedula_encargado.Value != "" & nombre1_encargado.Value != "" & nombre2_encargado.Value != "" & apellido1_encargado.Value != "" & apellido2_encargado.Value != "" & celular_encargado.Value != "" & direccion_encargado.Value != "" & correo_encargado.Value != "" & parentezco.Value != "")
+            {
+                objeto.ActualizarPacienteNuevoEncargado(cedula.Value, cedula_encargado.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoE, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
+            }
 
 
 
-
-            GridView1.DataSource = objeto.Paciente();
+                GridView1.DataSource = objeto.Paciente();
             GridView1.DataBind();
 
             string script = @"<script type='text/javascript'>
