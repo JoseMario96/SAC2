@@ -70,12 +70,9 @@ namespace SAC.formularios
                         apellido2.Value = datos[4];
                         if (datos[5].Equals("Masculino"))
                         {
-                            TextBox1.Text = "fsmksmlk";
                             generoF.Checked = false;
                             generoO.Checked = false;
                             generoM.Checked = true;
-
-
                         }
                         if (datos[5].Equals("Femenino"))
                         {
@@ -109,12 +106,9 @@ namespace SAC.formularios
                         apellido2.Value = datos[4];
                         if (datos[5].Equals("Masculino"))
                         {
-                            TextBox1.Text = "fsmksmlk";
                             generoF.Checked = false;
                             generoO.Checked = false;
                             generoM.Checked = true;
-
-
                         }
                         if (datos[5].Equals("Femenino"))
                         {

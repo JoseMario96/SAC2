@@ -28,8 +28,9 @@
 
         <form id="form1" runat="server">
             <div class="row">
-                  <br /><br />
-                  
+                <br />
+                <br />
+
                 <div>
                     <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#0080ff " HeaderStyle-ForeColor="White" class="col s12"
                         runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
@@ -41,9 +42,9 @@
 
                         </Columns>
                     </asp:GridView>
-                  
+
                 </div>
-                  <br />
+                <br />
             </div>
             <div id="formularioP" style="display: none">
                 <header>
@@ -99,12 +100,29 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
-                        <input id="genero" type="text" runat="server" class="validate" />
-                        <label class="active" for="genero">Genero</label>
+                    <div class="input-field col s8">
+                        <label>Género </label>
+                        <br />
+                        <p>
+                            <label>
+                                <input class="with-gap" name="group6" runat="server" type="radio" id="generoM" />
+                                <span>Masculino</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="group6" runat="server" type="radio" id="generoF" />
+                                <span>Femenino</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="group6" runat="server" type="radio" id="generoO" />
+                                <span>Otro</span>
+                            </label>
+                        </p>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="input-field col s4">
                         <input id="fechaN" type="text" maxlength="9" runat="server" class="validate" />
@@ -137,7 +155,7 @@
             <div id="encargado" style="display: none">
                 <div class="row">
                     <div class="col s12 m6 13">
-                        <input id="cedula_encargado" type="text" readonly="readonly" runat="server" class="validate" />
+                        <input id="cedula_encargado" type="text" runat="server" class="validate" />
                         <label class="active" for="cedula_encargado">Cédula del encargado</label>
                     </div>
                 </div>
@@ -242,7 +260,6 @@
                     <div class="input-field col s4">
                         <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
                     </div>
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                 </div>
 
             </div>

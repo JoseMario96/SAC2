@@ -106,7 +106,7 @@ namespace SAC.formularios
 
         protected void Cancelar_Click(object sender, EventArgs e)
         {
-            //limpieza.CleanControl();
+            limpieza.CleanControl(this.Controls);
         }
     }
 }
