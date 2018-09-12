@@ -22,6 +22,7 @@ namespace SAC.formularios
             string tipo = "";
             Boolean validar = false;
             Boolean validar2 = false;
+            Boolean validar3 = false;
             if (masculino.Checked)
             {
                 tipo = "Masculino";
@@ -47,6 +48,17 @@ namespace SAC.formularios
             }
             if (Radio1.Checked)
             {
+                if (cedula_encargado.Value != "" & nombre1_encargado.Value != "" & nombre2_encargado.Value != "" & apellido1_encargado.Value != "" & apellido2_encargado.Value != "" & celular_encargado.Value != "" & direccion_encargado.Value != "" & correo_encargado.Value != "" & parentezco.Value != "")
+                {
+                    validar3 = true;
+                }
+                else
+                {
+                    string script = @"<script type='text/javascript'>
+                alert('Complete la información del encargado');
+                </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                }
                 if (Radio3.Checked)
                 {
                     generoEncargado = "Masculino";

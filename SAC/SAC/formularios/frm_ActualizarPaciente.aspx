@@ -79,7 +79,7 @@
                 </div>
                 <div class="row">
                     <div class="col s6">
-                        <input id="telefono" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required/>
+                        <input id="telefono" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                         <label class="active" for="telefono">Teléfono</label>
                     </div>
                     <div class="col s6">
