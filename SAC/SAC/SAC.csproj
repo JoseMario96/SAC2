@@ -99,6 +99,7 @@
     <Content Include="images\agregar.png" />
     <Content Include="images\buscar.png" />
     <Content Include="images\diente.jpg" />
+    <Content Include="images\eliminar.png" />
     <Content Include="images\full_image_1.jpg" />
     <Content Include="images\full_image_2.jpg" />
     <Content Include="images\img_10.jpg" />

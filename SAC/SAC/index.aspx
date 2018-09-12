@@ -329,8 +329,8 @@
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/buscar.png" class="fh5co-project-item">
-                        <img src="../images/buscar.png" alt="Image" class="imagen img-responsive" />
+                    <a href="../images/eliminar.png" class="fh5co-project-item">
+                        <img src="../images/eliminar.png" alt="Image" class="imagen img-responsive" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Eliminar</h2>
                         </div>
@@ -677,8 +677,8 @@
                     </div>
 
                     <div class="col-md-3 col-sm-6 col-xxs-12">
-                        <a href="../images/buscar.png" class="fh5co-project-item">
-                            <img src="../images/buscar.png" alt="Image" class="imagen img-responsive" />
+                        <a href="../images/eliminar.png" class="fh5co-project-item">
+                            <img src="../images/eliminar.png" alt="Image" class="imagen img-responsive" />
                             <div class="fh5co-text">
                                 <h2 style="text-align: center;">Eliminar</h2>
                             </div>
