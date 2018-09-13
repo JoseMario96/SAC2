@@ -108,29 +108,25 @@ namespace SAC.formularios
 
         protected void Guardar_Click(object sender, EventArgs e)
         {
-            if (enviar == false)
+            try
             {
-                try
-                {
-                    agregarPaciente();
+                agregarPaciente();
 
-                    string script = @"<script type='text/javascript'>
+                string script = @"<script type='text/javascript'>
                 alert('Se registro la información correctamente');
                 </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                    //Response.Redirect("Index.aspx");
-                    //this.Controls.Clear();
-                    //Response.Redirect("frm_AgregarPaciente.aspx");
-                }
-                catch
-                {
-                    string script = @"<script type='text/javascript'>
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                //Response.Redirect("Index.aspx");
+                //this.Controls.Clear();
+                //Response.Redirect("frm_AgregarPaciente.aspx");
+            }
+            catch
+            {
+                string script = @"<script type='text/javascript'>
                     alert('No se registro la información correctamente');
                     </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                }
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             }
-
 
         }
 
