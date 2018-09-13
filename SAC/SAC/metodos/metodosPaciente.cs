@@ -25,6 +25,12 @@ namespace SAC.metodos
             }
 
         }
+
+        public void agregarPaciente2(String ced, String nom1, String nom2, String ape1, String ape2, String gen, String tel, String cel, String dir, String enc, String corr, String fechN, String fechI, String nom1Enc, String nom2Enc, String ape1Enc, String ape2Enc, String generoEnc, String telEnc, String celEnc, String dirEnc, String correoEnc, String parentezco)
+        {
+            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_encargado` (`cedulaEncargado`, `nombre1Encargado`, `nombre2Encargado`, `apellido1Encargado`, `apellido2Encargado`, `generoEncargado`, `telefonoEncargado`, `celularEncargado`, `direccionEncargado`, `parentescoEncargado`, `correoEncargado`) VALUES('" + enc + "', '" + nom1Enc + "', '" + nom2Enc + "','" + ape1Enc + "','" + ape2Enc + "','" + generoEnc + "','" + telEnc + "','" + celEnc + "','" + dirEnc + "','" + parentezco + "','" + correoEnc + "');", con.abrir_conexion()).ExecuteNonQuery();
+            con.cerrar_Conexion();
+        }
         public String[] buscarPaciente(String ced)
         {
             string[] stringArray1 = new string[13];
@@ -70,7 +76,7 @@ namespace SAC.metodos
         }
         public void actualizarPaciente(String ced, String nom1, String nom2, String ape1, String ape2, String gen, String tel, String cel, String dir, String corr, String fechN, String fechI)
         {
-            MySqlDataReader actualizar = consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_paciente` SET `nombre1Paciente`='"+nom1+"', `nombre2Paciente`='" + nom2 + "', `apellido1Paciente`='" + ape1 + "', `apellido2Paciente`='" + ape2 + "', `generoPaciente`='" + gen + "', `telefonoPaciente`='" + tel + "', `celularPaciente`='" + cel + "', `direccionPaciente`='" + dir + "', `correoPaciente`='" + corr + "', `fechaNacimientoPaciente`='" + fechN + "', `fechaInscripcionPaciente`='" + fechI + "' WHERE `cedulaPaciente`='" + ced + "';", con.abrir_conexion()).ExecuteReader();
+            MySqlDataReader actualizar = consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_paciente` SET `nombre1Paciente`='" + nom1 + "', `nombre2Paciente`='" + nom2 + "', `apellido1Paciente`='" + ape1 + "', `apellido2Paciente`='" + ape2 + "', `generoPaciente`='" + gen + "', `telefonoPaciente`='" + tel + "', `celularPaciente`='" + cel + "', `direccionPaciente`='" + dir + "', `correoPaciente`='" + corr + "', `fechaNacimientoPaciente`='" + fechN + "', `fechaInscripcionPaciente`='" + fechI + "' WHERE `cedulaPaciente`='" + ced + "';", con.abrir_conexion()).ExecuteReader();
             con.cerrar_Conexion();
         }
 
@@ -83,7 +89,7 @@ namespace SAC.metodos
         public String[] buscarEncargado(String ced)
         {
             string[] stringArray1 = new string[11];
-            MySqlDataReader actualizar = consultar.ejecutar_consulta("SELECT * FROM bd_sac.tbl_encargado  where cedulaEncargado='"+ced+"'; ", con.abrir_conexion()).ExecuteReader();
+            MySqlDataReader actualizar = consultar.ejecutar_consulta("SELECT * FROM bd_sac.tbl_encargado  where cedulaEncargado='" + ced + "'; ", con.abrir_conexion()).ExecuteReader();
             while (actualizar.Read())
             {
                 stringArray1[0] = actualizar.GetString(0);
@@ -103,7 +109,7 @@ namespace SAC.metodos
         }
         public void actualizarEncargado(String ced, String nom1, String nom2, String ape1, String ape2, String gen, String tel, String cel, String dir, String par, String corr)
         {
-               MySqlDataReader agregar = consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_encargado` SET `nombre1Encargado`='"+nom1+"', `nombre2Encargado`='"+nom2+"', `apellido1Encargado`='"+ape1+"', `apellido2Encargado`= '"+ape2+"', `generoEncargado`='"+gen+"', `telefonoEncargado`='"+tel+"', `celularEncargado`='"+cel+"', `direccionEncargado`='"+dir+"', `parentescoEncargado`='"+par+"', `correoEncargado`='"+corr+"' WHERE `cedulaEncargado`='"+ced+"';", con.abrir_conexion()).ExecuteReader();
+            MySqlDataReader agregar = consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_encargado` SET `nombre1Encargado`='" + nom1 + "', `nombre2Encargado`='" + nom2 + "', `apellido1Encargado`='" + ape1 + "', `apellido2Encargado`= '" + ape2 + "', `generoEncargado`='" + gen + "', `telefonoEncargado`='" + tel + "', `celularEncargado`='" + cel + "', `direccionEncargado`='" + dir + "', `parentescoEncargado`='" + par + "', `correoEncargado`='" + corr + "' WHERE `cedulaEncargado`='" + ced + "';", con.abrir_conexion()).ExecuteReader();
             con.cerrar_Conexion();
         }
 
@@ -124,6 +130,10 @@ namespace SAC.metodos
         ////    return arrayPaciente;
 
         ////}
+        //public String[] buscarEncargado()
+        //{
+
+        //}
         public DataTable Paciente()
         {
             string consulta = "SELECT cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente FROM tbl_paciente; ";

@@ -37,20 +37,15 @@ namespace SAC.formularios
 
             string script = @"<script type='text/javascript'>
                 document.getElementById('formularioP').style.display = 'block';
-                </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-            string script3 = @"<script type='text/javascript'>
-                document.getElementById('BuscarE').style.display = 'block';
-                </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script3, false);
-
-            string script2 = @"<script type='text/javascript'>
                 document.getElementById('Botones').style.display = 'block';
-                </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script2, false);
-        
+            </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
+
+
             foreach (GridViewRow row in GridView1.Rows)
             {
+
                 if (row.RowIndex == GridView1.SelectedIndex)
                 {
                     row.BackColor = ColorTranslator.FromHtml("#A1DCF2");

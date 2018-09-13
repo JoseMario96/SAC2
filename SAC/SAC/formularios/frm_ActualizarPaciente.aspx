@@ -286,7 +286,7 @@
                     _input.style.backgroundColor = "blue";
                 }
             </script>--%>
-            <div id="Botones">
+            <div id="Botones" style="display:none">
                 <div class="row">
 
                     <div class="input-field col s4">
