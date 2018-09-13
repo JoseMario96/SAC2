@@ -101,24 +101,30 @@ namespace SAC.formularios
 
         protected void Guardar_Click(object sender, EventArgs e)
         {
-            try
+            if (enviar == false)
             {
-                agregarPaciente();
+                try
+                {
+                    agregarPaciente();
 
-                string script = @"<script type='text/javascript'>
+                    string script = @"<script type='text/javascript'>
                 alert('Se registro la información correctamente');
                 </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                //Response.Redirect("Index.aspx");
-                //this.Controls.Clear();
-                //Response.Redirect("frm_AgregarPaciente.aspx");
-            }
-            catch
-            {
-                string script = @"<script type='text/javascript'>
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    //Response.Redirect("Index.aspx");
+                    //this.Controls.Clear();
+                    //Response.Redirect("frm_AgregarPaciente.aspx");
+                }
+                catch
+                {
+                    string script = @"<script type='text/javascript'>
                     alert('No se registro la información correctamente');
                     </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                }
+            }
+            else
+            {
             }
 
         }
@@ -210,12 +216,15 @@ namespace SAC.formularios
                 parentezco.Value = datos2[9];
                 correo_encargado.Value = datos2[10];
                 // agregarP.agregarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargad.Text, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
-                if (validar == true & validar2 == true)
-                {
-                    agregarP.agregarPaciente2(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargad.Text, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
 
-                    enviar = true;
-                }
+                agregarP.agregarPaciente2(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargad.Text, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
+                string insertar = @"<script type='text/javascript'>
+                alert('Se registro la información correctamente');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
+
+                enviar = true;
+
 
             }
         }

@@ -176,7 +176,7 @@ namespace SAC.formularios
                 //e.Row.Attributes["onmouseover"] = "this.style.backgroundColor='aquamarine';";
                 //e.Row.Attributes["onmouseout"] = "this.style.backgroundColor='white';";
                 e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(GridView1, "Select$" + e.Row.RowIndex);
-                e.Row.ToolTip = "Click to select this row.";
+                e.Row.ToolTip = "Click para seleccionar esta fila.";
 
             }
         }

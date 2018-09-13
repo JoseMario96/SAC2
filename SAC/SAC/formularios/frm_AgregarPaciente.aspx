@@ -16,7 +16,6 @@
     </header>
     <div class="container">
 
-
         <div class="row">
             <form runat="server">
                 <asp:ScriptManager runat="server" ID="sm">
@@ -128,7 +127,7 @@
                         </label>
                     </p>
                 </div>
-                <div id="encargado" style="display:none">
+                <div id="encargado" style="display: none">
                     <div class="row">
                         <div class="col s12 m6 13">
                             <asp:UpdatePanel runat="server">
@@ -207,24 +206,23 @@
                         </div>
                     </div>
                     <div class="row">
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <div class="col s6">
 
-                                    <label class="active" for="correo_encargado">Correo electrónico</label>
-
-                                    <input id="correo_encargado" type="email" runat="server" class="validate" maxlength="44" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
-                    <div class="col s6">
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <label class="active" for="parentezco">Parentezco con el menor</label>
-                                <input id="parentezco" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
+                        <div class="col s6">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                            <label class="active" for="correo_encargado">Correo electrónico</label>
+                            <input id="correo_encargado" type="email" runat="server" class="validate" maxlength="44" />
+                             </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+                        <div class="col s6">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="parentezco">Parentezco con el menor</label>
+                                    <input id="parentezco" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
                     </div>
                     <div>
                         <asp:UpdatePanel runat="server">
