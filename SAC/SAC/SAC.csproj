@@ -91,6 +91,7 @@
     <Content Include="fonts\icomoon\icomoon\Read Me.txt" />
     <Content Include="fonts\icomoon\icomoon\style.css" />
     <Content Include="fonts\simple-line-icons\Simple-Line-Icons.svg" />
+    <Content Include="formularios\frm_AgregarExpediente.aspx" />
     <Content Include="formularios\frm_AgregarPaciente.aspx" />
     <Content Include="formularios\index.aspx" />
     <Content Include="images\actualizar.png" />
@@ -139,6 +140,13 @@
   <ItemGroup>
     <Compile Include="conexion\conexion.cs" />
     <Compile Include="consulta\consulta.cs" />
+    <Compile Include="formularios\frm_AgregarExpediente.aspx.cs">
+      <DependentUpon>frm_AgregarExpediente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\frm_AgregarExpediente.aspx.designer.cs">
+      <DependentUpon>frm_AgregarExpediente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="formularios\frm_AgregarPaciente.aspx.cs">
       <DependentUpon>frm_AgregarPaciente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
