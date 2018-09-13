@@ -30,11 +30,12 @@
                     </div>
                 </div>
                 <div class="section">
-                    <h5>Signos Vitales</h5>
+                    <h5>Histroia médica</h5>
                     <div class="row">
                         <div class="col s6">
+
                             <textarea id="textarea1" class="materialize-textarea"></textarea>
-                            <label class="active" for="cedula">Descripción </label>
+                            <label class="active" for="cedula">Explique</label>
                         </div>
                     </div>
                 </div>
