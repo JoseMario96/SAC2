@@ -98,27 +98,56 @@ namespace SAC.formularios
 
         protected void Guardar_Click(object sender, EventArgs e)
         {
-            try
+            //try
+            //{
+
+            String corre = correo.Value;
+            String correE = correo_encargado.Value;
+            if (agregarP.validacioncorreo(corre) == true & noE.Checked)
             {
                 agregarPaciente();
-
-                string script = @"<script type='text/javascript'>
+                string scriptp = @"<script type='text/javascript'>
                 alert('Se registro la información correctamente');
                 </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                //Response.Redirect("Index.aspx");
-                //this.Controls.Clear();
-                //Response.Redirect("frm_AgregarPaciente.aspx");
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptp, false);
             }
-            catch
+            else if ((agregarP.validacioncorreo(corre) == true & (agregarP.validacioncorreo(correE) == true)) & siE.Checked)
             {
-                string script = @"<script type='text/javascript'>
-                    alert('No se registro la información correctamente');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                agregarPaciente();
+                string scriptp = @"<script type='text/javascript'>
+                alert('Se registro la información correctamente');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptp, false);
+            }
+            else
+            {
+                string scriptp = @"<script type='text/javascript'>
+                alert('Correo inválido');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptp, false);
+                if (noE.Checked)
+                {
+                    correo.Focus();
+                }
+                else if (siE.Checked & (agregarP.validacioncorreo(corre) == true))
+                {
+                    correo_encargado.Focus();
+                }
+                else
+                {
+                    correo.Focus();
+                }
             }
 
+            //catch
+            //{
+            string script = @"<script type='text/javascript'>
+                    alert('No se registro la información correctamente');
+                    </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
         }
+
+        //}
 
         protected void Cancelar_Click(object sender, EventArgs e)
         {

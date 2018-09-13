@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace SAC.metodos
 {
@@ -142,5 +143,26 @@ namespace SAC.metodos
             consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_paciente` SET `cedulaEncargado`='" + cedEnc + "' WHERE `cedulaPaciente`='" + ced + "';", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
+        public Boolean validacioncorreo (String email)
+        {
+            String expresion;
+            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(email, expresion))
+            {
+                if (Regex.Replace(email, expresion, String.Empty).Length == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }
