@@ -15,13 +15,6 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
-        }
-        protected void cedula_encargad_TextChanged(object sender, EventArgs e)
-        {
-            
-
         }
         public void agregarPaciente()
         {

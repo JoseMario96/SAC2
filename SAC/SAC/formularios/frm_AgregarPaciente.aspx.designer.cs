@@ -226,7 +226,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl telefono_encargado;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText telefono_encargado;
         
         /// <summary>
         /// Control celular_encargado.
@@ -235,7 +235,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl celular_encargado;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText celular_encargado;
         
         /// <summary>
         /// Control direccion_encargado.
