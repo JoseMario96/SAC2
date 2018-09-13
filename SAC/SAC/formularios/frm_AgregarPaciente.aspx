@@ -19,60 +19,62 @@
 
         <div class="row">
             <form runat="server">
+                <asp:ScriptManager runat="server" ID="sm">
+                </asp:ScriptManager>
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="cedula">Cédula </label>
-                        <input id="cedula" type="text" runat="server" class="validate" maxlength="14" required onkeypress="return solonumeros(event)" />                        
+                        <input id="cedula" type="text" runat="server" class="validate" maxlength="14" required onkeypress="return solonumeros(event)" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="nombre1">Primer Nombre</label>
                         <input id="nombre1" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
-                        
+
                     </div>
                     <div class="col s6">
                         <label class="active" for="nombre2">Segundo Nombre</label>
                         <input id="nombre2" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="apellido1">Primer Apellido </label>
                         <input id="apellido1" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
-                        
+
                     </div>
                     <div class="col s6">
                         <label class="active" for="apellido2">Segundo Apellido </label>
                         <input id="apellido2" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="telefono">Teléfono</label>
                         <input id="telefono" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
-                        
+
                     </div>
                     <div class="col s6">
                         <label class="active" for="celular">Celular</label>
                         <input id="celular" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s12">
                         <label class="active" for="direcion">Dirección</label>
                         <input id="direccion" type="text" runat="server" class="validate" maxlength="249" required />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s12 m6 13">
                         <label class="active" for="correo">Correo electrónico</label>
                         <input id="correo" type="email" runat="server" class="validate" maxlength="44" required />
-                        
+
                     </div>
                 </div>
                 <div>
@@ -101,12 +103,12 @@
                     <div class="input-field col s4">
                         <label class="active" for="fecha_nacimiento">Fecha de nacimiento</label>
                         <input id="fecha_nacimiento" type="date" runat="server" name="fecha" required />
-                        
+
                     </div>
                     <div class="input-field col s4">
                         <label class="active" for="fecha_ingreso">Fecha de ingreso</label>
                         <input id="fecha_ingreso" type="date" runat="server" name="fecha" required />
-                        
+
                     </div>
                 </div>
                 <div>
@@ -115,78 +117,87 @@
                     <br />
                     <p>
                         <label>
-                            <input class="with-gap" name="group4" runat="server" type="radio" id="siE" checked onclick="mostrar()" />
+                            <input class="with-gap" name="group4" runat="server" type="radio" id="siE" onclick="mostrar()" />
                             <span>Sí</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input class="with-gap" name="group4" runat="server" type="radio" id="noE" onclick="ocultar()" />
+                            <input class="with-gap" name="group4" runat="server" type="radio" id="noE" checked onclick="ocultar()" />
                             <span>No</span>
                         </label>
                     </p>
                 </div>
-                <div id="encargado">
+                <div id="encargado" style="display: block">
                     <div class="row">
                         <div class="col s12 m6 13">
-                            <label class="active" for="cedula_encargado">Cédula del encargado</label>
-                            <input id="cedula_encargado" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" />
-                            
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="cedula_encargado2">Cédula del encargado</label>
+                                    <%--<input id="cedula_encargado2" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" />--%>
+                                    <asp:TextBox ID="cedula_encargad" class="validate" MaxLength="14" runat="server" OnTextChanged="cedula_encargad_TextChanged"></asp:TextBox>
+                                    <%--<asp:Button ID="verificarE" runat="server" Text="Button" OnClick="verificarE_Click" />--%>
+                                    <asp:Button ID="Verificar" runat="server" OnClick="Verificar_Click" Text="Verificar" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s6">
-                            <label class="active" for="nombre1_encargado">Primer nombre</label>
-                            <input id="nombre1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                            
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="nombre1_encargado">Primer nombre</label>
+                                    <input id="nombre1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </div>
                         <div class="col s6">
                             <label class="active" for="nombre2_encargado">Segundo nombre</label>
                             <input id="nombre2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                            
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s6">
                             <label class="active" for="apellido1_encargado">Primer apellido</label>
                             <input id="apellido1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                            
+
                         </div>
                         <div class="col s6">
                             <label class="active" for="apellido2_encargado">Segundo apellido</label>
                             <input id="apellido2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                            
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s6">
                             <label class="active" for="telefono_encargado">Teléfono</label>
                             <input id="telefono_encargado" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
-                            
+
                         </div>
                         <div class="col s6">
                             <label class="active" for="celular_encargado">Celular</label>
                             <input id="celular_encargado" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
-                            
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12">
                             <label class="active" for="direccion_encargado">Dirección</label>
                             <input id="direccion_encargado" type="text" runat="server" class="validate" maxlength="249" />
-                            
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s6">
                             <label class="active" for="correo_encargado">Correo electrónico</label>
                             <input id="correo_encargado" type="email" runat="server" class="validate" maxlength="44" />
-                            
+
                         </div>
                         <div class="col s6">
                             <label class="active" for="parentezco">Parentezco con el menor</label>
                             <input id="parentezco" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                            
+
                         </div>
                     </div>
                     <div>
@@ -238,12 +249,12 @@
             numero = "1234567890";
             especiales = "8-37-38-46";
             teclado_especial = false;
-            for(var i in especiales){
-                if(key==especiales[i]){
+            for (var i in especiales) {
+                if (key == especiales[i]) {
                     teclado_especial = true;
                 }
             }
-            if(numero.indexOf(teclado)==-1 && !teclado_especial){
+            if (numero.indexOf(teclado) == -1 && !teclado_especial) {
                 return false;
             }
         }
@@ -255,16 +266,16 @@
             especiales = "8-37-38-46-164";
             teclado_especial = false;
 
-            for(var i in especiales){
-                if(key==especiales[i]){
+            for (var i in especiales) {
+                if (key == especiales[i]) {
                     teclado_especial = true; break;
-                   
+
                 }
-                
+
             }
-            if(letras.indexOf(teclado)==-1 && !teclado_especial){
+            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
                 return false;
-               
+
             }
         }
     </script>

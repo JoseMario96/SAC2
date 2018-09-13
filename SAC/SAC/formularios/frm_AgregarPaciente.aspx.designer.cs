@@ -13,6 +13,15 @@ namespace SAC.formularios {
     public partial class frm_AgregarPaciente {
         
         /// <summary>
+        /// Control sm.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager sm;
+        
+        /// <summary>
         /// Control cedula.
         /// </summary>
         /// <remarks>
@@ -157,13 +166,22 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton noE;
         
         /// <summary>
-        /// Control cedula_encargado.
+        /// Control cedula_encargad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText cedula_encargado;
+        protected global::System.Web.UI.WebControls.TextBox cedula_encargad;
+        
+        /// <summary>
+        /// Control Verificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Verificar;
         
         /// <summary>
         /// Control nombre1_encargado.
