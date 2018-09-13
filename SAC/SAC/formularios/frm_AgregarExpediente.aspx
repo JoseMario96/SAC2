@@ -17,8 +17,11 @@
         <div class="row">
             <form runat="server">
                 <div class="row">
+                     <p> Ha padecido o padece alguna de las siguientes enfermedades:</p>
                     <div class="col s10"></div>
                     <div class="col s2">
+                      
+
                         <input id="fecha_nacimiento" type="date" runat="server" name="fecha" />
                         <label class="active" for="fecha_nacimiento">Fecha</label>
                     </div>
@@ -80,7 +83,7 @@
                 </div>
                 <div class="section">
                     <h5>Odontograma</h5>
-                    <div class="row">                  
+                    <div class="row">
                         <div class="col s12">
                             <center><img src="../images/Odontograma.png"  width="1024"/></center>
                         </div>
