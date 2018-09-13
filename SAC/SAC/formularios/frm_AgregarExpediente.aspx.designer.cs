@@ -31,15 +31,6 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
         
         /// <summary>
-        /// Control Text.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text;
-        
-        /// <summary>
         /// Control Text2.
         /// </summary>
         /// <remarks>

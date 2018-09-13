@@ -28,11 +28,6 @@
                         <input id="Text1" type="text" runat="server" class="validate" />
                         <label class="active" for="cedula">Cédula </label>
                     </div>
-                    <div class="col s6">
-                        <input id="Text" type="text" runat="server" class="validate" />
-                        <label class="active" for="cedula"></label>
-                    </div>
-
                 </div>
                 <div class="section">
                     <h5>Signos Vitales</h5>
@@ -42,9 +37,8 @@
                             <label class="active" for="cedula">Descripción </label>
                         </div>
                     </div>
-
                 </div>
-                
+
                 <div class="section">
                     <h5>Historial médico</h5>
                     <div class="row">
@@ -54,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-               
+
                 <div class="section">
                     <h5>Historial médico de Mujer</h5>
                     <div class="row">
@@ -85,6 +79,11 @@
                 </div>
                 <div class="section">
                     <h5>Odontograma</h5>
+                    <div class="row">                  
+                        <div class="col s12">
+                            <center><img src="../images/Odontograma.png"  width="1024"/></center>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
