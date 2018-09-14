@@ -173,13 +173,13 @@
             vertical-align: middle
         }*/
 
-        #popup, #popup1 {
+        #popup, #popup1, #popup2 {
             visibility: hidden;
             opacity: 0;
             margin-top: -300px;
         }
 
-            #popup:target, #popup1:target {
+            #popup:target, #popup1:target, #popup2:target {
                 visibility: visible;
                 opacity: 1;
                 background-color: rgba(0,0,0,0.8);
@@ -432,12 +432,20 @@
             </div>
 
             <div class="col-md-3 col-sm-6 col-xxs-12">
-                <a href="../images/agregar.png" class="fh5co-project-item">
-                    <center><img src="../images/agregar.png" alt="Image" class="img-responsive" /></center>
-                    <div class="fh5co-text">
-                        <h2 style="text-align: center;">Agregar</h2>
+               <a href="#popup2" class="popup-link fh5co-project-item">
+                        <center><img src="../images/agregar.png" alt="Image" class="img-responsive "/></center>
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Agregar</h2>
+                        </div>
+                    </a>
+                    <div class="modal-wrapper" id="popup2">
+                        <div class="popup-contenedor">
+                            <div class="responsiveContent">
+                                <iframe src="frm_AgregarExpediente.aspx"></iframe>
+                                <a class="popup-cerrar" href="#work">X</a>
+                            </div>
+                        </div>
                     </div>
-                </a>
             </div>
             <div class="col-md-3 col-sm-6 col-xxs-12">
                 <a href="../images/actualizar.png" class="fh5co-project-item">
