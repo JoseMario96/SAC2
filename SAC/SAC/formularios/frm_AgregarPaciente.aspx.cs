@@ -105,15 +105,44 @@ namespace SAC.formularios
             {
                 try
                 {
-                    agregarPaciente();
+                    String corre = correo.Value;
+                    string correE = correo_encargado.Value;
 
-                    string script = @"<script type='text/javascript'>
+                    if (agregarP.validacioncorreo(corre) == true & noE.Checked)
+                    {
+                        string scriptt = @"<script type='text/javascript'>
                 alert('Se registro la información correctamente');
                 </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                    //Response.Redirect("Index.aspx");
-                    //this.Controls.Clear();
-                    //Response.Redirect("frm_AgregarPaciente.aspx");
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                    }
+                    else if (agregarP.validacioncorreo(corre) == true & agregarP.validacioncorreo(correE) == true & siE.Checked)
+                    {
+                        agregarPaciente();
+
+                        string script = @"<script type='text/javascript'>
+                alert('Se registro la información correctamente');
+                </script>";
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                        //Response.Redirect("Index.aspx");
+                        //this.Controls.Clear();
+                        //Response.Redirect("frm_AgregarPaciente.aspx");
+                    }
+                    else
+                    {
+                        string script = @"<script type='text/javascript'>
+                alert('Correo inválido');
+                </script>";
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
+                        if (noE.Checked)
+                        {
+                            correo.Focus();
+                        }
+                        else if (siE.Checked & agregarP.validacioncorreo(corre) == true)
+                        {
+                            correo_encargado.Focus();
+                        }
+                    }
                 }
                 catch
                 {

@@ -232,13 +232,25 @@ namespace SAC.formularios
                 //generoO.Checked = true;
                 genero = "Otro";
             }
-            
+
             DateTime dt = Convert.ToDateTime(fechaN.Value);
             string fN = dt.ToString("yyyy-MM-dd");
             DateTime dt2 = Convert.ToDateTime(fechaI.Value);
             string fI = dt.ToString("yyyy-MM-dd");
 
-            if (SiE.Checked)
+            string corre = correo.Value;
+            string correE = correo_encargado.Value;
+
+            if (NoE.Checked & objeto.validacioncorreo(corre) == true)
+            {
+                objeto.actualizarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, genero, telefono.Value, celular.Value, direccion.Value, correo.Value, fN, fI);
+                datos = objeto.buscarPaciente(cedula.Value);
+                if (datos[9] == null & SiE.Checked & cedula_encargado.Value != "" & nombre1_encargado.Value != "" & nombre2_encargado.Value != "" & apellido1_encargado.Value != "" & apellido2_encargado.Value != "" & celular_encargado.Value != "" & direccion_encargado.Value != "" & correo_encargado.Value != "" & parentezco.Value != "")
+                {
+                    objeto.ActualizarPacienteNuevoEncargado(cedula.Value, cedula_encargado.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoE, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
+                }
+            }
+            else if (objeto.validacioncorreo(corre) == true & objeto.validacioncorreo(correE) == true & SiE.Checked)
             {
                 if (cedula_encargado.Value != "" & nombre1_encargado.Value != "" & nombre2_encargado.Value != "" & apellido1_encargado.Value != "" & apellido2_encargado.Value != "" & celular_encargado.Value != "" & direccion_encargado.Value != "" & correo_encargado.Value != "" & parentezco.Value != "")
                 {
@@ -252,22 +264,29 @@ namespace SAC.formularios
                 </script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", mensaje, false);
                 }
-
+                datos = objeto.buscarPaciente(cedula.Value);
+                if (datos[9] == null & SiE.Checked & cedula_encargado.Value != "" & nombre1_encargado.Value != "" & nombre2_encargado.Value != "" & apellido1_encargado.Value != "" & apellido2_encargado.Value != "" & celular_encargado.Value != "" & direccion_encargado.Value != "" & correo_encargado.Value != "" & parentezco.Value != "")
+                {
+                    objeto.ActualizarPacienteNuevoEncargado(cedula.Value, cedula_encargado.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoE, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
+                }
             }
             else
             {
-                objeto.actualizarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, genero, telefono.Value, celular.Value, direccion.Value, correo.Value, fN, fI);
-
+                string mensaje = @"<script type='text/javascript'>
+                alert('Correo inválido');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", mensaje, false);
+                if ((NoE.Checked))
+                {
+                    correo_encargado.Focus();
+                }
+                else
+                {
+                    correo.Focus();
+                }
             }
-            datos = objeto.buscarPaciente(cedula.Value);
-            if (datos[9] == null & SiE.Checked & cedula_encargado.Value != "" & nombre1_encargado.Value != "" & nombre2_encargado.Value != "" & apellido1_encargado.Value != "" & apellido2_encargado.Value != "" & celular_encargado.Value != "" & direccion_encargado.Value != "" & correo_encargado.Value != "" & parentezco.Value != "")
-            {
-                objeto.ActualizarPacienteNuevoEncargado(cedula.Value, cedula_encargado.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoE, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
-            }
 
-
-
-                GridView1.DataSource = objeto.Paciente();
+            GridView1.DataSource = objeto.Paciente();
             GridView1.DataBind();
 
             string script = @"<script type='text/javascript'>
