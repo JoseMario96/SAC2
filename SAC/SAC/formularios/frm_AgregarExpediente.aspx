@@ -9,14 +9,6 @@
     <link href="../css/materialize.css" rel="stylesheet" />
 
     <style>
-        .radio {
-            float: left;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            padding: 0 0.75rem;
-        }
-
-
         .ajustar {
             font-size: 15px;
         }
@@ -474,37 +466,6 @@
 
                     </div>
 
-                </div>
-            </div>
-            <%--------------------------------------------Tratamientos-----------------------------------------------------%>
-            <div class="section">
-                <center> <h5>Tratamientos</h5></center>
-                <div class="row">
-                    <div class="col s6">
-                        <input id="trespu1" type="text" runat="server" class="validate" />
-                        <label class="active" for="trespu1">Nombre de tratamiento</label>
-                    </div>
-                    <div class="col s6">
-                        <input id="tresu2" type="text" runat="server" class="validate" />
-                        <label class="active" for="trespu2">Precio</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col s12">
-                        <textarea id="trespu3" class="materialize-textarea"></textarea>
-                        <label class="active" for="trespu3">Descripción del tratamiento</label>
-                    </div>
-                </div>
-            </div>
-
-            <%--------------------------------------------Odontograma-----------------------------------------------------%>
-            <div class="section">
-                <center> <h5>Odontograma</h5></center>
-                <div class="row">
-                    <div class="col s12">
-                        <center><img src="../images/Odontograma.png"  width="1024"/></center>
-                    </div>
                 </div>
             </div>
         </form>
