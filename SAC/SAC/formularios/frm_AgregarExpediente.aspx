@@ -467,6 +467,12 @@
                     </div>
 
                 </div>
+                <br /> <br />
+                <div class="row">
+                        <div class="col s6">
+                            <asp:Button class=" btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" BackColor="#009999" />
+                        </div>
+                </div>
             </div>
         </form>
     </div>
