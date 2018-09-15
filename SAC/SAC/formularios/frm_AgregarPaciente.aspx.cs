@@ -110,6 +110,7 @@ namespace SAC.formularios
 
                     if (agregarP.validacioncorreo(corre) == true & noE.Checked)
                     {
+                        agregarPaciente();
                         string scriptt = @"<script type='text/javascript'>
                 alert('Se registro la información correctamente');
                 </script>";
