@@ -7,16 +7,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Formulario de Expedientes</title>
     <link href="../css/materialize.css" rel="stylesheet" />
-
-    <style>
-        .radio {
-            padding: 0 0.75rem;
-        }
-
-        .ajustar {
-            table-layout: fixed;
-        }
-    </style>
 </head>
 
 <body>
