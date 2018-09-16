@@ -26,12 +26,12 @@ namespace SAC.metodos
             }
 
         }
-
         public void agregarPaciente2(String ced, String nom1, String nom2, String ape1, String ape2, String gen, String tel, String cel, String dir, String enc, String corr, String fechN, String fechI, String nom1Enc, String nom2Enc, String ape1Enc, String ape2Enc, String generoEnc, String telEnc, String celEnc, String dirEnc, String correoEnc, String parentezco)
         {
             consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_paciente` (`cedulaPaciente`, `nombre1Paciente`, `nombre2Paciente`, `apellido1Paciente`, `apellido2Paciente`, `generoPaciente`, `telefonoPaciente`, `celularPaciente`, `direccionPaciente`, `cedulaEncargado`, `correoPaciente`, `fechaNacimientoPaciente`, `fechaInscripcionPaciente`) VALUES('" + ced + "','" + nom1 + "', '" + nom2 + "', '" + ape1 + "','" + ape2 + "','" + gen + "','" + tel + "','" + cel + "','" + dir + "','" + enc + "','" + corr + "','" + fechN + "','" + fechI + "');", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
+
         public String[] buscarPaciente(String ced)
         {
             string[] stringArray1 = new string[13];
