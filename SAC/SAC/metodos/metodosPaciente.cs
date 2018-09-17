@@ -173,6 +173,16 @@ namespace SAC.metodos
                 return false;
             }
         }
+        public Boolean VerificarPaciente(String cedula)
+        {
+            Boolean confirmar = false;
+            MySqlDataReader actualizar = consultar.ejecutar_consulta("SELECT cedulaPaciente FROM tbl_paciente  where cedulaPaciente='" + cedula + "'; ", con.abrir_conexion()).ExecuteReader();
+            if(actualizar.Read())
+            {
+                confirmar = true;
+            }
+                return confirmar;
+        }
 
     }
 }
