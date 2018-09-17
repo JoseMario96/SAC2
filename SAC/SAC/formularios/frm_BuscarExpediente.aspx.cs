@@ -14,8 +14,18 @@ namespace SAC.formularios
         metodos.metodosExpediente metodo = new metodos.metodosExpediente();
         protected void Page_Load(object sender, EventArgs e)
         {
-            GridView1.DataSource = metodo.BuscarExpediente();
-            GridView1.DataBind();
+            try
+            {
+                GridView1.DataSource = metodo.BuscarExpediente();
+                GridView1.DataBind();
+            }
+            catch
+            {
+                string script = @"<script type='text/javascript'>
+                alert('No hay información en la base de datos');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }            
         }
 
         protected void OnDataBound(object sender, EventArgs e)

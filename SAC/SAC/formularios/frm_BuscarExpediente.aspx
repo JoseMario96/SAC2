@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="../css/materialize.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -26,7 +27,10 @@
                 </asp:GridView>
                 <br />
                 <br />
-                <table>
+                <br />
+                <br />
+                <br />
+                <table class="striped">
                     <tr>
                         <th colspan="5" style="text-align:center">Datos personales</th>
                     </tr>

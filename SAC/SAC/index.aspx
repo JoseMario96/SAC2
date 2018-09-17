@@ -256,8 +256,8 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
                             <li><a href="#" data-nav-section="citas"><span>Citas</span></a></li>
-                            <li><a href="#" data-nav-section="work"><span>Pacientes</span></a></li>
-                            <li><a href="#" data-nav-section="testimonials"><span>Expedientes</span></a></li>
+                            <li><a href="#" data-nav-section="pacientes"><span>Pacientes</span></a></li>
+                            <li><a href="#" data-nav-section="expedientes"><span>Expedientes</span></a></li>
                             <li><a href="#" data-nav-section="factura"><span>Factura</span></a></li>
                             <li><a href="#" data-nav-section="usuario"><span>Usuarios</span></a></li>
                             <li><a href="#" data-nav-section=""><span>Cerrar sesión</span></a></li>
@@ -340,7 +340,7 @@
         </div>
     </section>
     <%--------------------------------------------------------------Paciente---------------------------------------------------------------------%>
-    <section id="fh5co-work" data-section="work">
+    <section id="fh5co-work" data-section="pacientes">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 section-heading text-center">
@@ -431,8 +431,9 @@
             </div>
         </div>
     </section>
+
     <%---------------------------------------------------------------Expediente--------------------------------------------------------------------%>
-    <section id="fh5co-testimonials" data-section="testimonials">
+    <section id="fh5co-testimonials" data-section="expedientes">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 section-heading text-center">
