@@ -33,8 +33,7 @@
             </div>
             <div class="row">
                 <div class="col s4">
-                    <asp:TextBox ID="cedulaEx" runat="server" AutoPostBack="true" class="validate" required onkeypress="return solonumeros(event)" OnTextChanged="cedulaEx_TextChanged"></asp:TextBox>
-
+                    <asp:TextBox ID="cedulaEx" runat="server" AutoPostBack="true" class="validate" required onkeypress="return solonumeros(event)" OnTextChanged="cedulaEx_TextChanged" maxlength="14"></asp:TextBox>
                     <label class="active" for="cedula">Cédula</label>
                 </div>
             </div>
@@ -55,7 +54,7 @@
                                 </label>
                             </div>
                             <div id="cardiaco" style="display: none">
-                                <input id="hmrespu1" type="text" runat="server" class="validate" />
+                                <input id="hmrespu1" type="text" runat="server" class="validate" maxlength="44" />
                                 <label class="active" for="hmrespu1">Explique</label>
                             </div>
                         </div>
@@ -68,7 +67,7 @@
                                 </label>
                             </div>
                             <div id="presion" style="display: none">
-                                <input id="hmrespu2" type="text" runat="server" class="validate" />
+                                <input id="hmrespu2" type="text" runat="server" class="validate" maxlength="44"/>
                                 <label class="active" for="hmrespu2">Explique</label>
                             </div>
                         </div>
@@ -132,12 +131,12 @@
                             </div>
                             <div id="fuerapais" style="display: none">
                                 <div class="col 3">
-                                    <input id="hmrespu3" type="text" runat="server" class="validate" />
+                                    <input id="hmrespu3" type="text" runat="server" class="validate" maxlength="44" />
                                     <label class="active" for="hmrespu3">Dónde?</label>
                                 </div>
                                 <div class="col 3"></div>
                                 <div class="col 3">
-                                    <input id="hmrespu4" type="text" runat="server" class="validate" />
+                                    <input id="hmrespu4" type="text" runat="server" class="validate" maxlength="44" />
                                     <label class="active" for="hmrespu4">Durante cuánto tiempo?</label>
                                 </div>
                             </div>
@@ -161,7 +160,7 @@
                                 </p>
                             </div>
                             <div id="rinon" class="col 2" style="display: none">
-                                <input id="hmrespu5" type="text" runat="server" class="validate" />
+                                <input id="hmrespu5" type="text" runat="server" class="validate" maxlength="44" />
                             </div>
                         </div>
 
@@ -172,7 +171,7 @@
                             </label>
 
                             <div id="gastro" style="display: none">
-                                <input id="hmrespu6" type="text" runat="server" class="validate" />
+                                <input id="hmrespu6" type="text" runat="server" class="validate" maxlength="44" />
                                 <label class="active" for="hmrespu6">Explique</label>
                             </div>
                         </div>
@@ -227,7 +226,7 @@
                             </label>
 
                             <div id="hepatitis" style="display: none">
-                                <input id="hmrespu7" type="text" runat="server" class="validate" />
+                                <input id="hmrespu7" type="text" runat="server" class="validate" maxlength="44"/>
                                 <label class="active" for="hmrespu7">Explique</label>
                             </div>
                         </div>
@@ -245,7 +244,7 @@
                                 </label>
                             </div>
                             <div id="perdida" style="display: none" class="col 1">
-                                <input id="hmrespu8" type="text" runat="server" class="validate" />
+                                <input id="hmrespu8" type="text" runat="server" class="validate" maxlength="44" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
                                 <label class="active" for="hmrespu8">Kg</label>
                             </div>
                         </div>
@@ -258,7 +257,7 @@
                                 </label>
                             </div>
                             <div id="exceso" class="col 1" style="display: none">
-                                <input id="excesop" type="text" runat="server" class="validate" />
+                                <input id="excesop" type="text" runat="server" class="validate" maxlength="44" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
                                 <label class="active" for="hmrespu">Kg</label>
                             </div>
                         </div>
@@ -284,7 +283,7 @@
                             </div>
 
                             <div id="tiroides" style="display: none">
-                                <input id="hmrespu9" type="text" runat="server" class="validate" />
+                                <input id="hmrespu9" type="text" runat="server" class="validate" maxlength="44" />
                                 <label class="active" for="hmrespu9">Explique</label>
                             </div>
                         </div>
@@ -316,7 +315,7 @@
                             </div>
 
                             <div class="col 3" id="bifos" style="display: none">
-                                <input id="hmrespu10" type="text" runat="server" class="validate" />
+                                <input id="hmrespu10" type="text" runat="server" class="validate" maxlength="44"/>
                                 <label class="active" for="hmrespu10">Por cuánto tiempo</label>
                             </div>
                         </div>
@@ -328,7 +327,7 @@
                                 </label>
                             </div>
                             <div id="drogas" style="display: none">
-                                <input id="hmrespu11" type="text" runat="server" class="validate" />
+                                <input id="hmrespu11" type="text" runat="server" class="validate" maxlength="44" />
                                 <label class="active" for="hmrespu11">Explique</label>
 
                             </div>
@@ -342,11 +341,11 @@
                             </div>
                             <div id="fuma" style="display: none">
                                 <div class="col 3">
-                                    <input id="hmrespu12" type="text" runat="server" class="validate" />
+                                    <input id="hmrespu12" type="text" runat="server" class="validate" maxlength="4" />
                                     <label class="active" for="hmrespu12">Cuántos cigarrillos diarios?</label>
                                 </div>
                                 <div class="col 3">
-                                    <input id="hmrespu13" type="text" runat="server" class="validate" />
+                                   <input id="hmrespu13" type="text" runat="server" class="validate" maxlength="44" />
                                     <label class="active" for="hmrespu13">Por cuánto tiempo?</label>
                                 </div>
                             </div>
@@ -360,7 +359,7 @@
                                 </label>
                             </div>
                             <div id="bebidas" class="col 3" style="display: none">
-                                <input id="hmrespu14" type="text" runat="server" class="validate" />
+                                <input id="hmrespu14" type="text" runat="server" class="validate" maxlength="44" />
                                 <label class="active" for="hmrespu14">Con qué frecuencia?</label>
                             </div>
                         </div>
@@ -374,7 +373,7 @@
                                 </label>
                             </div>
                             <div id="tatuajes" class="col 3" style="display: none">
-                                <input id="hmrespu15" type="text" runat="server" class="validate" />
+                                <input id="hmrespu15" type="text" runat="server" class="validate" maxlength="44" />
                                 <label class="active" for="hmrespu15"></label>
                             </div>
                         </div>
@@ -403,7 +402,7 @@
                     </div>
                     <div id="embarazo" class="row" style="display: none">
                         <div class="col 3">
-                            <input id="smrespu1" type="text" runat="server" class="validate" />
+                            <input id="smrespu1" type="text" runat="server" class="validate"  maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
                             <label class="active" for="smrespu1">Cuántas semanas aproximadamente?</label>
                         </div>
                     </div>
@@ -426,20 +425,20 @@
                     </div>
                     <div id="gine" style="display: none">
                         <div class="col 1">
-                            <input id="smrespu2" type="text" runat="server" class="validate" />
+                            <input id="smrespu2" type="text" runat="server" class="validate" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             <label class="active" for="smrespu2"># partos</label>
                         </div>
                         <div class="col 1">
 
-                            <input id="smrespu3" type="text" runat="server" class="validate" />
+                            <input id="smrespu3" type="text" runat="server" class="validate"  maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             <label class="active" for="smrespu4"># abortos</label>
                         </div>
                         <div class="col 1">
-                            <input id="smrespu4" type="text" runat="server" class="validate" />
+                            <input id="smrespu4" type="text" runat="server" class="validate"  maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
                             <label class="active" for="smrespu5"># cesáreas</label>
                         </div>
                     </div>
-                    <input id="smrespu5" type="text" runat="server" class="validate" />
+                    <input id="smrespu5" type="text" runat="server" class="validate" maxlength="44"  />
                     <label class="active" for="smrespu6">Observaciones</label>
                 </div>
 
@@ -454,23 +453,23 @@
                 <div class="row">
                     <div class="col s4">
                         <span>Presión arterial</span>
-                        <input id="svrespu1" type="text" runat="server" class="validate" onkeypress="return solonumeros(event)" />
+                        <input id="svrespu1" type="text" runat="server" class="validate" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                         <label class="active" for="svrespu1">mm/Hg</label>
                     </div>
                     <div class="col s4">
                         <span>Pulso</span>
-                        <input id="svrespu2" type="text" runat="server" class="validate" onkeypress="return solonumeros(event)" />
+                        <input id="svrespu2" type="text" runat="server" class="validate" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                         <label class="active" for="svrespu2">ppm</label>
                     </div>
                     <div class="col s4">
                         <span>Frecuencia respiratoria</span>
-                        <input id="svrespu3" type="text" runat="server" class="validate" onkeypress="return solonumeros(event)" />
+                        <input id="svrespu3" type="text" runat="server" class="validate" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                         <label class="active" for="svrespu3">pm</label>
                     </div>
                 </div>
             </div>
              <div class="row">              
-                    <input id="Text2" type="text" runat="server" class="validate" />
+                    <input id="Text2" type="text" runat="server" class="validate" maxlength="44" />
                     <label class="active" for="cedula">Observaciones generales</label>
             </div>
 
@@ -507,6 +506,26 @@
                     return false;
                 }
             }
+
+            function sololetras(e) {
+            key = e.keyCoden || e.which;
+            teclado = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-38-46-164";
+            teclado_especial = false;
+
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true; break;
+
+                }
+
+            }
+            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                return false;
+
+            }
+        }
         </script>
 
     </div>
