@@ -22,13 +22,13 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl fechaEx;
         
         /// <summary>
-        /// Control cedulaP.
+        /// Control cedulaEx.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText cedulaP;
+        protected global::System.Web.UI.WebControls.TextBox cedulaEx;
         
         /// <summary>
         /// Control hmradi1.
@@ -301,6 +301,24 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputText hmrespu8;
         
         /// <summary>
+        /// Control hmradioPeso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton hmradioPeso;
+        
+        /// <summary>
+        /// Control excesop.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText excesop;
+        
+        /// <summary>
         /// Control hmradi21.
         /// </summary>
         /// <remarks>
@@ -481,6 +499,15 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton smradi1;
         
         /// <summary>
+        /// Control smrespu1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText smrespu1;
+        
+        /// <summary>
         /// Control smradi2.
         /// </summary>
         /// <remarks>
@@ -497,6 +524,78 @@ namespace SAC.formularios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton smradi3;
+        
+        /// <summary>
+        /// Control smrespu2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText smrespu2;
+        
+        /// <summary>
+        /// Control smrespu3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText smrespu3;
+        
+        /// <summary>
+        /// Control smrespu4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText smrespu4;
+        
+        /// <summary>
+        /// Control smrespu5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText smrespu5;
+        
+        /// <summary>
+        /// Control svrespu1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText svrespu1;
+        
+        /// <summary>
+        /// Control svrespu2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText svrespu2;
+        
+        /// <summary>
+        /// Control svrespu3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText svrespu3;
+        
+        /// <summary>
+        /// Control Text2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text2;
         
         /// <summary>
         /// Control Guardar.
