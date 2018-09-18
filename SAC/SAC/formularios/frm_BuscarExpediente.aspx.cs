@@ -21,10 +21,7 @@ namespace SAC.formularios
             }
             catch
             {
-                string script = @"<script type='text/javascript'>
-                alert('No hay información en la base de datos');
-                </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            
             }            
         }
 
@@ -56,7 +53,7 @@ namespace SAC.formularios
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             String ced;
-            String[] datos = new string[47];
+            String[] datos = new string[59];
 
             foreach (GridViewRow row in GridView1.Rows)
             {
@@ -114,6 +111,16 @@ namespace SAC.formularios
                     nombre2.InnerText = datos[44];
                     apellido1.InnerText = datos[45];
                     apellido2.InnerText = datos[46];
+                    arterialSignos.InnerText = datos[48];
+                    pulsoSignos.InnerText = datos[49];
+                    FrecuenciaSignos.InnerText = datos[50];
+                    embarazo.InnerText = datos[52];
+                    semanas.InnerText = datos[53];
+                    anticonceptivos.InnerText = datos[54];
+                    gineco.InnerText = datos[55];
+                    abortos.InnerText = datos[56];
+                    cesareas.InnerText = datos[57];
+                    observacionesMujer.InnerText = datos[58];
                 }
                 else
                 {

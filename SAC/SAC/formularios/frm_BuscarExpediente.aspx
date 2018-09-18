@@ -174,6 +174,44 @@
                         <td><label id="cicatrices" runat="server"></label></td>
                         <td><label id="shock" runat="server"></label></td>
                     </tr>
+                    <tr>
+                        <th colspan="5" style="text-align:center">Signos Vitales</th>
+                    </tr>
+                    <tr>
+                        <th>Presión arterial</th>
+                        <th>Pulso</th>
+                        <th>Frecuencia respiratoria</th>
+                    </tr>
+                    <tr>
+                        <td><label id="arterialSignos" runat="server"></label></td>
+                        <td><label id="pulsoSignos" runat="server"></label></td>
+                        <td><label id="FrecuenciaSignos" runat="server"></label></td>
+                    </tr>
+                    <tr>
+                        <th colspan="5" style="text-align:center">Historial médico solo mujeres</th>
+                    </tr>
+                    <tr>
+                        <th>Embarazada</th>
+                        <th>Semanas</th>
+                        <th>Tratamientos anticonceptivos</th>
+                        <th>Ginecoobstetricos</th>
+                        <th>Abortos</th>
+                    </tr>
+                    <tr>
+                        <td><label id="embarazo" runat="server"></label></td>
+                        <td><label id="semanas" runat="server"></label></td>
+                        <td><label id="anticonceptivos" runat="server"></label></td>
+                        <td><label id="gineco" runat="server"></label></td>
+                        <td><label id="abortos" runat="server"></label></td>
+                    </tr>
+                    <tr>
+                        <th>Cesareas</th>
+                        <th colspan="4">Observaciones</th>
+                    </tr>
+                    <tr>
+                        <td><label id="cesareas" runat="server"></label></td>
+                        <td colspan="4"><label id="observacionesMujer" runat="server"></label></td>
+                    </tr>
                 </table>
 
                 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
