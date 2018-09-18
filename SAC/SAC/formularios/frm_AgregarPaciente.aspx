@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="cedula">Cédula </label>
-                        <input id="cedula" type="text" runat="server" class="validate" maxlength="14" required onkeypress="return solonumeros(event)" />
+                        <asp:TextBox ID="cedula" runat="server" class="validate" maxlength="14" required onkeypress="return solonumeros(event)" AutoPostBack="true" OnTextChanged="cedula_TextChanged"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row">
@@ -290,7 +290,7 @@
         function sololetras(e) {
             key = e.keyCoden || e.which;
             teclado = String.fromCharCode(key).toLowerCase();
-            letras = " abcdefghijklmnñopqrstuvwxyz";
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
             especiales = "8-37-38-46-164";
             teclado_especial = false;
 

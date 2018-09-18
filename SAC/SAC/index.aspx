@@ -173,13 +173,13 @@
             vertical-align: middle
         }*/
 
-        #popup, #popup1, #popup2, #popup3, #popup4, #popup5 {
+        #popup, #popup1, #popup2, #popup3, #popup4, #popup5, #popup6 {
             visibility: hidden;
             opacity: 0;
             margin-top: -300px;
         }
 
-            #popup:target, #popup1:target, #popup2:target,  #popup3:target,  #popup4:target,  #popup5:target    {
+            #popup:target, #popup1:target, #popup2:target,  #popup3:target,  #popup4:target,  #popup5:target, #popup6:target    {
                 visibility: visible;
                 opacity: 1;
                 background-color: rgba(0,0,0,0.8);
@@ -256,8 +256,8 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="active"><a href="#" data-nav-section="home"><span>Inicio</span></a></li>
                             <li><a href="#" data-nav-section="citas"><span>Citas</span></a></li>
-                            <li><a href="#" data-nav-section="work"><span>Pacientes</span></a></li>
-                            <li><a href="#" data-nav-section="testimonials"><span>Expedientes</span></a></li>
+                            <li><a href="#" data-nav-section="pacientes"><span>Pacientes</span></a></li>
+                            <li><a href="#" data-nav-section="expedientes"><span>Expedientes</span></a></li>
                             <li><a href="#" data-nav-section="factura"><span>Factura</span></a></li>
                             <li><a href="#" data-nav-section="usuario"><span>Usuarios</span></a></li>
                             <li><a href="#" data-nav-section=""><span>Cerrar sesión</span></a></li>
@@ -340,7 +340,7 @@
         </div>
     </section>
     <%--------------------------------------------------------------Paciente---------------------------------------------------------------------%>
-    <section id="fh5co-work" data-section="work">
+    <section id="fh5co-work" data-section="pacientes">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 section-heading text-center">
@@ -431,8 +431,9 @@
             </div>
         </div>
     </section>
+
     <%---------------------------------------------------------------Expediente--------------------------------------------------------------------%>
-    <section id="fh5co-testimonials" data-section="testimonials">
+    <section id="fh5co-testimonials" data-section="expedientes">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 section-heading text-center">
@@ -444,7 +445,7 @@
                     </div>
                 </div>
             </div>
-
+            <%--Agregar--%>
             <div class="col-md-3 col-sm-6 col-xxs-12">
                  <a href="#popup3" class="popup-link fh5co-project-item ">
                         <img src="../images/agregar.png" alt="Image" class="img-responsive" />
@@ -456,11 +457,12 @@
                         <div class="popup-contenedor">
                             <div class="responsiveContent">
                                 <iframe src="formularios/frm_AgregarExpediente.aspx"></iframe>
-                                <a class="popup-cerrar" href="#work">X</a>
+                                <a class="popup-cerrar" href="#testimonials">X</a>
                             </div>
                         </div>
                     </div>
             </div>
+            <%--Actualizar--%>
             <div class="col-md-3 col-sm-6 col-xxs-12">
                 <a href="#popup4" class="popup-link fh5co-project-item ">
                         <img src="../images/actualizar.png" alt="Image" class="img-responsive" />
@@ -472,77 +474,51 @@
                         <div class="popup-contenedor">
                             <div class="responsiveContent">
                                 <iframe src="formularios/frm_ActualizarPaciente.aspx"></iframe>
-                                <a class="popup-cerrar" href="#work">X</a>
+                                <a class="popup-cerrar" href="#testimonials">X</a>
                             </div>
                         </div>
                     </div>
             </div>
-
-            <%-- <div class="clearfix visible-sm-block"></div>--%>
+            <%--Buscar--%>
             <div class="col-md-3 col-sm-6 col-xxs-12">
-                <a href="../images/buscar.png" class="fh5co-project-item">
-                    <center><img src="../images/buscar.png" alt="Image" class="img-responsive" /></center>
-                    <div class="fh5co-text">
-                        <h2 style="text-align: center;">Buscar</h2>
-                        <!--<span>Web</span>-->
+                <a href="#popup5" class="popup-link fh5co-project-item ">
+                        <img src="../images/buscar.png" alt="Image" class="img-responsive" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Buscar</h2>
+                        </div>
+                    </a>
+                    <div id="popup5" class="modal-wrapper">
+                        <div class="popup-contenedor">
+                            <div class="responsiveContent">
+                                <iframe src="formularios/frm_BuscarExpediente.aspx"></iframe>
+                                <a class="popup-cerrar" href="#testimonials">X</a>
+                            </div>
+                        </div>
                     </div>
-                </a>
             </div>
-
+            <%--Reporte--%>
             <div class="col-md-3 col-sm-6 col-xxs-12">
-                <a href="../images/reporte.png" class="fh5co-project-item">
-                    <center><img src="../images/reporte.png" alt="Image" class="img-responsive" /></center>
-                    <div class="fh5co-text">
-                        <h2 style="text-align: center;">Generar reporte</h2>
-                        <!--<span>UI/UX</span>-->
+                <a href="#popup6" class="popup-link fh5co-project-item ">
+                        <img src="../images/reporte.png" alt="Image" class="img-responsive" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Reporte</h2>
+                        </div>
+                    </a>
+                    <div id="popup6" class="modal-wrapper">
+                        <div class="popup-contenedor">
+                            <div class="responsiveContent">
+                                <iframe src="formularios/frm_BuscarExpediente.aspx"></iframe>
+                                <a class="popup-cerrar" href="#testimonials">X</a>
+                            </div>
+                        </div>
                     </div>
-                </a>
             </div>
-
-            <!--<div class="row">
-        <div class="col-md-4">
-            <div class="box-testimony">
-                <blockquote class="to-animate-2">
-                    <p>&ldquo;Beyond the horizon of the place we lived when we were young, In a world of magnets and miracles. Our thoughts strayed constantly and without boundary, The ringing of the division bell had begun.&rdquo;</p>
-                </blockquote>
-                <div class="author to-animate">
-                    <figure><img src="images/person1.jpg" alt="Person"></figure>
-                    <p>
-                    Jean Doe, CEO <a href="#">FREEHTML5.co</a> <span class="subtext">Creative Director</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="box-testimony">
-                <blockquote class="to-animate-2">
-                    <p>&ldquo; Along the Long Road and on down the Causeway, Do they still meet there by the Cut? There was a ragged band that followed in our footsteps. Running before times took our dreams away. Leaving the myriad small creatures trying to tie us to the ground. To a life consumed by slow decay.&rdquo;</p>
-                </blockquote>
-                <div class="author to-animate">
-                    <figure><img src="images/person2.jpg" alt="Person"></figure>
-                    <p>
-                    John Doe, Senior UI <a href="#">FREEHTML5.co</a> <span class="subtext">Creative Director</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="box-testimony">
-                <blockquote class="to-animate-2">
-                    <p>&ldquo; The grass was greener. The light was brighter. When friends surrounded. The nights of wonder. &rdquo;</p>
-                </blockquote>
-                <div class="author to-animate">
-                    <figure><img src="images/person3.jpg" alt="Person"></figure>
-                    <p>
-                    Chris Nash, Director <a href="#">FREEHTML5.co</a> <span class="subtext">Creative Director</span>
-                    </p>
-                </div>
-            </div>
-        </div>
--->
         </div>
     </section>
+    <br />
+    <br />
+    <br />
+    <br />
 
     <%--------------------------------------------------------------Factura---------------------------------------------------------------------%>
     <section id="fh5co-services" data-section="factura">

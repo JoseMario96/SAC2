@@ -11,7 +11,7 @@ namespace SAC.formularios
     public partial class frmBuscar : System.Web.UI.Page
     {
         metodos.metodosPaciente objeto = new metodos.metodosPaciente();
-        string consulta = "";
+        
         protected void Page_Load(object sender, EventArgs e)
         {
 
