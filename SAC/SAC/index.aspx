@@ -23,7 +23,6 @@
     <meta name="twitter:card" content="" />
 
 
-
     <!-- Place favicon.ico and apple-touchm-icon.png in the root directory -->
     <link rel="shortcut icon" href="favicon.ico" />
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css' />
@@ -62,7 +61,7 @@
             border-bottom-right-radius: 4px;
             -webkit-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
             -moz-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
-            /*-ms-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);*/
+           
             box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
         }
 
@@ -153,33 +152,13 @@
                 outline: none;
             }
 
-        /*.modal-open {
-            width: 80%;
-            max-height: 80%;
-            height: 80%;
-            top: 0 !important;
-            color: #000000
-        }*/
-
-        .letra {
-            color: black
-        }
-
-        /*.imagen {
-            width: 100%;
-            height: 100%;
-            display: block;
-            margin: auto;
-            vertical-align: middle
-        }*/
-
         #popup, #popup1, #popup2, #popup3, #popup4, #popup5, #popup6 {
             visibility: hidden;
             opacity: 0;
             margin-top: -300px;
         }
 
-            #popup:target, #popup1:target, #popup2:target,  #popup3:target,  #popup4:target,  #popup5:target, #popup6:target    {
+            #popup:target, #popup1:target, #popup2:target, #popup3:target, #popup4:target, #popup5:target, #popup6:target {
                 visibility: visible;
                 opacity: 1;
                 background-color: rgba(0,0,0,0.8);
@@ -210,7 +189,7 @@
             right: 3px;
             background-color: rgb(255, 0, 0);
             padding: 7px 10px;
-            font-size: 20px;
+            font-size: 24px;
             text-decoration: none;
             line-height: 1;
             color: #fff;
@@ -231,6 +210,18 @@
                 width: 100%;
                 height: 100%;
             }
+
+        .espacio {
+            padding-top: 21%;
+        }
+
+        .abajo {
+            padding-bottom: 10%;
+        }
+
+        .letrasgrande {
+            font-size: 24px;
+        }
     </style>
 
     <!-- End demo purposes only -->
@@ -352,32 +343,11 @@
                     </div>
                 </div>
             </div>
-
-            <%--Agregar--%>
-            <%-- <a href="javascript:popUp('frm_AgregarPaciente.aspx')" class="modal-trigger fh5co-project-item" id="boton">
-                        <center><img src="../images/agregar.png" alt="Image" class="img-responsive "/></center>
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Agregar</h2>
-                        </div>
-                    </a>--%>
-            <%--  <div id="modal1" class="modal modal-content letra">
-
-                     <div id="cargaexterna">--%>
-            <%--<iframe width="800" height="800" src="frm_AgregarPaciente.aspx"></iframe>--%>
-
-            <%--  <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat letra ">Agree</a>
-
-
-                        row col-xxs-12
-                        col-md-4
-
-                        </div>--%>
             <div class="row row-bottom-padded-sm">
                 <div class="col-md-3 col-xs-12">
-                    <a href="#popup" class="popup-link fh5co-project-item">
-                        <img src="../images/agregar.png" alt="Image" class="img-responsive " />
-                        <div class="fh5co-text">
+                    <a href="#popup" class="popup-link fh5co-project-item ">
+                        <img src="../images/agregar.png" alt="Image" class="img-responsive" />
+                        <div class=" letrasgrande">
                             <h2 style="text-align: center;">Agregar</h2>
                         </div>
                     </a>
@@ -396,7 +366,7 @@
                 <div class="col-md-3 col-xs-12">
                     <a href="#popup1" class="popup-link fh5co-project-item ">
                         <img src="../images/actualizar.png" alt="Image" class="img-responsive" />
-                        <div class="fh5co-text">
+                        <div class="letrasgrande">
                             <h2 style="text-align: center;">Actualizar</h2>
                         </div>
                     </a>
@@ -412,10 +382,10 @@
                 <div class="col-md-1">
                 </div>
                 <%--Buscar--%>
-                <div class="col-md-3 col-xs-12">
+                <div class="col-md-3 col-xs-12 abajo">
                     <a href="#popup2" class="popup-link fh5co-project-item ">
                         <img src="../images/buscar.png" alt="Image" class="img-responsive" />
-                        <div class="fh5co-text">
+                        <div class="letrasgrande">
                             <h2 style="text-align: center;">Buscar</h2>
                         </div>
                     </a>
@@ -428,6 +398,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -445,9 +416,11 @@
                     </div>
                 </div>
             </div>
-            <%--Agregar--%>
-            <div class="col-md-3 col-sm-6 col-xxs-12">
-                 <a href="#popup3" class="popup-link fh5co-project-item ">
+            <div class="row">
+
+                <%--Agregar--%>
+                <div class="col-md-3 ">
+                    <a href="#popup3" class="popup-link fh5co-project-item ">
                         <img src="../images/agregar.png" alt="Image" class="img-responsive" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Agregar</h2>
@@ -461,10 +434,10 @@
                             </div>
                         </div>
                     </div>
-            </div>
-            <%--Actualizar--%>
-            <div class="col-md-3 col-sm-6 col-xxs-12">
-                <a href="#popup4" class="popup-link fh5co-project-item ">
+                </div>
+                <%--Actualizar--%>
+                <div class="col-md-3">
+                    <a href="#popup4" class="popup-link fh5co-project-item ">
                         <img src="../images/actualizar.png" alt="Image" class="img-responsive" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Actualizar</h2>
@@ -478,10 +451,10 @@
                             </div>
                         </div>
                     </div>
-            </div>
-            <%--Buscar--%>
-            <div class="col-md-3 col-sm-6 col-xxs-12">
-                <a href="#popup5" class="popup-link fh5co-project-item ">
+                </div>
+                <%--Buscar--%>
+                <div class="col-md-3">
+                    <a href="#popup5" class="popup-link fh5co-project-item ">
                         <img src="../images/buscar.png" alt="Image" class="img-responsive" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Buscar</h2>
@@ -495,10 +468,11 @@
                             </div>
                         </div>
                     </div>
-            </div>
-            <%--Reporte--%>
-            <div class="col-md-3 col-sm-6 col-xxs-12">
-                <a href="#popup6" class="popup-link fh5co-project-item ">
+                </div>
+
+                <%--Reporte--%>
+                <div class="col-md-3 ">
+                    <a href="#popup6" class="popup-link fh5co-project-item ">
                         <img src="../images/reporte.png" alt="Image" class="img-responsive" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Reporte</h2>
@@ -512,6 +486,46 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+            </div>
+
+            <div class="row espacio">
+                <div class="col-md-3"></div>
+                <div class="col-md-3">
+                    <a href="#popup6" class="popup-link fh5co-project-item ">
+                        <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Odontograma</h2>
+                        </div>
+                    </a>
+                    <%-- <div id="popup6" class="modal-wrapper">
+                        <div class="popup-contenedor">
+                            <div class="responsiveContent">
+                                <iframe src="formularios/frm_BuscarExpediente.aspx"></iframe>
+                                <a class="popup-cerrar" href="#testimonials">X</a>
+                            </div>
+                        </div>
+                    </div>--%>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-3">
+                    <a href="#popup6" class="popup-link fh5co-project-item ">
+                        <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive" />
+                        <div class="fh5co-text">
+
+                            <h2 style="text-align: center;">Tratamientos</h2>
+                        </div>
+                    </a>
+                    <%-- <div id="popup6" class="modal-wrapper">
+                        <div class="popup-contenedor">
+                            <div class="responsiveContent">
+                                <iframe src="formularios/frm_BuscarExpediente.aspx"></iframe>
+                                <a class="popup-cerrar" href="#testimonials">X</a>
+                            </div>
+                        </div>
+                    </div>--%>
+                </div>
             </div>
         </div>
     </section>

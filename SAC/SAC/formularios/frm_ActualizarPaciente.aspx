@@ -9,7 +9,15 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="../js/quicksearch.js"></script>
+    <style>
+        #formularioP {
+            border: 1px solid gray;
+        }
 
+            #formularioP.highlighted {
+                border: 3px solid red;
+            }
+    </style>
     <script type="text/javascript">
         $(function () {
             $('.search_textbox').each(function (i) {
@@ -46,7 +54,8 @@
                 </div>
                 <br />
             </div>
-            <div id="formularioP" style="display: none">
+
+            <div id="formularioP" style="display: none" tabindex="-1">
                 <header>
                     <h1 style="text-align: center">Registro de pacientes</h1>
                 </header>
@@ -55,57 +64,57 @@
                     <div class="col s6">
                         <label class="active" for="cedula">Cédula </label>
                         <input id="cedula" readonly="readonly" type="text" runat="server" class="validate" />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="nombre1">Primer Nombre</label>
                         <input id="nombre1" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
-                        
+
                     </div>
                     <div class="col s6">
                         <label class="active" for="nombre2">Segundo Nombre</label>
                         <input id="nombre2" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="apellido1">Primer Apellido </label>
                         <input id="apellido1" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
-                        
+
                     </div>
                     <div class="col s6">
                         <label class="active" for="apellido2">Segundo Apellido </label>
                         <input id="apellido2" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="telefono">Teléfono</label>
                         <input id="telefono" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
-                        
+
                     </div>
                     <div class="col s6">
                         <label class="active" for="celular">Celular</label>
                         <input id="celular" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s12">
                         <label class="active" for="direcion">Dirección</label>
                         <input id="direccion" type="text" runat="server" class="validate" maxlength="249" required />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s12 m6 13">
                         <label class="active" for="correo">Correo electrónico</label>
                         <input id="correo" type="email" runat="server" class="validate" maxlength="44" required />
-                        
+
                     </div>
                 </div>
                 <div class="row">
@@ -168,64 +177,64 @@
                     <div class="col s12 m6 13">
                         <label class="active" for="cedula_encargado">Cédula del encargado</label>
                         <input id="cedula_encargado" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="nombre1_encargado">Primer nombre</label>
                         <input id="nombre1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                        
+
                     </div>
                     <div class="col s6">
                         <label class="active" for="nombre2_encargado">Segundo nombre</label>
                         <input id="nombre2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="apellido1_encargado">Primer apellido</label>
                         <input id="apellido1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                        
+
                     </div>
                     <div class=" col s6">
                         <label class="active" for="apellido2_encargado">Segundo apellido</label>
                         <input id="apellido2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="telefono_encargado">Teléfono</label>
                         <input id="telefono_encargado" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
-                        
+
                     </div>
                     <div class="col s6">
                         <label class="active" for="celular_encargado">Celular</label>
                         <input id="celular_encargado" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s12">
                         <label class="active" for="direccion_encargado">Dirección</label>
                         <input id="direccion_encargado" type="text" runat="server" class="validate" maxlength="249" />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
                         <label class="active" for="correo_encargado">Correo electrónico</label>
                         <input id="correo_encargado" type="email" runat="server" class="validate" maxlength="44" />
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
                         <label class="active" for="parentezco">Parentezco con el menor</label>
-                        <input id="parentezco" type="text" runat="server" class="validate" maxlength="44"  />
-                        
+                        <input id="parentezco" type="text" runat="server" class="validate" maxlength="44" />
+
                     </div>
                 </div>
                 <div>
@@ -255,6 +264,7 @@
             <script type="text/javascript">
                 function mostrar() {
                     document.getElementById('encargado').style.display = 'block';
+
 
                 }
 
@@ -307,7 +317,7 @@
                     _input.style.backgroundColor = "blue";
                 }
             </script>--%>
-            <div id="Botones" style="display:none">
+            <div id="Botones" style="display: none">
                 <div class="row">
 
                     <div class="input-field col s4">

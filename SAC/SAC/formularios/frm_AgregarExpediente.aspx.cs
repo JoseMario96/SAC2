@@ -20,12 +20,12 @@ namespace SAC.formularios
         public void agregar()
         {
             String pregunta1 = ""; String pregunta2 = ""; String donde = ""; String cuanto = ""; string pregunta9 = ""; string pregunta10 = ""; string pregunta18 = ""; string pregunta20 = ""; string pregunta23 = ""; string pregunta27 = ""; string pregunta28 = ""; string cigarros = "";
-            string cuanto2 = ""; string pregunta29  = "No"; string pregunta30 = "No"; string pregunta31 = ""; string bebedor = "";
+            string cuanto2 = ""; string pregunta29 = "No"; string pregunta30 = "No"; string pregunta31 = ""; string bebedor = "";
 
             string pregunta3 = "No"; string anemia = "No"; string pregunta4 = "No"; string pregunta5 = "No"; string pregunta6 = "No"; string pregunta7 = "No"; string pregunta8 = "No"; string pregunta11 = "No";
             string pregunta12 = "No"; string pregunta13 = "No"; string pregunta14 = "No"; string pregunta15 = "No"; string pregunta16 = "No"; string pregunta17 = "No"; string pregunta19 = "No";
             string pregunta21 = "No"; string pregunta22 = "No"; string pregunta24 = "No"; string pregunta25 = "No"; string pregunta26 = "No"; string pregunta32 = "No"; string peso = "";
-            string pregunta33 = "No"; int embarazo = 0; string pregunta34 ="No"; int cesarias = 0; int aborto = 0; int partos = 0;
+            string pregunta33 = "No"; int embarazo = 0; string pregunta34 = "No"; int cesarias = 0; int aborto = 0; int partos = 0;
 
             String presion = ""; string pulso = ""; string frecuencia = "";
             // Historial médico
@@ -203,15 +203,15 @@ namespace SAC.formularios
             }
 
             // Signos vitales
-            if (svrespu1.Value !="")
+            if (svrespu1.Value != "")
             {
                 presion = svrespu1.Value;
             }
-            if (svrespu2.Value!="")
+            if (svrespu2.Value != "")
             {
                 pulso = svrespu2.Value;
             }
-            if (svrespu3.Value!="")
+            if (svrespu3.Value != "")
             {
                 frecuencia = svrespu3.Value;
             }
@@ -219,10 +219,10 @@ namespace SAC.formularios
 
             if (hmsi.Checked || hmno.Checked)
             {
-                objeto.agregarExpediente(cedulaEx.Text, fechaEx.Value, pregunta1, pregunta2, pregunta3, pregunta4, pregunta5, anemia, pregunta6, pregunta7, donde, cuanto,  pregunta8, pregunta9, pregunta10, pregunta11, pregunta12, pregunta13, pregunta14, pregunta15, pregunta16, pregunta17, pregunta18, pregunta19, pregunta20, peso, pregunta21, pregunta22, pregunta23, pregunta24, pregunta25, pregunta26, pregunta27, pregunta28, pregunta29, cigarros, cuanto2,bebedor, pregunta30, pregunta31, pregunta32, Text2.Value);
+                objeto.agregarExpediente(cedulaEx.Text, fechaEx.Value, pregunta1, pregunta2, pregunta3, pregunta4, pregunta5, anemia, pregunta6, pregunta7, donde, cuanto, pregunta8, pregunta9, pregunta10, pregunta11, pregunta12, pregunta13, pregunta14, pregunta15, pregunta16, pregunta17, pregunta18, pregunta19, pregunta20, peso, pregunta21, pregunta22, pregunta23, pregunta24, pregunta25, pregunta26, pregunta27, pregunta28, pregunta29, cigarros, cuanto2, bebedor, pregunta30, pregunta31, pregunta32, Text2.Value);
                 int codigo = objeto.BuscarcodigoExpediente(cedulaEx.Text);
                 objeto.agregarExpedienteMujer(codigo, pregunta33, embarazo, pregunta34, partos, aborto, cesarias, smrespu5.Value);
-                objeto.agregarsignos(codigo,presion,pulso, frecuencia);
+                objeto.agregarsignos(codigo, presion, pulso, frecuencia);
             }
         }
 
@@ -230,22 +230,25 @@ namespace SAC.formularios
 
         protected void Guardar_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            agregar();
-            string script = @"<script type='text/javascript'>
+            try
+            {
+                agregar();
+                string script = @"<script type='text/javascript'>
             alert('Expediente guardado con éxito');
             </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-            //}
-            //catch
-            //{
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+               
+                this.Controls.Clear();
+                Response.Redirect("frm_AgregarExpediente.aspx");
+            }
+            catch
+            {
 
-            string scrippt = @"<script type='text/javascript'>
+                string scrippt = @"<script type='text/javascript'>
                 alert('No se logró guardar la información');
                 </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scrippt, false);
-            //}
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scrippt, false);
+            }
 
         }
 
