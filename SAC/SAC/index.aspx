@@ -473,7 +473,7 @@
                     <div id="popup4" class="modal-wrapper">
                         <div class="popup-contenedor">
                             <div class="responsiveContent">
-                                <iframe src="formularios/frm_ActualizarPaciente.aspx"></iframe>
+                                <iframe src="formularios/frm_ActualizarExpediente.aspx"></iframe>
                                 <a class="popup-cerrar" href="#testimonials">X</a>
                             </div>
                         </div>
