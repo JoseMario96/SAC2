@@ -352,7 +352,7 @@
                                 <span>Sí</span>
                             </label>
                             <label>
-                                <input class="with-gap" name="group16" runat="server" type="radio" id="psiquitricoN" onclick="" />
+                                <input class="with-gap" name="group16" runat="server" type="radio" id="psiquiatricoN" onclick="" />
                                 <span>No</span>
                             </label>
 
