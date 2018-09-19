@@ -50,7 +50,7 @@
 </head>
 <body>
 
-    <h1>Odontograma FTD :)</h1>
+    <h1>Odontograma</h1>
     <br><br><br>
     <div id="radio">
         <input type="radio" id="radio1" name="accion" value="fractura" checked="checked" /><label for="radio1">Fractura</label>
@@ -479,7 +479,7 @@
         //canvas.addEventListener("mousedown", getPosition, false);
 
         function getPosition(event) {
-            var x = event.x;
+            var x = event.x-285;
             var y = event.y;
             //alert(y);
             //alert(x);
