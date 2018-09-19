@@ -247,13 +247,22 @@ namespace SAC.formularios {
         protected global::System.Web.UI.WebControls.TextBox tiempo;
         
         /// <summary>
-        /// Control moretes.
+        /// Control moretesS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl moretes;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton moretesS;
+        
+        /// <summary>
+        /// Control moretesN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton moretesN;
         
         /// <summary>
         /// Control rinnon.
@@ -262,7 +271,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl rinnon;
+        protected global::System.Web.UI.WebControls.TextBox rinnon;
         
         /// <summary>
         /// Control gastro.
@@ -271,70 +280,133 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl gastro;
+        protected global::System.Web.UI.WebControls.TextBox gastro;
         
         /// <summary>
-        /// Control vision.
+        /// Control visionS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl vision;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton visionS;
         
         /// <summary>
-        /// Control cortico.
+        /// Control visionN.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cortico;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton visionN;
         
         /// <summary>
-        /// Control diabetes.
+        /// Control corticoS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl diabetes;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton corticoS;
         
         /// <summary>
-        /// Control epilepsia.
+        /// Control corticoN.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl epilepsia;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton corticoN;
         
         /// <summary>
-        /// Control respiratorias.
+        /// Control diabetesS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl respiratorias;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton diabetesS;
         
         /// <summary>
-        /// Control radio_quimio.
+        /// Control diabetesN.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl radio_quimio;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton diabetesN;
         
         /// <summary>
-        /// Control reumatismo.
+        /// Control epilepsiaS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl reumatismo;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton epilepsiaS;
+        
+        /// <summary>
+        /// Control epilepsiaN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton epilepsiaN;
+        
+        /// <summary>
+        /// Control respiratoriaS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton respiratoriaS;
+        
+        /// <summary>
+        /// Control respiratoriaN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton respiratoriaN;
+        
+        /// <summary>
+        /// Control quimioS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton quimioS;
+        
+        /// <summary>
+        /// Control quimioN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton quimioN;
+        
+        /// <summary>
+        /// Control reumatismoS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton reumatismoS;
+        
+        /// <summary>
+        /// Control reumatismoN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton reumatismoN;
         
         /// <summary>
         /// Control hepaticos.
@@ -343,52 +415,79 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hepaticos;
+        protected global::System.Web.UI.WebControls.TextBox hepaticos;
         
         /// <summary>
-        /// Control herpes.
+        /// Control herpesS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl herpes;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton herpesS;
         
         /// <summary>
-        /// Control perdidaP.
+        /// Control herpesN.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl perdidaP;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton herpesN;
         
         /// <summary>
-        /// Control aumentoP.
+        /// Control perdida_peso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl aumentoP;
+        protected global::System.Web.UI.WebControls.TextBox perdida_peso;
         
         /// <summary>
-        /// Control artritis.
+        /// Control aumento_peso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl artritis;
+        protected global::System.Web.UI.WebControls.TextBox aumento_peso;
         
         /// <summary>
-        /// Control psiquiatra.
+        /// Control artritisS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl psiquiatra;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton artritisS;
+        
+        /// <summary>
+        /// Control artritisN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton artritisN;
+        
+        /// <summary>
+        /// Control psiquiatricoS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton psiquiatricoS;
+        
+        /// <summary>
+        /// Control psiquitricoN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton psiquitricoN;
         
         /// <summary>
         /// Control tiroides.
@@ -397,34 +496,61 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tiroides;
+        protected global::System.Web.UI.WebControls.TextBox tiroides;
         
         /// <summary>
-        /// Control transmision.
+        /// Control transmisionS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl transmision;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton transmisionS;
         
         /// <summary>
-        /// Control osteoporosis.
+        /// Control transmisionN.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl osteoporosis;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton transmisionN;
         
         /// <summary>
-        /// Control migranna.
+        /// Control osteoporosisS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl migranna;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton osteoporosisS;
+        
+        /// <summary>
+        /// Control osteoporosisN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton osteoporosisN;
+        
+        /// <summary>
+        /// Control migrannaS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton migrannaS;
+        
+        /// <summary>
+        /// Control migrannaN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton migrannaN;
         
         /// <summary>
         /// Control bifos.
@@ -433,7 +559,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bifos;
+        protected global::System.Web.UI.WebControls.TextBox bifos;
         
         /// <summary>
         /// Control drogas.
@@ -442,7 +568,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl drogas;
+        protected global::System.Web.UI.WebControls.TextBox drogas;
         
         /// <summary>
         /// Control fuma.
@@ -451,7 +577,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fuma;
+        protected global::System.Web.UI.WebControls.TextBox fuma;
         
         /// <summary>
         /// Control cigarroDia.
@@ -460,7 +586,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cigarroDia;
+        protected global::System.Web.UI.WebControls.TextBox cigarroDia;
         
         /// <summary>
         /// Control cigarroPeriodo.
@@ -469,16 +595,25 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cigarroPeriodo;
+        protected global::System.Web.UI.WebControls.TextBox cigarroPeriodo;
         
         /// <summary>
-        /// Control alcohol.
+        /// Control alcoholS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alcohol;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton alcoholS;
+        
+        /// <summary>
+        /// Control alcoholN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton alcoholN;
         
         /// <summary>
         /// Control frecuenciaAlcohol.
@@ -487,25 +622,34 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl frecuenciaAlcohol;
+        protected global::System.Web.UI.WebControls.TextBox frecuenciaAlcohol;
         
         /// <summary>
-        /// Control cicatrices.
+        /// Control cicatriz.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cicatrices;
+        protected global::System.Web.UI.WebControls.TextBox cicatriz;
         
         /// <summary>
-        /// Control shock.
+        /// Control shockS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl shock;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton shockS;
+        
+        /// <summary>
+        /// Control shockN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton shockN;
         
         /// <summary>
         /// Control arterialSignos.
@@ -514,7 +658,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl arterialSignos;
+        protected global::System.Web.UI.WebControls.TextBox arterialSignos;
         
         /// <summary>
         /// Control pulsoSignos.
@@ -523,25 +667,34 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pulsoSignos;
+        protected global::System.Web.UI.WebControls.TextBox pulsoSignos;
         
         /// <summary>
-        /// Control FrecuenciaSignos.
+        /// Control frecuenciaSignos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FrecuenciaSignos;
+        protected global::System.Web.UI.WebControls.TextBox frecuenciaSignos;
         
         /// <summary>
-        /// Control embarazo.
+        /// Control embarazadaS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl embarazo;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton embarazadaS;
+        
+        /// <summary>
+        /// Control embarazadaN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton embarazadaN;
         
         /// <summary>
         /// Control semanas.
@@ -550,16 +703,25 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl semanas;
+        protected global::System.Web.UI.WebControls.TextBox semanas;
         
         /// <summary>
-        /// Control anticonceptivos.
+        /// Control anticoceptivosS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl anticonceptivos;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton anticoceptivosS;
+        
+        /// <summary>
+        /// Control anticoceptivosN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton anticoceptivosN;
         
         /// <summary>
         /// Control gineco.
@@ -568,7 +730,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl gineco;
+        protected global::System.Web.UI.WebControls.TextBox gineco;
         
         /// <summary>
         /// Control abortos.
@@ -577,7 +739,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl abortos;
+        protected global::System.Web.UI.WebControls.TextBox abortos;
         
         /// <summary>
         /// Control cesareas.
@@ -586,7 +748,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cesareas;
+        protected global::System.Web.UI.WebControls.TextBox cesareas;
         
         /// <summary>
         /// Control observacionesMujer.
@@ -595,6 +757,24 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl observacionesMujer;
+        protected global::System.Web.UI.WebControls.TextBox observacionesMujer;
+        
+        /// <summary>
+        /// Control Guardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Guardar;
+        
+        /// <summary>
+        /// Control Cancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Cancelar;
     }
 }

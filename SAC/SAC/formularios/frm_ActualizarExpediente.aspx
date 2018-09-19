@@ -10,6 +10,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="../js/quicksearch.js"></script>
+    <style type="text/css">
+        .auto-style1 {
+            height: 54px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -142,33 +147,33 @@
                     <tr>
                         <td>
                             <label>
-                                <input class="with-gap" name="group2" runat="server" type="radio" id="anemiaS" onclick="" />
+                                <input class="with-gap" name="group4" runat="server" type="radio" id="anemiaS" onclick="" />
                                 <span>Sí</span>
                             </label>
                             <label>
-                                <input class="with-gap" name="group2" runat="server" type="radio" id="anemiaN" onclick="" />
+                                <input class="with-gap" name="group4" runat="server" type="radio" id="anemiaN" onclick="" />
                                 <span>No</span>
                             </label>
 
                         </td>
                         <td>
                             <label>
-                                <input class="with-gap" name="group2" runat="server" type="radio" id="sangreS" onclick="" />
+                                <input class="with-gap" name="group5" runat="server" type="radio" id="sangreS" onclick="" />
                                 <span>Sí</span>
                             </label>
                             <label>
-                                <input class="with-gap" name="group2" runat="server" type="radio" id="sangreN" onclick="" />
+                                <input class="with-gap" name="group5" runat="server" type="radio" id="sangreN" onclick="" />
                                 <span>No</span>
                             </label>
 
                         </td>
                         <td>
                             <label>
-                                <input class="with-gap" name="group2" runat="server" type="radio" id="paisS" onclick="" />
+                                <input class="with-gap" name="group6" runat="server" type="radio" id="paisS" onclick="" />
                                 <span>Sí</span>
                             </label>
                             <label>
-                                <input class="with-gap" name="group2" runat="server" type="radio" id="paisN" onclick="" />
+                                <input class="with-gap" name="group6" runat="server" type="radio" id="paisN" onclick="" />
                                 <span>No</span>
                             </label>
 
@@ -190,19 +195,43 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="moretes" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group7" runat="server" type="radio" id="moretesS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group7" runat="server" type="radio" id="moretesN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                         <td>
-                            <label id="rinnon" runat="server"></label>
+                            <asp:TextBox ID="rinnon" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="gastro" runat="server"></label>
+                            <asp:TextBox ID="gastro" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="vision" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group8" runat="server" type="radio" id="visionS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group8" runat="server" type="radio" id="visionN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
-                        <td>
-                            <label id="cortico" runat="server"></label>
+                         <td>
+                            <label>
+                                <input class="with-gap" name="group22" runat="server" type="radio" id="corticoS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group22" runat="server" type="radio" id="corticoN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                     </tr>
                     <tr>
@@ -214,19 +243,59 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="diabetes" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group9" runat="server" type="radio" id="diabetesS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group9" runat="server" type="radio" id="diabetesN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                         <td>
-                            <label id="epilepsia" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group10" runat="server" type="radio" id="epilepsiaS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group10" runat="server" type="radio" id="epilepsiaN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                         <td>
-                            <label id="respiratorias" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group11" runat="server" type="radio" id="respiratoriaS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group11" runat="server" type="radio" id="respiratoriaN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                         <td>
-                            <label id="radio_quimio" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group12" runat="server" type="radio" id="quimioS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group12" runat="server" type="radio" id="quimioN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                         <td>
-                            <label id="reumatismo" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group13" runat="server" type="radio" id="reumatismoS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group13" runat="server" type="radio" id="reumatismoN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                     </tr>
                     <tr>
@@ -238,19 +307,35 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="hepaticos" runat="server"></label>
+                            <asp:TextBox ID="hepaticos" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="herpes" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group14" runat="server" type="radio" id="herpesS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group14" runat="server" type="radio" id="herpesN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                         <td>
-                            <label id="perdidaP" runat="server"></label>
+                            <asp:TextBox ID="perdida_peso" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="aumentoP" runat="server"></label>
+                            <asp:TextBox ID="aumento_peso" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="artritis" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group15" runat="server" type="radio" id="artritisS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group15" runat="server" type="radio" id="artritisN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                     </tr>
                     <tr>
@@ -262,19 +347,51 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="psiquiatra" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group16" runat="server" type="radio" id="psiquiatricoS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group16" runat="server" type="radio" id="psiquitricoN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                         <td>
-                            <label id="tiroides" runat="server"></label>
+                            <asp:TextBox ID="tiroides" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="transmision" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group17" runat="server" type="radio" id="transmisionS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group17" runat="server" type="radio" id="transmisionN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                         <td>
-                            <label id="osteoporosis" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group18" runat="server" type="radio" id="osteoporosisS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group18" runat="server" type="radio" id="osteoporosisN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                         <td>
-                            <label id="migranna" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group19" runat="server" type="radio" id="migrannaS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group19" runat="server" type="radio" id="migrannaN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                     </tr>
                     <tr>
@@ -286,19 +403,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="bifos" runat="server"></label>
+                            <asp:TextBox ID="bifos" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="drogas" runat="server"></label>
+                            <asp:TextBox ID="drogas" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="fuma" runat="server"></label>
+                            <asp:TextBox ID="fuma" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="cigarroDia" runat="server"></label>
+                            <asp:TextBox ID="cigarroDia" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="cigarroPeriodo" runat="server"></label>
+                            <asp:TextBox ID="cigarroPeriodo" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -308,17 +425,33 @@
                         <th>39-Shock anafiláctico</th>
                     </tr>
                     <tr>
-                        <td>
-                            <label id="alcohol" runat="server"></label>
+                      <td>
+                            <label>
+                                <input class="with-gap" name="group20" runat="server" type="radio" id="alcoholS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group20" runat="server" type="radio" id="alcoholN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                         <td>
-                            <label id="frecuenciaAlcohol" runat="server"></label>
+                            <asp:TextBox ID="frecuenciaAlcohol" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="cicatrices" runat="server"></label>
+                            <asp:TextBox ID="cicatriz" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="shock" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group21" runat="server" type="radio" id="shockS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group21" runat="server" type="radio" id="shockN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                     </tr>
                     <tr>
@@ -330,14 +463,14 @@
                         <th>Frecuencia respiratoria</th>
                     </tr>
                     <tr>
-                        <td>
-                            <label id="arterialSignos" runat="server"></label>
+                        <td class="auto-style1">
+                            <asp:TextBox ID="arterialSignos" runat="server"></asp:TextBox>
                         </td>
-                        <td>
-                            <label id="pulsoSignos" runat="server"></label>
+                        <td class="auto-style1">
+                            <asp:TextBox ID="pulsoSignos" runat="server"></asp:TextBox>
                         </td>
-                        <td>
-                            <label id="FrecuenciaSignos" runat="server"></label>
+                        <td class="auto-style1">
+                            <asp:TextBox ID="frecuenciaSignos" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -351,20 +484,36 @@
                         <th>Abortos</th>
                     </tr>
                     <tr>
-                        <td>
-                            <label id="embarazo" runat="server"></label>
+                         <td>
+                            <label>
+                                <input class="with-gap" name="group23" runat="server" type="radio" id="embarazadaS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group23" runat="server" type="radio" id="embarazadaN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                         <td>
-                            <label id="semanas" runat="server"></label>
+                            <asp:TextBox ID="semanas" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="anticonceptivos" runat="server"></label>
+                            <label>
+                                <input class="with-gap" name="group24" runat="server" type="radio" id="anticoceptivosS" onclick="" />
+                                <span>Sí</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" name="group24" runat="server" type="radio" id="anticoceptivosN" onclick="" />
+                                <span>No</span>
+                            </label>
+
                         </td>
                         <td>
-                            <label id="gineco" runat="server"></label>
+                            <asp:TextBox ID="gineco" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <label id="abortos" runat="server"></label>
+                            <asp:TextBox ID="abortos" runat="server"></asp:TextBox>   
                         </td>
                     </tr>
                     <tr>
@@ -373,14 +522,23 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="cesareas" runat="server"></label>
+                            <asp:TextBox ID="cesareas" runat="server"></asp:TextBox>
                         </td>
                         <td colspan="4">
-                            <label id="observacionesMujer" runat="server"></label>
+                            <asp:TextBox ID="observacionesMujer" runat="server"></asp:TextBox>
                         </td>
                     </tr>
-                </table>
 
+                </table>
+                  <div class="row">
+
+                    <div class="input-field col s4">
+                        <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
+                    </div>
+                    <div class="input-field col s4">
+                        <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
+                    </div>
+                </div>
                 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
                 <script type="text/javascript" src="../js/quicksearch.js"></script>
 
