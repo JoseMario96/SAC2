@@ -36,9 +36,13 @@ namespace SAC.formularios
             GridView1.DataBind();
 
             string script = @"<script type='text/javascript'>
-                document.getElementById('formularioP').style.display = 'block';
+                document.getElementById('formularioP').style.display = 'block' ;
+
+document.getElementById('formularioP').scrollIntoView();
+                   
                 document.getElementById('Botones').style.display = 'block';
             </script>";
+
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
 
 
@@ -163,7 +167,9 @@ namespace SAC.formularios
                 {
                     row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
                     row.ToolTip = "Click to select this row.";
+
                 }
+
             }
 
         }
