@@ -121,11 +121,16 @@ namespace SAC.metodos
                     {
                         paciente[i] = busqueda.GetString(i);
                     }
-                    
+
                 }
             }
             con.cerrar_Conexion();
             return paciente;
+        }
+        public void actualizarExpediente(String ced, String nom1, String nom2, String ape1, String ape2, String gen, String tel, String cel, String dir, String corr, String fechN, String fechI)
+        {
+            MySqlDataReader actualizar = consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_expediente` SET `enfermedadesCardiacos`='no', `presionArterial`='si', `fiebreReumatica`='no', `VIH+SIDA`='no', `derrame`='no', `anemia`='si', `transfusionSangre`='no', `fueraDelPais`='si', `lugarFueraDelPais`='si', `tiempoFueraDelPais`='no', `moretes`='no', `problemasDeRinnon`='tengo 2', `problemasGastrointestinales`='gas', `problemasVision`='no', `tratamientosCorticoesteroides`='no', `diabetes`='no', `epilepsia`='no', `enfermedadesRespiratorias`='no', `radioterapiaQuimioterapia`='si', `reumatismo`='si', `problemasHepaticos`='no', `virusHerpes`='si', `perdidaDePeso`='no', `aumentoDePeso`='no', `artitris`='si', `tratamientoPsiquiatrico`='si', `problemaDeTiroides`='si', `enfermedadesTransmisionSexual`='si', `osteoporosis`='si', `migranna`='si', `tratamientoBifosfonados`='si', `consumeDrogas`='si', `fumador`='si', `cigarrosXdia`='si', `periodoFumado`='si', `bebedor`='si', `frecuenciaBebedor`='si', `cicatrices/tatuajes`='si', `shockAnafilactico`='si', `observacionExpediente`='si' WHERE `codigoExpediente`='1';", con.abrir_conexion()).ExecuteReader();
+            con.cerrar_Conexion();
         }
     }
 
