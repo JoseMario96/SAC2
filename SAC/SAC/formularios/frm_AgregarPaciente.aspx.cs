@@ -245,6 +245,7 @@ namespace SAC.formularios
                 direccion_encargado.Value = datos2[8];
                 parentezco.Value = datos2[9];
                 correo_encargado.Value = datos2[10];
+
                 // agregarP.agregarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargad.Text, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
 
                 agregarP.agregarPaciente2(cedula.Text, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargad.Text, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
@@ -254,8 +255,6 @@ namespace SAC.formularios
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
 
                 enviar = true;
-
-
             }
         }
 

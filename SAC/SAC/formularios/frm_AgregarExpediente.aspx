@@ -26,14 +26,14 @@
             <div class="row">
                 <div class="col s9"></div>
                 <div class="col s3">
-                    <input id="fechaEx" type="date" runat="server" name="fechaEx"  required />
-                    <label class="active" for="fecha_nacimiento" >Fecha</label>
+                    <input id="fechaEx" type="date" runat="server" name="fechaEx" required />
+                    <label class="active" for="fecha_nacimiento">Fecha</label>
                 </div>
 
             </div>
             <div class="row">
                 <div class="col s4">
-                    <asp:TextBox ID="cedulaEx" runat="server" AutoPostBack="true" class="validate" required onkeypress="return solonumeros(event)" OnTextChanged="cedulaEx_TextChanged" maxlength="14"></asp:TextBox>
+                    <asp:TextBox ID="cedulaEx" runat="server" AutoPostBack="true" class="validate" required onkeypress="return solonumeros(event)" OnTextChanged="cedulaEx_TextChanged" MaxLength="14"></asp:TextBox>
                     <label class="active" for="cedula">Cédula</label>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                         <div class="row">
                             <div class="col s12">
                                 <label>
-                                    <input class="with-gap" name="hmradi1" runat="server" type="radio" id="hmradi1" onclick="mostrar('cardiaco')" />
+                                    <input class="with-gap" name="hmradi1" runat="server" type="radio" id="hmradi1" onclick="uncheckRadio(this), mostrar('cardiaco')" />
                                     <span>1) Enfermedades o procedimientos cardíacos</span>
                                 </label>
                             </div>
@@ -62,26 +62,26 @@
                         <div class="row">
                             <div class="col s12">
                                 <label>
-                                    <input class="with-gap" name="hmradi2" runat="server" type="radio" id="hmradi2" onclick="mostrar('presion')" />
+                                    <input class="with-gap" name="hmradi2" runat="server" type="radio" id="hmradi2" onclick="uncheckRadio(this), mostrar('presion')" />
                                     <span>2) Problemas de presión arterial?</span>
                                 </label>
                             </div>
                             <div id="presion" style="display: none">
-                                <input id="hmrespu2" type="text" runat="server" class="validate" maxlength="44"/>
+                                <input id="hmrespu2" type="text" runat="server" class="validate" maxlength="44" />
                                 <label class="active" for="hmrespu2">Explique</label>
                             </div>
                         </div>
 
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi3" runat="server" type="radio" id="hmradi3" />
+                                <input class="with-gap" name="hmradi3" runat="server" type="radio" id="hmradi3" onclick="uncheckRadio(this)" />
                                 <span>3) Fiebre reumática</span>
                             </label>
                         </div>
 
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi4" runat="server" type="radio" id="hmradi4" />
+                                <input class="with-gap" name="hmradi4" runat="server" type="radio" id="hmradi4" onclick="uncheckRadio(this)" />
                                 <span>4) VIH+ o SIDA</span>
                             </label>
                         </div>
@@ -89,14 +89,14 @@
                         <div class="row">
                             <div class="col s6">
                                 <label>
-                                    <input class="with-gap" name="hmradi5" runat="server" type="radio" id="hmradi5" />
+                                    <input class="with-gap" name="hmradi5" runat="server" type="radio" id="hmradi5" onclick="uncheckRadio(this)" />
                                     <span>5) Accidente cerebrovascular (derrame)</span>
                                 </label>
                             </div>
 
                             <div class="col s6 ">
                                 <label>
-                                    <input class="with-gap" name="hmradi6" runat="server" type="radio" id="hmradi6" />
+                                    <input class="with-gap" name="hmradi6" runat="server" type="radio" id="hmradi6" onclick="uncheckRadio(this)" />
                                     <span>Anemia</span>
                                 </label>
                             </div>
@@ -104,7 +104,7 @@
 
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi7" runat="server" type="radio" id="hmradi7" />
+                                <input class="with-gap" name="hmradi7" runat="server" type="radio" id="hmradi7" onclick="uncheckRadio(this)" />
                                 <span>6) Transfusión de sangre</span>
                             </label>
                         </div>
@@ -144,7 +144,7 @@
 
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi8" runat="server" type="radio" id="hmradi8" />
+                                <input class="with-gap" name="hmradi8" runat="server" type="radio" id="hmradi8" onclick="uncheckRadio(this)" />
                                 <span>8) Aparición de equimosís (moretes)</span>
                             </label>
                         </div>
@@ -153,7 +153,7 @@
                             <div class="col 3">
                                 <p>
                                     <label>
-                                        <input class="with-gap" name="hmradi9" runat="server" type="radio" id="hmradi9" onclick="mostrar('rinon')" />
+                                        <input class="with-gap" name="hmradi9" runat="server" type="radio" id="hmradi9" onclick="uncheckRadio(this), mostrar('rinon')" />
                                         <span>9) Problemas de riñón</span>
 
                                     </label>
@@ -166,7 +166,7 @@
 
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi10" runat="server" type="radio" id="hmradi10" onclick="mostrar('gastro')" />
+                                <input class="with-gap" name="hmradi10" runat="server" type="radio" id="hmradi10" onclick="uncheckRadio(this), mostrar('gastro')" />
                                 <span>10) Problemas gastrointestinales</span>
                             </label>
 
@@ -178,73 +178,73 @@
 
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi11" runat="server" type="radio" id="hmradi11" />
+                                <input class="with-gap" name="hmradi11" runat="server" type="radio" id="hmradi11" onclick="uncheckRadio(this)" />
                                 <span>11) Problemas de visión</span>
                             </label>
                         </div>
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi12" runat="server" type="radio" id="hmradi12" />
+                                <input class="with-gap" name="hmradi12" runat="server" type="radio" id="hmradi12" onclick="uncheckRadio(this)" />
                                 <span>12) Tratamientos de corticoesteroides</span>
                             </label>
                         </div>
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi13" runat="server" type="radio" id="hmradi13" />
+                                <input class="with-gap" name="hmradi13" runat="server" type="radio" id="hmradi13" onclick="uncheckRadio(this)" />
                                 <span>13) Diabetes I Ó II </span>
                             </label>
                         </div>
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi14" runat="server" type="radio" id="hmradi14" />
+                                <input class="with-gap" name="hmradi14" runat="server" type="radio" id="hmradi14" onclick="uncheckRadio(this)" />
                                 <span>14) Epilepsia, convulsiones o desmayos</span>
                             </label>
                         </div>
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi15" runat="server" type="radio" id="hmradi15" />
+                                <input class="with-gap" name="hmradi15" runat="server" type="radio" id="hmradi15" onclick="uncheckRadio(this)" />
                                 <span>15) Enfermedades respiratorias (asma, sinusitis, tuberculosis, enfisema,EPOC)</span>
                             </label>
                         </div>
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi16" runat="server" type="radio" id="hmradi16" />
+                                <input class="with-gap" name="hmradi16" runat="server" type="radio" id="hmradi16" onclick="uncheckRadio(this)" />
                                 <span>16) Tratamientos con radioterapia y/o quimioterapia</span>
                             </label>
                         </div>
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi17" runat="server" type="radio" id="hmradi17" />
+                                <input class="with-gap" name="hmradi17" runat="server" type="radio" id="hmradi17" onclick="uncheckRadio(this)" />
                                 <span>17) Reumatismo</span>
                             </label>
                         </div>
 
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi18" runat="server" type="radio" id="hmradi18" onclick="mostrar('hepatitis')" />
+                                <input class="with-gap" name="hmradi18" runat="server" type="radio" id="hmradi18" onclick="uncheckRadio(this), mostrar('hepatitis')" />
                                 <span>18) Problemas hepáticos</span>
                             </label>
 
                             <div id="hepatitis" style="display: none">
-                                <input id="hmrespu7" type="text" runat="server" class="validate" maxlength="44"/>
+                                <input id="hmrespu7" type="text" runat="server" class="validate" maxlength="44" />
                                 <label class="active" for="hmrespu7">Explique</label>
                             </div>
                         </div>
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi19" runat="server" type="radio" id="hmradi19" />
+                                <input class="with-gap" name="hmradi19" runat="server" type="radio" id="hmradi19" onclick="uncheckRadio(this)" />
                                 <span>19) Virus del Herpes</span>
                             </label>
                         </div>
                         <div class="row">
                             <div class="col 3">
                                 <label>
-                                    <input class="with-gap" name="hmradi20" runat="server" type="radio" id="hmradi20" onclick="mostrar('perdida')" />
+                                    <input class="with-gap" name="hmradi20" runat="server" type="radio" id="hmradi20" onclick="uncheckRadio(this), mostrar('perdida')" />
                                     <span>20) Pérdida excesiva de peso</span>
                                 </label>
                             </div>
                             <div id="perdida" style="display: none" class="col 1">
-                                <input id="hmrespu8" type="text" runat="server" class="validate" maxlength="44" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
+                                <input id="hmrespu8" type="text" runat="server" class="validate" maxlength="44" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                                 <label class="active" for="hmrespu8">Kg</label>
                             </div>
                         </div>
@@ -252,32 +252,32 @@
                         <div class="row">
                             <div class="col 3">
                                 <label>
-                                    <input class="with-gap" name="hmradi20" runat="server" type="radio" id="hmradioPeso" onclick="mostrar(exceso)" />
+                                    <input class="with-gap" name="hmradi20" runat="server" type="radio" id="hmradioPeso" onclick="uncheckRadio(this), mostrar('exceso')" />
                                     <span>Aumento excesivo de peso</span>
                                 </label>
                             </div>
                             <div id="exceso" class="col 1" style="display: none">
-                                <input id="excesop" type="text" runat="server" class="validate" maxlength="44" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
+                                <input id="excesop" type="text" runat="server" class="validate" maxlength="44" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                                 <label class="active" for="hmrespu">Kg</label>
                             </div>
                         </div>
 
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi21" runat="server" type="radio" id="hmradi21" />
+                                <input class="with-gap" name="hmradi21" runat="server" type="radio" id="hmradi21" onclick="uncheckRadio(this)" />
                                 <span>21) Artritis</span>
                             </label>
                         </div>
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi22" runat="server" type="radio" id="hmradi22" />
+                                <input class="with-gap" name="hmradi22" runat="server" type="radio" id="hmradi22" onclick="uncheckRadio(this)" />
                                 <span>22) Tratamiento psiquiátrico</span>
                             </label>
                         </div>
                         <div class="row">
                             <div class="col s12">
                                 <label>
-                                    <input class="with-gap" name="hmradi23" runat="server" type="radio" id="hmradi23" onclick="mostrar('tiroides')" />
+                                    <input class="with-gap" name="hmradi23" runat="server" type="radio" id="hmradi23" onclick="uncheckRadio(this), mostrar('tiroides')" />
                                     <span>23) Problemas de tiroides?</span>
                                 </label>
                             </div>
@@ -289,19 +289,19 @@
                         </div>
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi24" runat="server" type="radio" id="hmradi24" />
+                                <input class="with-gap" name="hmradi24" runat="server" type="radio" id="hmradi24" onclick="uncheckRadio(this)" />
                                 <span>24) Enfermedades transmisión sexual</span>
                             </label>
                         </div>
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi25" runat="server" type="radio" id="hmradi25" />
+                                <input class="with-gap" name="hmradi25" runat="server" type="radio" id="hmradi25" onclick="uncheckRadio(this)" />
                                 <span>25) Osteoporosis</span>
                             </label>
                         </div>
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi26" runat="server" type="radio" id="hmradi26" />
+                                <input class="with-gap" name="hmradi26" runat="server" type="radio" id="hmradi26" onclick="uncheckRadio(this)" />
                                 <span>26) Migraña</span>
                             </label>
                         </div>
@@ -309,20 +309,20 @@
                         <div class="row">
                             <div class="col 3">
                                 <label>
-                                    <input class="with-gap" name="hmradi27" runat="server" type="radio" id="hmradi27" onclick="mostrar('bifos')" />
+                                    <input class="with-gap" name="hmradi27" runat="server" type="radio" id="hmradi27" onclick="uncheckRadio(this), mostrar('bifos')" />
                                     <span>27) Ha tomado o se encuentra en tratamiento con bifosfonados vía oral o endovenos?</span>
                                 </label>
                             </div>
 
                             <div class="col 3" id="bifos" style="display: none">
-                                <input id="hmrespu10" type="text" runat="server" class="validate" maxlength="44"/>
+                                <input id="hmrespu10" type="text" runat="server" class="validate" maxlength="44" />
                                 <label class="active" for="hmrespu10">Por cuánto tiempo</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12">
                                 <label>
-                                    <input class="with-gap" name="hmradi28" runat="server" type="radio" id="hmradi28" onclick="mostrar('drogas')" />
+                                    <input class="with-gap" name="hmradi28" runat="server" type="radio" id="hmradi28" onclick="uncheckRadio(this), mostrar('drogas')" />
                                     <span>28) Consume algún tipo de droga(s)? Cuál(es)?</span>
                                 </label>
                             </div>
@@ -335,7 +335,7 @@
                         <div class="row">
                             <div class="col 3">
                                 <label>
-                                    <input class="with-gap" name="hmradi29" runat="server" type="radio" id="hmradi29" onclick="mostrar('fuma')" />
+                                    <input class="with-gap" name="hmradi29" runat="server" type="radio" id="hmradi29" onclick="uncheckRadio(this), mostrar('fuma')" />
                                     <span>29) Fuma o fumó? Cuántos cigarros diarios? </span>
                                 </label>
                             </div>
@@ -345,7 +345,7 @@
                                     <label class="active" for="hmrespu12">Cuántos cigarrillos diarios?</label>
                                 </div>
                                 <div class="col 3">
-                                   <input id="hmrespu13" type="text" runat="server" class="validate" maxlength="44" />
+                                    <input id="hmrespu13" type="text" runat="server" class="validate" maxlength="44" />
                                     <label class="active" for="hmrespu13">Por cuánto tiempo?</label>
                                 </div>
                             </div>
@@ -354,7 +354,7 @@
                         <div class="row">
                             <div class="col 3">
                                 <label>
-                                    <input class="with-gap" name="hmradi30" runat="server" type="radio" id="hmradi30" onclick="mostrar('bebidas')" />
+                                    <input class="with-gap" name="hmradi30" runat="server" type="radio" id="hmradi30" onclick="uncheckRadio(this), mostrar('bebidas')" />
                                     <span>30) Bebidas alcohólocas? </span>
                                 </label>
                             </div>
@@ -368,7 +368,7 @@
                         <div class="row">
                             <div class="col 3">
                                 <label>
-                                    <input class="with-gap" name="hmradi31" runat="server" type="radio" id="hmradi31" onclick="mostrar('tatuajes')" />
+                                    <input class="with-gap" name="hmradi31" runat="server" type="radio" id="hmradi31" onclick="uncheckRadio(this), mostrar('tatuajes')" />
                                     <span>31) Cicatrices, tatuajes o señales particulares </span>
                                 </label>
                             </div>
@@ -379,11 +379,14 @@
                         </div>
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi32" runat="server" type="radio" id="hmradi32" />
+                                <input class="with-gap" name="hmradi32" runat="server" type="radio" id="hmradi32" onclick="uncheckRadio(this)" />
                                 <span>32) Shock anafiláctico</span>
                             </label>
                         </div>
-
+                        <div class="row">
+                            <input id="Text2" type="text" runat="server" class="validate" maxlength="44" />
+                            <label class="active" for="cedula">Observaciones generales</label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -396,13 +399,13 @@
                 <div class="row">
                     <div class="col s4">
                         <label>
-                            <input class="with-gap" name="smradi1" runat="server" type="radio" id="smradi1" onclick="mostrar('embarazo')" />
+                            <input class="with-gap" name="smradi1" runat="server" type="radio" id="smradi1" onclick="uncheckRadio(this), mostrar('embarazo')" />
                             <span>33) Está usted o cree estar embarazada?</span>
                         </label>
                     </div>
                     <div id="embarazo" class="row" style="display: none">
                         <div class="col 3">
-                            <input id="smrespu1" type="text" runat="server" class="validate"  maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
+                            <input id="smrespu1" type="text" runat="server" class="validate" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             <label class="active" for="smrespu1">Cuántas semanas aproximadamente?</label>
                         </div>
                     </div>
@@ -410,7 +413,7 @@
                 <div class="row">
                     <div class="col s12">
                         <label>
-                            <input class="with-gap" name="smradi2" runat="server" type="radio" id="smradi2" />
+                            <input class="with-gap" name="smradi2" runat="server" type="radio" id="smradi2" onclick="uncheckRadio(this)" />
                             <span>34) Está usted bajo tratamiento anticonceptivo u hormonal?</span>
                         </label>
                     </div>
@@ -419,7 +422,7 @@
                 <div class="row">
                     <div class="col s3">
                         <label>
-                            <input class="with-gap" name="smradi3" runat="server" type="radio" id="smradi3" onclick="mostrar('gine')" />
+                            <input class="with-gap" name="smradi3" runat="server" type="radio" id="smradi3" onclick="uncheckRadio(this), mostrar('gine')" />
                             <span>35) Ginecoobstétricos:</span>
                         </label>
                     </div>
@@ -430,15 +433,15 @@
                         </div>
                         <div class="col 1">
 
-                            <input id="smrespu3" type="text" runat="server" class="validate"  maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                            <input id="smrespu3" type="text" runat="server" class="validate" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             <label class="active" for="smrespu4"># abortos</label>
                         </div>
                         <div class="col 1">
-                            <input id="smrespu4" type="text" runat="server" class="validate"  maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
+                            <input id="smrespu4" type="text" runat="server" class="validate" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             <label class="active" for="smrespu5"># cesáreas</label>
                         </div>
                     </div>
-                    <input id="smrespu5" type="text" runat="server" class="validate" maxlength="44"  />
+                    <input id="smrespu5" type="text" runat="server" class="validate" maxlength="44" />
                     <label class="active" for="smrespu6">Observaciones</label>
                 </div>
 
@@ -468,10 +471,7 @@
                     </div>
                 </div>
             </div>
-             <div class="row">              
-                    <input id="Text2" type="text" runat="server" class="validate" maxlength="44" />
-                    <label class="active" for="cedula">Observaciones generales</label>
-            </div>
+
 
             <br />
             <br />
@@ -481,12 +481,41 @@
                 </div>
             </div>
         </form>
+
         <script type="text/javascript">
+
+            var era;
+            var previo = null;
+            var estado;
+
+            function uncheckRadio(rbutton) {
+                if (previo && previo != rbutton) {
+                    previo.era = false;
+                }
+
+                if (rbutton.checked == true && rbutton.era == true) {
+                    rbutton.checked = false;
+                    estado = false;
+
+                } else {
+                    rbutton.checked = true;
+                    estado = true;
+                }
+                rbutton.era = rbutton.checked;
+                previo = rbutton;
+            }
+
             function mostrar(variable) {
-                document.getElementById(variable).style.display = 'block';
+                if (estado == true) {
+                    document.getElementById(variable).style.display = 'block';
+                } else {
+                    document.getElementById(variable).style.display = 'none';
+                }
+
+
             }
             function ocultar() {
-                document.getElementById(variable).style.display = 'none';
+
             }
         </script>
 
@@ -508,24 +537,24 @@
             }
 
             function sololetras(e) {
-            key = e.keyCoden || e.which;
-            teclado = String.fromCharCode(key).toLowerCase();
-            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-            especiales = "8-37-38-46-164";
-            teclado_especial = false;
+                key = e.keyCoden || e.which;
+                teclado = String.fromCharCode(key).toLowerCase();
+                letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+                especiales = "8-37-38-46-164";
+                teclado_especial = false;
 
-            for (var i in especiales) {
-                if (key == especiales[i]) {
-                    teclado_especial = true; break;
+                for (var i in especiales) {
+                    if (key == especiales[i]) {
+                        teclado_especial = true; break;
+
+                    }
 
                 }
+                if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                    return false;
 
+                }
             }
-            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
-                return false;
-
-            }
-        }
         </script>
 
     </div>
