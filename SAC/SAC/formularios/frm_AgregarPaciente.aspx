@@ -134,9 +134,9 @@
                                 <ContentTemplate>
                                     <label class="active" for="cedula_encargado2">Cédula del encargado</label>
                                     <%--<input id="cedula_encargado2" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" />--%>
-                                    <asp:TextBox ID="cedula_encargad" class="validate" MaxLength="14" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="cedula_encargad" class="validate" MaxLength="14" runat="server" OnTextChanged="cedula_encargad_TextChanged" AutoPostBack="true"></asp:TextBox>
                                     <%--<asp:Button ID="verificarE" runat="server" Text="Button" OnClick="verificarE_Click" />--%>
-                                    <asp:Button ID="Verificar" runat="server" OnClick="Verificar_Click" Text="Verificar" />
+                         
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
