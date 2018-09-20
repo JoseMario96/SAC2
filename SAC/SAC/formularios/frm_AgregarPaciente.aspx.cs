@@ -12,6 +12,9 @@ namespace SAC.formularios
         metodos.metodosPaciente agregarP = new metodos.metodosPaciente();
         limpiar.limpiar limpieza = new limpiar.limpiar();
         public static Boolean enviar = false;
+        public static string tipo;
+        public static string generoEncargado;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -155,6 +158,12 @@ namespace SAC.formularios
             }
             else
             {
+                agregarP.agregarPaciente2(cedula.Text, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargad.Text, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
+                string insertar = @"<script type='text/javascript'>
+                alert('Se registro la información correctamente');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
+
             }
 
         }
@@ -166,12 +175,27 @@ namespace SAC.formularios
             Response.Redirect("frm_AgregarPaciente.aspx");
         }
 
-        protected void Verificar_Click(object sender, EventArgs e)
+        protected void cedula_TextChanged(object sender, EventArgs e)
+        {
+            if (agregarP.VerificarPaciente(cedula.Text) == true)
+            {
+                string insertar = @"<script type='text/javascript'>
+                alert('Ya existe este paciente');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
+                cedula.Text = "";
+                cedula.Focus();
+            }
+            else
+            {
+                nombre1.Focus();
+            }
+        }
+
+        protected void cedula_encargad_TextChanged(object sender, EventArgs e)
         {
             if (!cedula_encargad.Equals(""))
             {
-                string generoEncargado = "";
-                string tipo = "";
                 Boolean validar = false;
                 Boolean validar2 = false;
 
@@ -248,30 +272,12 @@ namespace SAC.formularios
 
                 // agregarP.agregarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargad.Text, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
 
-                agregarP.agregarPaciente2(cedula.Text, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargad.Text, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
-                string insertar = @"<script type='text/javascript'>
-                alert('Se registro la información correctamente');
-                </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
 
                 enviar = true;
             }
-        }
-
-        protected void cedula_TextChanged(object sender, EventArgs e)
-        {
-            if (agregarP.VerificarPaciente(cedula.Text) == true)
-            {
-                string insertar = @"<script type='text/javascript'>
-                alert('Ya existe este paciente');
-                </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
-                cedula.Text = "";
-                cedula.Focus();
-            }
             else
             {
-                nombre1.Focus();
+                nombre1_encargado.Focus();
             }
         }
     }
