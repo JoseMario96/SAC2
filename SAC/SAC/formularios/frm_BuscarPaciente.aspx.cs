@@ -14,11 +14,6 @@ namespace SAC.formularios
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            string insertar = @"<script type='text/javascript'>
-                alert('maeeeeeeeeee');
-                </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
-
 
             GridView1.DataSource = objeto.Paciente();
             GridView1.DataBind();
