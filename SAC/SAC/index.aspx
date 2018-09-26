@@ -23,7 +23,6 @@
     <meta name="twitter:card" content="" />
 
 
-
     <!-- Place favicon.ico and apple-touchm-icon.png in the root directory -->
     <link rel="shortcut icon" href="favicon.ico" />
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css' />
@@ -42,6 +41,17 @@
     <!-- Bootstrap  -->
     <link href="../css/bootstrap.css" rel="stylesheet" />
     <link href="../css/style.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#pop').click(function () {
+                if (!$('#iframe').length) {
+                    $('#po').html('<iframe id="iframe" src="http://google.com"></iframe>');
+                }
+            });
+        });
+    </script>
     <style>
         /* For demo purpose only */
 
@@ -62,7 +72,6 @@
             border-bottom-right-radius: 4px;
             -webkit-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
             -moz-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
-            /*-ms-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);*/
             box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
         }
 
@@ -153,33 +162,13 @@
                 outline: none;
             }
 
-        /*.modal-open {
-            width: 80%;
-            max-height: 80%;
-            height: 80%;
-            top: 0 !important;
-            color: #000000
-        }*/
-
-        .letra {
-            color: black
-        }
-
-        /*.imagen {
-            width: 100%;
-            height: 100%;
-            display: block;
-            margin: auto;
-            vertical-align: middle
-        }*/
-
         #popup, #popup1, #popup2, #popup3, #popup4, #popup5, #popup6 {
             visibility: hidden;
             opacity: 0;
             margin-top: -300px;
         }
 
-            #popup:target, #popup1:target, #popup2:target,  #popup3:target,  #popup4:target,  #popup5:target, #popup6:target    {
+            #popup:target, #popup1:target, #popup2:target, #popup3:target, #popup4:target, #popup5:target, #popup6:target {
                 visibility: visible;
                 opacity: 1;
                 background-color: rgba(0,0,0,0.8);
@@ -210,7 +199,7 @@
             right: 3px;
             background-color: rgb(255, 0, 0);
             padding: 7px 10px;
-            font-size: 20px;
+            font-size: 24px;
             text-decoration: none;
             line-height: 1;
             color: #fff;
@@ -231,6 +220,23 @@
                 width: 100%;
                 height: 100%;
             }
+
+        .espacio {
+            padding-top: 21%;
+        }
+
+        .abajo {
+            padding-bottom: 10%;
+        }
+
+        .letrasgrande {
+            font-size: 24px;
+        }
+
+        .centrar {
+            display: block;
+            margin: auto;
+        }
     </style>
 
     <!-- End demo purposes only -->
@@ -242,6 +248,8 @@
     <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+
+
 </head>
 <body>
     <header role="banner" id="fh5co-header">
@@ -305,7 +313,7 @@
             <div class="row row-bottom-padded-sm">
                 <div class="col-md-3 col-sm-6 col-xxs-12">
                     <a href="../images/agregar.png" class="fh5co-project-item">
-                        <img src="../images/agregar.png" alt="Image" class="imagen img-responsive" />
+                        <img src="../images/agregar.png" alt="Image" class="imagen img-responsive centrar"/>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Agregar</h2>
                         </div>
@@ -313,7 +321,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-xxs-12">
                     <a href="../images/actualizar.png" class="fh5co-project-item">
-                        <img src="../images/actualizar.png" alt="Image" class="imagen img-responsive" />
+                        <img src="../images/actualizar.png" alt="Image" class="imagen img-responsive centrar"/>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Actualizar</h2>
                         </div>
@@ -321,7 +329,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-xxs-12">
                     <a href="../images/buscar.png" class="fh5co-project-item">
-                        <img src="../images/buscar.png" alt="Image" class="imagen img-responsive" />
+                        <img src="../images/buscar.png" alt="Image" class="imagen img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Buscar</h2>
                         </div>
@@ -330,7 +338,7 @@
 
                 <div class="col-md-3 col-sm-6 col-xxs-12">
                     <a href="../images/eliminar.png" class="fh5co-project-item">
-                        <img src="../images/eliminar.png" alt="Image" class="imagen img-responsive" />
+                        <img src="../images/eliminar.png" alt="Image" class="imagen img-responsive centrar"/>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Eliminar</h2>
                         </div>
@@ -353,39 +361,19 @@
                 </div>
             </div>
 
-            <%--Agregar--%>
-            <%-- <a href="javascript:popUp('frm_AgregarPaciente.aspx')" class="modal-trigger fh5co-project-item" id="boton">
-                        <center><img src="../images/agregar.png" alt="Image" class="img-responsive "/></center>
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Agregar</h2>
-                        </div>
-                    </a>--%>
-            <%--  <div id="modal1" class="modal modal-content letra">
-
-                     <div id="cargaexterna">--%>
-            <%--<iframe width="800" height="800" src="frm_AgregarPaciente.aspx"></iframe>--%>
-
-            <%--  <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat letra ">Agree</a>
-
-
-                        row col-xxs-12
-                        col-md-4
-
-                        </div>--%>
             <div class="row row-bottom-padded-sm">
                 <div class="col-md-3 col-xs-12">
-                    <a href="#popup" class="popup-link fh5co-project-item">
-                        <img src="../images/agregar.png" alt="Image" class="img-responsive " />
-                        <div class="fh5co-text">
+                    <a href="#popup" class="popup-link fh5co-project-item" onclick='document.getElementById("agregarP").src="formularios/frm_AgregarPaciente.aspx";'>
+                        <img src="../images/agregar.png" alt="Image" class="img-responsive centrar"/>
+                        <div class=" letrasgrande">
                             <h2 style="text-align: center;">Agregar</h2>
                         </div>
                     </a>
                     <div class="modal-wrapper" id="popup">
                         <div class="popup-contenedor">
-                            <div class="responsiveContent">
-                                <iframe src="formularios/frm_AgregarPaciente.aspx"></iframe>
-                                <a class="popup-cerrar" href="#work">X</a>
+                            <div id="po" class="responsiveContent">
+                                <iframe id="agregarP"></iframe>
+                                <a class="popup-cerrar" href="#fh5co-work">X</a>
                             </div>
                         </div>
                     </div>
@@ -394,17 +382,17 @@
                 </div>
                 <%--Actualizar--%>
                 <div class="col-md-3 col-xs-12">
-                    <a href="#popup1" class="popup-link fh5co-project-item ">
-                        <img src="../images/actualizar.png" alt="Image" class="img-responsive" />
-                        <div class="fh5co-text">
+                    <a href="#popup1" class="popup-link fh5co-project-item " onclick='document.getElementById("actuP").src="formularios/frm_ActualizarPaciente.aspx";'>
+                        <img src="../images/actualizar.png" alt="Image" class="img-responsive centrar"/>
+                        <div class="letrasgrande">
                             <h2 style="text-align: center;">Actualizar</h2>
                         </div>
                     </a>
                     <div id="popup1" class="modal-wrapper">
                         <div class="popup-contenedor">
-                            <div class="responsiveContent">
-                                <iframe src="formularios/frm_ActualizarPaciente.aspx"></iframe>
-                                <a class="popup-cerrar" href="#work">X</a>
+                            <div id="actualizar" class="responsiveContent">
+                                <iframe id="actuP"></iframe>
+                                <a class="popup-cerrar" href="#fh5co-work">X</a>
                             </div>
                         </div>
                     </div>
@@ -412,18 +400,18 @@
                 <div class="col-md-1">
                 </div>
                 <%--Buscar--%>
-                <div class="col-md-3 col-xs-12">
-                    <a href="#popup2" class="popup-link fh5co-project-item ">
-                        <img src="../images/buscar.png" alt="Image" class="img-responsive" />
-                        <div class="fh5co-text">
+                <div class="col-md-3 col-xs-12 abajo">
+                    <a href="#popup2" class="popup-link fh5co-project-item " onclick='document.getElementById("buscarP").src="formularios/frm_BuscarPaciente.aspx";'>
+                        <img src="../images/buscar.png" alt="Image" class="img-responsive centrar"/>
+                        <div class="letrasgrande">
                             <h2 style="text-align: center;">Buscar</h2>
                         </div>
                     </a>
                     <div id="popup2" class="modal-wrapper">
                         <div class="popup-contenedor">
                             <div class="responsiveContent">
-                                <iframe src="formularios/frm_BuscarPaciente.aspx"></iframe>
-                                <a class="popup-cerrar" href="#work">X</a>
+                                <iframe id="buscarP"></iframe>
+                                <a class="popup-cerrar" href="#fh5co-work">X</a>
                             </div>
                         </div>
                     </div>
@@ -445,10 +433,12 @@
                     </div>
                 </div>
             </div>
-            <%--Agregar--%>
-            <div class="col-md-3 col-sm-6 col-xxs-12">
-                 <a href="#popup3" class="popup-link fh5co-project-item ">
-                        <img src="../images/agregar.png" alt="Image" class="img-responsive" />
+            <div class="row">
+
+                <%--Agregar--%>
+                <div class="col-md-3 ">
+                    <a href="#popup3" class="popup-link fh5co-project-item" onclick='document.getElementById("agregarE").src="formularios/frm_AgregarExpediente.aspx";'>
+                        <img src="../images/agregar.png" alt="Image" class="img-responsive centrar"/>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Agregar</h2>
                         </div>
@@ -456,16 +446,16 @@
                     <div id="popup3" class="modal-wrapper">
                         <div class="popup-contenedor">
                             <div class="responsiveContent">
-                                <iframe src="formularios/frm_AgregarExpediente.aspx"></iframe>
-                                <a class="popup-cerrar" href="#testimonials">X</a>
+                                <iframe id="agregarE"></iframe>
+                                <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
                             </div>
                         </div>
                     </div>
-            </div>
-            <%--Actualizar--%>
-            <div class="col-md-3 col-sm-6 col-xxs-12">
-                <a href="#popup4" class="popup-link fh5co-project-item ">
-                        <img src="../images/actualizar.png" alt="Image" class="img-responsive" />
+                </div>
+                <%--Actualizar--%>
+                <div class="col-md-3">
+                    <a href="#popup4" class="popup-link fh5co-project-item " onclick='document.getElementById("actuE").src="formularios/frm_ActualizarExpediente.aspx";'>
+                        <img src="../images/actualizar.png" alt="Image" class="img-responsive centrar"/>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Actualizar</h2>
                         </div>
@@ -473,16 +463,16 @@
                     <div id="popup4" class="modal-wrapper">
                         <div class="popup-contenedor">
                             <div class="responsiveContent">
-                                <iframe src="formularios/frm_ActualizarPaciente.aspx"></iframe>
-                                <a class="popup-cerrar" href="#testimonials">X</a>
+                                <iframe id="actuE"></iframe>
+                                <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
                             </div>
                         </div>
                     </div>
-            </div>
-            <%--Buscar--%>
-            <div class="col-md-3 col-sm-6 col-xxs-12">
-                <a href="#popup5" class="popup-link fh5co-project-item ">
-                        <img src="../images/buscar.png" alt="Image" class="img-responsive" />
+                </div>
+                <%--Buscar--%>
+                <div class="col-md-3">
+                    <a href="#popup5" class="popup-link fh5co-project-item " onclick='document.getElementById("buscarE").src="formularios/frm_BuscarExpediente.aspx";'>
+                        <img src="../images/buscar.png" alt="Image" class="img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Buscar</h2>
                         </div>
@@ -490,16 +480,17 @@
                     <div id="popup5" class="modal-wrapper">
                         <div class="popup-contenedor">
                             <div class="responsiveContent">
-                                <iframe src="formularios/frm_BuscarExpediente.aspx"></iframe>
-                                <a class="popup-cerrar" href="#testimonials">X</a>
+                                <iframe id="buscarE"></iframe>
+                                <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
                             </div>
                         </div>
                     </div>
-            </div>
-            <%--Reporte--%>
-            <div class="col-md-3 col-sm-6 col-xxs-12">
-                <a href="#popup6" class="popup-link fh5co-project-item ">
-                        <img src="../images/reporte.png" alt="Image" class="img-responsive" />
+                </div>
+
+                <%--Reporte--%>
+                <div class="col-md-3 ">
+                    <a href="#popup6" class="popup-link fh5co-project-item ">
+                        <img src="../images/reporte.png" alt="Image" class="img-responsive centrar"/>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Reporte</h2>
                         </div>
@@ -507,11 +498,51 @@
                     <div id="popup6" class="modal-wrapper">
                         <div class="popup-contenedor">
                             <div class="responsiveContent">
-                                <iframe src="formularios/frm_BuscarExpediente.aspx"></iframe>
-                                <a class="popup-cerrar" href="#testimonials">X</a>
+                                <%--<iframe src="formularios/frm_BuscarExpediente.aspx"></iframe>--%>
+                                <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
                             </div>
                         </div>
                     </div>
+                </div>
+
+            </div>
+
+            <div class="row espacio">
+                <div class="col-md-3"></div>
+                <div class="col-md-3">
+                    <a href="#popup6" class="popup-link fh5co-project-item ">
+                        <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive centrar" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Odontograma</h2>
+                        </div>
+                    </a>
+                    <%-- <div id="popup6" class="modal-wrapper">
+                        <div class="popup-contenedor">
+                            <div class="responsiveContent">
+                                <iframe src="formularios/frm_BuscarExpediente.aspx"></iframe>
+                                <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
+                            </div>
+                        </div>
+                    </div>--%>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-3">
+                    <a href="#popup6" class="popup-link fh5co-project-item ">
+                        <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive centrar" />
+                        <div class="fh5co-text">
+
+                            <h2 style="text-align: center;">Tratamientos</h2>
+                        </div>
+                    </a>
+                    <%-- <div id="popup6" class="modal-wrapper">
+                        <div class="popup-contenedor">
+                            <div class="responsiveContent">
+                                <iframe src="formularios/frm_BuscarExpediente.aspx"></iframe>
+                                <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
+                            </div>
+                        </div>
+                    </div>--%>
+                </div>
             </div>
         </div>
     </section>
@@ -646,7 +677,7 @@
             <div class="row row-bottom-padded-sm">
                 <div class="col-md-3 col-sm-6 col-xxs-12">
                     <a href="../images/agregar.png" class="fh5co-project-item">
-                        <img src="../images/agregar.png" alt="Image" class="imagen img-responsive" />
+                        <img src="../images/agregar.png" alt="Image" class="imagen img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Agregar</h2>
                         </div>
@@ -654,7 +685,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-xxs-12">
                     <a href="../images/actualizar.png" class="fh5co-project-item">
-                        <img src="../images/actualizar.png" alt="Image" class="imagen img-responsive" />
+                        <img src="../images/actualizar.png" alt="Image" class="imagen img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Actualizar</h2>
                         </div>
@@ -663,7 +694,7 @@
 
                 <div class="col-md-3 col-sm-6 col-xxs-12">
                     <a href="../images/buscar.png" class="fh5co-project-item">
-                        <img src="../images/buscar.png" alt="Image" class="imagen img-responsive" />
+                        <img src="../images/buscar.png" alt="Image" class="imagen img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Buscar</h2>
                         </div>
@@ -672,7 +703,7 @@
 
                 <div class="col-md-3 col-sm-6 col-xxs-12">
                     <a href="../images/eliminar.png" class="fh5co-project-item">
-                        <img src="../images/eliminar.png" alt="Image" class="imagen img-responsive" />
+                        <img src="../images/eliminar.png" alt="Image" class="imagen img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Eliminar</h2>
                         </div>
@@ -761,6 +792,8 @@
     <script src="../js/materialize.js"></script>
 
     <script src="../js/main.js"></script>
+
+
 
     <%--    <script type="text/javascript">
         function popUp(URL) {

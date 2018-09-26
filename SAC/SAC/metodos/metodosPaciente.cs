@@ -77,7 +77,7 @@ namespace SAC.metodos
         }
         public void actualizarPaciente(String ced, String nom1, String nom2, String ape1, String ape2, String gen, String tel, String cel, String dir, String corr, String fechN, String fechI)
         {
-            MySqlDataReader actualizar = consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_paciente` SET `nombre1Paciente`='" + nom1 + "', `nombre2Paciente`='" + nom2 + "', `apellido1Paciente`='" + ape1 + "', `apellido2Paciente`='" + ape2 + "', `generoPaciente`='" + gen + "', `telefonoPaciente`='" + tel + "', `celularPaciente`='" + cel + "', `direccionPaciente`='" + dir + "', `correoPaciente`='" + corr + "', `fechaNacimientoPaciente`='" + fechN + "', `fechaInscripcionPaciente`='" + fechI + "' WHERE `cedulaPaciente`='" + ced + "';", con.abrir_conexion()).ExecuteReader();
+            MySqlDataReader actualizar = consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_paciente` SET `nombre1Paciente`='" + nom1 + "', `nombre2Paciente`='" + nom2 + "', `apellido1Paciente`='" + ape1 + "', `apellido2Paciente`='" + ape2 + "', `generoPaciente`='" + gen + "', `telefonoPaciente`='" + tel + "', `celularPaciente`='" + cel + "', `direccionPaciente`='" + dir + "', `correoPaciente`='" + corr + "', `fechaNacimientoPaciente`='" + fechN + "', `fechaInscripcionPaciente`='" + fechI + "' WHERE `cedulaPaciente`='" + ced + "'", con.abrir_conexion()).ExecuteReader();
             con.cerrar_Conexion();
         }
 
@@ -137,7 +137,7 @@ namespace SAC.metodos
         //}
         public DataTable Paciente()
         {
-            string consulta = "SELECT cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente FROM tbl_paciente; ";
+            string consulta = "SELECT cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente FROM tbl_paciente";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())

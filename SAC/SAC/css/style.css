@@ -886,7 +886,7 @@ h1, h2, h3, h4, h5, h6 {
         -webkit-transform: rotate(-1.7deg);
         -o-transform: rotate(-1.7deg);
         -moz-transform: rotate(-1.7deg);
-        background-color: #fff; /* cambie*/
+        background-color: #fff;
         content: "";
         z-index: 3;
         display: inline-block;
@@ -904,6 +904,7 @@ h1, h2, h3, h4, h5, h6 {
 }
     #fh5co-work .section-heading h2 {
         color: #fff;
+        font-size: 24px;
     }
         #fh5co-work .section-heading h2:after {
             background: rgba(255, 255, 255, 0.3);
@@ -942,13 +943,13 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none !important;
 }
 #fh5co-work .fh5co-project-item .fh5co-text h2 {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
   margin: 0;
 }
 #fh5co-work .fh5co-project-item .fh5co-text span {
   color: #b3b3b3;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 400;
 }
 #fh5co-work .fh5co-project-item:hover, #fh5co-work .fh5co-project-item:focus {
