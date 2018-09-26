@@ -234,6 +234,7 @@
     <Compile Include="limpiar\limpiar.cs" />
     <Compile Include="metodos\Buscar.cs" />
     <Compile Include="metodos\metodosExpediente.cs" />
+    <Compile Include="metodos\metodosOdontograma.cs" />
     <Compile Include="metodos\metodosPaciente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
