@@ -37,9 +37,7 @@ namespace SAC.formularios
 
             string script = @"<script type='text/javascript'>
                 document.getElementById('formularioP').style.display = 'block' ;
-
-document.getElementById('formularioP').scrollIntoView();
-                   
+document.getElementById('formularioP').scrollIntoView();                  
                 document.getElementById('Botones').style.display = 'block';
             </script>";
 
@@ -202,7 +200,6 @@ document.getElementById('formularioP').scrollIntoView();
             }
             GridView1.HeaderRow.Parent.Controls.AddAt(1, row);
         }
-
 
         protected void Guardar_Click(object sender, EventArgs e)
         {

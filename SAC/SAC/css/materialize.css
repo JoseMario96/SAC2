@@ -2976,7 +2976,7 @@ table, th, td {
 table {
   width: 100%;
   display: table;
-  border-collapse: collapse;
+  /*border-collapse: collapse;*/
   border-spacing: 0;
 }
 
@@ -3020,7 +3020,7 @@ td, th {
 @media only screen and (max-width: 992px) {
   table.responsive-table {
     width: 100%;
-    border-collapse: collapse;
+    /*border-collapse: collapse;*/
     border-spacing: 0;
     display: block;
     position: relative;
@@ -4489,10 +4489,9 @@ a {
 }
 
 html {
-  line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  font-weight: normal;
-  color: rgba(0, 0, 0, 0.87);
+    line-height: 1.5;
+    font-family: Source Sans Pro", Arial, sans-serif; font-weight: normal";
+    color: rgba(0, 0, 0, 0.87);
 }
 
 @media only screen and (min-width: 0) {
@@ -6098,7 +6097,7 @@ button:focus {
 
 label {
   font-size: 0.8rem;
-  color: #9e9e9e;
+  color: black;
 }
 
 /* Text Inputs + Textarea

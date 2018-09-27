@@ -400,6 +400,7 @@ namespace SAC.formularios
                         embarazada = "no";
                     }
 
+
                     semanas.Text = datos[53];
 
                     if (datos[54].Equals("si"))
