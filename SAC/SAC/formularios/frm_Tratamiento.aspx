@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frm_tratamientos.aspx.cs" Inherits="SAC.formularios.frm_tratamientos" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frm_Tratamiento.aspx.cs" Inherits="SAC.formularios.frm_Tratamiento" %>
 
 <!DOCTYPE html>
 
@@ -6,14 +6,11 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="../css/materialize.css" rel="stylesheet" />
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/quicksearch.js"></script>
     <title></title>
 </head>
 <body style="margin: 5%;">
     <form id="form1" runat="server">
-
+        
         <div class="container">
             <header>
                 <h2>Mantenimiento de tratamientos</h2>
@@ -89,37 +86,37 @@
 
                     <br />
                     <br />
-                    <div id="camposModificar" style="display: block" tabindex="-1">
-                        <br />
-                        <br />
-                        Tipos de tratamientos
+                <div id="camposModificar" style="display: block" tabindex="-1">
+                    <br />
+                    <br />
+                    Tipos de tratamientos
         <br />
-                        Nuevo:
+                    Nuevo:
         <br />
-                        <asp:TextBox class="validate" ID="txt_codigoTipoAct" runat="server" Width="56px" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
-                        <asp:TextBox class="validate" ID="txt_nombreTipoAct" runat="server" Width="234px" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
-                        <br />
-                        Existentes:
+                    <asp:TextBox class="validate" ID="txt_codigoTipoAct" runat="server" Width="56px" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
+                    <asp:TextBox class="validate" ID="txt_nombreTipoAct" runat="server" Width="234px" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                    <br />
+                    Existentes:
         <br />
-                        <div class="col s6">
+                    <div class="col s6">
 
-                            <asp:DropDownList ID="DropDownList1" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento"></asp:DropDownList>
-                            <%--        <asp:SqlDataSource ID="dropdownlist" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="select nombreTipoTratamiento from tbl_tipotratamiento order by codigoTipoTratamiento"></asp:SqlDataSource>--%>
-                        </div>
-
-                        <br />
-                        <br />
-                        Tratamientos:
-        <br />
-                        <asp:TextBox class="validate" ID="txt_codigoTratamientoAct" runat="server" Width="56px" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
-                        <asp:TextBox class="validate" ID="txt_nombreTratamientoAct" runat="server" Width="234px" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
-                        <asp:TextBox class="validate" ID="txt_precioAct" runat="server" Width="79px" Placeholder="Precio" onkeypress="return solonumeros(event)"></asp:TextBox>
-                        <br />
-                        Descripción del tratamiento:<br />
-                        <textarea id="txt_descripcionAct" name="S1" rows="2" runat="server"></textarea>
-                        <br />
-                        <asp:Button class="waves-effect waves-light btn" ID="btn_actualizar" runat="server" Text="Actualizar" OnClick="btn_actualizar_Click" />
+                        <asp:DropDownList ID="DropDownList1" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento"></asp:DropDownList>
+                        <%--        <asp:SqlDataSource ID="dropdownlist" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="select nombreTipoTratamiento from tbl_tipotratamiento order by codigoTipoTratamiento"></asp:SqlDataSource>--%>
                     </div>
+
+                    <br />
+                    <br />
+                    Tratamientos:
+        <br />
+                    <asp:TextBox class="validate" ID="txt_codigoTratamientoAct" runat="server" Width="56px" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
+                    <asp:TextBox class="validate" ID="txt_nombreTratamientoAct" runat="server" Width="234px" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                    <asp:TextBox class="validate" ID="txt_precioAct" runat="server" Width="79px" Placeholder="Precio" onkeypress="return solonumeros(event)"></asp:TextBox>
+                    <br />
+                    Descripción del tratamiento:<br />
+                    <textarea id="txt_descripcionAct" name="S1" rows="2" runat="server"></textarea>
+                    <br />
+                    <asp:Button class="waves-effect waves-light btn" ID="btn_actualizar" runat="server" Text="Actualizar" OnClick="btn_actualizar_Click" />
+                </div>
                 </div>
 
 
@@ -141,7 +138,7 @@
                     </asp:GridView>
                     <table class="striped">
                         <tr>
-                            <th colspan="5" style="text-align: center">Tratamiento</th>
+                            <th colspan="5" style="text-align:center">Tratamiento</th>
                         </tr>
                         <tr>
                             <th>Código tratamiento</th>
@@ -150,33 +147,21 @@
                             <th colspan="2">Descripción tratamiento</th>
                         </tr>
                         <tr>
-                            <td>
-                                <label id="codigoTraEli" runat="server"></label>
-                            </td>
-                            <td>
-                                <label id="NombreTraEli" runat="server"></label>
-                            </td>
-                            <td>
-                                <label id="PrecioTraEli" runat="server"></label>
-                            </td>
-                            <td colspan="2">
-                                <label id="DescriTraEli" runat="server"></label>
-                            </td>
+                            <td><label id="codigoTraEli" runat="server"></label></td>
+                            <td><label id="NombreTraEli" runat="server"></label></td>
+                            <td><label id="PrecioTraEli" runat="server"></label></td>
+                            <td colspan="2"><label id="DescriTraEli" runat="server"></label></td>
                         </tr>
                         <tr>
-                            <th colspan="5" style="text-align: center">Tipo Tratamiento</th>
+                            <th colspan="5" style="text-align:center">Tipo Tratamiento</th>
                         </tr>
                         <tr>
                             <th>Código tipo tratamiento</th>
                             <th>Nombre tipo tratamiento</th>
                         </tr>
                         <tr>
-                            <td>
-                                <label id="codigoTipoTraEli" runat="server"></label>
-                            </td>
-                            <td>
-                                <label id="nombreTipoTraEli" runat="server"></label>
-                            </td>
+                            <td><label id="codigoTipoTraEli" runat="server"></label></td>
+                            <td><label id="nombreTipoTraEli" runat="server"></label></td>
                         </tr>
                     </table>
                     <br />
@@ -250,21 +235,6 @@
             }
         }
     </script>
-
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/quicksearch.js"></script>
-
-    <script type="text/javascript">
-        $(function () {
-            $('.search_textbox').each(function (i) {
-                $(this).quicksearch("[id*=GridView2] tr:not(:has(th))", {
-                    'testQuery': function (query, txt, row) {
-                        return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
+

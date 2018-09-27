@@ -66,13 +66,14 @@ namespace SAC.metodos
         }
         public DataTable Grid1()
         {
-            DataTable dt = new DataTable();
             string consulta = "Select tbl_tratamiento.codigoTratamiento, tbl_tratamiento.nombreTratamiento, tbl_tratamiento.precioTratamiento, tbl_tipotratamiento.nombreTipoTratamiento from tbl_tratamiento, tbl_tipotratamiento where tbl_tratamiento.codigoTipoTratamiento = tbl_tipotratamiento.codigoTipoTratamiento order by codigoTratamiento;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
-            da.Fill(dt);
-
-            return dt;
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
         }
         public String[] mostrarDatos(String codigo)
         {
