@@ -5,10 +5,9 @@
 <head runat="server">
     <meta charset="utf-8" />
     <link href="../css/materialize.min.css" rel="stylesheet" />
-    <title>Odontograma con html5</title>
+    <title></title>
     <script src="../js/jquery-1.7.2.min.js"></script>
     <link href="../css/jquery-ui-1.8.13.custom.css" rel="stylesheet" />
-
     <script src="../js/jquery-ui-1.8.13.custom.min.js"></script>
     <style>
         #myCanvas {
@@ -50,6 +49,8 @@
             });
         });
     </script>
+
+
 </head>
 <body>
     <form id="aspx" runat="server">
@@ -63,7 +64,6 @@
         <h1>Odontograma</h1>
         <br>
         <br>
-        <br>
         <div id="radio">
             <input type="radio" id="radio1" name="accion" value="carie" checked="checked" /><label for="radio1">Carie</label>
             <input type="radio" id="radio6" name="accion" value="sellante" /><label for="radio6">Sellante</label>
@@ -73,24 +73,25 @@
             <input type="radio" id="radio3" name="accion" value="borrar" /><label for="radio3">Borrar</label>
         </div>
         <br>
-        <div id="canvasesdiv" style="position: relative; width: 810px; height: 300px">
-            <canvas id="myCanvas" width="910" height="250" style="z-index: 1; position: absolute; left: 35%; top: 0px;"></canvas>
-            <canvas id="myCanvas2" width="910" height="250" style="z-index: 2; position: absolute; left: 35%; top: 0px;"></canvas>
-            <canvas id="myCanvas3" width="910" height="250" style="z-index: 3; position: absolute; left: 35%; top: 0px;"></canvas>
-            <canvas id="myCanvas4" width="910" height="250" style="z-index: 4; position: absolute; left: 35%; top: 0px;"></canvas>
+        <div id="canvasesdiv" style="position: relative; width: 890px; height: 200px">
+            <canvas id="myCanvas" width="890" height="200" style="z-index: 1; position: absolute; left: 25%; top: 0px;"></canvas>
+            <canvas id="myCanvas2" width="890" height="200" style="z-index: 2; position: absolute; left: 25%; top: 0px;"></canvas>
+            <canvas id="myCanvas3" width="890" height="200" style="z-index: 3; position: absolute; left: 25%; top: 0px;"></canvas>
+            <canvas id="myCanvas4" width="890" height="200" style="z-index: 4; position: absolute; left: 25%; top: 0px;"></canvas>
         </div>
-        <br />
-        <asp:Button ID="Guardar" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" />
-
-        <br />
         <div id="radio_seccion" style='display: none'>
             <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Seccion</label>
             <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
         </div>
-        <div id="radio_seccion2" style='display: none'>
-            <input type="radio" id="amalgamaO" name="amalgama" value="seccion" /><label for="radio_1">Amalgama</label>
-            <input type="radio" id="resinaO" name="resina" value="diente" /><label for="radio_2">Resina</label>
-        </div>
+        <br />
+        <asp:Button ID="Guardar" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" />
+
+        <%--        <div id="radio_seccion2" style='display: none'>
+            <input type="radio" id="amalgamaO" name="amalgama" value="seccion" /><label for="amalgamaO">Amalgama</label>
+            <input type="radio" id="resinaO" name="resina" value="diente" /><label for="resinaO">Resina</label>
+        </div>--%>
+
+
         <script>
             // Funcion para dibujar las lineas de cada diente
             function dibuja_contorno(context, inicio_x, inicio_y, med, separacion_x, separacion_y) {
@@ -416,7 +417,7 @@
                 ctx.stroke();
                 ctx.lineWidth = 1;
             }
-            // Funcion para marcar puente
+            // Funcion para borrar puente
             function borrar_diente(contexto, num_diente) {
                 ctx = contexto;
                 // Definiendo puntos de dibujo
@@ -469,35 +470,25 @@
                     iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
                     dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
                     /* Numero de diente */
-                    context.font = '10pt Calibri';
+                    context.font = '12pt Calibri';
                     context.textAlign = 'center';
                     context.fillStyle = 'blue';
                     sec--;
                     context.fillText(sec, iniciar_x + (medida / 2), (iniciar_y / 2) + 5);
                 }
                 else {
-                    if (bandera == 0) {
-                        bandera = 1;
-                        iniciar_x = (x * medida) + (separacion_x2 * x) + separacion_x2;
-                        dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x2, 10);
-                        /* Numero de diente */
-                        context.font = '10pt Calibri';
-                        context.textAlign = 'center';
-                        context.fillStyle = 'blue';
-                        context.fillText(sec2+1, iniciar_x + (medida / 2), (iniciar_y / 2) + 5);
-                    }
-                    else {
-                        separacion_x2 = 15;
-                        iniciar_x = (x * medida) + (separacion_x2 * x) + separacion_x2;
-                        dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x2, 10);
-                        /* Numero de diente */
-                        context.font = '10pt Calibri';
-                        context.textAlign = 'center';
-                        context.fillStyle = 'blue';
-                        sec2++;
-                        context.fillText(sec2+1, iniciar_x + (medida / 2), (iniciar_y / 2) + 5);
-                    }
-                   
+
+                    separacion_x2 = 15;
+                    iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
+                    dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
+                    /* Numero de diente */
+                    context.font = '12pt Calibri';
+                    context.textAlign = 'center';
+                    context.fillStyle = 'blue';
+                    sec2++;
+                    context.fillText(sec2, iniciar_x + (medida / 2), (iniciar_y / 2) + 5);
+                    //}
+
                 }
 
             }
@@ -505,18 +496,25 @@
             iniciar_x = 0;
             iniciar_y = medida + 100;
             for (x = 0; x < 16; x++) {
-                iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
-                dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
-                /* Numero de diente */
-                context.font = '10pt Calibri';
-                context.textAlign = 'center';
-                context.fillStyle = 'blue';
+
                 if (sec3 > 41) {
+                    iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
+                    dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
+                    /* Numero de diente */
+                    context.font = '12pt Calibri';
+                    context.textAlign = 'center';
+                    context.fillStyle = 'blue';
                     sec3--;
                     context.fillText(sec3, iniciar_x + (medida / 2), (iniciar_y - 10) + 5);
                 }
                 else {
-
+                    separacion_x2 = 15;
+                    iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
+                    dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
+                    /* Numero de diente */
+                    context.font = '12pt Calibri';
+                    context.textAlign = 'center';
+                    context.fillStyle = 'blue';
                     sec4++;
                     context.fillText(sec4, iniciar_x + (medida / 2), (iniciar_y - 10) + 5);
                 }
@@ -540,7 +538,7 @@
             //canvas.addEventListener("mousedown", getPosition, false);
 
             function getPosition(event) {
-                var x = event.x - 285;
+                var x = event.x - 225;
                 var y = event.y;
                 //alert(y);
                 //alert(x);
@@ -569,7 +567,8 @@
                     accion = 'puente';
                 }
                 else if (seleccion == 'sellante') {
-                    accion = 'sellante';
+                    color = 'black';
+                    accion = 'seccion';
                 }
                 else if (seleccion == 'borrar') {
                     accion = 'borrar';
@@ -757,6 +756,10 @@
                     } else if (color == 'blue') {
                         cod = diente + '-' + seccion + '-' + '2';
                         accion_g = 2;
+                    }
+                    else if (color == 'black') {
+                        cod = diente + '-' + seccion + '-' + '5';
+                        accion_g = 5;
                     };
                     if (cod && !localStorage.getItem(cod)) {
                         new_array = [diente, seccion, accion_g, Date.now(), 0];
@@ -844,7 +847,7 @@
             //dibuja_seccion(context, num_diente, seccion, color)
             //Marca la posicion exacta del mouse
             function Marcar(event) {
-                var x = event.x - 285;
+                var x = event.x - 225;
                 var y = event.y;
                 var canvas2 = document.getElementById("myCanvas2");
                 var div_can = document.getElementById("canvasesdiv");
@@ -893,6 +896,9 @@
                     else if (accion == 'restauracion') {
                         seleccion = 'seccion';
                     }
+                    else if (accion == 'sellante') {
+                        seleccion = 'seccion';
+                    }
                     else if (accion == 'extraccion') {
                         seleccion = 'diente';
                     }
@@ -932,21 +938,21 @@
                         if (seccion) {
                             //alert(seccion);
                             color = 'yellow';
-                            ctx3.clearRect(0, 0, 810, 300);
+                            ctx3.clearRect(0, 0, 910, 200);
                             marcar_seccion(ctx3, diente, seccion, color);
                             //alert(seccion);
                         } else {
                             //ctx2.fillStyle = "white";
                             //ctx2.fillRect(0, 0, 810, 300);
-                            ctx3.clearRect(0, 0, 810, 300);
+                            ctx3.clearRect(0, 0, 910, 200);
                         }
                     }
                     else if (seleccion == 'diente') {
-                        ctx3.clearRect(0, 20, 810, 300);
+                        ctx3.clearRect(0, 20, 910, 200);
                         marcar_diente(ctx3, diente, 'yellow');
                     }
                 } else {
-                    ctx3.clearRect(0, 0, 810, 300);
+                    ctx3.clearRect(0, 0, 910, 200);
                 }
 
                 //dibuja_contorno(canvas, inicio_x, inicio_y, med, separacion_x, separacion_y)
@@ -975,6 +981,9 @@
                             dibuja_seccion(ctx2, item[0], item[1], color);
                         } else if (acc == 3) {
                             marcar_extraccion(ctx2, item[0], 'black');
+                        } else if (acc == 5) {
+                            color = 'black';
+                            dibuja_seccion(ctx2, item[0], item[1], color);
                         }
                     }
                 }
