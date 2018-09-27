@@ -5643,6 +5643,8 @@ body.keyboard-focused .dropdown-content li:focus {
   z-index: 1;
   -webkit-transition: .3s ease-out;
   transition: .3s ease-out;
+    top: -1px;
+    left: 0px;
 }
 
 .waves-effect .waves-ripple {
@@ -6667,7 +6669,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
 
 /* Textarea */
 textarea {
-  width: 100%;
+  width: 59%;
   height: 3rem;
   background-color: transparent;
 }
@@ -7602,9 +7604,9 @@ input[type=range]::-ms-thumb {
   background-color: #2bbbad;
 }
 
-.sidenav li > a.btn-floating:hover {
-  background-color: #26a69a;
-}
+    .sidenav li > a.btn-floating:hover {
+        background-color: #26a69a;
+    }
 
 .sidenav li > a > i,
 .sidenav li > a > [class^="mdi-"], .sidenav li > a li > a > [class*="mdi-"],
