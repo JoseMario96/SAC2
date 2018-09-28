@@ -16,7 +16,7 @@ namespace SAC.formularios
         {
             try
             {
-                if (!Page.IsPostBack)
+                if (Page.IsPostBack)
 
                 {
 

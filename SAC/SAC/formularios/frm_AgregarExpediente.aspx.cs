@@ -14,10 +14,6 @@ namespace SAC.formularios
         protected void Page_Load(object sender, EventArgs e)
         {
             //fechaEx.Focus();
-            if (IsPostBack)
-            {
-
-            }
         }
 
         //Este método agrega expedientes
@@ -220,7 +216,6 @@ namespace SAC.formularios
                 frecuencia = svrespu3.Value;
             }
 
-
             if (hmsi.Checked || hmno.Checked)
             {
                 objeto.agregarExpediente(cedulaEx.Text, fechaEx.Value, pregunta1, pregunta2, pregunta3, pregunta4, pregunta5, anemia, pregunta6, pregunta7, donde, cuanto, pregunta8, pregunta9, pregunta10, pregunta11, pregunta12, pregunta13, pregunta14, pregunta15, pregunta16, pregunta17, pregunta18, pregunta19, pregunta20, peso, pregunta21, pregunta22, pregunta23, pregunta24, pregunta25, pregunta26, pregunta27, pregunta28, pregunta29, cigarros, cuanto2, bebedor, pregunta30, pregunta31, pregunta32, Text2.Value);
@@ -230,48 +225,22 @@ namespace SAC.formularios
             }
         }
 
-
-
         protected void Guardar_Click(object sender, EventArgs e)
         {
             try
             {
                 agregar();
                 Response.Write("<script language='javascript'>window.alert('Expendiente guardado con exito');window.location='frm_AgregarExpediente.aspx';</script>");
-
             }
 
             catch
             {
-
                 string scrippt = @"<script type='text/javascript'>
                 alert('No se logró guardar la información');
                 </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scrippt, false);
             }
 
-        }
-        protected void ClearTextBoxes(Control p1)
-        {
-            foreach (Control ctrl in p1.Controls)
-            {
-                if (ctrl is TextBox)
-                {
-                    TextBox t = ctrl as TextBox;
-
-                    if (t != null)
-                    {
-                        t.Text = String.Empty;
-                    }
-                }
-                else
-                {
-                    if (ctrl.Controls.Count > 0)
-                    {
-                        ClearTextBoxes(ctrl);
-                    }
-                }
-            }
         }
 
         protected void cedulaEx_TextChanged(object sender, EventArgs e)
