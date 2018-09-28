@@ -14,6 +14,10 @@ namespace SAC.formularios
         protected void Page_Load(object sender, EventArgs e)
         {
             //fechaEx.Focus();
+            if (IsPostBack)
+            {
+
+            }
         }
 
         //Este método agrega expedientes
@@ -233,14 +237,10 @@ namespace SAC.formularios
             try
             {
                 agregar();
-                string script = @"<script type='text/javascript'>
-            alert('Expediente guardado con éxito');
-            </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-               
-                this.Controls.Clear();
-                Response.Redirect("frm_AgregarExpediente.aspx");
+                Response.Write("<script language='javascript'>window.alert('Expendiente guardado con exito');window.location='frm_AgregarExpediente.aspx';</script>");
+
             }
+
             catch
             {
 
@@ -250,6 +250,28 @@ namespace SAC.formularios
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scrippt, false);
             }
 
+        }
+        protected void ClearTextBoxes(Control p1)
+        {
+            foreach (Control ctrl in p1.Controls)
+            {
+                if (ctrl is TextBox)
+                {
+                    TextBox t = ctrl as TextBox;
+
+                    if (t != null)
+                    {
+                        t.Text = String.Empty;
+                    }
+                }
+                else
+                {
+                    if (ctrl.Controls.Count > 0)
+                    {
+                        ClearTextBoxes(ctrl);
+                    }
+                }
+            }
         }
 
         protected void cedulaEx_TextChanged(object sender, EventArgs e)

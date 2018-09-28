@@ -60,7 +60,6 @@
         <asp:HiddenField ID="seccionO" runat="server" />
         <asp:HiddenField ID="contextoO" runat="server" />
 
-
         <h1>Odontograma</h1>
         <br>
         <br>
@@ -84,6 +83,7 @@
             <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
         </div>
         <br />
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         <asp:Button ID="Guardar" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" />
 
         <%--        <div id="radio_seccion2" style='display: none'>
@@ -766,8 +766,8 @@
                         guardar = new_array.toLocaleString();
                         localStorage.setItem(cod, guardar);
                         dibuja_seccion(ctx2, diente, seccion, color);
-
-                        var colorO = document.getElementById('colorO');
+                        var colorO = [];
+                        colorO = document.getElementById('colorO');
                         colorO.value = color;
                         var dienteO = document.getElementById('dienteO');
                         dienteO.value = diente;
