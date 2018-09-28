@@ -216,7 +216,6 @@ namespace SAC.formularios
                 frecuencia = svrespu3.Value;
             }
 
-
             if (hmsi.Checked || hmno.Checked)
             {
                 objeto.agregarExpediente(cedulaEx.Text, fechaEx.Value, pregunta1, pregunta2, pregunta3, pregunta4, pregunta5, anemia, pregunta6, pregunta7, donde, cuanto, pregunta8, pregunta9, pregunta10, pregunta11, pregunta12, pregunta13, pregunta14, pregunta15, pregunta16, pregunta17, pregunta18, pregunta19, pregunta20, peso, pregunta21, pregunta22, pregunta23, pregunta24, pregunta25, pregunta26, pregunta27, pregunta28, pregunta29, cigarros, cuanto2, bebedor, pregunta30, pregunta31, pregunta32, Text2.Value);
@@ -226,26 +225,16 @@ namespace SAC.formularios
             }
         }
 
-
-
         protected void Guardar_Click(object sender, EventArgs e)
         {
             try
             {
                 agregar();
-
-                string script = @"<script type='text/javascript'>
-            alert('Expediente guardado con éxito');
-            </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-
-                //this.Controls.Clear();
-                //Response.Redirect("frm_AgregarExpediente.aspx");
-
+                Response.Write("<script language='javascript'>window.alert('Expendiente guardado con exito');window.location='frm_AgregarExpediente.aspx';</script>");
             }
+
             catch
             {
-
                 string scrippt = @"<script type='text/javascript'>
                 alert('No se logró guardar la información');
                 </script>";

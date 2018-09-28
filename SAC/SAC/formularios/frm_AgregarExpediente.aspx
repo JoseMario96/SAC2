@@ -23,6 +23,8 @@
     <div class="container">
         <%-- <div class="row">--%>
         <form runat="server">
+            <asp:ScriptManager runat="server" ID="sm">
+            </asp:ScriptManager>
             <div class="row">
                 <div class="col s9"></div>
                 <div class="col s3">
@@ -33,8 +35,12 @@
             </div>
             <div class="row">
                 <div class="col s4">
-                    <asp:TextBox ID="cedulaEx" runat="server" AutoPostBack="true" class="validate" required onkeypress="return solonumeros(event)" OnTextChanged="cedulaEx_TextChanged" MaxLength="14"></asp:TextBox>
-                    <label class="active" for="cedula">Cédula</label>
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:TextBox ID="cedulaEx" runat="server" AutoPostBack="true" class="validate" required onkeypress="return solonumeros(event)" OnTextChanged="cedulaEx_TextChanged" MaxLength="14"></asp:TextBox>
+                            <label class="active" for="cedula">Cédula</label>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             </div>
 

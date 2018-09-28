@@ -23,12 +23,12 @@ namespace SAC.formularios
         {
             try
             {
-                objeto.agregarOdontograma(colorO.Value, dienteO.Value, seccionO.Value, contextoO.Value);
-
-                string script = @"<script type='text/javascript'>
-                alert('Se ha insertado exitosamente');
-                </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                //objeto.agregarOdontograma(colorO.Value, dienteO.Value, seccionO.Value, contextoO.Value);
+                TextBox1.Text = colorO.Value;
+                //string script = @"<script type='text/javascript'>
+                //alert('Se ha insertado exitosamente');
+                //</script>";
+                //ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             }
             catch
             {
