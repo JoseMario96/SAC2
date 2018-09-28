@@ -11,7 +11,7 @@
     <script type="text/javascript" src="../js/quicksearch.js"></script>
     <style>
         #formularioP {
-            border: 1px solid gray;
+            border: 1px solid white;
         }
 
             #formularioP.highlighted {

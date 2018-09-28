@@ -233,13 +233,15 @@ namespace SAC.formularios
             try
             {
                 agregar();
+
                 string script = @"<script type='text/javascript'>
             alert('Expediente guardado con éxito');
             </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-               
-                this.Controls.Clear();
-                Response.Redirect("frm_AgregarExpediente.aspx");
+
+                //this.Controls.Clear();
+                //Response.Redirect("frm_AgregarExpediente.aspx");
+
             }
             catch
             {

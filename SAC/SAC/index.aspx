@@ -162,13 +162,13 @@
                 outline: none;
             }
 
-        #popup, #popup1, #popup2, #popup3, #popup4, #popup5, #popup6 {
+        #popup, #popup1, #popup2, #popup3, #popup4, #popup5, #popup6, #popup7, #popup8 {
             visibility: hidden;
             opacity: 0;
             margin-top: -300px;
         }
 
-            #popup:target, #popup1:target, #popup2:target, #popup3:target, #popup4:target, #popup5:target, #popup6:target {
+            #popup:target, #popup1:target, #popup2:target, #popup3:target, #popup4:target, #popup5:target, #popup6:target,  #popup7:target, #popup8:target {
                 visibility: visible;
                 opacity: 1;
                 background-color: rgba(0,0,0,0.8);
@@ -510,13 +510,13 @@
             <div class="row espacio">
                 <div class="col-md-3"></div>
                 <div class="col-md-3">
-                    <a href="#popup6" class="popup-link fh5co-project-item ">
+                    <a href="#popup7" class="popup-link fh5co-project-item ">
                         <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Odontograma</h2>
                         </div>
                     </a>
-                    <%-- <div id="popup6" class="modal-wrapper">
+                    <%-- <div id="popup7" class="modal-wrapper">
                         <div class="popup-contenedor">
                             <div class="responsiveContent">
                                 <iframe src="formularios/frm_BuscarExpediente.aspx"></iframe>
@@ -527,21 +527,21 @@
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-3">
-                    <a href="#popup6" class="popup-link fh5co-project-item ">
+                    <a href="#popup8" class="popup-link fh5co-project-item" onclick='document.getElementById("tratamientos").src="formularios/frm_tratamientos.aspx";'>
                         <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive centrar" />
                         <div class="fh5co-text">
 
                             <h2 style="text-align: center;">Tratamientos</h2>
                         </div>
                     </a>
-                    <%-- <div id="popup6" class="modal-wrapper">
+                   <div id="popup8" class="modal-wrapper">
                         <div class="popup-contenedor">
                             <div class="responsiveContent">
-                                <iframe src="formularios/frm_BuscarExpediente.aspx"></iframe>
+                                <iframe id="tratamientos"></iframe>
                                 <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
                             </div>
                         </div>
-                    </div>--%>
+                    </div>
                 </div>
             </div>
         </div>

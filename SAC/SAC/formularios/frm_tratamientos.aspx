@@ -13,29 +13,31 @@
 </head>
 <body style="margin: 5%;">
     <form id="form1" runat="server">
-
+        <asp:ScriptManager runat="server" ID="sm">
+        </asp:ScriptManager>
         <div class="container">
             <header>
                 <h2>Mantenimiento de tratamientos</h2>
             </header>
             <div class="navbar-fixed">
                 <nav style="background-color: rgba(0, 163, 162, 0.8)">
-                    <div class="nav-wrapper">
-                        <ul class="right hide-on-med-and-down">
-                            <li><a href="#" onclick="mostrarAgregar()">Agregar</a></li>
-                            <li><a href="#" onclick="mostrarActualizar()">Modificar</a></li>
-                            <li><a href="#" onclick="mostrarEliminar()">Eliminar</a></li>
-                        </ul>
+                    <div class="row">
+                        <div class="col s6"></div>
+                        <div class="col s2">
+                            <a href="#" style="color: black; font-weight: bold;" onclick="mostrarAgregar()">Agregar</a>
+                        </div>
+                        <div class="col s2">
+                            <a href="#" style="color: black; font-weight: bold;" onclick="mostrarActualizar()">Modificar</a>
+                        </div>
+                        <div class="col s1">
+                            <a href="#" style="color: black; font-weight: bold;" onclick="mostrarEliminar()">Eliminar</a>
+                        </div>
                     </div>
                 </nav>
             </div>
             <div class="row">
 
-
-
                 <%--Sección agregar--%>
-
-
 
                 <div id="seccionAgregar" style="display: block">
                     Tipos de tratamientos
@@ -75,7 +77,7 @@
                 <br />
                 <br />
                 <div class="row" id="seccionModificar" style="display: none">
-                    <div>
+                    <%--  <div>
                         <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                             runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                             <Columns>
@@ -85,7 +87,7 @@
                                 <asp:BoundField DataField="nombreTipoTratamiento" HeaderText="Tipo de tratamiento" ItemStyle-Width="100" />
                             </Columns>
                         </asp:GridView>
-                    </div>
+                    </div>--%>
 
                     <br />
                     <br />
@@ -127,18 +129,21 @@
 
                 <%--Sección Eliminar--%>
 
+                <div id="seccionEliminar" style="display: none">
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:GridView ID="GridView2" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
+                                runat="server" AutoGenerateColumns="False" OnDataBound="GridView2_DataBound" Height="174px" OnRowDataBound="GridView2_RowDataBound" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
+                                <Columns>
+                                    <asp:BoundField DataField="codigoTratamiento" HeaderText="Código del tratamiento" ItemStyle-Width="100" />
+                                    <asp:BoundField DataField="nombreTratamiento" HeaderText="Nombre" ItemStyle-Width="100" />
+                                    <asp:BoundField DataField="precioTratamiento" HeaderText="Precio" ItemStyle-Width="100" />
+                                    <asp:BoundField DataField="nombreTipoTratamiento" HeaderText="Tipo de tratamiento" ItemStyle-Width="100" />
+                                </Columns>
 
-
-                <div id="seccionEliminar" style="display: block">
-                    <asp:GridView ID="GridView2" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
-                        runat="server" AutoGenerateColumns="False" OnDataBound="GridView2_DataBound" Height="174px" OnRowDataBound="GridView2_RowDataBound" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
-                        <Columns>
-                            <asp:BoundField DataField="codigoTratamiento" HeaderText="Código del tratamiento" ItemStyle-Width="100" />
-                            <asp:BoundField DataField="nombreTratamiento" HeaderText="Nombre" ItemStyle-Width="100" />
-                            <asp:BoundField DataField="precioTratamiento" HeaderText="Precio" ItemStyle-Width="100" />
-                            <asp:BoundField DataField="nombreTipoTratamiento" HeaderText="Tipo de tratamiento" ItemStyle-Width="100" />
-                        </Columns>
-                    </asp:GridView>
+                            </asp:GridView>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                     <table class="striped">
                         <tr>
                             <th colspan="5" style="text-align: center">Tratamiento</th>
@@ -150,18 +155,36 @@
                             <th colspan="2">Descripción tratamiento</th>
                         </tr>
                         <tr>
+
                             <td>
-                                <label id="codigoTraEli" runat="server"></label>
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label id="codigoTraEli" runat="server"></label>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
                             </td>
                             <td>
-                                <label id="NombreTraEli" runat="server"></label>
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label id="NombreTraEli" runat="server"></label>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
                             </td>
                             <td>
-                                <label id="PrecioTraEli" runat="server"></label>
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label id="PrecioTraEli" runat="server"></label>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
                             </td>
                             <td colspan="2">
-                                <label id="DescriTraEli" runat="server"></label>
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label id="DescriTraEli" runat="server"></label>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
                             </td>
+
                         </tr>
                         <tr>
                             <th colspan="5" style="text-align: center">Tipo Tratamiento</th>
@@ -172,10 +195,18 @@
                         </tr>
                         <tr>
                             <td>
-                                <label id="codigoTipoTraEli" runat="server"></label>
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label id="codigoTipoTraEli" runat="server"></label>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
                             </td>
                             <td>
-                                <label id="nombreTipoTraEli" runat="server"></label>
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label id="nombreTipoTraEli" runat="server"></label>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
                             </td>
                         </tr>
                     </table>

@@ -16,27 +16,27 @@ namespace SAC.formularios
         {
             try
             {
-                if (!Page.IsPostBack)
-
+                if (!IsPostBack)
                 {
-
                     DropDownList2.DataSource = funciones.TipoTratamiento();
                     DropDownList2.DataBind();
                     DropDownList2.DataTextField = "nombreTipoTratamiento";
                     DropDownList2.Items.Insert(0, new ListItem("Tipos de tratamientos", "0"));
+               
                 }
 
-                GridView1.DataSource = funciones.Grid1();
-                GridView1.DataBind();
                 GridView2.DataSource = funciones.Grid1();
                 GridView2.DataBind();
+
+
+                //GridView1.DataSource = funciones.Grid1();
+                //GridView1.DataBind();
+
             }
             catch
             {
 
             }
-
-
 
 
         }

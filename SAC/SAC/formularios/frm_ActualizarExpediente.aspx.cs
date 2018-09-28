@@ -78,6 +78,15 @@ namespace SAC.formularios
             String ced;
             String[] datos = new string[59];
 
+            string script = @"<script type='text/javascript'>
+                document.getElementById('formularioP').style.display = 'block' ;
+                document.getElementById('formularioP').scrollIntoView();                  
+             
+            </script>";
+
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
+
             foreach (GridViewRow row in GridView1.Rows)
             {
                 if (row.RowIndex == GridView1.SelectedIndex)
@@ -437,7 +446,22 @@ namespace SAC.formularios
             {
                 sida = "no";
             }
-            metodo.actualizarExpediente(expediente.InnerText, cardiaco.Text, presion.Text, reumatica, sida, derrame, anemia, sangre, pais, donde.Text, tiempo.Text, moretes, rinnon.Text, gastro.Text, vision, cortico, diabetes, epilepsia, respiratoria, quimio, reumatismo, hepaticos.Text, herpes, perdida_peso.Text, aumento_peso.Text, artritis, psiquiatrico, tiroides.Text, transmision, osteoporosis, migranna, bifos.Text, drogas.Text, fuma.Text, cigarroDia.Text, cigarroPeriodo.Text, alcohol, frecuenciaAlcohol.Text, cicatriz.Text, shock);
+            try
+            {
+
+                metodo.actualizarExpediente(expediente.InnerText, cardiaco.Text, presion.Text, reumatica, sida, derrame, anemia, sangre, pais, donde.Text, tiempo.Text, moretes, rinnon.Text, gastro.Text, vision, cortico, diabetes, epilepsia, respiratoria, quimio, reumatismo, hepaticos.Text, herpes, perdida_peso.Text, aumento_peso.Text, artritis, psiquiatrico, tiroides.Text, transmision, osteoporosis, migranna, bifos.Text, drogas.Text, fuma.Text, cigarroDia.Text, cigarroPeriodo.Text, alcohol, frecuenciaAlcohol.Text, cicatriz.Text, shock);
+                string script = @"<script type='text/javascript'>
+                alert('Se han actualizado adecuadamente los datos');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
+            catch
+            {
+                string script = @"<script type='text/javascript'>
+                alert('No se actualizó adecuadamente los datos');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
         }
 
         protected void Cancelar_Click(object sender, EventArgs e)
