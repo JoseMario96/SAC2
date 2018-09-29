@@ -140,6 +140,11 @@ namespace SAC.formularios
         {
             
             String codigo_tipo = "";
+            Boolean validacion = false;
+            if (txt_codigoTipoAct.Text != "" & txt_nombreTipoAct.Text != "" & txt_codigoTratamientoAct.Text != "" & txt_precioAct.Text != "")
+            {
+                validacion = true;
+            }
             if (DropDownList1.SelectedIndex == 0)
             {
                 codigo_tipo = txt_codigoTipoAct.Text;
@@ -148,11 +153,22 @@ namespace SAC.formularios
             {
                 codigo_tipo = funciones.buscarCodigo(DropDownList1.SelectedItem.Text);
             }
-            funciones.actualizarTratamiento(txt_codigoTratamientoAct.Text, txt_nombreTratamientoAct.Text, Convert.ToDouble(txt_precioAct.Text), txt_descripcionAct.InnerText, codigo_tipo);
-            string scriptt = @"<script type='text/javascript'>
+            if (validacion == true)
+            {
+                funciones.actualizarTratamiento(txt_codigoTratamientoAct.Text, txt_nombreTratamientoAct.Text, Convert.ToDouble(txt_precioAct.Text), txt_descripcionAct.InnerText, codigo_tipo);
+                string scriptt = @"<script type='text/javascript'>
                     alert('Se actualizó la información correctamente');
                     </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+            }
+            else
+            {
+                string scriptt = @"<script type='text/javascript'>
+                    alert('No pueden haber campos vacíos');
+                    </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+            }
+            
         }
 
         
@@ -162,8 +178,14 @@ namespace SAC.formularios
             String codigo;
             String[] datos = new string[6];
 
+            
+
             if (txtTabla.Text == "modificar")
             {
+                string script = @"<script type='text/javascript'>
+                document.getElementById('titulo1').style.display = 'block' ;
+                    </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 foreach (GridViewRow row in GridView2.Rows)
                 {
                     if (row.RowIndex == GridView2.SelectedIndex)
@@ -178,6 +200,8 @@ namespace SAC.formularios
                         txt_nombreTratamientoAct.Text = datos[3];
                         txt_precioAct.Text = datos[4];
                         txt_descripcionAct.InnerText = datos[5];
+                        txt_codigoTipoAct.Enabled = false;
+                        txt_codigoTratamientoAct.Enabled = false;
                     }
                     else
                     {
@@ -188,6 +212,10 @@ namespace SAC.formularios
             }
             if (txtTabla.Text == "eliminar")
             {
+                string script = @"<script type='text/javascript'>
+                document.getElementById('titulo2').style.display = 'block' ;
+                    </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 foreach (GridViewRow row in GridView2.Rows)
                 {
                     if (row.RowIndex == GridView2.SelectedIndex)

@@ -10,6 +10,17 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="../js/quicksearch.js"></script>
     <title></title>
+
+    <style>
+        #menu div#barraMenu a.btnMenu:hover {
+            background-color: #008281;
+        }
+
+        #menu div#barraMenu a.btnMenu:active {
+            background-color: #008281;
+            color: black;
+        }
+    </style>
 </head>
 <body style="margin: 5%;">
     <form id="form1" runat="server">
@@ -20,17 +31,17 @@
                 <h2>Mantenimiento de tratamientos</h2>
             </header>
             <div class="navbar-fixed">
-                <nav style="background-color: rgba(0, 163, 162, 0.8)">
-                    <div class="row">
+                <nav id="menu" style="background-color: rgba(0, 163, 162, 0.8)">
+                    <div class="row" id="barraMenu">
                         <div class="col s6"></div>
                         <div class="col s2">
-                            <a href="#" style="color: black; font-weight: bold;" onclick="mostrarAgregar()">Agregar</a>
+                            <a href="#" class="btnMenu" style="color: black; font-weight: bold;" onclick="mostrarAgregar()">Agregar</a>
                         </div>
                         <div class="col s2">
-                            <a href="#" style="color: black; font-weight: bold;" onclick="mostrarActualizar()">Modificar</a>
+                            <a href="#" class="btnMenu" style="color: black; font-weight: bold;" onclick="mostrarActualizar()">Modificar</a>
                         </div>
-                        <div class="col s1">
-                            <a href="#" style="color: black; font-weight: bold;" onclick="mostrarEliminar()">Eliminar</a>
+                        <div class="col s2">
+                            <a href="#" class="btnMenu" style="color: black; font-weight: bold;" onclick="mostrarEliminar()">Eliminar</a>
                         </div>
                     </div>
                 </nav>
@@ -40,6 +51,7 @@
                 <%--Sección agregar--%>
 
                 <div id="seccionAgregar" style="display: block">
+                    <h4 style="text-align:center">Agregar</h4>
                     Tipos de tratamientos
         <br />
                     Nuevo:
@@ -55,7 +67,9 @@
                     </div>
 
                     <br />
+
                     <br />
+                    
                     Tratamientos:
                     <br />
                     <asp:TextBox class="validate" ID="txt_codigoTratamiento" runat="server" Width="56px" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
@@ -73,12 +87,16 @@
 
                 <%-- Sección de modificar--%>
 
-                <br />
-                <br />
                 <div class="row" id="grid" style="display: none">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="GridView2" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
+                            <h4 id="titulo1" style="text-align:center; display:none">Actualizar</h4>
+                            <h4 id="titulo2" style="text-align:center; display:none">Eliminar</h4>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:GridView ID="GridView2" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
                                 runat="server" AutoGenerateColumns="False" OnDataBound="GridView2_DataBound" Height="174px" OnRowDataBound="GridView2_RowDataBound" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
                                 <Columns>
                                     <asp:BoundField DataField="codigoTratamiento" HeaderText="Código del tratamiento" ItemStyle-Width="100" />
@@ -251,6 +269,8 @@
             ocultarAgregar();
             ocultarEliminar();
             document.getElementById("txtTabla").value = "modificar";
+            document.getElementById('titulo1').style.display = 'block';
+            document.getElementById('titulo2').style.display = 'none';
         }
         function ocultarActualizar() {
             document.getElementById('grid').style.display = 'none';
@@ -266,6 +286,8 @@
             ocultarAgregar();
             ocultarActualizarSinGrid();
             document.getElementById("txtTabla").value = "eliminar";
+            document.getElementById('titulo2').style.display = 'block';
+            document.getElementById('titulo1').style.display = 'none';
         }
         function ocultarEliminar() {
             document.getElementById('seccionEliminar').style.display = 'none';
