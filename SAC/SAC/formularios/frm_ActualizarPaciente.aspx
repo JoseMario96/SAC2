@@ -17,6 +17,12 @@
             #formularioP.highlighted {
                 border: 3px solid red;
             }
+
+        label {
+            font-family: sans-serif;
+            font-size: medium;
+            color: black;
+        }
     </style>
     <script type="text/javascript">
         $(function () {
@@ -140,13 +146,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
+                    <div class="col s4">
                         <label class="active" for="fechaN">Fecha de nacimiento</label>
                         <input id="fechaN" type="text" maxlength="9" runat="server" class="validate" required />
 
                     </div>
 
-                    <div class="input-field col s4">
+                    <div class="col s4">
                         <label class="active" for="fechaI">Fecha de inscripción</label>
                         <input id="fechaI" type="text" maxlength="9" runat="server" class="validate" required />
                     </div>
