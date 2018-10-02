@@ -52,7 +52,8 @@ namespace SAC.metodos
 
         public void actualizarTratamiento(String codigoTratamiento, String nombre, Double precio, String descripcion, String codigoTipo)
         {
-
+            consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_tratamiento` SET `nombreTratamiento`='" + nombre + "', `precioTratamiento`='" + precio + "', `descripcionTratamiento`='" + descripcion + "', `codigoTipoTratamiento`='" + codigoTipo + "' WHERE `codigoTratamiento`='" + codigoTratamiento + "';", con.abrir_conexion()).ExecuteNonQuery();
+            con.cerrar_Conexion();
         }
 
         public String buscarCodigo(String nombre)

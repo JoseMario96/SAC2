@@ -103,6 +103,15 @@ namespace SAC.formularios {
         protected global::System.Web.UI.WebControls.Button btn_guardar;
         
         /// <summary>
+        /// Control GridView2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView2;
+        
+        /// <summary>
         /// Control txt_codigoTipoAct.
         /// </summary>
         /// <remarks>
@@ -175,15 +184,6 @@ namespace SAC.formularios {
         protected global::System.Web.UI.WebControls.Button btn_actualizar;
         
         /// <summary>
-        /// Control GridView2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
-        
-        /// <summary>
         /// Control codigoTraEli.
         /// </summary>
         /// <remarks>
@@ -245,5 +245,14 @@ namespace SAC.formularios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_eliminar;
+        
+        /// <summary>
+        /// Control txtTabla.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTabla;
     }
 }
