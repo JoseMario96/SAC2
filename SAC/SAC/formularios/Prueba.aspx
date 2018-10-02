@@ -93,7 +93,7 @@
 
 
         <script>
-            // Funcion para dibujar las lineas de cada diente
+            // Funcion para dibujar las lineas negras de cada diente
             function dibuja_contorno(context, inicio_x, inicio_y, med, separacion_x, separacion_y) {
                 var ctx = context;
                 // Definiendo puntos de dibujo
@@ -239,7 +239,7 @@
                     }
                 }
             }
-            // Funcion para sombrear
+            // Funcion para sombrear en amarillo
             function marcar_seccion(contexto, num_diente, seccion, color_pas) {
                 var ctx = contexto;
                 // Definiendo puntos de dibujo
