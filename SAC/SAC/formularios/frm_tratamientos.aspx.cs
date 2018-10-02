@@ -93,10 +93,7 @@ namespace SAC.formularios
                 {
                     funciones.agregarTipoTratamiento(txt_codigoTipo.Text, txt_nombreTipo.Text);
                     funciones.agregarTratamiento(txt_codigoTratamiento.Text, txt_nombreTratamiento.Text, Convert.ToDouble(txt_precioTratamiento.Text), txt_descripcion.Value, txt_codigoTipo.Text);
-                    string scriptt = @"<script type='text/javascript'>
-                    alert('Se registró la información correctamente');
-                    </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                    Response.Write("<script language='javascript'>window.alert('Se registró la información correctamente');window.location='frm_tratamientos.aspx';</script>");
                 }
             }
             else
@@ -138,7 +135,7 @@ namespace SAC.formularios
 
         protected void btn_actualizar_Click(object sender, EventArgs e)
         {
-            
+
             String codigo_tipo = "";
             Boolean validacion = false;
             if (txt_codigoTipoAct.Text != "" & txt_nombreTipoAct.Text != "" & txt_codigoTratamientoAct.Text != "" & txt_precioAct.Text != "")
@@ -168,17 +165,17 @@ namespace SAC.formularios
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
             }
-            
+
         }
 
-        
+
 
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
             String codigo;
             String[] datos = new string[6];
 
-            
+
 
             if (txtTabla.Text == "modificar")
             {
