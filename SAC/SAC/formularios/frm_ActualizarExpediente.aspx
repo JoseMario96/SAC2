@@ -14,14 +14,30 @@
         .auto-style1 {
             height: 54px;
         }
+
+        #formularioP {
+            border: 1px solid white;
+        }
+
+            #formularioP.highlighted {
+                border: 3px solid red;
+            }
+            
+        label, th, tr {
+            font-family: sans-serif;
+            font-size: medium;
+            color: black;
+            font-size: 0.9rem;
+            color: black;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <br />
-            <br />
-            <form id="form1" runat="server">
+        <br />
+        <br />
+        <form id="form1" runat="server">
+            <div class="row">
                 <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                     runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                     <Columns>
@@ -37,6 +53,8 @@
                 <br />
                 <br />
                 <br />
+            </div>
+            <div id="formularioP" style="display: none" tabindex="-1">
                 <table class="striped">
                     <tr>
                         <th colspan="5" style="text-align: center">Datos personales</th>
@@ -222,7 +240,7 @@
                             </label>
 
                         </td>
-                         <td>
+                        <td>
                             <label>
                                 <input class="with-gap" name="group22" runat="server" type="radio" id="corticoS" onclick="" />
                                 <span>Sí</span>
@@ -425,7 +443,7 @@
                         <th>39-Shock anafiláctico</th>
                     </tr>
                     <tr>
-                      <td>
+                        <td>
                             <label>
                                 <input class="with-gap" name="group20" runat="server" type="radio" id="alcoholS" onclick="" />
                                 <span>Sí</span>
@@ -484,7 +502,7 @@
                         <th>Abortos</th>
                     </tr>
                     <tr>
-                         <td>
+                        <td>
                             <label>
                                 <input class="with-gap" name="group23" runat="server" type="radio" id="embarazadaS" onclick="" />
                                 <span>Sí</span>
@@ -513,7 +531,7 @@
                             <asp:TextBox ID="gineco" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:TextBox ID="abortos" runat="server"></asp:TextBox>   
+                            <asp:TextBox ID="abortos" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -530,32 +548,33 @@
                     </tr>
 
                 </table>
-                  <div class="row">
+            </div>
+            <div class="row">
 
-                    <div class="input-field col s4">
-                        <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
-                    </div>
-                    <div class="input-field col s4">
-                        <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
-                    </div>
+                <div class="input-field col s4">
+                    <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
                 </div>
-                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-                <script type="text/javascript" src="../js/quicksearch.js"></script>
+                <div class="input-field col s4">
+                    <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
+                </div>
+            </div>
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script type="text/javascript" src="../js/quicksearch.js"></script>
 
-                <script type="text/javascript">
-                    $(function () {
-                        $('.search_textbox').each(function (i) {
-                            $(this).quicksearch("[id*=GridView1] tr:not(:has(th))", {
-                                'testQuery': function (query, txt, row) {
-                                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
-                                }
-                            });
+            <script type="text/javascript">
+                $(function () {
+                    $('.search_textbox').each(function (i) {
+                        $(this).quicksearch("[id*=GridView1] tr:not(:has(th))", {
+                            'testQuery': function (query, txt, row) {
+                                return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                            }
                         });
                     });
-                </script>
-            </form>
-        </div>
+                });
+            </script>
+        </form>
     </div>
+
 </body>
 </html>
 

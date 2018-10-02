@@ -12,6 +12,14 @@
         .ajustar {
             font-size: 15px;
         }
+        
+        label {
+            font-family: sans-serif;
+            font-size: medium;
+            color: black;
+            font-size: 0.9rem;
+            color: black;
+        }
     </style>
 </head>
 
@@ -122,7 +130,7 @@
                             <div class="col s12">
                                 <div class="col s1">
                                     <label style="margin-left: 35px;">
-                                        <input class="with-gap" name="hm" runat="server" type="radio" id="hmsi" onclick="mostrar('fuerapais')" />
+                                        <input class="with-gap" name="hm" runat="server" type="radio" id="hmsi" onclick="uncheckRadio(this),mostrar('fuerapais')" />
                                         <span>Si</span>
                                     </label>
                                 </div>
@@ -250,7 +258,7 @@
                                 </label>
                             </div>
                             <div id="perdida" style="display: none" class="col 1">
-                                <input id="hmrespu8" type="text" runat="server" class="validate" maxlength="44" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                                <input id="hmrespu8" type="text" runat="server" class="validate" maxlength="44"  onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                                 <label class="active" for="hmrespu8">Kg</label>
                             </div>
                         </div>
@@ -263,7 +271,7 @@
                                 </label>
                             </div>
                             <div id="exceso" class="col 1" style="display: none">
-                                <input id="excesop" type="text" runat="server" class="validate" maxlength="44" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                                <input id="excesop" type="text" runat="server" class="validate" maxlength="44"  onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                                 <label class="active" for="hmrespu">Kg</label>
                             </div>
                         </div>
@@ -520,8 +528,8 @@
 
 
             }
-            function ocultar() {
-
+            function ocultar(variable) {
+                document.getElementById(variable).style.display = 'none';
             }
         </script>
 

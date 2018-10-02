@@ -9,6 +9,14 @@
     <link href="../css/materialize.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <title></title>
+    <style>
+        label {
+            font-family: sans-serif;
+            font-size: medium;
+            color: black;
+        }
+
+    </style>
 </head>
 <body>
     <header>
@@ -23,7 +31,7 @@
                 <div class="row">
                     <div class="col s6">
                         <label class="active" for="cedula">Cédula </label>
-                        <asp:TextBox ID="cedula" runat="server" class="validate" maxlength="14" required onkeypress="return solonumeros(event)" AutoPostBack="true" OnTextChanged="cedula_TextChanged"></asp:TextBox>
+                        <asp:TextBox ID="cedula" runat="server" class="validate" MaxLength="14" required onkeypress="return solonumeros(event)" AutoPostBack="true" OnTextChanged="cedula_TextChanged"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row">
@@ -99,12 +107,12 @@
                     </p>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
+                    <div class="col s4">
                         <label class="active" for="fecha_nacimiento">Fecha de nacimiento</label>
                         <input id="fecha_nacimiento" type="date" runat="server" name="fecha" required />
 
                     </div>
-                    <div class="input-field col s4">
+                    <div class="col s4">
                         <label class="active" for="fecha_ingreso">Fecha de ingreso</label>
                         <input id="fecha_ingreso" type="date" runat="server" name="fecha" required />
 
@@ -136,7 +144,6 @@
                                     <%--<input id="cedula_encargado2" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" />--%>
                                     <asp:TextBox ID="cedula_encargad" class="validate" MaxLength="14" runat="server" OnTextChanged="cedula_encargad_TextChanged" AutoPostBack="true"></asp:TextBox>
                                     <%--<asp:Button ID="verificarE" runat="server" Text="Button" OnClick="verificarE_Click" />--%>
-                         
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
@@ -210,9 +217,9 @@
                         <div class="col s6">
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                            <label class="active" for="correo_encargado">Correo electrónico</label>
-                            <input id="correo_encargado" type="email" runat="server" class="validate" maxlength="44" />
-                             </ContentTemplate>
+                                    <label class="active" for="correo_encargado">Correo electrónico</label>
+                                    <input id="correo_encargado" type="email" runat="server" class="validate" maxlength="44" />
+                                </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
                         <div class="col s6">
@@ -266,48 +273,48 @@
         function mostrar() {
             document.getElementById('encargado').style.display = 'block';
         }
-        function ocultar() {
-            document.getElementById('encargado').style.display = 'none';
-        }
+                             function ocultar() {
+                                 document.getElementById('encargado').style.display = 'none';
+                             }
 
 
-        function solonumeros(e) {
-            key = e.keyCoden || e.which;
-            teclado = String.fromCharCode(key);
-            numero = "1234567890";
-            especiales = "8-37-38-46";
-            teclado_especial = false;
-            for (var i in especiales) {
-                if (key == especiales[i]) {
-                    teclado_especial = true;
-                }
-            }
-            if (numero.indexOf(teclado) == -1 && !teclado_especial) {
-                return false;
-            }
-        }
+                             function solonumeros(e) {
+                                 key = e.keyCoden || e.which;
+                                 teclado = String.fromCharCode(key);
+                                 numero = "1234567890";
+                                 especiales = "8-37-38-46";
+                                 teclado_especial = false;
+                                 for (var i in especiales) {
+                                     if (key == especiales[i]) {
+                                         teclado_especial = true;
+                                     }
+                                 }
+                                 if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+                                     return false;
+                                 }
+                             }
 
-        function sololetras(e) {
-            key = e.keyCoden || e.which;
-            teclado = String.fromCharCode(key).toLowerCase();
-            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-            especiales = "8-37-38-46-164";
-            teclado_especial = false;
+                             function sololetras(e) {
+                                 key = e.keyCoden || e.which;
+                                 teclado = String.fromCharCode(key).toLowerCase();
+                                 letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+                                 especiales = "8-37-38-46-164";
+                                 teclado_especial = false;
 
-            for (var i in especiales) {
-                if (key == especiales[i]) {
-                    teclado_especial = true; break;
+                                 for (var i in especiales) {
+                                     if (key == especiales[i]) {
+                                         teclado_especial = true; break;
 
-                }
+                                     }
 
-            }
-            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
-                return false;
+                                 }
+                                 if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                                     return false;
 
-            }
-        }
-    </script>
-    <script src="js/materialize.min.js"></script>
+                                 }
+                             }
+    </script >
+                                 <script src="js/materialize.min.js"></script>
 
 </body>
 </html>

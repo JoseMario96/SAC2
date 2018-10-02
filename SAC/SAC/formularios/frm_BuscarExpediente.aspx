@@ -5,18 +5,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="../css/materialize.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="../js/quicksearch.js"></script>
+
+    <style>
+        #formularioP {
+            border: 1px solid white;
+        }
+
+            #formularioP.highlighted {
+                border: 3px solid red;
+            }
+            
+        label, tr,th {
+            font-family: sans-serif;
+            font-size: medium;
+            color: black;
+            font-size: 0.9rem;
+            color: black;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="row"> <br /> <br />
-            <form id="form1" runat="server">
+
+        <form id="form1" runat="server">
+            <div class="row">
+                <br />
+                <br />
                 <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
-                    runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" >
+                    runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                     <Columns>
                         <asp:BoundField DataField="codigoExpediente" HeaderText="N° de Expediente" ItemStyle-Width="100" />
                         <asp:BoundField DataField="cedulaPaciente" HeaderText="N° de Cédula" ItemStyle-Width="100" />
@@ -30,9 +51,11 @@
                 <br />
                 <br />
                 <br />
+            </div>
+            <div id="formularioP" style="display: none" tabindex="-1">
                 <table class="striped">
                     <tr>
-                        <th colspan="5" style="text-align:center">Datos personales</th>
+                        <th colspan="5" style="text-align: center">Datos personales</th>
                     </tr>
                     <tr>
                         <th>N° de cédula</th>
@@ -42,14 +65,24 @@
                         <th>Segundo apellido</th>
                     </tr>
                     <tr>
-                        <td><label id="cedula" runat="server"></label></td>
-                        <td><label id="nombre1" runat="server"></label></td>
-                        <td><label id="nombre2" runat="server"></label></td>
-                        <td><label id="apellido1" runat="server"></label></td>
-                        <td><label id="apellido2" runat="server"></label></td>
+                        <td>
+                            <label id="cedula" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="nombre1" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="nombre2" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="apellido1" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="apellido2" runat="server"></label>
+                        </td>
                     </tr>
                     <tr>
-                        <th colspan="5" style="text-align:center">Datos expediente</th>
+                        <th colspan="5" style="text-align: center">Datos expediente</th>
                     </tr>
                     <tr>
                         <th>N° de expediente</th>
@@ -57,12 +90,18 @@
                         <th colspan="3">Observaciones</th>
                     </tr>
                     <tr>
-                        <td><label id="expediente" runat="server"></label></td>
-                        <td><label id="fecha" runat="server"></label></td>
-                        <td colspan="3"><label id="observaciones" runat="server"></label></td>
+                        <td>
+                            <label id="expediente" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="fecha" runat="server"></label>
+                        </td>
+                        <td colspan="3">
+                            <label id="observaciones" runat="server"></label>
+                        </td>
                     </tr>
                     <tr>
-                        <th colspan="5" style="text-align:center">Historia médica</th>
+                        <th colspan="5" style="text-align: center">Historia médica</th>
                     </tr>
                     <tr>
                         <th>1-Enfermedades cardiacas</th>
@@ -72,11 +111,21 @@
                         <th>5-Accidente cerebrovascular (derrame)</th>
                     </tr>
                     <tr>
-                        <td><label id="cardiaco" runat="server"></label></td>
-                        <td><label id="presion" runat="server"></label></td>
-                        <td><label id="reumatica" runat="server"></label></td>
-                        <td><label id="sida" runat="server"></label></td>
-                        <td><label id="derrame" runat="server"></label></td>
+                        <td>
+                            <label id="cardiaco" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="presion" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="reumatica" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="sida" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="derrame" runat="server"></label>
+                        </td>
                     </tr>
                     <tr>
                         <th>6-Anemia</th>
@@ -86,11 +135,21 @@
                         <th>10-Tiempo</th>
                     </tr>
                     <tr>
-                        <td><label id="anemia" runat="server"></label></td>
-                        <td><label id="sangre" runat="server"></label></td>
-                        <td><label id="pais" runat="server"></label></td>
-                        <td><label id="donde" runat="server"></label></td>
-                        <td><label id="tiempo" runat="server"></label></td>
+                        <td>
+                            <label id="anemia" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="sangre" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="pais" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="donde" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="tiempo" runat="server"></label>
+                        </td>
                     </tr>
                     <tr>
                         <th>11-Moretes</th>
@@ -100,11 +159,21 @@
                         <th>15-Tratamientos con corticoesteroides</th>
                     </tr>
                     <tr>
-                        <td><label id="moretes" runat="server"></label></td>
-                        <td><label id="rinnon" runat="server"></label></td>
-                        <td><label id="gastro" runat="server"></label></td>
-                        <td><label id="vision" runat="server"></label></td>
-                        <td><label id="cortico" runat="server"></label></td>
+                        <td>
+                            <label id="moretes" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="rinnon" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="gastro" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="vision" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="cortico" runat="server"></label>
+                        </td>
                     </tr>
                     <tr>
                         <th>16-Diabetes</th>
@@ -114,11 +183,21 @@
                         <th>20-Reumatismo</th>
                     </tr>
                     <tr>
-                        <td><label id="diabetes" runat="server"></label></td>
-                        <td><label id="epilepsia" runat="server"></label></td>
-                        <td><label id="respiratorias" runat="server"></label></td>
-                        <td><label id="radio_quimio" runat="server"></label></td>
-                        <td><label id="reumatismo" runat="server"></label></td>
+                        <td>
+                            <label id="diabetes" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="epilepsia" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="respiratorias" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="radio_quimio" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="reumatismo" runat="server"></label>
+                        </td>
                     </tr>
                     <tr>
                         <th>21-Problemas hepáticos</th>
@@ -128,11 +207,21 @@
                         <th>25-Artritis</th>
                     </tr>
                     <tr>
-                        <td><label id="hepaticos" runat="server"></label></td>
-                        <td><label id="herpes" runat="server"></label></td>
-                        <td><label id="perdidaP" runat="server"></label></td>
-                        <td><label id="aumentoP" runat="server"></label></td>
-                        <td><label id="artritis" runat="server"></label></td>
+                        <td>
+                            <label id="hepaticos" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="herpes" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="perdidaP" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="aumentoP" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="artritis" runat="server"></label>
+                        </td>
                     </tr>
                     <tr>
                         <th>26-Tratamiento psiquiátrico</th>
@@ -142,11 +231,21 @@
                         <th>30-Migraña</th>
                     </tr>
                     <tr>
-                        <td><label id="psiquiatra" runat="server"></label></td>
-                        <td><label id="tiroides" runat="server"></label></td>
-                        <td><label id="transmision" runat="server"></label></td>
-                        <td><label id="osteoporosis" runat="server"></label></td>
-                        <td><label id="migranna" runat="server"></label></td>
+                        <td>
+                            <label id="psiquiatra" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="tiroides" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="transmision" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="osteoporosis" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="migranna" runat="server"></label>
+                        </td>
                     </tr>
                     <tr>
                         <th>31-Tratamiento con bifosfonados</th>
@@ -156,11 +255,21 @@
                         <th>35-Periodo</th>
                     </tr>
                     <tr>
-                        <td><label id="bifos" runat="server"></label></td>
-                        <td><label id="drogas" runat="server"></label></td>
-                        <td><label id="fuma" runat="server"></label></td>
-                        <td><label id="cigarroDia" runat="server"></label></td>
-                        <td><label id="cigarroPeriodo" runat="server"></label></td>
+                        <td>
+                            <label id="bifos" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="drogas" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="fuma" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="cigarroDia" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="cigarroPeriodo" runat="server"></label>
+                        </td>
                     </tr>
                     <tr>
                         <th>36-Bebidas alcohólicas</th>
@@ -169,13 +278,21 @@
                         <th>39-Shock anafiláctico</th>
                     </tr>
                     <tr>
-                        <td><label id="alcohol" runat="server"></label></td>
-                        <td><label id="frecuenciaAlcohol" runat="server"></label></td>
-                        <td><label id="cicatrices" runat="server"></label></td>
-                        <td><label id="shock" runat="server"></label></td>
+                        <td>
+                            <label id="alcohol" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="frecuenciaAlcohol" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="cicatrices" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="shock" runat="server"></label>
+                        </td>
                     </tr>
                     <tr>
-                        <th colspan="5" style="text-align:center">Signos Vitales</th>
+                        <th colspan="5" style="text-align: center">Signos Vitales</th>
                     </tr>
                     <tr>
                         <th>Presión arterial</th>
@@ -183,12 +300,18 @@
                         <th>Frecuencia respiratoria</th>
                     </tr>
                     <tr>
-                        <td><label id="arterialSignos" runat="server"></label></td>
-                        <td><label id="pulsoSignos" runat="server"></label></td>
-                        <td><label id="FrecuenciaSignos" runat="server"></label></td>
+                        <td>
+                            <label id="arterialSignos" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="pulsoSignos" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="FrecuenciaSignos" runat="server"></label>
+                        </td>
                     </tr>
                     <tr>
-                        <th colspan="5" style="text-align:center">Historial médico solo mujeres</th>
+                        <th colspan="5" style="text-align: center">Historial médico solo mujeres</th>
                     </tr>
                     <tr>
                         <th>Embarazada</th>
@@ -198,38 +321,52 @@
                         <th>Abortos</th>
                     </tr>
                     <tr>
-                        <td><label id="embarazo" runat="server"></label></td>
-                        <td><label id="semanas" runat="server"></label></td>
-                        <td><label id="anticonceptivos" runat="server"></label></td>
-                        <td><label id="gineco" runat="server"></label></td>
-                        <td><label id="abortos" runat="server"></label></td>
+                        <td>
+                            <label id="embarazo" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="semanas" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="anticonceptivos" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="gineco" runat="server"></label>
+                        </td>
+                        <td>
+                            <label id="abortos" runat="server"></label>
+                        </td>
                     </tr>
                     <tr>
                         <th>Cesareas</th>
                         <th colspan="4">Observaciones</th>
                     </tr>
                     <tr>
-                        <td><label id="cesareas" runat="server"></label></td>
-                        <td colspan="4"><label id="observacionesMujer" runat="server"></label></td>
+                        <td>
+                            <label id="cesareas" runat="server"></label>
+                        </td>
+                        <td colspan="4">
+                            <label id="observacionesMujer" runat="server"></label>
+                        </td>
                     </tr>
                 </table>
+            </div>
 
-                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-                <script type="text/javascript" src="../js/quicksearch.js"></script>
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script type="text/javascript" src="../js/quicksearch.js"></script>
 
-                <script type="text/javascript">
-                    $(function () {
-                        $('.search_textbox').each(function (i) {
-                            $(this).quicksearch("[id*=GridView1] tr:not(:has(th))", {
-                                'testQuery': function (query, txt, row) {
-                                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
-                                }
-                            });
+            <script type="text/javascript">
+                $(function () {
+                    $('.search_textbox').each(function (i) {
+                        $(this).quicksearch("[id*=GridView1] tr:not(:has(th))", {
+                            'testQuery': function (query, txt, row) {
+                                return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                            }
                         });
                     });
-                </script>
-            </form>
-        </div>
+                });
+            </script>
+        </form>
     </div>
 </body>
 </html>

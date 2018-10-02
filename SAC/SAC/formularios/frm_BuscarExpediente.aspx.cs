@@ -55,6 +55,14 @@ namespace SAC.formularios
             String ced;
             String[] datos = new string[59];
 
+            string script = @"<script type='text/javascript'>
+                document.getElementById('formularioP').style.display = 'block' ;
+                document.getElementById('formularioP').scrollIntoView();                  
+            </script>";
+
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
+
             foreach (GridViewRow row in GridView1.Rows)
             {
                 if (row.RowIndex == GridView1.SelectedIndex)
