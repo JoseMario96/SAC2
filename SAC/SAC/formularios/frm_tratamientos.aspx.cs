@@ -126,9 +126,7 @@ namespace SAC.formularios
                 {
                     String codigo = funciones.buscarCodigo(DropDownList2.SelectedItem.Text);
                     funciones.agregarTratamiento(txt_codigoTratamiento.Text, txt_nombreTratamiento.Text, Convert.ToDouble(txt_precioTratamiento.Text), txt_descripcion.Value, codigo);
-                    string scriptt = @"<script type='text/javascript'>
-                    alert('Se registró la información correctamente');</script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                    Response.Write("<script language='javascript'>window.alert('Se registró la información correctamente');window.location='frm_tratamientos.aspx';</script>");
                 }
             }
         }
@@ -153,10 +151,7 @@ namespace SAC.formularios
             if (validacion == true)
             {
                 funciones.actualizarTratamiento(txt_codigoTratamientoAct.Text, txt_nombreTratamientoAct.Text, Convert.ToDouble(txt_precioAct.Text), txt_descripcionAct.InnerText, codigo_tipo);
-                string scriptt = @"<script type='text/javascript'>
-                    alert('Se actualizó la información correctamente');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                Response.Write("<script language='javascript'>window.alert('Se actualizó la información correctamente');window.location='frm_tratamientos.aspx';</script>");
             }
             else
             {
@@ -264,10 +259,36 @@ namespace SAC.formularios
         protected void btn_eliminar_Click(object sender, EventArgs e)
         {
             funciones.eliminarTratamiento(codigoTraEli.InnerText);
-            string scriptt = @"<script type='text/javascript'>
-                    alert('Se eliminó la información correctamente');
-                    </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+            Response.Write("<script language='javascript'>window.alert('Se eliminó la información correctamente');window.location='frm_tratamientos.aspx';</script>");
+        }
+
+
+
+
+
+        protected void txt_codigoTipo_TextChanged1(object sender, EventArgs e)
+        {
+            if (funciones.tratamientoExiste(txt_codigoTipo.Text) == true)
+            {
+                txt_nombreTipo.Text = funciones.mostrarTipoTratamiento(txt_codigoTipo.Text);
+                string cod = txt_codigoTipo.Text;
+                int codigo = Convert.ToInt32(cod.Substring(1));
+                DropDownList2.SelectedIndex = codigo;
+            }
+        }
+
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DropDownList2.SelectedIndex != 0)
+            {
+                txt_codigoTipo.Text = funciones.buscarCodigo(DropDownList2.SelectedItem.Text);
+                txt_nombreTipo.Text = DropDownList2.SelectedItem.Text;
+            }
+            if (DropDownList2.SelectedIndex == 0)
+            {
+                txt_codigoTipo.Text = "";
+                txt_nombreTipo.Text = "";
+            }
         }
     }
 }
