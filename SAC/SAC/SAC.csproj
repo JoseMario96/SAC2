@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Downloads\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data, Version=8.0.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DataVisualization" />
@@ -100,6 +104,7 @@
     <Content Include="formularios\frm_BuscarPaciente.aspx" />
     <Content Include="formularios\frm_ActualizarPaciente.aspx" />
     <Content Include="formularios\frm_AgregarPaciente.aspx" />
+    <Content Include="formularios\frm_ReporteExpediente.aspx" />
     <Content Include="formularios\frm_tratamientos.aspx" />
     <Content Include="formularios\Prueba.aspx" />
     <Content Include="images\actualizar.png" />
@@ -218,6 +223,13 @@
     </Compile>
     <Compile Include="formularios\frm_AgregarPaciente.aspx.designer.cs">
       <DependentUpon>frm_AgregarPaciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\frm_ReporteExpediente.aspx.cs">
+      <DependentUpon>frm_ReporteExpediente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\frm_ReporteExpediente.aspx.designer.cs">
+      <DependentUpon>frm_ReporteExpediente.aspx</DependentUpon>
     </Compile>
     <Compile Include="formularios\frm_tratamientos.aspx.cs">
       <DependentUpon>frm_tratamientos.aspx</DependentUpon>

@@ -87,7 +87,7 @@
 
                 <%-- Sección de modificar--%>
 
-                <div class="row" id="grid" style="display: none">
+                <div class="row" id="grid" style="display: none" tabindex="-1">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <h4 id="titulo1" style="text-align:center; display:none">Actualizar</h4>
@@ -321,16 +321,12 @@
                     teclado_especial = true; break;
 
                 }
-
             }
             if (letras.indexOf(teclado) == -1 && !teclado_especial) {
                 return false;
-
             }
         }
     </script>
-
-
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="../js/quicksearch.js"></script>
 

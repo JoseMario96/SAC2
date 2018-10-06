@@ -138,7 +138,6 @@ namespace SAC.formularios
 
         protected void btn_actualizar_Click(object sender, EventArgs e)
         {
-            
             String codigo_tipo = "";
             Boolean validacion = false;
             if (txt_codigoTipoAct.Text != "" & txt_nombreTipoAct.Text != "" & txt_codigoTratamientoAct.Text != "" & txt_precioAct.Text != "")
@@ -157,7 +156,11 @@ namespace SAC.formularios
             {
                 funciones.actualizarTratamiento(txt_codigoTratamientoAct.Text, txt_nombreTratamientoAct.Text, Convert.ToDouble(txt_precioAct.Text), txt_descripcionAct.InnerText, codigo_tipo);
                 string scriptt = @"<script type='text/javascript'>
-                    alert('Se actualizó la información correctamente');
+                document.getElementById('seccionAgregar').style.display = 'none' ;
+                    alert('Se actualizó la información correctamente');               
+                document.getElementById('grid').style.display = 'block' ;
+                document.getElementById('grid').scrollIntoView();
+
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
             }
@@ -168,17 +171,15 @@ namespace SAC.formularios
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
             }
-            
-        }
 
-        
+        }
 
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
             String codigo;
             String[] datos = new string[6];
 
-            
+
 
             if (txtTabla.Text == "modificar")
             {

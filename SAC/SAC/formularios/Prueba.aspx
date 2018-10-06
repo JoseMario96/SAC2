@@ -773,8 +773,8 @@
                         dienteO.value = diente;
                         var seccionO = document.getElementById('seccionO');
                         seccionO.value = seccion;
-                        var contextoO = document.getElementById('contextoO');
-                        contextoO.value = ctx2;
+
+
                     }
                     else {
                         alert("ya fue marcado");
