@@ -34,6 +34,10 @@
         body, a, a:hover {
             cursor: url(C:\Users\dtrej\source\repos\SAC2\SAC\SAC\images\cur438.cur), progress;
         }
+        .auto-style1 {
+            left: 0px;
+            top: 0px;
+        }
     </style>
     <script>
         $(function () {
@@ -83,9 +87,8 @@
             <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
         </div>
         <br />
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-        <asp:Button ID="Guardar" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" />
-
+        <asp:Button ID="Guardar" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" CssClass="auto-style1" />
+        <asp:Button ID="Button1" runat="server" Text="Prueba" OnClick="Button1_Click" />
         <%--        <div id="radio_seccion2" style='display: none'>
             <input type="radio" id="amalgamaO" name="amalgama" value="seccion" /><label for="amalgamaO">Amalgama</label>
             <input type="radio" id="resinaO" name="resina" value="diente" /><label for="resinaO">Resina</label>
@@ -93,7 +96,10 @@
 
 
         <script>
-            // Funcion para dibujar las lineas de cada diente
+            function Func() {
+                alert("hello!")
+            }
+            // Funcion para dibujar las lineas negras de cada diente
             function dibuja_contorno(context, inicio_x, inicio_y, med, separacion_x, separacion_y) {
                 var ctx = context;
                 // Definiendo puntos de dibujo
@@ -239,7 +245,7 @@
                     }
                 }
             }
-            // Funcion para sombrear
+            // Funcion para sombrear en amarillo
             function marcar_seccion(contexto, num_diente, seccion, color_pas) {
                 var ctx = contexto;
                 // Definiendo puntos de dibujo
@@ -464,6 +470,10 @@
             var sec3 = 49;
             var sec4 = 30;
             var bandera = 0;
+            var colorArray = new Array();
+            var posicionArray = new Array();
+            var dienteArray = new Array();
+            var contador = 0;
             for (x = 0; x < 16; x++) {
 
                 if (sec > 11) {
@@ -765,21 +775,23 @@
                         new_array = [diente, seccion, accion_g, Date.now(), 0];
                         guardar = new_array.toLocaleString();
                         localStorage.setItem(cod, guardar);
+                        var contextoO = document.getElementById('contextoO');
+                        contextoO.value = ctx2;
                         dibuja_seccion(ctx2, diente, seccion, color);
-                        var colorO = [];
-                        colorO = document.getElementById('colorO');
-                        colorO.value = color;
-                        var dienteO = document.getElementById('dienteO');
-                        dienteO.value = diente;
-                        var seccionO = document.getElementById('seccionO');
-                        seccionO.value = seccion;
-
-
+                        //var contextoO = document.getElementById('contextoO')
+                        //contextoO.value = ctx2;
+                        colorArray[contador] = color;
+                        dienteArray[contador] = diente;
+                        posicionArray[contador] = seccion;
+                        contador++;
                     }
+
                     else {
                         alert("ya fue marcado");
                     }
-
+                    document.getElementById('colorO').value = colorArray.join(',');  
+                    document.getElementById('dienteO').value = dienteArray.join(',');  
+                    document.getElementById('seccionO').value = posicionArray.join(',');  
                 }
                 if ('borrar' == $("input[name='accion']:checked").val()) {
                     //alert("x-> "+x+" y-> "+y);

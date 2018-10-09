@@ -10,9 +10,9 @@ namespace SAC.metodos
         consulta.consulta consultar = new consulta.consulta();
         conexion.conexion con = new conexion.conexion();
 
-        public void agregarOdontograma(String col, String die, String secc, String cont)
+        public void agregarOdontograma(String col, String die, String secc)
         {
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`, `dienteOdontograma`, `seccionOdontograma`, `contextoOdontograma`) VALUES ('" + col + "', '" + die + "', '" + secc + "', '" + cont + "');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`, `dienteOdontograma`, `seccionOdontograma`) VALUES ('" + col + "', '" + die + "', '" + secc + "');", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
     }
