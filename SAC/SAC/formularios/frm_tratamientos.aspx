@@ -51,25 +51,37 @@
                 <%--Sección agregar--%>
 
                 <div id="seccionAgregar" style="display: block">
-                    <h4 style="text-align:center">Agregar</h4>
+                    <h4 style="text-align: center">Agregar</h4>
                     Tipos de tratamientos
         <br />
                     Nuevo:
         <br />
-                    <asp:TextBox class="validate" ID="txt_codigoTipo" runat="server" Width="56px" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
-                    <asp:TextBox class="validate" ID="txt_nombreTipo" runat="server" Width="234px" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:TextBox class="validate" ID="txt_codigoTipo" runat="server" Width="56px" Placeholder="Código" AutoPostBack="true" onkeypress="return solonumeros(event)" OnTextChanged="txt_codigoTipo_TextChanged1"></asp:TextBox>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>                    
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:TextBox class="validate" ID="txt_nombreTipo" runat="server" Width="234px" Placeholder="Nombre" AutoPostBack="true" onkeypress="return sololetras(event)"></asp:TextBox>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                     <br />
                     Existentes:
         <br />
                     <div class="col s6">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <asp:DropDownList ID="DropDownList2" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
 
-                        <asp:DropDownList ID="DropDownList2" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento"></asp:DropDownList>
                     </div>
 
                     <br />
 
                     <br />
-                    
+
                     Tratamientos:
                     <br />
                     <asp:TextBox class="validate" ID="txt_codigoTratamiento" runat="server" Width="56px" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
@@ -90,8 +102,8 @@
                 <div class="row" id="grid" style="display: none">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <h4 id="titulo1" style="text-align:center; display:none">Actualizar</h4>
-                            <h4 id="titulo2" style="text-align:center; display:none">Eliminar</h4>
+                            <h4 id="titulo1" style="text-align: center; display: none">Actualizar</h4>
+                            <h4 id="titulo2" style="text-align: center; display: none">Eliminar</h4>
                         </ContentTemplate>
                     </asp:UpdatePanel>
                     <asp:UpdatePanel runat="server">
