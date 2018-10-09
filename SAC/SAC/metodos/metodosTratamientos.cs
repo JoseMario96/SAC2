@@ -110,5 +110,29 @@ namespace SAC.metodos
             consultar.ejecutar_consulta("delete from tbl_tratamiento where codigoTratamiento = '"+codigo+"';", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
+
+        public Boolean tratamientoExiste(String codigo)
+        {
+            Boolean retorno = false;
+            MySqlDataReader buscar = consultar.ejecutar_consulta("Select codigoTipoTratamiento from tbl_tipotratamiento where codigoTipoTratamiento = '" + codigo + "';", con.abrir_conexion()).ExecuteReader();
+            while (buscar.Read())
+            {
+                retorno = true;
+            }
+            con.cerrar_Conexion();
+            return retorno;            
+        }
+
+        public String mostrarTipoTratamiento(String codigo)
+        {
+            String tratamiento = "";
+            MySqlDataReader busqueda = consultar.ejecutar_consulta("select * from tbl_tipotratamiento where codigoTipoTratamiento = '" + codigo + "';", con.abrir_conexion()).ExecuteReader();
+            while (busqueda.Read())
+            {
+                tratamiento = busqueda.GetString(1);
+            }
+            con.cerrar_Conexion();
+            return tratamiento;
+        }
     }
 }
