@@ -24,10 +24,8 @@
             }
             
         label, th, tr {
-            font-family: sans-serif;
+             font-family: sans-serif;
             font-size: medium;
-            color: black;
-            font-size: 0.9rem;
             color: black;
         }
     </style>

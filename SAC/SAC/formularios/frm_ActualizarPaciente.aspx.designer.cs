@@ -37,7 +37,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText cedula;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cedula;
         
         /// <summary>
         /// Control nombre1.
@@ -46,7 +46,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nombre1;
+        protected global::System.Web.UI.WebControls.TextBox nombre1;
         
         /// <summary>
         /// Control nombre2.
@@ -55,7 +55,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nombre2;
+        protected global::System.Web.UI.WebControls.TextBox nombre2;
         
         /// <summary>
         /// Control apellido1.
@@ -64,7 +64,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText apellido1;
+        protected global::System.Web.UI.WebControls.TextBox apellido1;
         
         /// <summary>
         /// Control apellido2.
@@ -73,7 +73,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText apellido2;
+        protected global::System.Web.UI.WebControls.TextBox apellido2;
         
         /// <summary>
         /// Control telefono.
@@ -82,7 +82,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText telefono;
+        protected global::System.Web.UI.WebControls.TextBox telefono;
         
         /// <summary>
         /// Control celular.
@@ -91,16 +91,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText celular;
-        
-        /// <summary>
-        /// Control direccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText direccion;
+        protected global::System.Web.UI.WebControls.TextBox celular;
         
         /// <summary>
         /// Control correo.
@@ -109,7 +100,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl correo;
+        protected global::System.Web.UI.WebControls.TextBox correo;
         
         /// <summary>
         /// Control generoM.
@@ -139,24 +130,6 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton generoO;
         
         /// <summary>
-        /// Control fechaN.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText fechaN;
-        
-        /// <summary>
-        /// Control fechaI.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText fechaI;
-        
-        /// <summary>
         /// Control SiE.
         /// </summary>
         /// <remarks>
@@ -175,13 +148,40 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton NoE;
         
         /// <summary>
+        /// Control fechaN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox fechaN;
+        
+        /// <summary>
+        /// Control fechaI.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox fechaI;
+        
+        /// <summary>
+        /// Control direccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox direccion;
+        
+        /// <summary>
         /// Control cedula_encargado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText cedula_encargado;
+        protected global::System.Web.UI.WebControls.TextBox cedula_encargado;
         
         /// <summary>
         /// Control nombre1_encargado.
@@ -190,7 +190,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nombre1_encargado;
+        protected global::System.Web.UI.WebControls.TextBox nombre1_encargado;
         
         /// <summary>
         /// Control nombre2_encargado.
@@ -199,7 +199,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nombre2_encargado;
+        protected global::System.Web.UI.WebControls.TextBox nombre2_encargado;
         
         /// <summary>
         /// Control apellido1_encargado.
@@ -208,7 +208,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText apellido1_encargado;
+        protected global::System.Web.UI.WebControls.TextBox apellido1_encargado;
         
         /// <summary>
         /// Control apellido2_encargado.
@@ -217,7 +217,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText apellido2_encargado;
+        protected global::System.Web.UI.WebControls.TextBox apellido2_encargado;
         
         /// <summary>
         /// Control telefono_encargado.
@@ -226,7 +226,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl telefono_encargado;
+        protected global::System.Web.UI.WebControls.TextBox telefono_encargado;
         
         /// <summary>
         /// Control celular_encargado.
@@ -235,16 +235,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl celular_encargado;
-        
-        /// <summary>
-        /// Control direccion_encargado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText direccion_encargado;
+        protected global::System.Web.UI.WebControls.TextBox celular_encargado;
         
         /// <summary>
         /// Control correo_encargado.
@@ -253,7 +244,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl correo_encargado;
+        protected global::System.Web.UI.WebControls.TextBox correo_encargado;
         
         /// <summary>
         /// Control parentezco.
@@ -262,7 +253,7 @@ namespace SAC.formularios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText parentezco;
+        protected global::System.Web.UI.WebControls.TextBox parentezco;
         
         /// <summary>
         /// Control generoEM.
@@ -290,6 +281,15 @@ namespace SAC.formularios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton generoEO;
+        
+        /// <summary>
+        /// Control direccion_encargado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox direccion_encargado;
         
         /// <summary>
         /// Control Guardar.
