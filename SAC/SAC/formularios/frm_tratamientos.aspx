@@ -69,7 +69,7 @@
                     <br />
                     Existentes:
         <br />
-                    <div class="col s6">
+                    <div style="width: 238px">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <asp:DropDownList ID="DropDownList2" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>

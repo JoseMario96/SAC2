@@ -95,11 +95,11 @@
     <Content Include="fonts\simple-line-icons\Simple-Line-Icons.svg" />
     <Content Include="formularios\frm_ActualizarExpediente.aspx" />
     <Content Include="formularios\frm_AgregarExpediente.aspx" />
-    <Content Include="formularios\frm_AgregarTratamiento.aspx" />
     <Content Include="formularios\frm_BuscarExpediente.aspx" />
     <Content Include="formularios\frm_BuscarPaciente.aspx" />
     <Content Include="formularios\frm_ActualizarPaciente.aspx" />
     <Content Include="formularios\frm_AgregarPaciente.aspx" />
+    <Content Include="formularios\frm_cita.aspx" />
     <Content Include="formularios\frm_tratamientos.aspx" />
     <Content Include="formularios\Prueba.aspx" />
     <Content Include="images\actualizar.png" />
@@ -184,13 +184,6 @@
     <Compile Include="formularios\frm_AgregarExpediente.aspx.designer.cs">
       <DependentUpon>frm_AgregarExpediente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="formularios\frm_AgregarTratamiento.aspx.cs">
-      <DependentUpon>frm_AgregarTratamiento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="formularios\frm_AgregarTratamiento.aspx.designer.cs">
-      <DependentUpon>frm_AgregarTratamiento.aspx</DependentUpon>
-    </Compile>
     <Compile Include="formularios\frm_BuscarExpediente.aspx.cs">
       <DependentUpon>frm_BuscarExpediente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -219,6 +212,13 @@
     <Compile Include="formularios\frm_AgregarPaciente.aspx.designer.cs">
       <DependentUpon>frm_AgregarPaciente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="formularios\frm_cita.aspx.cs">
+      <DependentUpon>frm_cita.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\frm_cita.aspx.designer.cs">
+      <DependentUpon>frm_cita.aspx</DependentUpon>
+    </Compile>
     <Compile Include="formularios\frm_tratamientos.aspx.cs">
       <DependentUpon>frm_tratamientos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -242,6 +242,7 @@
     </Compile>
     <Compile Include="limpiar\limpiar.cs" />
     <Compile Include="metodos\Buscar.cs" />
+    <Compile Include="metodos\metodosCitas.cs" />
     <Compile Include="metodos\metodosExpediente.cs" />
     <Compile Include="metodos\metodosOdontograma.cs" />
     <Compile Include="metodos\metodosPaciente.cs" />
