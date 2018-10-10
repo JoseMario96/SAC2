@@ -40,8 +40,15 @@ namespace SAC.metodos
 
         public void agregarTratamiento(String codigoTratamiento, String nombre, Double precio, String descripcion, String codigoTipo)
         {
+            try
+            { 
             consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_tratamiento` (`codigoTratamiento`, `nombreTratamiento`, `precioTratamiento`, `descripcionTratamiento`, `codigoTipoTratamiento`) VALUES ('" + codigoTratamiento + "', '" + nombre + "', '" + precio + "', '" + descripcion + "', '" + codigoTipo + "');", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
+            }
+            catch
+            {
+
+            }
         }
 
         public void agregarTipoTratamiento(String codigo, String nombre)

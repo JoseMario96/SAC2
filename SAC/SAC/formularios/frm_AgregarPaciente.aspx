@@ -15,6 +15,7 @@
             font-size: medium;
             color: black;
         }
+
     </style>
 </head>
 <body>
@@ -272,48 +273,48 @@
         function mostrar() {
             document.getElementById('encargado').style.display = 'block';
         }
-        function ocultar() {
-            document.getElementById('encargado').style.display = 'none';
-        }
+                             function ocultar() {
+                                 document.getElementById('encargado').style.display = 'none';
+                             }
 
 
-        function solonumeros(e) {
-            key = e.keyCoden || e.which;
-            teclado = String.fromCharCode(key);
-            numero = "1234567890";
-            especiales = "8-37-38-46";
-            teclado_especial = false;
-            for (var i in especiales) {
-                if (key == especiales[i]) {
-                    teclado_especial = true;
-                }
-            }
-            if (numero.indexOf(teclado) == -1 && !teclado_especial) {
-                return false;
-            }
-        }
+                             function solonumeros(e) {
+                                 key = e.keyCoden || e.which;
+                                 teclado = String.fromCharCode(key);
+                                 numero = "1234567890";
+                                 especiales = "8-37-38-46";
+                                 teclado_especial = false;
+                                 for (var i in especiales) {
+                                     if (key == especiales[i]) {
+                                         teclado_especial = true;
+                                     }
+                                 }
+                                 if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+                                     return false;
+                                 }
+                             }
 
-        function sololetras(e) {
-            key = e.keyCoden || e.which;
-            teclado = String.fromCharCode(key).toLowerCase();
-            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-            especiales = "8-37-38-46-164";
-            teclado_especial = false;
+                             function sololetras(e) {
+                                 key = e.keyCoden || e.which;
+                                 teclado = String.fromCharCode(key).toLowerCase();
+                                 letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+                                 especiales = "8-37-38-46-164";
+                                 teclado_especial = false;
 
-            for (var i in especiales) {
-                if (key == especiales[i]) {
-                    teclado_especial = true; break;
+                                 for (var i in especiales) {
+                                     if (key == especiales[i]) {
+                                         teclado_especial = true; break;
 
-                }
+                                     }
 
-            }
-            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
-                return false;
+                                 }
+                                 if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                                     return false;
 
-            }
-        }
+                                 }
+                             }
     </script >
-            <script src="js/materialize.min.js"></script>
+                                 <script src="js/materialize.min.js"></script>
 
 </body>
 </html>
