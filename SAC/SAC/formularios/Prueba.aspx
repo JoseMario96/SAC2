@@ -34,6 +34,7 @@
         body, a, a:hover {
             cursor: url(C:\Users\dtrej\source\repos\SAC2\SAC\SAC\images\cur438.cur), progress;
         }
+
         .auto-style1 {
             left: 0px;
             top: 0px;
@@ -63,6 +64,8 @@
         <asp:HiddenField ID="dienteO" runat="server" />
         <asp:HiddenField ID="seccionO" runat="server" />
         <asp:HiddenField ID="contextoO" runat="server" />
+        <asp:HiddenField ID="marcaO" runat="server" />
+
 
         <h1>Odontograma</h1>
         <br>
@@ -86,6 +89,7 @@
             <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Seccion</label>
             <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
         </div>
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         <br />
         <asp:Button ID="Guardar" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" CssClass="auto-style1" />
         <asp:Button ID="Button1" runat="server" Text="Prueba" OnClick="Button1_Click" />
@@ -96,9 +100,7 @@
 
 
         <script>
-            function Func() {
-                alert("hello!")
-            }
+
             // Funcion para dibujar las lineas negras de cada diente
             function dibuja_contorno(context, inicio_x, inicio_y, med, separacion_x, separacion_y) {
                 var ctx = context;
@@ -367,7 +369,7 @@
                 ctx.strokeStyle = color_line;
                 ctx.stroke();
             }
-            // Funcion para sombrear diente completo
+            // Funcion para sombrear diente completo(extraccion)
             function marcar_extraccion(contexto, num_diente, color_pas) {
                 var ctx = contexto;
                 // Definiendo puntos de dibujo
@@ -473,7 +475,11 @@
             var colorArray = new Array();
             var posicionArray = new Array();
             var dienteArray = new Array();
+            var seccionArray = new Array();
             var contador = 0;
+            var contador2 = 0;
+
+
             for (x = 0; x < 16; x++) {
 
                 if (sec > 11) {
@@ -640,6 +646,10 @@
                             guardar = new_array.toLocaleString();
                             localStorage.setItem(cod, guardar);
                             marcar_extraccion(ctx2, diente, 'black')
+
+                            seccionArray[contador2] = diente;
+                            contador2++;
+                            document.getElementById('marcaO').value = seccionArray.join(',');
                         } else {
                             alert("Ya fue marcado");
                         }
@@ -768,15 +778,13 @@
                         accion_g = 2;
                     }
                     else if (color == 'black') {
-                        cod = diente + '-' + seccion + '-' + '5';
-                        accion_g = 5;
+                        cod = diente + '-' + seccion + '-' + '3';
+                        accion_g = 1;
                     };
                     if (cod && !localStorage.getItem(cod)) {
                         new_array = [diente, seccion, accion_g, Date.now(), 0];
                         guardar = new_array.toLocaleString();
                         localStorage.setItem(cod, guardar);
-                        var contextoO = document.getElementById('contextoO');
-                        contextoO.value = ctx2;
                         dibuja_seccion(ctx2, diente, seccion, color);
                         //var contextoO = document.getElementById('contextoO')
                         //contextoO.value = ctx2;
@@ -787,11 +795,11 @@
                     }
 
                     else {
-                        alert("ya fue marcado");
+                        alert("Este diente ya contiene este tratamiento");
                     }
-                    document.getElementById('colorO').value = colorArray.join(',');  
-                    document.getElementById('dienteO').value = dienteArray.join(',');  
-                    document.getElementById('seccionO').value = posicionArray.join(',');  
+                    document.getElementById('colorO').value = colorArray.join(',');
+                    document.getElementById('dienteO').value = dienteArray.join(',');
+                    document.getElementById('seccionO').value = posicionArray.join(',');
                 }
                 if ('borrar' == $("input[name='accion']:checked").val()) {
                     //alert("x-> "+x+" y-> "+y);
@@ -1048,6 +1056,10 @@
                     devolver_seccion = 5;
                 }
                 return devolver_seccion;
+            }
+            function Func(diente, seccion, color,marca) {
+                dibuja_seccion(ctx2, diente, seccion, color);
+                marcar_extraccion(ctx2, marca, 'black');
             }
         </script>
     </form>
