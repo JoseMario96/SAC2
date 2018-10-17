@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Prueba.aspx.cs" Inherits="SAC.formularios.Prueba" %>
+﻿3<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Prueba.aspx.cs" Inherits="SAC.formularios.Prueba" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -792,14 +792,15 @@
                         dienteArray[contador] = diente;
                         posicionArray[contador] = seccion;
                         contador++;
+                        document.getElementById('colorO').value = colorArray.join(',');
+                        document.getElementById('dienteO').value = dienteArray.join(',');
+                        document.getElementById('seccionO').value = posicionArray.join(',');
                     }
 
                     else {
                         alert("Este diente ya contiene este tratamiento");
                     }
-                    document.getElementById('colorO').value = colorArray.join(',');
-                    document.getElementById('dienteO').value = dienteArray.join(',');
-                    document.getElementById('seccionO').value = posicionArray.join(',');
+                  
                 }
                 if ('borrar' == $("input[name='accion']:checked").val()) {
                     //alert("x-> "+x+" y-> "+y);

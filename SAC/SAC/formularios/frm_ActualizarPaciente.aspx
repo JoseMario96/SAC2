@@ -44,8 +44,8 @@
                 <br />
 
                 <div>
-                    <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#0080ff " HeaderStyle-ForeColor="White" class="col s12"
-                        runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                    <asp:GridView ID="GridView1" AllowPaging="true"  PageSize="4" aligne="center" HeaderStyle-BackColor="#0080ff " HeaderStyle-ForeColor="White" class="col s12"
+                        runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnPageIndexChanging="GridView1_PageIndexChanging">
                         <Columns>
                             <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />
                             <asp:BoundField DataField="nombre1Paciente" HeaderText="Primer Nombre" ItemStyle-Width="100" />

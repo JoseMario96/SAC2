@@ -185,21 +185,7 @@ document.getElementById('formularioP').scrollIntoView();
             }
         }
 
-        // Metodo con el header de la tabla para la busqueda
-        protected void OnDataBound(object sender, EventArgs e)
-        {
-            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                TableHeaderCell cell = new TableHeaderCell();
-                TextBox txtSearch = new TextBox();
-                txtSearch.Attributes["placeholder"] = GridView1.Columns[i].HeaderText;
-                txtSearch.CssClass = "search_textbox";
-                cell.Controls.Add(txtSearch);
-                row.Controls.Add(cell);
-            }
-            GridView1.HeaderRow.Parent.Controls.AddAt(1, row);
-        }
+
 
         protected void Guardar_Click(object sender, EventArgs e)
         {
@@ -305,6 +291,27 @@ document.getElementById('formularioP').scrollIntoView();
             GridView1.DataBind();
             this.Controls.Clear();
             Response.Redirect("frm_ActualizarPaciente.aspx");
+        }
+        // Metodo con el header de la tabla para la busqueda
+        protected void OnDataBound(object sender, EventArgs e)
+        {
+            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                TableHeaderCell cell = new TableHeaderCell();
+                TextBox txtSearch = new TextBox();
+                txtSearch.Attributes["placeholder"] = GridView1.Columns[i].HeaderText;
+                txtSearch.CssClass = "search_textbox";
+                cell.Controls.Add(txtSearch);
+                row.Controls.Add(cell);
+            }
+            GridView1.HeaderRow.Parent.Controls.AddAt(1, row);
+        }
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.DataSource = objeto.Paciente();
+            GridView1.PageIndex = e.NewPageIndex;
+            GridView1.DataBind();
         }
     }
 }
