@@ -10,7 +10,7 @@
 namespace SAC.formularios {
     
     
-    public partial class frm_AgregarTratamiento {
+    public partial class frm_cita {
         
         /// <summary>
         /// Control form1.
@@ -22,12 +22,12 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control DropDownList1.
+        /// Control Calendar1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.Calendar Calendar1;
     }
 }
