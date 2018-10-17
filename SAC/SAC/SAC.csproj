@@ -105,9 +105,15 @@
     <Content Include="formularios\frm_ActualizarPaciente.aspx" />
     <Content Include="formularios\frm_AgregarPaciente.aspx" />
     <Content Include="formularios\frm_ReporteExpediente.aspx" />
+    <Content Include="formularios\frm_ReporteOdontogramas.aspx" />
     <Content Include="formularios\frm_tratamientos.aspx" />
     <Content Include="formularios\Prueba.aspx" />
+    <Content Include="formularios\ResponsiveOdontograma.aspx" />
+    <Content Include="formularios\ResponsivePrueba.aspx" />
+    <Content Include="formularios\tabla.aspx" />
+    <Content Include="images\780769.png" />
     <Content Include="images\actualizar.png" />
+    <Content Include="images\actualizarEncargado.png" />
     <Content Include="images\agregar.png" />
     <Content Include="images\buscar.png" />
     <Content Include="images\cur438.cur" />
@@ -149,8 +155,11 @@
     <Content Include="images\work_8.jpg" />
     <Content Include="index.aspx" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\html2canvas.js" />
+    <Content Include="js\html2canvas.min.js" />
     <Content Include="js\jquery-1.7.2.min.js" />
     <Content Include="js\jquery-ui-1.8.13.custom.min.js" />
+    <Content Include="js\jspdf.plugin.autotable.min.js" />
     <Content Include="js\quicksearch.js" />
     <Content Include="js\google_map.js" />
     <Content Include="js\jquery.countTo.js" />
@@ -231,6 +240,13 @@
     <Compile Include="formularios\frm_ReporteExpediente.aspx.designer.cs">
       <DependentUpon>frm_ReporteExpediente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="formularios\frm_ReporteOdontogramas.aspx.cs">
+      <DependentUpon>frm_ReporteOdontogramas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\frm_ReporteOdontogramas.aspx.designer.cs">
+      <DependentUpon>frm_ReporteOdontogramas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="formularios\frm_tratamientos.aspx.cs">
       <DependentUpon>frm_tratamientos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -244,6 +260,27 @@
     </Compile>
     <Compile Include="formularios\Prueba.aspx.designer.cs">
       <DependentUpon>Prueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\ResponsiveOdontograma.aspx.cs">
+      <DependentUpon>ResponsiveOdontograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\ResponsiveOdontograma.aspx.designer.cs">
+      <DependentUpon>ResponsiveOdontograma.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\ResponsivePrueba.aspx.cs">
+      <DependentUpon>ResponsivePrueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\ResponsivePrueba.aspx.designer.cs">
+      <DependentUpon>ResponsivePrueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\tabla.aspx.cs">
+      <DependentUpon>tabla.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\tabla.aspx.designer.cs">
+      <DependentUpon>tabla.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

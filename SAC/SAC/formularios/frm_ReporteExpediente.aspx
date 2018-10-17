@@ -45,6 +45,8 @@
             <br />
 
             <asp:Panel ID="Panel1" runat="server" Visible="false">
+
+                ><img src="../images/780769.png" />
                 <table class="auto-style1" border="2">
                     <tr>
                         <td class="auto-style4">wsdcfvgbhnjkm</td>

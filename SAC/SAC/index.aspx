@@ -182,6 +182,16 @@
                 transition: all 1s;
             }
 
+            .popup-contenedorO {
+            position: relative;
+            margin: 7% auto;
+            padding: 30px 50px;
+            background-color: #fafafa;
+            /*color: #333;*/
+            border-radius: 3px;
+            width: 95%;
+            height: 75%;
+        }
         .popup-contenedor {
             position: relative;
             margin: 7% auto;
@@ -489,16 +499,16 @@
 
                 <%--Reporte--%>
                 <div class="col-md-3 ">
-                    <a href="#popup6" class="popup-link fh5co-project-item ">
+                    <a href="#popup6" class="popup-link fh5co-project-item "  onclick='document.getElementById("reporteE").src="formularios/frm_ReporteOdontogramas.aspx";'>
                         <img src="../images/reporte.png" alt="Image" class="img-responsive centrar"/>
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Reporte</h2>
                         </div>
                     </a>
                     <div id="popup6" class="modal-wrapper">
-                        <div class="popup-contenedor">
+                        <div class="popup-contenedorO">
                             <div class="responsiveContent">
-                                <%--<iframe src="formularios/frm_BuscarExpediente.aspx"></iframe>--%>
+                                 <iframe id="reporteE"></iframe>
                                 <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
                             </div>
                         </div>
@@ -510,20 +520,20 @@
             <div class="row espacio">
                 <div class="col-md-3"></div>
                 <div class="col-md-3">
-                    <a href="#popup7" class="popup-link fh5co-project-item ">
+                    <a href="#popup7" class="popup-link fh5co-project-item " onclick='document.getElementById("Odonto").src="formularios/Prueba.aspx";'>
                         <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Odontograma</h2>
                         </div>
                     </a>
-                    <%-- <div id="popup7" class="modal-wrapper">
-                        <div class="popup-contenedor">
+                   <div id="popup7" class="modal-wrapper">
+                        <div class="popup-contenedorO">
                             <div class="responsiveContent">
-                                <iframe src="formularios/frm_BuscarExpediente.aspx"></iframe>
+                                <iframe id="Odonto"></iframe>
                                 <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
                             </div>
                         </div>
-                    </div>--%>
+                    </div>
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-3">

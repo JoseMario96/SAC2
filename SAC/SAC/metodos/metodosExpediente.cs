@@ -50,9 +50,18 @@ namespace SAC.metodos
             MySqlDataReader existencia = consultar.ejecutar_consulta("Select codigoExpediente from tbl_expediente where cedulaPaciente= '" + cedula + "'; ", con.abrir_conexion()).ExecuteReader();
             if (existencia.Read())
             {
+
                 codigo = existencia.GetString(0);
             }
-            cod = Int32.Parse(codigo);
+            try
+            {
+                cod = Int32.Parse(codigo);
+            }
+            catch
+            {
+                cod = 0;
+            }
+         
             return cod;
         }
 
@@ -127,7 +136,7 @@ namespace SAC.metodos
             con.cerrar_Conexion();
             return paciente;
         }
-        public void actualizarExpediente(String codE,String car, String art, String reum, String vih, String derr, String ane, String sang, String paisF, String paisL, String paisT, String mor, String rinn, String gas, String vis, String cort, String diab, String epi, String resp, String quim, String reu, String hep, String her, String pesoP, String pesoA, String arti, String psi, String tir, String sex, String ost, String mig, String bif, String dro, String fum, String cigD, String perF, String beb, String bebF, String tat, String sho)
+        public void actualizarExpediente(String codE, String car, String art, String reum, String vih, String derr, String ane, String sang, String paisF, String paisL, String paisT, String mor, String rinn, String gas, String vis, String cort, String diab, String epi, String resp, String quim, String reu, String hep, String her, String pesoP, String pesoA, String arti, String psi, String tir, String sex, String ost, String mig, String bif, String dro, String fum, String cigD, String perF, String beb, String bebF, String tat, String sho)
         {
             MySqlDataReader actualizar = consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_expediente` SET `enfermedadesCardiacos`='" + car + "', `presionArterial`='" + art + "', `fiebreReumatica`='" + reum + "', `VIH+SIDA`='" + vih + "', `derrame`='" + derr + "', `anemia`='" + ane + "', `transfusionSangre`='" + sang + "', `fueraDelPais`='" + paisF + "', `lugarFueraDelPais`='" + paisL + "', `tiempoFueraDelPais`='" + paisT + "', `moretes`='" + mor + "', `problemasDeRinnon`='" + rinn + "', `problemasGastrointestinales`='" + gas + "', `problemasVision`='" + vis + "', `tratamientosCorticoesteroides`='" + cort + "', `diabetes`='" + diab + "', `epilepsia`='" + epi + "', `enfermedadesRespiratorias`='" + resp + "', `radioterapiaQuimioterapia`='" + quim + "', `reumatismo`='" + reu + "', `problemasHepaticos`='" + hep + "', `virusHerpes`='" + her + "', `perdidaDePeso`='" + pesoP + "', `aumentoDePeso`='" + pesoA + "', `artitris`='" + arti + "', `tratamientoPsiquiatrico`='" + psi + "', `problemaDeTiroides`='" + tir + "', `enfermedadesTransmisionSexual`='" + sex + "', `osteoporosis`='" + ost + "', `migranna`='" + mig + "', `tratamientoBifosfonados`='" + bif + "', `consumeDrogas`='" + dro + "', `fumador`='" + fum + "', `cigarrosXdia`='" + cigD + "', `periodoFumado`='" + perF + "', `bebedor`='" + beb + "', `frecuenciaBebedor`='" + bebF + "', `cicatrices/tatuajes`='" + tat + "', `shockAnafilactico`='" + sho + "' WHERE `codigoExpediente`='" + codE + "';", con.abrir_conexion()).ExecuteReader();
             con.cerrar_Conexion();

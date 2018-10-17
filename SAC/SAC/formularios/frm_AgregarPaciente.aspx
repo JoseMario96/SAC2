@@ -15,7 +15,6 @@
             font-size: medium;
             color: black;
         }
-
     </style>
 </head>
 <body>
@@ -136,10 +135,16 @@
                     </p>
                 </div>
                 <div id="encargado" style="display: none">
+
                     <div class="row">
+                        <div class="row">
+                            <asp:Button ID="actualizarE" runat="server" Text="Actualizar Encargado" OnClick="actualizarE_Click" />
+                        </div>
+
                         <div class="col s12 m6 13">
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
+
                                     <label class="active" for="cedula_encargado2">Cédula del encargado</label>
                                     <%--<input id="cedula_encargado2" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" />--%>
                                     <asp:TextBox ID="cedula_encargad" class="validate" MaxLength="14" runat="server" OnTextChanged="cedula_encargad_TextChanged" AutoPostBack="true"></asp:TextBox>
@@ -273,48 +278,48 @@
         function mostrar() {
             document.getElementById('encargado').style.display = 'block';
         }
-                             function ocultar() {
-                                 document.getElementById('encargado').style.display = 'none';
-                             }
+        function ocultar() {
+            document.getElementById('encargado').style.display = 'none';
+        }
 
 
-                             function solonumeros(e) {
-                                 key = e.keyCoden || e.which;
-                                 teclado = String.fromCharCode(key);
-                                 numero = "1234567890";
-                                 especiales = "8-37-38-46";
-                                 teclado_especial = false;
-                                 for (var i in especiales) {
-                                     if (key == especiales[i]) {
-                                         teclado_especial = true;
-                                     }
-                                 }
-                                 if (numero.indexOf(teclado) == -1 && !teclado_especial) {
-                                     return false;
-                                 }
-                             }
+        function solonumeros(e) {
+            key = e.keyCoden || e.which;
+            teclado = String.fromCharCode(key);
+            numero = "1234567890";
+            especiales = "8-37-38-46";
+            teclado_especial = false;
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true;
+                }
+            }
+            if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+                return false;
+            }
+        }
 
-                             function sololetras(e) {
-                                 key = e.keyCoden || e.which;
-                                 teclado = String.fromCharCode(key).toLowerCase();
-                                 letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-                                 especiales = "8-37-38-46-164";
-                                 teclado_especial = false;
+        function sololetras(e) {
+            key = e.keyCoden || e.which;
+            teclado = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-38-46-164";
+            teclado_especial = false;
 
-                                 for (var i in especiales) {
-                                     if (key == especiales[i]) {
-                                         teclado_especial = true; break;
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true; break;
 
-                                     }
+                }
 
-                                 }
-                                 if (letras.indexOf(teclado) == -1 && !teclado_especial) {
-                                     return false;
+            }
+            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                return false;
 
-                                 }
-                             }
-    </script >
-                                 <script src="js/materialize.min.js"></script>
+            }
+        }
+    </script>
+    <script src="js/materialize.min.js"></script>
 
 </body>
 </html>

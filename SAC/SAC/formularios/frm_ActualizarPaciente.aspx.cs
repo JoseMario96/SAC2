@@ -14,9 +14,10 @@ namespace SAC.formularios
         metodos.metodosPaciente objeto = new metodos.metodosPaciente();
         public static string generoE;
         public static string genero;
+        public static int estado = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ImageButton1.ImageUrl = "/images/actualizarEncargado.png";
             if (!this.IsPostBack)
             {
 
@@ -37,14 +38,11 @@ namespace SAC.formularios
 
             string script = @"<script type='text/javascript'>
                 document.getElementById('formularioP').style.display = 'block' ;
-document.getElementById('formularioP').scrollIntoView();                  
+                document.getElementById('formularioP').scrollIntoView();                  
                 document.getElementById('Botones').style.display = 'block';
             </script>";
 
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-
-
-
             foreach (GridViewRow row in GridView1.Rows)
             {
 
@@ -250,7 +248,7 @@ document.getElementById('formularioP').scrollIntoView();
                 datos = objeto.buscarPaciente(cedula.InnerHtml);
                 if (datos[9] == null & SiE.Checked & cedula_encargado.Text != "" & nombre1_encargado.Text != "" & nombre2_encargado.Text != "" & apellido1_encargado.Text != "" & apellido2_encargado.Text != "" & celular_encargado.Text != "" & direccion_encargado.Text != "" & correo_encargado.Text != "" & parentezco.Text != "")
                 {
-                    objeto.ActualizarPacienteNuevoEncargado(cedula.InnerHtml, cedula_encargado.Text, nombre1_encargado.Text, nombre2_encargado.Text, apellido1_encargado.Text, apellido2_encargado.Text, generoE, telefono_encargado.Text, celular_encargado.Text, direccion_encargado.Text, correo_encargado.Text, parentezco.Text);
+                    objeto.ActualizarPacienteNuevoEncargado(estado, cedula.InnerHtml, cedula_encargado.Text, nombre1_encargado.Text, nombre2_encargado.Text, apellido1_encargado.Text, apellido2_encargado.Text, generoE, telefono_encargado.Text, celular_encargado.Text, direccion_encargado.Text, correo_encargado.Text, parentezco.Text);
                 }
             }
             else if (objeto.validacioncorreo(corre) == true & objeto.validacioncorreo(correE) == true & SiE.Checked)
@@ -270,7 +268,7 @@ document.getElementById('formularioP').scrollIntoView();
                 datos = objeto.buscarPaciente(cedula.InnerHtml);
                 if (datos[9] == null & SiE.Checked & cedula_encargado.Text != "" & nombre1_encargado.Text != "" & nombre2_encargado.Text != "" & apellido1_encargado.Text != "" & apellido2_encargado.Text != "" & celular_encargado.Text != "" & direccion_encargado.Text != "" & correo_encargado.Text != "" & parentezco.Text != "")
                 {
-                    objeto.ActualizarPacienteNuevoEncargado(cedula.InnerHtml, cedula_encargado.Text, nombre1_encargado.Text, nombre2_encargado.Text, apellido1_encargado.Text, apellido2_encargado.Text, generoE, telefono_encargado.Text, celular_encargado.Text, direccion_encargado.Text, correo_encargado.Text, parentezco.Text);
+                    objeto.ActualizarPacienteNuevoEncargado(estado, cedula.InnerHtml, cedula_encargado.Text, nombre1_encargado.Text, nombre2_encargado.Text, apellido1_encargado.Text, apellido2_encargado.Text, generoE, telefono_encargado.Text, celular_encargado.Text, direccion_encargado.Text, correo_encargado.Text, parentezco.Text);
                 }
             }
             else
@@ -299,6 +297,114 @@ document.getElementById('formularioP').scrollIntoView();
 
         }
 
+
+        protected void actualizarE_Click(object sender, EventArgs e)
+        {
+            string script = @"<script type='text/javascript'>
+            document.getElementById('encargado').style.display = 'block' ;
+            document.getElementById('botonesE').style.display = 'block' ;
+            document.getElementById('encargado').scrollIntoView(); 
+
+            </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
+            cedula_encargado.Text = "";
+            nombre1_encargado.Text = "";
+            nombre2_encargado.Text = "";
+            apellido1_encargado.Text = "";
+            apellido2_encargado.Text = "";
+            telefono_encargado.Text = "";
+            celular_encargado.Text = "";
+            correo_encargado.Text = "";
+            parentezco.Text = "";
+            direccion_encargado.Text = "";
+        }
+
+        protected void EncargadoA_Click(object sender, EventArgs e)
+        {
+            if (generoEM.Checked)
+            {
+                generoE = "Masculino";
+            }
+            else if (generoEF.Checked)
+            {
+                generoE = "Femenino";
+            }
+            else if (generoEO.Checked)
+            {
+                generoE = "Otro";
+            }
+            objeto.ActualizarPacienteNuevoEncargado(estado, cedula.InnerHtml, cedula_encargado.Text, nombre1_encargado.Text, nombre2_encargado.Text, apellido1_encargado.Text, apellido2_encargado.Text, generoE, telefono_encargado.Text, celular_encargado.Text, direccion_encargado.Text, parentezco.Text, correo_encargado.Text);
+            string script = @"<script type='text/javascript'>
+            document.getElementById('encargado').style.display = 'block';
+            document.getElementById('encargado').scrollIntoView();                      
+            </script>"; 
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+        }
+
+        protected void cancelarE_Click(object sender, EventArgs e)
+        {
+            GridView1.DataSource = objeto.Paciente();
+            GridView1.DataBind();
+            this.Controls.Clear();
+            Response.Redirect("frm_ActualizarPaciente.aspx");
+        }
+
+        protected void cedula_encargado_TextChanged(object sender, EventArgs e)
+        {
+            string script = @"<script type='text/javascript'>
+            document.getElementById('encargado').style.display = 'block' ;
+            document.getElementById('encargado').scrollIntoView();     
+            </script>";
+
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
+            String[] encargado = new String[10];
+            encargado = objeto.buscarEncargado(cedula_encargado.Text);
+
+            string dinamica = encargado[0];
+            if (dinamica == null)
+            {
+                dinamica = "";
+            }
+
+            if (dinamica.Equals(cedula_encargado.Text))
+            {
+                cedula_encargado.Text = encargado[0];
+                nombre1_encargado.Text = encargado[1];
+                nombre2_encargado.Text = encargado[2];
+                apellido1_encargado.Text = encargado[3];
+                apellido2_encargado.Text = encargado[4];
+                if (encargado[5].Equals("Masculino"))
+                {
+                    generoEF.Checked = false;
+                    generoEO.Checked = false;
+                    generoEM.Checked = true;
+                }
+                else if (encargado[5].Equals("Femenino"))
+                {
+                    generoEM.Checked = false;
+                    generoEO.Checked = false;
+                    generoEF.Checked = true;
+                }
+                else if (encargado[5].Equals("Otro"))
+                {
+                    generoEM.Checked = false;
+                    generoEF.Checked = false;
+                    generoEO.Checked = true;
+                }
+                telefono_encargado.Text = encargado[6];
+                celular_encargado.Text = encargado[7];
+                direccion_encargado.Text = encargado[8];
+                parentezco.Text = encargado[9];
+                correo_encargado.Text = encargado[10];
+            }
+            else
+            {
+                estado = 1;
+                nombre1_encargado.Focus();
+            }
+        }
         protected void Cancelar_Click(object sender, EventArgs e)
         {
             GridView1.DataSource = objeto.Paciente();
@@ -306,5 +412,6 @@ document.getElementById('formularioP').scrollIntoView();
             this.Controls.Clear();
             Response.Redirect("frm_ActualizarPaciente.aspx");
         }
+
     }
 }

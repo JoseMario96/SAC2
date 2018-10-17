@@ -22,7 +22,7 @@
                 border: 3px solid red;
             }
 
-        label,tr,th {
+        label, tr, th {
             font-family: sans-serif;
             font-size: medium;
             color: black;
@@ -48,7 +48,7 @@
                 <br />
 
                 <div>
-                    <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#0080ff " HeaderStyle-ForeColor="White" class="col s12"
+                    <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                         runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />
@@ -166,98 +166,110 @@
                     </tr>
                 </table>
             </div>
+            <asp:Panel ID="Panel1" runat="server">
+                <div id="encargado" class="espacio" tabindex="-1">
+                    <div>
+                        <asp:ImageButton ID="ImageButton1" runat="server" OnClick="actualizarE_Click" />
+                    </div>
 
-            <div id="encargado" style="display: none" class="espacio">
-                <table class="striped">
+                    <table class="striped">
 
-                    <tr>
-                        <th colspan="5" style="text-align: center">Encargado</th>
-                    </tr>
-                    <tr>
-                        <th>Cédula del encargado</th>
-                        <th>Primer nombre</th>
-                        <th>Segundo nombre</th>
-                        <th>Primer apellido</th>
-                        <th>Segundo apellido</th>
-                    </tr>
+                        <tr>
+                            <th colspan="5" style="text-align: center">Encargado</th>
+                        </tr>
+                        <tr>
+                            <th>Cédula del encargado</th>
+                            <th>Primer nombre</th>
+                            <th>Segundo nombre</th>
+                            <th>Primer apellido</th>
+                            <th>Segundo apellido</th>
+                        </tr>
 
-                    <tr>
-                        <td>
+                        <tr>
+                            <td>
 
-                            <asp:TextBox ID="cedula_encargado" runat="server"></asp:TextBox>
-                        </td>
-                        <td>
+                                <asp:TextBox ID="cedula_encargado" runat="server" OnTextChanged="cedula_encargado_TextChanged" AutoPostBack="true"></asp:TextBox>
+                            </td>
+                            <td>
 
-                            <asp:TextBox ID="nombre1_encargado" runat="server"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="nombre2_encargado" runat="server"></asp:TextBox>
-                        </td>
-                        <td>
+                                <asp:TextBox ID="nombre1_encargado" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="nombre2_encargado" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
 
-                            <asp:TextBox ID="apellido1_encargado" runat="server"></asp:TextBox>
-                        </td>
-                        <td>
+                                <asp:TextBox ID="apellido1_encargado" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
 
-                            <asp:TextBox ID="apellido2_encargado" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
+                                <asp:TextBox ID="apellido2_encargado" runat="server"></asp:TextBox>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th>Teléfono</th>
-                        <th>Celular</th>
-                        <th>Correo electrónico</th>
-                        <th>Parentezco con el menor</th>
-                        <th>Género</th>
-                    </tr>
+                        <tr>
+                            <th>Teléfono</th>
+                            <th>Celular</th>
+                            <th>Correo electrónico</th>
+                            <th>Parentezco con el menor</th>
+                            <th>Género</th>
+                        </tr>
 
-                    <tr>
-                        <td>
-                            <asp:TextBox ID="telefono_encargado" runat="server"></asp:TextBox>
-                        </td>
-                        <td>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="telefono_encargado" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
 
-                            <asp:TextBox ID="celular_encargado" runat="server"></asp:TextBox>
-                        </td>
-                        <td>
+                                <asp:TextBox ID="celular_encargado" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
 
-                            <asp:TextBox ID="correo_encargado" runat="server"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="parentezco" runat="server"></asp:TextBox>
-                        </td>
-                        <td>
-                            <label>
-                                <input class="with-gap" name="group5" runat="server" type="radio" id="generoEM" />
-                                <span>Masculino</span>
-                            </label>
+                                <asp:TextBox ID="correo_encargado" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="parentezco" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <label>
+                                    <input class="with-gap" name="group5" runat="server" type="radio" id="generoEM" />
+                                    <span>Masculino</span>
+                                </label>
 
-                            <label>
-                                <input class="with-gap" name="group5" runat="server" type="radio" id="generoEF" />
-                                <span>Femenino</span>
-                            </label>
-                            <label>
-                                <input class="with-gap" name="group5" runat="server" type="radio" id="generoEO" />
-                                <span>Otro</span>
-                            </label>
-                        </td>
-                    </tr>
+                                <label>
+                                    <input class="with-gap" name="group5" runat="server" type="radio" id="generoEF" />
+                                    <span>Femenino</span>
+                                </label>
+                                <label>
+                                    <input class="with-gap" name="group5" runat="server" type="radio" id="generoEO" />
+                                    <span>Otro</span>
+                                </label>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th>Dirección</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:TextBox ID="direccion_encargado" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-
-
-                </table>
-            </div>
+                        <tr>
+                            <th>Dirección</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="direccion_encargado" runat="server"></asp:TextBox>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="row">
+                        <div id="botonesE" style="display: none">
+                            <div class="input-field col s4">
+                                <asp:Button class="waves-effect waves-light btn" ID="EncargadoA" runat="server" Text="Guardar" OnClick="EncargadoA_Click" />
+                            </div>
+                            <div class="input-field col s4">
+                                <asp:Button class="waves-effect waves-light btn" ID="cancelarE" runat="server" Text="Cancelar" OnClick="cancelarE_Click" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </asp:Panel>
             <div id="Botones" style="display: none">
                 <div class="row">
-
                     <div class="input-field col s4">
                         <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
                     </div>
@@ -265,21 +277,16 @@
                         <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
                     </div>
                 </div>
-
             </div>
 
             <script type="text/javascript">
                 function mostrar() {
                     document.getElementById('encargado').style.display = 'block';
-
-
                 }
-
                 function ocultar() {
                     document.getElementById('encargado').style.display = 'none';
-
                 }
-
+         
                 function solonumeros(e) {
                     key = e.keyCoden || e.which;
                     teclado = String.fromCharCode(key);
@@ -318,11 +325,7 @@
             </script>
         </form>
     </div>
-
     <script src="js/materialize.min.js"></script>
-
-
-
 </body>
 </html>
 
