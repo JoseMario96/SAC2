@@ -65,6 +65,7 @@
         <asp:HiddenField ID="seccionO" runat="server" />
         <asp:HiddenField ID="contextoO" runat="server" />
         <asp:HiddenField ID="marcaO" runat="server" />
+         <asp:HiddenField ID="borrarO" runat="server" />
 
 
         <h1>Odontograma</h1>
@@ -693,6 +694,7 @@
                         }
                     } else if (accion == 'borrar') {
                         borrar_diente(ctx2, diente);
+                        document.getElementById('borrarO').value = diente;
                         //cargar el ultimo pintado
                         seccion_chk = $("input[name='seccion']:checked").val();
                         if (seccion_chk == 'seccion') {

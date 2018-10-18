@@ -58,6 +58,10 @@ namespace SAC.formularios
                 </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             }
+            else
+            {
+
+            }
         }
     }
 }

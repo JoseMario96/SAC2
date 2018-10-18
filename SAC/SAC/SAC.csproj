@@ -103,6 +103,7 @@
     <Content Include="formularios\frm_ActualizarPaciente.aspx" />
     <Content Include="formularios\frm_AgregarPaciente.aspx" />
     <Content Include="formularios\frm_Citas.aspx" />
+    <Content Include="formularios\frm_MantenimientoOdontograma.aspx" />
     <Content Include="formularios\frm_ReporteExpediente.aspx" />
     <Content Include="formularios\frm_ReporteOdontogramas.aspx" />
     <Content Include="formularios\frm_tratamientos.aspx" />
@@ -231,6 +232,13 @@
     </Compile>
     <Compile Include="formularios\frm_Citas.aspx.designer.cs">
       <DependentUpon>frm_Citas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\frm_MantenimientoOdontograma.aspx.cs">
+      <DependentUpon>frm_MantenimientoOdontograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\frm_MantenimientoOdontograma.aspx.designer.cs">
+      <DependentUpon>frm_MantenimientoOdontograma.aspx</DependentUpon>
     </Compile>
     <Compile Include="formularios\frm_ReporteExpediente.aspx.cs">
       <DependentUpon>frm_ReporteExpediente.aspx</DependentUpon>
