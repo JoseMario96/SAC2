@@ -11,9 +11,9 @@
     <script type="text/javascript" src="../js/quicksearch.js"></script>
 
     <style>
-        .colorLetra {
+        /*.colorLetra {
             color: black;
-        }
+        }*/
 
         .espacio {
             padding-top: 5%;
@@ -27,11 +27,9 @@
                 border: 3px solid red;
             }
 
-        label, th, tr {
+        label,tr,th{
             font-family: sans-serif;
             font-size: medium;
-            color: black;
-            font-size: 0.9rem;
             color: black;
         }
     </style>
@@ -43,7 +41,7 @@
                 <br />
                 <br />
 
-                <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
+                <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
                     runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                     <Columns>
                         <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />

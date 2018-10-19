@@ -98,8 +98,6 @@ namespace SAC.formularios
 
                 }
             }
-
-
         }
 
         protected void Guardar_Click(object sender, EventArgs e)
@@ -279,6 +277,11 @@ namespace SAC.formularios
             {
                 nombre1_encargado.Focus();
             }
+        }
+
+        protected void actualizarE_Click(object sender, EventArgs e)
+        {
+            cedula_encargad.Text = "";
         }
     }
 }

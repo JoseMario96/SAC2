@@ -1,35 +1,15 @@
-﻿3<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Prueba.aspx.cs" Inherits="SAC.formularios.Prueba" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ResponsiveOdontograma.aspx.cs" Inherits="SAC.formularios.ResponsiveOdontograma" %>
 
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta charset="utf-8" />
-    <link href="../css/materialize.min.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <script src="../js/jquery-1.7.2.min.js"></script>
     <link href="../css/jquery-ui-1.8.13.custom.css" rel="stylesheet" />
     <script src="../js/jquery-ui-1.8.13.custom.min.js"></script>
-    <style>
-        #myCanvas {
-            border: 2px solid #00ff90;
-        }
 
-        #myCanvas2 {
-            border: 2px solid #00ff90;
-        }
-
-        #myCanvas3 {
-            border: 2px solid #00ff90;
-        }
-
-        #myCanvas4 {
-            border: 2px solid #00ff90;
-        }
-
-        body {
-            text-align: center;
-        }
-    </style>
     <style type="text/css">
         body, a, a:hover {
             cursor: url(C:\Users\dtrej\source\repos\SAC2\SAC\SAC\images\cur438.cur), progress;
@@ -39,7 +19,29 @@
             left: 0px;
             top: 0px;
         }
+
+        .contenedor {
+            box-sizing: border-box;
+            float: left;
+            width: 50%;
+            padding: 10px;
+        }
+
+        .lienzo {
+            border: 1px solid #d9d9d9;
+        }
+
+        #lienzo1 {
+            float: right;
+        }
+
+        #myCanvas, #myCanvas2, #myCanvas3, #myCanvas4 {
+            width: 65%;
+            float: left;
+            border: 2px solid #000000;
+        }
     </style>
+
     <script>
         $(function () {
             $("#radio").buttonset();
@@ -54,55 +56,137 @@
             });
         });
     </script>
-
-
 </head>
 <body>
-    <form id="aspx" runat="server">
-
+    <form id="form1" runat="server">
         <asp:HiddenField ID="colorO" runat="server" />
         <asp:HiddenField ID="dienteO" runat="server" />
         <asp:HiddenField ID="seccionO" runat="server" />
         <asp:HiddenField ID="contextoO" runat="server" />
-        <asp:HiddenField ID="marcaO" runat="server" />
-         <asp:HiddenField ID="borrarO" runat="server" />
 
 
-        <h1>Odontograma</h1>
-        <br>
-        <br>
         <div id="radio">
             <input type="radio" id="radio1" name="accion" value="carie" checked="checked" /><label for="radio1">Carie</label>
             <input type="radio" id="radio6" name="accion" value="sellante" /><label for="radio6">Sellante</label>
             <input type="radio" id="radio2" name="accion" value="restauracion" /><label for="radio2">Obturado</label>
             <input type="radio" id="radio4" name="accion" value="extraccion" /><label for="radio4">Extraccion</label>
             <input type="radio" id="radio5" name="accion" value="puente" /><label for="radio5">Puente</label>
-            <input type="radio" id="radio3" name="accion" value="borrar" /><label for="radio3">Borrar</label>
+            <%--<input type="radio" id="radio3" name="accion" value="borrar" /><label for="radio3">Borrar</label>--%>
         </div>
-        <br>
-        <div id="canvasesdiv" style="position: relative; width: 890px; height: 200px">
-            <canvas id="myCanvas" width="890" height="200" style="z-index: 1; position: absolute; left: 25%; top: 0px;"></canvas>
-            <canvas id="myCanvas2" width="890" height="200" style="z-index: 2; position: absolute; left: 25%; top: 0px;"></canvas>
-            <canvas id="myCanvas3" width="890" height="200" style="z-index: 3; position: absolute; left: 25%; top: 0px;"></canvas>
-            <canvas id="myCanvas4" width="890" height="200" style="z-index: 4; position: absolute; left: 25%; top: 0px;"></canvas>
+        <div>
+            <%--<div class="contenedor">
+                <canvas class="lienzo" id="lienzo2" width="190" height="190">Su navegador</canvas>
+            </div>--%>
+            <div id="canvasesdiv" class="contenedor" style="width: 890px; height: 200px">
+                <canvas class="lienzo" id="myCanvas" width="890" height="200" style="z-index: 1; position: absolute;"></canvas>
+                <canvas class="lienzo" id="myCanvas2" width="890" height="200" style="z-index: 2; position: absolute;"></canvas>
+                <canvas class="lienzo" id="myCanvas3" width="890" height="200" style="z-index: 3; position: absolute;"></canvas>
+                <canvas class="lienzo" id="myCanvas4" width="890" height="200" style="z-index: 4; position: absolute;"></canvas>
+            </div>
         </div>
-        <div id="radio_seccion" style='display: none'>
-            <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Seccion</label>
-            <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
-        </div>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-        <br />
-        <asp:Button ID="Guardar" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" CssClass="auto-style1" />
-        <asp:Button ID="Button1" runat="server" Text="Prueba" OnClick="Button1_Click" />
-        <%--        <div id="radio_seccion2" style='display: none'>
-            <input type="radio" id="amalgamaO" name="amalgama" value="seccion" /><label for="amalgamaO">Amalgama</label>
-            <input type="radio" id="resinaO" name="resina" value="diente" /><label for="resinaO">Resina</label>
-        </div>--%>
-
-
         <script>
+            // Valores iniciales de las propiedades del diente
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+            //
+            var layer2 = document.getElementById("myCanvas2");
+            var ctx2 = layer2.getContext("2d");
+            //
+            var layer3 = document.getElementById("myCanvas3");
+            var ctx3 = layer3.getContext("2d");
+            //
+            var layer4 = document.getElementById("myCanvas4");
+            var ctx4 = layer4.getContext("2d");
+            //
+            var color_line = 'black';
+            var medida = 40;
+            var separacion_x = 10;
+            var separacion_x2 = 15;
+            var separacion_y = 10;
+            var iniciar_x = 0;
+            var iniciar_y = 20;
+            //Dientes para el puente
+            var diente1 = 0;
+            var diente2 = 0;
+            // 1 - 16 dientes
+            var sec = 19;
+            var sec2 = 20;
+            var sec3 = 49;
+            var sec4 = 30;
+            var bandera = 0;
+            var colorArray = new Array();
+            var posicionArray = new Array();
+            var dienteArray = new Array();
+            var contador = 0;
 
-            // Funcion para dibujar las lineas negras de cada diente
+            for (x = 0; x < 16; x++) {
+
+                if (sec > 11) {
+                    iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
+                    dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
+                    /* Numero de diente */
+                    context.font = '12pt Calibri';
+                    context.textAlign = 'center';
+                    context.fillStyle = 'blue';
+                    sec--;
+                    context.fillText(sec, iniciar_x + (medida / 2), (iniciar_y / 2) + 5);
+                }
+                else {
+
+                    separacion_x2 = 15;
+                    iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
+                    dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
+                    /* Numero de diente */
+                    context.font = '12pt Calibri';
+                    context.textAlign = 'center';
+                    context.fillStyle = 'blue';
+                    sec2++;
+                    context.fillText(sec2, iniciar_x + (medida / 2), (iniciar_y / 2) + 5);
+                    //}
+
+                }
+
+            }
+            // 17 - 32 dientes
+            iniciar_x = 0;
+            iniciar_y = medida + 100;
+            for (x = 0; x < 16; x++) {
+
+                if (sec3 > 41) {
+                    iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
+                    dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
+                    /* Numero de diente */
+                    context.font = '12pt Calibri';
+                    context.textAlign = 'center';
+                    context.fillStyle = 'blue';
+                    sec3--;
+                    context.fillText(sec3, iniciar_x + (medida / 2), (iniciar_y - 10) + 5);
+                }
+                else {
+                    separacion_x2 = 15;
+                    iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
+                    dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
+                    /* Numero de diente */
+                    context.font = '12pt Calibri';
+                    context.textAlign = 'center';
+                    context.fillStyle = 'blue';
+                    sec4++;
+                    context.fillText(sec4, iniciar_x + (medida / 2), (iniciar_y - 10) + 5);
+                }
+            }
+
+            window.onload = function () {
+                localStorage.clear();
+                click();
+            }
+            function click() {
+                //Añadimos un addEventListener al canvas para reconocer el click
+                layer4.addEventListener("click",
+                    //Una vez se haya clickado se activará la siguiente función
+                    getPosition
+                    , false);
+                layer4.addEventListener("mousemove", Marcar, false);
+            }
             function dibuja_contorno(context, inicio_x, inicio_y, med, separacion_x, separacion_y) {
                 var ctx = context;
                 // Definiendo puntos de dibujo
@@ -110,7 +194,7 @@
                 ter = cua * 3;
                 /* 1ra zona */
                 if (ctx) {
-                    ctx.strokeStyle = color_line;
+                    ctx.strokeStyle = 'black';
                     ctx.beginPath();
                     ctx.moveTo(inicio_x, inicio_y);
                     ctx.lineTo(med + inicio_x, inicio_y);
@@ -121,7 +205,7 @@
                 }
                 /* 2da zona */
                 if (ctx) {
-                    ctx.strokeStyle = color_line;
+                    ctx.strokeStyle = 'black';
                     ctx.beginPath();
                     ctx.moveTo(ter + inicio_x, cua + inicio_y);
                     ctx.lineTo(med + inicio_x, inicio_y);
@@ -132,7 +216,7 @@
                 }
                 /* 3ra zona */
                 if (ctx) {
-                    ctx.strokeStyle = color_line;
+                    ctx.strokeStyle = 'black';
                     ctx.beginPath();
                     ctx.moveTo(cua + inicio_x, ter + inicio_y);
                     ctx.lineTo(ter + inicio_x, ter + inicio_y);
@@ -143,7 +227,7 @@
                 }
                 /* 4ta zona */
                 if (ctx) {
-                    ctx.strokeStyle = color_line;
+                    ctx.strokeStyle = 'black';
                     ctx.beginPath();
                     ctx.moveTo(inicio_x, inicio_y);
                     ctx.lineTo(cua + inicio_x, cua + inicio_y);
@@ -153,102 +237,6 @@
                     ctx.stroke();
                 }
             }
-            // Funcion para pintar una region del diente
-            function dibuja_seccion(contexto, num_diente, seccion, color_pas) {
-                var ctx = contexto;
-                // Definiendo puntos de dibujo
-                med = medida;
-                cua = med / 4;
-                ter = cua * 3;
-                num_diente = num_diente - 1;
-                color_line = color_pas;
-                if (num_diente < 16) {
-                    inicio_y = 20;
-                }
-                else {
-                    num_diente = num_diente - 16;
-                    inicio_y = med + 100;
-                    //if(num_diente==1){num_diente=0;}
-                }
-                //alert(num_diente);
-                inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
-                /* 1ra zona */
-                if (seccion == 1) {
-                    if (ctx) {
-                        ctx.fillStyle = color_line;
-                        ctx.beginPath();
-                        ctx.moveTo(inicio_x, inicio_y);
-                        ctx.lineTo(med + inicio_x, inicio_y);
-                        ctx.lineTo(ter + inicio_x, cua + inicio_y);
-                        ctx.lineTo(cua + inicio_x, cua + inicio_y);
-                        ctx.closePath();
-                        ctx.fill();
-                        ctx.strokeStyle = 'black';
-                        ctx.stroke();
-                    }
-                }
-                /* 2da zona */
-                if (seccion == 2) {
-                    if (ctx) {
-                        ctx.fillStyle = color_line;
-                        ctx.beginPath();
-                        ctx.moveTo(ter + inicio_x, cua + inicio_y);
-                        ctx.lineTo(med + inicio_x, inicio_y);
-                        ctx.lineTo(med + inicio_x, med + inicio_y);
-                        ctx.lineTo(ter + inicio_x, ter + inicio_y);
-                        ctx.closePath();
-                        ctx.fill();
-                        ctx.strokeStyle = 'black';
-                        ctx.stroke();
-                    }
-                }
-                /* 3ra zona */
-                if (seccion == 3) {
-                    if (ctx) {
-                        ctx.fillStyle = color_line;
-                        ctx.beginPath();
-                        ctx.moveTo(cua + inicio_x, ter + inicio_y);
-                        ctx.lineTo(ter + inicio_x, ter + inicio_y);
-                        ctx.lineTo(med + inicio_x, med + inicio_y);
-                        ctx.lineTo(inicio_x, med + inicio_y);
-                        ctx.closePath();
-                        ctx.fill();
-                        ctx.strokeStyle = 'black';
-                        ctx.stroke();
-                    }
-                }
-                /* 4ta zona */
-                if (seccion == 4) {
-                    if (ctx) {
-                        ctx.fillStyle = color_line;
-                        ctx.beginPath();
-                        ctx.moveTo(inicio_x, inicio_y);
-                        ctx.lineTo(cua + inicio_x, cua + inicio_y);
-                        ctx.lineTo(cua + inicio_x, ter + inicio_y);
-                        ctx.lineTo(inicio_x, med + inicio_y);
-                        ctx.closePath();
-                        ctx.fill();
-                        ctx.strokeStyle = 'black';
-                        ctx.stroke();
-                    }
-                }
-                /* 5ta zona(medio) */
-                if (seccion == 5) {
-                    if (ctx) {
-                        ctx.fillStyle = color_line;
-                        ctx.beginPath();
-                        ctx.moveTo(cua + inicio_x, cua + inicio_y);
-                        ctx.lineTo(ter + inicio_x, cua + inicio_y);
-                        ctx.lineTo(ter + inicio_x, ter + inicio_y);
-                        ctx.lineTo(cua + inicio_x, ter + inicio_y);
-                        ctx.closePath();
-                        ctx.fill();
-                        ctx.strokeStyle = 'black';
-                        ctx.stroke();
-                    }
-                }
-            }
-            // Funcion para sombrear en amarillo
             function marcar_seccion(contexto, num_diente, seccion, color_pas) {
                 var ctx = contexto;
                 // Definiendo puntos de dibujo
@@ -343,11 +331,12 @@
                     }
                 }
             }
-            // Funcion para sombrear diente completo
-            function marcar_diente(contexto, num_diente, color_pas) {
+            function dibuja_seccion(contexto, num_diente, seccion, color_pas) {
                 var ctx = contexto;
                 // Definiendo puntos de dibujo
                 med = medida;
+                cua = med / 4;
+                ter = cua * 3;
                 num_diente = num_diente - 1;
                 color_line = color_pas;
                 if (num_diente < 16) {
@@ -356,204 +345,90 @@
                 else {
                     num_diente = num_diente - 16;
                     inicio_y = med + 100;
+                    //if(num_diente==1){num_diente=0;}
                 }
                 //alert(num_diente);
                 inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
+                /* 1ra zona */
+                if (seccion == 1) {
+                    if (ctx) {
+                        ctx.fillStyle = color_line;
+                        ctx.beginPath();
+                        ctx.moveTo(inicio_x, inicio_y);
+                        ctx.lineTo(med + inicio_x, inicio_y);
+                        ctx.lineTo(ter + inicio_x, cua + inicio_y);
+                        ctx.lineTo(cua + inicio_x, cua + inicio_y);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.strokeStyle = 'black';
+                        ctx.stroke();
+                    }
+                }
+                /* 2da zona */
+                if (seccion == 2) {
+                    if (ctx) {
+                        ctx.fillStyle = color_line;
+                        ctx.beginPath();
+                        ctx.moveTo(ter + inicio_x, cua + inicio_y);
+                        ctx.lineTo(med + inicio_x, inicio_y);
+                        ctx.lineTo(med + inicio_x, med + inicio_y);
+                        ctx.lineTo(ter + inicio_x, ter + inicio_y);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.strokeStyle = 'black';
+                        ctx.stroke();
+                    }
+                }
+                /* 3ra zona */
+                if (seccion == 3) {
+                    if (ctx) {
+                        ctx.fillStyle = color_line;
+                        ctx.beginPath();
+                        ctx.moveTo(cua + inicio_x, ter + inicio_y);
+                        ctx.lineTo(ter + inicio_x, ter + inicio_y);
+                        ctx.lineTo(med + inicio_x, med + inicio_y);
+                        ctx.lineTo(inicio_x, med + inicio_y);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.strokeStyle = 'black';
+                        ctx.stroke();
+                    }
+                }
+                /* 4ta zona */
+                if (seccion == 4) {
+                    if (ctx) {
+                        ctx.fillStyle = color_line;
+                        ctx.beginPath();
+                        ctx.moveTo(inicio_x, inicio_y);
+                        ctx.lineTo(cua + inicio_x, cua + inicio_y);
+                        ctx.lineTo(cua + inicio_x, ter + inicio_y);
+                        ctx.lineTo(inicio_x, med + inicio_y);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.strokeStyle = 'black';
+                        ctx.stroke();
 
-                ctx.fillStyle = color_line;
-                ctx.beginPath();
-                ctx.moveTo(inicio_x, inicio_y);
-                ctx.lineTo(inicio_x + 40, inicio_y);
-                ctx.lineTo(inicio_x + 40, inicio_y + 40);
-                ctx.lineTo(inicio_x, inicio_y + 40);
-                ctx.closePath();
-                ctx.strokeStyle = color_line;
-                ctx.stroke();
+
+
+                    }
+                }
+                /* 5ta zona(medio) */
+                if (seccion == 5) {
+                    if (ctx) {
+                        ctx.fillStyle = color_line;
+                        ctx.beginPath();
+                        ctx.moveTo(cua + inicio_x, cua + inicio_y);
+                        ctx.lineTo(ter + inicio_x, cua + inicio_y);
+                        ctx.lineTo(ter + inicio_x, ter + inicio_y);
+                        ctx.lineTo(cua + inicio_x, ter + inicio_y);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.strokeStyle = 'black';
+                        ctx.stroke();
+                    }
+                }
             }
-            // Funcion para sombrear diente completo(extraccion)
-            function marcar_extraccion(contexto, num_diente, color_pas) {
-                var ctx = contexto;
-                // Definiendo puntos de dibujo
-                med = medida;
-                num_diente = num_diente - 1;
-                color_line = color_pas;
-                if (num_diente < 16) {
-                    inicio_y = 20;
-                }
-                else {
-                    num_diente = num_diente - 16;
-                    inicio_y = med + 100;
-                }
-                //alert(num_diente);
-                inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
-
-                ctx.fillStyle = color_line;
-                ctx.beginPath();
-                ctx.lineWidth = 3;
-                ctx.moveTo(inicio_x, inicio_y);
-                ctx.lineTo(inicio_x + 40, inicio_y + 40);
-                ctx.moveTo(inicio_x + 40, inicio_y);
-                ctx.lineTo(inicio_x, inicio_y + 40);
-                ctx.stroke();
-                ctx.lineWidth = 1;
-            }
-            // Funcion para marcar puente
-            function marcar_puente(contexto, dient_1, dient_2, color_pas) {
-                var ctx = contexto;
-                // Definiendo puntos de dibujo
-                med = medida;
-                num_diente1 = dient_1 - 1;
-                num_diente2 = dient_2 - 1;
-                color_line = color_pas;
-                if (num_diente1 < 16) {
-                    inicio_y = 80;
-                }
-                else {
-                    num_diente1 = num_diente1 - 16;
-                    num_diente2 = num_diente2 - 16;
-                    inicio_y = med + 160;
-                }
-                //alert(num_diente);
-                inicio_x = (num_diente1 * med) + (separacion_x * num_diente1) + separacion_x + (med / 2);
-                fin_x = (num_diente2 * med) + (separacion_x * num_diente2) + separacion_x + (med / 2);
-                ctx.fillStyle = color_line;
-                ctx.beginPath();
-                ctx.lineWidth = 4;
-                ctx.moveTo(inicio_x, inicio_y);
-                ctx.lineTo(fin_x, inicio_y);
-                //ctx.moveTo(inicio_x+40,inicio_y);
-                //ctx.lineTo(inicio_x,inicio_y+40);
-                ctx.stroke();
-                ctx.lineWidth = 1;
-            }
-            // Funcion para borrar puente
-            function borrar_diente(contexto, num_diente) {
-                ctx = contexto;
-                // Definiendo puntos de dibujo
-                med = medida;
-                num_diente = num_diente - 1;
-                if (num_diente < 16) {
-                    inicio_y = 20;
-                }
-                else {
-                    num_diente = num_diente - 16;
-                    inicio_y = med + 100;
-                }
-                //alert(num_diente);
-                inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
-                ctx.clearRect(inicio_x, inicio_y, med, med);
-            }
-
-            // Valores iniciales de las propiedades del diente
-            var canvas = document.getElementById('myCanvas');
-            var context = canvas.getContext('2d');
-            //
-            var layer2 = document.getElementById("myCanvas2");
-            var ctx2 = layer2.getContext("2d");
-            //
-            var layer3 = document.getElementById("myCanvas3");
-            var ctx3 = layer3.getContext("2d");
-            //
-            var layer4 = document.getElementById("myCanvas4");
-            var ctx4 = layer4.getContext("2d");
-            //
-            var color_line = 'black';
-            var medida = 40;
-            var separacion_x = 10;
-            var separacion_x2 = 15;
-            var separacion_y = 10;
-            var iniciar_x = 0;
-            var iniciar_y = 20;
-            //Dientes para el puente
-            var diente1 = 0;
-            var diente2 = 0;
-            // 1 - 16 dientes
-            var sec = 19;
-            var sec2 = 20;
-            var sec3 = 49;
-            var sec4 = 30;
-            var bandera = 0;
-            var colorArray = new Array();
-            var posicionArray = new Array();
-            var dienteArray = new Array();
-            var seccionArray = new Array();
-            var contador = 0;
-            var contador2 = 0;
-
-
-            for (x = 0; x < 16; x++) {
-
-                if (sec > 11) {
-                    iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
-                    dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
-                    /* Numero de diente */
-                    context.font = '12pt Calibri';
-                    context.textAlign = 'center';
-                    context.fillStyle = 'blue';
-                    sec--;
-                    context.fillText(sec, iniciar_x + (medida / 2), (iniciar_y / 2) + 5);
-                }
-                else {
-
-                    separacion_x2 = 15;
-                    iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
-                    dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
-                    /* Numero de diente */
-                    context.font = '12pt Calibri';
-                    context.textAlign = 'center';
-                    context.fillStyle = 'blue';
-                    sec2++;
-                    context.fillText(sec2, iniciar_x + (medida / 2), (iniciar_y / 2) + 5);
-                    //}
-
-                }
-
-            }
-            // 17 - 32 dientes
-            iniciar_x = 0;
-            iniciar_y = medida + 100;
-            for (x = 0; x < 16; x++) {
-
-                if (sec3 > 41) {
-                    iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
-                    dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
-                    /* Numero de diente */
-                    context.font = '12pt Calibri';
-                    context.textAlign = 'center';
-                    context.fillStyle = 'blue';
-                    sec3--;
-                    context.fillText(sec3, iniciar_x + (medida / 2), (iniciar_y - 10) + 5);
-                }
-                else {
-                    separacion_x2 = 15;
-                    iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
-                    dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
-                    /* Numero de diente */
-                    context.font = '12pt Calibri';
-                    context.textAlign = 'center';
-                    context.fillStyle = 'blue';
-                    sec4++;
-                    context.fillText(sec4, iniciar_x + (medida / 2), (iniciar_y - 10) + 5);
-                }
-
-            }
-            //dibuja_seccion(context, 2, 3, 'red');
-            //dibuja_seccion(context, 18, 5, 'green');
-            //dibuja_seccion(context, 24, 4, 'blue');
-            window.onload = function () {
-                localStorage.clear();
-                click();
-            }
-            function click() {
-                //Añadimos un addEventListener al canvas para reconocer el click
-                layer4.addEventListener("click",
-                    //Una vez se haya clickado se activará la siguiente función
-                    getPosition
-                    , false);
-                layer4.addEventListener("mousemove", Marcar, false);
-            }
-            //canvas.addEventListener("mousedown", getPosition, false);
-
+         
             function getPosition(event) {
                 var x = event.x - 225;
                 var y = event.y;
@@ -647,10 +522,6 @@
                             guardar = new_array.toLocaleString();
                             localStorage.setItem(cod, guardar);
                             marcar_extraccion(ctx2, diente, 'black')
-
-                            seccionArray[contador2] = diente;
-                            contador2++;
-                            document.getElementById('marcaO').value = seccionArray.join(',');
                         } else {
                             alert("Ya fue marcado");
                         }
@@ -694,7 +565,6 @@
                         }
                     } else if (accion == 'borrar') {
                         borrar_diente(ctx2, diente);
-                        document.getElementById('borrarO').value = diente;
                         //cargar el ultimo pintado
                         seccion_chk = $("input[name='seccion']:checked").val();
                         if (seccion_chk == 'seccion') {
@@ -780,13 +650,15 @@
                         accion_g = 2;
                     }
                     else if (color == 'black') {
-                        cod = diente + '-' + seccion + '-' + '3';
-                        accion_g = 1;
+                        cod = diente + '-' + seccion + '-' + '5';
+                        accion_g = 5;
                     };
                     if (cod && !localStorage.getItem(cod)) {
                         new_array = [diente, seccion, accion_g, Date.now(), 0];
                         guardar = new_array.toLocaleString();
                         localStorage.setItem(cod, guardar);
+                        var contextoO = document.getElementById('contextoO');
+                        contextoO.value = ctx2;
                         dibuja_seccion(ctx2, diente, seccion, color);
                         //var contextoO = document.getElementById('contextoO')
                         //contextoO.value = ctx2;
@@ -794,15 +666,14 @@
                         dienteArray[contador] = diente;
                         posicionArray[contador] = seccion;
                         contador++;
-                        document.getElementById('colorO').value = colorArray.join(',');
-                        document.getElementById('dienteO').value = dienteArray.join(',');
-                        document.getElementById('seccionO').value = posicionArray.join(',');
                     }
 
                     else {
-                        alert("Este diente ya contiene este tratamiento");
+                        alert("ya fue marcado");
                     }
-                  
+                    document.getElementById('colorO').value = colorArray.join(',');
+                    document.getElementById('dienteO').value = dienteArray.join(',');
+                    document.getElementById('seccionO').value = posicionArray.join(',');
                 }
                 if ('borrar' == $("input[name='accion']:checked").val()) {
                     //alert("x-> "+x+" y-> "+y);
@@ -866,9 +737,6 @@
 
             }
 
-            //dibuja_seccion(x, y, 5, 5);
-            //dibuja_seccion(context, num_diente, seccion, color)
-            //Marca la posicion exacta del mouse
             function Marcar(event) {
                 var x = event.x - 225;
                 var y = event.y;
@@ -980,69 +848,7 @@
 
                 //dibuja_contorno(canvas, inicio_x, inicio_y, med, separacion_x, separacion_y)
             }
-            function pinta_datos() {
-                array_local = [];
-                for (var i = 0; i < localStorage.length; i++) {
-                    var key_name = localStorage.key(i);
-                    array_local[i] = localStorage.getItem(key_name).split(',');
-                }
-                //console.log(array_local);
-                array_local.sort(function (a, b) {
-                    return a[3] > b[3]; // orden ascendente por las fechas;
-                });
-                //console.log(array_local);
-                for (var i = 0; i < array_local.length; i++) {
-                    item = array_local[i];
-                    if (parseInt(item[0], 10) == diente) {
-                        acc = parseInt(item[2], 10);
-                        //console.log(acc);
-                        if (acc == 1) {
-                            color = 'red';
-                            dibuja_seccion(ctx2, item[0], item[1], color);
-                        } else if (acc == 2) {
-                            color = 'blue';
-                            dibuja_seccion(ctx2, item[0], item[1], color);
-                        } else if (acc == 3) {
-                            marcar_extraccion(ctx2, item[0], 'black');
-                        } else if (acc == 5) {
-                            color = 'black';
-                            dibuja_seccion(ctx2, item[0], item[1], color);
-                        }
-                    }
-                }
-            }
-            function pinta_puentes(seccion_p) {
-                array_local = [];
-                for (var i = 0; i < localStorage.length; i++) {
-                    var key_name = localStorage.key(i);
-                    array_local[i] = localStorage.getItem(key_name).split(',');
-                }
-                //console.log(array_local);
-                array_local.sort(function (a, b) {
-                    return a[3] > b[3]; // orden ascendente por las fechas;
-                });
-                //console.log(array_local);
-                for (var i = 0; i < array_local.length; i++) {
-                    item = array_local[i];
-                    acc = parseInt(item[2], 10);
-                    //console.log(acc);
-                    if (acc == 4) {
-                        color_pas = 'red';
-                        if (seccion_p == 1) {
-                            if (parseInt(item[0], 10) < 17) {
-                                marcar_puente(ctx4, item[0], item[4], color_pas);
-                            }
-                        }
-                        else {
-                            if (parseInt(item[0], 10) > 16) {
-                                marcar_puente(ctx4, item[0], item[4], color_pas);
-                            }
-                        }
-                        //dibuja_seccion(ctx2, item[0], item[1], color);
-                    }
 
-                }
-            }
             function ubica_seccion(X, Y) {
                 y = Y;
                 x = X;
@@ -1060,10 +866,7 @@
                 }
                 return devolver_seccion;
             }
-            function Func(diente, seccion, color,marca) {
-                dibuja_seccion(ctx2, diente, seccion, color);
-                marcar_extraccion(ctx2, marca, 'black');
-            }
+
         </script>
     </form>
 </body>

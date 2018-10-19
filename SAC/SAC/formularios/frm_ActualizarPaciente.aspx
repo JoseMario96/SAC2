@@ -10,6 +10,10 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="../js/quicksearch.js"></script>
     <style>
+        .espacio {
+            padding-top: 5%;
+        }
+
         #formularioP {
             border: 1px solid white;
         }
@@ -18,7 +22,7 @@
                 border: 3px solid red;
             }
 
-        label {
+        label, tr, th {
             font-family: sans-serif;
             font-size: medium;
             color: black;
@@ -44,7 +48,7 @@
                 <br />
 
                 <div>
-                    <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#0080ff " HeaderStyle-ForeColor="White" class="col s12"
+                    <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                         runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />
@@ -60,223 +64,229 @@
             </div>
 
             <div id="formularioP" style="display: none" tabindex="-1">
-                <header>
-                    <h1 style="text-align: center">Registro de pacientes</h1>
-                </header>
 
-                <div class="row">
-                    <div class="col s6">
-                        <label class="active" for="cedula">Cédula </label>
-                        <input id="cedula" readonly="readonly" type="text" runat="server" class="validate" />
+                <table class="striped">
+                    <tr>
+                        <th colspan="5" style="text-align: center">Registro de pacientes</th>
+                    </tr>
+                    <tr>
+                        <th>Cédula</th>
+                        <th>Primer nombre</th>
+                        <th>Segundo nombre</th>
+                        <th>Primer apellido</th>
+                        <th>Segundo apellido</th>
+                    </tr>
 
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s6">
-                        <label class="active" for="nombre1">Primer Nombre</label>
-                        <input id="nombre1" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
+                    <tr>
+                        <td>
+                            <label id="cedula" runat="server"></label>
 
-                    </div>
-                    <div class="col s6">
-                        <label class="active" for="nombre2">Segundo Nombre</label>
-                        <input id="nombre2" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
+                        </td>
+                        <td>
+                            <asp:TextBox ID="nombre1" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="nombre2" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="apellido1" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="apellido2" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
 
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s6">
-                        <label class="active" for="apellido1">Primer Apellido </label>
-                        <input id="apellido1" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
+                    <tr>
+                        <th>Teléfono</th>
+                        <th>Celulare</th>
+                        <th>Correo electrónico</th>
+                        <th>Sexo</th>
+                        <th>Encargado</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:TextBox ID="telefono" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
 
-                    </div>
-                    <div class="col s6">
-                        <label class="active" for="apellido2">Segundo Apellido </label>
-                        <input id="apellido2" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
+                            <asp:TextBox ID="celular" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
 
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s6">
-                        <label class="active" for="telefono">Teléfono</label>
-                        <input id="telefono" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
-
-                    </div>
-                    <div class="col s6">
-                        <label class="active" for="celular">Celular</label>
-                        <input id="celular" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required />
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <label class="active" for="direcion">Dirección</label>
-                        <input id="direccion" type="text" runat="server" class="validate" maxlength="249" required />
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m6 13">
-                        <label class="active" for="correo">Correo electrónico</label>
-                        <input id="correo" type="email" runat="server" class="validate" maxlength="44" required />
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s8">
-                        <label>Género </label>
-                        <br />
-                        <p>
+                            <asp:TextBox ID="correo" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
                             <label>
                                 <input class="with-gap" name="group6" runat="server" type="radio" id="generoM" />
                                 <span>Masculino</span>
                             </label>
-                        </p>
-                        <p>
+
                             <label>
                                 <input class="with-gap" name="group6" runat="server" type="radio" id="generoF" />
                                 <span>Femenino</span>
                             </label>
-                        </p>
-                        <p>
                             <label>
                                 <input class="with-gap" name="group6" runat="server" type="radio" id="generoO" />
                                 <span>Otro</span>
                             </label>
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s4">
-                        <label class="active" for="fechaN">Fecha de nacimiento</label>
-                        <input id="fechaN" type="text" maxlength="9" runat="server" class="validate" required />
+                        </td>
+                        <td>
+                            <label>
+                                <input class="with-gap" name="group4" runat="server" type="radio" id="SiE" onclick="mostrar()" />
+                                <span>Sí</span>
+                            </label>
 
-                    </div>
+                            <label>
+                                <input class="with-gap" name="group4" runat="server" type="radio" id="NoE" onclick="ocultar()" />
+                                <span>No</span>
+                            </label>
+                        </td>
+                    </tr>
 
-                    <div class="col s4">
-                        <label class="active" for="fechaI">Fecha de inscripción</label>
-                        <input id="fechaI" type="text" maxlength="9" runat="server" class="validate" required />
-                    </div>
-                </div>
-                <div id="BuscarE">
-                    <label>Encargado </label>
-                    <br />
-                    <p>
-                        <label>
-                            <input class="with-gap" name="group4" runat="server" type="radio" id="SiE" onclick="mostrar()" />
-                            <span>Sí</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input class="with-gap" name="group4" runat="server" type="radio" id="NoE" onclick="ocultar()" />
-                            <span>No</span>
-                        </label>
-                    </p>
-                </div>
+                    <tr>
+                        <th>Fecha de nacimiento</th>
+                        <th>Fecha de inscripción</th>
+                        <th>Dirección</th>
+
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <asp:TextBox ID="fechaN" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+
+                            <asp:TextBox ID="fechaI" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+
+                            <asp:TextBox ID="direccion" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                </table>
             </div>
+            <asp:Panel ID="Panel1" runat="server">
+                <div id="encargado" class="espacio" tabindex="-1">
+                    <div>
+                        <asp:ImageButton ID="ImageButton1" runat="server" OnClick="actualizarE_Click" />
+                    </div>
 
+                    <table class="striped">
 
-            <div id="encargado" style="display: none">
-                <div class="row">
-                    <div class="col s12 m6 13">
-                        <label class="active" for="cedula_encargado">Cédula del encargado</label>
-                        <input id="cedula_encargado" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" />
+                        <tr>
+                            <th colspan="5" style="text-align: center">Encargado</th>
+                        </tr>
+                        <tr>
+                            <th>Cédula del encargado</th>
+                            <th>Primer nombre</th>
+                            <th>Segundo nombre</th>
+                            <th>Primer apellido</th>
+                            <th>Segundo apellido</th>
+                        </tr>
 
+                        <tr>
+                            <td>
+
+                                <asp:TextBox ID="cedula_encargado" runat="server" OnTextChanged="cedula_encargado_TextChanged" AutoPostBack="true"></asp:TextBox>
+                            </td>
+                            <td>
+
+                                <asp:TextBox ID="nombre1_encargado" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="nombre2_encargado" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+
+                                <asp:TextBox ID="apellido1_encargado" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+
+                                <asp:TextBox ID="apellido2_encargado" runat="server"></asp:TextBox>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Teléfono</th>
+                            <th>Celular</th>
+                            <th>Correo electrónico</th>
+                            <th>Parentezco con el menor</th>
+                            <th>Género</th>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="telefono_encargado" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+
+                                <asp:TextBox ID="celular_encargado" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+
+                                <asp:TextBox ID="correo_encargado" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="parentezco" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <label>
+                                    <input class="with-gap" name="group5" runat="server" type="radio" id="generoEM" />
+                                    <span>Masculino</span>
+                                </label>
+
+                                <label>
+                                    <input class="with-gap" name="group5" runat="server" type="radio" id="generoEF" />
+                                    <span>Femenino</span>
+                                </label>
+                                <label>
+                                    <input class="with-gap" name="group5" runat="server" type="radio" id="generoEO" />
+                                    <span>Otro</span>
+                                </label>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Dirección</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="direccion_encargado" runat="server"></asp:TextBox>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="row">
+                        <div id="botonesE" style="display: none">
+                            <div class="input-field col s4">
+                                <asp:Button class="waves-effect waves-light btn" ID="EncargadoA" runat="server" Text="Guardar" OnClick="EncargadoA_Click" />
+                            </div>
+                            <div class="input-field col s4">
+                                <asp:Button class="waves-effect waves-light btn" ID="cancelarE" runat="server" Text="Cancelar" OnClick="cancelarE_Click" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s6">
-                        <label class="active" for="nombre1_encargado">Primer nombre</label>
-                        <input id="nombre1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-
-                    </div>
-                    <div class="col s6">
-                        <label class="active" for="nombre2_encargado">Segundo nombre</label>
-                        <input id="nombre2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s6">
-                        <label class="active" for="apellido1_encargado">Primer apellido</label>
-                        <input id="apellido1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-
-                    </div>
-                    <div class=" col s6">
-                        <label class="active" for="apellido2_encargado">Segundo apellido</label>
-                        <input id="apellido2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s6">
-                        <label class="active" for="telefono_encargado">Teléfono</label>
-                        <input id="telefono_encargado" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
-
-                    </div>
-                    <div class="col s6">
-                        <label class="active" for="celular_encargado">Celular</label>
-                        <input id="celular_encargado" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <label class="active" for="direccion_encargado">Dirección</label>
-                        <input id="direccion_encargado" type="text" runat="server" class="validate" maxlength="249" />
-
-                    </div>
-                </div>
+            </asp:Panel>
+            <div id="Botones" style="display: none">
                 <div class="row">
                     <div class="input-field col s4">
-                        <label class="active" for="correo_encargado">Correo electrónico</label>
-                        <input id="correo_encargado" type="email" runat="server" class="validate" maxlength="44" />
-
+                        <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
                     </div>
-                </div>
-                <div class="row">
                     <div class="input-field col s4">
-                        <label class="active" for="parentezco">Parentezco con el menor</label>
-                        <input id="parentezco" type="text" runat="server" class="validate" maxlength="44" />
-
+                        <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
                     </div>
-                </div>
-                <div>
-                    <label>Género </label>
-                    <br />
-                    <p>
-                        <label>
-                            <input class="with-gap" name="group5" runat="server" type="radio" id="generoEM" />
-                            <span>Masculino</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input class="with-gap" name="group5" runat="server" type="radio" id="generoEF" />
-                            <span>Femenino</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input class="with-gap" name="group5" runat="server" type="radio" id="generoEO" />
-                            <span>Otro</span>
-                        </label>
-                    </p>
                 </div>
             </div>
 
             <script type="text/javascript">
                 function mostrar() {
                     document.getElementById('encargado').style.display = 'block';
-
-
                 }
-
                 function ocultar() {
                     document.getElementById('encargado').style.display = 'none';
-
                 }
-
+         
                 function solonumeros(e) {
                     key = e.keyCoden || e.which;
                     teclado = String.fromCharCode(key);
@@ -313,33 +323,9 @@
                     }
                 }
             </script>
-            <%--            <script type="text/javascript">
-                function onEnter(_input) {
-                    _input.style.backgroundColor = "yellow";
-                }
-                function onLeave(_input) {
-                    _input.style.backgroundColor = "blue";
-                }
-            </script>--%>
-            <div id="Botones" style="display: none">
-                <div class="row">
-
-                    <div class="input-field col s4">
-                        <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
-                    </div>
-                    <div class="input-field col s4">
-                        <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
-                    </div>
-                </div>
-
-            </div>
         </form>
     </div>
-
     <script src="js/materialize.min.js"></script>
-
-
-
 </body>
 </html>
 

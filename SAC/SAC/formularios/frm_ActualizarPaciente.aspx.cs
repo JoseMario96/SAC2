@@ -14,9 +14,10 @@ namespace SAC.formularios
         metodos.metodosPaciente objeto = new metodos.metodosPaciente();
         public static string generoE;
         public static string genero;
+        public static int estado = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ImageButton1.ImageUrl = "/images/actualizarEncargado.png";
             if (!this.IsPostBack)
             {
 
@@ -37,14 +38,11 @@ namespace SAC.formularios
 
             string script = @"<script type='text/javascript'>
                 document.getElementById('formularioP').style.display = 'block' ;
-document.getElementById('formularioP').scrollIntoView();                  
+                document.getElementById('formularioP').scrollIntoView();                  
                 document.getElementById('Botones').style.display = 'block';
             </script>";
 
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-
-
-
             foreach (GridViewRow row in GridView1.Rows)
             {
 
@@ -60,11 +58,11 @@ document.getElementById('formularioP').scrollIntoView();
                         NoE.Checked = true;
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "ocultar()", true);
 
-                        cedula.Value = datos[0];
-                        nombre1.Value = datos[1];
-                        nombre2.Value = datos[2];
-                        apellido1.Value = datos[3];
-                        apellido2.Value = datos[4];
+                        cedula.InnerHtml = datos[0];
+                        nombre1.Text = datos[1];
+                        nombre2.Text = datos[2];
+                        apellido1.Text = datos[3];
+                        apellido2.Text = datos[4];
                         if (datos[5].Equals("Masculino"))
                         {
                             generoF.Checked = false;
@@ -83,12 +81,12 @@ document.getElementById('formularioP').scrollIntoView();
                             generoF.Checked = false;
                             generoO.Checked = true;
                         }
-                        telefono.Value = datos[6];
-                        celular.Value = datos[7];
-                        direccion.Value = datos[8];
-                        correo.Value = datos[10];
-                        fechaN.Value = datos[11].Substring(0, 9);
-                        fechaI.Value = datos[12].Substring(0, 9);
+                        telefono.Text = datos[6];
+                        celular.Text = datos[7];
+                        direccion.Text = datos[8];
+                        correo.Text = datos[10];
+                        fechaN.Text = datos[11].Substring(0, 9);
+                        fechaI.Text = datos[12].Substring(0, 9);
 
                     }
                     else
@@ -96,11 +94,11 @@ document.getElementById('formularioP').scrollIntoView();
                         NoE.Checked = false;
                         SiE.Checked = true;
 
-                        cedula.Value = datos[0];
-                        nombre1.Value = datos[1];
-                        nombre2.Value = datos[2];
-                        apellido1.Value = datos[3];
-                        apellido2.Value = datos[4];
+                        cedula.InnerHtml = datos[0];
+                        nombre1.Text = datos[1];
+                        nombre2.Text = datos[2];
+                        apellido1.Text = datos[3];
+                        apellido2.Text = datos[4];
                         if (datos[5].Equals("Masculino"))
                         {
                             generoF.Checked = false;
@@ -119,22 +117,22 @@ document.getElementById('formularioP').scrollIntoView();
                             generoF.Checked = false;
                             generoO.Checked = true;
                         }
-                        telefono.Value = datos[6];
-                        celular.Value = datos[7];
-                        direccion.Value = datos[8];
-                        correo.Value = datos[10];
-                        fechaN.Value = datos[11].Substring(0, 9);
-                        fechaI.Value = datos[12].Substring(0, 9);
+                        telefono.Text = datos[6];
+                        celular.Text = datos[7];
+                        direccion.Text = datos[8];
+                        correo.Text = datos[10];
+                        fechaN.Text = datos[11].Substring(0, 9);
+                        fechaI.Text = datos[12].Substring(0, 9);
 
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "mostrar()", true);
 
                         datos2 = objeto.buscarEncargado(datos[9]);
 
-                        cedula_encargado.Value = datos2[0];
-                        nombre1_encargado.Value = datos2[1];
-                        nombre2_encargado.Value = datos2[2];
-                        apellido1_encargado.Value = datos2[3];
-                        apellido2_encargado.Value = datos2[4];
+                        cedula_encargado.Text = datos2[0];
+                        nombre1_encargado.Text = datos2[1];
+                        nombre2_encargado.Text = datos2[2];
+                        apellido1_encargado.Text = datos2[3];
+                        apellido2_encargado.Text = datos2[4];
                         if (datos2[5].Equals("Masculino"))
                         {
                             generoEF.Checked = false;
@@ -153,11 +151,11 @@ document.getElementById('formularioP').scrollIntoView();
                             generoEF.Checked = false;
                             generoEO.Checked = true;
                         }
-                        telefono_encargado.Value = datos2[6];
-                        celular_encargado.Value = datos2[7];
-                        direccion_encargado.Value = datos2[8];
-                        parentezco.Value = datos2[9];
-                        correo_encargado.Value = datos2[10];
+                        telefono_encargado.Text = datos2[6];
+                        celular_encargado.Text = datos2[7];
+                        direccion_encargado.Text = datos2[8];
+                        parentezco.Text = datos2[9];
+                        correo_encargado.Text = datos2[10];
                     }
 
                 }
@@ -236,29 +234,29 @@ document.getElementById('formularioP').scrollIntoView();
                 genero = "Otro";
             }
 
-            DateTime dt = Convert.ToDateTime(fechaN.Value);
+            DateTime dt = Convert.ToDateTime(fechaN.Text);
             string fN = dt.ToString("yyyy-MM-dd");
-            DateTime dt2 = Convert.ToDateTime(fechaI.Value);
+            DateTime dt2 = Convert.ToDateTime(fechaI.Text);
             string fI = dt.ToString("yyyy-MM-dd");
 
-            string corre = correo.Value;
-            string correE = correo_encargado.Value;
+            string corre = correo.Text;
+            string correE = correo_encargado.Text;
 
             if (NoE.Checked & objeto.validacioncorreo(corre) == true)
             {
-                objeto.actualizarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, genero, telefono.Value, celular.Value, direccion.Value, correo.Value, fN, fI);
-                datos = objeto.buscarPaciente(cedula.Value);
-                if (datos[9] == null & SiE.Checked & cedula_encargado.Value != "" & nombre1_encargado.Value != "" & nombre2_encargado.Value != "" & apellido1_encargado.Value != "" & apellido2_encargado.Value != "" & celular_encargado.Value != "" & direccion_encargado.Value != "" & correo_encargado.Value != "" & parentezco.Value != "")
+                objeto.actualizarPaciente(cedula.InnerHtml, nombre1.Text, nombre2.Text, apellido1.Text, apellido2.Text, genero, telefono.Text, celular.Text, direccion.Text, correo.Text, fN, fI);
+                datos = objeto.buscarPaciente(cedula.InnerHtml);
+                if (datos[9] == null & SiE.Checked & cedula_encargado.Text != "" & nombre1_encargado.Text != "" & nombre2_encargado.Text != "" & apellido1_encargado.Text != "" & apellido2_encargado.Text != "" & celular_encargado.Text != "" & direccion_encargado.Text != "" & correo_encargado.Text != "" & parentezco.Text != "")
                 {
-                    objeto.ActualizarPacienteNuevoEncargado(cedula.Value, cedula_encargado.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoE, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
+                    objeto.ActualizarPacienteNuevoEncargado(estado, cedula.InnerHtml, cedula_encargado.Text, nombre1_encargado.Text, nombre2_encargado.Text, apellido1_encargado.Text, apellido2_encargado.Text, generoE, telefono_encargado.Text, celular_encargado.Text, direccion_encargado.Text, correo_encargado.Text, parentezco.Text);
                 }
             }
             else if (objeto.validacioncorreo(corre) == true & objeto.validacioncorreo(correE) == true & SiE.Checked)
             {
-                if (cedula_encargado.Value != "" & nombre1_encargado.Value != "" & nombre2_encargado.Value != "" & apellido1_encargado.Value != "" & apellido2_encargado.Value != "" & celular_encargado.Value != "" & direccion_encargado.Value != "" & correo_encargado.Value != "" & parentezco.Value != "")
+                if (cedula_encargado.Text != "" & nombre1_encargado.Text != "" & nombre2_encargado.Text != "" & apellido1_encargado.Text != "" & apellido2_encargado.Text != "" & celular_encargado.Text != "" & direccion_encargado.Text != "" & correo_encargado.Text != "" & parentezco.Text != "")
                 {
-                    objeto.actualizarEncargado(cedula_encargado.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoE, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, parentezco.Value, correo_encargado.Value);
-                    objeto.actualizarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, genero, telefono.Value, celular.Value, direccion.Value, correo.Value, fN, fI);
+                    objeto.actualizarEncargado(cedula_encargado.Text, nombre1_encargado.Text, nombre2_encargado.Text, apellido1_encargado.Text, apellido2_encargado.Text, generoE, telefono_encargado.Text, celular_encargado.Text, direccion_encargado.Text, parentezco.Text, correo_encargado.Text);
+                    objeto.actualizarPaciente(cedula.InnerHtml, nombre1.Text, nombre2.Text, apellido1.Text, apellido2.Text, genero, telefono.Text, celular.Text, direccion.Text, correo.Text, fN, fI);
                 }
                 else
                 {
@@ -267,10 +265,10 @@ document.getElementById('formularioP').scrollIntoView();
                 </script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", mensaje, false);
                 }
-                datos = objeto.buscarPaciente(cedula.Value);
-                if (datos[9] == null & SiE.Checked & cedula_encargado.Value != "" & nombre1_encargado.Value != "" & nombre2_encargado.Value != "" & apellido1_encargado.Value != "" & apellido2_encargado.Value != "" & celular_encargado.Value != "" & direccion_encargado.Value != "" & correo_encargado.Value != "" & parentezco.Value != "")
+                datos = objeto.buscarPaciente(cedula.InnerHtml);
+                if (datos[9] == null & SiE.Checked & cedula_encargado.Text != "" & nombre1_encargado.Text != "" & nombre2_encargado.Text != "" & apellido1_encargado.Text != "" & apellido2_encargado.Text != "" & celular_encargado.Text != "" & direccion_encargado.Text != "" & correo_encargado.Text != "" & parentezco.Text != "")
                 {
-                    objeto.ActualizarPacienteNuevoEncargado(cedula.Value, cedula_encargado.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoE, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
+                    objeto.ActualizarPacienteNuevoEncargado(estado, cedula.InnerHtml, cedula_encargado.Text, nombre1_encargado.Text, nombre2_encargado.Text, apellido1_encargado.Text, apellido2_encargado.Text, generoE, telefono_encargado.Text, celular_encargado.Text, direccion_encargado.Text, correo_encargado.Text, parentezco.Text);
                 }
             }
             else
@@ -299,6 +297,114 @@ document.getElementById('formularioP').scrollIntoView();
 
         }
 
+
+        protected void actualizarE_Click(object sender, EventArgs e)
+        {
+            string script = @"<script type='text/javascript'>
+            document.getElementById('encargado').style.display = 'block' ;
+            document.getElementById('botonesE').style.display = 'block' ;
+            document.getElementById('encargado').scrollIntoView(); 
+
+            </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
+            cedula_encargado.Text = "";
+            nombre1_encargado.Text = "";
+            nombre2_encargado.Text = "";
+            apellido1_encargado.Text = "";
+            apellido2_encargado.Text = "";
+            telefono_encargado.Text = "";
+            celular_encargado.Text = "";
+            correo_encargado.Text = "";
+            parentezco.Text = "";
+            direccion_encargado.Text = "";
+        }
+
+        protected void EncargadoA_Click(object sender, EventArgs e)
+        {
+            if (generoEM.Checked)
+            {
+                generoE = "Masculino";
+            }
+            else if (generoEF.Checked)
+            {
+                generoE = "Femenino";
+            }
+            else if (generoEO.Checked)
+            {
+                generoE = "Otro";
+            }
+            objeto.ActualizarPacienteNuevoEncargado(estado, cedula.InnerHtml, cedula_encargado.Text, nombre1_encargado.Text, nombre2_encargado.Text, apellido1_encargado.Text, apellido2_encargado.Text, generoE, telefono_encargado.Text, celular_encargado.Text, direccion_encargado.Text, parentezco.Text, correo_encargado.Text);
+            string script = @"<script type='text/javascript'>
+            document.getElementById('encargado').style.display = 'block';
+            document.getElementById('encargado').scrollIntoView();                      
+            </script>"; 
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+        }
+
+        protected void cancelarE_Click(object sender, EventArgs e)
+        {
+            GridView1.DataSource = objeto.Paciente();
+            GridView1.DataBind();
+            this.Controls.Clear();
+            Response.Redirect("frm_ActualizarPaciente.aspx");
+        }
+
+        protected void cedula_encargado_TextChanged(object sender, EventArgs e)
+        {
+            string script = @"<script type='text/javascript'>
+            document.getElementById('encargado').style.display = 'block' ;
+            document.getElementById('encargado').scrollIntoView();     
+            </script>";
+
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
+            String[] encargado = new String[10];
+            encargado = objeto.buscarEncargado(cedula_encargado.Text);
+
+            string dinamica = encargado[0];
+            if (dinamica == null)
+            {
+                dinamica = "";
+            }
+
+            if (dinamica.Equals(cedula_encargado.Text))
+            {
+                cedula_encargado.Text = encargado[0];
+                nombre1_encargado.Text = encargado[1];
+                nombre2_encargado.Text = encargado[2];
+                apellido1_encargado.Text = encargado[3];
+                apellido2_encargado.Text = encargado[4];
+                if (encargado[5].Equals("Masculino"))
+                {
+                    generoEF.Checked = false;
+                    generoEO.Checked = false;
+                    generoEM.Checked = true;
+                }
+                else if (encargado[5].Equals("Femenino"))
+                {
+                    generoEM.Checked = false;
+                    generoEO.Checked = false;
+                    generoEF.Checked = true;
+                }
+                else if (encargado[5].Equals("Otro"))
+                {
+                    generoEM.Checked = false;
+                    generoEF.Checked = false;
+                    generoEO.Checked = true;
+                }
+                telefono_encargado.Text = encargado[6];
+                celular_encargado.Text = encargado[7];
+                direccion_encargado.Text = encargado[8];
+                parentezco.Text = encargado[9];
+                correo_encargado.Text = encargado[10];
+            }
+            else
+            {
+                estado = 1;
+                nombre1_encargado.Focus();
+            }
+        }
         protected void Cancelar_Click(object sender, EventArgs e)
         {
             GridView1.DataSource = objeto.Paciente();
@@ -306,5 +412,6 @@ document.getElementById('formularioP').scrollIntoView();
             this.Controls.Clear();
             Response.Redirect("frm_ActualizarPaciente.aspx");
         }
+
     }
 }
