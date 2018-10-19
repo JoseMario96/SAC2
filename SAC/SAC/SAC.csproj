@@ -97,12 +97,13 @@
     <Content Include="fonts\icomoon\icomoon\style.css" />
     <Content Include="fonts\simple-line-icons\Simple-Line-Icons.svg" />
     <Content Include="formularios\frm_ActualizarExpediente.aspx" />
+    <Content Include="formularios\frm_AgregarCita.aspx" />
     <Content Include="formularios\frm_AgregarExpediente.aspx" />
     <Content Include="formularios\frm_BuscarExpediente.aspx" />
     <Content Include="formularios\frm_BuscarPaciente.aspx" />
     <Content Include="formularios\frm_ActualizarPaciente.aspx" />
     <Content Include="formularios\frm_AgregarPaciente.aspx" />
-    <Content Include="formularios\frm_Citas.aspx" />
+    <Content Include="formularios\frm_Calendario.aspx" />
     <Content Include="formularios\frm_ReporteExpediente.aspx" />
     <Content Include="formularios\frm_tratamientos.aspx" />
     <Content Include="formularios\Prueba.aspx" />
@@ -124,6 +125,7 @@
     <Content Include="images\person3.jpg" />
     <Content Include="images\person4.jpg" />
     <Content Include="images\reporte.png" />
+    <Content Include="images\tratamientos.png" />
     <Content Include="images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="images\ui-bg_glass_55_fbf9ee_1x400.png" />
     <Content Include="images\ui-bg_glass_65_ffffff_1x400.png" />
@@ -181,6 +183,13 @@
     <Compile Include="formularios\frm_ActualizarExpediente.aspx.designer.cs">
       <DependentUpon>frm_ActualizarExpediente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="formularios\frm_AgregarCita.aspx.cs">
+      <DependentUpon>frm_AgregarCita.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\frm_AgregarCita.aspx.designer.cs">
+      <DependentUpon>frm_AgregarCita.aspx</DependentUpon>
+    </Compile>
     <Compile Include="formularios\frm_AgregarExpediente.aspx.cs">
       <DependentUpon>frm_AgregarExpediente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -216,12 +225,12 @@
     <Compile Include="formularios\frm_AgregarPaciente.aspx.designer.cs">
       <DependentUpon>frm_AgregarPaciente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="formularios\frm_Citas.aspx.cs">
-      <DependentUpon>frm_Citas.aspx</DependentUpon>
+    <Compile Include="formularios\frm_Calendario.aspx.cs">
+      <DependentUpon>frm_Calendario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="formularios\frm_Citas.aspx.designer.cs">
-      <DependentUpon>frm_Citas.aspx</DependentUpon>
+    <Compile Include="formularios\frm_Calendario.aspx.designer.cs">
+      <DependentUpon>frm_Calendario.aspx</DependentUpon>
     </Compile>
     <Compile Include="formularios\frm_ReporteExpediente.aspx.cs">
       <DependentUpon>frm_ReporteExpediente.aspx</DependentUpon>
