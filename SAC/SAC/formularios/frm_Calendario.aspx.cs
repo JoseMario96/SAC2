@@ -6,6 +6,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text;
+using System.Net.Mail;
+using System.Net;
 
 namespace SAC.formularios
 {
@@ -72,6 +75,7 @@ namespace SAC.formularios
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 fechaC.Value = fecha;
+                fechaC.Disabled = true;
                 cedula.Focus();
             }
         }
@@ -86,7 +90,7 @@ namespace SAC.formularios
                 Label lbl = new Label();
                 lbl.Text = (string)_sheduleData[e.Day.Date.ToShortDateString()];
                 lbl.Font.Size = new FontUnit(FontSize.Small);
-                lbl.ForeColor = System.Drawing.Color.Red;
+                lbl.ForeColor = System.Drawing.Color.Black;
                 e.Cell.Controls.Add(lbl);
             }
         }
@@ -256,14 +260,9 @@ namespace SAC.formularios
 
         protected void btn_Limpiar_Click(object sender, EventArgs e)
         {
-            this.Controls.Clear();
-            Response.Redirect("frm_Calendario.aspx");
-            string script = @"<script type='text/javascript'>
-                document.getElementById('cabecera2').style.display = 'block' ;
-                document.getElementById('agregar').style.display = 'block' ;
-                document.getElementById('agregar').scrollIntoView(); 
-                </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            cedula.Value = "";
+            hora.Value = "";
+            telefono.Value = "";
             cedula.Focus();
         }
 
@@ -281,5 +280,75 @@ namespace SAC.formularios
             fechaC.Value = Calendar1.SelectedDate.ToString(@"yyyy-MM-dd");
             cedula.Focus();
         }
+
+        protected void btn_Notificación_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Configuración del Mensaje
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                //Especificamos el correo desde el que se enviará el Email y el nombre de la persona que lo envía
+                mail.From = new MailAddress("clinicadental.alinacamacho@gmail.com");
+                //Aquí ponemos el asunto del correo
+                mail.Subject = "Prueba de Envío de Correo";
+                //Aquí ponemos el mensaje que incluirá el correo
+                mail.Body = "Prueba de Envío de Correo de Gmail desde CSharp";
+                //Especificamos a quien enviaremos el Email, no es necesario que sea Gmail, puede ser cualquier otro proveedor
+                mail.To.Add("josem150396@gmail.com");
+                
+
+                //Configuracion del SMTP
+                SmtpServer.Port = 587; //Puerto que utiliza Gmail para sus servicios
+                //Especificamos las credenciales con las que enviaremos el mail
+                SmtpServer.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("clinicadental.alinacamacho@gmail.com", "SAC-corredores.2018");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
+                
+            }
+            catch (Exception ex)
+            {
+                string script = @"<script type='text/javascript'>
+                    alert('NO NO NO NO NO NO NO');
+                    </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
+        }
+
+        //protected void Timer1_Tick(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        //Configuración del Mensaje
+        //        MailMessage mail = new MailMessage();
+        //        SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+        //        //Especificamos el correo desde el que se enviará el Email y el nombre de la persona que lo envía
+        //        mail.From = new MailAddress("clinicadental.alinacamacho@gmail.com");
+        //        //Aquí ponemos el asunto del correo
+        //        mail.Subject = "Prueba de Envío de Correo";
+        //        //Aquí ponemos el mensaje que incluirá el correo
+        //        mail.Body = "Prueba de Envío de Correo de Gmail desde CSharp";
+        //        //Especificamos a quien enviaremos el Email, no es necesario que sea Gmail, puede ser cualquier otro proveedor
+        //        mail.To.Add("josem150396@gmail.com");
+
+
+        //        //Configuracion del SMTP
+        //        SmtpServer.Port = 587; //Puerto que utiliza Gmail para sus servicios
+        //        //Especificamos las credenciales con las que enviaremos el mail
+        //        SmtpServer.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+        //        SmtpServer.Credentials = new System.Net.NetworkCredential("clinicadental.alinacamacho@gmail.com", "SAC-corredores.2018");
+        //        SmtpServer.EnableSsl = true;
+        //        SmtpServer.Send(mail);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        string script = @"<script type='text/javascript'>
+        //            alert('NO NO NO NO NO NO NO');
+        //            </script>";
+        //        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+        //    }
+        //}
     }
 }

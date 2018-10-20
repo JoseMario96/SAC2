@@ -134,6 +134,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
+        <%--<asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="10000"></asp:Timer>--%>
         <br />
         <br />
         <%-- HOY--%>
@@ -216,30 +217,36 @@
            
             <div class="row">
 
-                <div class="input-field col s4">
+                <div class="input-field col s3">
                     <asp:Button class="waves-effect waves-light btn" ID="btn_Actualizar" runat="server" Text="Actualizar" OnClick="btn_Actualizar_Click" />
                 </div>
-                <div class="input-field col s4">
+                <div class="input-field col s3">
                     <asp:Button class="waves-effect waves-light btn" ID="btn_Eliminar" runat="server" Text=" Eliminar " OnClick="btn_Eliminar_Click" />
                 </div>
-                <div class="input-field col s4">
+                <div class="input-field col s3">
                     <asp:Button class="waves-effect waves-light btn" ID="btn_Nuevo" runat="server" Text="   Nueva  " OnClick="btn_Nuevo_Click" />
+                </div>
+                <div class="input-field col s3">
+                    <asp:Button class="waves-effect waves-light btn" ID="btn_Notificación" runat="server" Text="Notificar " OnClick="btn_Notificación_Click" />
                 </div>
             </div>
         </div>
 
-        <div id="cabecera2" style="text-align:center; padding-right:18%; padding-left:10%; display:block">
+        <div id="cabecera2" style="text-align:center; padding-right:18%; padding-left:10%; display:none">
             <h3>Agregar una nueva cita</h3>  
         </div>
 
-        <div id="agregar" class="container" style="display: block; margin-left:20%" >
+        <div id="agregar" class="container" style="display: none; margin-left:20%" >
             <div class="row">
 
                 <div class="row">
                     <div class="col s4">
                         <label class="active" for="cedula">Cédula del paciente</label>
-                        <input id="cedula" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" />
-
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <input id="cedula" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                     <div class="col s4">
                         <label class="active" for="nombre2">Fecha de la cita</label>
@@ -253,21 +260,35 @@
                 <div class="row">
                     <div class="col s4">
                         <label class="active" for="hora">Hora de la cita</label>
-                        <input id="hora" type="time" runat="server" class="validate" step="1800" onkeypress="return solonumeros(event)" />
-
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <input id="hora" type="time" runat="server" class="validate" step="1800" onkeypress="return solonumeros(event)" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                     <div class="col s4">
                         <label class="active" for="telefono">Teléfono de contacto </label>
-                        <input id="telefono" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
-
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <input id="telefono" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <asp:Button class="waves-effect waves-light btn" ID="btn_Agregar" runat="server" Text="Guardar" OnClick="btn_Agregar_Click" />
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <asp:Button class="waves-effect waves-light btn" ID="btn_Agregar" runat="server" Text="Guardar" OnClick="btn_Agregar_Click" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                     <div class="input-field col s4">
-                        <asp:Button class="waves-effect waves-light btn" ID="btn_Limpiar" runat="server" Text="Limpiar" OnClick="btn_Limpiar_Click" />
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <asp:Button class="waves-effect waves-light btn" ID="btn_Limpiar" runat="server" Text="Limpiar" OnClick="btn_Limpiar_Click" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                 </div>
 
