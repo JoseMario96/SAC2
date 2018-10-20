@@ -12,9 +12,16 @@ namespace SAC.metodos
         consulta.consulta consultar = new consulta.consulta();
         conexion.conexion con = new conexion.conexion();
 
-        public void agregarOdontograma(String col, String die, String secc)
+        public void agregarOdontograma(String col, String die, String secc,String codE, String fech)
         {
+            string y = "";
             consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`, `dienteOdontograma`, `seccionOdontograma`) VALUES ('" + col + "', '" + die + "', '" + secc + "');", con.abrir_conexion()).ExecuteNonQuery();
+            MySqlDataReader contador = consultar.ejecutar_consulta("SELECT max(codigoOdontograma) from tbl_odontograma; ", con.abrir_conexion()).ExecuteReader();
+            if (contador.Read())
+            {
+                y = contador.GetString(0);
+            }
+            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_expedienteodontograma` (`codigoExpediente`, `codigoOdontograma`, `fechaTratamientoOdontograma`) VALUES ('" + codE + "','" + y + "', '" + fech + "');", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
 
@@ -47,10 +54,17 @@ namespace SAC.metodos
 
         }
 
-        public void agregarOdontograma2(String marc)
+        public void agregarOdontograma2(String marc, String col, String codE,String fech)
         {
+            string y = "";
+            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`,`marcaOdontograma`) VALUES ('" + col + "','" + marc + "');", con.abrir_conexion()).ExecuteNonQuery();
+            MySqlDataReader contador = consultar.ejecutar_consulta("SELECT max(codigoOdontograma) from tbl_odontograma; ", con.abrir_conexion()).ExecuteReader();
+            if (contador.Read())
+            {
+                y = contador.GetString(0);
+            }
+            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_expedienteodontograma` (`codigoExpediente`, `codigoOdontograma`, `fechaTratamientoOdontograma`) VALUES ('" + codE + "','" + y + "', '" + fech + "');", con.abrir_conexion()).ExecuteNonQuery();
 
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`marcaOdontograma`) VALUES ('" + marc + "');", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
         public String[] buscarOdontograma(String odo)
@@ -95,6 +109,17 @@ namespace SAC.metodos
             }
             con.cerrar_Conexion();
             return stringArray1;
+        }
+        public DataTable tratamientosEfectuados()
+        {
+            string consulta = "SELECT date_format(fechaExpedienteTratamiento,'%Y-%m-%d'), piezaExpedienteTratamiento , descripcionExpedienteTratamiento from bd_sac.tbl_expedientetramiento;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
         }
     }
 }
