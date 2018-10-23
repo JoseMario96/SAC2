@@ -13,7 +13,7 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //fechaEx.Focus();
+            fechaEx.Focus();
         }
 
         //Este método agrega expedientes
@@ -39,27 +39,27 @@ namespace SAC.formularios
             }
             if (hmradi3.Checked)
             {
-                pregunta3 = "si";
+                pregunta3 = "Si";
             }
             if (hmradi4.Checked)
             {
-                pregunta4 = "si";
+                pregunta4 = "Si";
             }
             if (hmradi5.Checked)
             {
-                pregunta5 = "si";
+                pregunta5 = "Si";
             }
             if (hmradi6.Checked)
             {
-                anemia = "si";
+                anemia = "Si";
             }
             if (hmradi7.Checked)
             {
-                pregunta6 = "si";
+                pregunta6 = "Si";
             }
             if (hmsi.Checked)
             {
-                pregunta7 = "si";
+                pregunta7 = "Si";
                 donde = hmrespu3.Value;
                 cuanto = hmrespu4.Value;
             }
@@ -77,7 +77,7 @@ namespace SAC.formularios
             }
             if (hmradi8.Checked)
             {
-                pregunta8 = "si";
+                pregunta8 = "Si";
             }
             if (hmradi9.Checked)
             {
@@ -89,31 +89,31 @@ namespace SAC.formularios
             }
             if (hmradi11.Checked)
             {
-                pregunta11 = "si";
+                pregunta11 = "Si";
             }
             if (hmradi12.Checked)
             {
-                pregunta12 = "si";
+                pregunta12 = "Si";
             }
             if (hmradi13.Checked)
             {
-                pregunta13 = "si";
+                pregunta13 = "Si";
             }
             if (hmradi14.Checked)
             {
-                pregunta14 = "si";
+                pregunta14 = "Si";
             }
             if (hmradi15.Checked)
             {
-                pregunta15 = "si";
+                pregunta15 = "Si";
             }
             if (hmradi16.Checked)
             {
-                pregunta16 = "si";
+                pregunta16 = "Si";
             }
             if (hmradi17.Checked)
             {
-                pregunta17 = "si";
+                pregunta17 = "Si";
             }
             if (hmradi18.Checked)
             {
@@ -121,7 +121,7 @@ namespace SAC.formularios
             }
             if (hmradi19.Checked)
             {
-                pregunta19 = "si";
+                pregunta19 = "Si";
             }
             if (hmradi20.Checked)
             {
@@ -134,11 +134,11 @@ namespace SAC.formularios
 
             if (hmradi21.Checked)
             {
-                pregunta21 = "si";
+                pregunta21 = "Si";
             }
             if (hmradi22.Checked)
             {
-                pregunta22 = "si";
+                pregunta22 = "Si";
             }
             if (hmradi23.Checked)
             {
@@ -146,15 +146,15 @@ namespace SAC.formularios
             }
             if (hmradi24.Checked)
             {
-                pregunta24 = "si";
+                pregunta24 = "Si";
             }
             if (hmradi25.Checked)
             {
-                pregunta25 = "si";
+                pregunta25 = "Si";
             }
             if (hmradi26.Checked)
             {
-                pregunta26 = "si";
+                pregunta26 = "Si";
             }
             if (hmradi27.Checked)
             {
@@ -166,13 +166,13 @@ namespace SAC.formularios
             }
             if (hmradi29.Checked)
             {
-                pregunta29 = "si";
+                pregunta29 = "Si";
                 cigarros = hmrespu12.Value;
                 cuanto2 = hmrespu13.Value;
             }
             if (hmradi30.Checked)
             {
-                bebedor = "si";
+                bebedor = "Si";
                 pregunta30 = hmrespu14.Value;
             }
             if (hmradi31.Checked)
@@ -181,19 +181,19 @@ namespace SAC.formularios
             }
             if (hmradi32.Checked)
             {
-                pregunta32 = "si";
+                pregunta32 = "Si";
             }
 
             // Historial de mujer
 
             if (smradi1.Checked)
             {
-                pregunta33 = "si";
+                pregunta33 = "Si";
                 embarazo = Int32.Parse(smrespu1.Value);
             }
             if (smradi2.Checked)
             {
-                pregunta34 = "si";
+                pregunta34 = "Si";
             }
             if (smradi3.Checked)
             {
@@ -264,6 +264,11 @@ namespace SAC.formularios
             {
                 hmradi1.Focus();
             }
+        }
+
+        protected void Cancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frm_AgregarExpediente.aspx");
         }
     }
 }

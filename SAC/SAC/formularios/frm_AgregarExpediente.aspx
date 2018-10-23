@@ -12,7 +12,7 @@
         .ajustar {
             font-size: 15px;
         }
-        
+
         label, span, p {
             font-family: sans-serif;
             font-size: medium;
@@ -128,7 +128,7 @@
                             <div class="col s12">
                                 <div class="col s1">
                                     <label style="margin-left: 35px;">
-                                        <input class="with-gap" name="hm" runat="server" type="radio" id="hmsi" onclick="uncheckRadio(this),mostrar('fuerapais')" />
+                                        <input class="with-gap" name="hm" runat="server" type="radio" id="hmsi" onclick="uncheckRadio(this), mostrar('fuerapais')" />
                                         <span>Si</span>
                                     </label>
                                 </div>
@@ -256,7 +256,7 @@
                                 </label>
                             </div>
                             <div id="perdida" style="display: none" class="col 1">
-                                <input id="hmrespu8" type="text" runat="server" class="validate" maxlength="44"  onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                                <input id="hmrespu8" type="text" runat="server" class="validate" maxlength="44" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                                 <label class="active" for="hmrespu8">Kg</label>
                             </div>
                         </div>
@@ -269,7 +269,7 @@
                                 </label>
                             </div>
                             <div id="exceso" class="col 1" style="display: none">
-                                <input id="excesop" type="text" runat="server" class="validate" maxlength="44"  onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                                <input id="excesop" type="text" runat="server" class="validate" maxlength="44" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                                 <label class="active" for="hmrespu">Kg</label>
                             </div>
                         </div>
@@ -353,7 +353,7 @@
                             </div>
                             <div id="fuma" style="display: none">
                                 <div class="col 3">
-                                    <input id="hmrespu12" type="text" runat="server" class="validate" maxlength="4" />
+                                    <input id="hmrespu12" type="text" runat="server" class="validate" maxlength="4" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                                     <label class="active" for="hmrespu12">Cuántos cigarrillos diarios?</label>
                                 </div>
                                 <div class="col 3">
@@ -488,8 +488,11 @@
             <br />
             <br />
             <div class="row">
-                <div class="col s6">
+                <div class="input-field col s4">
                     <asp:Button class=" btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" BackColor="#009999" />
+                </div>
+                <div class="input-field col s4">
+                    <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
                 </div>
             </div>
         </form>
@@ -570,8 +573,6 @@
         </script>
 
     </div>
-
-
 
     <%--    </div>--%>
 </body>

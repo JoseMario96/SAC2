@@ -409,13 +409,13 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton reumatismoN;
         
         /// <summary>
-        /// Control hepaticos.
+        /// Control hepatico.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox hepaticos;
+        protected global::System.Web.UI.WebControls.TextBox hepatico;
         
         /// <summary>
         /// Control herpesS.
