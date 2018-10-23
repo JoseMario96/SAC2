@@ -38,7 +38,7 @@
                             <a href="#" class="btnMenu" style="color: black; font-weight: bold;" onclick="mostrarAgregar()">Agregar</a>
                         </div>
                         <div class="col s2">
-                            <a href="#" class="btnMenu" style="color: black; font-weight: bold;" onclick="mostrarActualizar()">Modificar</a>
+                            <a href="#" class="btnMenu" style="color: black; font-weight: bold;" onclick="mostrarActualizar()">Actualizar</a>
                         </div>
                         <div class="col s2">
                             <a href="#" class="btnMenu" style="color: black; font-weight: bold;" onclick="mostrarEliminar()">Eliminar</a>

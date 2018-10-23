@@ -134,7 +134,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <%--<asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="10000"></asp:Timer>--%>
+        <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="10000"></asp:Timer>
         <br />
         <br />
         <%-- HOY--%>
@@ -387,3 +387,4 @@
 <script src="../js/materialize.js"></script>
 
 <script src="../js/main.js"></script>
+</html>

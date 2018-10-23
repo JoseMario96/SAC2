@@ -57,9 +57,9 @@ namespace SAC.metodos
             con.cerrar_Conexion();
         }
 
-        public DataTable CitaHoy(String fecha)
+        public DataTable CitaHoy()
         {
-            string consulta = "Select cedulaPaciente, horaCita, telefonoCita from tbl_cita where fechaReservaCita = '"+fecha+"' order by horaCita;";
+            string consulta = "Select cedulaPaciente, horaCita, telefonoCita from tbl_cita where fechaReservaCita = curdate() order by horaCita;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())
@@ -131,6 +131,28 @@ namespace SAC.metodos
                 esta = true;
             }
             return esta;
+        }
+
+        public String[,] BuscarCitasAutomaticas()
+        {
+            String[,] matriz;
+            string consulta = "select tbl_cita.fechaReservaCita, tbl_cita.horaCita, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.correoPaciente  from tbl_Cita, tbl_paciente where fechaReservaCita = date_add(curdate(), interval 1 day) and tbl_cita.cedulaPaciente = tbl_paciente.cedulaPaciente;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataSet dt = new DataSet())
+            {
+                da.Fill(dt);
+                matriz = new String[dt.Tables[0].Rows.Count, dt.Tables[0].Columns.Count];
+                for (int i = 0; i <= dt.Tables[0].Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j <= dt.Tables[0].Columns.Count - 1; j++)
+                    {
+                        matriz[i, j] = System.Convert.ToString(dt.Tables[0].Rows[i].ItemArray[j]);
+                    }
+                }
+            }
+            return matriz;
+
         }
     }
 }

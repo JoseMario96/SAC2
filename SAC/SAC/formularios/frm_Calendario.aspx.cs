@@ -60,7 +60,7 @@ namespace SAC.formularios
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 fechaCabecera.InnerText = fecha;
-                Gridview_Hoy.DataSource = objeto.CitaHoy(fecha);
+                Gridview_Hoy.DataSource = objeto.CitaHoy();
                 Gridview_Hoy.DataBind();
             }
             else
@@ -310,45 +310,62 @@ namespace SAC.formularios
             catch (Exception ex)
             {
                 string script = @"<script type='text/javascript'>
-                    alert('NO NO NO NO NO NO NO');
+                    alert('No se pudo enviar el correo!');
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             }
         }
 
-        //protected void Timer1_Tick(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        //Configuración del Mensaje
-        //        MailMessage mail = new MailMessage();
-        //        SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-        //        //Especificamos el correo desde el que se enviará el Email y el nombre de la persona que lo envía
-        //        mail.From = new MailAddress("clinicadental.alinacamacho@gmail.com");
-        //        //Aquí ponemos el asunto del correo
-        //        mail.Subject = "Prueba de Envío de Correo";
-        //        //Aquí ponemos el mensaje que incluirá el correo
-        //        mail.Body = "Prueba de Envío de Correo de Gmail desde CSharp";
-        //        //Especificamos a quien enviaremos el Email, no es necesario que sea Gmail, puede ser cualquier otro proveedor
-        //        mail.To.Add("josem150396@gmail.com");
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                String[,] matriz = objeto.BuscarCitasAutomaticas();
+                String fecha = "";
+                String hora = "";
+                String nombre = "";
+                String correo = "";
+                
+                for (int i = 0; i <= matriz.GetLength(0) - 1; i++)
+                {
+                    DateTime f = Convert.ToDateTime(matriz[i, 0]);
+                    fecha = f.ToString("d");
+                    hora = matriz[i,1];
+                    nombre = matriz[i, 2] + " " + matriz[i,3];
+                    correo = matriz[i,4];
+
+                    //Configuración del Mensaje
+                    MailMessage mail = new MailMessage();
+                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                    //Especificamos el correo desde el que se enviará el Email y el nombre de la persona que lo envía
+                    mail.From = new MailAddress("clinicadental.alinacamacho@gmail.com");
+                    //Aquí ponemos el asunto del correo
+                    mail.Subject = "Recordatorio de su cita";
+                    //Aquí ponemos el mensaje que incluirá el correo
+                    mail.Body = "Estimado " + nombre + "! Este es un mensaje para recordarle su cita para la fecha: " + fecha + " y hora: " + hora + ". Sin más por el momento, le esperamos.\nClínica Dental Doctora Alina Camacho";
+                    //Especificamos a quien enviaremos el Email, no es necesario que sea Gmail, puede ser cualquier otro proveedor
+                    mail.To.Add(correo);
 
 
-        //        //Configuracion del SMTP
-        //        SmtpServer.Port = 587; //Puerto que utiliza Gmail para sus servicios
-        //        //Especificamos las credenciales con las que enviaremos el mail
-        //        SmtpServer.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-        //        SmtpServer.Credentials = new System.Net.NetworkCredential("clinicadental.alinacamacho@gmail.com", "SAC-corredores.2018");
-        //        SmtpServer.EnableSsl = true;
-        //        SmtpServer.Send(mail);
+                    //Configuracion del SMTP
+                    SmtpServer.Port = 587; //Puerto que utiliza Gmail para sus servicios
+                                           //Especificamos las credenciales con las que enviaremos el mail
+                    SmtpServer.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential("clinicadental.alinacamacho@gmail.com", "SAC-corredores.2018");
+                    SmtpServer.EnableSsl = true;
+                    SmtpServer.Send(mail);
+                }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        string script = @"<script type='text/javascript'>
-        //            alert('NO NO NO NO NO NO NO');
-        //            </script>";
-        //        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-        //    }
-        //}
+                
+
+            }
+            catch (Exception ex)
+            {
+                string script = @"<script type='text/javascript'>
+                    alert('No se pudo enviar el correo!');
+                    </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
+        }
     }
 }

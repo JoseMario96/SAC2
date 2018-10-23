@@ -162,13 +162,13 @@
                 outline: none;
             }
 
-        #popup, #popup1, #popup2, #popup3, #popup4, #popup5, #popup6, #popup7, #popup8 {
+        #popup, #popup1, #popup2, #popup3, #popup4, #popup5, #popup6, #popup7, #popup8, #popup9, #popup10 {
             visibility: hidden;
             opacity: 0;
             margin-top: -300px;
         }
 
-            #popup:target, #popup1:target, #popup2:target, #popup3:target, #popup4:target, #popup5:target, #popup6:target,  #popup7:target, #popup8:target {
+            #popup:target, #popup1:target, #popup2:target, #popup3:target, #popup4:target, #popup5:target, #popup6:target,  #popup7:target, #popup8:target, #popup9:target, #popup10:target {
                 visibility: visible;
                 opacity: 1;
                 background-color: rgba(0,0,0,0.8);
@@ -201,6 +201,16 @@
             border-radius: 3px;
             width: 65%;
             height: 75%;
+        }
+        .popup-contenedorC {
+            position: relative;
+            margin: 5% auto;
+            padding: 30px 50px;
+            background-color: #fafafa;
+            /*color: #333;*/
+            border-radius: 3px;
+            width: 90%;
+            height: 80%;
         }
 
         a.popup-cerrar {
@@ -320,41 +330,41 @@
                     </div>
                 </div>
             </div>
-            <div class="row row-bottom-padded-sm">
-                <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/agregar.png" class="fh5co-project-item">
-                        <img src="../images/agregar.png" alt="Image" class="imagen img-responsive centrar"/>
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Agregar</h2>
+            
+                <div class="col-md-6">
+                    <a href="#popup9" class="popup-link fh5co-project-item" onclick='document.getElementById("calendario").src="formularios/frm_Calendario.aspx";'>
+                        <img src="../images/calendario.png" alt="Image" class="img-responsive centrar"/>
+                        <div class=" letrasgrande">
+                            <h2 style="text-align: center;">Ver calendario</h2>
                         </div>
                     </a>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/actualizar.png" class="fh5co-project-item">
-                        <img src="../images/actualizar.png" alt="Image" class="imagen img-responsive centrar"/>
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Actualizar</h2>
+                    <div class="modal-wrapper" id="popup9">
+                        <div class="popup-contenedorC">
+                            <div class="responsiveContent">
+                                <iframe id="calendario"></iframe>
+                                <a class="popup-cerrar" href="#citas">X</a>
+                            </div>
                         </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/buscar.png" class="fh5co-project-item">
-                        <img src="../images/buscar.png" alt="Image" class="imagen img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Buscar</h2>
-                        </div>
-                    </a>
+                    </div>
                 </div>
 
-                <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/eliminar.png" class="fh5co-project-item">
-                        <img src="../images/eliminar.png" alt="Image" class="imagen img-responsive centrar"/>
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Eliminar</h2>
+                <div class="col-md-6">
+                    <a href="#popup10" class="popup-link fh5co-project-item" onclick='document.getElementById("citas_Hoy").src="formularios/frm_AgregarCita.aspx";'>
+                        <img src="../images/calendario_hoy.png" alt="Image" class="img-responsive centrar"/>
+                        <div class=" letrasgrande">
+                            <h2 style="text-align: center;">Ver citas de hoy</h2>
                         </div>
                     </a>
+                    <div class="modal-wrapper" id="popup10">
+                        <div class="popup-contenedor">
+                            <div class="responsiveContent">
+                                <iframe id="citas_Hoy"></iframe>
+                                <a class="popup-cerrar" href="#citas">X</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            
         </div>
     </section>
     <%--------------------------------------------------------------Paciente---------------------------------------------------------------------%>
