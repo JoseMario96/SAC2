@@ -96,7 +96,7 @@
                 <input type="radio" id="radio1" name="accion" value="carie" checked="checked" /><label for="radio1">Carie</label>
                 <input type="radio" id="radio6" name="accion" value="sellante" /><label for="radio6">Sellante</label>
                 <input type="radio" id="radio2" name="accion" value="restauracion" /><label for="radio2">Obturado</label>
-                <input type="radio" id="radio4" name="accion" value="extraccion" /><label for="radio4">Extraccion</label>
+                <input type="radio" id="radio4" name="accion" value="extraccion" /><label for="radio4">Ausencia</label>
                 <input type="radio" id="radio5" name="accion" value="exodoncia" /><label for="radio5">Exodoncia</label>
                 <input type="radio" id="radio3" name="accion" value="borrar" /><label for="radio3">Borrar</label>
             </div>
@@ -446,7 +446,7 @@
                     ctx.stroke();
                     ctx.lineWidth = 1;
                 }
-                // Funcion para borrar puente
+                // Funcion para borrar diente
                 function borrar_diente(contexto, num_diente) {
                     ctx = contexto;
                     // Definiendo puntos de dibujo
@@ -532,6 +532,8 @@
                 var bandera2Array = new Array();
                 var contadorBandera = 0;
                 var contadorBandera2 = 0;
+
+                //Los numeros
                 for (x = 0; x < 16; x++) {
 
                     if (sec > 11) {
@@ -606,8 +608,8 @@
                 //canvas.addEventListener("mousedown", getPosition, false);
 
                 function getPosition(event) {
-                    var x = event.x - 225;
-                    var y = event.y;
+                    var x = event.x - 225;// pintar en eje x
+                    var y = event.y; // pintar en eje y
                     //alert(y);
                     //alert(x);
                     var canvas = document.getElementById("myCanvas");
@@ -627,6 +629,10 @@
                         color = 'blue';
                         accion = 'seccion';
                     }
+                    else if (seleccion == 'sellante') {
+                        color = 'black';
+                        accion = 'seccion';
+                    }
                     else if (seleccion == 'extraccion') {
                         color = '1';
                         accion = 'marcar';
@@ -634,11 +640,7 @@
                     else if (seleccion == 'exodoncia') {
                         color = '2';
                         accion = 'marcarE';
-                    }
-                    else if (seleccion == 'sellante') {
-                        color = 'black';
-                        accion = 'seccion';
-                    }
+                    }             
                     else if (seleccion == 'borrar') {
                         accion = 'borrar';
                     }
@@ -725,7 +727,7 @@
                                 alert('Ya se realizó algún tipo de extracción')
                             }
                         } else if (accion == 'marcarE') {
-                            cod2 = diente + '-1-' + '3';
+                            cod2 = diente + '-0-' + '4';
 
                             var verificacion = false;
                             if (banderaArray.length > 0 || bandera2Array.length > 0) {
@@ -738,7 +740,7 @@
                             }
                             if (verificacion == false) {
                                 if (cod2 && !localStorage.getItem(cod2)) {
-                                    new_array2 = [diente, 0, 3, Date.now(), 0];
+                                    new_array2 = [diente, 0, 4, Date.now(), 0];
                                     guardar2 = new_array2.toLocaleString();
                                     localStorage.setItem(cod2, guardar2);
                                     marcar_exodoncia(ctx2, diente, 'red')
@@ -758,7 +760,6 @@
                             }
                         }
                         else if (accion == 'borrar') {
-
                             borrar_diente(ctx2, diente);
                             //document.getElementById('borrarO').value = diente;
                             //cargar el ultimo pintado
@@ -774,30 +775,35 @@
                                 if (seccion_b) {
                                     ultimo = '';
                                     key_cod = '';
-                                    alert("prueba0");
+                       
                                     for (var i = 0; i < localStorage.length; i++) {
-                                        alert("prueba1");
                                         var key_name = localStorage.key(i);
                                         item = localStorage.getItem(key_name);
                                         item = item.split(',');
                                         diente_comp = parseInt(item[0], 10);
                                         seccion_comp = parseInt(item[1], 10);
                                         accion_comp = parseInt(item[2], 10);
-                                        if (diente_comp == diente && seccion_b == seccion_comp && (accion_comp == 1 || accion_comp == 2)) {
-                                            if (ultimo == '') {
-                                                ultimo = item;
-                                                key_cod = key_name;
+                                        //alert(key_name);
 
+                                        if (diente_comp == diente && seccion_b == seccion_comp && (accion_comp == 1 || accion_comp == 2 || accion_comp == 5)) {
+                                            if (ultimo == '') {
+                                               // ultimo = item;
+                                                key_cod = key_name;
+                                             //   alert(key_cod);
                                             }
+                                            //Cuando tengo 2 tratamientos
                                             else {
                                                 fecha_ult = parseInt(item[3], 10);
+
+                                                //alert(fecha_ult);
                                                 if (ultimo[3] < fecha_ult) {
                                                     ultimo = item;
                                                     key_cod = key_name;
                                                 }
                                             }
                                         }
-                                    }
+                                        
+                                    } //termina el for que recorre para borrar 
                                     if (key_cod != '') {
                                         //console.log(key_cod);
                                         localStorage.removeItem(key_cod);
@@ -807,6 +813,7 @@
                             else if (seccion_chk == 'diente') {
                                 ultimo = '';
                                 key_cod = '';
+
                                 for (var i = 0; i < localStorage.length; i++) {
                                     var key_name = localStorage.key(i);
                                     item = localStorage.getItem(key_name);
@@ -869,7 +876,6 @@
                                 new_array = [diente, seccion, accion_g, Date.now(), 0];
                                 guardar = new_array.toLocaleString();
                                 localStorage.setItem(cod, guardar);
-
                                 if (verificacion == false) {
                                     dibuja_seccion(ctx2, diente, seccion, color);
                                     colorArray[contador] = color;
@@ -893,7 +899,6 @@
                     if ('borrar' == $("input[name='accion']:checked").val()) {
                         //alert("x-> "+x+" y-> "+y);
                         //ctx4.clearRect(0, 0, 810, 300);
-
                         if (x >= 30 && x <= 780 && ((y > 78 && y < 82) || (y > 198 && y < 202))) {
                             //alert(x);
                             div = parseInt(x / 50, 10);
@@ -908,7 +913,7 @@
                                 diente2_comp = parseInt(item[4], 10);
                                 accion_comp = parseInt(item[2], 10);
                                 if (accion_comp == 4) {
-                                    
+
                                     if (diente1_comp > 16) {
                                         diente1_comp = diente1_comp - 17;
                                         diente2_comp = diente2_comp - 17;
@@ -957,8 +962,8 @@
                 //dibuja_seccion(context, num_diente, seccion, color)
                 //Marca la posicion exacta del mouse
                 function Marcar(event) {
-                    var x = event.x - 225;
-                    var y = event.y;
+                    var x = event.x - 225;//Donde esta la posicion del mouse en el eje x
+                    var y = event.y;//Donde esta la posicion del mouse en el eje y
                     var canvas2 = document.getElementById("myCanvas2");
                     var div_can = document.getElementById("canvasesdiv");
                     x -= div_can.offsetLeft;
@@ -1083,6 +1088,7 @@
                         if (parseInt(item[0], 10) == diente) {
                             acc = parseInt(item[2], 10);
                             //console.log(acc);
+
                             if (acc == 1) {
                                 color = 'red';
                                 dibuja_seccion(ctx2, item[0], item[1], color);
@@ -1172,7 +1178,7 @@
                         <asp:BoundField DataField="date_format(fechaExpedienteTratamiento,'%Y-%m-%d')" HeaderText="Fecha" ItemStyle-Width="30" />
                         <asp:BoundField DataField="piezaExpedienteTratamiento" HeaderText="Pieza" ItemStyle-Width="100" />
                         <asp:BoundField DataField="descripcionExpedienteTratamiento" HeaderText="Descripción" ItemStyle-Width="100" />
-                       
+
                     </Columns>
                 </asp:GridView>
             </div>
