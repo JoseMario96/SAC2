@@ -80,7 +80,7 @@
             margin-top: .9em;
         }
 
-            #Panel1 {
+        #Panel1 {
             border: 1px solid white;
         }
 
@@ -106,6 +106,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+
         <asp:HiddenField ID="colorO" runat="server" />
         <asp:HiddenField ID="dienteO" runat="server" />
         <asp:HiddenField ID="seccionO" runat="server" />
@@ -121,7 +122,7 @@
             </div>
 
         </div>
-        <asp:Panel ID="Panel1" runat="server" Visible="false" tabindex="-1">
+        <asp:Panel ID="Panel1" runat="server" Visible="false" TabIndex="-1">
             <h5 class="izquierda">Datos personales</h5>
             <div>
                 <table class="margen" style="border: hidden;">
@@ -177,7 +178,17 @@
                 <canvas id="myCanvas3" width="890" height="200" style="z-index: 3; position: absolute; left: 25%; top: 0px;"></canvas>
                 <canvas id="myCanvas4" width="890" height="200" style="z-index: 4; position: absolute; left: 25%; top: 0px;"></canvas>
             </div>
-
+            <div style="margin-left: auto; margin-right: auto;">
+                <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
+                    runat="server" AutoGenerateColumns="False" Height="174px" Width="70%" HorizontalAlign="Center">
+                    <Columns>
+                        <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />
+                        <asp:BoundField DataField="nombre1Paciente" HeaderText="Primer Nombre" ItemStyle-Width="100" />
+                        <asp:BoundField DataField="apellido1Paciente" HeaderText="Primer Apellido" ItemStyle-Width="100" />
+                        <asp:BoundField DataField="apellido2Paciente" HeaderText="Segundo Apellido" ItemStyle-Width="100" />
+                    </Columns>
+                </asp:GridView>
+            </div>
             <div class="row botones">
                 <div class="input-field col s2">
                     <asp:Button class="waves-effect waves-light btn" ID="btnSave" runat="server" Text="Generar reporte" />
@@ -1227,41 +1238,88 @@
                     var nombre1 = document.getElementById("nombre1").innerHTML;
                     var telefono = document.getElementById("telefono").innerHTML;
                     var correo = document.getElementById("correo").innerHTML;
-
-                    //var columns = ["Cédula", "Primer nombre", "Segundo nombre", "Primer apellido", "Segundo apellido", "Teléfono", "Correo"];
-                    //var data = [[cedula, nombre1, nombre2, apellido1, apellido2, telefono, correo]];
-
-                    alert("jj");
-
                     var imgData = canvas.toDataURL("image/png", 1.0);
                     var pdf = new jsPDF('L', 'mm', 'A4');
+                    var lMargin = 15;
+                    var rMargin = 15;
+                    var pdfInMM = pdf.internal.pageSize.width;
+                    var limite = pdf.internal.pageSize.height;
+                    var pageCenter = pdfInMM / 2;
+                    pdf.setFontType("bold");
+                    var paragraph = "    Clínica Dental\n Dra. Alina Camacho B.";
 
+                    var lines = pdf.splitTextToSize(paragraph, (pdfInMM - lMargin - rMargin));
+                    pdf.text(lines, pageCenter, 20, 'center'); //see this line
                     var today = new Date();
-
+                    pdf.setFontType("normal");
                     var newdat = "Fecha:  " + today.toLocaleDateString();
-                    pdf.text(210, 30, newdat);
-                    pdf.setFontSize(14);
-                    pdf.text(20, 30, "Datos del paciente");
+                    pdf.text(210, 40, newdat);
 
-                    //pdf.autoTable(columns, data, {
-                    //    styles: { fillColor: [255, 255, 255], textColor: 20 },
-                    //    margin: { top: 35 }
-                    //});
-                    alert("ingresa");
+                    pdf.setFontSize(14);
+                    pdf.setFontType("bold");
+                    pdf.text("Datos del paciente", 20, 40);
+
+                    pdf.setFontType("normal");
                     pdf.setFontSize(12);
-                    pdf.text(20, 40, "Paciente:");
-                    pdf.text(40, 40, nombre1);
-                    pdf.text(20, 45, "Cédula:");
-                    pdf.text(40, 45, cedula);
-                    pdf.text(20, 50, "Télefono:");
-                    pdf.text(40, 50, telefono);
-                    pdf.text(20, 55, "Correo:");
-                    pdf.text(40, 55, correo);
+                    pdf.text(20, 50, "Paciente:");
+                    pdf.text(40, 50, nombre1);
+                    pdf.text(20, 55, "Cédula:");
+                    pdf.text(40, 55, cedula);
+                    pdf.text(20, 60, "Télefono:");
+                    pdf.text(40, 60, telefono);
+                    pdf.text(20, 65, "Correo:");
+                    pdf.text(40, 65, correo);
 
                     pdf.setFontSize(14);
-                    pdf.text(20, 70, "Odontograma");
-                    pdf.addImage(imgData, 'png', 40, 75);
-                    pdf.save("download.pdf");
+                    pdf.setFontType("bold");
+                    pdf.text(20, 80, "Odontograma");
+                    pdf.setFontType("normal");
+                    pdf.addImage(imgData, 'png', 40, 90);
+                    //----------------------------------------------------------------------------------------------
+                    pdf.addPage();
+                    pdf.setFontType("bold");
+                    lines = pdf.splitTextToSize(paragraph, (pdfInMM - lMargin - rMargin));
+                    pdf.text(lines, pageCenter, 20, 'center');
+                    pdf.setFontType("bold");
+                    pdf.text("Fecha", 20, 40);
+                    pdf.text("Diente", 108, 40);
+                    pdf.text("Tratamiento", 172, 40);
+                    pdf.text("Descripción", 226, 40);
+                    pdf.setFontType("normal");
+                    var grid = document.getElementById("GridView1");
+                    var total, saltopagina;
+                    saltopagina = limite - 20;
+                    var y = 50;
+                    if (grid.rows.length > 0) {
+                        for (i = 1; i < grid.rows.length; i++) {
+                            nom1 = grid.rows[i].cells[0].innerHTML;
+                            nom2 = grid.rows[i].cells[1].innerHTML;
+                            ape1 = grid.rows[i].cells[2].innerHTML;
+                            ape2 = grid.rows[i].cells[3].innerHTML;
+                            total = nom1 + " " + nom2 + "   " + ape1 + " " + ape2;
+
+                            pdf.text(44, y, nom1);
+                            pdf.text(108, y, nom1);
+                            pdf.text(172, y, ape1);
+                            pdf.text(226, y, ape2);
+
+                            if (y >= saltopagina) {
+                                y = 25;
+                                pdf.addPage();
+
+                                pdf.setFontType("bold");
+                                pdf.text("Fecha", 44, 20);
+                                pdf.text("Diente", 108, 20);
+                                pdf.text("Tratamiento", 172, 20);
+                                pdf.text("Descripción", 226, 20);
+                                pdf.setFontType("normal");
+                            }
+                            y = y + 5;
+                        }
+                        nom1, nom1, ape2, ape2, total = " ";
+                    }
+                    //----------------------------------------------------------------------------------------------
+                    pdf.save(nombre1 + ".pdf");
                 }, false);
             </script>
         </asp:Panel>

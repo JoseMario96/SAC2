@@ -63,8 +63,6 @@
         <asp:HiddenField ID="dienteO" runat="server" />
         <asp:HiddenField ID="seccionO" runat="server" />
         <asp:HiddenField ID="contextoO" runat="server" />
-
-
         <div id="radio">
             <input type="radio" id="radio1" name="accion" value="carie" checked="checked" /><label for="radio1">Carie</label>
             <input type="radio" id="radio6" name="accion" value="sellante" /><label for="radio6">Sellante</label>
@@ -77,11 +75,11 @@
             <%--<div class="contenedor">
                 <canvas class="lienzo" id="lienzo2" width="190" height="190">Su navegador</canvas>
             </div>--%>
-            <div id="canvasesdiv" class="contenedor" style="width: 890px; height: 200px">
-                <canvas class="lienzo" id="myCanvas" width="890" height="200" style="z-index: 1; position: absolute;"></canvas>
-                <canvas class="lienzo" id="myCanvas2" width="890" height="200" style="z-index: 2; position: absolute;"></canvas>
-                <canvas class="lienzo" id="myCanvas3" width="890" height="200" style="z-index: 3; position: absolute;"></canvas>
-                <canvas class="lienzo" id="myCanvas4" width="890" height="200" style="z-index: 4; position: absolute;"></canvas>
+            <div id="canvasesdiv" class="contenedor">
+                <canvas class="lienzo" id="myCanvas" width="810" height="200" style="z-index: 1; position: absolute;"></canvas>
+                <canvas class="lienzo" id="myCanvas2" width="810" height="200" style="z-index: 2; position: absolute;"></canvas>
+                <canvas class="lienzo" id="myCanvas3" width="810" height="200" style="z-index: 3; position: absolute;"></canvas>
+                <canvas class="lienzo" id="myCanvas4" width="810" height="200" style="z-index: 4; position: absolute;"></canvas>
             </div>
         </div>
         <script>
@@ -98,6 +96,7 @@
             var layer4 = document.getElementById("myCanvas4");
             var ctx4 = layer4.getContext("2d");
             //
+
             var color_line = 'black';
             var medida = 40;
             var separacion_x = 10;
@@ -150,6 +149,7 @@
             // 17 - 32 dientes
             iniciar_x = 0;
             iniciar_y = medida + 100;
+            var positcion = 255;
             for (x = 0; x < 16; x++) {
 
                 if (sec3 > 41) {
@@ -428,20 +428,42 @@
                     }
                 }
             }
-         
+
+            function tamVentana() {
+                var tam = [0, 0];
+                if (typeof window.innerWidth != 'undefined') {
+                    tam = [window.innerWidth, window.innerHeight];
+                }
+                else if (typeof document.documentElement != 'undefined'
+                    && typeof document.documentElement.clientWidth !=
+                    'undefined' && document.documentElement.clientWidth != 0) {
+                    tam = [document.documentElement.clientWidth, document.documentElement.clientHeight];
+                }
+                else {
+                    tam = [document.getElementsByTagName('body')[0].clientWidth, document.getElementsByTagName('body')[0].clientHeight];
+                }
+                return tam;
+            }
+
             function getPosition(event) {
-                var x = event.x - 225;
+                var x = event.x - positcion;
                 var y = event.y;
-                //alert(y);
-                //alert(x);
+                alert(x);
+                alert(y);
+
+
                 var canvas = document.getElementById("myCanvas");
                 var div_can = document.getElementById("canvasesdiv");
-                x -= div_can.offsetLeft;
-                y -= div_can.offsetTop;
-                //alert(div_can.offsetTop);
+                div_can.width = div_can.width;
+                x -= div_can.offsetLeft; //izquierda
+                y -= div_can.offsetTop; // espacio del borde
+                alert(x);
+                alert(y);
+
                 var div = 0;
                 var color = '';
                 var accion = '';
+
                 seleccion = $("input[name='accion']:checked").val();
                 if (seleccion == 'carie') {
                     color = 'red';
@@ -465,13 +487,16 @@
                 else if (seleccion == 'borrar') {
                     accion = 'borrar';
                 }
-                //alert(y);
+
+                alert(x + "getposition");
                 diente = 0;
                 seccion = 0;
+
                 if (y >= 20 && y <= 60) {
-                    //alert(x);
+                    alert("Fuera diente");
                     if (x >= 10 && x <= 50) {
                         diente = 1;
+                        alert("Dentro diente");
                     }
                     else if (x >= 60 && x <= 800) {
                         div = parseInt(x / 50, 10);
@@ -542,6 +567,7 @@
                             }
                             diente1 = menor;
                             diente2 = mayor;
+
                             if ((diente1 < 17 && diente2 < 17 && diente1 != diente2) || (diente1 > 17 && diente2 > 17 && diente1 != diente2)) {
                                 marcar_diente(ctx4, diente, 'red');
                                 ctx4.clearRect(0, 0, 810, 70);
@@ -738,13 +764,14 @@
             }
 
             function Marcar(event) {
-                var x = event.x - 225;
+
+                var x = event.x - positcion;
                 var y = event.y;
                 var canvas2 = document.getElementById("myCanvas2");
                 var div_can = document.getElementById("canvasesdiv");
                 x -= div_can.offsetLeft;
                 y -= div_can.offsetTop;
-                //alert(x);
+                //      alert(x +"Marcar");
                 diente = 0;
                 seccion = 0;
                 var div = 0;

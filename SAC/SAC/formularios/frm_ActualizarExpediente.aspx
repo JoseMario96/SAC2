@@ -22,9 +22,9 @@
             #formularioP.highlighted {
                 border: 3px solid red;
             }
-            
+
         label, th, tr {
-             font-family: sans-serif;
+            font-family: sans-serif;
             font-size: medium;
             color: black;
         }
@@ -52,7 +52,9 @@
                 <br />
                 <br />
             </div>
+
             <div id="formularioP" style="display: none" tabindex="-1">
+
                 <table class="striped">
                     <tr>
                         <th colspan="5" style="text-align: center">Datos personales</th>
@@ -112,18 +114,18 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:TextBox ID="cardiaco" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="cardiaco" runat="server" maxlength="44" ></asp:TextBox>
                         </td>
                         <td>
-                            <asp:TextBox ID="presion" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="presion" runat="server" maxlength="44" ></asp:TextBox>
                         </td>
                         <td>
                             <label>
-                                <input class="with-gap" name="group1" runat="server" type="radio" id="reumaticaS" onclick="" />
+                                <input class="with-gap" name="group1" runat="server" type="radio" id="reumaticaS"  />
                                 <span>Sí</span>
                             </label>
                             <label>
-                                <input class="with-gap" name="group1" runat="server" type="radio" id="reumaticaN" onclick="" />
+                                <input class="with-gap" name="group1" runat="server" type="radio" id="reumaticaN"/>
                                 <span>No</span>
                             </label>
 
@@ -131,11 +133,11 @@
 
                         <td>
                             <label>
-                                <input class="with-gap" name="group2" runat="server" type="radio" id="sidaS" onclick="" />
+                                <input class="with-gap" name="group2" runat="server" type="radio" id="sidaS"  />
                                 <span>Sí</span>
                             </label>
                             <label>
-                                <input class="with-gap" name="group2" runat="server" type="radio" id="sidaN" onclick="" />
+                                <input class="with-gap" name="group2" runat="server" type="radio" id="sidaN" />
                                 <span>No</span>
                             </label>
 
@@ -143,11 +145,11 @@
 
                         <td>
                             <label>
-                                <input class="with-gap" name="group3" runat="server" type="radio" id="derrameS" onclick="" />
+                                <input class="with-gap" name="group3" runat="server" type="radio" id="derrameS"  />
                                 <span>Sí</span>
                             </label>
                             <label>
-                                <input class="with-gap" name="group3" runat="server" type="radio" id="derrameN" onclick="" />
+                                <input class="with-gap" name="group3" runat="server" type="radio" id="derrameN" />
                                 <span>No</span>
                             </label>
 
@@ -163,11 +165,11 @@
                     <tr>
                         <td>
                             <label>
-                                <input class="with-gap" name="group4" runat="server" type="radio" id="anemiaS" onclick="" />
+                                <input class="with-gap" name="group4" runat="server" type="radio" id="anemiaS" />
                                 <span>Sí</span>
                             </label>
                             <label>
-                                <input class="with-gap" name="group4" runat="server" type="radio" id="anemiaN" onclick="" />
+                                <input class="with-gap" name="group4" runat="server" type="radio" id="anemiaN"/>
                                 <span>No</span>
                             </label>
 
@@ -185,21 +187,23 @@
                         </td>
                         <td>
                             <label>
-                                <input class="with-gap" name="group6" runat="server" type="radio" id="paisS" onclick="" />
+                                <input class="with-gap" name="group6" runat="server" type="radio" id="paisS" onclick="pais(1)" />
                                 <span>Sí</span>
                             </label>
                             <label>
-                                <input class="with-gap" name="group6" runat="server" type="radio" id="paisN" onclick="" />
+                                <input class="with-gap" name="group6" runat="server" type="radio" id="paisN" onclick="pais(0)" />
                                 <span>No</span>
                             </label>
 
                         </td>
                         <td>
-                            <asp:TextBox ID="donde" runat="server"></asp:TextBox>
+
+                            <asp:TextBox ID="donde" runat="server" Style="display: none"></asp:TextBox>
 
                         </td>
+
                         <td>
-                            <asp:TextBox ID="tiempo" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="tiempo" runat="server" Style="display: none"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -222,10 +226,10 @@
 
                         </td>
                         <td>
-                            <asp:TextBox ID="rinnon" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="rinnon" runat="server" maxlength="44" ></asp:TextBox>
                         </td>
                         <td>
-                            <asp:TextBox ID="gastro" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="gastro" runat="server" maxlength="44" ></asp:TextBox>
                         </td>
                         <td>
                             <label>
@@ -323,7 +327,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:TextBox ID="hepaticos" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="hepatico" runat="server" maxlength="44"></asp:TextBox>
                         </td>
                         <td>
                             <label>
@@ -337,10 +341,10 @@
 
                         </td>
                         <td>
-                            <asp:TextBox ID="perdida_peso" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="perdida_peso" runat="server" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:TextBox ID="aumento_peso" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="aumento_peso" runat="server" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                         </td>
                         <td>
                             <label>
@@ -374,7 +378,7 @@
 
                         </td>
                         <td>
-                            <asp:TextBox ID="tiroides" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="tiroides" runat="server" maxlength="44"></asp:TextBox>
                         </td>
                         <td>
                             <label>
@@ -419,19 +423,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:TextBox ID="bifos" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="bifos" runat="server" maxlength="44"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:TextBox ID="drogas" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="drogas" runat="server" maxlength="44"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:TextBox ID="fuma" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="fuma" runat="server" maxlength="44"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:TextBox ID="cigarroDia" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="cigarroDia" runat="server" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:TextBox ID="cigarroPeriodo" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="cigarroPeriodo" runat="server" maxlength="44"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -443,20 +447,20 @@
                     <tr>
                         <td>
                             <label>
-                                <input class="with-gap" name="group20" runat="server" type="radio" id="alcoholS" onclick="" />
+                                <input class="with-gap" name="group20" runat="server" type="radio" id="alcoholS" onclick="bebidas(1)" />
                                 <span>Sí</span>
                             </label>
                             <label>
-                                <input class="with-gap" name="group20" runat="server" type="radio" id="alcoholN" onclick="" />
+                                <input class="with-gap" name="group20" runat="server" type="radio" id="alcoholN" onclick="bebidas(0)" />
                                 <span>No</span>
                             </label>
 
                         </td>
                         <td>
-                            <asp:TextBox ID="frecuenciaAlcohol" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="frecuenciaAlcohol" runat="server" maxlength="44" ></asp:TextBox>
                         </td>
                         <td>
-                            <asp:TextBox ID="cicatriz" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="cicatriz" runat="server" maxlength="44"></asp:TextBox>
                         </td>
                         <td>
                             <label>
@@ -480,13 +484,13 @@
                     </tr>
                     <tr>
                         <td class="auto-style1">
-                            <asp:TextBox ID="arterialSignos" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="arterialSignos" runat="server" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                         </td>
                         <td class="auto-style1">
-                            <asp:TextBox ID="pulsoSignos" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="pulsoSignos" runat="server" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                         </td>
                         <td class="auto-style1">
-                            <asp:TextBox ID="frecuenciaSignos" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="frecuenciaSignos" runat="server" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -512,7 +516,7 @@
 
                         </td>
                         <td>
-                            <asp:TextBox ID="semanas" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="semanas" runat="server" maxlength="10" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                         </td>
                         <td>
                             <label>
@@ -526,10 +530,10 @@
 
                         </td>
                         <td>
-                            <asp:TextBox ID="gineco" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="gineco" runat="server" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" ></asp:TextBox>
                         </td>
                         <td>
-                            <asp:TextBox ID="abortos" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="abortos" runat="server" maxlength="10" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -538,17 +542,16 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:TextBox ID="cesareas" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="cesareas" runat="server" maxlength="10" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                         </td>
                         <td colspan="4">
-                            <asp:TextBox ID="observacionesMujer" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="observacionesMujer" runat="server" maxlength="44"></asp:TextBox>
                         </td>
                     </tr>
 
                 </table>
             </div>
-            <div class="row">
-
+            <div class="row" id="botones" style=" display: none">
                 <div class="input-field col s4">
                     <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
                 </div>
@@ -556,6 +559,7 @@
                     <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
                 </div>
             </div>
+
             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
             <script type="text/javascript" src="../js/quicksearch.js"></script>
 
@@ -570,6 +574,65 @@
                     });
                 });
             </script>
+
+            <script>
+                function pais(estado) {
+
+                    if (estado == 1) {
+                        document.getElementById('donde').style.display = 'block';
+                        document.getElementById('tiempo').style.display = 'block';
+                    } else {
+                        document.getElementById('donde').style.display = 'none';
+                        document.getElementById('tiempo').style.display = 'none';
+                    }
+                }
+
+                function bebidas(estado) {
+                    if (estado == 1) {
+                        document.getElementById('frecuenciaAlcohol').style.display = 'block';
+                    } else {
+                        document.getElementById('frecuenciaAlcohol').style.display = 'none';
+                    }
+                }
+
+            </script>
+               <script>
+            function solonumeros(e) {
+                key = e.keyCoden || e.which;
+                teclado = String.fromCharCode(key);
+                numero = "1234567890";
+                especiales = "8-37-38-46";
+                teclado_especial = false;
+                for (var i in especiales) {
+                    if (key == especiales[i]) {
+                        teclado_especial = true;
+                    }
+                }
+                if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+                    return false;
+                }
+            }
+
+            function sololetras(e) {
+                key = e.keyCoden || e.which;
+                teclado = String.fromCharCode(key).toLowerCase();
+                letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+                especiales = "8-37-38-46-164";
+                teclado_especial = false;
+
+                for (var i in especiales) {
+                    if (key == especiales[i]) {
+                        teclado_especial = true; break;
+
+                    }
+
+                }
+                if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                    return false;
+
+                }
+            }
+        </script>
         </form>
     </div>
 

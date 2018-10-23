@@ -85,6 +85,7 @@
         <asp:HiddenField ID="contextoO" runat="server" />
         <asp:HiddenField ID="marcaO" runat="server" />
         <asp:HiddenField ID="borrarO" runat="server" />
+        <asp:HiddenField ID="colorM" runat="server" />
 
         <div id="odontograma" style="display: none" tabindex="1">
 
@@ -95,8 +96,8 @@
                 <input type="radio" id="radio1" name="accion" value="carie" checked="checked" /><label for="radio1">Carie</label>
                 <input type="radio" id="radio6" name="accion" value="sellante" /><label for="radio6">Sellante</label>
                 <input type="radio" id="radio2" name="accion" value="restauracion" /><label for="radio2">Obturado</label>
-                <input type="radio" id="radio4" name="accion" value="extraccion" /><label for="radio4">Extraccion</label>
-                <input type="radio" id="radio5" name="accion" value="puente" /><label for="radio5">Puente</label>
+                <input type="radio" id="radio4" name="accion" value="extraccion" /><label for="radio4">Ausencia</label>
+                <input type="radio" id="radio5" name="accion" value="exodoncia" /><label for="radio5">Exodoncia</label>
                 <input type="radio" id="radio3" name="accion" value="borrar" /><label for="radio3">Borrar</label>
             </div>
             <br>
@@ -118,7 +119,6 @@
             <input type="radio" id="amalgamaO" name="amalgama" value="seccion" /><label for="amalgamaO">Amalgama</label>
             <input type="radio" id="resinaO" name="resina" value="diente" /><label for="resinaO">Resina</label>
         </div>--%>
-
 
             <script>
 
@@ -391,12 +391,12 @@
                     ctx.stroke();
                 }
                 // Funcion para sombrear diente completo(extraccion)
-                function marcar_extraccion(contexto, num_diente, color_pas) {
+                function marcar_extraccion(contexto, num_diente, color_pas2) {
                     var ctx = contexto;
                     // Definiendo puntos de dibujo
                     med = medida;
                     num_diente = num_diente - 1;
-                    color_line = color_pas;
+                    color_line = color_pas2;
                     if (num_diente < 16) {
                         inicio_y = 20;
                     }
@@ -406,8 +406,8 @@
                     }
                     //alert(num_diente);
                     inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
-
-                    ctx.fillStyle = color_line;
+                    ctx.fillStyle = 'black';
+                    ctx.strokeStyle = 'black';
                     ctx.beginPath();
                     ctx.lineWidth = 3;
                     ctx.moveTo(inicio_x, inicio_y);
@@ -446,7 +446,7 @@
                     ctx.stroke();
                     ctx.lineWidth = 1;
                 }
-                // Funcion para borrar puente
+                // Funcion para borrar diente
                 function borrar_diente(contexto, num_diente) {
                     ctx = contexto;
                     // Definiendo puntos de dibujo
@@ -462,6 +462,32 @@
                     //alert(num_diente);
                     inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
                     ctx.clearRect(inicio_x, inicio_y, med, med);
+                }
+                function marcar_exodoncia(contexto, num_diente, color_pas) {
+                    var ctxx = contexto;
+                    // Definiendo puntos de dibujo
+                    med = medida;
+                    num_diente = num_diente - 1;
+                    color_line = color_pas;
+                    if (num_diente < 16) {
+                        inicio_y = 20;
+                    }
+                    else {
+                        num_diente = num_diente - 16;
+                        inicio_y = med + 100;
+                    }
+                    //alert(num_diente);
+                    inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
+
+                    ctxx.fillStyle = color_line;
+
+                    ctxx.strokeStyle = 'red';
+                    ctxx.beginPath();
+                    ctxx.lineWidth = 3;
+                    ctxx.moveTo(inicio_x + 40, inicio_y);
+                    ctxx.lineTo(inicio_x, inicio_y + 40);
+                    ctxx.stroke();
+                    ctxx.lineWidth = 1;
                 }
 
                 // Valores iniciales de las propiedades del diente
@@ -497,16 +523,17 @@
                 var posicionArray = new Array();
                 var dienteArray = new Array();
                 var seccionArray = new Array();
+                var marcacolorArray = new Array();
                 var contador = 0;
                 var contador2 = 0;
+                var bandera = 0;
+                var bandera2 = 0;
+                var banderaArray = new Array();
+                var bandera2Array = new Array();
+                var contadorBandera = 0;
+                var contadorBandera2 = 0;
 
-                var colorArrayC = new Array();
-                var posicionArrayC = new Array();
-                var dienteArrayC = new Array();
-                var seccionArrayC = new Array();
-                var contadorC = 0;
-
-
+                //Los numeros
                 for (x = 0; x < 16; x++) {
 
                     if (sec > 11) {
@@ -581,8 +608,8 @@
                 //canvas.addEventListener("mousedown", getPosition, false);
 
                 function getPosition(event) {
-                    var x = event.x - 225;
-                    var y = event.y;
+                    var x = event.x - 225;// pintar en eje x
+                    var y = event.y; // pintar en eje y
                     //alert(y);
                     //alert(x);
                     var canvas = document.getElementById("myCanvas");
@@ -602,17 +629,18 @@
                         color = 'blue';
                         accion = 'seccion';
                     }
-                    else if (seleccion == 'extraccion') {
-                        color = '1';
-                        accion = 'marcar';
-                    }
-                    else if (seleccion == 'puente') {
-                        accion = 'puente';
-                    }
                     else if (seleccion == 'sellante') {
                         color = 'black';
                         accion = 'seccion';
                     }
+                    else if (seleccion == 'extraccion') {
+                        color = '1';
+                        accion = 'marcar';
+                    }
+                    else if (seleccion == 'exodoncia') {
+                        color = '2';
+                        accion = 'marcarE';
+                    }             
                     else if (seleccion == 'borrar') {
                         accion = 'borrar';
                     }
@@ -668,62 +696,76 @@
                             }
                         } else if (accion == 'marcar') {
                             cod = diente + '-0-' + '3';
-                            if (cod && !localStorage.getItem(cod)) {
-                                new_array = [diente, 0, 3, Date.now(), 0];
-                                guardar = new_array.toLocaleString();
-                                localStorage.setItem(cod, guardar);
-                                marcar_extraccion(ctx2, diente, 'black')
+                            var verificacion = false;
+                            if (banderaArray.length > 0 || bandera2Array.length > 0) {
+                                for (var x = 0; x <= banderaArray.length; x++) {
+                                    if (banderaArray[x] == diente || bandera2Array[x] == diente) {
 
-                                seccionArray[contador2] = diente;
-                                contador2++;
-                                document.getElementById('marcaO').value = seccionArray.join(',');
-                            } else {
-                                alert("Ya fue marcado");
-                            }
-                        } else if (accion == 'puente') {
-                            if (diente1 == 0) {
-                                marcar_diente(ctx4, diente, 'red');
-                                diente1 = diente;
-                            } else if (diente2 == 0) {
-                                diente2 = diente;
-                                menor = 0;
-                                mayor = 0;
-                                if (diente1 > diente2) {
-                                    mayor = diente1;
-                                    menor = diente2;
-                                } else {
-                                    mayor = diente2;
-                                    menor = diente1
-                                }
-                                diente1 = menor;
-                                diente2 = mayor;
-                                if ((diente1 < 17 && diente2 < 17 && diente1 != diente2) || (diente1 > 17 && diente2 > 17 && diente1 != diente2)) {
-                                    marcar_diente(ctx4, diente, 'red');
-                                    ctx4.clearRect(0, 0, 810, 70);
-                                    ctx4.clearRect(0, 135, 810, 70);
-                                    cod = diente1 + '-0-4-' + diente2;
-                                    if (cod && !localStorage.getItem(cod)) {
-                                        new_array = [diente1, 0, 4, Date.now(), diente2];
-                                        guardar = new_array.toLocaleString();
-                                        localStorage.setItem(cod, guardar);
-                                    } else {
-                                        alert("Ya fue marcado");
+                                        verificacion = true;
                                     }
-                                    marcar_puente(ctx4, diente1, diente2, 'red');
-                                } else {
-                                    ctx4.clearRect(0, 0, 810, 70);
-                                    ctx4.clearRect(0, 135, 810, 70);
                                 }
-
-                                diente1 = 0;
-                                diente2 = 0;
                             }
-                        } else if (accion == 'borrar') {
+                            if (verificacion == false) {
+                                if (cod && !localStorage.getItem(cod)) {
+                                    new_array = [diente, 0, 3, Date.now(), 0];
+                                    guardar = new_array.toLocaleString();
+                                    localStorage.setItem(cod, guardar);
+                                    marcar_extraccion(ctx2, diente, 'black')
+                                    marcacolorArray = 'black';
+                                    seccionArray[contador2] = diente;
+                                    contador2++;
+                                    document.getElementById('colorM').value = seccionArray.join(',');
+                                    document.getElementById('marcaO').value = seccionArray.join(',');
+                                    banderaArray[contadorBandera] = diente;
+                                    contadorBandera++;
+                                }
+                                else {
+                                    alert("El diente ya contiene un tratamiento");
+                                }
+                            }
+                            else {
+                                alert('Ya se realizó algún tipo de extracción')
+                            }
+                        } else if (accion == 'marcarE') {
+                            cod2 = diente + '-0-' + '4';
+
+                            var verificacion = false;
+                            if (banderaArray.length > 0 || bandera2Array.length > 0) {
+                                for (var x = 0; x <= banderaArray.length; x++) {
+                                    if (banderaArray[x] == diente || bandera2Array[x] == diente) {
+
+                                        verificacion = true;
+                                    }
+                                }
+                            }
+                            if (verificacion == false) {
+                                if (cod2 && !localStorage.getItem(cod2)) {
+                                    new_array2 = [diente, 0, 4, Date.now(), 0];
+                                    guardar2 = new_array2.toLocaleString();
+                                    localStorage.setItem(cod2, guardar2);
+                                    marcar_exodoncia(ctx2, diente, 'red')
+                                    marcacolorArray = 'red';
+                                    seccionArray[contador2] = diente;
+                                    contador2++;
+                                    document.getElementById('marcaO').value = seccionArray.join(',');
+                                    document.getElementById('colorM').value = seccionArray.join(',');
+                                    bandera2Array[contadorBandera2] = diente;
+                                    contadorBandera2++;
+                                } else {
+                                    alert("El diente ya contiene un tratamiento");
+                                }
+                            }
+                            else {
+                                alert('Ya se realizó algún tipo de extracción')
+                            }
+                        }
+                        else if (accion == 'borrar') {
                             borrar_diente(ctx2, diente);
-                            document.getElementById('borrarO').value = diente;
+                            //document.getElementById('borrarO').value = diente;
                             //cargar el ultimo pintado
                             seccion_chk = $("input[name='seccion']:checked").val();
                             if (seccion_chk == 'seccion') {
+
                                 x = x - ((div * 40) + (10 * div) + 10);
                                 y = y - 20;
                                 if (diente > 16) {
@@ -733,6 +775,7 @@
                                 if (seccion_b) {
                                     ultimo = '';
                                     key_cod = '';
+                       
                                     for (var i = 0; i < localStorage.length; i++) {
                                         var key_name = localStorage.key(i);
                                         item = localStorage.getItem(key_name);
@@ -740,29 +783,37 @@
                                         diente_comp = parseInt(item[0], 10);
                                         seccion_comp = parseInt(item[1], 10);
                                         accion_comp = parseInt(item[2], 10);
-                                        if (diente_comp == diente && seccion_b == seccion_comp && (accion_comp == 1 || accion_comp == 2)) {
+                                        //alert(key_name);
+
+                                        if (diente_comp == diente && seccion_b == seccion_comp && (accion_comp == 1 || accion_comp == 2 || accion_comp == 5)) {
                                             if (ultimo == '') {
-                                                ultimo = item;
+                                               // ultimo = item;
                                                 key_cod = key_name;
+                                             //   alert(key_cod);
                                             }
+                                            //Cuando tengo 2 tratamientos
                                             else {
                                                 fecha_ult = parseInt(item[3], 10);
+
+                                                //alert(fecha_ult);
                                                 if (ultimo[3] < fecha_ult) {
                                                     ultimo = item;
                                                     key_cod = key_name;
                                                 }
                                             }
                                         }
-                                    }
+                                        
+                                    } //termina el for que recorre para borrar 
                                     if (key_cod != '') {
                                         //console.log(key_cod);
                                         localStorage.removeItem(key_cod);
                                     }
                                 }
-
-                            } else if (seccion_chk == 'diente') {
+                            }
+                            else if (seccion_chk == 'diente') {
                                 ultimo = '';
                                 key_cod = '';
+
                                 for (var i = 0; i < localStorage.length; i++) {
                                     var key_name = localStorage.key(i);
                                     item = localStorage.getItem(key_name);
@@ -807,33 +858,47 @@
                         }
                         else if (color == 'black') {
                             cod = diente + '-' + seccion + '-' + '3';
-                            accion_g = 1;
+                            accion_g = 5;
                         };
-                        if (cod && !localStorage.getItem(cod)) {
-                            new_array = [diente, seccion, accion_g, Date.now(), 0];
-                            guardar = new_array.toLocaleString();
-                            localStorage.setItem(cod, guardar);
-                            dibuja_seccion(ctx2, diente, seccion, color);
-                            //var contextoO = document.getElementById('contextoO')
-                            //contextoO.value = ctx2;
-                            colorArray[contador] = color;
-                            dienteArray[contador] = diente;
-                            posicionArray[contador] = seccion;
-                            contador++;
-                            document.getElementById('colorO').value = colorArray.join(',');
-                            document.getElementById('dienteO').value = dienteArray.join(',');
-                            document.getElementById('seccionO').value = posicionArray.join(',');
-                        }
 
+                        var verificacion = false;
+                        if (banderaArray.length > 0 || bandera2Array.length > 0) {
+                            for (var x = 0; x <= banderaArray.length; x++) {
+                                if (banderaArray[x] == diente || bandera2Array[x] == diente) {
+
+                                    verificacion = true;
+                                }
+
+                            }
+                        }
+                        if (verificacion == false) {
+                            if (cod && !localStorage.getItem(cod)) {
+                                new_array = [diente, seccion, accion_g, Date.now(), 0];
+                                guardar = new_array.toLocaleString();
+                                localStorage.setItem(cod, guardar);
+                                if (verificacion == false) {
+                                    dibuja_seccion(ctx2, diente, seccion, color);
+                                    colorArray[contador] = color;
+                                    dienteArray[contador] = diente;
+                                    posicionArray[contador] = seccion;
+                                    contador++;
+                                    document.getElementById('colorO').value = colorArray.join(',');
+                                    document.getElementById('dienteO').value = dienteArray.join(',');
+                                    document.getElementById('seccionO').value = posicionArray.join(',');
+
+                                }
+                            }
+                            else {
+                                alert("Este diente ya contiene este tratamiento");
+                            }
+                        }
                         else {
-                            alert("Este diente ya contiene este tratamiento");
+                            alert('No se puede pintar sobre una extracion')
                         }
-
                     }
                     if ('borrar' == $("input[name='accion']:checked").val()) {
                         //alert("x-> "+x+" y-> "+y);
                         //ctx4.clearRect(0, 0, 810, 300);
-
                         if (x >= 30 && x <= 780 && ((y > 78 && y < 82) || (y > 198 && y < 202))) {
                             //alert(x);
                             div = parseInt(x / 50, 10);
@@ -848,6 +913,7 @@
                                 diente2_comp = parseInt(item[4], 10);
                                 accion_comp = parseInt(item[2], 10);
                                 if (accion_comp == 4) {
+
                                     if (diente1_comp > 16) {
                                         diente1_comp = diente1_comp - 17;
                                         diente2_comp = diente2_comp - 17;
@@ -896,8 +962,8 @@
                 //dibuja_seccion(context, num_diente, seccion, color)
                 //Marca la posicion exacta del mouse
                 function Marcar(event) {
-                    var x = event.x - 225;
-                    var y = event.y;
+                    var x = event.x - 225;//Donde esta la posicion del mouse en el eje x
+                    var y = event.y;//Donde esta la posicion del mouse en el eje y
                     var canvas2 = document.getElementById("myCanvas2");
                     var div_can = document.getElementById("canvasesdiv");
                     x -= div_can.offsetLeft;
@@ -951,7 +1017,7 @@
                         else if (accion == 'extraccion') {
                             seleccion = 'diente';
                         }
-                        else if (accion == 'puente') {
+                        else if (accion == 'exodoncia') {
                             seleccion = 'diente';
                         }
                         else if (accion == 'borrar') {
@@ -1022,6 +1088,7 @@
                         if (parseInt(item[0], 10) == diente) {
                             acc = parseInt(item[2], 10);
                             //console.log(acc);
+
                             if (acc == 1) {
                                 color = 'red';
                                 dibuja_seccion(ctx2, item[0], item[1], color);
@@ -1030,6 +1097,9 @@
                                 dibuja_seccion(ctx2, item[0], item[1], color);
                             } else if (acc == 3) {
                                 marcar_extraccion(ctx2, item[0], 'black');
+                            }
+                            else if (acc == 4) {
+                                marcar_exodoncia(ctx2, item[0], 'red');
                             } else if (acc == 5) {
                                 color = 'black';
                                 dibuja_seccion(ctx2, item[0], item[1], color);
@@ -1037,38 +1107,38 @@
                         }
                     }
                 }
-                function pinta_puentes(seccion_p) {
-                    array_local = [];
-                    for (var i = 0; i < localStorage.length; i++) {
-                        var key_name = localStorage.key(i);
-                        array_local[i] = localStorage.getItem(key_name).split(',');
-                    }
-                    //console.log(array_local);
-                    array_local.sort(function (a, b) {
-                        return a[3] > b[3]; // orden ascendente por las fechas;
-                    });
-                    //console.log(array_local);
-                    for (var i = 0; i < array_local.length; i++) {
-                        item = array_local[i];
-                        acc = parseInt(item[2], 10);
-                        //console.log(acc);
-                        if (acc == 4) {
-                            color_pas = 'red';
-                            if (seccion_p == 1) {
-                                if (parseInt(item[0], 10) < 17) {
-                                    marcar_puente(ctx4, item[0], item[4], color_pas);
-                                }
-                            }
-                            else {
-                                if (parseInt(item[0], 10) > 16) {
-                                    marcar_puente(ctx4, item[0], item[4], color_pas);
-                                }
-                            }
-                            //dibuja_seccion(ctx2, item[0], item[1], color);
-                        }
+                //function pinta_puentes(seccion_p) {
+                //    array_local = [];
+                //    for (var i = 0; i < localStorage.length; i++) {
+                //        var key_name = localStorage.key(i);
+                //        array_local[i] = localStorage.getItem(key_name).split(',');
+                //    }
+                //    //console.log(array_local);
+                //    array_local.sort(function (a, b) {
+                //        return a[3] > b[3]; // orden ascendente por las fechas;
+                //    });
+                //    //console.log(array_local);
+                //    for (var i = 0; i < array_local.length; i++) {
+                //        item = array_local[i];
+                //        acc = parseInt(item[2], 10);
+                //        //console.log(acc);
+                //        if (acc == 4) {
+                //            color_pas = 'red';
+                //            if (seccion_p == 1) {
+                //                if (parseInt(item[0], 10) < 17) {
+                //                    marcar_puente(ctx4, item[0], item[4], color_pas);
+                //                }
+                //            }
+                //            else {
+                //                if (parseInt(item[0], 10) > 16) {
+                //                    marcar_puente(ctx4, item[0], item[4], color_pas);
+                //                }
+                //            }
+                //            //dibuja_seccion(ctx2, item[0], item[1], color);
+                //        }
 
-                    }
-                }
+                //    }
+                //}
                 function ubica_seccion(X, Y) {
                     y = Y;
                     x = X;
@@ -1089,7 +1159,13 @@
                 function pintarDiente(diente, seccion, color, marca) {
 
                     dibuja_seccion(ctx2, diente, seccion, color);
-                    marcar_extraccion(ctx2, marca, 'black');
+                    if (color == 'black') {
+                        marcar_extraccion(ctx2, marca, 'black');
+                    }
+                    else {
+                        marcar_exodoncia(ctx2, marca, 'red');
+                    }
+
                 }
             </script>
 
@@ -1099,10 +1175,10 @@
                 <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
                     runat="server" AutoGenerateColumns="False" Height="174px" Width="70%" HorizontalAlign="Center">
                     <Columns>
-                        <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />
-                        <asp:BoundField DataField="nombre1Paciente" HeaderText="Primer Nombre" ItemStyle-Width="100" />
-                        <asp:BoundField DataField="apellido1Paciente" HeaderText="Primer Apellido" ItemStyle-Width="100" />
-                        <asp:BoundField DataField="apellido2Paciente" HeaderText="Segundo Apellido" ItemStyle-Width="100" />
+                        <asp:BoundField DataField="date_format(fechaExpedienteTratamiento,'%Y-%m-%d')" HeaderText="Fecha" ItemStyle-Width="30" />
+                        <asp:BoundField DataField="piezaExpedienteTratamiento" HeaderText="Pieza" ItemStyle-Width="100" />
+                        <asp:BoundField DataField="descripcionExpedienteTratamiento" HeaderText="Descripción" ItemStyle-Width="100" />
+
                     </Columns>
                 </asp:GridView>
             </div>

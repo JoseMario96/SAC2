@@ -28,7 +28,7 @@
             <br />
             <table class="auto-style1">
                 <tr>
-                    <td class="auto-style2">Estdiante: </td>
+                    <td class="auto-style2">Estudiante: </td>
                     <td>
                         <asp:TextBox ID="TextBox1" runat="server" Width="254px" TabIndex="1" OnTextChanged="TextBox1_TextChanged" AutoPostBack="true" ></asp:TextBox>
                     </td>

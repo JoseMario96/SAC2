@@ -248,6 +248,7 @@ namespace SAC.formularios
                 datos = objeto.buscarPaciente(cedula.InnerHtml);
                 if (datos[9] == null & SiE.Checked & cedula_encargado.Text != "" & nombre1_encargado.Text != "" & nombre2_encargado.Text != "" & apellido1_encargado.Text != "" & apellido2_encargado.Text != "" & celular_encargado.Text != "" & direccion_encargado.Text != "" & correo_encargado.Text != "" & parentezco.Text != "")
                 {
+
                     objeto.ActualizarPacienteNuevoEncargado(estado, cedula.InnerHtml, cedula_encargado.Text, nombre1_encargado.Text, nombre2_encargado.Text, apellido1_encargado.Text, apellido2_encargado.Text, generoE, telefono_encargado.Text, celular_encargado.Text, direccion_encargado.Text, correo_encargado.Text, parentezco.Text);
                 }
             }
@@ -262,12 +263,15 @@ namespace SAC.formularios
                 {
                     string mensaje = @"<script type='text/javascript'>
                 alert('Debe de completar los campos del encargado');
+                document.getElementById('formularioP').style.display = 'block' ;
+                document.getElementById('encargado').style.display = 'block' ;        
+                document.getElementById('encargado').scrollIntoView(); 
                 </script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", mensaje, false);
                 }
                 datos = objeto.buscarPaciente(cedula.InnerHtml);
-                if (datos[9] == null & SiE.Checked & cedula_encargado.Text != "" & nombre1_encargado.Text != "" & nombre2_encargado.Text != "" & apellido1_encargado.Text != "" & apellido2_encargado.Text != "" & celular_encargado.Text != "" & direccion_encargado.Text != "" & correo_encargado.Text != "" & parentezco.Text != "")
-                {
+                if ( SiE.Checked & cedula_encargado.Text != "" & nombre1_encargado.Text != "" & nombre2_encargado.Text != "" & apellido1_encargado.Text != "" & apellido2_encargado.Text != "" & celular_encargado.Text != "" & direccion_encargado.Text != "" & correo_encargado.Text != "" & parentezco.Text != "")
+                {     
                     objeto.ActualizarPacienteNuevoEncargado(estado, cedula.InnerHtml, cedula_encargado.Text, nombre1_encargado.Text, nombre2_encargado.Text, apellido1_encargado.Text, apellido2_encargado.Text, generoE, telefono_encargado.Text, celular_encargado.Text, direccion_encargado.Text, correo_encargado.Text, parentezco.Text);
                 }
             }
@@ -301,10 +305,9 @@ namespace SAC.formularios
         protected void actualizarE_Click(object sender, EventArgs e)
         {
             string script = @"<script type='text/javascript'>
-            document.getElementById('encargado').style.display = 'block' ;
-            document.getElementById('botonesE').style.display = 'block' ;
+            document.getElementById('formularioP').style.display = 'block' ;
+            document.getElementById('encargado').style.display = 'block' ;        
             document.getElementById('encargado').scrollIntoView(); 
-
             </script>";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
 
@@ -320,41 +323,13 @@ namespace SAC.formularios
             direccion_encargado.Text = "";
         }
 
-        protected void EncargadoA_Click(object sender, EventArgs e)
-        {
-            if (generoEM.Checked)
-            {
-                generoE = "Masculino";
-            }
-            else if (generoEF.Checked)
-            {
-                generoE = "Femenino";
-            }
-            else if (generoEO.Checked)
-            {
-                generoE = "Otro";
-            }
-            objeto.ActualizarPacienteNuevoEncargado(estado, cedula.InnerHtml, cedula_encargado.Text, nombre1_encargado.Text, nombre2_encargado.Text, apellido1_encargado.Text, apellido2_encargado.Text, generoE, telefono_encargado.Text, celular_encargado.Text, direccion_encargado.Text, parentezco.Text, correo_encargado.Text);
-            string script = @"<script type='text/javascript'>
-            document.getElementById('encargado').style.display = 'block';
-            document.getElementById('encargado').scrollIntoView();                      
-            </script>"; 
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-        }
-
-        protected void cancelarE_Click(object sender, EventArgs e)
-        {
-            GridView1.DataSource = objeto.Paciente();
-            GridView1.DataBind();
-            this.Controls.Clear();
-            Response.Redirect("frm_ActualizarPaciente.aspx");
-        }
-
         protected void cedula_encargado_TextChanged(object sender, EventArgs e)
         {
             string script = @"<script type='text/javascript'>
+            document.getElementById('formularioP').style.display = 'block' ;
             document.getElementById('encargado').style.display = 'block' ;
-            document.getElementById('encargado').scrollIntoView();     
+            document.getElementById('encargado').scrollIntoView();   
+            document.getElementById('Botones').style.display = 'block' ;
             </script>";
 
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
@@ -404,6 +379,8 @@ namespace SAC.formularios
                 estado = 1;
                 nombre1_encargado.Focus();
             }
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
         }
         protected void Cancelar_Click(object sender, EventArgs e)
         {

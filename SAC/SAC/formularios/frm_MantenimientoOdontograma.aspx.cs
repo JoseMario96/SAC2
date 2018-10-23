@@ -9,15 +9,15 @@ namespace SAC.formularios
 {
     public partial class frm_MantenimientoOdontograma : System.Web.UI.Page
     {
-        metodos.metodosPaciente objeto = new metodos.metodosPaciente();
         metodos.metodosTratamientos funciones = new metodos.metodosTratamientos();
         metodos.metodosExpediente expediente = new metodos.metodosExpediente();
         metodos.metodosOdontograma odontograma = new metodos.metodosOdontograma();
+        static int codigoExpediente = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
-                GridView1.DataSource = objeto.Paciente();
+                GridView1.DataSource = odontograma.tratamientosEfectuados();
                 GridView1.DataBind();
             }
             if (!IsPostBack)
@@ -48,12 +48,14 @@ namespace SAC.formularios
 
         protected void BudquedaExp_TextChanged(object sender, EventArgs e)
         {
-            int codigoExpediente = 0;
+           
+         
             codigoExpediente = expediente.BuscarcodigoExpediente(BudquedaExp.Text);
-            if (odontograma.buscarExpediente(codigoExpediente) == 0)
+      
+            if (codigoExpediente == 0)
             {
                 string script = @"<script type='text/javascript'>
-            document.getElementById('odontograma').style.display = 'block' ;
+            alert('Este paciente no existe');
              </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             }
@@ -86,6 +88,7 @@ namespace SAC.formularios
         {
             try
             {
+                DateTime now = DateTime.Now;
                 string color = colorO.Value;
                 string[] colorArray = color.Split(",".ToCharArray());
                 int num = colorArray.Count();
@@ -96,15 +99,18 @@ namespace SAC.formularios
                 string posicion = seccionO.Value;
                 string[] posicionArray = posicion.Split(",".ToCharArray());
                 int prueba = 0;
+          
 
                 string marca = marcaO.Value;
                 string[] marcaArray = marca.Split(",".ToCharArray());
+                string marcaColor = colorM.Value;
+                string[] marcaColorArray = marcaColor.Split(",".ToCharArray());
                 int num2 = marcaArray.Count();
                 if (!colorArray[0].Equals(""))
                 {
                     for (int x = 0; x < num; x++)
                     {
-                        odontograma.agregarOdontograma(colorArray[x], dienteArray[x], posicionArray[x]);
+                       odontograma.agregarOdontograma(colorArray[x], dienteArray[x], posicionArray[x],codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
                         prueba++;
                     }
                 }
@@ -112,7 +118,7 @@ namespace SAC.formularios
                 {
                     for (int x = 0; x < num2; x++)
                     {
-                        odontograma.agregarOdontograma2(marcaArray[x]);
+                        odontograma.agregarOdontograma2(marcaArray[x], marcaColorArray[x], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
                         prueba++;
                     }
                 }

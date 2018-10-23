@@ -41,7 +41,7 @@
                     </div>
                     <div class="col s6">
                         <label class="active" for="nombre2">Segundo Nombre</label>
-                        <input id="nombre2" type="text" runat="server" class="validate" maxlength="44" required onkeypress="return sololetras(event)" />
+                        <input id="nombre2" type="text" runat="server" class="validate" maxlength="44"  onkeypress="return sololetras(event)" />
 
                     </div>
                 </div>

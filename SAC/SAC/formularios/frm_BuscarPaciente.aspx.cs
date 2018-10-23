@@ -56,7 +56,7 @@ namespace SAC.formularios
             GridView1.DataBind();
 
             string script = @"<script type='text/javascript'>
-  document.getElementById('formularioP').style.display = 'block' ;
+                document.getElementById('formularioP').style.display = 'block' ;
                 document.getElementById('formularioP').scrollIntoView();              
             </script>";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);

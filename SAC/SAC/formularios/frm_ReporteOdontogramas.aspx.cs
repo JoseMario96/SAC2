@@ -26,11 +26,16 @@ namespace SAC.formularios
         protected void Page_Load(object sender, EventArgs e)
         {
             Cedula.Focus();
+
+            if (!this.IsPostBack)
+            {
+                GridView1.DataSource = objeto.Paciente();
+                GridView1.DataBind();
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "dibuja_seccion('" + contextoO + "','5','5','red')", true);
 
         }
 

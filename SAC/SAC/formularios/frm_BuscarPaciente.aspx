@@ -64,7 +64,6 @@
                         });
                     });
                 </script>
-
             </div>
             <div id="formularioP" style="display: none" class="espacio centrar">
                 <table class="striped">

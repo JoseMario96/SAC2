@@ -10,7 +10,6 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="../js/quicksearch.js"></script>
     <title></title>
-
     <style>
         #menu div#barraMenu a.btnMenu:hover {
             background-color: #008281;
@@ -102,10 +101,11 @@
                 <div class="row" id="grid" style="display: none">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <h4 id="titulo1" style="text-align: center; display: none">Actualizar</h4>
+                            <h4 id="titulo1" style="text-align: center; display: none">Modificar</h4>
                             <h4 id="titulo2" style="text-align: center; display: none">Eliminar</h4>
                         </ContentTemplate>
                     </asp:UpdatePanel>
+
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <asp:GridView ID="GridView2" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"

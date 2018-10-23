@@ -79,8 +79,9 @@ namespace SAC.formularios
             String[] datos = new string[59];
             string script = @"<script type='text/javascript'>
                 document.getElementById('formularioP').style.display = 'block' ;
-                document.getElementById('formularioP').scrollIntoView();                  
-             
+                document.getElementById('botones').style.display = 'block' ;
+                document.getElementById('formularioP').scrollIntoView();   
+
             </script>";
 
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
@@ -107,75 +108,85 @@ namespace SAC.formularios
                     if (datos[5].Equals("Si"))
                     {
                         reumaticaS.Checked = true;
+                        reumaticaN.Checked = false;
                     }
                     else
                     {
                         reumaticaN.Checked = true;
-
+                        reumaticaS.Checked = false;
                     }
-
 
                     if (datos[6].Equals("Si"))
                     {
                         sidaS.Checked = true;
-
+                        sidaN.Checked = false;
                     }
                     else
                     {
                         sidaN.Checked = true;
-
+                        sidaS.Checked = false;
                     }
-
 
                     if (datos[7].Equals("Si"))
                     {
                         derrameS.Checked = true;
+                        derrameN.Checked = false;
                     }
                     else
                     {
                         derrameN.Checked = true;
+                        derrameS.Checked = false;
                     }
-
-
                     if (datos[8].Equals("Si"))
                     {
                         anemiaS.Checked = true;
+                        anemiaN.Checked = false;
                     }
                     else
                     {
                         anemiaN.Checked = true;
+                        anemiaS.Checked = false;
                     }
 
 
                     if (datos[9].Equals("Si"))
                     {
                         sangreS.Checked = true;
+                        sangreN.Checked = false;
                     }
                     else
                     {
                         sangreN.Checked = true;
+                        sangreS.Checked = false;
                     }
 
 
-                    if (datos[10].Equals("si"))
+                    if (datos[10].Equals("Si"))
                     {
                         paisS.Checked = true;
+                        paisN.Checked = false;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "pais(1)", true);
+
                     }
                     else
                     {
                         paisN.Checked = true;
-                    }
+                        paisS.Checked = false;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "pais(0)", true);
 
+                    }
                     donde.Text = datos[11];
                     tiempo.Text = datos[12];
 
                     if (datos[13].Equals("Si"))
                     {
                         moretesS.Checked = true;
+                        moretesN.Checked = false;
                     }
                     else
                     {
                         moretesN.Checked = true;
+                        moretesS.Checked = false;
                     }
 
                     rinnon.Text = datos[14];
@@ -184,82 +195,98 @@ namespace SAC.formularios
                     if (datos[16].Equals("Si"))
                     {
                         visionS.Checked = true;
+                        visionN.Checked = false;
                     }
                     else
                     {
                         visionN.Checked = true;
+                        visionS.Checked = false;
                     }
 
 
                     if (datos[17].Equals("Si"))
                     {
                         corticoS.Checked = true;
+                        corticoN.Checked = false;
                     }
                     else
                     {
                         corticoN.Checked = true;
+                        corticoS.Checked = false;
                     }
 
 
                     if (datos[18].Equals("Si"))
                     {
                         diabetesS.Checked = true;
+                        diabetesN.Checked = false;
                     }
                     else
                     {
                         diabetesN.Checked = true;
+                        diabetesS.Checked = false;
                     }
 
 
                     if (datos[19].Equals("Si"))
                     {
                         epilepsiaS.Checked = true;
+                        epilepsiaN.Checked = false;
                     }
                     else
                     {
                         epilepsiaN.Checked = true;
+                        epilepsiaS.Checked = false;
                     }
 
 
                     if (datos[20].Equals("Si"))
                     {
                         respiratoriaS.Checked = true;
+                        respiratoriaN.Checked = false;
                     }
                     else
                     {
                         respiratoriaN.Checked = true;
+                        respiratoriaS.Checked = false;
                     }
 
 
                     if (datos[21].Equals("Si"))
                     {
                         quimioS.Checked = true;
+                        quimioN.Checked = false;
                     }
                     else
                     {
                         quimioN.Checked = true;
+                        quimioS.Checked = false;
                     }
 
 
-                    if (datos[22].Equals("si"))
+                    if (datos[22].Equals("Si"))
                     {
                         reumatismoS.Checked = true;
+                        reumatismoN.Checked = false;
                     }
                     else
                     {
                         reumatismoN.Checked = true;
+                        reumatismoS.Checked = false;
                     }
 
-                    hepaticos.Text = datos[23];
+                    hepatico.Text = datos[23];
 
 
                     if (datos[24].Equals("Si"))
                     {
                         herpesS.Checked = true;
+                        herpesN.Checked = false;
                     }
                     else
                     {
                         herpesN.Checked = true;
+                        herpesS.Checked = false;
                     }
 
                     perdida_peso.Text = datos[25];
@@ -269,20 +296,24 @@ namespace SAC.formularios
                     if (datos[27].Equals("Si"))
                     {
                         artritisS.Checked = true;
+                        artritisN.Checked = false;
                     }
                     else
                     {
                         artritisN.Checked = true;
+                        artritisS.Checked = false;
                     }
 
 
                     if (datos[28].Equals("Si"))
                     {
                         psiquiatricoS.Checked = true;
+                        psiquiatricoN.Checked = false;
                     }
                     else
                     {
                         psiquiatricoN.Checked = true;
+                        psiquiatricoS.Checked = false;
                     }
 
                     tiroides.Text = datos[29];
@@ -291,45 +322,68 @@ namespace SAC.formularios
                     if (datos[30].Equals("Si"))
                     {
                         transmisionS.Checked = true;
+                        transmisionN.Checked = false;
                     }
                     else
                     {
                         transmisionN.Checked = true;
+                        transmisionS.Checked = false;
                     }
 
 
                     if (datos[31].Equals("Si"))
                     {
                         osteoporosisS.Checked = true;
+                        osteoporosisN.Checked = false;
                     }
                     else
                     {
                         osteoporosisN.Checked = true;
+                        osteoporosisS.Checked = false;
                     }
 
 
                     if (datos[32].Equals("Si"))
                     {
                         migrannaS.Checked = true;
+                        migrannaN.Checked = false;
                     }
                     else
                     {
                         migrannaN.Checked = true;
+                        migrannaS.Checked = false;
                     }
 
                     bifos.Text = datos[33];
                     drogas.Text = datos[34];
-                    fuma.Text = datos[35];
-                    cigarroDia.Text = datos[36];
-                    cigarroPeriodo.Text = datos[37];
+
+
+                    if (datos[35].Equals("Si"))
+                    {
+                        fuma.Text = datos[35];
+                        cigarroDia.Text = datos[36];
+                        cigarroPeriodo.Text = datos[37];
+                    }
+                    else
+                    {
+                        fuma.Text = "";
+                        cigarroDia.Text = datos[36];
+                        cigarroPeriodo.Text = datos[37];
+                    }
 
                     if (datos[38].Equals("Si"))
                     {
                         alcoholS.Checked = true;
+                        alcoholN.Checked = false;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "bebidas(1)", true);
+
                     }
                     else
                     {
                         alcoholN.Checked = true;
+                        alcoholS.Checked = false;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "pais(0)", true);
+
                     }
 
                     frecuenciaAlcohol.Text = datos[39];
@@ -338,10 +392,12 @@ namespace SAC.formularios
                     if (datos[41].Equals("Si"))
                     {
                         shockS.Checked = true;
+                        shockN.Checked = false;
                     }
                     else
                     {
                         shockN.Checked = true;
+                        shockS.Checked = false;
                     }
 
                     observaciones.InnerText = datos[42];
@@ -356,10 +412,12 @@ namespace SAC.formularios
                     if (datos[52].Equals("Si"))
                     {
                         embarazadaS.Checked = true;
+                        embarazadaN.Checked = false;
                     }
                     else
                     {
                         embarazadaN.Checked = true;
+                        embarazadaS.Checked = false;
                     }
 
 
@@ -368,10 +426,12 @@ namespace SAC.formularios
                     if (datos[54].Equals("Si"))
                     {
                         anticoceptivosS.Checked = true;
+                        anticoceptivosN.Checked = false;
                     }
                     else
                     {
                         anticoceptivosN.Checked = true;
+                        anticoceptivosS.Checked = false;
                     }
 
                     gineco.Text = datos[55];
@@ -582,7 +642,13 @@ namespace SAC.formularios
             {
                 anticonceptivo = "No";
             }
-            metodo.actualizarExpediente(expediente.InnerText, cardiaco.Text, presion.Text, reumatica, sida, derrame, anemia, sangre, pais, donde.Text, tiempo.Text, moretes, rinnon.Text, gastro.Text, vision, cortico, diabetes, epilepsia, respiratoria, quimio, reumatismo, hepaticos.Text, herpes, perdida_peso.Text, aumento_peso.Text, artritis, psiquiatrico, tiroides.Text, transmision, osteoporosis, migranna, bifos.Text, drogas.Text, fuma.Text, cigarroDia.Text, cigarroPeriodo.Text, alcohol, frecuenciaAlcohol.Text, cicatriz.Text, shock);
+            if (fuma.Text == "")
+            {
+                fuma.Text = "No";
+            }
+   
+            metodo.actualizarExpediente(expediente.InnerText, cardiaco.Text, presion.Text, reumatica, sida, derrame, anemia, sangre, pais, donde.Text, tiempo.Text, moretes, rinnon.Text, gastro.Text, vision, cortico, diabetes, epilepsia, respiratoria, quimio, reumatismo, hepatico.Text, herpes, perdida_peso.Text, aumento_peso.Text, artritis, psiquiatrico, tiroides.Text, transmision, osteoporosis, migranna, bifos.Text, drogas.Text, fuma.Text, cigarroDia.Text, cigarroPeriodo.Text, alcohol, frecuenciaAlcohol.Text, cicatriz.Text, shock, arterialSignos.Text, pulsoSignos.Text, frecuenciaSignos.Text, embarazada, semanas.Text, anticonceptivo, gineco.Text, abortos.Text, cesareas.Text, observacionesMujer.Text);
+
             string script = @"<script type='text/javascript'>
             alert('Se han actualizado adecuadamente los datos');
             </script>";
@@ -591,7 +657,7 @@ namespace SAC.formularios
 
         protected void Cancelar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("frm_ActualizarExpediente.aspx");
         }
     }
 }
