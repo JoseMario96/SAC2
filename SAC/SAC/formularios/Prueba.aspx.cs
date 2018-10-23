@@ -22,53 +22,54 @@ namespace SAC.formularios
         }
         protected void Guardar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string color = colorO.Value;
-                string[] colorArray = color.Split(",".ToCharArray());
-                int num = colorArray.Count();
+            TextBox1.Text = borrarO.Value;
+            //try
+            //{
+            //    string color = colorO.Value;
+            //    string[] colorArray = color.Split(",".ToCharArray());
+            //    int num = colorArray.Count();
 
-                string diente = dienteO.Value;
-                string[] dienteArray = diente.Split(",".ToCharArray());
+            //    string diente = dienteO.Value;
+            //    string[] dienteArray = diente.Split(",".ToCharArray());
 
-                string posicion = seccionO.Value;
-                string[] posicionArray = posicion.Split(",".ToCharArray());
-                int prueba = 0;
+            //    string posicion = seccionO.Value;
+            //    string[] posicionArray = posicion.Split(",".ToCharArray());
+            //    int prueba = 0;
 
-                string marca = marcaO.Value;
-                string[] marcaArray = marca.Split(",".ToCharArray());
-                int num2 = marcaArray.Count();
-                if (!colorArray[0].Equals(""))
-                {
-                    for (int x = 0; x < num; x++)
-                    {
-                        objeto.agregarOdontograma(colorArray[x], dienteArray[x], posicionArray[x]);
-                        prueba++;
-                    }
-                }
-                if (!marcaArray[0].Equals(""))
-                {
-                    for (int x = 0; x < num2; x++)
-                    {
-                        objeto.agregarOdontograma2(marcaArray[x]);
-                        prueba++;
-                    }
-                }
+            //    string marca = marcaO.Value;
+            //    string[] marcaArray = marca.Split(",".ToCharArray());
+            //    int num2 = marcaArray.Count();
+            //    if (!colorArray[0].Equals(""))
+            //    {
+            //        for (int x = 0; x < num; x++)
+            //        {
+            //            objeto.agregarOdontograma(colorArray[x], dienteArray[x], posicionArray[x]);
+            //            prueba++;
+            //        }
+            //    }
+            //    if (!marcaArray[0].Equals(""))
+            //    {
+            //        for (int x = 0; x < num2; x++)
+            //        {
+            //            objeto.agregarOdontograma2(marcaArray[x]);
+            //            prueba++;
+            //        }
+            //    }
 
 
 
-                string script = @"<script type='text/javascript'>
-            alert('Se ha insertado exitosamente');
-            </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-            }
-            catch
-            {
-                string script = @"<script type='text/javascript'>
-                alert('Realice cambios en el odontograma');
-                </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-            }
+            //    string script = @"<script type='text/javascript'>
+            //alert('Se ha insertado exitosamente');
+            //</script>";
+            //    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            //}
+            //catch
+            //{
+            //    string script = @"<script type='text/javascript'>
+            //    alert('Realice cambios en el odontograma');
+            //    </script>";
+            //    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            //}
 
 
         }

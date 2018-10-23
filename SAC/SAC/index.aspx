@@ -516,11 +516,11 @@
                 </div>
 
             </div>
-
+             <%--Odontograma--%>
             <div class="row espacio">
                 <div class="col-md-3"></div>
                 <div class="col-md-3">
-                    <a href="#popup7" class="popup-link fh5co-project-item " onclick='document.getElementById("Odonto").src="formularios/Prueba.aspx";'>
+                    <a href="#popup7" class="popup-link fh5co-project-item " onclick='document.getElementById("Odonto").src="formularios/frm_MantenimientoOdontograma.aspx";'>
                         <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Odontograma</h2>
@@ -538,7 +538,7 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-3">
                     <a href="#popup8" class="popup-link fh5co-project-item" onclick='document.getElementById("tratamientos").src="formularios/frm_tratamientos.aspx";'>
-                        <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive centrar" />
+                        <img src="../images/tratamientos.png" alt="Image" class="img-responsive centrar" />
                         <div class="fh5co-text">
 
                             <h2 style="text-align: center;">Tratamientos</h2>
