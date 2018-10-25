@@ -25,6 +25,12 @@
             left: 4px;
             top: 0px;
         }
+
+        label, th, tr {
+            font-family: sans-serif;
+            font-size: medium;
+            color: black;
+        }
     </style>
     <style>
         #myCanvas {
@@ -74,8 +80,15 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:TextBox ID="BudquedaExp" runat="server" OnTextChanged="BudquedaExp_TextChanged" AutoPostBack="true"></asp:TextBox>
-
+        <div class="row">
+            <div class="input-field col s2" style="left: 0px; right: 69px; top: 0px; width: 6%">
+                <asp:Label ID="Label5" runat="server" Text="Label">Cédula:
+                </asp:Label>
+            </div>
+            <div class="input-field col s2">
+                <asp:TextBox ID="BudquedaExp" runat="server" placeholder="Cédula" OnTextChanged="BudquedaExp_TextChanged" AutoPostBack="true" onkeypress="return solonumeros (event)"></asp:TextBox>
+            </div>
+        </div>
         <br />
         <br />
 
@@ -111,15 +124,10 @@
                 <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Seccion</label>
                 <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
             </div>
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             <br />
-            <asp:Button ID="Button1" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" CssClass="auto-style1" />
-            <asp:Button ID="Button2" runat="server" Text="Prueba" OnClick="Button1_Click" />
-            <%--        <div id="radio_seccion2" style='display: none'>
-            <input type="radio" id="amalgamaO" name="amalgama" value="seccion" /><label for="amalgamaO">Amalgama</label>
-            <input type="radio" id="resinaO" name="resina" value="diente" /><label for="resinaO">Resina</label>
-        </div>--%>
-
+            <div class="input-field col s4">
+                <asp:Button ID="Button1" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" />
+            </div>
             <script>
 
                 // Funcion para dibujar las lineas negras de cada diente
@@ -804,6 +812,7 @@
                                                 }
                                             }
                                         }
+
                                     } //termina el for que recorre para borrar 
                                     if (key_cod != '') {
                                         //console.log(key_cod);
@@ -1170,64 +1179,156 @@
                 }
             </script>
 
+
+            <asp:ScriptManager runat="server" ID="sm">
+            </asp:ScriptManager>
+            <br />
+            <br />
             <h5>Tratamientos Efectuados</h5>
             <br />
+
             <div style="margin-left: auto; margin-right: auto;">
-                <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
-                    runat="server" AutoGenerateColumns="False" Height="174px" Width="70%" HorizontalAlign="Center">
-                    <Columns>
-                        <asp:BoundField DataField="date_format(fechaExpedienteTratamiento,'%Y-%m-%d')" HeaderText="Fecha" ItemStyle-Width="30" />
-                        <asp:BoundField DataField="piezaExpedienteTratamiento" HeaderText="Pieza" ItemStyle-Width="100" />
-                        <asp:BoundField DataField="descripcionExpedienteTratamiento" HeaderText="Descripción" ItemStyle-Width="100" />
-
-                    </Columns>
-                </asp:GridView>
+                <asp:UpdatePanel runat="server">
+                    <ContentTemplate>
+                        <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
+                            runat="server" AutoGenerateColumns="False" Height="174px" Width="70%" HorizontalAlign="Center" AllowPaging="true" PageSize="5" OnPageIndexChanging="GridView1_PageIndexChanging">
+                            <Columns>
+                                <asp:BoundField DataField="fechaExpedienteTratamiento" HeaderText="Fecha" ItemStyle-Width="30" />
+                                <asp:BoundField DataField="tratamientoExpedienteTratamiento" HeaderText="Tratamiento" ItemStyle-Width="100" />
+                                <asp:BoundField DataField="piezaExpedienteTratamiento" HeaderText="Diente" ItemStyle-Width="100" />
+                                <asp:BoundField DataField="descripcionExpedienteTratamiento" HeaderText="Descripción" ItemStyle-Width="100" />
+                            </Columns>
+                        </asp:GridView>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </div>
-            <div class="row">
+            <br />
+            <br />
 
-                <div class="col s10">
-                </div>
-                <div class="col s1">
-                    <asp:Button ID="AgregarDetalle" runat="server" Text="+" class="waves-effect waves-light btn" OnClick="AgregarDetalle_Click" />
-                </div>
-            </div>
+            <div id="tablaDetalle" style="display: block" tabindex="-1">
+                <h5>Nuevos tratamientos</h5>
+                <br />
+                <br />
+                    <div class="row">
+                        <div class="col s2">
+                        </div>
+                        <div class="col s10">
+                            <div class="col s2">
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label class="active" for="Fecha">Fecha </label>
+                                        <asp:Label ID="fecha" runat="server"></asp:Label>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+                            <div class="col s3">
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label class="active" for="Tratamiento">Tipo de tratamiento </label>
+                                        <asp:DropDownList ID="DropDownList1" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
 
-            <div id="tablaDetalle" style="display: none" tabindex="-1">
-                <div class="row">
-                    <div class="col s3">
-                        <label class="active" for="Fecha">Fecha </label>
-                        <asp:Label ID="fecha" runat="server" Text=""></asp:Label>
+                            <div class="col s3">
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label class="active" for="Tipotratamiento">Tratamiento</label>
+                                        <asp:DropDownList ID="DropDownList2" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTratamiento" DataValueField="nombreTratamiento" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+
+                            <div class="col s3">
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label class="active" for="Diente">Diente</label>
+                                        <input type='text' name='dient' id="diente" runat="server" maxlength="44" />
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col s3">
-                        <label class="active" for="Descripción">Descripción </label>
-                        <asp:DropDownList ID="DropDownList2" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento"></asp:DropDownList>
+
+                    <div class="row">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <div class="col s2"></div>
+                                <div class="col s9">
+                                    <label class="active" for="Descripcion">Descripción</label>
+                                    <input type='text' name='debe' id="descrip" runat="server" maxlength="244" />
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
-                    <div class="col s3">
-                        <label class="active" for="Debe">Debe </label>
-                        <input type='text' name='debe' />
+
+
+                    <div class="row">
+                        <div class="col s2"></div>
+                        <div class="col s10">
+                            <div class="col s2">
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label class="active" for="Debe">Debe </label>
+                                        <label id="preciost" runat="server" class="active" for="Debe"></label>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+
+                            <div class="col s3">
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label class="active" for="Debe">Extra </label>
+                                        <input type='text' id="extra" runat="server" placeholder="₡" name='abono' onkeypress="return solonumeros (event)" />
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+
+                            <div class="col s3">
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label class="active" for="Abono">Abono</label>
+                                        <asp:TextBox ID="abono" runat="server" placeholder="₡" required OnTextChanged="abono_TextChanged" AutoPostBack="true" onkeypress="return solonumeros (event)"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+                            <div class="col s2">
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label class="active" for="Saldo">Saldo</label>
+                                        <label class="active" id="saldo" runat="server" for="Saldo"></label>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <div class="row">
+                                        <asp:Button ID="AgregarDetalle" runat="server" Text="+" class="waves-effect waves-light btn" OnClick="AgregarDetalle_Click" />
+                                    </div>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s3">
-                        <label class="active" for="Diente">Diente</label>
-                        <input type='text' name='dient' />
-                    </div>
-                    <div class="col s3">
-                        <label class="active" for="Abono">Abono</label>
-                        <input type='text' name='abono' />
-                    </div>
-                    <div class="col s3">
-                        <label class="active" for="Saldo">Saldo</label>
-                        <input type='text' name='saldo' />
-                    </div>
-                </div>
+
             </div>
-            <asp:Button ID="guardar" runat="server" Text="" OnClick="guardar_Click" />
-            <script>
-                var f = new Date();
-                document.getElementById('fecha').innerHTML = f.toLocaleDateString();;
-            </script>
         </div>
+        <script>
+            function solonumeros(e) {
+                key = e.keyCoden || e.which;
+                teclado = String.fromCharCode(key);
+                numero = "1234567890";
+                especiales = "8-37-38-46";
+                teclado_especial = false;
+                for (var i in especiales) {
+                    if (key == especiales[i]) {
+                        teclado_especial = true;
+                    }
+                }
+                if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+                    return false;
+                }
+            }
+        </script>
     </form>
 </body>
 </html>

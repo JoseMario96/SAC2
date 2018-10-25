@@ -12,20 +12,20 @@ namespace SAC.formularios
         metodos.metodosTratamientos funciones = new metodos.metodosTratamientos();
         metodos.metodosExpediente expediente = new metodos.metodosExpediente();
         metodos.metodosOdontograma odontograma = new metodos.metodosOdontograma();
-        static int codigoExpediente = 0;
+        metodos.metodosTratamientos tratamiento = new metodos.metodosTratamientos();
+        static int precio, codigocedula;
+        static int codigoExpediente, monto, total = 0;
+        static string signo = "₡";
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
-            {
-                GridView1.DataSource = odontograma.tratamientosEfectuados();
-                GridView1.DataBind();
-            }
+
             if (!IsPostBack)
             {
-                DropDownList2.DataSource = funciones.TipoTratamiento();
-                DropDownList2.DataBind();
-                DropDownList2.DataTextField = "nombreTipoTratamiento";
-                DropDownList2.Items.Insert(0, new ListItem("Tipos de tratamientos", "0"));
+                DropDownList1.DataSource = odontograma.TiposdeTratamientos();
+                DropDownList1.DataBind();
+                DropDownList1.DataTextField = "nombreTipoTratamiento";
+                DropDownList1.Items.Insert(0, new ListItem("Tipo de tratamientos", "0"));
+
             }
         }
 
@@ -36,22 +36,37 @@ namespace SAC.formularios
 
         protected void AgregarDetalle_Click(object sender, EventArgs e)
         {
-            string script = @"<script type='text/javascript'>
-            document.getElementById('tablaDetalle').style.display = 'block' ;
-            document.getElementById('tablaDetalle').scrollIntoView();
-             </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            string codigoT = "";
 
-            //Guardar de un solo y mostrar se en el gridview
+            int codigoExpediente = 0;
+            codigoExpediente = expediente.BuscarcodigoExpediente(BudquedaExp.Text);
+            if (odontograma.buscarExpediente(codigoExpediente) != 0)
+            {
+                codigoT = odontograma.codigoTratamiento(DropDownList2.SelectedItem.Text);
+                odontograma.agregarPacienteTratamiento(codigoExpediente, codigoT, fecha.Text, DropDownList2.SelectedItem.Text, diente.Value, descrip.Value, BudquedaExp.Text.ToString(), descrip.Value, monto, total);
+                GridView1.DataSource = odontograma.TratamientosRealizados(codigocedula.ToString());
+                GridView1.DataBind();
+            }
+            else
+            {
 
+            }
         }
 
         protected void BudquedaExp_TextChanged(object sender, EventArgs e)
         {
-           
-         
+            fecha.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+            codigocedula = 0;
+            codigocedula = expediente.BuscarcodigoExpediente(BudquedaExp.Text.ToString());
+            if (codigocedula > 0)
+            {
+                GridView1.DataSource = odontograma.TratamientosRealizados(codigocedula.ToString());
+                GridView1.DataBind();
+            }
+
+
             codigoExpediente = expediente.BuscarcodigoExpediente(BudquedaExp.Text);
-      
+
             if (codigoExpediente == 0)
             {
                 string script = @"<script type='text/javascript'>
@@ -78,9 +93,9 @@ namespace SAC.formularios
                     string diente = datos[1];
                     string seccion = datos[2];
                     string marca = datos[3];
-                    counter++;            
+                    counter++;
                     // ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text" + counter.ToString(), "Func('" + diente + "','" + seccion + "','" + color + "','" + marca + "','" + cantidadO + "')", true);
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Pintar" + counter.ToString(), "<script language='javascript'>$(document).ready(function() {pintarDiente('" + diente + "','" + seccion + "','" + color + "','" + marca + "');});</script>");             
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Pintar" + counter.ToString(), "<script language='javascript'>$(document).ready(function() {pintarDiente('" + diente + "','" + seccion + "','" + color + "','" + marca + "');});</script>");
                 }
             }
         }
@@ -88,6 +103,7 @@ namespace SAC.formularios
         {
             try
             {
+                            
                 DateTime now = DateTime.Now;
                 string color = colorO.Value;
                 string[] colorArray = color.Split(",".ToCharArray());
@@ -99,7 +115,6 @@ namespace SAC.formularios
                 string posicion = seccionO.Value;
                 string[] posicionArray = posicion.Split(",".ToCharArray());
                 int prueba = 0;
-          
 
                 string marca = marcaO.Value;
                 string[] marcaArray = marca.Split(",".ToCharArray());
@@ -110,7 +125,7 @@ namespace SAC.formularios
                 {
                     for (int x = 0; x < num; x++)
                     {
-                       odontograma.agregarOdontograma(colorArray[x], dienteArray[x], posicionArray[x],codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
+                        odontograma.agregarOdontograma(colorArray[x], dienteArray[x], posicionArray[x], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
                         prueba++;
                     }
                 }
@@ -142,6 +157,63 @@ namespace SAC.formularios
         protected void Button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string codigotipo = "";
+            if (DropDownList1.SelectedIndex != 0)
+            {
+
+                DropDownList2.Items.Clear();
+                codigotipo = odontograma.NumTipoTratamiento(DropDownList1.SelectedItem.Text);
+                DropDownList2.DataSource = tratamiento.Tratamiento(codigotipo);
+                DropDownList2.DataBind();
+                DropDownList2.DataTextField = "nombreTratamiento";
+                DropDownList2.Items.Insert(0, new ListItem("Tratamientos", "0"));
+            }
+        }
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+            precio = odontograma.obtenerPrecio(DropDownList2.SelectedItem.Text);
+            preciost.InnerText = signo + " " + precio;
+
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.DataSource = odontograma.TratamientosRealizados(codigocedula.ToString());
+            GridView1.PageIndex = e.NewPageIndex;
+            GridView1.DataBind();
+        }
+
+        protected void abono_TextChanged(object sender, EventArgs e)
+        {
+            int extraH, abonoH;
+
+            if (extra.Value.Equals(""))
+            {
+                extra.Value = "0";
+            }
+            extraH = Int32.Parse(extra.Value);
+            if (abono.Text.Equals(""))
+            {
+                abono.Focus();
+            }
+
+           
+            abonoH = Int32.Parse(abono.Text);
+            monto = precio + extraH;
+            total = (precio + extraH) - abonoH;
+            if (total<0)
+            {
+                string script = @"<script type='text/javascript'>
+                alert('El abono no puede ser superior a la deuda');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
+            saldo.InnerText = signo + total.ToString();
         }
     }
 }

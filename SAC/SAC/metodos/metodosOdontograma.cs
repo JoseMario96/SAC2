@@ -22,6 +22,7 @@ namespace SAC.metodos
                 y = contador.GetString(0);
             }
             consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_expedienteodontograma` (`codigoExpediente`, `codigoOdontograma`, `fechaTratamientoOdontograma`) VALUES ('" + codE + "','" + y + "', '" + fech + "');", con.abrir_conexion()).ExecuteNonQuery();
+
             con.cerrar_Conexion();
         }
 
@@ -39,7 +40,19 @@ namespace SAC.metodos
 
         public DataTable TratamientosRealizados(string numexpediente)
         {
-            string consulta = "select fechaExpedienteTratamiento,tratamientoExpedienteTratamiento,piezaExpedienteTratamiento,descripcionExpedienteTratamiento from bd_sac.tbl_expedientetramiento where codigoExpediente='" + numexpediente + "';";
+            string consulta = "select fechaExpedienteTratamiento,tratamientoExpedienteTratamiento,piezaExpedienteTratamiento,descripcionExpedienteTratamiento from bd_sac.tbl_expedientetramiento where codigoExpediente='" + numexpediente + "'order by fechaExpedienteTratamiento desc;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
+        public DataTable ReporteOdontograma(string numexpediente)
+        {
+            string consulta = "select date_format(fechaExpedienteTratamiento,'%Y-%m-%d'),tratamientoExpedienteTratamiento,piezaExpedienteTratamiento from bd_sac.tbl_expedientetramiento where codigoExpediente='" + numexpediente + "'order by fechaExpedienteTratamiento desc;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())
@@ -191,11 +204,12 @@ namespace SAC.metodos
             return codi;
 
         }
-        public void agregarPacienteTratamiento(int codigoEx, string tratamiento, string fecha, string tratamientorealizado, string pieza, string descripcion)
+        public void agregarPacienteTratamiento(int codigoEx, string tratamiento, string fecha, string tratamientorealizado, string pieza, string descripcion, string cedula, string detalle, int monto, int saldo)
         {
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_expedientetramiento` (`codigoExpediente`, `codigoTratamiento`, `fechaExpedienteTratamiento`, `tratamientoExpedienteTratamiento`, `piezaExpedienteTratamiento`, `descripcionExpedienteTratamiento`) VALUES('" + codigoEx + "', '" + tratamiento + "', '" + fecha + "', '" + tratamientorealizado + "','" + pieza + "','" + descripcion + "');", con.abrir_conexion()).ExecuteNonQuery();
-            con.cerrar_Conexion();
+            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_expedientetramiento` (`codigoExpediente`, `codigoTratamiento`, `fechaExpedienteTratamiento`, `tratamientoExpedienteTratamiento`, `piezaExpedienteTratamiento`, `descripcionExpedienteTratamiento`, `EstadoPago`) VALUES('" + codigoEx + "', '" + tratamiento + "', '" + fecha + "', '" + tratamientorealizado + "','" + pieza + "','" + descripcion + "', false);", con.abrir_conexion()).ExecuteNonQuery();
 
+            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_venta` (`cedulaPaciente`, `fechaVenta`, `detalleVenta`, `montoTotalVenta`, `saldoVenta`) VALUES('" + cedula + "', '" + fecha + "', '" + detalle + "', '" + monto + "', '" + saldo + "');", con.abrir_conexion()).ExecuteNonQuery();
+            con.cerrar_Conexion();
         }
         public DataTable tratamientosEfectuados()
         {
