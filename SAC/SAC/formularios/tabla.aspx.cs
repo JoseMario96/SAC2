@@ -14,11 +14,12 @@ namespace SAC.formularios
         metodos.metodosExpediente expediente = new metodos.metodosExpediente();
         metodos.metodosOdontograma odontograma = new metodos.metodosOdontograma();
         metodos.metodosTratamientos tratamiento = new metodos.metodosTratamientos();
-        public static int precio;
+        public static int precio,codigocedula;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             
+
             if (!IsPostBack)
             {
                 DropDownList1.DataSource = odontograma.TiposdeTratamientos();
@@ -48,7 +49,9 @@ namespace SAC.formularios
             if (odontograma.buscarExpediente(codigoExpediente) != 0)
             {
                 codigoT = odontograma.codigoTratamiento(DropDownList2.SelectedItem.Text);
-                odontograma.agregarPacienteTratamiento(codigoExpediente, codigoT, fecha.Text, DropDownList2.SelectedItem.Text, diente.Value, descrip.Value);
+              //  odontograma.agregarPacienteTratamiento(codigoExpediente, codigoT, fecha.Text, DropDownList2.SelectedItem.Text, diente.Value, descrip.Value);
+                GridView1.DataSource = odontograma.TratamientosRealizados(codigocedula.ToString());
+                GridView1.DataBind();
             }
             else
             {
@@ -58,15 +61,15 @@ namespace SAC.formularios
 
         protected void BudquedaExp_TextChanged(object sender, EventArgs e)
         {
-            fecha.Text = DateTime.Now.ToString("yyyy/MM/dd");
-            TextBox1.Text = DateTime.Now.ToString("yyyy/MM/dd");
-            if (!this.IsPostBack)
-            {
-                int codigocedula=0;
+            fecha.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");       
+                codigocedula=0;
                 codigocedula = expediente.BuscarcodigoExpediente(BudquedaExp.Text.ToString());
+            if (codigocedula>0)
+            {
                 GridView1.DataSource = odontograma.TratamientosRealizados(codigocedula.ToString());
                 GridView1.DataBind();
             }
+
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,10 +95,20 @@ namespace SAC.formularios
 
         }
 
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.DataSource = odontograma.TratamientosRealizados(codigocedula.ToString());
+            GridView1.PageIndex = e.NewPageIndex;
+            GridView1.DataBind();
+        }
+
         protected void abono_TextChanged(object sender, EventArgs e)
         {
             int total = 0, extraH, abonoH;
-
+            if (extra.Value.Equals(""))
+            {
+                extra.Value = "0";
+            }
             extraH = Int32.Parse(extra.Value);
             if (abono.Text.Equals(""))
             {
