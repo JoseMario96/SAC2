@@ -12,7 +12,7 @@ namespace SAC.metodos
         consulta.consulta consultar = new consulta.consulta();
         conexion.conexion con = new conexion.conexion();
 
-        public void agregarOdontograma(String col, String die, String secc,String codE, String fech)
+        public void agregarOdontograma(String col, String die, String secc, String codE, String fech)
         {
             string y = "";
             consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`, `dienteOdontograma`, `seccionOdontograma`) VALUES ('" + col + "', '" + die + "', '" + secc + "');", con.abrir_conexion()).ExecuteNonQuery();
@@ -109,7 +109,7 @@ namespace SAC.metodos
 
         }
 
-        public void agregarOdontograma2(String marc, String col, String codE,String fech)
+        public void agregarOdontograma2(String marc, String col, String codE, String fech)
         {
             string y = "";
             consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`,`marcaOdontograma`) VALUES ('" + col + "','" + marc + "');", con.abrir_conexion()).ExecuteNonQuery();
@@ -126,19 +126,32 @@ namespace SAC.metodos
         {
             string[] stringArray1 = new string[4];
             MySqlDataReader actualizar = consultar.ejecutar_consulta("SELECT colorOdontograma, dienteOdontograma,seccionOdontograma,marcaOdontograma FROM bd_sac.tbl_odontograma where codigoOdontograma = '" + odo + "'; ", con.abrir_conexion()).ExecuteReader();
+
+
             while (actualizar.Read())
             {
-                stringArray1[0] = actualizar.GetString(0);
-                stringArray1[1] = actualizar.GetString(1);
-                stringArray1[2] = actualizar.GetString(2);
-                stringArray1[3] = actualizar.GetString(3);
+                if (!actualizar.IsDBNull(1))
+                {
+                    stringArray1[0] = actualizar.GetString(0);
+                    stringArray1[1] = actualizar.GetString(1);
+                    stringArray1[2] = actualizar.GetString(2);
+
+                }
+                else
+                {
+                    stringArray1[0] = actualizar.GetString(0);
+                    stringArray1[3] = actualizar.GetString(3);
+                }
+
             }
+
+
             con.cerrar_Conexion();
             return stringArray1;
         }
         public int cantidadOdontograma(String codE)
         {
-   
+
             string y = "";
             int z = 0;
             MySqlDataReader contador = consultar.ejecutar_consulta("select count(codigoOdontograma) from tbl_expedienteodontograma where codigoExpediente = '" + codE + "'; ", con.abrir_conexion()).ExecuteReader();
@@ -154,7 +167,7 @@ namespace SAC.metodos
         {
             int x = 0;
             int z = 0;
-           z= cantidadOdontograma(codE);
+            z = cantidadOdontograma(codE);
             string[] stringArray1 = new string[z];
             MySqlDataReader actualizar = consultar.ejecutar_consulta("SELECT codigoOdontograma FROM bd_sac.tbl_expedienteodontograma where codigoExpediente = '" + codE + "'; ", con.abrir_conexion()).ExecuteReader();
             while (actualizar.Read())

@@ -714,7 +714,7 @@
                                     marcacolorArray = 'black';
                                     seccionArray[contador2] = diente;
                                     contador2++;
-                                    document.getElementById('colorM').value = seccionArray.join(',');
+                                    document.getElementById('colorM').value = marcacolorArray.join(',');
                                     document.getElementById('marcaO').value = seccionArray.join(',');
                                     banderaArray[contadorBandera] = diente;
                                     contadorBandera++;
@@ -748,7 +748,7 @@
                                     seccionArray[contador2] = diente;
                                     contador2++;
                                     document.getElementById('marcaO').value = seccionArray.join(',');
-                                    document.getElementById('colorM').value = seccionArray.join(',');
+                                    document.getElementById('colorM').value = marcacolorArray.join(',');
                                     bandera2Array[contadorBandera2] = diente;
                                     contadorBandera2++;
                                 } else {
