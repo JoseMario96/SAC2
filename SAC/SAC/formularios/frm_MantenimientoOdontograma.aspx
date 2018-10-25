@@ -640,7 +640,7 @@
                     else if (seleccion == 'exodoncia') {
                         color = '2';
                         accion = 'marcarE';
-                    }             
+                    }
                     else if (seleccion == 'borrar') {
                         accion = 'borrar';
                     }
@@ -695,7 +695,7 @@
                                 seccion = 5;
                             }
                         } else if (accion == 'marcar') {
-                            cod = diente + '-0-' + '3';
+                            cod = diente + '-0-' + '4';
                             var verificacion = false;
                             if (banderaArray.length > 0 || bandera2Array.length > 0) {
                                 for (var x = 0; x <= banderaArray.length; x++) {
@@ -707,7 +707,7 @@
                             }
                             if (verificacion == false) {
                                 if (cod && !localStorage.getItem(cod)) {
-                                    new_array = [diente, 0, 3, Date.now(), 0];
+                                    new_array = [diente, 0, 4, Date.now(), 0];
                                     guardar = new_array.toLocaleString();
                                     localStorage.setItem(cod, guardar);
                                     marcar_extraccion(ctx2, diente, 'black')
@@ -727,7 +727,7 @@
                                 alert('Ya se realizó algún tipo de extracción')
                             }
                         } else if (accion == 'marcarE') {
-                            cod2 = diente + '-0-' + '4';
+                            cod2 = diente + '-0-' + '5';
 
                             var verificacion = false;
                             if (banderaArray.length > 0 || bandera2Array.length > 0) {
@@ -740,7 +740,7 @@
                             }
                             if (verificacion == false) {
                                 if (cod2 && !localStorage.getItem(cod2)) {
-                                    new_array2 = [diente, 0, 4, Date.now(), 0];
+                                    new_array2 = [diente, 0, 5, Date.now(), 0];
                                     guardar2 = new_array2.toLocaleString();
                                     localStorage.setItem(cod2, guardar2);
                                     marcar_exodoncia(ctx2, diente, 'red')
@@ -775,7 +775,8 @@
                                 if (seccion_b) {
                                     ultimo = '';
                                     key_cod = '';
-                       
+                                    key_cod2 = '';
+                                    var dient = 0;
                                     for (var i = 0; i < localStorage.length; i++) {
                                         var key_name = localStorage.key(i);
                                         item = localStorage.getItem(key_name);
@@ -784,16 +785,17 @@
                                         seccion_comp = parseInt(item[1], 10);
                                         accion_comp = parseInt(item[2], 10);
                                         //alert(key_name);
-
-                                        if (diente_comp == diente && seccion_b == seccion_comp && (accion_comp == 1 || accion_comp == 2 || accion_comp == 5)) {
+                                        key_cod2 = key_name;
+                                        if (diente_comp == diente && seccion_b == seccion_comp && (accion_comp == 1 || accion_comp == 2 || accion_comp == 3)) {
                                             if (ultimo == '') {
-                                               // ultimo = item;
+                                                ultimo = item;
                                                 key_cod = key_name;
-                                             //   alert(key_cod);
+                                                //   alert(key_cod);
                                             }
                                             //Cuando tengo 2 tratamientos
                                             else {
                                                 fecha_ult = parseInt(item[3], 10);
+                                                alert(key_name);
 
                                                 //alert(fecha_ult);
                                                 if (ultimo[3] < fecha_ult) {
@@ -802,7 +804,6 @@
                                                 }
                                             }
                                         }
-                                        
                                     } //termina el for que recorre para borrar 
                                     if (key_cod != '') {
                                         //console.log(key_cod);
@@ -820,7 +821,7 @@
                                     item = item.split(',');
                                     diente_comp = parseInt(item[0], 10);
                                     accion_comp = parseInt(item[2], 10);
-                                    if (diente_comp == diente && accion_comp == 3) {
+                                    if (diente_comp == diente && accion_comp == 4 || accion_comp == 5) {
                                         if (ultimo == '') {
                                             ultimo = item;
                                             key_cod = key_name;
@@ -852,13 +853,12 @@
                         if (color == 'red') {
                             cod = diente + '-' + seccion + '-' + '1';
                             accion_g = 1;
-                        } else if (color == 'blue') {
+                        } else if (color == 'black') {
                             cod = diente + '-' + seccion + '-' + '2';
                             accion_g = 2;
-                        }
-                        else if (color == 'black') {
+                        } else if (color == 'blue') {
                             cod = diente + '-' + seccion + '-' + '3';
-                            accion_g = 5;
+                            accion_g = 3;
                         };
 
                         var verificacion = false;
@@ -896,65 +896,65 @@
                             alert('No se puede pintar sobre una extracion')
                         }
                     }
-                    if ('borrar' == $("input[name='accion']:checked").val()) {
-                        //alert("x-> "+x+" y-> "+y);
-                        //ctx4.clearRect(0, 0, 810, 300);
-                        if (x >= 30 && x <= 780 && ((y > 78 && y < 82) || (y > 198 && y < 202))) {
-                            //alert(x);
-                            div = parseInt(x / 50, 10);
-                            //alert(div);
-                            ultimo = '';
-                            key_cod = '';
-                            for (var i = 0; i < localStorage.length; i++) {
-                                var key_name = localStorage.key(i);
-                                item = localStorage.getItem(key_name);
-                                item = item.split(',');
-                                diente1_comp = parseInt(item[0], 10);
-                                diente2_comp = parseInt(item[4], 10);
-                                accion_comp = parseInt(item[2], 10);
-                                if (accion_comp == 4) {
+                    //if ('borrar' == $("input[name='accion']:checked").val()) {
+                    //    //alert("x-> "+x+" y-> "+y);
+                    //    //ctx4.clearRect(0, 0, 810, 300);
+                    //    if (x >= 30 && x <= 780 && ((y > 78 && y < 82) || (y > 198 && y < 202))) {
+                    //        //alert(x);
+                    //        div = parseInt(x / 50, 10);
+                    //        //alert(div);
+                    //        ultimo = '';
+                    //        key_cod = '';
+                    //        for (var i = 0; i < localStorage.length; i++) {
+                    //            var key_name = localStorage.key(i);
+                    //            item = localStorage.getItem(key_name);
+                    //            item = item.split(',');
+                    //            diente1_comp = parseInt(item[0], 10);
+                    //            diente2_comp = parseInt(item[4], 10);
+                    //            accion_comp = parseInt(item[2], 10);
+                    //            if (accion_comp == 4) {
 
-                                    if (diente1_comp > 16) {
-                                        diente1_comp = diente1_comp - 17;
-                                        diente2_comp = diente2_comp - 17;
-                                    } else {
-                                        diente1_comp = diente1_comp - 1;
-                                        diente2_comp = diente2_comp - 1;
-                                    }
-                                    inicio_x = (diente1_comp * 40) + (10 * diente1_comp) + 10 + 20;
-                                    fin_X = (diente2_comp * 40) + (10 * diente2_comp) + 10 + 20;
-                                    if (x >= inicio_x && x <= fin_x) {
-                                        if (ultimo == '') {
-                                            ultimo = item;
-                                            key_cod = key_name;
-                                        }
-                                        else {
-                                            fecha_ult = parseInt(item[3], 10);
-                                            if (ultimo[3] < fecha_ult) {
-                                                ultimo = item;
-                                                key_cod = key_name;
-                                            }
-                                        }
-                                    }
+                    //                if (diente1_comp > 16) {
+                    //                    diente1_comp = diente1_comp - 17;
+                    //                    diente2_comp = diente2_comp - 17;
+                    //                } else {
+                    //                    diente1_comp = diente1_comp - 1;
+                    //                    diente2_comp = diente2_comp - 1;
+                    //                }
+                    //                inicio_x = (diente1_comp * 40) + (10 * diente1_comp) + 10 + 20;
+                    //                fin_X = (diente2_comp * 40) + (10 * diente2_comp) + 10 + 20;
+                    //                if (x >= inicio_x && x <= fin_x) {
+                    //                    if (ultimo == '') {
+                    //                        ultimo = item;
+                    //                        key_cod = key_name;
+                    //                    }
+                    //                    else {
+                    //                        fecha_ult = parseInt(item[3], 10);
+                    //                        if (ultimo[3] < fecha_ult) {
+                    //                            ultimo = item;
+                    //                            key_cod = key_name;
+                    //                        }
+                    //                    }
+                    //                }
 
-                                }
-                            }
-                            if (key_cod != '') {
-                                console.log(key_cod);
-                                if (parseInt(ultimo[0], 10) < 16) {
-                                    seccion_p = 1;
-                                    ctx4.clearRect(0, 0, 810, 130);
-                                }
-                                else {
-                                    ctx4.clearRect(0, 130, 810, 150);
-                                    seccion_p = 2;
-                                }
-                                localStorage.removeItem(key_cod);
-                                pinta_puentes(seccion_p);
-                            }
-                        }
+                    //            }
+                    //        }
+                    //        if (key_cod != '') {
+                    //            console.log(key_cod);
+                    //            if (parseInt(ultimo[0], 10) < 16) {
+                    //                seccion_p = 1;
+                    //                ctx4.clearRect(0, 0, 810, 130);
+                    //            }
+                    //            else {
+                    //                ctx4.clearRect(0, 130, 810, 150);
+                    //                seccion_p = 2;
+                    //            }
+                    //            localStorage.removeItem(key_cod);
+                    //            pinta_puentes(seccion_p);
+                    //        }
+                    //    }
 
-                    }
+                    //}
 
                 }
 
@@ -1093,16 +1093,17 @@
                                 color = 'red';
                                 dibuja_seccion(ctx2, item[0], item[1], color);
                             } else if (acc == 2) {
-                                color = 'blue';
-                                dibuja_seccion(ctx2, item[0], item[1], color);
-                            } else if (acc == 3) {
-                                marcar_extraccion(ctx2, item[0], 'black');
-                            }
-                            else if (acc == 4) {
-                                marcar_exodoncia(ctx2, item[0], 'red');
-                            } else if (acc == 5) {
                                 color = 'black';
                                 dibuja_seccion(ctx2, item[0], item[1], color);
+                            } else if (acc == 3) {
+                                color = 'blue';
+                                dibuja_seccion(ctx2, item[0], item[1], color);
+                            }
+                            else if (acc == 4) {
+                                marcar_extraccion(ctx2, item[0], 'black');
+                            }
+                            else if (acc == 5) {
+                                marcar_exodoncia(ctx2, item[0], 'red');
                             }
                         }
                     }
