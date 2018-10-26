@@ -103,7 +103,7 @@ namespace SAC.formularios
         {
             try
             {
-                            
+
                 DateTime now = DateTime.Now;
                 string color = colorO.Value;
                 string[] colorArray = color.Split(",".ToCharArray());
@@ -175,7 +175,7 @@ namespace SAC.formularios
         }
         protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
             precio = odontograma.obtenerPrecio(DropDownList2.SelectedItem.Text);
             preciost.InnerText = signo + " " + precio;
 
@@ -202,11 +202,11 @@ namespace SAC.formularios
                 abono.Focus();
             }
 
-           
+
             abonoH = Int32.Parse(abono.Text);
             monto = precio + extraH;
             total = (precio + extraH) - abonoH;
-            if (total<0)
+            if (total < 0)
             {
                 string script = @"<script type='text/javascript'>
                 alert('El abono no puede ser superior a la deuda');

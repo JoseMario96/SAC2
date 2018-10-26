@@ -528,6 +528,8 @@
                 var sec4 = 30;
 
                 var colorArray = new Array();
+                var borrarArray = new Array();
+                var index ="";
                 var posicionArray = new Array();
                 var dienteArray = new Array();
                 var seccionArray = new Array();
@@ -768,12 +770,18 @@
                             }
                         }
                         else if (accion == 'borrar') {
+                            var indexC = colorArray.indexOf(color);
+                            var indexD = dienteArray.indexOf(diente);
+                            var indexP = posicionArray.indexOf(seccion);
+                            colorArray.splice[indexC, 1];
+                            dienteArray.splice[indexD, 1];
+                            posicionArray.splice[indexP, 1];
                             borrar_diente(ctx2, diente);
                             //document.getElementById('borrarO').value = diente;
                             //cargar el ultimo pintado
                             seccion_chk = $("input[name='seccion']:checked").val();
                             if (seccion_chk == 'seccion') {
-
+                               
                                 x = x - ((div * 40) + (10 * div) + 10);
                                 y = y - 20;
                                 if (diente > 16) {
