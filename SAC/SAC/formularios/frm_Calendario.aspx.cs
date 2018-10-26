@@ -29,15 +29,9 @@ namespace SAC.formularios
             String[,] matriz = objeto.Cita();
             Hashtable schedule = new Hashtable();
             for (int i = 0; i <= matriz.GetLength(0) - 1; i++)
-            {
-                for (int j = 0; j <= matriz.GetLength(1) - 1; j++)
-                {
-                    if (j == 0)
-                    {
-                        String fecha = matriz[i, j + 2].Split(' ')[0];
-                        schedule[fecha] = "Cédula: " + matriz[i, j + 1] + "<br/> Hora: " + matriz[i, j + 3] + "<br/> Contacto: " + matriz[i, j + 4];
-                    }
-                }
+            {             
+                String fecha = matriz[i, 2].Split(' ')[0];
+                schedule[fecha] = "Nombre: " + matriz[i, 5] + "<br/> Hora: " + matriz[i, 3] + "<br/> Contacto: " + matriz[i, 4];               
             }
             //schedule["4/10/2018"] = "Hola probando <br/> código";
             //schedule["10/10/2018"] = "Hola probando código";
@@ -60,7 +54,7 @@ namespace SAC.formularios
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 fechaCabecera.InnerText = fecha;
-                Gridview_Hoy.DataSource = objeto.CitaHoy();
+                Gridview_Hoy.DataSource = objeto.CitaHoy(fecha);
                 Gridview_Hoy.DataBind();
             }
             else
@@ -97,7 +91,7 @@ namespace SAC.formularios
 
         protected void Gridview_Hoy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String[] datos = new String[5];
+            String[] datos = new String[6];
             foreach (GridViewRow row in Gridview_Hoy.Rows)
             {
                 if (row.RowIndex == Gridview_Hoy.SelectedIndex)
@@ -107,13 +101,15 @@ namespace SAC.formularios
                     row.ToolTip = string.Empty;
                     cedulaAA = row.Cells[0].Text;
                     fechaAA = Calendar1.SelectedDate.ToString(@"yyyy-MM-dd");
-                    horaAA = row.Cells[1].Text;
+                    horaAA = row.Cells[2].Text;
                     String codigo = objeto.Codigo(cedulaAA, fechaAA, horaAA);
                     datos = objeto.MostrarCita(codigo);
-                    cedulaA.Value = datos[1];
-                    fechaA.Value = datos[2];
-                    horaA.Value = datos[3];
-                    telefonoA.Value = datos[4];
+                    cedulaA.Value = datos[0];
+                    fechaA.Value = datos[1];
+                    horaA.Value = datos[2];
+                    telefonoA.Value = datos[3];
+                    nombreA.Value = datos[4];
+                    correoA.Value = datos[5];
                     string script = @"<script type='text/javascript'>
                         document.getElementById('Actualizar_Eliminar').style.display = 'block';
                         document.getElementById('Actualizar_Eliminar').scrollIntoView(); 
@@ -140,6 +136,8 @@ namespace SAC.formularios
 
         protected void btn_Actualizar_Click(object sender, EventArgs e)
         {
+            DateTime date = Convert.ToDateTime(fechaA.Value);
+            String date2 = date.ToString(@"yyyy-MM-dd");
             if (cedulaA.Value == "")
             {
                 string script = @"<script type='text/javascript'>
@@ -147,6 +145,14 @@ namespace SAC.formularios
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 cedulaA.Focus();
+            }
+            else if (nombreA.Value == "")
+            {
+                string script = @"<script type='text/javascript'>
+                    alert('El campo nombre no puede estar vacío!');
+                    </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                nombreA.Focus();
             }
             else if (fechaA.Value == "")
             {
@@ -172,19 +178,17 @@ namespace SAC.formularios
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 telefonoA.Focus();
             }
-            else if(objeto.ValidarCita(fechaA.Value, horaA.Value) == true)
+            else if (correoA.Value == "")
             {
                 string script = @"<script type='text/javascript'>
-                    alert('Ya existe una cita en este horario, puedes intentarlo cambiando la hora!');
+                    alert('El campo correo no puede estar vacío!');
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                horaA.Focus();
+                correoA.Focus();
             }
-            else
+            else if (fechaAA == date2 & horaAA == horaA.Value)
             {
-                DateTime date = Convert.ToDateTime(fechaA.Value);
-                String date2 = date.ToString(@"yyyy-MM-dd");
-                objeto.ActualizarCita(objeto.Codigo(cedulaAA, fechaAA, horaAA), cedulaA.Value, date2, horaA.Value, telefonoA.Value);
+                objeto.ActualizarCitaSFecha(objeto.Codigo(cedulaAA, fechaAA, horaAA), cedulaA.Value, telefonoA.Value, nombreA.Value, correoA.Value);
                 string script = @"<script type='text/javascript'>
                     alert('La información se actualizó correctamente!');
                     </script>";
@@ -192,6 +196,29 @@ namespace SAC.formularios
                 this.Controls.Clear();
                 Response.Redirect("frm_Calendario.aspx");
             }
+            else 
+            {
+                if (objeto.ValidarCita(date2, horaA.Value) == true)
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('Ya existe una cita en este horario, puedes intentarlo cambiando la hora!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    horaA.Focus();
+                }
+                else
+                {
+                    objeto.ActualizarCita(objeto.Codigo(cedulaAA, fechaAA, horaAA), cedulaA.Value, date2, horaA.Value, telefonoA.Value, nombreA.Value, correoA.Value);
+                    string script = @"<script type='text/javascript'>
+                    alert('La información se actualizó correctamente!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    this.Controls.Clear();
+                    Response.Redirect("frm_Calendario.aspx");
+                }
+
+            }
+            
         }
 
         protected void btn_Eliminar_Click(object sender, EventArgs e)
@@ -213,7 +240,14 @@ namespace SAC.formularios
                     alert('El campo cédula no puede estar vacío!');
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                cedulaA.Focus();
+                cedula.Focus();
+            }
+            else if(nombre.Value == ""){
+                string script = @"<script type='text/javascript'>
+                    alert('El campo nombre no puede estar vacío!');
+                    </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                nombre.Focus();
             }
             else if (fechaC.Value == "")
             {
@@ -221,7 +255,7 @@ namespace SAC.formularios
                     alert('El campo fecha no puede estar vacío!');
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                fechaA.Focus();
+                fechaC.Focus();
             }
             else if (hora.Value == "")
             {
@@ -229,7 +263,7 @@ namespace SAC.formularios
                     alert('El campo hora no puede estar vacío!');
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                horaA.Focus();
+                hora.Focus();
             }
             else if (telefono.Value == "")
             {
@@ -238,6 +272,14 @@ namespace SAC.formularios
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 telefonoA.Focus();
+            }
+            else if (correo.Value == "")
+            {
+                string script = @"<script type='text/javascript'>
+                    alert('El campo correo no puede estar vacío!');
+                    </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                correo.Focus();
             }
             else if(objeto.ValidarCita(fechaC.Value, hora.Value) == true)
             {
@@ -248,7 +290,7 @@ namespace SAC.formularios
                 hora.Focus();
             }
             else{
-                objeto.AgregarCita(cedula.Value, Calendar1.SelectedDate.ToString(@"yyyy-MM-dd"), hora.Value.ToString(), telefono.Value);
+                objeto.AgregarCita(cedula.Value, Calendar1.SelectedDate.ToString(@"yyyy-MM-dd"), hora.Value.ToString(), telefono.Value, nombre.Value, correo.Value);
                 string script = @"<script type='text/javascript'>
                     alert('Se agregó correctamente la información');
                     </script>";
@@ -261,8 +303,10 @@ namespace SAC.formularios
         protected void btn_Limpiar_Click(object sender, EventArgs e)
         {
             cedula.Value = "";
+            nombre.Value = "";
             hora.Value = "";
             telefono.Value = "";
+            correo.Value = "";
             cedula.Focus();
         }
 
@@ -285,17 +329,20 @@ namespace SAC.formularios
         {
             try
             {
+                String fecha = "";
+                DateTime f = Convert.ToDateTime(fechaA.Value);
+                fecha = f.ToString("d");
                 //Configuración del Mensaje
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 //Especificamos el correo desde el que se enviará el Email y el nombre de la persona que lo envía
                 mail.From = new MailAddress("clinicadental.alinacamacho@gmail.com");
                 //Aquí ponemos el asunto del correo
-                mail.Subject = "Prueba de Envío de Correo";
+                mail.Subject = "Recordatorio de su cita";
                 //Aquí ponemos el mensaje que incluirá el correo
-                mail.Body = "Prueba de Envío de Correo de Gmail desde CSharp";
+                mail.Body = "Estimado " + nombreA.Value + "! Este es un mensaje para recordarle su cita para la fecha: " + fecha + " y hora: " + horaA.Value + ". Sin más por el momento, le esperamos.\nClínica Dental Doctora Alina Camacho";
                 //Especificamos a quien enviaremos el Email, no es necesario que sea Gmail, puede ser cualquier otro proveedor
-                mail.To.Add("josem150396@gmail.com");
+                mail.To.Add(correoA.Value);
                 
 
                 //Configuracion del SMTP

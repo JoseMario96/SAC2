@@ -12,10 +12,11 @@ namespace SAC.formularios
         metodos.metodos_Citas objeto = new metodos.metodos_Citas();
         protected void Page_Load(object sender, EventArgs e)
         {
-            GridView1.DataSource = objeto.CitaHoy();
-            GridView1.DataBind();
             DateTime fecha = DateTime.Now;
             titulo.Text = fecha.ToString("d");
+            GridView1.DataSource = objeto.CitaHoy(fecha.ToString("d"));
+            GridView1.DataBind();
+            
         }
     }
 }
