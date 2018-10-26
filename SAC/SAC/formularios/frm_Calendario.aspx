@@ -134,7 +134,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="10000"></asp:Timer>
+        <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="3600000"></asp:Timer>
         <br />
         <br />
         <%-- HOY--%>
@@ -153,6 +153,9 @@
                         runat="server" AutoGenerateColumns="False" Height="174px" Width="80%" OnRowDataBound="Gridview_Hoy_RowDataBound" OnSelectedIndexChanged="Gridview_Hoy_SelectedIndexChanged" >
                         <Columns>
                             <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula del paciente" ItemStyle-Width="100" >
+                            <ItemStyle Width="100px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="nombre" HeaderText="Nombre del paciente" ItemStyle-Width="100" >
                             <ItemStyle Width="100px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="horaCita" HeaderText="Hora de la cita" ItemStyle-Width="100" >
@@ -179,15 +182,22 @@
                 </tr>
                 <tr>
                     <th>Cédula</th>
+                    <th>Nombre</th>
                     <th>Fecha</th>
                     <th>Hora</th>
-                    <th>Contacto</th>
                 </tr>
                 <tr>
                     <td>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <input id="cedulaA" type="text" class="validate" runat="server" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </td>
+                    <td>
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <input id="nombreA" type="text" class="validate" runat="server" maxlength="44" onkeypress="return sololetras(event)" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </td>
@@ -205,6 +215,12 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </td>
+                </tr>
+                <tr>
+                    <th>Teléfono</th>
+                    <th colspan="3">Correo electrónico</th>
+                </tr>
+                <tr>
                     <td>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
@@ -212,7 +228,16 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </td>
+                    <td colspan="3">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <input id="correoA" type="email" class="validate" runat="server" maxlength="44" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </td>
                 </tr>
+                    
+                
             </table>
            
             <div class="row">
@@ -241,36 +266,57 @@
 
                 <div class="row">
                     <div class="col s4">
-                        <label class="active" for="cedula">Cédula del paciente</label>
+                        <label class="active" for="cedula" style="font-size:medium">Cédula del paciente</label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <input id="cedula" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
+
                     <div class="col s4">
-                        <label class="active" for="nombre2">Fecha de la cita</label>
+                        <label class="active" for="nombre" style="font-size:medium">Nombre completo</label>
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <input id="nombre" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>       
+                </div>
+                <div class="row">
+                    <div class="col s4">
+                        <label class="active" for="fechaC" style="font-size:medium">Fecha de la cita</label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <input id="fechaC" type="text" runat="server" class="validate" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
-                </div>
-                <div class="row">
+
                     <div class="col s4">
-                        <label class="active" for="hora">Hora de la cita</label>
+                        <label class="active" for="hora" style="font-size:medium">Hora de la cita</label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <input id="hora" type="time" runat="server" class="validate" step="1800" onkeypress="return solonumeros(event)" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col s4">
-                        <label class="active" for="telefono">Teléfono de contacto </label>
+                        <label class="active" for="telefono" style="font-size:medium">Teléfono de contacto </label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <input id="telefono" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+
+                    <div class="col s4">
+                        <label class="active" for="correo" style="font-size:medium">Correo electrónico </label>
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <input id="correo" type="email" runat="server" class="validate" maxlength="44" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>

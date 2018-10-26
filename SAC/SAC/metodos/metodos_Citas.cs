@@ -45,9 +45,9 @@ namespace SAC.metodos
             return conteo;
         }
 
-        public void AgregarCita(String cedula, String fecha, String hora, String telefono)
+        public void AgregarCita(String cedula, String fecha, String hora, String telefono, String nombre, String correo)
         {
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_cita` (`cedulaPaciente`, `fechaReservaCita`, `horaCita`, `telefonoCita`) VALUES('" + cedula + "','" + fecha + "','" + hora + "','" + telefono + "');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_cita` (`cedulaPaciente`, `fechaReservaCita`, `horaCita`, `telefonoCita`, `nombre`, `correo`) VALUES('" + cedula + "','" + fecha + "','" + hora + "','" + telefono + "','" + nombre + "','" + correo + "');", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
 
@@ -57,9 +57,9 @@ namespace SAC.metodos
             con.cerrar_Conexion();
         }
 
-        public DataTable CitaHoy()
+        public DataTable CitaHoy(String fecha)
         {
-            string consulta = "Select cedulaPaciente, horaCita, telefonoCita from tbl_cita where fechaReservaCita = curdate() order by horaCita;";
+            string consulta = "Select cedulaPaciente, nombre, horaCita, telefonoCita from tbl_cita where fechaReservaCita = '"+fecha+"' order by horaCita;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())
@@ -84,30 +84,35 @@ namespace SAC.metodos
 
         public String[] MostrarCita(String codigo)
         {
-            String[] tratamiento = new string[5];
-            MySqlDataReader busqueda = consultar.ejecutar_consulta("select * from tbl_Cita where codigoCita = '"+codigo+"';", con.abrir_conexion()).ExecuteReader();
+            String[] cita = new string[6];
+            MySqlDataReader busqueda = consultar.ejecutar_consulta("select cedulaPaciente, fechaReservaCita, horaCita, telefonoCita, nombre, correo from tbl_Cita where codigoCita = '"+codigo+"';", con.abrir_conexion()).ExecuteReader();
             while (busqueda.Read())
             {
-                for (int i = 0; i <= 4; i++)
+                for (int i = 0; i <= 5; i++)
                 {
                     if (busqueda.IsDBNull(i))
                     {
-                        tratamiento[i] = "";
+                        cita[i] = "";
                     }
                     else
                     {
-                        tratamiento[i] = busqueda.GetString(i);
+                        cita[i] = busqueda.GetString(i);
                     }
 
                 }
             }
             con.cerrar_Conexion();
-            return tratamiento;
+            return cita;
         }
 
-        public void ActualizarCita(String codigo, String cedula, String fecha, String hora, String telefono)
+        public void ActualizarCita(String codigo, String cedula, String fecha, String hora, String telefono, String nombre, String correo)
         {
-            consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_Cita` SET `cedulaPaciente`='" + cedula + "', `fechaReservaCita`='" + fecha + "', `horaCita`='" + hora + "', `telefonoCita`='" + telefono + "' WHERE `codigoCita`='" + codigo + "';", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_Cita` SET `cedulaPaciente`='" + cedula + "', `fechaReservaCita`='" + fecha + "', `horaCita`='" + hora + "', `telefonoCita`='" + telefono + "', `nombre`='" + nombre + "', `correo`='" + correo + "' WHERE `codigoCita`='" + codigo + "';", con.abrir_conexion()).ExecuteNonQuery();
+            con.cerrar_Conexion();
+        }
+        public void ActualizarCitaSFecha(String codigo, String cedula, String telefono, String nombre, String correo)
+        {
+            consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_Cita` SET `cedulaPaciente`='" + cedula + "', `telefonoCita`='" + telefono + "', `nombre`='" + nombre + "', `correo`='" + correo + "' WHERE `codigoCita`='" + codigo + "';", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
 
