@@ -469,6 +469,7 @@
                     }
                     //alert(num_diente);
                     inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
+
                     ctx.clearRect(inicio_x, inicio_y, med, med);
                 }
                 function marcar_exodoncia(contexto, num_diente, color_pas) {
@@ -528,8 +529,10 @@
                 var sec4 = 30;
 
                 var colorArray = new Array();
-                var borrarArray = new Array();
-                var index ="";
+                var borrarArrayC = new Array();
+                var borrarArrayD = new Array();
+                var borrarArrayS = new Array();
+                var index = "";
                 var posicionArray = new Array();
                 var dienteArray = new Array();
                 var seccionArray = new Array();
@@ -542,7 +545,12 @@
                 var bandera2Array = new Array();
                 var contadorBandera = 0;
                 var contadorBandera2 = 0;
-
+                var contadorBorrar = 0;
+                var y = 0;
+                var color2 = '';
+                var div = 0;
+                var color = '';
+                var seccion2 = 0;
                 //Los numeros
                 for (x = 0; x < 16; x++) {
 
@@ -627,20 +635,23 @@
                     x -= div_can.offsetLeft;
                     y -= div_can.offsetTop;
                     //alert(div_can.offsetTop);
-                    var div = 0;
-                    var color = '';
+                   
+                    
                     var accion = '';
                     seleccion = $("input[name='accion']:checked").val();
                     if (seleccion == 'carie') {
                         color = 'red';
+                        color2 = color;
                         accion = 'seccion';
                     }
                     else if (seleccion == 'restauracion') {
                         color = 'blue';
+                        color2 = color;
                         accion = 'seccion';
                     }
                     else if (seleccion == 'sellante') {
                         color = 'black';
+                        color2 = color;
                         accion = 'seccion';
                     }
                     else if (seleccion == 'extraccion') {
@@ -657,6 +668,7 @@
                     //alert(y);
                     diente = 0;
                     seccion = 0;
+                    
                     if (y >= 20 && y <= 60) {
                         //alert(x);
                         if (x >= 10 && x <= 50) {
@@ -687,6 +699,7 @@
                     if (diente) {
                         //alert(diente);
                         if (accion == 'seccion') {
+                        
                             x = x - ((div * 40) + (10 * div) + 10);
                             y = y - 20;
                             if (diente > 16) {
@@ -695,19 +708,25 @@
                             //alert(y);
                             if (y > 0 && y < 10 && x > y && y < 40 - x) {
                                 seccion = 1;
+                                seccion2 = seccion;
                             } else if (x > 30 && x < 40 && y < x && 40 - x < y) {
                                 seccion = 2;
+                                seccion2 = seccion;
                             } else if (y > 30 && y < 40 && x < y && x > 40 - y) {
                                 seccion = 3;
+                                seccion2 = seccion;
                             } else if (x > 0 && x < 10 && y > x && x < 40 - y) {
                                 seccion = 4;
+                                seccion2 = seccion;
                             } else if (x > 10 && x < 30 && y > 10 && y < 30) {
                                 seccion = 5;
+                                seccion2 = seccion;
                             }
                         } else if (accion == 'marcar') {
                             cod = diente + '-0-' + '4';
                             var verificacion = false;
                             if (banderaArray.length > 0 || bandera2Array.length > 0) {
+
                                 for (var x = 0; x <= banderaArray.length; x++) {
                                     if (banderaArray[x] == diente || bandera2Array[x] == diente) {
 
@@ -724,10 +743,10 @@
                                     marcacolorArray = 'black';
                                     seccionArray[contador2] = diente;
                                     contador2++;
-                                    document.getElementById('colorM').value = marcacolorArray.join(',');
-                                    document.getElementById('marcaO').value = seccionArray.join(',');
                                     banderaArray[contadorBandera] = diente;
                                     contadorBandera++;
+                                    document.getElementById('colorM').value = marcacolorArray.join(',');
+                                    document.getElementById('marcaO').value = seccionArray.join(',');
                                 }
                                 else {
                                     alert("El diente ya contiene un tratamiento");
@@ -738,15 +757,15 @@
                             }
                         } else if (accion == 'marcarE') {
                             cod2 = diente + '-0-' + '5';
-
                             var verificacion = false;
+
                             if (banderaArray.length > 0 || bandera2Array.length > 0) {
                                 for (var x = 0; x <= banderaArray.length; x++) {
                                     if (banderaArray[x] == diente || bandera2Array[x] == diente) {
-
                                         verificacion = true;
                                     }
                                 }
+
                             }
                             if (verificacion == false) {
                                 if (cod2 && !localStorage.getItem(cod2)) {
@@ -757,10 +776,11 @@
                                     marcacolorArray = 'red';
                                     seccionArray[contador2] = diente;
                                     contador2++;
-                                    document.getElementById('marcaO').value = seccionArray.join(',');
-                                    document.getElementById('colorM').value = marcacolorArray.join(',');
                                     bandera2Array[contadorBandera2] = diente;
                                     contadorBandera2++;
+                                    document.getElementById('marcaO').value = seccionArray.join(',');
+                                    document.getElementById('colorM').value = marcacolorArray.join(',');
+
                                 } else {
                                     alert("El diente ya contiene un tratamiento");
                                 }
@@ -769,19 +789,18 @@
                                 alert('Ya se realizó algún tipo de extracción')
                             }
                         }
+                  
                         else if (accion == 'borrar') {
-                            var indexC = colorArray.indexOf(color);
-                            var indexD = dienteArray.indexOf(diente);
-                            var indexP = posicionArray.indexOf(seccion);
-                            colorArray.splice[indexC, 1];
-                            dienteArray.splice[indexD, 1];
-                            posicionArray.splice[indexP, 1];
+                            alert(color2);
+                            alert(diente);
+                            alert(seccion2);
                             borrar_diente(ctx2, diente);
                             //document.getElementById('borrarO').value = diente;
+
                             //cargar el ultimo pintado
                             seccion_chk = $("input[name='seccion']:checked").val();
                             if (seccion_chk == 'seccion') {
-                               
+
                                 x = x - ((div * 40) + (10 * div) + 10);
                                 y = y - 20;
                                 if (diente > 16) {
@@ -800,8 +819,39 @@
                                         diente_comp = parseInt(item[0], 10);
                                         seccion_comp = parseInt(item[1], 10);
                                         accion_comp = parseInt(item[2], 10);
-                                        //alert(key_name);
                                         key_cod2 = key_name;
+                                        var colorB;
+                                        if (accion_comp == 1) {
+                                            colorB = 'red';
+                                        }
+                                        if (accion_comp == 2) {
+                                            colorB = 'black';
+                                        }
+                                        if (accion_comp == 3) {
+                                            colorB = 'blue';
+                                        }
+                                        borrarArrayC[contadorBorrar] = colorB;
+                                        borrarArrayD[contadorBorrar] = diente_comp;
+                                        borrarArrayS[contadorBorrar] = seccion_comp;
+
+                                        //for (var x = 0; x <= contador; x++) {
+                                        //    if (dienteArray[x] == borrarArrayD[y])
+                                        //        y++;
+                                        //}
+                                        //dienteArray.forEach((e1) => borrarArrayD.forEach((e2) => {
+                                        //    if (e1 === e2) {
+                                        //        alert(e2);
+                                        //    }
+                                        //}
+                                        //));
+
+                                        //var indexC = colorArray.indexOf(colorB);
+                                        //var indexD = dienteArray.indexOf(diente_comp);
+                                        //var indexP = posicionArray.indexOf(seccion_comp);
+                                        //colorArray.splice[indexC, 1];
+                                        //dienteArray.splice[indexD, 1];
+                                        //posicionArray.splice[indexP, 1];
+
                                         if (diente_comp == diente && seccion_b == seccion_comp && (accion_comp == 1 || accion_comp == 2 || accion_comp == 3)) {
                                             if (ultimo == '') {
                                                 ultimo = item;
@@ -882,13 +932,13 @@
                         if (banderaArray.length > 0 || bandera2Array.length > 0) {
                             for (var x = 0; x <= banderaArray.length; x++) {
                                 if (banderaArray[x] == diente || bandera2Array[x] == diente) {
-
                                     verificacion = true;
                                 }
 
                             }
                         }
                         if (verificacion == false) {
+
                             if (cod && !localStorage.getItem(cod)) {
                                 new_array = [diente, seccion, accion_g, Date.now(), 0];
                                 guardar = new_array.toLocaleString();
@@ -910,7 +960,7 @@
                             }
                         }
                         else {
-                            alert('No se puede pintar sobre una extracion')
+                            alert('No se puede pintar sobre una Ausencia o Exodoncia')
                         }
                     }
                     //if ('borrar' == $("input[name='accion']:checked").val()) {
@@ -1217,125 +1267,125 @@
                 <h5>Nuevos tratamientos</h5>
                 <br />
                 <br />
-                    <div class="row">
+                <div class="row">
+                    <div class="col s2">
+                    </div>
+                    <div class="col s10">
                         <div class="col s2">
-                        </div>
-                        <div class="col s10">
-                            <div class="col s2">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Fecha">Fecha </label>
-                                        <asp:Label ID="fecha" runat="server"></asp:Label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-                            <div class="col s3">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Tratamiento">Tipo de tratamiento </label>
-                                        <asp:DropDownList ID="DropDownList1" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-
-                            <div class="col s3">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Tipotratamiento">Tratamiento</label>
-                                        <asp:DropDownList ID="DropDownList2" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTratamiento" DataValueField="nombreTratamiento" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-
-                            <div class="col s3">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Diente">Diente</label>
-                                        <input type='text' name='dient' id="diente" runat="server" maxlength="44" />
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <div class="col s2"></div>
-                                <div class="col s9">
-                                    <label class="active" for="Descripcion">Descripción</label>
-                                    <input type='text' name='debe' id="descrip" runat="server" maxlength="244" />
-                                </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col s2"></div>
-                        <div class="col s10">
-                            <div class="col s2">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Debe">Debe </label>
-                                        <label id="preciost" runat="server" class="active" for="Debe"></label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-
-                            <div class="col s3">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Debe">Extra </label>
-                                        <input type='text' id="extra" runat="server" placeholder="₡" name='abono' onkeypress="return solonumeros (event)" />
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-
-                            <div class="col s3">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Abono">Abono</label>
-                                        <asp:TextBox ID="abono" runat="server" placeholder="₡" required OnTextChanged="abono_TextChanged" AutoPostBack="true" onkeypress="return solonumeros (event)"></asp:TextBox>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-                            <div class="col s2">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Saldo">Saldo</label>
-                                        <label class="active" id="saldo" runat="server" for="Saldo"></label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <div class="row">
-                                        <asp:Button ID="AgregarDetalle" runat="server" Text="+" class="waves-effect waves-light btn" OnClick="AgregarDetalle_Click" />
-                                    </div>
+                                    <label class="active" for="Fecha">Fecha </label>
+                                    <asp:Label ID="fecha" runat="server"></asp:Label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+                        <div class="col s3">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="Tratamiento">Tipo de tratamiento </label>
+                                    <asp:DropDownList ID="DropDownList1" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+
+                        <div class="col s3">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="Tipotratamiento">Tratamiento</label>
+                                    <asp:DropDownList ID="DropDownList2" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTratamiento" DataValueField="nombreTratamiento" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+
+                        <div class="col s3">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="Diente">Diente</label>
+                                    <input type='text' name='dient' id="diente" runat="server" maxlength="44" />
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
                     </div>
+                </div>
+
+                <div class="row">
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <div class="col s2"></div>
+                            <div class="col s9">
+                                <label class="active" for="Descripcion">Descripción</label>
+                                <input type='text' name='debe' id="descrip" runat="server" maxlength="244" />
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+
+
+                <div class="row">
+                    <div class="col s2"></div>
+                    <div class="col s10">
+                        <div class="col s2">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="Debe">Debe </label>
+                                    <label id="preciost" runat="server" class="active" for="Debe"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+
+                        <div class="col s3">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="Debe">Extra </label>
+                                    <input type='text' id="extra" runat="server" placeholder="₡" name='abono' onkeypress="return solonumeros (event)" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+
+                        <div class="col s3">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="Abono">Abono</label>
+                                    <asp:TextBox ID="abono" runat="server" placeholder="₡" required OnTextChanged="abono_TextChanged" AutoPostBack="true" onkeypress="return solonumeros (event)"></asp:TextBox>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+                        <div class="col s2">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="Saldo">Saldo</label>
+                                    <label class="active" id="saldo" runat="server" for="Saldo"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <div class="row">
+                                    <asp:Button ID="AgregarDetalle" runat="server" Text="+" class="waves-effect waves-light btn" OnClick="AgregarDetalle_Click" />
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
 
             </div>
         </div>
         <script>
-            function solonumeros(e) {
-                key = e.keyCoden || e.which;
-                teclado = String.fromCharCode(key);
-                numero = "1234567890";
-                especiales = "8-37-38-46";
-                teclado_especial = false;
-                for (var i in especiales) {
-                    if (key == especiales[i]) {
-                        teclado_especial = true;
+                function solonumeros(e) {
+                    key = e.keyCoden || e.which;
+                    teclado = String.fromCharCode(key);
+                    numero = "1234567890";
+                    especiales = "8-37-38-46";
+                    teclado_especial = false;
+                    for (var i in especiales) {
+                        if (key == especiales[i]) {
+                            teclado_especial = true;
+                        }
+                    }
+                    if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+                        return false;
                     }
                 }
-                if (numero.indexOf(teclado) == -1 && !teclado_especial) {
-                    return false;
-                }
-            }
         </script>
     </form>
 </body>
