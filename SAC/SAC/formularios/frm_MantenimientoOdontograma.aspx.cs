@@ -103,12 +103,12 @@ namespace SAC.formularios
         {
             try
             {
-
+               
                 DateTime now = DateTime.Now;
                 string color = colorO.Value;
                 string[] colorArray = color.Split(",".ToCharArray());
                 int num = colorArray.Count();
-
+                TextBox1.Text = color;
                 string diente = dienteO.Value;
                 string[] dienteArray = diente.Split(",".ToCharArray());
 
