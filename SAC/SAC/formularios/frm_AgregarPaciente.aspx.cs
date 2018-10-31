@@ -18,7 +18,7 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            cedula.Focus();
+           // cedula.Focus();
         }
         public void agregarPaciente()
         {
@@ -193,8 +193,55 @@ namespace SAC.formularios
 
         protected void cedula_encargad_TextChanged(object sender, EventArgs e)
         {
-            if (!cedula_encargad.Equals(""))
+            string scriptt = @"<script type='text/javascript'>
+                document.getElementById('encargado').scrollIntoView();              
+            </script>";
+           
+            string[] datos2 = new string[11];
+            datos2 = agregarP.buscarEncargado(cedula_encargad.Text);
+
+            //!cedula_encargad.Equals("")
+            if (!String.IsNullOrEmpty(datos2[0]))
             {
+                cedula_encargad.Focus();
+                cedula_encargad.Text = datos2[0];
+                nombre1_encargado.Value = datos2[1];
+                nombre2_encargado.Value = datos2[2];
+                apellido1_encargado.Value = datos2[3];
+                apellido2_encargado.Value = datos2[4];
+                if (datos2[5].Equals("Masculino"))
+                {
+                    masculinoE.Checked = false;
+                    femeninoE.Checked = false;
+                    otroE.Checked = true;
+                }
+                else if (datos2[5].Equals("Femenino"))
+                {
+                    masculinoE.Checked = false;
+                    femeninoE.Checked = false;
+                    otroE.Checked = true;
+                }
+                else if (datos2[5].Equals("Otro"))
+                {
+                    masculinoE.Checked = false;
+                    femeninoE.Checked = false;
+                    otroE.Checked = true;
+                }
+                telefono_encargado.Value = datos2[6];
+                celular_encargado.Value = datos2[7];
+                direccion_encargado.Value = datos2[8];
+                parentezco.Value = datos2[9];
+                correo_encargado.Value = datos2[10];
+
+                // agregarP.agregarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargad.Text, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
+
+
+                enviar = true;
+            }
+            else
+            {
+                nombre1_encargado.Focus();
+
                 Boolean validar = false;
                 Boolean validar2 = false;
 
@@ -238,51 +285,13 @@ namespace SAC.formularios
                     validar2 = true;
                 }
 
-                string[] datos2 = new string[11];
-                datos2 = agregarP.buscarEncargado(cedula_encargad.Text);
-                cedula_encargad.Text = datos2[0];
-                nombre1_encargado.Value = datos2[1];
-                nombre2_encargado.Value = datos2[2];
-                apellido1_encargado.Value = datos2[3];
-                apellido2_encargado.Value = datos2[4];
-                if (datos2[5].Equals("Masculino"))
-                {
-                    masculinoE.Checked = false;
-                    femeninoE.Checked = false;
-                    otroE.Checked = true;
-                }
-                else if (datos2[5].Equals("Femenino"))
-                {
-                    masculinoE.Checked = false;
-                    femeninoE.Checked = false;
-                    otroE.Checked = true;
-                }
-                else if (datos2[5].Equals("Otro"))
-                {
-                    masculinoE.Checked = false;
-                    femeninoE.Checked = false;
-                    otroE.Checked = true;
-                }
-                telefono_encargado.Value = datos2[6];
-                celular_encargado.Value = datos2[7];
-                direccion_encargado.Value = datos2[8];
-                parentezco.Value = datos2[9];
-                correo_encargado.Value = datos2[10];
-
-                // agregarP.agregarPaciente(cedula.Value, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargad.Text, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
-
-
-                enviar = true;
             }
-            else
-            {
-                nombre1_encargado.Focus();
-            }
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
         }
 
-        protected void actualizarE_Click(object sender, EventArgs e)
-        {
-            cedula_encargad.Text = "";
-        }
+        //protected void actualizarE_Click(object sender, EventArgs e)
+        //{
+        //    cedula_encargad.Text = "";
+        //}
     }
 }
