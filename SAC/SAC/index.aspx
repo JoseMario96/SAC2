@@ -342,7 +342,7 @@
                         <div class="popup-contenedorC">
                             <div class="responsiveContent">
                                 <iframe id="calendario"></iframe>
-                                <a class="popup-cerrar" href="#citas">X</a>
+                                <a class="popup-cerrar" href="#fh5co-contact">X</a>
                             </div>
                         </div>
                     </div>
@@ -359,7 +359,7 @@
                         <div class="popup-contenedor">
                             <div class="responsiveContent">
                                 <iframe id="citas_Hoy"></iframe>
-                                <a class="popup-cerrar" href="#citas">X</a>
+                                <a class="popup-cerrar" href="#fh5co-contact">X</a>
                             </div>
                         </div>
                     </div>
@@ -584,41 +584,74 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-
-                <%-- <div class="col-md-12 section-heading text-left">
-                    <h2 class=" left-border to-animate">Services</h2>
-                    <div class="row">
-                        <div class="col-md-8 subtext to-animate">
-                            <h3>Encumbered forever by desire and ambition. There's a hunger still unsatisfied!</h3>
+            <div class="row row-bottom-padded-sm">
+                <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <a href="../images/factura.png" class="fh5co-project-item">
+                        <img src="../images/factura.png" alt="Image" class="imagen img-responsive centrar" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Agregar</h2>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-sm-6 fh5co-service to-animate">
-                    <i class="icon to-animate-2 icon-anchor"></i>
-                    <h3>Brand &amp; Strategy</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
-                </div>
-                <div class="col-md-6 col-sm-6 fh5co-service to-animate">
-                    <i class="icon to-animate-2 icon-layers2"></i>
-                    <h3>Web &amp; Interface</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+                <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <a href="../images/actualizar_factura.png" class="fh5co-project-item">
+                        <img src="../images/actualizar_factura.png" alt="Image" class="imagen img-responsive centrar" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Actualizar</h2>
+                        </div>
+                    </a>
                 </div>
 
-                <div class="clearfix visible-sm-block"></div>
-
-                <div class="col-md-6 col-sm-6 fh5co-service to-animate">
-                    <i class="icon to-animate-2 icon-video2"></i>
-                    <h3>Photo &amp; Video</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+                <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <a href="../images/mostrar_facturas.png" class="fh5co-project-item">
+                        <img src="../images/mostrar_facturas.png" alt="Image" class="imagen img-responsive centrar" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Mostrar</h2>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-md-6 col-sm-6 fh5co-service to-animate">
-                    <i class="icon to-animate-2 icon-monitor"></i>
-                    <h3>CMS &amp; eCommerce</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
-                </div>--%>
+
+                <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <a href="../images/reporte_factura.png" class="fh5co-project-item">
+                        <img src="../images/reporte_factura.png" alt="Image" class="imagen img-responsive centrar" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Reporte</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <a href="../images/factura.png" class="fh5co-project-item">
+                        <img src="../images/factura.png" alt="Image" class="imagen img-responsive centrar" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Reporte</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <a href="../images/factura.png" class="fh5co-project-item">
+                        <img src="../images/factura.png" alt="Image" class="imagen img-responsive centrar" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Reporte</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <a href="../images/factura.png" class="fh5co-project-item">
+                        <img src="../images/factura.png" alt="Image" class="imagen img-responsive centrar" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Reporte</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <a href="../images/factura.png" class="fh5co-project-item">
+                        <img src="../images/factura.png" alt="Image" class="imagen img-responsive centrar" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Reporte</h2>
+                        </div>
+                    </a>
+                </div>
+
             </div>
         </div>
     </section>
@@ -696,16 +729,25 @@
 
             <div class="row row-bottom-padded-sm">
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/agregar.png" class="fh5co-project-item">
-                        <img src="../images/agregar.png" alt="Image" class="imagen img-responsive centrar" />
+                    <a href="../images/agregar_usuario.png" class="fh5co-project-item">
+                        <img src="../images/agregar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Agregar</h2>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/actualizar.png" class="fh5co-project-item">
-                        <img src="../images/actualizar.png" alt="Image" class="imagen img-responsive centrar" />
+                    <a href="../images/inhabilitar_usuario.png" class="fh5co-project-item">
+                        <img src="../images/inhabilitar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
+                        <div class="fh5co-text">
+                            <h2 style="text-align: center;">Inhabilitar</h2>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <a href="../images/actualizar_usuario.png" class="fh5co-project-item">
+                        <img src="../images/actualizar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Actualizar</h2>
                         </div>
@@ -713,17 +755,8 @@
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/buscar.png" class="fh5co-project-item">
-                        <img src="../images/buscar.png" alt="Image" class="imagen img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Buscar</h2>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/eliminar.png" class="fh5co-project-item">
-                        <img src="../images/eliminar.png" alt="Image" class="imagen img-responsive centrar" />
+                    <a href="../images/eliminar_usuario.png" class="fh5co-project-item">
+                        <img src="../images/eliminar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Eliminar</h2>
                         </div>

@@ -19,23 +19,25 @@
                 <asp:ScriptManager runat="server" ID="sm">
                 </asp:ScriptManager>
                 <div style="padding-left:10%; padding-top:5%">
-                    <label style="text-align:center"> Citas de hoy</label>
                     <asp:Label ID="titulo" runat="server" style="text-align:center"></asp:Label>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
                                 runat="server" AutoGenerateColumns="False" Height="174px" Width="80%">
                                 <Columns>
-                            <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula del paciente" ItemStyle-Width="100" >
-                            <ItemStyle Width="100px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="horaCita" HeaderText="Hora de la cita" ItemStyle-Width="100" >
-                            <ItemStyle Width="100px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="telefonoCita" HeaderText="Contacto" ItemStyle-Width="100" >
-                            <ItemStyle Width="100px" />
-                            </asp:BoundField>
-                        </Columns>
+                                    <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula del paciente" ItemStyle-Width="100">
+                                        <ItemStyle Width="100px" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="nombre" HeaderText="Nombre del paciente" ItemStyle-Width="100">
+                                        <ItemStyle Width="100px" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="horaCita" HeaderText="Hora de la cita" ItemStyle-Width="100">
+                                        <ItemStyle Width="100px" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="telefonoCita" HeaderText="Contacto" ItemStyle-Width="100">
+                                        <ItemStyle Width="100px" />
+                                    </asp:BoundField>
+                                </Columns>
                         <HeaderStyle BackColor="#008281" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
                         <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                         <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />

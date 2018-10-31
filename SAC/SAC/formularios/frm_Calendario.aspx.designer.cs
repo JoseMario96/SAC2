@@ -76,6 +76,15 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputText cedulaA;
         
         /// <summary>
+        /// Control nombreA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText nombreA;
+        
+        /// <summary>
         /// Control fechaA.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace SAC.formularios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl telefonoA;
+        
+        /// <summary>
+        /// Control correoA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl correoA;
         
         /// <summary>
         /// Control btn_Actualizar.
@@ -148,6 +166,15 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputText cedula;
         
         /// <summary>
+        /// Control nombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText nombre;
+        
+        /// <summary>
         /// Control fechaC.
         /// </summary>
         /// <remarks>
@@ -173,6 +200,15 @@ namespace SAC.formularios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl telefono;
+        
+        /// <summary>
+        /// Control correo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl correo;
         
         /// <summary>
         /// Control btn_Agregar.
