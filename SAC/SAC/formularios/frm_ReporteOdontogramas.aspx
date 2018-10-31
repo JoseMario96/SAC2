@@ -87,6 +87,12 @@
             #Panel1.highlighted {
                 border: 3px solid red;
             }
+
+        .claseDelDiv {
+            background-image: url("/images/4.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
     </style>
 
     <script>
@@ -105,6 +111,7 @@
     </script>
 </head>
 <body>
+
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server" ID="sm">
         </asp:ScriptManager>
@@ -118,13 +125,12 @@
                 <asp:Label ID="Label5" runat="server" Text="Label">Cédula:
                 </asp:Label>
             </div>
-
-
             <div class="input-field col s2">
                 <asp:TextBox ID="Cedula" Class="izquierda" placeholder="Cédula" runat="server" Height="35px" Width="234px" OnTextChanged="Cedula_TextChanged" AutoPostBack="true"></asp:TextBox>
             </div>
-
         </div>
+
+   
 
         <asp:Panel ID="Panel1" runat="server" Visible="false" TabIndex="-1">
             <h5 class="izquierda">Datos personales</h5>
