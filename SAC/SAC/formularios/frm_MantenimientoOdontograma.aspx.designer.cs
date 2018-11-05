@@ -112,6 +112,33 @@ namespace SAC.formularios {
         protected global::System.Web.UI.WebControls.HiddenField colorM;
         
         /// <summary>
+        /// Control BDcolorO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField BDcolorO;
+        
+        /// <summary>
+        /// Control BDdienteO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField BDdienteO;
+        
+        /// <summary>
+        /// Control BDseccionO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField BDseccionO;
+        
+        /// <summary>
         /// Control Button1.
         /// </summary>
         /// <remarks>

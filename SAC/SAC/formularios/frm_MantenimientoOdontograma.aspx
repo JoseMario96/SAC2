@@ -87,8 +87,8 @@
             </div>
             <div class="input-field col s2">
                 <asp:TextBox ID="BudquedaExp" runat="server" placeholder="Cédula" OnTextChanged="BudquedaExp_TextChanged" AutoPostBack="true" onkeypress="return solonumeros (event)"></asp:TextBox>
-           <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                </div>
+                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            </div>
         </div>
         <br />
         <br />
@@ -100,6 +100,9 @@
         <asp:HiddenField ID="marcaO" runat="server" />
         <asp:HiddenField ID="borrarO" runat="server" />
         <asp:HiddenField ID="colorM" runat="server" />
+        <asp:HiddenField ID="BDcolorO" runat="server" />
+        <asp:HiddenField ID="BDdienteO" runat="server" />
+        <asp:HiddenField ID="BDseccionO" runat="server" />
 
         <div id="odontograma" style="display: none" tabindex="1">
 
@@ -529,6 +532,7 @@
                 var sec3 = 49;
                 var sec4 = 30;
 
+                var contador = 0;
                 var colorArray = new Array();
                 var borrarArrayC = new Array();
                 var borrarArrayD = new Array();
@@ -553,6 +557,15 @@
                 var color = '';
                 var seccion2 = 0;
                 var cont = 0;
+                var BDColor = new Array();
+                var BDSeccion = new Array();
+                var BDDiente = new Array();
+                var BDMarca = new Array();
+                var BDcontador = 0;
+                var BDborradorC = new Array();
+                var BDborradorD = new Array();
+                var BDborradorS = new Array();
+                var bdcontado2 = 0;
                 //Los numeros
                 for (x = 0; x < 16; x++) {
 
@@ -657,11 +670,11 @@
                         accion = 'seccion';
                     }
                     else if (seleccion == 'extraccion') {
-                        color = '1';
+                        color = '4';
                         accion = 'marcar';
                     }
                     else if (seleccion == 'exodoncia') {
-                        color = '2';
+                        color = '5';
                         accion = 'marcarE';
                     }
                     else if (seleccion == 'borrar') {
@@ -791,13 +804,10 @@
                                 alert('Ya se realizó algún tipo de extracción')
                             }
                         }
-
                         else if (accion == 'borrar') {
                             borrar_diente(ctx2, diente);
-
-                            //document.getElementById('borrarO').value = diente;
-
-                            //cargar el ultimo pintado
+                            document.getElementById('borrarO').value = diente;
+                            ////Cargar el ultimo pintado
                             seccion_chk = $("input[name='seccion']:checked").val();
                             if (seccion_chk == 'seccion') {
 
@@ -824,24 +834,59 @@
                                 borrarArrayC[contadorBorrar] = color2;
                                 borrarArrayD[contadorBorrar] = diente;
                                 borrarArrayS[contadorBorrar] = seccion2;
-                                contadorBorrar++;
 
+                                contadorBorrar++;
+                                var con = 0;
+                                var con2 = 0;
+                                for (var x = 0; x < BDDiente.length; x++) {
+                                    for (var y = 0; y < borrarArrayD.length; y++) {
+                                        if (BDDiente[x] == borrarArrayD[y] && BDSeccion[x] == borrarArrayS[y]) {
+                                            con = x + 1;
+                                            alert("gg");
+                                        }
+                                    }
+                                }
+                                alert(con);
+                                borrarArrayD.forEach((a1) => BDDiente.forEach((a2) => {
+                                    if (a1 == a2) {
+                                        // alert(" entro 1");
+                                        BDSeccion.forEach((a3) => borrarArrayS.forEach((a4) => {
+
+                                            if (a3 == a4) {
+                                                // alert("solo1");
+
+                                                // alert(con2);
+                                                
+                                                //BDColor.forEach((a5) => borrarArrayC.forEach((a6) => {
+                                                //    if (a5 == a6) {
+                                                alert("Muchaas veces");
+                                                BDborradorC[bdcontado2] = BDColor[con];
+                                                BDborradorD[bdcontado2] = BDDiente[con];
+                                                BDborradorS[bdcontado2] = BDSeccion[con];
+                                                document.getElementById('BDcolorO').value = BDborradorC.join(',');
+                                                document.getElementById('BDdienteO').value = BDborradorD.join(',');
+                                                document.getElementById('BDseccionO').value = BDborradorS.join(',');
+                                                bdcontado2++;
+                                                //    }
+                                                //}
+                                                //));
+                                            }
+                                        }
+                                        ));
+                                    }
+                                }
+                                ));
+                                con = 0;
                                 dienteArray.forEach((e1) => borrarArrayD.forEach((e2) => {
                                     if (e1 === e2) {
-
                                         posicionArray.forEach((e3) => borrarArrayS.forEach((e4) => {
-                                     
                                             if (e3 === e4) {
-                                                //colorArray.splice(cont, 1);
-                                                //dienteArray.splice(cont, 1);
-                                                //posicionArray.splice(cont, 1);
                                                 cont++;
-                                                //   alert("2");
                                                 colorArray.forEach((e5) => borrarArrayC.forEach((e6) => {
                                                     if (e5 === e6) {
-                                                        colorArray.splice(0, 1);
-                                                        dienteArray.splice(0, 1);
-                                                        posicionArray.splice(0, 1);
+                                                        colorArray.splice(cont, 1);
+                                                        dienteArray.splice(cont, 1);
+                                                        posicionArray.splice(cont, 1);
                                                         document.getElementById('colorO').value = colorArray.join(',');
                                                         document.getElementById('dienteO').value = dienteArray.join(',');
                                                         document.getElementById('seccionO').value = posicionArray.join(',');
@@ -860,64 +905,50 @@
                                     key_cod = '';
                                     key_cod2 = '';
                                     var dient = 0;
+                                    var primero;
+                                    var segundo;
+
+                                    var key_name;
                                     for (var i = 0; i < localStorage.length; i++) {
-                                        var key_name = localStorage.key(i);
+                                        key_name = localStorage.key(i);
                                         item = localStorage.getItem(key_name);
                                         item = item.split(',');
                                         diente_comp = parseInt(item[0], 10);
                                         seccion_comp = parseInt(item[1], 10);
                                         accion_comp = parseInt(item[2], 10);
-                                        key_cod2 = key_name;
-                                        //var colorB;
-                                        //if (accion_comp == 1) {
-                                        //    colorB = 'red';
-                                        //}
-                                        //if (accion_comp == 2) {
-                                        //    colorB = 'black';
-                                        //}
-                                        //if (accion_comp == 3) {
-                                        //    colorB = 'blue';
-                                        //}
-                                        //  alert(seccion_comp);
-
-
-                                        //var indexC = colorArray.indexOf(colorB);
-                                        //var indexD = dienteArray.indexOf(diente_comp);
-                                        //var indexP = posicionArray.indexOf(seccion_comp);
-                                        //colorArray.splice[indexC, 1];
-                                        //dienteArray.splice[indexD, 1];
-                                        //posicionArray.splice[indexP, 1];
 
                                         if (diente_comp == diente && seccion_b == seccion_comp && (accion_comp == 1 || accion_comp == 2 || accion_comp == 3)) {
                                             if (ultimo == '') {
                                                 ultimo = item;
                                                 key_cod = key_name;
-                                                //   alert(key_cod);
+                                                var pruebaorig = localStorage.key(i);
+                                                segundo = localStorage.getItem(pruebaorig);
+                                                segundo = segundo.split(',');
+
                                             }
                                             //Cuando tengo 2 tratamientos
                                             else {
-                                                fecha_ult = parseInt(item[3], 10);
-                                                alert(key_name);
-
-                                                //alert(fecha_ult);
-                                                if (ultimo[3] < fecha_ult) {
-                                                    ultimo = item;
-                                                    key_cod = key_name;
+                                                var pruebasig = localStorage.key(i);
+                                                primero = localStorage.getItem(pruebasig);
+                                                primero = primero.split(',');
+                                                if (segundo[3] < primero[3]) {
+                                                    key_cod = pruebasig;
                                                 }
                                             }
                                         }
 
                                     } //termina el for que recorre para borrar 
                                     if (key_cod != '') {
-                                        //console.log(key_cod);
+                                        // alert(key_cod);
                                         localStorage.removeItem(key_cod);
+                                        pinta_datos();
                                     }
                                 }
                             }
                             else if (seccion_chk == 'diente') {
                                 ultimo = '';
                                 key_cod = '';
-
+                                alert("DienteP");
                                 for (var i = 0; i < localStorage.length; i++) {
                                     var key_name = localStorage.key(i);
                                     item = localStorage.getItem(key_name);
@@ -941,17 +972,17 @@
                                 if (key_cod != '') {
                                     //console.log(key_cod);
                                     localStorage.removeItem(key_cod);
+                                    pinta_datos();
                                 }
                             }
                             //alert('a');
-                            pinta_datos();
+
                         }
                     }
                     //alert(diente);
-                    if (seccion && color != '') {
-                        //alert(color);
 
-                        //alert(seccion);
+                    if (seccion && color != '') {
+
                         //[numero_diente, seccion, accion, fecha, diente2]
                         if (color == 'red') {
                             cod = diente + '-' + seccion + '-' + '1';
@@ -963,19 +994,24 @@
                             cod = diente + '-' + seccion + '-' + '3';
                             accion_g = 3;
                         };
-
+                        var cargado = false;
                         var verificacion = false;
                         if (banderaArray.length > 0 || bandera2Array.length > 0) {
                             for (var x = 0; x <= banderaArray.length; x++) {
                                 if (banderaArray[x] == diente || bandera2Array[x] == diente) {
-                                    verificacion = true;
+                                    verificacion = true
                                 }
-
+                            }
+                        }
+                        for (var c = 0; c < BDColor.length; c++) {
+                            if (BDColor[c] == color && BDDiente[c] == diente && BDSeccion[c] == seccion) {
+                                cargado = true;
                             }
                         }
                         if (verificacion == false) {
+                            //  alert("atascado");
+                            if (cargado == false && cod && !localStorage.getItem(cod)) {
 
-                            if (cod && !localStorage.getItem(cod)) {
                                 new_array = [diente, seccion, accion_g, Date.now(), 0];
                                 guardar = new_array.toLocaleString();
                                 localStorage.setItem(cod, guardar);
@@ -985,7 +1021,6 @@
                                     dienteArray[contador] = diente;
                                     posicionArray[contador] = seccion;
                                     contador++;
-
                                     document.getElementById('colorO').value = colorArray.join(',');
                                     document.getElementById('dienteO').value = dienteArray.join(',');
                                     document.getElementById('seccionO').value = posicionArray.join(',');
@@ -1000,66 +1035,6 @@
                             alert('No se puede pintar sobre una Ausencia o Exodoncia')
                         }
                     }
-                    //if ('borrar' == $("input[name='accion']:checked").val()) {
-                    //    //alert("x-> "+x+" y-> "+y);
-                    //    //ctx4.clearRect(0, 0, 810, 300);
-                    //    if (x >= 30 && x <= 780 && ((y > 78 && y < 82) || (y > 198 && y < 202))) {
-                    //        //alert(x);
-                    //        div = parseInt(x / 50, 10);
-                    //        //alert(div);
-                    //        ultimo = '';
-                    //        key_cod = '';
-                    //        for (var i = 0; i < localStorage.length; i++) {
-                    //            var key_name = localStorage.key(i);
-                    //            item = localStorage.getItem(key_name);
-                    //            item = item.split(',');
-                    //            diente1_comp = parseInt(item[0], 10);
-                    //            diente2_comp = parseInt(item[4], 10);
-                    //            accion_comp = parseInt(item[2], 10);
-                    //            if (accion_comp == 4) {
-
-                    //                if (diente1_comp > 16) {
-                    //                    diente1_comp = diente1_comp - 17;
-                    //                    diente2_comp = diente2_comp - 17;
-                    //                } else {
-                    //                    diente1_comp = diente1_comp - 1;
-                    //                    diente2_comp = diente2_comp - 1;
-                    //                }
-                    //                inicio_x = (diente1_comp * 40) + (10 * diente1_comp) + 10 + 20;
-                    //                fin_X = (diente2_comp * 40) + (10 * diente2_comp) + 10 + 20;
-                    //                if (x >= inicio_x && x <= fin_x) {
-                    //                    if (ultimo == '') {
-                    //                        ultimo = item;
-                    //                        key_cod = key_name;
-                    //                    }
-                    //                    else {
-                    //                        fecha_ult = parseInt(item[3], 10);
-                    //                        if (ultimo[3] < fecha_ult) {
-                    //                            ultimo = item;
-                    //                            key_cod = key_name;
-                    //                        }
-                    //                    }
-                    //                }
-
-                    //            }
-                    //        }
-                    //        if (key_cod != '') {
-                    //            console.log(key_cod);
-                    //            if (parseInt(ultimo[0], 10) < 16) {
-                    //                seccion_p = 1;
-                    //                ctx4.clearRect(0, 0, 810, 130);
-                    //            }
-                    //            else {
-                    //                ctx4.clearRect(0, 130, 810, 150);
-                    //                seccion_p = 2;
-                    //            }
-                    //            localStorage.removeItem(key_cod);
-                    //            pinta_puentes(seccion_p);
-                    //        }
-                    //    }
-
-                    //}
-
                 }
 
                 //dibuja_seccion(x, y, 5, 5);
@@ -1182,11 +1157,11 @@
                         var key_name = localStorage.key(i);
                         array_local[i] = localStorage.getItem(key_name).split(',');
                     }
-                    //console.log(array_local);
+                    console.log(array_local);
                     array_local.sort(function (a, b) {
                         return a[3] > b[3]; // orden ascendente por las fechas;
                     });
-                    //console.log(array_local);
+                    console.log(array_local);
                     for (var i = 0; i < array_local.length; i++) {
                         item = array_local[i];
                         if (parseInt(item[0], 10) == diente) {
@@ -1262,7 +1237,15 @@
                     return devolver_seccion;
                 }
                 function pintarDiente(diente, seccion, color, marca) {
-
+                    var col = color;
+                    var sec = seccion;
+                    var dient = diente;
+                    var marc = marca;
+                    BDColor[BDcontador] = col;
+                    BDSeccion[BDcontador] = sec;
+                    BDDiente[BDcontador] = dient;
+                    BDMarca[BDcontador] = marc;
+                    BDcontador++;
                     dibuja_seccion(ctx2, diente, seccion, color);
                     if (color == 'black') {
                         marcar_extraccion(ctx2, marca, 'black');
@@ -1272,11 +1255,12 @@
                     }
 
                 }
+
                 function guardarDiente() {
-                  //  alert("Mafdsfe");
-                   
+                    //  alert("Mafdsfe");
+
                 }
-                
+
             </script>
 
 
@@ -1286,7 +1270,7 @@
             <br />
             <h5>Tratamientos Efectuados</h5>
             <br />
-           
+
             <div style="margin-left: auto; margin-right: auto;">
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
@@ -1432,4 +1416,3 @@
     </form>
 </body>
 </html>
-

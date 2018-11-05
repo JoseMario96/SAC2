@@ -25,6 +25,20 @@ namespace SAC.metodos
 
             con.cerrar_Conexion();
         }
+        public void borrarOdontograma(String col, String die, String secc, String codE)
+        {
+            string y = "";
+            MySqlDataReader contador = consultar.ejecutar_consulta("SELECT tbl_odontograma.codigoOdontograma from tbl_odontograma, tbl_expedienteodontograma where codigoExpediente='" + codE + "' and tbl_odontograma.codigoOdontograma=tbl_expedienteodontograma.codigoOdontograma and colorOdontograma='" + col + "' and dienteOdontograma='" + die + "' and seccionOdontograma='" + secc + "';", con.abrir_conexion()).ExecuteReader();
+            if (contador.Read())
+            {
+                y = contador.GetString(0);
+            }
+            consultar.ejecutar_consulta("DELETE FROM `bd_sac`.`tbl_expedienteodontograma` WHERE `codigoOdontograma`='" + y + "';", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("DELETE FROM `bd_sac`.`tbl_odontograma` WHERE `codigoOdontograma`='" + y + "';", con.abrir_conexion()).ExecuteNonQuery();
+
+            con.cerrar_Conexion();
+           
+        }
 
         public DataTable Paciente()
         {
