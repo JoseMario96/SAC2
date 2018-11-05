@@ -836,46 +836,80 @@
                                 borrarArrayS[contadorBorrar] = seccion2;
 
                                 contadorBorrar++;
-                                var con = 0;
+                                var con = 1;
                                 var con2 = 0;
                                 for (var x = 0; x < BDDiente.length; x++) {
                                     for (var y = 0; y < borrarArrayD.length; y++) {
                                         if (BDDiente[x] == borrarArrayD[y] && BDSeccion[x] == borrarArrayS[y]) {
-                                            con = x + 1;
-                                            alert("gg");
-                                        }
-                                    }
-                                }
-                                alert(con);
-                                borrarArrayD.forEach((a1) => BDDiente.forEach((a2) => {
-                                    if (a1 == a2) {
-                                        // alert(" entro 1");
-                                        BDSeccion.forEach((a3) => borrarArrayS.forEach((a4) => {
-
-                                            if (a3 == a4) {
-                                                // alert("solo1");
-
-                                                // alert(con2);
-                                                
-                                                //BDColor.forEach((a5) => borrarArrayC.forEach((a6) => {
-                                                //    if (a5 == a6) {
-                                                alert("Muchaas veces");
-                                                BDborradorC[bdcontado2] = BDColor[con];
-                                                BDborradorD[bdcontado2] = BDDiente[con];
-                                                BDborradorS[bdcontado2] = BDSeccion[con];
+                                            if (con == 1) {
+                                                alert("Entro 1");   
+                                                BDborradorC[bdcontado2] = BDColor[x];
+                                                BDborradorD[bdcontado2] = BDDiente[x];
+                                                BDborradorS[bdcontado2] = BDSeccion[x];
                                                 document.getElementById('BDcolorO').value = BDborradorC.join(',');
                                                 document.getElementById('BDdienteO').value = BDborradorD.join(',');
                                                 document.getElementById('BDseccionO').value = BDborradorS.join(',');
                                                 bdcontado2++;
-                                                //    }
-                                                //}
-                                                //));
+                                                con++;
                                             }
+                                            else if (con == 2) {
+                                                alert("Entro 2");   
+                                                bdcontado2--;
+                                                BDborradorC[bdcontado2] = BDColor[x];
+                                                BDborradorD[bdcontado2] = BDDiente[x];
+                                                BDborradorS[bdcontado2] = BDSeccion[x];
+                                                document.getElementById('BDcolorO').value = BDborradorC.join(',');
+                                                document.getElementById('BDdienteO').value = BDborradorD.join(',');
+                                                document.getElementById('BDseccionO').value = BDborradorS.join(',');
+                                                bdcontado2++;
+                                                con++;
+                                            }
+                                            else if (con == 3) {
+                                                alert("Entro 3");
+                                                bdcontado2--;
+                                                BDborradorC[bdcontado2] = BDColor[x];
+                                                BDborradorD[bdcontado2] = BDDiente[x];
+                                                BDborradorS[bdcontado2] = BDSeccion[x];
+                                                document.getElementById('BDcolorO').value = BDborradorC.join(',');
+                                                document.getElementById('BDdienteO').value = BDborradorD.join(',');
+                                                document.getElementById('BDseccionO').value = BDborradorS.join(',');
+                                                bdcontado2++;
+                                                con++;
+                                            }
+                                          
                                         }
-                                        ));
                                     }
                                 }
-                                ));
+
+                                //borrarArrayD.forEach((a1) => BDDiente.forEach((a2) => {
+                                //    if (a1 == a2) {
+                                //        // alert(" entro 1");
+                                //        BDSeccion.forEach((a3) => borrarArrayS.forEach((a4) => {
+
+                                //            if (a3 == a4) {
+                                //                // alert("solo1");
+
+                                //                // alert(con2);
+                                                
+                                //                //BDColor.forEach((a5) => borrarArrayC.forEach((a6) => {
+                                //                //    if (a5 == a6) {
+                                //                alert("Muchaas veces");
+                                //                BDborradorC[bdcontado2] = BDColor[con];
+                                //                BDborradorD[bdcontado2] = BDDiente[con];
+                                //                BDborradorS[bdcontado2] = BDSeccion[con];
+                                //                document.getElementById('BDcolorO').value = BDborradorC.join(',');
+                                //                document.getElementById('BDdienteO').value = BDborradorD.join(',');
+                                //                document.getElementById('BDseccionO').value = BDborradorS.join(',');
+                                //                bdcontado2++;
+                                //                //    }
+                                //                //}
+                                //                //));
+                                //            }
+                                //        }
+                                //        ));
+                                //    }
+                                //}
+                                //));
                                 con = 0;
                                 dienteArray.forEach((e1) => borrarArrayD.forEach((e2) => {
                                     if (e1 === e2) {
