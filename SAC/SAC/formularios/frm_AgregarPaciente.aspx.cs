@@ -209,17 +209,18 @@ namespace SAC.formularios
                 nombre2_encargado.Value = datos2[2];
                 apellido1_encargado.Value = datos2[3];
                 apellido2_encargado.Value = datos2[4];
+
                 if (datos2[5].Equals("Masculino"))
                 {
-                    masculinoE.Checked = false;
+                    masculinoE.Checked = true;
                     femeninoE.Checked = false;
-                    otroE.Checked = true;
+                    otroE.Checked = false;
                 }
                 else if (datos2[5].Equals("Femenino"))
                 {
                     masculinoE.Checked = false;
-                    femeninoE.Checked = false;
-                    otroE.Checked = true;
+                    femeninoE.Checked = true;
+                    otroE.Checked = false;
                 }
                 else if (datos2[5].Equals("Otro"))
                 {
