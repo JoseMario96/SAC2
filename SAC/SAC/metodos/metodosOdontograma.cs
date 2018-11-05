@@ -204,11 +204,9 @@ namespace SAC.metodos
             return codi;
 
         }
-        public void agregarPacienteTratamiento(int codigoEx, string tratamiento, string fecha, string tratamientorealizado, string pieza, string descripcion, string cedula, string detalle, int monto, int saldo)
+        public void agregarPacienteTratamiento(int codigoEx, string tratamiento, string fecha, string tratamientorealizado, string pieza, string descripcion, string cedula)
         {
             consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_expedientetramiento` (`codigoExpediente`, `codigoTratamiento`, `fechaExpedienteTratamiento`, `tratamientoExpedienteTratamiento`, `piezaExpedienteTratamiento`, `descripcionExpedienteTratamiento`, `EstadoPago`) VALUES('" + codigoEx + "', '" + tratamiento + "', '" + fecha + "', '" + tratamientorealizado + "','" + pieza + "','" + descripcion + "', false);", con.abrir_conexion()).ExecuteNonQuery();
-
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_venta` (`cedulaPaciente`, `fechaVenta`, `detalleVenta`, `montoTotalVenta`, `saldoVenta`) VALUES('" + cedula + "', '" + fecha + "', '" + detalle + "', '" + monto + "', '" + saldo + "');", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
         public DataTable tratamientosEfectuados()

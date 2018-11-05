@@ -21,11 +21,6 @@
             margin: auto;
         }
 
-        .auto-style1 {
-            left: 4px;
-            top: 0px;
-        }
-
         label, th, tr {
             font-family: sans-serif;
             font-size: medium;
@@ -55,12 +50,7 @@
     </style>
     <style type="text/css">
         body, a, a:hover {
-            cursor: url(C:\Users\dtrej\source\repos\SAC2\SAC\SAC\images\cur438.cur), progress;
-        }
-
-        .auto-style1 {
-            left: 0px;
-            top: 0px;
+            cursor: url("..images/cur438.cur");
         }
     </style>
     <script>
@@ -86,9 +76,9 @@
                 </asp:Label>
             </div>
             <div class="input-field col s2">
-                <asp:TextBox ID="BudquedaExp" runat="server" placeholder="Cédula" OnTextChanged="BudquedaExp_TextChanged" AutoPostBack="true" onkeypress="return solonumeros (event)"></asp:TextBox>
-           <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                </div>
+                <asp:TextBox ID="BudquedaExp" runat="server" title="Cédula" placeholder="Cédula" OnTextChanged="BudquedaExp_TextChanged" AutoPostBack="true" onkeypress="return solonumeros (event)"></asp:TextBox>
+                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            </div>
         </div>
         <br />
         <br />
@@ -553,6 +543,8 @@
                 var color = '';
                 var seccion2 = 0;
                 var cont = 0;
+                var remplazo = 0;
+                var tamanoB = 0;
                 //Los numeros
                 for (x = 0; x < 16; x++) {
 
@@ -610,9 +602,6 @@
                     }
 
                 }
-                //dibuja_seccion(context, 2, 3, 'red');
-                //dibuja_seccion(context, 18, 5, 'green');
-                //dibuja_seccion(context, 24, 4, 'blue');
                 window.onload = function () {
                     localStorage.clear();
                     click();
@@ -627,11 +616,14 @@
                 }
                 //canvas.addEventListener("mousedown", getPosition, false);
 
+
+
+
                 function getPosition(event) {
+
                     var x = event.x - 225;// pintar en eje x
                     var y = event.y; // pintar en eje y
                     //alert(y);
-                    //alert(x);
                     var canvas = document.getElementById("myCanvas");
                     var div_can = document.getElementById("canvasesdiv");
                     x -= div_can.offsetLeft;
@@ -698,16 +690,36 @@
                             }
                         }
                     }
-                    if (diente) {
-                        //alert(diente);
-                        if (accion == 'seccion') {
 
+                    if (diente) {
+                        if (accion == 'seccion') {
+                            //alert(x + "x");
+                            //alert(y + "y");
                             x = x - ((div * 40) + (10 * div) + 10);
                             y = y - 20;
+
                             if (diente > 16) {
                                 y = y - 120;
                             }
-                            //  alert(y);
+                            //alert(x + "    x");
+                            //alert(y + "    y");
+                            ////---------------------------------------------------------------------------------------------
+                            if (diente == 1 || diente == 17) {
+
+                                x = remplazo;
+                                if (y > 0 && y < 10 && x > y && y < 40 - x) {
+                                    seccion = 1;
+                                } else if (x > 30 && x < 40 && y < x && 40 - x < y) {
+                                    seccion = 2;
+                                } else if (y > 30 && y < 40 && x < y && x > 40 - y) {
+                                    seccion = 3;
+                                } else if (x > 0 && x < 10 && y > x && x < 40 - y) {
+                                    seccion = 4;
+                                } else if (x > 10 && x < 30 && y > 10 && y < 30) {
+                                    seccion = 5;
+                                }
+                            }
+
                             if (y > 0 && y < 10 && x > y && y < 40 - x) {
                                 seccion = 1;
 
@@ -724,6 +736,7 @@
                                 seccion = 5;
 
                             }
+
                         } else if (accion == 'marcar') {
                             cod = diente + '-0-' + '4';
                             var verificacion = false;
@@ -830,7 +843,7 @@
                                     if (e1 === e2) {
 
                                         posicionArray.forEach((e3) => borrarArrayS.forEach((e4) => {
-                                     
+
                                             if (e3 === e4) {
                                                 //colorArray.splice(cont, 1);
                                                 //dienteArray.splice(cont, 1);
@@ -856,60 +869,101 @@
                                 ));
                                 seccion_b = ubica_seccion(x, y);
                                 if (seccion_b) {
+
                                     ultimo = '';
                                     key_cod = '';
                                     key_cod2 = '';
+                                    var primero;
+                                    var segundo;
+                                    var colores1;
+                                    var colores2;
+                                    var colores3;
+                                    var colores;
                                     var dient = 0;
+                                    tamanoB = 0;
+
+                                    tamanoB = localStorage.length;
+
+                                    alert(localStorage.length);
+                                    var borrarVarios = new Array();
+                                    var contVarios = 0;
+
                                     for (var i = 0; i < localStorage.length; i++) {
-                                        var key_name = localStorage.key(i);
-                                        item = localStorage.getItem(key_name);
-                                        item = item.split(',');
-                                        diente_comp = parseInt(item[0], 10);
-                                        seccion_comp = parseInt(item[1], 10);
-                                        accion_comp = parseInt(item[2], 10);
-                                        key_cod2 = key_name;
-                                        //var colorB;
-                                        //if (accion_comp == 1) {
-                                        //    colorB = 'red';
-                                        //}
-                                        //if (accion_comp == 2) {
-                                        //    colorB = 'black';
-                                        //}
-                                        //if (accion_comp == 3) {
-                                        //    colorB = 'blue';
-                                        //}
-                                        //  alert(seccion_comp);
+                                        var key_namee = localStorage.key(i);
+                                        itemm = localStorage.getItem(key_namee);
+                                        itemm = itemm.split(',');
+                                        dienteVarios = parseInt(itemm[0], 10);
+                                        seccionVarios = parseInt(itemm[1], 10);
+                                        if (dienteVarios == diente && seccionVarios == seccion2) {
+                                            borrarVarios[contVarios] = i;
+                                            contVarios++;
+                                        }
+                                    }
+                                    tamanoB = borrarVarios.length;
+                                    if (tamanoB == 3) {
+                                        var coloresU = localStorage.key(borrarVarios[0]);
+                                        colores1 = localStorage.getItem(coloresU);
+                                        colores1 = colores1.split(',');
+                                        var coloresD = localStorage.key(borrarVarios[1]);
+                                        colores2 = localStorage.getItem(coloresD);
+                                        colores2 = colores2.split(',');
+                                        var coloresT = localStorage.key(borrarVarios[2]);
+                                        colores3 = localStorage.getItem(coloresT);
+                                        colores3 = colores3.split(',');
+                                        if ((colores1[3] < colores2[3]) && (colores1[3] < colores3[3])) {
+                                            if (colores2[3] > colores3[3]) {
 
+                                                key_cod = coloresD;
+                                            } else {
+                                                key_cod = coloresT;
 
-                                        //var indexC = colorArray.indexOf(colorB);
-                                        //var indexD = dienteArray.indexOf(diente_comp);
-                                        //var indexP = posicionArray.indexOf(seccion_comp);
-                                        //colorArray.splice[indexC, 1];
-                                        //dienteArray.splice[indexD, 1];
-                                        //posicionArray.splice[indexP, 1];
-
-                                        if (diente_comp == diente && seccion_b == seccion_comp && (accion_comp == 1 || accion_comp == 2 || accion_comp == 3)) {
-                                            if (ultimo == '') {
-                                                ultimo = item;
-                                                key_cod = key_name;
-                                                //   alert(key_cod);
                                             }
-                                            //Cuando tengo 2 tratamientos
-                                            else {
-                                                fecha_ult = parseInt(item[3], 10);
-                                                alert(key_name);
+                                        } else if ((colores1[3] > colores2[3]) && (colores1[3] < colores3[3])) {
+                                            key_cod = coloresT;
 
-                                                //alert(fecha_ult);
-                                                if (ultimo[3] < fecha_ult) {
+                                        } else if ((colores1[3] > colores2[3]) && (colores1[3] > colores3[3])) {
+                                            key_cod = coloresU;
+
+                                        } else {
+                                            key_cod = coloresD;
+
+                                        }
+
+                                    } else {
+
+                                        for (var i = 0; i < localStorage.length; i++) {
+                                            var key_name = localStorage.key(i);
+                                            item = localStorage.getItem(key_name);
+                                            item = item.split(',');
+                                            diente_comp = parseInt(item[0], 10);
+                                            seccion_comp = parseInt(item[1], 10);
+                                            accion_comp = parseInt(item[2], 10);
+                                            key_cod2 = key_name;
+                                            if (diente_comp == diente && seccion_b == seccion_comp && (accion_comp == 1 || accion_comp == 2 || accion_comp == 3)) {
+                                                if (ultimo == '') {
                                                     ultimo = item;
                                                     key_cod = key_name;
+                                                    var pruebaorig = localStorage.key(i);
+                                                    segundo = localStorage.getItem(pruebaorig);
+                                                    segundo = segundo.split(',');
+                                                }
+                                                //Cuando tengo 2 tratamientos
+                                                else {
+                                                    var pruebasig = localStorage.key(i);
+                                                    primero = localStorage.getItem(pruebasig);
+                                                    primero = primero.split(',');
+
+                                                    if (segundo[3] < primero[3]) {
+                                                        key_cod = pruebasig;
+                                                    }
                                                 }
                                             }
                                         }
-
-                                    } //termina el for que recorre para borrar 
+                                    }
+                                    //termina el for que recorre para borrar
+                                    alert(key_cod);
                                     if (key_cod != '') {
-                                        //console.log(key_cod);
+
                                         localStorage.removeItem(key_cod);
                                     }
                                 }
@@ -921,6 +975,8 @@
                                 for (var i = 0; i < localStorage.length; i++) {
                                     var key_name = localStorage.key(i);
                                     item = localStorage.getItem(key_name);
+
+
                                     item = item.split(',');
                                     diente_comp = parseInt(item[0], 10);
                                     accion_comp = parseInt(item[2], 10);
@@ -1000,70 +1056,8 @@
                             alert('No se puede pintar sobre una Ausencia o Exodoncia')
                         }
                     }
-                    //if ('borrar' == $("input[name='accion']:checked").val()) {
-                    //    //alert("x-> "+x+" y-> "+y);
-                    //    //ctx4.clearRect(0, 0, 810, 300);
-                    //    if (x >= 30 && x <= 780 && ((y > 78 && y < 82) || (y > 198 && y < 202))) {
-                    //        //alert(x);
-                    //        div = parseInt(x / 50, 10);
-                    //        //alert(div);
-                    //        ultimo = '';
-                    //        key_cod = '';
-                    //        for (var i = 0; i < localStorage.length; i++) {
-                    //            var key_name = localStorage.key(i);
-                    //            item = localStorage.getItem(key_name);
-                    //            item = item.split(',');
-                    //            diente1_comp = parseInt(item[0], 10);
-                    //            diente2_comp = parseInt(item[4], 10);
-                    //            accion_comp = parseInt(item[2], 10);
-                    //            if (accion_comp == 4) {
-
-                    //                if (diente1_comp > 16) {
-                    //                    diente1_comp = diente1_comp - 17;
-                    //                    diente2_comp = diente2_comp - 17;
-                    //                } else {
-                    //                    diente1_comp = diente1_comp - 1;
-                    //                    diente2_comp = diente2_comp - 1;
-                    //                }
-                    //                inicio_x = (diente1_comp * 40) + (10 * diente1_comp) + 10 + 20;
-                    //                fin_X = (diente2_comp * 40) + (10 * diente2_comp) + 10 + 20;
-                    //                if (x >= inicio_x && x <= fin_x) {
-                    //                    if (ultimo == '') {
-                    //                        ultimo = item;
-                    //                        key_cod = key_name;
-                    //                    }
-                    //                    else {
-                    //                        fecha_ult = parseInt(item[3], 10);
-                    //                        if (ultimo[3] < fecha_ult) {
-                    //                            ultimo = item;
-                    //                            key_cod = key_name;
-                    //                        }
-                    //                    }
-                    //                }
-
-                    //            }
-                    //        }
-                    //        if (key_cod != '') {
-                    //            console.log(key_cod);
-                    //            if (parseInt(ultimo[0], 10) < 16) {
-                    //                seccion_p = 1;
-                    //                ctx4.clearRect(0, 0, 810, 130);
-                    //            }
-                    //            else {
-                    //                ctx4.clearRect(0, 130, 810, 150);
-                    //                seccion_p = 2;
-                    //            }
-                    //            localStorage.removeItem(key_cod);
-                    //            pinta_puentes(seccion_p);
-                    //        }
-                    //    }
-
-                    //}
-
                 }
 
-                //dibuja_seccion(x, y, 5, 5);
-                //dibuja_seccion(context, num_diente, seccion, color)
                 //Marca la posicion exacta del mouse
                 function Marcar(event) {
                     var x = event.x - 225;//Donde esta la posicion del mouse en el eje x
@@ -1134,24 +1128,48 @@
                             }
                         }
                         if (seleccion == 'seccion') {
+
                             x = x - ((div * 40) + (10 * div) + 10);
                             y = y - 20;
                             if (diente > 16) {
                                 y = y - 120;
+                            } else if (diente == 17) {
+
                             }
-                            //alert(y);
-                            /*if (y>=x && y<=39){}*/
                             // Ubicar la seccion clickeada
                             if (y > 0 && y < 10 && x > y && y < 40 - x) {
                                 seccion = 1;
+                                if (diente == 1) {
+                                    remplazo = 27;
+                                } else if (diente == 17) {
+                                    remplazo = 20;
+                                }
                             } else if (x > 30 && x < 40 && y < x && 40 - x < y) {
                                 seccion = 2;
+                                if (diente == 1) {
+                                    remplazo = 37;
+                                } else if (diente == 17) {
+                                    remplazo = 36;
+                                }
                             } else if (y > 30 && y < 40 && x < y && x > 40 - y) {
                                 seccion = 3;
+                                if (diente == 1) {
+                                    remplazo = 25;
+                                } else if (diente == 17) {
+                                    remplazo = 28;
+                                }
                             } else if (x > 0 && x < 10 && y > x && x < 40 - y) {
                                 seccion = 4;
+                                if (diente == 1 || diente == 17) {
+                                    remplazo = 4;
+                                }
                             } else if (x > 10 && x < 30 && y > 10 && y < 30) {
                                 seccion = 5;
+                                if (diente == 1) {
+                                    remplazo = 22;
+                                } else if (diente == 17) {
+                                    remplazo = 23;
+                                }
                             }
                             //Comprobacion de si esta en una seccion
                             if (seccion) {
@@ -1176,23 +1194,61 @@
 
                     //dibuja_contorno(canvas, inicio_x, inicio_y, med, separacion_x, separacion_y)
                 }
+
+                function pintaBorrado() {
+                    var dientepitando;
+                    var itemm;
+                    var seccionpintado;
+                    var pintadoVector = new Array();
+                    var contPintado = 0;
+
+                    if (tamanoB == 3) {
+                        for (var i = 0; i < localStorage.length; i++) {
+                            var key_namee = localStorage.key(i);
+                            itemm = localStorage.getItem(key_namee);
+                            itemm = itemm.split(',');
+                            dientepitando = parseInt(itemm[0], 10);
+                            seccionpintado = parseInt(itemm[1], 10);
+                            if (dientepitando == diente && seccionpintado == seccion2) {
+                                pintadoVector[contPintado] = localStorage.getItem(key_namee).split(',');
+                                contPintado++;
+                                alert("mim");
+                            }
+                        }
+                    } else {
+                        for (var i = 0; i < localStorage.length; i++) {
+                            var key_name = localStorage.key(i);
+                            pintadoVector[i] = localStorage.getItem(key_name).split(',');
+                        }
+                    }
+                    tamanoB = 0;
+                    return (pintadoVector);
+                }
                 function pinta_datos() {
                     array_local = [];
-                    for (var i = 0; i < localStorage.length; i++) {
-                        var key_name = localStorage.key(i);
-                        array_local[i] = localStorage.getItem(key_name).split(',');
-                    }
-                    //console.log(array_local);
+                    array_local = pintaBorrado();
                     array_local.sort(function (a, b) {
-                        return a[3] > b[3]; // orden ascendente por las fechas;
+                        var total = new Array();
+
+                        if (a[3] > b[3]) {
+                            total = array_local;
+                        } else {
+                            total = array_local.reverse()
+                        }
+                        return total; // orden ascendente por las fechas;
                     });
-                    //console.log(array_local);
+                    alert(array_local.length);
+
+                    alert(array_local[0] + " Des " + array_local[1]);
+
+
+
                     for (var i = 0; i < array_local.length; i++) {
                         item = array_local[i];
                         if (parseInt(item[0], 10) == diente) {
-                            acc = parseInt(item[2], 10);
-                            //console.log(acc);
 
+                            acc = parseInt(item[2], 10);
+                            alert(acc);
                             if (acc == 1) {
                                 color = 'red';
                                 dibuja_seccion(ctx2, item[0], item[1], color);
@@ -1212,38 +1268,7 @@
                         }
                     }
                 }
-                //function pinta_puentes(seccion_p) {
-                //    array_local = [];
-                //    for (var i = 0; i < localStorage.length; i++) {
-                //        var key_name = localStorage.key(i);
-                //        array_local[i] = localStorage.getItem(key_name).split(',');
-                //    }
-                //    //console.log(array_local);
-                //    array_local.sort(function (a, b) {
-                //        return a[3] > b[3]; // orden ascendente por las fechas;
-                //    });
-                //    //console.log(array_local);
-                //    for (var i = 0; i < array_local.length; i++) {
-                //        item = array_local[i];
-                //        acc = parseInt(item[2], 10);
-                //        //console.log(acc);
-                //        if (acc == 4) {
-                //            color_pas = 'red';
-                //            if (seccion_p == 1) {
-                //                if (parseInt(item[0], 10) < 17) {
-                //                    marcar_puente(ctx4, item[0], item[4], color_pas);
-                //                }
-                //            }
-                //            else {
-                //                if (parseInt(item[0], 10) > 16) {
-                //                    marcar_puente(ctx4, item[0], item[4], color_pas);
-                //                }
-                //            }
-                //            //dibuja_seccion(ctx2, item[0], item[1], color);
-                //        }
 
-                //    }
-                //}
                 function ubica_seccion(X, Y) {
                     y = Y;
                     x = X;
@@ -1261,6 +1286,7 @@
                     }
                     return devolver_seccion;
                 }
+
                 function pintarDiente(diente, seccion, color, marca) {
 
                     dibuja_seccion(ctx2, diente, seccion, color);
@@ -1270,13 +1296,7 @@
                     else {
                         marcar_exodoncia(ctx2, marca, 'red');
                     }
-
                 }
-                function guardarDiente() {
-                  //  alert("Mafdsfe");
-                   
-                }
-                
             </script>
 
 
@@ -1286,7 +1306,7 @@
             <br />
             <h5>Tratamientos Efectuados</h5>
             <br />
-           
+
             <div style="margin-left: auto; margin-right: auto;">
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
@@ -1317,7 +1337,7 @@
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
                                     <label class="active" for="Fecha">Fecha </label>
-                                    <asp:Label ID="fecha" runat="server"></asp:Label>
+                                    <asp:Label ID="fecha" title="Fecha" runat="server"></asp:Label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
@@ -1325,7 +1345,7 @@
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
                                     <label class="active" for="Tratamiento">Tipo de tratamiento </label>
-                                    <asp:DropDownList ID="DropDownList1" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                    <asp:DropDownList ID="DropDownList1" title="Tipos de tratamientos" Style="border: 2px solid black;" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
@@ -1334,7 +1354,7 @@
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
                                     <label class="active" for="Tipotratamiento">Tratamiento</label>
-                                    <asp:DropDownList ID="DropDownList2" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTratamiento" DataValueField="nombreTratamiento" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                    <asp:DropDownList ID="DropDownList2" title="Tratamientos" Style="border: 2px solid black;" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTratamiento" DataValueField="nombreTratamiento" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
@@ -1343,7 +1363,7 @@
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
                                     <label class="active" for="Diente">Diente</label>
-                                    <input type='text' name='dient' id="diente" runat="server" maxlength="44" />
+                                    <input type='text' name='dient' title="Dientes afectados" id="diente" runat="server" maxlength="44" />
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
@@ -1354,80 +1374,38 @@
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <div class="col s2"></div>
-                            <div class="col s9">
+                            <div class="col s8">
                                 <label class="active" for="Descripcion">Descripción</label>
-                                <input type='text' name='debe' id="descrip" runat="server" maxlength="244" />
+                                <input type='text' name='debe' id="descrip" title="Descripción" runat="server" maxlength="244" />
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
-                </div>
-
-
-                <div class="row">
-                    <div class="col s2"></div>
-                    <div class="col s10">
-                        <div class="col s2">
-                            <asp:UpdatePanel runat="server">
-                                <ContentTemplate>
-                                    <label class="active" for="Debe">Debe </label>
-                                    <label id="preciost" runat="server" class="active" for="Debe"></label>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </div>
-
-                        <div class="col s3">
-                            <asp:UpdatePanel runat="server">
-                                <ContentTemplate>
-                                    <label class="active" for="Debe">Extra </label>
-                                    <input type='text' id="extra" runat="server" placeholder="₡" name='abono' onkeypress="return solonumeros (event)" />
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </div>
-
-                        <div class="col s3">
-                            <asp:UpdatePanel runat="server">
-                                <ContentTemplate>
-                                    <label class="active" for="Abono">Abono</label>
-                                    <asp:TextBox ID="abono" runat="server" placeholder="₡" required OnTextChanged="abono_TextChanged" AutoPostBack="true" onkeypress="return solonumeros (event)"></asp:TextBox>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </div>
-                        <div class="col s2">
-                            <asp:UpdatePanel runat="server">
-                                <ContentTemplate>
-                                    <label class="active" for="Saldo">Saldo</label>
-                                    <label class="active" id="saldo" runat="server" for="Saldo"></label>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </div>
+                    <div class="col s1">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <div class="row">
-                                    <asp:Button ID="AgregarDetalle" runat="server" Text="+" class="waves-effect waves-light btn" OnClick="AgregarDetalle_Click" />
-                                </div>
+                                <asp:Button ID="AgregarDetalle" runat="server" class="waves-effect waves-light btn" OnClick="AgregarDetalle_Click" Text="+" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
                 </div>
-
             </div>
         </div>
         <script>
-                function solonumeros(e) {
-                    key = e.keyCoden || e.which;
-                    teclado = String.fromCharCode(key);
-                    numero = "1234567890";
-                    especiales = "8-37-38-46";
-                    teclado_especial = false;
-                    for (var i in especiales) {
-                        if (key == especiales[i]) {
-                            teclado_especial = true;
-                        }
-                    }
-                    if (numero.indexOf(teclado) == -1 && !teclado_especial) {
-                        return false;
+            function solonumeros(e) {
+                key = e.keyCoden || e.which;
+                teclado = String.fromCharCode(key);
+                numero = "1234567890";
+                especiales = "8-37-38-46";
+                teclado_especial = false;
+                for (var i in especiales) {
+                    if (key == especiales[i]) {
+                        teclado_especial = true;
                     }
                 }
+                if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+                    return false;
+                }
+            }
         </script>
     </form>
 </body>
