@@ -122,14 +122,29 @@ namespace SAC.formularios
         }
         protected void Guardar_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
+                string borradoC = BDcolorO.Value;
+                string borradoD = BDdienteO.Value;
+                string borradoS = BDseccionO.Value;
+                string[] BDborradoC = borradoC.Split(",".ToCharArray());
+                string[] BDborradoD = borradoD.Split(",".ToCharArray());
+                string[] BDborradoS = borradoS.Split(",".ToCharArray());
+                int num3 = BDborradoC.Count();
+
+                if (!BDborradoC[0].Equals(""))
+                {
+                    for (int x = 0; x < num3; x++)
+                    {
+                        odontograma.borrarOdontograma(BDborradoC[x], BDborradoD[x], BDborradoS[x], codigoExpediente.ToString());
+                    }
+                }
 
                 DateTime now = DateTime.Now;
                 string color = colorO.Value;
                 string[] colorArray = color.Split(",".ToCharArray());
                 int num = colorArray.Count();
-                TextBox1.Text = color;
+                TextBox1.Text = borradoC;
                 string diente = dienteO.Value;
                 string[] dienteArray = diente.Split(",".ToCharArray());
 

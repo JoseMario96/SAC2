@@ -90,6 +90,9 @@
         <asp:HiddenField ID="marcaO" runat="server" />
         <asp:HiddenField ID="borrarO" runat="server" />
         <asp:HiddenField ID="colorM" runat="server" />
+        <asp:HiddenField ID="BDcolorO" runat="server" />
+        <asp:HiddenField ID="BDdienteO" runat="server" />
+        <asp:HiddenField ID="BDseccionO" runat="server" />
 
         <div id="odontograma" style="display: none" tabindex="1">
 
@@ -519,6 +522,7 @@
                 var sec3 = 49;
                 var sec4 = 30;
 
+                var contador = 0;
                 var colorArray = new Array();
                 var borrarArrayC = new Array();
                 var borrarArrayD = new Array();
@@ -543,6 +547,15 @@
                 var color = '';
                 var seccion2 = 0;
                 var cont = 0;
+                var BDColor = new Array();
+                var BDSeccion = new Array();
+                var BDDiente = new Array();
+                var BDMarca = new Array();
+                var BDcontador = 0;
+                var BDborradorC = new Array();
+                var BDborradorD = new Array();
+                var BDborradorS = new Array();
+                var bdcontado2 = 0;
                 var remplazo = 0;
                 var tamanoB = 0;
                 //Los numeros
@@ -649,11 +662,11 @@
                         accion = 'seccion';
                     }
                     else if (seleccion == 'extraccion') {
-                        color = '1';
+                        color = '4';
                         accion = 'marcar';
                     }
                     else if (seleccion == 'exodoncia') {
-                        color = '2';
+                        color = '5';
                         accion = 'marcarE';
                     }
                     else if (seleccion == 'borrar') {
@@ -692,9 +705,9 @@
                     }
 
                     if (diente) {
+                        //alert(diente);
                         if (accion == 'seccion') {
-                            //alert(x + "x");
-                            //alert(y + "y");
+
                             x = x - ((div * 40) + (10 * div) + 10);
                             y = y - 20;
 
@@ -804,13 +817,10 @@
                                 alert('Ya se realizó algún tipo de extracción')
                             }
                         }
-
                         else if (accion == 'borrar') {
                             borrar_diente(ctx2, diente);
-
-                            //document.getElementById('borrarO').value = diente;
-
-                            //cargar el ultimo pintado
+                            document.getElementById('borrarO').value = diente;
+                            ////Cargar el ultimo pintado
                             seccion_chk = $("input[name='seccion']:checked").val();
                             if (seccion_chk == 'seccion') {
 
@@ -837,24 +847,94 @@
                                 borrarArrayC[contadorBorrar] = color2;
                                 borrarArrayD[contadorBorrar] = diente;
                                 borrarArrayS[contadorBorrar] = seccion2;
-                                contadorBorrar++;
 
+                                contadorBorrar++;
+                                var con = 1;
+                                var con2 = 0;
+                                for (var x = 0; x < BDDiente.length; x++) {
+                                    for (var y = 0; y < borrarArrayD.length; y++) {
+                                        if (BDDiente[x] == borrarArrayD[y] && BDSeccion[x] == borrarArrayS[y]) {
+                                            if (con == 1) {
+                                                alert("Entro 1");   
+                                                BDborradorC[bdcontado2] = BDColor[x];
+                                                BDborradorD[bdcontado2] = BDDiente[x];
+                                                BDborradorS[bdcontado2] = BDSeccion[x];
+                                                document.getElementById('BDcolorO').value = BDborradorC.join(',');
+                                                document.getElementById('BDdienteO').value = BDborradorD.join(',');
+                                                document.getElementById('BDseccionO').value = BDborradorS.join(',');
+                                                bdcontado2++;
+                                                con++;
+                                            }
+                                            else if (con == 2) {
+                                                alert("Entro 2");   
+                                                bdcontado2--;
+                                                BDborradorC[bdcontado2] = BDColor[x];
+                                                BDborradorD[bdcontado2] = BDDiente[x];
+                                                BDborradorS[bdcontado2] = BDSeccion[x];
+                                                document.getElementById('BDcolorO').value = BDborradorC.join(',');
+                                                document.getElementById('BDdienteO').value = BDborradorD.join(',');
+                                                document.getElementById('BDseccionO').value = BDborradorS.join(',');
+                                                bdcontado2++;
+                                                con++;
+                                            }
+                                            else if (con == 3) {
+                                                alert("Entro 3");
+                                                bdcontado2--;
+                                                BDborradorC[bdcontado2] = BDColor[x];
+                                                BDborradorD[bdcontado2] = BDDiente[x];
+                                                BDborradorS[bdcontado2] = BDSeccion[x];
+                                                document.getElementById('BDcolorO').value = BDborradorC.join(',');
+                                                document.getElementById('BDdienteO').value = BDborradorD.join(',');
+                                                document.getElementById('BDseccionO').value = BDborradorS.join(',');
+                                                bdcontado2++;
+                                                con++;
+                                            }
+                                          
+                                        }
+                                    }
+                                }
+
+                                //borrarArrayD.forEach((a1) => BDDiente.forEach((a2) => {
+                                //    if (a1 == a2) {
+                                //        // alert(" entro 1");
+                                //        BDSeccion.forEach((a3) => borrarArrayS.forEach((a4) => {
+
+                                //            if (a3 == a4) {
+                                //                // alert("solo1");
+
+                                //                // alert(con2);
+                                                
+                                //                //BDColor.forEach((a5) => borrarArrayC.forEach((a6) => {
+                                //                //    if (a5 == a6) {
+                                //                alert("Muchaas veces");
+                                //                BDborradorC[bdcontado2] = BDColor[con];
+                                //                BDborradorD[bdcontado2] = BDDiente[con];
+                                //                BDborradorS[bdcontado2] = BDSeccion[con];
+                                //                document.getElementById('BDcolorO').value = BDborradorC.join(',');
+                                //                document.getElementById('BDdienteO').value = BDborradorD.join(',');
+                                //                document.getElementById('BDseccionO').value = BDborradorS.join(',');
+                                //                bdcontado2++;
+                                //                //    }
+                                //                //}
+                                //                //));
+                                //            }
+                                //        }
+                                //        ));
+                                //    }
+                                //}
+                                //));
+                                con = 0;
                                 dienteArray.forEach((e1) => borrarArrayD.forEach((e2) => {
                                     if (e1 === e2) {
-
                                         posicionArray.forEach((e3) => borrarArrayS.forEach((e4) => {
 
                                             if (e3 === e4) {
-                                                //colorArray.splice(cont, 1);
-                                                //dienteArray.splice(cont, 1);
-                                                //posicionArray.splice(cont, 1);
                                                 cont++;
-                                                //   alert("2");
                                                 colorArray.forEach((e5) => borrarArrayC.forEach((e6) => {
                                                     if (e5 === e6) {
-                                                        colorArray.splice(0, 1);
-                                                        dienteArray.splice(0, 1);
-                                                        posicionArray.splice(0, 1);
+                                                        colorArray.splice(cont, 1);
+                                                        dienteArray.splice(cont, 1);
+                                                        posicionArray.splice(cont, 1);
                                                         document.getElementById('colorO').value = colorArray.join(',');
                                                         document.getElementById('dienteO').value = dienteArray.join(',');
                                                         document.getElementById('seccionO').value = posicionArray.join(',');
@@ -965,13 +1045,14 @@
                                     if (key_cod != '') {
 
                                         localStorage.removeItem(key_cod);
+                                        pinta_datos();
                                     }
                                 }
                             }
                             else if (seccion_chk == 'diente') {
                                 ultimo = '';
                                 key_cod = '';
-
+                                alert("DienteP");
                                 for (var i = 0; i < localStorage.length; i++) {
                                     var key_name = localStorage.key(i);
                                     item = localStorage.getItem(key_name);
@@ -997,17 +1078,17 @@
                                 if (key_cod != '') {
                                     //console.log(key_cod);
                                     localStorage.removeItem(key_cod);
+                                    pinta_datos();
                                 }
                             }
                             //alert('a');
-                            pinta_datos();
+
                         }
                     }
                     //alert(diente);
-                    if (seccion && color != '') {
-                        //alert(color);
 
-                        //alert(seccion);
+                    if (seccion && color != '') {
+
                         //[numero_diente, seccion, accion, fecha, diente2]
                         if (color == 'red') {
                             cod = diente + '-' + seccion + '-' + '1';
@@ -1019,19 +1100,24 @@
                             cod = diente + '-' + seccion + '-' + '3';
                             accion_g = 3;
                         };
-
+                        var cargado = false;
                         var verificacion = false;
                         if (banderaArray.length > 0 || bandera2Array.length > 0) {
                             for (var x = 0; x <= banderaArray.length; x++) {
                                 if (banderaArray[x] == diente || bandera2Array[x] == diente) {
-                                    verificacion = true;
+                                    verificacion = true
                                 }
-
+                            }
+                        }
+                        for (var c = 0; c < BDColor.length; c++) {
+                            if (BDColor[c] == color && BDDiente[c] == diente && BDSeccion[c] == seccion) {
+                                cargado = true;
                             }
                         }
                         if (verificacion == false) {
+                            //  alert("atascado");
+                            if (cargado == false && cod && !localStorage.getItem(cod)) {
 
-                            if (cod && !localStorage.getItem(cod)) {
                                 new_array = [diente, seccion, accion_g, Date.now(), 0];
                                 guardar = new_array.toLocaleString();
                                 localStorage.setItem(cod, guardar);
@@ -1041,7 +1127,6 @@
                                     dienteArray[contador] = diente;
                                     posicionArray[contador] = seccion;
                                     contador++;
-
                                     document.getElementById('colorO').value = colorArray.join(',');
                                     document.getElementById('dienteO').value = dienteArray.join(',');
                                     document.getElementById('seccionO').value = posicionArray.join(',');
@@ -1237,18 +1322,14 @@
                         }
                         return total; // orden ascendente por las fechas;
                     });
-                    alert(array_local.length);
-
-                    alert(array_local[0] + " Des " + array_local[1]);
-
-
-
+                    console.log(array_local);
                     for (var i = 0; i < array_local.length; i++) {
                         item = array_local[i];
                         if (parseInt(item[0], 10) == diente) {
 
                             acc = parseInt(item[2], 10);
-                            alert(acc);
+                            //console.log(acc);
+
                             if (acc == 1) {
                                 color = 'red';
                                 dibuja_seccion(ctx2, item[0], item[1], color);
@@ -1288,7 +1369,15 @@
                 }
 
                 function pintarDiente(diente, seccion, color, marca) {
-
+                    var col = color;
+                    var sec = seccion;
+                    var dient = diente;
+                    var marc = marca;
+                    BDColor[BDcontador] = col;
+                    BDSeccion[BDcontador] = sec;
+                    BDDiente[BDcontador] = dient;
+                    BDMarca[BDcontador] = marc;
+                    BDcontador++;
                     dibuja_seccion(ctx2, diente, seccion, color);
                     if (color == 'black') {
                         marcar_extraccion(ctx2, marca, 'black');
@@ -1410,4 +1499,3 @@
     </form>
 </body>
 </html>
-
