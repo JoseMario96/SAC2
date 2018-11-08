@@ -21,11 +21,6 @@
             margin: auto;
         }
 
-        .auto-style1 {
-            left: 4px;
-            top: 0px;
-        }
-
         label, th, tr {
             font-family: sans-serif;
             font-size: medium;
@@ -55,12 +50,7 @@
     </style>
     <style type="text/css">
         body, a, a:hover {
-            cursor: url(C:\Users\dtrej\source\repos\SAC2\SAC\SAC\images\cur438.cur), progress;
-        }
-
-        .auto-style1 {
-            left: 0px;
-            top: 0px;
+            cursor: url("..images/cur438.cur");
         }
     </style>
     <script>
@@ -86,7 +76,8 @@
                 </asp:Label>
             </div>
             <div class="input-field col s2">
-                <asp:TextBox ID="BudquedaExp" runat="server" placeholder="Cédula" OnTextChanged="BudquedaExp_TextChanged" AutoPostBack="true" onkeypress="return solonumeros (event)"></asp:TextBox>
+                <asp:TextBox ID="BudquedaExp" runat="server" title="Cédula" placeholder="Cédula" OnTextChanged="BudquedaExp_TextChanged" AutoPostBack="true" onkeypress="return solonumeros (event)"></asp:TextBox>
+                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             </div>
         </div>
         <br />
@@ -99,6 +90,9 @@
         <asp:HiddenField ID="marcaO" runat="server" />
         <asp:HiddenField ID="borrarO" runat="server" />
         <asp:HiddenField ID="colorM" runat="server" />
+        <asp:HiddenField ID="BDcolorO" runat="server" />
+        <asp:HiddenField ID="BDdienteO" runat="server" />
+        <asp:HiddenField ID="BDseccionO" runat="server" />
 
         <div id="odontograma" style="display: none" tabindex="1">
 
@@ -469,6 +463,7 @@
                     }
                     //alert(num_diente);
                     inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
+
                     ctx.clearRect(inicio_x, inicio_y, med, med);
                 }
                 function marcar_exodoncia(contexto, num_diente, color_pas) {
@@ -527,7 +522,12 @@
                 var sec3 = 49;
                 var sec4 = 30;
 
+                var contador = 0;
                 var colorArray = new Array();
+                var borrarArrayC = new Array();
+                var borrarArrayD = new Array();
+                var borrarArrayS = new Array();
+                var index = "";
                 var posicionArray = new Array();
                 var dienteArray = new Array();
                 var seccionArray = new Array();
@@ -540,7 +540,24 @@
                 var bandera2Array = new Array();
                 var contadorBandera = 0;
                 var contadorBandera2 = 0;
-
+                var contadorBorrar = 0;
+                var y = 0;
+                var color2 = '';
+                var div = 0;
+                var color = '';
+                var seccion2 = 0;
+                var cont = 0;
+                var BDColor = new Array();
+                var BDSeccion = new Array();
+                var BDDiente = new Array();
+                var BDMarca = new Array();
+                var BDcontador = 0;
+                var BDborradorC = new Array();
+                var BDborradorD = new Array();
+                var BDborradorS = new Array();
+                var bdcontado2 = 0;
+                var remplazo = 0;
+                var tamanoB = 0;
                 //Los numeros
                 for (x = 0; x < 16; x++) {
 
@@ -598,9 +615,6 @@
                     }
 
                 }
-                //dibuja_seccion(context, 2, 3, 'red');
-                //dibuja_seccion(context, 18, 5, 'green');
-                //dibuja_seccion(context, 24, 4, 'blue');
                 window.onload = function () {
                     localStorage.clear();
                     click();
@@ -615,38 +629,44 @@
                 }
                 //canvas.addEventListener("mousedown", getPosition, false);
 
+
+
+
                 function getPosition(event) {
+
                     var x = event.x - 225;// pintar en eje x
                     var y = event.y; // pintar en eje y
                     //alert(y);
-                    //alert(x);
                     var canvas = document.getElementById("myCanvas");
                     var div_can = document.getElementById("canvasesdiv");
                     x -= div_can.offsetLeft;
                     y -= div_can.offsetTop;
                     //alert(div_can.offsetTop);
-                    var div = 0;
-                    var color = '';
+
+
                     var accion = '';
                     seleccion = $("input[name='accion']:checked").val();
                     if (seleccion == 'carie') {
                         color = 'red';
+                        color2 = color;
                         accion = 'seccion';
                     }
                     else if (seleccion == 'restauracion') {
                         color = 'blue';
+                        color2 = color;
                         accion = 'seccion';
                     }
                     else if (seleccion == 'sellante') {
                         color = 'black';
+                        color2 = color;
                         accion = 'seccion';
                     }
                     else if (seleccion == 'extraccion') {
-                        color = '1';
+                        color = '4';
                         accion = 'marcar';
                     }
                     else if (seleccion == 'exodoncia') {
-                        color = '2';
+                        color = '5';
                         accion = 'marcarE';
                     }
                     else if (seleccion == 'borrar') {
@@ -655,6 +675,7 @@
                     //alert(y);
                     diente = 0;
                     seccion = 0;
+
                     if (y >= 20 && y <= 60) {
                         //alert(x);
                         if (x >= 10 && x <= 50) {
@@ -682,30 +703,58 @@
                             }
                         }
                     }
+
                     if (diente) {
                         //alert(diente);
                         if (accion == 'seccion') {
+
                             x = x - ((div * 40) + (10 * div) + 10);
                             y = y - 20;
+
                             if (diente > 16) {
                                 y = y - 120;
                             }
-                            //alert(y);
+                            //alert(x + "    x");
+                            //alert(y + "    y");
+                            ////---------------------------------------------------------------------------------------------
+                            if (diente == 1 || diente == 17) {
+
+                                x = remplazo;
+                                if (y > 0 && y < 10 && x > y && y < 40 - x) {
+                                    seccion = 1;
+                                } else if (x > 30 && x < 40 && y < x && 40 - x < y) {
+                                    seccion = 2;
+                                } else if (y > 30 && y < 40 && x < y && x > 40 - y) {
+                                    seccion = 3;
+                                } else if (x > 0 && x < 10 && y > x && x < 40 - y) {
+                                    seccion = 4;
+                                } else if (x > 10 && x < 30 && y > 10 && y < 30) {
+                                    seccion = 5;
+                                }
+                            }
+
                             if (y > 0 && y < 10 && x > y && y < 40 - x) {
                                 seccion = 1;
+
                             } else if (x > 30 && x < 40 && y < x && 40 - x < y) {
                                 seccion = 2;
+
                             } else if (y > 30 && y < 40 && x < y && x > 40 - y) {
                                 seccion = 3;
+
                             } else if (x > 0 && x < 10 && y > x && x < 40 - y) {
                                 seccion = 4;
+
                             } else if (x > 10 && x < 30 && y > 10 && y < 30) {
                                 seccion = 5;
+
                             }
+
                         } else if (accion == 'marcar') {
                             cod = diente + '-0-' + '4';
                             var verificacion = false;
                             if (banderaArray.length > 0 || bandera2Array.length > 0) {
+
                                 for (var x = 0; x <= banderaArray.length; x++) {
                                     if (banderaArray[x] == diente || bandera2Array[x] == diente) {
 
@@ -722,10 +771,10 @@
                                     marcacolorArray = 'black';
                                     seccionArray[contador2] = diente;
                                     contador2++;
-                                    document.getElementById('colorM').value = marcacolorArray.join(',');
-                                    document.getElementById('marcaO').value = seccionArray.join(',');
                                     banderaArray[contadorBandera] = diente;
                                     contadorBandera++;
+                                    document.getElementById('colorM').value = marcacolorArray.join(',');
+                                    document.getElementById('marcaO').value = seccionArray.join(',');
                                 }
                                 else {
                                     alert("El diente ya contiene un tratamiento");
@@ -736,15 +785,15 @@
                             }
                         } else if (accion == 'marcarE') {
                             cod2 = diente + '-0-' + '5';
-
                             var verificacion = false;
+
                             if (banderaArray.length > 0 || bandera2Array.length > 0) {
                                 for (var x = 0; x <= banderaArray.length; x++) {
                                     if (banderaArray[x] == diente || bandera2Array[x] == diente) {
-
                                         verificacion = true;
                                     }
                                 }
+
                             }
                             if (verificacion == false) {
                                 if (cod2 && !localStorage.getItem(cod2)) {
@@ -755,10 +804,11 @@
                                     marcacolorArray = 'red';
                                     seccionArray[contador2] = diente;
                                     contador2++;
-                                    document.getElementById('marcaO').value = seccionArray.join(',');
-                                    document.getElementById('colorM').value = marcacolorArray.join(',');
                                     bandera2Array[contadorBandera2] = diente;
                                     contadorBandera2++;
+                                    document.getElementById('marcaO').value = seccionArray.join(',');
+                                    document.getElementById('colorM').value = marcacolorArray.join(',');
+
                                 } else {
                                     alert("El diente ya contiene un tratamiento");
                                 }
@@ -769,8 +819,8 @@
                         }
                         else if (accion == 'borrar') {
                             borrar_diente(ctx2, diente);
-                            //document.getElementById('borrarO').value = diente;
-                            //cargar el ultimo pintado
+                            document.getElementById('borrarO').value = diente;
+                            ////Cargar el ultimo pintado
                             seccion_chk = $("input[name='seccion']:checked").val();
                             if (seccion_chk == 'seccion') {
 
@@ -779,54 +829,235 @@
                                 if (diente > 16) {
                                     y = y - 120;
                                 }
+                                if (y > 0 && y < 10 && x > y && y < 40 - x) {
+                                    seccion2 = 1;
+                                } else if (x > 30 && x < 40 && y < x && 40 - x < y) {
+                                    seccion2 = 2;
+
+                                } else if (y > 30 && y < 40 && x < y && x > 40 - y) {
+                                    seccion2 = 3;
+
+                                } else if (x > 0 && x < 10 && y > x && x < 40 - y) {
+                                    seccion2 = 4;
+
+                                } else if (x > 10 && x < 30 && y > 10 && y < 30) {
+                                    seccion2 = 5;
+
+                                }
+                                borrarArrayC[contadorBorrar] = color2;
+                                borrarArrayD[contadorBorrar] = diente;
+                                borrarArrayS[contadorBorrar] = seccion2;
+
+                                contadorBorrar++;
+                                var con = 1;
+                                var con2 = 0;
+                                for (var x = 0; x < BDDiente.length; x++) {
+                                    for (var y = 0; y < borrarArrayD.length; y++) {
+                                        if (BDDiente[x] == borrarArrayD[y] && BDSeccion[x] == borrarArrayS[y]) {
+                                            if (con == 1) {
+                                                alert("Entro 1");   
+                                                BDborradorC[bdcontado2] = BDColor[x];
+                                                BDborradorD[bdcontado2] = BDDiente[x];
+                                                BDborradorS[bdcontado2] = BDSeccion[x];
+                                                document.getElementById('BDcolorO').value = BDborradorC.join(',');
+                                                document.getElementById('BDdienteO').value = BDborradorD.join(',');
+                                                document.getElementById('BDseccionO').value = BDborradorS.join(',');
+                                                bdcontado2++;
+                                                con++;
+                                            }
+                                            else if (con == 2) {
+                                                alert("Entro 2");   
+                                                bdcontado2--;
+                                                BDborradorC[bdcontado2] = BDColor[x];
+                                                BDborradorD[bdcontado2] = BDDiente[x];
+                                                BDborradorS[bdcontado2] = BDSeccion[x];
+                                                document.getElementById('BDcolorO').value = BDborradorC.join(',');
+                                                document.getElementById('BDdienteO').value = BDborradorD.join(',');
+                                                document.getElementById('BDseccionO').value = BDborradorS.join(',');
+                                                bdcontado2++;
+                                                con++;
+                                            }
+                                            else if (con == 3) {
+                                                alert("Entro 3");
+                                                bdcontado2--;
+                                                BDborradorC[bdcontado2] = BDColor[x];
+                                                BDborradorD[bdcontado2] = BDDiente[x];
+                                                BDborradorS[bdcontado2] = BDSeccion[x];
+                                                document.getElementById('BDcolorO').value = BDborradorC.join(',');
+                                                document.getElementById('BDdienteO').value = BDborradorD.join(',');
+                                                document.getElementById('BDseccionO').value = BDborradorS.join(',');
+                                                bdcontado2++;
+                                                con++;
+                                            }
+                                          
+                                        }
+                                    }
+                                }
+
+                                //borrarArrayD.forEach((a1) => BDDiente.forEach((a2) => {
+                                //    if (a1 == a2) {
+                                //        // alert(" entro 1");
+                                //        BDSeccion.forEach((a3) => borrarArrayS.forEach((a4) => {
+
+                                //            if (a3 == a4) {
+                                //                // alert("solo1");
+
+                                //                // alert(con2);
+                                                
+                                //                //BDColor.forEach((a5) => borrarArrayC.forEach((a6) => {
+                                //                //    if (a5 == a6) {
+                                //                alert("Muchaas veces");
+                                //                BDborradorC[bdcontado2] = BDColor[con];
+                                //                BDborradorD[bdcontado2] = BDDiente[con];
+                                //                BDborradorS[bdcontado2] = BDSeccion[con];
+                                //                document.getElementById('BDcolorO').value = BDborradorC.join(',');
+                                //                document.getElementById('BDdienteO').value = BDborradorD.join(',');
+                                //                document.getElementById('BDseccionO').value = BDborradorS.join(',');
+                                //                bdcontado2++;
+                                //                //    }
+                                //                //}
+                                //                //));
+                                //            }
+                                //        }
+                                //        ));
+                                //    }
+                                //}
+                                //));
+                                con = 0;
+                                dienteArray.forEach((e1) => borrarArrayD.forEach((e2) => {
+                                    if (e1 === e2) {
+                                        posicionArray.forEach((e3) => borrarArrayS.forEach((e4) => {
+
+                                            if (e3 === e4) {
+                                                cont++;
+                                                colorArray.forEach((e5) => borrarArrayC.forEach((e6) => {
+                                                    if (e5 === e6) {
+                                                        colorArray.splice(cont, 1);
+                                                        dienteArray.splice(cont, 1);
+                                                        posicionArray.splice(cont, 1);
+                                                        document.getElementById('colorO').value = colorArray.join(',');
+                                                        document.getElementById('dienteO').value = dienteArray.join(',');
+                                                        document.getElementById('seccionO').value = posicionArray.join(',');
+                                                    }
+                                                }
+                                                ));
+                                            }
+                                        }
+                                        ));
+                                    }
+                                }
+                                ));
                                 seccion_b = ubica_seccion(x, y);
                                 if (seccion_b) {
+
                                     ultimo = '';
                                     key_cod = '';
                                     key_cod2 = '';
+                                    var primero;
+                                    var segundo;
+                                    var colores1;
+                                    var colores2;
+                                    var colores3;
+                                    var colores;
                                     var dient = 0;
-                                    for (var i = 0; i < localStorage.length; i++) {
-                                        var key_name = localStorage.key(i);
-                                        item = localStorage.getItem(key_name);
-                                        item = item.split(',');
-                                        diente_comp = parseInt(item[0], 10);
-                                        seccion_comp = parseInt(item[1], 10);
-                                        accion_comp = parseInt(item[2], 10);
-                                        //alert(key_name);
-                                        key_cod2 = key_name;
-                                        if (diente_comp == diente && seccion_b == seccion_comp && (accion_comp == 1 || accion_comp == 2 || accion_comp == 3)) {
-                                            if (ultimo == '') {
-                                                ultimo = item;
-                                                key_cod = key_name;
-                                                //   alert(key_cod);
-                                            }
-                                            //Cuando tengo 2 tratamientos
-                                            else {
-                                                fecha_ult = parseInt(item[3], 10);
-                                                alert(key_name);
+                                    tamanoB = 0;
 
-                                                //alert(fecha_ult);
-                                                if (ultimo[3] < fecha_ult) {
+                                    tamanoB = localStorage.length;
+
+                                    alert(localStorage.length);
+                                    var borrarVarios = new Array();
+                                    var contVarios = 0;
+
+                                    for (var i = 0; i < localStorage.length; i++) {
+                                        var key_namee = localStorage.key(i);
+                                        itemm = localStorage.getItem(key_namee);
+                                        itemm = itemm.split(',');
+                                        dienteVarios = parseInt(itemm[0], 10);
+                                        seccionVarios = parseInt(itemm[1], 10);
+                                        if (dienteVarios == diente && seccionVarios == seccion2) {
+                                            borrarVarios[contVarios] = i;
+                                            contVarios++;
+                                        }
+                                    }
+                                    tamanoB = borrarVarios.length;
+                                    if (tamanoB == 3) {
+                                        var coloresU = localStorage.key(borrarVarios[0]);
+                                        colores1 = localStorage.getItem(coloresU);
+                                        colores1 = colores1.split(',');
+                                        var coloresD = localStorage.key(borrarVarios[1]);
+                                        colores2 = localStorage.getItem(coloresD);
+                                        colores2 = colores2.split(',');
+                                        var coloresT = localStorage.key(borrarVarios[2]);
+                                        colores3 = localStorage.getItem(coloresT);
+                                        colores3 = colores3.split(',');
+                                        if ((colores1[3] < colores2[3]) && (colores1[3] < colores3[3])) {
+                                            if (colores2[3] > colores3[3]) {
+
+                                                key_cod = coloresD;
+                                            } else {
+                                                key_cod = coloresT;
+
+                                            }
+                                        } else if ((colores1[3] > colores2[3]) && (colores1[3] < colores3[3])) {
+                                            key_cod = coloresT;
+
+                                        } else if ((colores1[3] > colores2[3]) && (colores1[3] > colores3[3])) {
+                                            key_cod = coloresU;
+
+                                        } else {
+                                            key_cod = coloresD;
+
+                                        }
+
+                                    } else {
+
+                                        for (var i = 0; i < localStorage.length; i++) {
+                                            var key_name = localStorage.key(i);
+                                            item = localStorage.getItem(key_name);
+                                            item = item.split(',');
+                                            diente_comp = parseInt(item[0], 10);
+                                            seccion_comp = parseInt(item[1], 10);
+                                            accion_comp = parseInt(item[2], 10);
+                                            key_cod2 = key_name;
+                                            if (diente_comp == diente && seccion_b == seccion_comp && (accion_comp == 1 || accion_comp == 2 || accion_comp == 3)) {
+                                                if (ultimo == '') {
                                                     ultimo = item;
                                                     key_cod = key_name;
+                                                    var pruebaorig = localStorage.key(i);
+                                                    segundo = localStorage.getItem(pruebaorig);
+                                                    segundo = segundo.split(',');
+                                                }
+                                                //Cuando tengo 2 tratamientos
+                                                else {
+                                                    var pruebasig = localStorage.key(i);
+                                                    primero = localStorage.getItem(pruebasig);
+                                                    primero = primero.split(',');
+
+                                                    if (segundo[3] < primero[3]) {
+                                                        key_cod = pruebasig;
+                                                    }
                                                 }
                                             }
                                         }
-
-                                    } //termina el for que recorre para borrar 
+                                    }
+                                    //termina el for que recorre para borrar
+                                    alert(key_cod);
                                     if (key_cod != '') {
-                                        //console.log(key_cod);
+
                                         localStorage.removeItem(key_cod);
+                                        pinta_datos();
                                     }
                                 }
                             }
                             else if (seccion_chk == 'diente') {
                                 ultimo = '';
                                 key_cod = '';
-
+                                alert("DienteP");
                                 for (var i = 0; i < localStorage.length; i++) {
                                     var key_name = localStorage.key(i);
                                     item = localStorage.getItem(key_name);
+
+
                                     item = item.split(',');
                                     diente_comp = parseInt(item[0], 10);
                                     accion_comp = parseInt(item[2], 10);
@@ -847,17 +1078,17 @@
                                 if (key_cod != '') {
                                     //console.log(key_cod);
                                     localStorage.removeItem(key_cod);
+                                    pinta_datos();
                                 }
                             }
                             //alert('a');
-                            pinta_datos();
+
                         }
                     }
                     //alert(diente);
-                    if (seccion && color != '') {
-                        //alert(color);
 
-                        //alert(seccion);
+                    if (seccion && color != '') {
+
                         //[numero_diente, seccion, accion, fecha, diente2]
                         if (color == 'red') {
                             cod = diente + '-' + seccion + '-' + '1';
@@ -869,19 +1100,24 @@
                             cod = diente + '-' + seccion + '-' + '3';
                             accion_g = 3;
                         };
-
+                        var cargado = false;
                         var verificacion = false;
                         if (banderaArray.length > 0 || bandera2Array.length > 0) {
                             for (var x = 0; x <= banderaArray.length; x++) {
                                 if (banderaArray[x] == diente || bandera2Array[x] == diente) {
-
-                                    verificacion = true;
+                                    verificacion = true
                                 }
-
+                            }
+                        }
+                        for (var c = 0; c < BDColor.length; c++) {
+                            if (BDColor[c] == color && BDDiente[c] == diente && BDSeccion[c] == seccion) {
+                                cargado = true;
                             }
                         }
                         if (verificacion == false) {
-                            if (cod && !localStorage.getItem(cod)) {
+                            //  alert("atascado");
+                            if (cargado == false && cod && !localStorage.getItem(cod)) {
+
                                 new_array = [diente, seccion, accion_g, Date.now(), 0];
                                 guardar = new_array.toLocaleString();
                                 localStorage.setItem(cod, guardar);
@@ -902,73 +1138,11 @@
                             }
                         }
                         else {
-                            alert('No se puede pintar sobre una extracion')
+                            alert('No se puede pintar sobre una Ausencia o Exodoncia')
                         }
                     }
-                    //if ('borrar' == $("input[name='accion']:checked").val()) {
-                    //    //alert("x-> "+x+" y-> "+y);
-                    //    //ctx4.clearRect(0, 0, 810, 300);
-                    //    if (x >= 30 && x <= 780 && ((y > 78 && y < 82) || (y > 198 && y < 202))) {
-                    //        //alert(x);
-                    //        div = parseInt(x / 50, 10);
-                    //        //alert(div);
-                    //        ultimo = '';
-                    //        key_cod = '';
-                    //        for (var i = 0; i < localStorage.length; i++) {
-                    //            var key_name = localStorage.key(i);
-                    //            item = localStorage.getItem(key_name);
-                    //            item = item.split(',');
-                    //            diente1_comp = parseInt(item[0], 10);
-                    //            diente2_comp = parseInt(item[4], 10);
-                    //            accion_comp = parseInt(item[2], 10);
-                    //            if (accion_comp == 4) {
-
-                    //                if (diente1_comp > 16) {
-                    //                    diente1_comp = diente1_comp - 17;
-                    //                    diente2_comp = diente2_comp - 17;
-                    //                } else {
-                    //                    diente1_comp = diente1_comp - 1;
-                    //                    diente2_comp = diente2_comp - 1;
-                    //                }
-                    //                inicio_x = (diente1_comp * 40) + (10 * diente1_comp) + 10 + 20;
-                    //                fin_X = (diente2_comp * 40) + (10 * diente2_comp) + 10 + 20;
-                    //                if (x >= inicio_x && x <= fin_x) {
-                    //                    if (ultimo == '') {
-                    //                        ultimo = item;
-                    //                        key_cod = key_name;
-                    //                    }
-                    //                    else {
-                    //                        fecha_ult = parseInt(item[3], 10);
-                    //                        if (ultimo[3] < fecha_ult) {
-                    //                            ultimo = item;
-                    //                            key_cod = key_name;
-                    //                        }
-                    //                    }
-                    //                }
-
-                    //            }
-                    //        }
-                    //        if (key_cod != '') {
-                    //            console.log(key_cod);
-                    //            if (parseInt(ultimo[0], 10) < 16) {
-                    //                seccion_p = 1;
-                    //                ctx4.clearRect(0, 0, 810, 130);
-                    //            }
-                    //            else {
-                    //                ctx4.clearRect(0, 130, 810, 150);
-                    //                seccion_p = 2;
-                    //            }
-                    //            localStorage.removeItem(key_cod);
-                    //            pinta_puentes(seccion_p);
-                    //        }
-                    //    }
-
-                    //}
-
                 }
 
-                //dibuja_seccion(x, y, 5, 5);
-                //dibuja_seccion(context, num_diente, seccion, color)
                 //Marca la posicion exacta del mouse
                 function Marcar(event) {
                     var x = event.x - 225;//Donde esta la posicion del mouse en el eje x
@@ -1039,24 +1213,48 @@
                             }
                         }
                         if (seleccion == 'seccion') {
+
                             x = x - ((div * 40) + (10 * div) + 10);
                             y = y - 20;
                             if (diente > 16) {
                                 y = y - 120;
+                            } else if (diente == 17) {
+
                             }
-                            //alert(y);
-                            /*if (y>=x && y<=39){}*/
                             // Ubicar la seccion clickeada
                             if (y > 0 && y < 10 && x > y && y < 40 - x) {
                                 seccion = 1;
+                                if (diente == 1) {
+                                    remplazo = 27;
+                                } else if (diente == 17) {
+                                    remplazo = 20;
+                                }
                             } else if (x > 30 && x < 40 && y < x && 40 - x < y) {
                                 seccion = 2;
+                                if (diente == 1) {
+                                    remplazo = 37;
+                                } else if (diente == 17) {
+                                    remplazo = 36;
+                                }
                             } else if (y > 30 && y < 40 && x < y && x > 40 - y) {
                                 seccion = 3;
+                                if (diente == 1) {
+                                    remplazo = 25;
+                                } else if (diente == 17) {
+                                    remplazo = 28;
+                                }
                             } else if (x > 0 && x < 10 && y > x && x < 40 - y) {
                                 seccion = 4;
+                                if (diente == 1 || diente == 17) {
+                                    remplazo = 4;
+                                }
                             } else if (x > 10 && x < 30 && y > 10 && y < 30) {
                                 seccion = 5;
+                                if (diente == 1) {
+                                    remplazo = 22;
+                                } else if (diente == 17) {
+                                    remplazo = 23;
+                                }
                             }
                             //Comprobacion de si esta en una seccion
                             if (seccion) {
@@ -1081,20 +1279,54 @@
 
                     //dibuja_contorno(canvas, inicio_x, inicio_y, med, separacion_x, separacion_y)
                 }
+
+                function pintaBorrado() {
+                    var dientepitando;
+                    var itemm;
+                    var seccionpintado;
+                    var pintadoVector = new Array();
+                    var contPintado = 0;
+
+                    if (tamanoB == 3) {
+                        for (var i = 0; i < localStorage.length; i++) {
+                            var key_namee = localStorage.key(i);
+                            itemm = localStorage.getItem(key_namee);
+                            itemm = itemm.split(',');
+                            dientepitando = parseInt(itemm[0], 10);
+                            seccionpintado = parseInt(itemm[1], 10);
+                            if (dientepitando == diente && seccionpintado == seccion2) {
+                                pintadoVector[contPintado] = localStorage.getItem(key_namee).split(',');
+                                contPintado++;
+                                alert("mim");
+                            }
+                        }
+                    } else {
+                        for (var i = 0; i < localStorage.length; i++) {
+                            var key_name = localStorage.key(i);
+                            pintadoVector[i] = localStorage.getItem(key_name).split(',');
+                        }
+                    }
+                    tamanoB = 0;
+                    return (pintadoVector);
+                }
                 function pinta_datos() {
                     array_local = [];
-                    for (var i = 0; i < localStorage.length; i++) {
-                        var key_name = localStorage.key(i);
-                        array_local[i] = localStorage.getItem(key_name).split(',');
-                    }
-                    //console.log(array_local);
+                    array_local = pintaBorrado();
                     array_local.sort(function (a, b) {
-                        return a[3] > b[3]; // orden ascendente por las fechas;
+                        var total = new Array();
+
+                        if (a[3] > b[3]) {
+                            total = array_local;
+                        } else {
+                            total = array_local.reverse()
+                        }
+                        return total; // orden ascendente por las fechas;
                     });
-                    //console.log(array_local);
+                    console.log(array_local);
                     for (var i = 0; i < array_local.length; i++) {
                         item = array_local[i];
                         if (parseInt(item[0], 10) == diente) {
+
                             acc = parseInt(item[2], 10);
                             //console.log(acc);
 
@@ -1117,38 +1349,7 @@
                         }
                     }
                 }
-                //function pinta_puentes(seccion_p) {
-                //    array_local = [];
-                //    for (var i = 0; i < localStorage.length; i++) {
-                //        var key_name = localStorage.key(i);
-                //        array_local[i] = localStorage.getItem(key_name).split(',');
-                //    }
-                //    //console.log(array_local);
-                //    array_local.sort(function (a, b) {
-                //        return a[3] > b[3]; // orden ascendente por las fechas;
-                //    });
-                //    //console.log(array_local);
-                //    for (var i = 0; i < array_local.length; i++) {
-                //        item = array_local[i];
-                //        acc = parseInt(item[2], 10);
-                //        //console.log(acc);
-                //        if (acc == 4) {
-                //            color_pas = 'red';
-                //            if (seccion_p == 1) {
-                //                if (parseInt(item[0], 10) < 17) {
-                //                    marcar_puente(ctx4, item[0], item[4], color_pas);
-                //                }
-                //            }
-                //            else {
-                //                if (parseInt(item[0], 10) > 16) {
-                //                    marcar_puente(ctx4, item[0], item[4], color_pas);
-                //                }
-                //            }
-                //            //dibuja_seccion(ctx2, item[0], item[1], color);
-                //        }
 
-                //    }
-                //}
                 function ubica_seccion(X, Y) {
                     y = Y;
                     x = X;
@@ -1166,8 +1367,17 @@
                     }
                     return devolver_seccion;
                 }
-                function pintarDiente(diente, seccion, color, marca) {
 
+                function pintarDiente(diente, seccion, color, marca) {
+                    var col = color;
+                    var sec = seccion;
+                    var dient = diente;
+                    var marc = marca;
+                    BDColor[BDcontador] = col;
+                    BDSeccion[BDcontador] = sec;
+                    BDDiente[BDcontador] = dient;
+                    BDMarca[BDcontador] = marc;
+                    BDcontador++;
                     dibuja_seccion(ctx2, diente, seccion, color);
                     if (color == 'black') {
                         marcar_extraccion(ctx2, marca, 'black');
@@ -1175,7 +1385,6 @@
                     else {
                         marcar_exodoncia(ctx2, marca, 'red');
                     }
-
                 }
             </script>
 
@@ -1209,107 +1418,65 @@
                 <h5>Nuevos tratamientos</h5>
                 <br />
                 <br />
-                    <div class="row">
+                <div class="row">
+                    <div class="col s2">
+                    </div>
+                    <div class="col s10">
                         <div class="col s2">
-                        </div>
-                        <div class="col s10">
-                            <div class="col s2">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Fecha">Fecha </label>
-                                        <asp:Label ID="fecha" runat="server"></asp:Label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-                            <div class="col s3">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Tratamiento">Tipo de tratamiento </label>
-                                        <asp:DropDownList ID="DropDownList1" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-
-                            <div class="col s3">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Tipotratamiento">Tratamiento</label>
-                                        <asp:DropDownList ID="DropDownList2" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTratamiento" DataValueField="nombreTratamiento" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-
-                            <div class="col s3">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Diente">Diente</label>
-                                        <input type='text' name='dient' id="diente" runat="server" maxlength="44" />
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <div class="col s2"></div>
-                                <div class="col s9">
-                                    <label class="active" for="Descripcion">Descripción</label>
-                                    <input type='text' name='debe' id="descrip" runat="server" maxlength="244" />
-                                </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col s2"></div>
-                        <div class="col s10">
-                            <div class="col s2">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Debe">Debe </label>
-                                        <label id="preciost" runat="server" class="active" for="Debe"></label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-
-                            <div class="col s3">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Debe">Extra </label>
-                                        <input type='text' id="extra" runat="server" placeholder="₡" name='abono' onkeypress="return solonumeros (event)" />
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-
-                            <div class="col s3">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Abono">Abono</label>
-                                        <asp:TextBox ID="abono" runat="server" placeholder="₡" required OnTextChanged="abono_TextChanged" AutoPostBack="true" onkeypress="return solonumeros (event)"></asp:TextBox>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-                            <div class="col s2">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label class="active" for="Saldo">Saldo</label>
-                                        <label class="active" id="saldo" runat="server" for="Saldo"></label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <div class="row">
-                                        <asp:Button ID="AgregarDetalle" runat="server" Text="+" class="waves-effect waves-light btn" OnClick="AgregarDetalle_Click" />
-                                    </div>
+                                    <label class="active" for="Fecha">Fecha </label>
+                                    <asp:Label ID="fecha" title="Fecha" runat="server"></asp:Label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+                        <div class="col s3">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="Tratamiento">Tipo de tratamiento </label>
+                                    <asp:DropDownList ID="DropDownList1" title="Tipos de tratamientos" Style="border: 2px solid black;" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+
+                        <div class="col s3">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="Tipotratamiento">Tratamiento</label>
+                                    <asp:DropDownList ID="DropDownList2" title="Tratamientos" Style="border: 2px solid black;" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTratamiento" DataValueField="nombreTratamiento" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+
+                        <div class="col s3">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="Diente">Diente</label>
+                                    <input type='text' name='dient' title="Dientes afectados" id="diente" runat="server" maxlength="44" />
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
                     </div>
+                </div>
 
+                <div class="row">
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <div class="col s2"></div>
+                            <div class="col s8">
+                                <label class="active" for="Descripcion">Descripción</label>
+                                <input type='text' name='debe' id="descrip" title="Descripción" runat="server" maxlength="244" />
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <div class="col s1">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <asp:Button ID="AgregarDetalle" runat="server" class="waves-effect waves-light btn" OnClick="AgregarDetalle_Click" Text="+" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
             </div>
         </div>
         <script>
@@ -1332,4 +1499,3 @@
     </form>
 </body>
 </html>
-

@@ -56,7 +56,7 @@ namespace SAC.formularios
             da.Fill(ds);
             if (ds.Tables[0].Rows.Count > 0)
             {
-                
+
                 codigocedula = expediente.BuscarcodigoExpediente(Cedula.Text.ToString());
 
                 GridView1.DataSource = odontograma.ReporteOdontograma(codigocedula.ToString());
@@ -83,7 +83,8 @@ namespace SAC.formularios
                 }
 
                 string scrippt = @"<script type='text/javascript'>
-                document.getElementById('Panel1').scrollIntoView();              
+                document.getElementById('Panel1').scrollIntoView(); 
+
             </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scrippt, false);
                 Panel1.Visible = true;

@@ -166,15 +166,6 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton noE;
         
         /// <summary>
-        /// Control actualizarE.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button actualizarE;
-        
-        /// <summary>
         /// Control cedula_encargad.
         /// </summary>
         /// <remarks>
