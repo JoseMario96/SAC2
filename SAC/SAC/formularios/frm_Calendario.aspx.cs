@@ -28,38 +28,59 @@ namespace SAC.formularios
         {
             String[,] matriz = objeto.Cita();
             Hashtable schedule = new Hashtable();
+            String cuerpo = "";
             for (int i = 0; i <= matriz.GetLength(0) - 1; i++)
-            {             
-                String fecha = matriz[i, 2].Split(' ')[0];
-                schedule[fecha] = "Nombre: " + matriz[i, 5] + "<br/> Hora: " + matriz[i, 3] + "<br/> Contacto: " + matriz[i, 4];               
+            {
+                if (i==0)
+                {
+                    String fecha = matriz[i, 2].Split(' ')[0];
+                    cuerpo = matriz[i, 5] + " / " + matriz[i, 3];
+                    schedule[fecha] = cuerpo;
+                }
+                if (i > 0)
+                {
+                    String fechaAnterior = matriz[i-1, 2].Split(' ')[0];
+                    String fecha = matriz[i, 2].Split(' ')[0];
+                    if (fechaAnterior == fecha)
+                    {
+                        cuerpo = cuerpo + "<br />" + matriz[i, 5] + " / " + matriz[i, 3];
+                        schedule[fecha] = cuerpo;
+                    }
+                    else
+                    {
+                        cuerpo = matriz[i, 5] + " / " + matriz[i, 3];
+                        schedule[fecha] = cuerpo;
+                    }
+                }
+                               
             }
             //schedule["4/10/2018"] = "Hola probando <br/> código";
-            //schedule["10/10/2018"] = "Hola probando código";
-            //schedule["15/10/2018"] = "Hola probando código";
             return schedule;
         }
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
-            string fecha = Calendar1.SelectedDate.ToString(@"yyyy-MM-dd");
-            if (objeto.EstaCita(fecha) == true)
+            try
             {
+                string fecha = Calendar1.SelectedDate.ToString(@"yyyy-MM-dd");
+                if (objeto.EstaCita(fecha) == true)
+                {
 
-                string script = @"<script type='text/javascript'>
+                    string script = @"<script type='text/javascript'>
                     document.getElementById('cabecera').style.display = 'block';
                     document.getElementById('grid').style.display = 'block' ;  
                     document.getElementById('cabecera2').style.display = 'none' ;
                     document.getElementById('agregar').style.display = 'none' ;
                     document.getElementById('Actualizar_Eliminar').style.display = 'none' ;
                     </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                fechaCabecera.InnerText = fecha;
-                Gridview_Hoy.DataSource = objeto.CitaHoy(fecha);
-                Gridview_Hoy.DataBind();
-            }
-            else
-            {
-                string script = @"<script type='text/javascript'>
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    fechaCabecera.InnerText = fecha;
+                    Gridview_Hoy.DataSource = objeto.CitaHoy(fecha);
+                    Gridview_Hoy.DataBind();
+                }
+                else
+                {
+                    string script = @"<script type='text/javascript'>
                     document.getElementById('cabecera2').style.display = 'block' ;
                     document.getElementById('agregar').style.display = 'block' ;
                     document.getElementById('cabecera').style.display = 'none';
@@ -67,11 +88,16 @@ namespace SAC.formularios
                     document.getElementById('Actualizar_Eliminar').style.display = 'none' ;
                     document.getElementById('agregar').scrollIntoView(); 
                     </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                fechaC.Value = fecha;
-                fechaC.Disabled = true;
-                cedula.Focus();
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    fechaC.Value = fecha;
+                    fechaC.Disabled = true;
+                    cedula.Focus();
+                }
             }
+            catch
+            {
+
+            } 
         }
 
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
@@ -91,38 +117,45 @@ namespace SAC.formularios
 
         protected void Gridview_Hoy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String[] datos = new String[6];
-            foreach (GridViewRow row in Gridview_Hoy.Rows)
+            try
             {
-                if (row.RowIndex == Gridview_Hoy.SelectedIndex)
+                String[] datos = new String[6];
+                foreach (GridViewRow row in Gridview_Hoy.Rows)
                 {
+                    if (row.RowIndex == Gridview_Hoy.SelectedIndex)
+                    {
 
-                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
-                    row.ToolTip = string.Empty;
-                    cedulaAA = row.Cells[0].Text;
-                    fechaAA = Calendar1.SelectedDate.ToString(@"yyyy-MM-dd");
-                    horaAA = row.Cells[2].Text;
-                    String codigo = objeto.Codigo(cedulaAA, fechaAA, horaAA);
-                    datos = objeto.MostrarCita(codigo);
-                    cedulaA.Value = datos[0];
-                    fechaA.Value = datos[1];
-                    horaA.Value = datos[2];
-                    telefonoA.Value = datos[3];
-                    nombreA.Value = datos[4];
-                    correoA.Value = datos[5];
-                    string script = @"<script type='text/javascript'>
+                        row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                        row.ToolTip = string.Empty;
+                        cedulaAA = row.Cells[0].Text;
+                        fechaAA = Calendar1.SelectedDate.ToString(@"yyyy-MM-dd");
+                        horaAA = row.Cells[2].Text;
+                        String codigo = objeto.Codigo(cedulaAA, fechaAA, horaAA);
+                        datos = objeto.MostrarCita(codigo);
+                        cedulaA.Value = datos[0];
+                        fechaA.Value = datos[1];
+                        horaA.Value = datos[2];
+                        telefonoA.Value = datos[3];
+                        nombreA.Value = datos[4];
+                        correoA.Value = datos[5];
+                        string script = @"<script type='text/javascript'>
                         document.getElementById('Actualizar_Eliminar').style.display = 'block';
                         document.getElementById('Actualizar_Eliminar').scrollIntoView(); 
                         </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                    cedulaA.Focus();
-                }
-                else
-                {
-                    row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
-                    row.ToolTip = "Click para seleccionar esta fila.";
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                        cedulaA.Focus();
+                    }
+                    else
+                    {
+                        row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                        row.ToolTip = "Click para seleccionar esta fila.";
+                    }
                 }
             }
+            catch
+            {
+
+            }  
         }
 
         protected void Gridview_Hoy_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -136,79 +169,61 @@ namespace SAC.formularios
 
         protected void btn_Actualizar_Click(object sender, EventArgs e)
         {
-            DateTime date = Convert.ToDateTime(fechaA.Value);
-            String date2 = date.ToString(@"yyyy-MM-dd");
-            if (cedulaA.Value == "")
+            try
             {
-                string script = @"<script type='text/javascript'>
-                    alert('El campo cédula no puede estar vacío!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                cedulaA.Focus();
-            }
-            else if (nombreA.Value == "")
-            {
-                string script = @"<script type='text/javascript'>
-                    alert('El campo nombre no puede estar vacío!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                nombreA.Focus();
-            }
-            else if (fechaA.Value == "")
-            {
-                string script = @"<script type='text/javascript'>
-                    alert('El campo fecha no puede estar vacío!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                fechaA.Focus();
-            }
-            else if (horaA.Value == "")
-            {
-                string script = @"<script type='text/javascript'>
-                    alert('El campo hora no puede estar vacío!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                horaA.Focus();
-            }
-            else if (telefonoA.Value == "")
-            {
-                string script = @"<script type='text/javascript'>
-                    alert('El campo teléfono no puede estar vacío!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                telefonoA.Focus();
-            }
-            else if (correoA.Value == "")
-            {
-                string script = @"<script type='text/javascript'>
-                    alert('El campo correo no puede estar vacío!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                correoA.Focus();
-            }
-            else if (fechaAA == date2 & horaAA == horaA.Value)
-            {
-                objeto.ActualizarCitaSFecha(objeto.Codigo(cedulaAA, fechaAA, horaAA), cedulaA.Value, telefonoA.Value, nombreA.Value, correoA.Value);
-                string script = @"<script type='text/javascript'>
-                    alert('La información se actualizó correctamente!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                this.Controls.Clear();
-                Response.Redirect("frm_Calendario.aspx");
-            }
-            else 
-            {
-                if (objeto.ValidarCita(date2, horaA.Value) == true)
+                DateTime date = Convert.ToDateTime(fechaA.Value);
+                String date2 = date.ToString(@"yyyy-MM-dd");
+                if (cedulaA.Value == "")
                 {
                     string script = @"<script type='text/javascript'>
-                    alert('Ya existe una cita en este horario, puedes intentarlo cambiando la hora!');
+                    alert('El campo cédula no puede estar vacío!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    cedulaA.Focus();
+                }
+                else if (nombreA.Value == "")
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('El campo nombre no puede estar vacío!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    nombreA.Focus();
+                }
+                else if (fechaA.Value == "")
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('El campo fecha no puede estar vacío!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    fechaA.Focus();
+                }
+                else if (horaA.Value == "")
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('El campo hora no puede estar vacío!');
                     </script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                     horaA.Focus();
                 }
-                else
+                else if (telefonoA.Value == "")
                 {
-                    objeto.ActualizarCita(objeto.Codigo(cedulaAA, fechaAA, horaAA), cedulaA.Value, date2, horaA.Value, telefonoA.Value, nombreA.Value, correoA.Value);
+                    string script = @"<script type='text/javascript'>
+                    alert('El campo teléfono no puede estar vacío!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    telefonoA.Focus();
+                }
+                else if (correoA.Value == "")
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('El campo correo no puede estar vacío!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    correoA.Focus();
+                }
+                else if (fechaAA == date2 & horaAA == horaA.Value)
+                {
+                    objeto.ActualizarCitaSFecha(objeto.Codigo(cedulaAA, fechaAA, horaAA), cedulaA.Value, telefonoA.Value, nombreA.Value, correoA.Value);
                     string script = @"<script type='text/javascript'>
                     alert('La información se actualizó correctamente!');
                     </script>";
@@ -216,87 +231,127 @@ namespace SAC.formularios
                     this.Controls.Clear();
                     Response.Redirect("frm_Calendario.aspx");
                 }
+                else
+                {
+                    if (objeto.ValidarCita(date2, horaA.Value) == true)
+                    {
+                        string script = @"<script type='text/javascript'>
+                    alert('Ya existe una cita en este horario, puedes intentarlo cambiando la hora!');
+                    </script>";
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                        horaA.Focus();
+                    }
+                    else
+                    {
+                        objeto.ActualizarCita(objeto.Codigo(cedulaAA, fechaAA, horaAA), cedulaA.Value, date2, horaA.Value, telefonoA.Value, nombreA.Value, correoA.Value);
+                        string script = @"<script type='text/javascript'>
+                    alert('La información se actualizó correctamente!');
+                    </script>";
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                        this.Controls.Clear();
+                        Response.Redirect("frm_Calendario.aspx");
+                    }
 
+                }
             }
-            
+            catch
+            {
+
+            } 
         }
 
         protected void btn_Eliminar_Click(object sender, EventArgs e)
         {
-            objeto.EliminarCita(cedulaAA, fechaAA, horaAA);
-            string script = @"<script type='text/javascript'>
+            try
+            {
+                objeto.EliminarCita(cedulaAA, fechaAA, horaAA);
+                string script = @"<script type='text/javascript'>
                     alert('La información se eliminó correctamente!');
-                    </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-            this.Controls.Clear();
-            Response.Redirect("frm_Calendario.aspx");
-        }
-
-        protected void btn_Agregar_Click(object sender, EventArgs e)
-        {
-            if (cedula.Value == "")
-            {
-                string script = @"<script type='text/javascript'>
-                    alert('El campo cédula no puede estar vacío!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                cedula.Focus();
-            }
-            else if(nombre.Value == ""){
-                string script = @"<script type='text/javascript'>
-                    alert('El campo nombre no puede estar vacío!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                nombre.Focus();
-            }
-            else if (fechaC.Value == "")
-            {
-                string script = @"<script type='text/javascript'>
-                    alert('El campo fecha no puede estar vacío!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                fechaC.Focus();
-            }
-            else if (hora.Value == "")
-            {
-                string script = @"<script type='text/javascript'>
-                    alert('El campo hora no puede estar vacío!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                hora.Focus();
-            }
-            else if (telefono.Value == "")
-            {
-                string script = @"<script type='text/javascript'>
-                    alert('El campo teléfono no puede estar vacío!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                telefonoA.Focus();
-            }
-            else if (correo.Value == "")
-            {
-                string script = @"<script type='text/javascript'>
-                    alert('El campo correo no puede estar vacío!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                correo.Focus();
-            }
-            else if(objeto.ValidarCita(fechaC.Value, hora.Value) == true)
-            {
-                string script = @"<script type='text/javascript'>
-                    alert('Ya existe una cita en este horario, puedes intentarlo cambiando la hora!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                hora.Focus();
-            }
-            else{
-                objeto.AgregarCita(cedula.Value, Calendar1.SelectedDate.ToString(@"yyyy-MM-dd"), hora.Value.ToString(), telefono.Value, nombre.Value, correo.Value);
-                string script = @"<script type='text/javascript'>
-                    alert('Se agregó correctamente la información');
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 this.Controls.Clear();
                 Response.Redirect("frm_Calendario.aspx");
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void btn_Agregar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cedula.Value == "")
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('El campo cédula no puede estar vacío!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    cedula.Focus();
+                }
+                else if (nombre.Value == "")
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('El campo nombre no puede estar vacío!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    nombre.Focus();
+                }
+                else if (fechaC.Value == "")
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('El campo fecha no puede estar vacío!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    fechaC.Focus();
+                }
+                else if (hora.Value == "")
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('El campo hora no puede estar vacío!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    hora.Focus();
+                }
+                else if (telefono.Value == "")
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('El campo teléfono no puede estar vacío!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    telefonoA.Focus();
+                }
+                else if (correo.Value == "")
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('El campo correo no puede estar vacío!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    correo.Focus();
+                }
+                else if (objeto.ValidarCita(fechaC.Value, hora.Value) == true)
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('Ya existe una cita en este horario, puedes intentarlo cambiando la hora!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    hora.Focus();
+                }
+                else
+                {
+                    objeto.AgregarCita(cedula.Value, Calendar1.SelectedDate.ToString(@"yyyy-MM-dd"), hora.Value.ToString(), telefono.Value, nombre.Value, correo.Value);
+                    string script = @"<script type='text/javascript'>
+                    alert('Se agregó correctamente la información');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    this.Controls.Clear();
+                    Response.Redirect("frm_Calendario.aspx");
+                }
+            }
+            catch
+            {
+
             }
         }
 

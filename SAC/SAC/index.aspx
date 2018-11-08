@@ -162,13 +162,13 @@
                 outline: none;
             }
 
-        #popup, #popup1, #popup2, #popup3, #popup4, #popup5, #popup6, #popup7, #popup8, #popup9, #popup10 {
+        #popup, #popup1, #popup2, #popup3, #popup4, #popup5, #popup6, #popup7, #popup8, #popup9, #popup10, #popup11, #popup12, #popup13, #popup14, #popup15, #popup16 {
             visibility: hidden;
             opacity: 0;
             margin-top: -300px;
         }
 
-            #popup:target, #popup1:target, #popup2:target, #popup3:target, #popup4:target, #popup5:target, #popup6:target,  #popup7:target, #popup8:target, #popup9:target, #popup10:target {
+            #popup:target, #popup1:target, #popup2:target, #popup3:target, #popup4:target, #popup5:target, #popup6:target,  #popup7:target, #popup8:target, #popup9:target, #popup10:target, #popup11:target, #popup12:target, #popup13:target, #popup14:target, #popup15:target, #popup16:target {
                 visibility: visible;
                 opacity: 1;
                 background-color: rgba(0,0,0,0.8);
@@ -579,140 +579,127 @@
                     <h2 class="to-animate">Factura</h2>
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 subtext to-animate">
-                            <h3>En esta sección se puede realizar reportes de cuentas por cobrar de los pacientes</h3>
+                            <h3>En esta sección se puede terminar las facturas, ralizar abonos a cuentas por cobrar y ver reportes de cuentas por cobrar y ventas a los pacientes</h3>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row row-bottom-padded-sm">
-                <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/factura.png" class="fh5co-project-item">
-                        <img src="../images/factura.png" alt="Image" class="imagen img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Agregar</h2>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/actualizar_factura.png" class="fh5co-project-item">
-                        <img src="../images/actualizar_factura.png" alt="Image" class="imagen img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Actualizar</h2>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/mostrar_facturas.png" class="fh5co-project-item">
-                        <img src="../images/mostrar_facturas.png" alt="Image" class="imagen img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Mostrar</h2>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/reporte_factura.png" class="fh5co-project-item">
-                        <img src="../images/reporte_factura.png" alt="Image" class="imagen img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Reporte</h2>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/factura.png" class="fh5co-project-item">
-                        <img src="../images/factura.png" alt="Image" class="imagen img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Reporte</h2>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/factura.png" class="fh5co-project-item">
-                        <img src="../images/factura.png" alt="Image" class="imagen img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Reporte</h2>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/factura.png" class="fh5co-project-item">
-                        <img src="../images/factura.png" alt="Image" class="imagen img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Reporte</h2>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/factura.png" class="fh5co-project-item">
-                        <img src="../images/factura.png" alt="Image" class="imagen img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Reporte</h2>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <%--  <section id="fh5co-about" data-section="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 section-heading text-center">
-                    <h2 class="to-animate">About</h2>
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 subtext to-animate">
-                            <h3>Our weary eyes still stray to the horizon. Though down this road we've been so many times.</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="col-md-4 col-sm-6 col-xxs-12">
-                        <a onclick="return popup('frm_agregarPaciente.aspx',1250,650)" class="fh5co-project-item">
-                            <img src="../images/agregar.png" alt="Image" class="img-responsive" />
-
-                            <div class="fh5co-text">
-                                <h2 style="text-align: center;">Agregar</h2>
+                <%--Ventas--%>
+                    <div class="col-md-3 col-xs-12">
+                        <a href="#popup11" class="popup-link fh5co-project-item" onclick='document.getElementById("ventas").src="formularios/frm_AgregarVenta.aspx";'>
+                            <img src="../images/factura.png" alt="Image" class="img-responsive centrar" />
+                            <div class=" letrasgrande">
+                                <h2 style="text-align: center;">Ventas</h2>
                             </div>
                         </a>
+                        <div class="modal-wrapper" id="popup11">
+                            <div class="popup-contenedorC">
+                                <div class="responsiveContent">
+                                    <iframe id="ventas"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-services">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <%--Mostrar Ventas--%>
+                    <div class="col-md-3 col-xs-12">
+                        <a href="#popup12" class="popup-link fh5co-project-item" onclick='document.getElementById("mostrarVentas").src="formularios/frm_AgregarVenta.aspx";'>
+                            <img src="../images/mostrar_facturas.png" alt="Image" class="img-responsive centrar" />
+                            <div class=" letrasgrande">
+                                <h2 style="text-align: center;">Ventas</h2>
+                            </div>
+                        </a>
+                        <div class="modal-wrapper" id="popup12">
+                            <div class="popup-contenedorC">
+                                <div class="responsiveContent">
+                                    <iframe id="mostrarVentas"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-services">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <%--Reporte Factura--%>
+                    <div class="col-md-3 col-xs-12 abajo">
+                        <a href="#popup13" class="popup-link fh5co-project-item" onclick='document.getElementById("mostrarVentas").src="formularios/frm_AgregarVenta.aspx";'>
+                            <img src="../images/reporte_factura.png" alt="Image" class="img-responsive centrar" />
+                            <div class=" letrasgrande">
+                                <h2 style="text-align: center;">Ventas</h2>
+                            </div>
+                        </a>
+                        <div class="modal-wrapper" id="popup13">
+                            <div class="popup-contenedorC">
+                                <div class="responsiveContent">
+                                    <iframe id="reporteVentas"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-services">X</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="fh5co-person text-center to-animate">
-                        <figure>
-                            <img src="images/person2.jpg" alt="Image" />
-                        </figure>
-                        <h3>Rob Smith</h3>
-                        <span class="fh5co-position">Web Developer</span>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts</p>
-                        <ul class="social social-circle">
-                            <li><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li><a href="#"><i class="icon-facebook"></i></a></li>
-                            <li><a href="#"><i class="icon-github"></i></a></li>
-                        </ul>
+            <div class="row row-bottom-padded-sm">
+                <%--Cuentas por cobrar--%>
+                    <div class="col-md-3 col-xs-12">
+                        <a href="#popup14" class="popup-link fh5co-project-item" onclick='document.getElementById("Cuentas").src="formularios/frm_CuentasXCobrar.aspx";'>
+                            <img src="../images/factura.png" alt="Image" class="img-responsive centrar" />
+                            <div class=" letrasgrande">
+                                <h2 style="text-align: center;">Ventas</h2>
+                            </div>
+                        </a>
+                        <div class="modal-wrapper" id="popup14">
+                            <div class="popup-contenedorC">
+                                <div class="responsiveContent">
+                                    <iframe id="Cuentas"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-services">X</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="fh5co-person text-center to-animate">
-                        <figure>
-                            <img src="images/person3.jpg" alt="Image" />
-                        </figure>
-                        <h3>Larry Ben</h3>
-                        <span class="fh5co-position">Web Designer</span>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts</p>
-                        <ul class="social social-circle">
-                            <li><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li><a href="#"><i class="icon-facebook"></i></a></li>
-                            <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                        </ul>
+                    <div class="col-md-1">
+                    </div>
+                    <%--Mostrar Cuentas por Cobrar--%>
+                    <div class="col-md-3 col-xs-12">
+                        <a href="#popup15" class="popup-link fh5co-project-item" onclick='document.getElementById("mostrarCuentas").src="formularios/frm_AgregarVenta.aspx";'>
+                            <img src="../images/mostrar_facturas.png" alt="Image" class="img-responsive centrar" />
+                            <div class=" letrasgrande">
+                                <h2 style="text-align: center;">Ventas</h2>
+                            </div>
+                        </a>
+                        <div class="modal-wrapper" id="popup15">
+                            <div class="popup-contenedorC">
+                                <div class="responsiveContent">
+                                    <iframe id="mostrarCuentas"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-services">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <%--Reporte Cuentas por Cobrar--%>
+                    <div class="col-md-3 col-xs-12 abajo">
+                        <a href="#popup16" class="popup-link fh5co-project-item" onclick='document.getElementById("mostrarCuentas").src="formularios/frm_AgregarVenta.aspx";'>
+                            <img src="../images/reporte_factura.png" alt="Image" class="img-responsive centrar" />
+                            <div class=" letrasgrande">
+                                <h2 style="text-align: center;">Ventas</h2>
+                            </div>
+                        </a>
+                        <div class="modal-wrapper" id="popup16">
+                            <div class="popup-contenedorC">
+                                <div class="responsiveContent">
+                                    <iframe id="reporteCuentas"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-services">X</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>--%>
+    </section>
     <%--------------------------------------------------------------Usuario---------------------------------------------------------------------%>
     <section id="fh5co-about" data-section="usuario">
         <div class="container">
