@@ -122,8 +122,8 @@ namespace SAC.formularios
         }
         protected void Guardar_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 string borradoC = BDcolorO.Value;
                 string borradoD = BDdienteO.Value;
                 string borradoS = BDseccionO.Value;
