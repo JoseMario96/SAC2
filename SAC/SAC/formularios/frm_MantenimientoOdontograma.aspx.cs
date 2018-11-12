@@ -124,68 +124,80 @@ namespace SAC.formularios
         {
             //try
             //{
-                string borradoC = BDcolorO.Value;
-                string borradoD = BDdienteO.Value;
-                string borradoS = BDseccionO.Value;
-                string[] BDborradoC = borradoC.Split(",".ToCharArray());
-                string[] BDborradoD = borradoD.Split(",".ToCharArray());
-                string[] BDborradoS = borradoS.Split(",".ToCharArray());
-                int num3 = BDborradoC.Count();
+            string borradoC = BDcolorO.Value;
+            string borradoD = BDdienteO.Value;
+            string borradoS = BDseccionO.Value;
+            string borradoM = BDdienteM.Value;
 
-                if (!BDborradoC[0].Equals(""))
+            string[] BDborradoC = borradoC.Split(",".ToCharArray());
+            string[] BDborradoD = borradoD.Split(",".ToCharArray());
+            string[] BDborradoS = borradoS.Split(",".ToCharArray());
+            string[] BDborradoM = borradoM.Split(",".ToCharArray());
+
+            int num3 = BDborradoC.Count();
+            int num4 = BDborradoM.Count();
+
+            if (!BDborradoC[0].Equals(""))
+            {
+                for (int x = 0; x < num3; x++)
                 {
-                    for (int x = 0; x < num3; x++)
-                    {
-                        odontograma.borrarOdontograma(BDborradoC[x], BDborradoD[x], BDborradoS[x], codigoExpediente.ToString());
-                    }
+                    odontograma.borrarOdontograma(BDborradoC[x], BDborradoD[x], BDborradoS[x], codigoExpediente.ToString());
                 }
-
-                DateTime now = DateTime.Now;
-                string color = colorO.Value;
-                string[] colorArray = color.Split(",".ToCharArray());
-                int num = colorArray.Count();
-                TextBox1.Text = borradoC;
-                string diente = dienteO.Value;
-                string[] dienteArray = diente.Split(",".ToCharArray());
-
-                string posicion = seccionO.Value;
-                string[] posicionArray = posicion.Split(",".ToCharArray());
-                int prueba = 0;
-
-                string marca = marcaO.Value;
-                string[] marcaArray = marca.Split(",".ToCharArray());
-                string marcaColor = colorM.Value;
-                string[] marcaColorArray = marcaColor.Split(",".ToCharArray());
-                int num2 = marcaArray.Count();
-                if (!colorArray[0].Equals(""))
+            }
+            else if (!BDborradoM[0].Equals(""))
+            {
+                for (int x = 0; x < num4; x++)
                 {
-                    for (int x = 0; x < num; x++)
-                    {
-                        odontograma.agregarOdontograma(colorArray[x], dienteArray[x], posicionArray[x], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
-                        prueba++;
-                    }
+                    odontograma.borrarOdontograma2(BDborradoM[x], codigoExpediente.ToString());
                 }
-                if (!marcaArray[0].Equals(""))
-                {
-                    for (int x = 0; x < num2; x++)
-                    {
-                        odontograma.agregarOdontograma2(marcaArray[x], marcaColorArray[x], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
-                        prueba++;
-                    }
-                }
+            }
 
-                string script = @"<script type='text/javascript'>
+            DateTime now = DateTime.Now;
+            string color = colorO.Value;
+            string[] colorArray = color.Split(",".ToCharArray());
+            int num = colorArray.Count();
+            TextBox1.Text = borradoC;
+            string diente = dienteO.Value;
+            string[] dienteArray = diente.Split(",".ToCharArray());
+
+            string posicion = seccionO.Value;
+            string[] posicionArray = posicion.Split(",".ToCharArray());
+            int prueba = 0;
+
+            string marca = marcaO.Value;
+            string[] marcaArray = marca.Split(",".ToCharArray());
+            string marcaColor = colorM.Value;
+            string[] marcaColorArray = marcaColor.Split(",".ToCharArray());
+            int num2 = marcaArray.Count();
+            if (!colorArray[0].Equals(""))
+            {
+                for (int x = 0; x < num; x++)
+                {
+                    odontograma.agregarOdontograma(colorArray[x], dienteArray[x], posicionArray[x], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
+                    prueba++;
+                }
+            }
+            if (!marcaArray[0].Equals(""))
+            {
+                for (int x = 0; x < num2; x++)
+                {
+                    odontograma.agregarOdontograma2(marcaArray[x], marcaColorArray[x], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
+                    prueba++;
+                }
+            }
+
+            string script = @"<script type='text/javascript'>
             alert('Se ha insertado exitosamente');
             </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-            }
-            catch
-            {
-                string script = @"<script type='text/javascript'>
-                alert('Realice cambios en el odontograma');
-                </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-            }
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            //}
+            //catch
+            //{
+            //    string script = @"<script type='text/javascript'>
+            //    alert('Realice cambios en el odontograma');
+            //    </script>";
+            //    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            ////}
 
 
         }

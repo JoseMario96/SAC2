@@ -16,11 +16,6 @@
             cursor: default;
         }
 
-        .auto-style1 {
-            left: 0px;
-            top: 0px;
-        }
-
         .contenedor {
             box-sizing: border-box;
             float: left;
@@ -449,8 +444,6 @@
                 var y = event.y;
                 //alert(x);
                 //alert(y);
-
-
                 var canvas = document.getElementById("myCanvas");
                 var div_can = document.getElementById("canvasesdiv");
                 div_can.width = div_can.width;
