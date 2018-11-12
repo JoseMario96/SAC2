@@ -11,15 +11,15 @@
 </head>
 <body>
     <header style="text-align: center">
-        Citas de hoy
+        <h2>CITAS DE HOY</h2>
     </header>
     <div class="container">
         <div class="row">
             <form id="form1" runat="server">
                 <asp:ScriptManager runat="server" ID="sm">
                 </asp:ScriptManager>
-                <div style="padding-left:10%; padding-top:5%">
-                    <asp:Label ID="titulo" runat="server" style="text-align:center"></asp:Label>
+                <div style="padding-left:15%; padding-top:5%">
+                    <asp:Label ID="titulo" runat="server" style="text-align:center; font-size:medium"></asp:Label>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"

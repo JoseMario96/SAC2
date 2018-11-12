@@ -12,11 +12,20 @@ namespace SAC.formularios
         metodos.metodos_Citas objeto = new metodos.metodos_Citas();
         protected void Page_Load(object sender, EventArgs e)
         {
-            DateTime fecha = DateTime.Now;
-            titulo.Text = fecha.ToString("d");
-            GridView1.DataSource = objeto.CitaHoy(fecha.ToString("d"));
-            GridView1.DataBind();
-            
+            try
+            {
+                DateTime fecha = DateTime.Now;
+                titulo.Text = fecha.ToString("d");
+                GridView1.DataSource = objeto.CitaHoy(fecha.ToString("yyyy-MM-dd"));
+                GridView1.DataBind();
+            }
+            catch
+            {
+                string scripts = @"<script type='text/javascript'>
+                    alert('No hay citas para hoy!');
+                    </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+            }
         }
     }
 }
