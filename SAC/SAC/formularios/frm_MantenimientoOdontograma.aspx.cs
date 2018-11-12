@@ -76,7 +76,6 @@ namespace SAC.formularios
 
         protected void BudquedaExp_TextChanged(object sender, EventArgs e)
         {
-
             codigocedula = 0;
             codigocedula = expediente.BuscarcodigoExpediente(BudquedaExp.Text.ToString());
             if (codigocedula > 0)
@@ -84,8 +83,6 @@ namespace SAC.formularios
                 GridView1.DataSource = odontograma.TratamientosRealizados(codigocedula.ToString());
                 GridView1.DataBind();
             }
-
-
             codigoExpediente = expediente.BuscarcodigoExpediente(BudquedaExp.Text);
 
             if (codigoExpediente == 0)
@@ -156,7 +153,7 @@ namespace SAC.formularios
             string color = colorO.Value;
             string[] colorArray = color.Split(",".ToCharArray());
             int num = colorArray.Count();
-            TextBox1.Text = borradoC;
+
             string diente = dienteO.Value;
             string[] dienteArray = diente.Split(",".ToCharArray());
 
@@ -165,10 +162,14 @@ namespace SAC.formularios
             int prueba = 0;
 
             string marca = marcaO.Value;
+
             string[] marcaArray = marca.Split(",".ToCharArray());
             string marcaColor = colorM.Value;
             string[] marcaColorArray = marcaColor.Split(",".ToCharArray());
+
             int num2 = marcaArray.Count();
+
+            TextBox1.Text = marca;
             if (!colorArray[0].Equals(""))
             {
                 for (int x = 0; x < num; x++)
@@ -177,15 +178,16 @@ namespace SAC.formularios
                     prueba++;
                 }
             }
+
             if (!marcaArray[0].Equals(""))
             {
-                for (int x = 0; x < num2; x++)
+                for (int y = 0; y < num2; y++)
                 {
-                    odontograma.agregarOdontograma2(marcaArray[x], marcaColorArray[x], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
-                    prueba++;
+                
+                    //odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
                 }
             }
-
+            
             string script = @"<script type='text/javascript'>
             alert('Se ha insertado exitosamente');
             </script>";
