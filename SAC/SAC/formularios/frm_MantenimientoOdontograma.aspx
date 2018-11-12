@@ -546,8 +546,7 @@
 
                 var y = 0;
                 var color2 = '';
-                var div = 0;
-                var color = '';
+   
                 var seccion2 = 0;
                 var cont = 0;
 
@@ -667,7 +666,8 @@
                     y -= div_can.offsetTop;
                     //alert(div_can.offsetTop);
 
-
+                    var div = 0;
+                    var color = '';
                     var accion = '';
                     seleccion = $("input[name='accion']:checked").val();
                     if (seleccion == 'carie') {
@@ -787,13 +787,11 @@
 
                                 for (var p = 0; p <= banderaArray.length; p++) {
                                     if (banderaArray[p] == diente) {
-                                        alert("Marcar1");
                                         verificacion1 = true;
                                     }
                                 }
                                 for (var r = 0; r <= bandera2Array.length; r++) {
                                     if (bandera2Array[r] == diente) {
-                                        alert("Marcar2");
                                         verificacion1 = true;
                                     }
                                 }
@@ -810,7 +808,7 @@
                                     guardar = new_array.toLocaleString();
                                     localStorage.setItem(cod, guardar);
                                     marcar_extraccion(ctx2, diente, 'black')
-                                    marcacolorArray = 'black';
+                                    marcacolorArray[contador2] = 'black';
                                     seccionArray[contador2] = diente;
                                     contador2++;
                                     banderaArray[contadorBandera] = diente;
@@ -827,7 +825,7 @@
                             }
                         } else if (accion == 'marcarE') {
                             cod2 = diente + '-0-' + '5';
-                            var verificacion2= false;
+                            var verificacion2 = false;
                             var cargado2 = false;
 
                             if (banderaArray.length > 0 || bandera2Array.length > 0) {
@@ -872,10 +870,13 @@
                                 alert('Ya se realizó algún tipo de extracción')
                             }
                         }
+
+         ////////////////////////////////////////////////////////////////
                         else if (accion == 'borrar') {
                             borrar_diente(ctx2, diente);
-                            document.getElementById('borrarO').value = diente;
+                            //document.getElementById('borrarO').value = diente;
                             ////Cargar el ultimo pintado
+
                             seccion_chk = $("input[name='seccion']:checked").val();
                             if (seccion_chk == 'seccion') {
                                 x = x - ((div * 40) + (10 * div) + 10);
@@ -962,7 +963,6 @@
                                             borrarDS++;
                                             contando++;
                                             if (contando == 1) {
-                                                alert("En el 1");
                                                 contadorB1 = dd;
                                                 auxiliarArrayD[prueba] = dienteArray[dd];
                                                 auxiliarArrayS[prueba] = posicionArray[dd];
@@ -980,10 +980,7 @@
                                             }
                                             else if (contando == 2) {
                                                 contadorB2 = dd;
-                                                alert("En el 2");
-
                                                 auxiliarArrayC[prueba] = colorArray[dd - 1];
-
                                                 colorArray.splice(dd - 1, 1, auxiliarArrayC[prueba - 1]);
                                                 //colorArray.splice(dd, 1);
                                                 //dienteArray.splice(dd, 1);
@@ -995,7 +992,6 @@
 
                                             }
                                             else if (contando == 3) {
-                                                alert("En el 3");
                                                 contadorB3 = dd;
                                                 auxiliarArrayC[prueba] = colorArray[dd - 1];
 
@@ -1012,8 +1008,6 @@
                                     }
                                 }
                                 if (contando == 1) {
-                                    alert("Contando1");
-
                                     dienteArray.splice(contadorB1, 1);
                                     posicionArray.splice(contadorB1, 1);
                                     document.getElementById('colorO').value = colorArray.join(',');
@@ -1021,8 +1015,6 @@
                                     document.getElementById('seccionO').value = posicionArray.join(',');
                                 }
                                 else if (contando == 2) {
-                                    alert("Contador2");
-
                                     dienteArray.splice(contadorB2, 1);
                                     posicionArray.splice(contadorB2, 1);
                                     document.getElementById('colorO').value = colorArray.join(',');
@@ -1030,7 +1022,6 @@
                                     document.getElementById('seccionO').value = posicionArray.join(',');
                                 }
                                 else if (contando == 3) {
-                                    alert("Contador3");
                                     //dienteArray.splice(contadorB2, 1);
                                     //posicionArray.splice(contadorB2, 1);
                                     dienteArray.splice(contadorB3, 1);
@@ -1073,7 +1064,6 @@
                                         }
                                         if (dienteVarios == diente && (colores == 5 || colores == 4)) {
                                             comprobando = colores;
-                                            alert("X ó /" + comprobando);
                                         }
                                     }
                                     tamanoB = borrarVarios.length;
@@ -1135,44 +1125,41 @@
                                     }
                                     //termina el for que recorre para borrar
                                     salvaguarda = key_cod;
-                                    //if ((comprobando == 5 || comprobando == 4)) {
-                                    //    comprobando = 0;
-                                    //    alert("No se puede borrar un tratamiento despues de realizar un extración");
-                                    //    pintartodo();
-                                    //} else&& comprobando == 0
-                                    if (key_cod != '' ) {
-                                        alert("Borrar normal");
+
+                                    if (key_cod != '') {
                                         localStorage.removeItem(key_cod);
                                         pinta_datos();
                                     }
-                                     pinta_datos();
-                                    //else {
-                                    //    comprobando = 0;
-                                    //    alert("No se puede borrar un tratamiento despues de realizar un extración");
-                                    //    pintartodo();
-                                    //}
+                                    pinta_datos();
+
                                 }
                             }
+
                             //--------------------------------------------------------------------------------------------
                             else if (seccion_chk == 'diente') {
                                 ultimo = '';
                                 verificacion1 = false;
                                 verificacion2 = false;
                                 key_cod = '';
+                                seccion2 = 0;
+
 
                                 banderaArray.splice(contadorBandera - 1, 1);
                                 bandera2Array.splice(contadorBandera2 - 1, 1);
                                 borrarArrayM[contadorBorrar2] = diente;
                                 contadorBorrar2++;
 
-
-                                var bdcontado3 = 0;
-
-                                for (var v = 0; v < BDDiente.length; v++) {
-                                    if (BDMarca[v] == borrarArrayD[v]) {
-                                        BDborradorM[bdcontado3] = BDDiente[xx];
-                                        document.getElementById('BDdienteM').value = BDborradorM.join(',');
-                                        bdcontado3++;
+                              //  alert(borrarArrayD[0]);
+                               // borrarArrayD[contadorBorrar] = diente;
+                               // alert(borrarArray[0]);
+                                for (var v = 0; v < BDMarca.length; v++) {
+                                    for (var u = 0; u < borrarArrayM.length; u++) {
+                                        if (BDMarca[v] == borrarArrayM[u]) {
+                                            alert("Si");
+                                            BDborradorM[bdcontado3] = BDMarca[v];
+                                            document.getElementById('BDdienteM').value = BDborradorM.join(',');
+                                            bdcontado3++;
+                                        }
                                     }
 
                                 }
@@ -1197,11 +1184,12 @@
                                         }
                                     }
                                 }
-                                //if (key_cod != '') {
-                                alert(key_cod);
-                                localStorage.removeItem(key_cod);
+                                if (key_cod != '') {
+                                    localStorage.removeItem(key_cod);
+                                    pinta_datos();
+                                }
                                 pinta_datos();
-                                //}
+
                             }
                         }
                     }
@@ -1714,6 +1702,7 @@
                 }
                 //Pinta los dientes
                 function pinta_datos() {
+                    alert("Si pinta");
                     array_local = [];
                     compararBD();
 
@@ -1872,7 +1861,6 @@
                     BDSeccion[BDcontador] = sec;
                     BDDiente[BDcontador] = dient;
                     BDMarca[BDcontador] = marc;
-
                     pruebas[BDcontador] = dient;
                     pruebaseccion[BDcontador] = sec;
                     pruebacolor[BDcontador] = col;
@@ -1983,21 +1971,21 @@
             </div>
         </div>
         <script>
-            function solonumeros(e) {
-                key = e.keyCoden || e.which;
-                teclado = String.fromCharCode(key);
-                numero = "1234567890";
-                especiales = "8-37-38-46";
-                teclado_especial = false;
-                for (var i in especiales) {
-                    if (key == especiales[i]) {
-                        teclado_especial = true;
+                function solonumeros(e) {
+                    key = e.keyCoden || e.which;
+                    teclado = String.fromCharCode(key);
+                    numero = "1234567890";
+                    especiales = "8-37-38-46";
+                    teclado_especial = false;
+                    for (var i in especiales) {
+                        if (key == especiales[i]) {
+                            teclado_especial = true;
+                        }
+                    }
+                    if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+                        return false;
                     }
                 }
-                if (numero.indexOf(teclado) == -1 && !teclado_especial) {
-                    return false;
-                }
-            }
         </script>
     </form>
 </body>
