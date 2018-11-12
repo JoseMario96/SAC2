@@ -99,15 +99,18 @@
     <Content Include="formularios\frm_ActualizarExpediente.aspx" />
     <Content Include="formularios\frm_AgregarCita.aspx" />
     <Content Include="formularios\frm_AgregarExpediente.aspx" />
+    <Content Include="formularios\frm_AgregarVenta.aspx" />
     <Content Include="formularios\frm_BuscarExpediente.aspx" />
     <Content Include="formularios\frm_BuscarPaciente.aspx" />
     <Content Include="formularios\frm_ActualizarPaciente.aspx" />
     <Content Include="formularios\frm_AgregarPaciente.aspx" />
     <Content Include="formularios\frm_Calendario.aspx" />
     <Content Include="formularios\frm_Citas.aspx" />
+    <Content Include="formularios\frm_CuentasXCobrar.aspx" />
     <Content Include="formularios\frm_MantenimientoOdontograma.aspx" />
     <Content Include="formularios\frm_ReporteExpediente.aspx" />
     <Content Include="formularios\frm_ReporteOdontogramas.aspx" />
+    <Content Include="formularios\frm_ReporteVentas.aspx" />
     <Content Include="formularios\frm_tratamientos.aspx" />
     <Content Include="formularios\Prueba.aspx" />
     <Content Include="formularios\ResponsiveOdontograma.aspx" />
@@ -219,6 +222,13 @@
     <Compile Include="formularios\frm_AgregarExpediente.aspx.designer.cs">
       <DependentUpon>frm_AgregarExpediente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="formularios\frm_AgregarVenta.aspx.cs">
+      <DependentUpon>frm_AgregarVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\frm_AgregarVenta.aspx.designer.cs">
+      <DependentUpon>frm_AgregarVenta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="formularios\frm_BuscarExpediente.aspx.cs">
       <DependentUpon>frm_BuscarExpediente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -254,6 +264,13 @@
     <Compile Include="formularios\frm_Calendario.aspx.designer.cs">
       <DependentUpon>frm_Calendario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="formularios\frm_CuentasXCobrar.aspx.cs">
+      <DependentUpon>frm_CuentasXCobrar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\frm_CuentasXCobrar.aspx.designer.cs">
+      <DependentUpon>frm_CuentasXCobrar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="formularios\frm_MantenimientoOdontograma.aspx.cs">
       <DependentUpon>frm_MantenimientoOdontograma.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -274,6 +291,13 @@
     </Compile>
     <Compile Include="formularios\frm_ReporteOdontogramas.aspx.designer.cs">
       <DependentUpon>frm_ReporteOdontogramas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\frm_ReporteVentas.aspx.cs">
+      <DependentUpon>frm_ReporteVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\frm_ReporteVentas.aspx.designer.cs">
+      <DependentUpon>frm_ReporteVentas.aspx</DependentUpon>
     </Compile>
     <Compile Include="formularios\frm_tratamientos.aspx.cs">
       <DependentUpon>frm_tratamientos.aspx</DependentUpon>
@@ -324,6 +348,7 @@
     <Compile Include="metodos\metodosPaciente.cs" />
     <Compile Include="metodos\metodosTratamientos.cs" />
     <Compile Include="metodos\metodos_Citas.cs" />
+    <Compile Include="metodos\Metodos_Ventas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@
 namespace SAC.formularios {
     
     
-    public partial class ResponsiveOdontograma {
+    public partial class frm_AgregarVenta {
         
         /// <summary>
         /// Control form1.
@@ -22,48 +22,75 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control colorO.
+        /// Control sm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField colorO;
+        protected global::System.Web.UI.ScriptManager sm;
         
         /// <summary>
-        /// Control dienteO.
+        /// Control Gridview_Paciente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField dienteO;
+        protected global::System.Web.UI.WebControls.GridView Gridview_Paciente;
         
         /// <summary>
-        /// Control seccionO.
+        /// Control Gridview_Venta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField seccionO;
+        protected global::System.Web.UI.WebControls.GridView Gridview_Venta;
         
         /// <summary>
-        /// Control contextoO.
+        /// Control lbl_totalTitulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField contextoO;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_totalTitulo;
         
         /// <summary>
-        /// Control Label1.
+        /// Control lbl_total.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_total;
+        
+        /// <summary>
+        /// Control txt_abono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txt_abono;
+        
+        /// <summary>
+        /// Control txt_extra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txt_extra;
+        
+        /// <summary>
+        /// Control btn_factura.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_factura;
     }
 }

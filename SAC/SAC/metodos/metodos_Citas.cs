@@ -15,7 +15,7 @@ namespace SAC.metodos
         public String[,] Cita()
         {
             String[,] matriz;
-            string consulta = "select * from tbl_cita;";
+            string consulta = "select * from tbl_cita order by fechaReservaCita, horaCita;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataSet dt = new DataSet())

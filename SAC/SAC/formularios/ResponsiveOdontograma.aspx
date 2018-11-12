@@ -4,20 +4,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <%--content="text/html; charset=utf-8"--%>
+    <meta http-equiv="Content-Type" name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title></title>
     <script src="../js/jquery-1.7.2.min.js"></script>
     <link href="../css/jquery-ui-1.8.13.custom.css" rel="stylesheet" />
     <script src="../js/jquery-ui-1.8.13.custom.min.js"></script>
-
     <style type="text/css">
         body, a, a:hover {
-            cursor: url(C:\Users\dtrej\source\repos\SAC2\SAC\SAC\images\cur438.cur), progress;
-        }
-
-        .auto-style1 {
-            left: 0px;
-            top: 0px;
+            cursor: default;
         }
 
         .contenedor {
@@ -82,6 +78,7 @@
                 <canvas class="lienzo" id="myCanvas4" width="810" height="200" style="z-index: 4; position: absolute;"></canvas>
             </div>
         </div>
+        <asp:Label ID="Label1" runat="server"></asp:Label>
         <script>
             // Valores iniciales de las propiedades del diente
             var canvas = document.getElementById('myCanvas');
@@ -96,7 +93,6 @@
             var layer4 = document.getElementById("myCanvas4");
             var ctx4 = layer4.getContext("2d");
             //
-
             var color_line = 'black';
             var medida = 40;
             var separacion_x = 10;
@@ -119,7 +115,6 @@
             var contador = 0;
 
             for (x = 0; x < 16; x++) {
-
                 if (sec > 11) {
                     iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
                     dibuja_contorno(context, iniciar_x, iniciar_y, medida, separacion_x, 10);
@@ -149,7 +144,7 @@
             // 17 - 32 dientes
             iniciar_x = 0;
             iniciar_y = medida + 100;
-            var positcion = 255;
+            var positcion = 90;
             for (x = 0; x < 16; x++) {
 
                 if (sec3 > 41) {
@@ -179,6 +174,7 @@
                 localStorage.clear();
                 click();
             }
+
             function click() {
                 //Añadimos un addEventListener al canvas para reconocer el click
                 layer4.addEventListener("click",
@@ -187,6 +183,7 @@
                     , false);
                 layer4.addEventListener("mousemove", Marcar, false);
             }
+
             function dibuja_contorno(context, inicio_x, inicio_y, med, separacion_x, separacion_y) {
                 var ctx = context;
                 // Definiendo puntos de dibujo
@@ -429,29 +426,24 @@
                 }
             }
 
-            function tamVentana() {
-                var tam = [0, 0];
-                if (typeof window.innerWidth != 'undefined') {
-                    tam = [window.innerWidth, window.innerHeight];
+            function myFunction(x) {
+                if (x.matches) {
+                    document.body.style.backgroundColor = "yellow"; 
+
+                } else {
+                    document.body.style.backgroundColor = "pink";
                 }
-                else if (typeof document.documentElement != 'undefined'
-                    && typeof document.documentElement.clientWidth !=
-                    'undefined' && document.documentElement.clientWidth != 0) {
-                    tam = [document.documentElement.clientWidth, document.documentElement.clientHeight];
-                }
-                else {
-                    tam = [document.getElementsByTagName('body')[0].clientWidth, document.getElementsByTagName('body')[0].clientHeight];
-                }
-                return tam;
             }
+
+            var x = window.matchMedia("(max-width: 700px)");
+            myFunction(x);
+            x.addListener(myFunction);
 
             function getPosition(event) {
                 var x = event.x - positcion;
                 var y = event.y;
-                alert(x);
-                alert(y);
-
-
+                //alert(x);
+                //alert(y);
                 var canvas = document.getElementById("myCanvas");
                 var div_can = document.getElementById("canvasesdiv");
                 div_can.width = div_can.width;
@@ -528,7 +520,8 @@
                         if (diente > 16) {
                             y = y - 120;
                         }
-                        //alert(y);
+                        alert(x);
+                        alert(y);
                         if (y > 0 && y < 10 && x > y && y < 40 - x) {
                             seccion = 1;
                         } else if (x > 30 && x < 40 && y < x && 40 - x < y) {
@@ -760,13 +753,12 @@
                     }
 
                 }
-
             }
 
             function Marcar(event) {
-
                 var x = event.x - positcion;
                 var y = event.y;
+
                 var canvas2 = document.getElementById("myCanvas2");
                 var div_can = document.getElementById("canvasesdiv");
                 x -= div_can.offsetLeft;
