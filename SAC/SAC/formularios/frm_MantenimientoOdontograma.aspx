@@ -546,8 +546,7 @@
 
                 var y = 0;
                 var color2 = '';
-                var div = 0;
-                var color = '';
+
                 var seccion2 = 0;
                 var cont = 0;
 
@@ -657,6 +656,7 @@
                     layer4.addEventListener("mousemove", Marcar, false);
                 }
                 //canvas.addEventListener("mousedown", getPosition, false);
+
                 function getPosition(event) {
                     var x = event.x - 225;// pintar en eje x
                     var y = event.y; // pintar en eje y
@@ -667,8 +667,10 @@
                     y -= div_can.offsetTop;
                     //alert(div_can.offsetTop);
 
-
                     var accion = '';
+                    var div = 0;
+                    var color = '';
+
                     seleccion = $("input[name='accion']:checked").val();
                     if (seleccion == 'carie') {
                         color = 'red';
@@ -705,6 +707,7 @@
                         //alert(x);
                         if (x >= 10 && x <= 50) {
                             diente = 1;
+                            alert("diente 1");
                         }
                         else if (x >= 60 && x <= 800) {
                             div = parseInt(x / 50, 10);
@@ -730,53 +733,37 @@
                     }
 
                     if (diente) {
-                        //alert(diente);
                         if (accion == 'seccion') {
-
-                            x = x - ((div * 40) + (10 * div) + 10);
-                            y = y - 20;
-
-                            if (diente > 16) {
-                                y = y - 120;
-                            }
-                            //alert(x + "    x");
-                            //alert(y + "    y");
-                            ////---------------------------------------------------------------------------------------------
-                            if (diente == 1 || diente == 17) {
-
-                                x = remplazo;
-                                if (y > 0 && y < 10 && x > y && y < 40 - x) {
-
-                                    seccion = 1;
-                                } else if (x > 30 && x < 40 && y < x && 40 - x < y) {
-
-                                    seccion = 2;
-                                } else if (y > 30 && y < 40 && x < y && x > 40 - y) {
-
-                                    seccion = 3;
-                                } else if (x > 0 && x < 10 && y > x && x < 40 - y) {
-
-                                    seccion = 4;
-                                } else if (x > 10 && x < 30 && y > 10 && y < 30) {
-
-                                    seccion = 5;
+                            var estadoDiente = false;
+                            for (var zz = 0; zz < BDMarca.length; zz++) {
+                                if (diente == BDMarca[zz]) {
+                                    estadoDiente = true;
                                 }
                             }
+                            if (estadoDiente == false) {
+                                x = x - ((div * 40) + (10 * div) + 10);
+                                y = y - 20;
+                                if (diente > 16) {
+                                    y = y - 120;
+                                }
+                                if (y > 0 && y < 10 && x > y && y < 40 - x) {
+                                    seccion = 1;
+                                } else if (x > 30 && x < 40 && y < x && 40 - x < y) {
+                                    seccion = 2;
 
-                            if (y > 0 && y < 10 && x > y && y < 40 - x) {
-                                seccion = 1;
-                            } else if (x > 30 && x < 40 && y < x && 40 - x < y) {
-                                seccion = 2;
+                                } else if (y > 30 && y < 40 && x < y && x > 40 - y) {
+                                    seccion = 3;
 
-                            } else if (y > 30 && y < 40 && x < y && x > 40 - y) {
-                                seccion = 3;
+                                } else if (x > 0 && x < 10 && y > x && x < 40 - y) {
+                                    seccion = 4;
 
-                            } else if (x > 0 && x < 10 && y > x && x < 40 - y) {
-                                seccion = 4;
-
-                            } else if (x > 10 && x < 30 && y > 10 && y < 30) {
-                                seccion = 5;
+                                } else if (x > 10 && x < 30 && y > 10 && y < 30) {
+                                    seccion = 5;
+                                }
+                            } else {
+                                alert("No se puede pintar sobre una Ausencia o Exodoncia");
                             }
+
 
                         } else if (accion == 'marcar') {
                             cod = diente + '-0-' + '4';
@@ -787,13 +774,11 @@
 
                                 for (var p = 0; p <= banderaArray.length; p++) {
                                     if (banderaArray[p] == diente) {
-                                        alert("Marcar1");
                                         verificacion1 = true;
                                     }
                                 }
                                 for (var r = 0; r <= bandera2Array.length; r++) {
                                     if (bandera2Array[r] == diente) {
-                                        alert("Marcar2");
                                         verificacion1 = true;
                                     }
                                 }
@@ -827,7 +812,7 @@
                             }
                         } else if (accion == 'marcarE') {
                             cod2 = diente + '-0-' + '5';
-                            var verificacion2= false;
+                            var verificacion2 = false;
                             var cargado2 = false;
 
                             if (banderaArray.length > 0 || bandera2Array.length > 0) {
@@ -873,6 +858,9 @@
                             }
                         }
                         else if (accion == 'borrar') {
+
+
+
                             borrar_diente(ctx2, diente);
                             document.getElementById('borrarO').value = diente;
                             ////Cargar el ultimo pintado
@@ -1073,7 +1061,6 @@
                                         }
                                         if (dienteVarios == diente && (colores == 5 || colores == 4)) {
                                             comprobando = colores;
-                                            alert("X ó /" + comprobando);
                                         }
                                     }
                                     tamanoB = borrarVarios.length;
@@ -1140,12 +1127,11 @@
                                     //    alert("No se puede borrar un tratamiento despues de realizar un extración");
                                     //    pintartodo();
                                     //} else&& comprobando == 0
-                                    if (key_cod != '' ) {
-                                        alert("Borrar normal");
+                                    if (key_cod != '') {
                                         localStorage.removeItem(key_cod);
                                         pinta_datos();
                                     }
-                                     pinta_datos();
+                                    //pinta_datos();
                                     //else {
                                     //    comprobando = 0;
                                     //    alert("No se puede borrar un tratamiento despues de realizar un extración");
@@ -1197,11 +1183,11 @@
                                         }
                                     }
                                 }
-                                //if (key_cod != '') {
+                                if (key_cod != '') {
                                 alert(key_cod);
                                 localStorage.removeItem(key_cod);
                                 pinta_datos();
-                                //}
+                                }
                             }
                         }
                     }
@@ -1352,7 +1338,6 @@
                         //alert(x);
                         if (x >= 10 && x <= 50) {
                             diente = 1;
-                            //alert("1");
                         }
                         else if (x >= 60 && x <= 800) {
                             div = parseInt(x / 50, 10);
@@ -1405,48 +1390,45 @@
                             }
                         }
                         if (seleccion == 'seccion') {
-
                             x = x - ((div * 40) + (10 * div) + 10);
                             y = y - 20;
                             if (diente > 16) {
                                 y = y - 120;
-                            } else if (diente == 17) {
-
                             }
                             // Ubicar la seccion clickeada
                             if (y > 0 && y < 10 && x > y && y < 40 - x) {
                                 seccion = 1;
-                                if (diente == 1) {
-                                    remplazo = 27;
-                                } else if (diente == 17) {
-                                    remplazo = 20;
-                                }
+                                //if (diente == 1) {
+                                //    remplazo = 27;
+                                //} else if (diente == 17) {
+                                //    remplazo = 20;
+                                //}
                             } else if (x > 30 && x < 40 && y < x && 40 - x < y) {
                                 seccion = 2;
-                                if (diente == 1) {
-                                    remplazo = 37;
-                                } else if (diente == 17) {
-                                    remplazo = 36;
-                                }
+                                //if (diente == 1) {
+                                //    remplazo = 37;
+                                //} else if (diente == 17) {
+                                //    remplazo = 36;
+                                //}
                             } else if (y > 30 && y < 40 && x < y && x > 40 - y) {
                                 seccion = 3;
-                                if (diente == 1) {
-                                    remplazo = 25;
-                                } else if (diente == 17) {
-                                    remplazo = 28;
-                                }
+                                //if (diente == 1) {
+                                //    remplazo = 25;
+                                //} else if (diente == 17) {
+                                //    remplazo = 28;
+                                //}
                             } else if (x > 0 && x < 10 && y > x && x < 40 - y) {
                                 seccion = 4;
-                                if (diente == 1 || diente == 17) {
-                                    remplazo = 4;
-                                }
+                                //if (diente == 1 || diente == 17) {
+                                //    remplazo = 4;
+                                //}
                             } else if (x > 10 && x < 30 && y > 10 && y < 30) {
                                 seccion = 5;
-                                if (diente == 1) {
-                                    remplazo = 22;
-                                } else if (diente == 17) {
-                                    remplazo = 23;
-                                }
+                                //if (diente == 1) {
+                                //    remplazo = 22;
+                                //} else if (diente == 17) {
+                                //    remplazo = 23;
+                                //}
                             }
                             //Comprobacion de si esta en una seccion
                             if (seccion) {
@@ -1692,8 +1674,8 @@
                 }
 
                 //Dientes que vienen de BD
-                function compararBD() {
 
+                function compararBD() {
                     var contadorBDC = 0;
                     var contarentradas = 0;
                     for (var aa = 0; aa < pruebas.length; aa++) {
@@ -1723,7 +1705,6 @@
                     //} 
                     array_local = pintaBorrado();
                     array_local.sort(function (a, b) {
-
                         var total = new Array();
                         if (a[3] > b[3]) {
                             total = array_local;
@@ -1863,6 +1844,7 @@
 
                     return devolver_seccion;
                 }
+
                 function pintarDiente(diente, seccion, color, marca) {
                     var col = color;
                     var sec = seccion;
@@ -1872,7 +1854,6 @@
                     BDSeccion[BDcontador] = sec;
                     BDDiente[BDcontador] = dient;
                     BDMarca[BDcontador] = marc;
-
                     pruebas[BDcontador] = dient;
                     pruebaseccion[BDcontador] = sec;
                     pruebacolor[BDcontador] = col;
@@ -1890,8 +1871,6 @@
 
                 }
             </script>
-
-
             <asp:ScriptManager runat="server" ID="sm">
             </asp:ScriptManager>
             <br />
