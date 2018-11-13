@@ -178,13 +178,12 @@ namespace SAC.formularios
                     prueba++;
                 }
             }
-
             if (!marcaArray[0].Equals(""))
             {
                 for (int y = 0; y < num2; y++)
                 {
                 
-                    //odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
+                    odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
                 }
             }
             

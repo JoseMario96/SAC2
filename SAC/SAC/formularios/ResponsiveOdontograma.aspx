@@ -14,6 +14,7 @@
     <style type="text/css">
         body, a, a:hover {
             cursor: default;
+            text-align: center;
         }
 
         .contenedor {
@@ -33,7 +34,6 @@
 
         #myCanvas, #myCanvas2, #myCanvas3, #myCanvas4 {
             width: 65%;
-            float: left;
             border: 2px solid #000000;
         }
     </style>
@@ -59,23 +59,28 @@
         <asp:HiddenField ID="dienteO" runat="server" />
         <asp:HiddenField ID="seccionO" runat="server" />
         <asp:HiddenField ID="contextoO" runat="server" />
+
         <div id="radio">
             <input type="radio" id="radio1" name="accion" value="carie" checked="checked" /><label for="radio1">Carie</label>
             <input type="radio" id="radio6" name="accion" value="sellante" /><label for="radio6">Sellante</label>
             <input type="radio" id="radio2" name="accion" value="restauracion" /><label for="radio2">Obturado</label>
             <input type="radio" id="radio4" name="accion" value="extraccion" /><label for="radio4">Extraccion</label>
             <input type="radio" id="radio5" name="accion" value="puente" /><label for="radio5">Puente</label>
-            <%--<input type="radio" id="radio3" name="accion" value="borrar" /><label for="radio3">Borrar</label>--%>
-        </div>
-        <div>
-            <%--<div class="contenedor">
+
+            <div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <%--<div class="contenedor">
                 <canvas class="lienzo" id="lienzo2" width="190" height="190">Su navegador</canvas>
             </div>--%>
-            <div id="canvasesdiv" class="contenedor">
-                <canvas class="lienzo" id="myCanvas" width="810" height="200" style="z-index: 1; position: absolute;"></canvas>
-                <canvas class="lienzo" id="myCanvas2" width="810" height="200" style="z-index: 2; position: absolute;"></canvas>
-                <canvas class="lienzo" id="myCanvas3" width="810" height="200" style="z-index: 3; position: absolute;"></canvas>
-                <canvas class="lienzo" id="myCanvas4" width="810" height="200" style="z-index: 4; position: absolute;"></canvas>
+                <div id="canvasesdiv" class="contenedor">
+                    <canvas class="lienzo" id="myCanvas" width="810" height="200" style="z-index: 1; position: absolute; left: 25%; top: 50px;"></canvas>
+                    <canvas class="lienzo" id="myCanvas2" width="810" height="200" style="z-index: 2; position: absolute; left: 25%; top: 50px;"></canvas>
+                    <canvas class="lienzo" id="myCanvas3" width="810" height="200" style="z-index: 3; position: absolute; left: 25%; top: 50px;"></canvas>
+                    <canvas class="lienzo" id="myCanvas4" width="810" height="200" style="z-index: 4; position: absolute; left: 25%; top: 50px;"></canvas>
+                </div>
             </div>
         </div>
         <asp:Label ID="Label1" runat="server"></asp:Label>
@@ -426,18 +431,55 @@
                 }
             }
 
-            function myFunction(x) {
-                if (x.matches) {
-                    document.body.style.backgroundColor = "yellow"; 
+            //function myFunction(x, ) {
+            //    if (x.matches) {
+            //        document.body.style.backgroundColor = "yellow";
 
-                } else {
-                    document.body.style.backgroundColor = "pink";
+            //    } else {
+            //        document.body.style.backgroundColor = "pink";
+            //    }
+            //}
+
+            //function deteccion() {
+
+            //    if (navigator.platform == 'iPad' || navigator.platform == 'iPhone' || navigator.platform == 'iPod') {
+
+            //        // document.getElementById('conte').style.background = '#09C';
+            //    } else {
+            //        document.getElementById('conte').style.background = '#603';
+            //    }
+            //    alert('Estás entrando desde un ' + navigator.platform);
+            //    document.getElementById('texto').innerHTML = navigator.platform;
+            //}
+
+            //function responsive() {
+            //    if (screen.width < 520 && screen.width> 650) {
+            //        alert("codigo resolución pequeña");
+            //    } else if (screen.width < 650 && screen.width> 950) {
+            //        alert("codigo resolución mediana");
+            //    } else {
+            //        alert("codigo resolución grande");
+            //    }
+            //}
+
+
+            $(window).resize(function () {
+                if ($(window).width() <= 700) {
+                    document.body.style.backgroundColor = "yellow";
+                } else if ($(window).width() <= 450) {
+                    document.body.style.backgroundColor = "red";
+                } else if ($(window).width() <= 1020) {
+                    document.body.style.backgroundColor = "blue";
                 }
-            }
 
-            var x = window.matchMedia("(max-width: 700px)");
-            myFunction(x);
-            x.addListener(myFunction);
+            });
+
+            //var x = window.matchMedia("(max-width: 700px)");
+            //var xx = window.matchMedia("(min-width: 600px)");
+
+            //alert(x);
+            //myFunction(x);
+            //x.addListener(myFunction);
 
             function getPosition(event) {
                 var x = event.x - positcion;
