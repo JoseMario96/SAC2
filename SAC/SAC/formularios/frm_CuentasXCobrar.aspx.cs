@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
+using System.Data;
 
 namespace SAC.formularios
 {
@@ -17,8 +18,18 @@ namespace SAC.formularios
         {
             try
             {
-                Gridview_CxC.DataSource = cuenta.CuentaXCobrar();
-                Gridview_CxC.DataBind();
+                if (cuenta.CuentaXCobrar().Rows.Count == 0)
+                {
+                    string scripts = @"<script type='text/javascript'>
+                    alert('No hay cuentas por cobrar');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+                }
+                else
+                {
+                    Gridview_CxC.DataSource = cuenta.CuentaXCobrar();
+                    Gridview_CxC.DataBind();
+                }
             }
             catch
             {
@@ -32,19 +43,37 @@ namespace SAC.formularios
             {
                 foreach (GridViewRow row in Gridview_CxC.Rows)
                 {
-
                     if (row.RowIndex == Gridview_CxC.SelectedIndex)
                     {
                         row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                         row.ToolTip = string.Empty;
                         codigoVenta = row.Cells[0].Text;
-                        saldoVenta = Convert.ToDouble(row.Cells[7].Text);
-                        Gridview_Venta.DataSource = cuenta.DetalleAbono(codigoVenta);
-                        Gridview_Venta.DataBind();
-                        string script = @"<script type='text/javascript'>
-                            document.getElementById('cabecera').style.display = 'block';
-                            </script>";
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                        saldoVenta = Convert.ToDouble(row.Cells[6].Text);
+                        String detalle = cuenta.BuscarDetalle(codigoVenta);
+                        DataTable tabla = cuenta.DetalleAbono(codigoVenta);
+                        if (tabla.Rows.Count <= 0)
+                        {
+                            string scripts = @"<script type='text/javascript'>
+                                document.getElementById('cabecera').style.display = 'none';
+                                document.getElementById('abonosNo').style.display = 'block';
+                                document.getElementById('seccionAbono').style.display = 'block';
+                                </script>";
+                            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+                            lbl_detalle1.Text = detalle;
+                        }
+                        else
+                        {
+                            string scriptt = @"<script type='text/javascript'>
+                                    document.getElementById('abonosNo').style.display = 'none';
+                                    document.getElementById('cabecera').style.display = 'block';
+                                    document.getElementById('seccionAbono').style.display = 'block';
+                                    </script>";
+                            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                            lbl_detalle.Text = detalle;
+                            Gridview_Venta.DataSource = tabla;
+                            Gridview_Venta.DataBind();
+                        }
+                        txt_abono.Focus();
                     }
                     else
                     {
@@ -77,6 +106,7 @@ namespace SAC.formularios
                     string scripts = @"<script type='text/javascript'>
                     alert('Para guardar un abono tiene que digitar un monto!');
                     document.getElementById('cabecera').style.display = 'block';
+                    document.getElementById('seccionAbono').style.display = 'block';
                     </script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
                     txt_abono.Focus();

@@ -42,9 +42,6 @@
                                     <asp:BoundField DataField="fechaVenta" HeaderText="Fecha" ItemStyle-Width="70">
                                         <ItemStyle Width="60px" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="detalleVenta" HeaderText="Detalle" ItemStyle-Width="100">
-                                        <ItemStyle Width="100px" />
-                                    </asp:BoundField>
                                     <asp:BoundField DataField="montoTotalVenta" HeaderText="Monto" ItemStyle-Width="60">
                                         <ItemStyle Width="60px" />
                                     </asp:BoundField>
@@ -62,8 +59,28 @@
                 <br />
                 <br />
                 <br />
+                <div id="abonosNo" style="padding-left:5%; display:none">
+                    <h4 style="text-align:center">Detalle de la venta y desglose de abonos</h4>
+                    <p style="font-weight:bold; font-size:medium">Detalle:</p>
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:Label ID="lbl_detalle1" runat="server"></asp:Label>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <br />
+                    <br />
+                    <asp:Label runat="server">No hay abonos registrados</asp:Label>  
+                    <br />
+                    <br />
+                </div>
                 <div id="cabecera" style="padding-left:5%; display:none">
-                    <h4 style="text-align:center">Desglose de abonos</h4>
+                    <h4 style="text-align:center">Detalle de la venta y desglose de abonos</h4>
+                    <p style="font-weight:bold; font-size:medium">Detalle:</p>
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:Label ID="lbl_detalle" runat="server"></asp:Label>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <asp:GridView ID="Gridview_Venta" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
@@ -90,9 +107,9 @@
                         </ContentTemplate>
                     </asp:UpdatePanel>
                     <br />
-                    
                     <br />
-                    <div class="row">
+                </div>
+                    <div id="seccionAbono" class="row" style="padding-left:5%; display:none">
                         <h4>Abono nuevo</h4>
                         <div class="col s4">
                             <asp:UpdatePanel runat="server">
@@ -106,7 +123,7 @@
                             <asp:Button class="waves-effect waves-light btn" ID="btn_factura" runat="server" Text="Guardar" OnClick="btn_factura_Click" />
                         </div>
                     </div>
-                </div>
+                
                 <script type="text/javascript">
                     function solonumeros(e) {
                         key = e.keyCoden || e.which;

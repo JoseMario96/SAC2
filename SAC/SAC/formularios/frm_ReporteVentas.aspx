@@ -43,7 +43,7 @@
                                         <ItemStyle Width="50px" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="fechaVenta" HeaderText="Fecha" ItemStyle-Width="100">
-                                        <ItemStyle Width="60px" />
+                                        <ItemStyle Width="70px" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="detalleVenta" HeaderText="Detalle" ItemStyle-Width="100">
                                         <ItemStyle Width="100px" />
