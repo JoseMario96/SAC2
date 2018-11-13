@@ -409,7 +409,7 @@ namespace SAC.formularios
                 SmtpServer.Send(mail);
                 
             }
-            catch (Exception ex)
+            catch
             {
                 string script = @"<script type='text/javascript'>
                     alert('No se pudo enviar el correo!');
@@ -433,8 +433,8 @@ namespace SAC.formularios
                     DateTime f = Convert.ToDateTime(matriz[i, 0]);
                     fecha = f.ToString("d");
                     hora = matriz[i,1];
-                    nombre = matriz[i, 2] + " " + matriz[i,3];
-                    correo = matriz[i,4];
+                    nombre = matriz[i,2];
+                    correo = matriz[i,3];
 
                     //Configuración del Mensaje
                     MailMessage mail = new MailMessage();

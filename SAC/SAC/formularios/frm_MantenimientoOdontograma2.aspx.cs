@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace SAC.formularios
 {
-    public partial class frm_MantenimientoOdontograma : System.Web.UI.Page
+    public partial class frm_MantenimientoOdontograma2 : System.Web.UI.Page
     {
         metodos.metodosTratamientos funciones = new metodos.metodosTratamientos();
         metodos.metodosExpediente expediente = new metodos.metodosExpediente();
@@ -18,17 +18,7 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                DropDownList1.DataSource = odontograma.TiposdeTratamientos();
-                DropDownList1.DataBind();
-                DropDownList1.DataTextField = "nombreTipoTratamiento";
-                DropDownList1.Items.Insert(0, new ListItem("Tipo de tratamientos", "0"));
-
-                DropDownList2.Items.Insert(0, new ListItem("Tratamientos", "0"));
-
-            }
-            fecha.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+            // fecha.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
         }
 
         protected void guardar_Click(object sender, EventArgs e)
@@ -42,47 +32,14 @@ namespace SAC.formularios
 
             int codigoExpediente = 0;
             codigoExpediente = expediente.BuscarcodigoExpediente(BudquedaExp.Text);
-            if (odontograma.buscarExpediente(codigoExpediente) != 0)
-            {
-                if (DropDownList2.SelectedItem.Text.Equals("Tratamientos") || String.IsNullOrEmpty(DropDownList2.SelectedItem.Text))
-                {
-                    string script = @"<script type='text/javascript'>
-                       alert('Debe seleccionar un tratamiento');
-                    </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                    DropDownList2.Focus();
-                }
-                else
-                {
-                    codigoT = odontograma.codigoTratamiento(DropDownList2.SelectedItem.Text);
-                    odontograma.agregarPacienteTratamiento(codigoExpediente, codigoT, fecha.Text, DropDownList2.SelectedItem.Text, diente.Value, descrip.Value, BudquedaExp.Text.ToString());
-                    GridView1.DataSource = odontograma.TratamientosRealizados(codigocedula.ToString());
-                    GridView1.DataBind();
-                    DropDownList1.Items.Clear();
-                    DropDownList1.DataSource = odontograma.TiposdeTratamientos();
-                    DropDownList1.DataBind();
-                    DropDownList1.DataTextField = "nombreTipoTratamiento";
-                    DropDownList1.Items.Insert(0, new ListItem("Tipo de tratamientos", "0"));
-                    DropDownList2.Items.Clear();
-                    diente.Value = "";
-                    descrip.Value = "";
-                }
-            }
-            else
-            {
 
-            }
         }
 
         protected void BudquedaExp_TextChanged(object sender, EventArgs e)
         {
             codigocedula = 0;
             codigocedula = expediente.BuscarcodigoExpediente(BudquedaExp.Text.ToString());
-            if (codigocedula > 0)
-            {
-                GridView1.DataSource = odontograma.TratamientosRealizados(codigocedula.ToString());
-                GridView1.DataBind();
-            }
+
             codigoExpediente = expediente.BuscarcodigoExpediente(BudquedaExp.Text);
 
             if (codigoExpediente == 0)
@@ -148,7 +105,7 @@ namespace SAC.formularios
             {
                 for (int x = 0; x < num4; x++)
                 {
-                   // odontograma.borrarOdontograma2(BDborradoM[x], codigoExpediente.ToString());
+                    // odontograma.borrarOdontograma2(BDborradoM[x], codigoExpediente.ToString());
                 }
             }
             DateTime now = DateTime.Now;
@@ -178,15 +135,16 @@ namespace SAC.formularios
                     prueba++;
                 }
             }
+
             if (!marcaArray[0].Equals(""))
             {
                 for (int y = 0; y < num2; y++)
                 {
-                
+
                     odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
                 }
             }
-            
+
             string script = @"<script type='text/javascript'>
             alert('Se ha insertado exitosamente');
             </script>";
@@ -201,33 +159,6 @@ namespace SAC.formularios
             ////}
 
 
-        }
-
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string codigotipo = "";
-            if (DropDownList1.SelectedIndex != 0)
-            {
-
-                DropDownList2.Items.Clear();
-                codigotipo = odontograma.NumTipoTratamiento(DropDownList1.SelectedItem.Text);
-                DropDownList2.DataSource = tratamiento.Tratamiento(codigotipo);
-                DropDownList2.DataBind();
-                DropDownList2.DataTextField = "nombreTratamiento";
-                DropDownList2.Items.Insert(0, new ListItem("Tratamientos", "0"));
-
-            }
-        }
-        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            diente.Value = DropDownList2.SelectedItem.Text;
-
-        }
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.DataSource = odontograma.TratamientosRealizados(codigocedula.ToString());
-            GridView1.PageIndex = e.NewPageIndex;
-            GridView1.DataBind();
         }
     }
 }

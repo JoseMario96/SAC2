@@ -141,7 +141,7 @@ namespace SAC.metodos
         public String[,] BuscarCitasAutomaticas()
         {
             String[,] matriz;
-            string consulta = "select tbl_cita.fechaReservaCita, tbl_cita.horaCita, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.correoPaciente  from tbl_Cita, tbl_paciente where fechaReservaCita = date_add(curdate(), interval 1 day) and tbl_cita.cedulaPaciente = tbl_paciente.cedulaPaciente;";
+            string consulta = "select tbl_cita.fechaReservaCita, tbl_cita.horaCita, tbl_cita.nombre, tbl_cita.correo  from tbl_Cita where fechaReservaCita = date_add(curdate(), interval 1 day);";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataSet dt = new DataSet())

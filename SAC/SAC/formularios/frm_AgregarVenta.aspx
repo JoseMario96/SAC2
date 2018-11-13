@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="../css/materialize.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/quicksearch.js"></script>
     <title></title>
 </head>
 <body>
@@ -23,7 +25,7 @@
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <asp:GridView ID="Gridview_Paciente" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
-                                runat="server" AutoGenerateColumns="False" Height="174px" Width="100%" OnSelectedIndexChanged="Gridview_Paciente_SelectedIndexChanged" OnRowDataBound="Gridview_Paciente_RowDataBound">
+                                runat="server" AutoGenerateColumns="False" Height="174px" Width="100%" OnSelectedIndexChanged="Gridview_Paciente_SelectedIndexChanged" OnRowDataBound="Gridview_Paciente_RowDataBound" OnDataBound="Gridview_Paciente_DataBound">
                                 <Columns>
                                     <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula del paciente" ItemStyle-Width="100">
                                         <ItemStyle Width="100px" />
@@ -129,5 +131,19 @@
             }
         }
     </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                <script type="text/javascript" src="../js/quicksearch.js"></script>
+
+                <script type="text/javascript">
+                    $(function () {
+                        $('.search_textbox').each(function (i) {
+                            $(this).quicksearch("[id*=Gridview_Paciente] tr:not(:has(th))", {
+                                'testQuery': function (query, txt, row) {
+                                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                                }
+                            });
+                        });
+                    });
+                </script>
 </body>
 </html>
