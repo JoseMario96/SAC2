@@ -1133,7 +1133,7 @@
                                             pinta_datos();
                                         } else {
                                             pinta_datos();
-                                        }                                       
+                                        }
                                     }
                                 }
 
@@ -1743,7 +1743,7 @@
                                 pruebas.splice(ab, 1);
                                 pruebaseccion.splice(ab, 1);
                                 pruebacolor.splice(ab, 1);
-                                alert("BORRANDO DE BASE "+BDMarca[ab]  );
+                                alert("BORRANDO DE BASE " + BDMarca[ab]);
                                 BDMarca.splice(ab, 1);
 
                             }
