@@ -606,10 +606,10 @@
                     </div>
                     <%--Mostrar Ventas--%>
                     <div class="col-md-3 col-xs-12">
-                        <a href="#popup12" class="popup-link fh5co-project-item" onclick='document.getElementById("mostrarVentas").src="formularios/frm_AgregarVenta.aspx";'>
+                        <a href="#popup12" class="popup-link fh5co-project-item" onclick='document.getElementById("mostrarVentas").src="formularios/frm_BuscarVenta.aspx";'>
                             <img src="../images/mostrar_facturas.png" alt="Image" class="img-responsive centrar" />
                             <div class=" letrasgrande">
-                                <h2 style="text-align: center;">Ventas</h2>
+                                <h2 style="text-align: center;">Buscar ventas</h2>
                             </div>
                         </a>
                         <div class="modal-wrapper" id="popup12">
@@ -625,10 +625,10 @@
                     </div>
                     <%--Reporte Factura--%>
                     <div class="col-md-3 col-xs-12 abajo">
-                        <a href="#popup13" class="popup-link fh5co-project-item" onclick='document.getElementById("mostrarVentas").src="formularios/frm_AgregarVenta.aspx";'>
+                        <a href="#popup13" class="popup-link fh5co-project-item" onclick='document.getElementById("reporteVentas").src="formularios/frm_ReporteVentas.aspx";'>
                             <img src="../images/reporte_factura.png" alt="Image" class="img-responsive centrar" />
                             <div class=" letrasgrande">
-                                <h2 style="text-align: center;">Ventas</h2>
+                                <h2 style="text-align: center;">Reporte de ventas</h2>
                             </div>
                         </a>
                         <div class="modal-wrapper" id="popup13">
@@ -643,11 +643,15 @@
                 </div>
             <div class="row row-bottom-padded-sm">
                 <%--Cuentas por cobrar--%>
+                <div class="col-md-1">
+                    </div>
+                <div class="col-md-1">
+                    </div>
                     <div class="col-md-3 col-xs-12">
                         <a href="#popup14" class="popup-link fh5co-project-item" onclick='document.getElementById("Cuentas").src="formularios/frm_CuentasXCobrar.aspx";'>
-                            <img src="../images/factura.png" alt="Image" class="img-responsive centrar" />
+                            <img src="../images/CxC.png" alt="Image" class="img-responsive centrar" />
                             <div class=" letrasgrande">
-                                <h2 style="text-align: center;">Ventas</h2>
+                                <h2 style="text-align: center;">Cuentas por cobrar</h2>
                             </div>
                         </a>
                         <div class="modal-wrapper" id="popup14">
@@ -659,33 +663,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-1">
-                    </div>
-                    <%--Mostrar Cuentas por Cobrar--%>
-                    <div class="col-md-3 col-xs-12">
-                        <a href="#popup15" class="popup-link fh5co-project-item" onclick='document.getElementById("mostrarCuentas").src="formularios/frm_AgregarVenta.aspx";'>
-                            <img src="../images/mostrar_facturas.png" alt="Image" class="img-responsive centrar" />
-                            <div class=" letrasgrande">
-                                <h2 style="text-align: center;">Ventas</h2>
-                            </div>
-                        </a>
-                        <div class="modal-wrapper" id="popup15">
-                            <div class="popup-contenedorC">
-                                <div class="responsiveContent">
-                                    <iframe id="mostrarCuentas"></iframe>
-                                    <a class="popup-cerrar" href="#fh5co-services">X</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="col-md-1">
                     </div>
                     <%--Reporte Cuentas por Cobrar--%>
                     <div class="col-md-3 col-xs-12 abajo">
-                        <a href="#popup16" class="popup-link fh5co-project-item" onclick='document.getElementById("mostrarCuentas").src="formularios/frm_AgregarVenta.aspx";'>
-                            <img src="../images/reporte_factura.png" alt="Image" class="img-responsive centrar" />
+                        <a href="#popup16" class="popup-link fh5co-project-item" onclick='document.getElementById("reporteCuentas").src="formularios/frm_ReporteCxC.aspx";'>
+                            <img src="../images/ReporteCxC.png" alt="Image" class="img-responsive centrar" />
                             <div class=" letrasgrande">
-                                <h2 style="text-align: center;">Ventas</h2>
+                                <h2 style="text-align: center;">Reporte de CxC</h2>
                             </div>
                         </a>
                         <div class="modal-wrapper" id="popup16">

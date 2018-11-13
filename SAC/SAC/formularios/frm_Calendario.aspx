@@ -134,7 +134,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="3600000"></asp:Timer>
+        <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="86400000"></asp:Timer>
         <br />
         <br />
         <%-- HOY--%>

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
+using System.Data;
 
 namespace SAC.formularios
 {
@@ -13,6 +14,8 @@ namespace SAC.formularios
         metodos.Metodos_Ventas venta = new metodos.Metodos_Ventas();
         public static String cedula = "";
         public static String[] vector = new string[100];
+        public static DataTable tabla1;
+        public static int limite = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -40,9 +43,11 @@ namespace SAC.formularios
                         Gridview_Venta.DataSource = venta.DetalleVenta(cedula);
                         Gridview_Venta.DataBind();
                         Double suma = 0;
-                        for (int i = 0; i <= venta.DetalleVenta(cedula).Rows.Count - 1; i++)
+                        tabla1 = venta.DetalleVenta(cedula);
+                        limite = tabla1.Rows.Count - 1;
+                        for (int i = 0; i <= limite; i++)
                         {
-                            suma = suma + Convert.ToInt32(venta.DetalleVenta(cedula).Rows[i][3]);
+                            suma = suma + Convert.ToInt32(tabla1.Rows[i][3]);
                         }
                         lbl_total.InnerText = suma.ToString();
                         string script = @"<script type='text/javascript'>
@@ -74,8 +79,8 @@ namespace SAC.formularios
 
         protected void btn_factura_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 double abono = 0;
                 double total = Convert.ToDouble(lbl_total.InnerText);
                 double extra = 0;
@@ -104,16 +109,15 @@ namespace SAC.formularios
                     String codigo = "";
                     String fecha2 = "";
                     String detalle = "";
-                    int limite = venta.DetalleVenta(cedula).Rows.Count - 1;
                     DateTime date = DateTime.Now;
                     String date2 = date.ToString("yyyy-MM-dd HH:mm:ss");
                     for (int i = 0; i <= limite; i++)
                     {
-                        DateTime fecha = Convert.ToDateTime(venta.DetalleVenta(cedula).Rows[i][1]);
+                        DateTime fecha = Convert.ToDateTime(tabla1.Rows[i][1]);
                         fecha2 = fecha.ToString("yyyy-MM-dd HH:mm:ss");
                         codigo = venta.CodigoExpedienteTratamiento(fecha2);
                         vector[i] = codigo;
-                        detalle = detalle + venta.DetalleVenta(cedula).Rows[i][0] + ",";
+                        detalle = detalle + tabla1.Rows[i][0] + ",";
                     }
                     venta.AgregarVenta(cedula, date2, detalle, totalFinal.ToString(), saldo.ToString());
                     // Si el queda saldo pendiente, se agrega la venta como un abono
@@ -133,13 +137,28 @@ namespace SAC.formularios
                     Gridview_Paciente.DataSource = venta.VentaPendiente();
                     Gridview_Paciente.DataBind();
                 }
-            }catch
+            //}catch
+            //{
+            //    string scripts = @"<script type='text/javascript'>
+            //        alert('No se pudo realizar la operación!');
+            //        </script>";
+            //    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+            //}
+        }
+
+        protected void Gridview_Paciente_DataBound(object sender, EventArgs e)
+        {
+            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
+            for (int i = 0; i < Gridview_Paciente.Columns.Count; i++)
             {
-                string scripts = @"<script type='text/javascript'>
-                    alert('No se pudo realizar la operación!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+                TableHeaderCell cell = new TableHeaderCell();
+                TextBox txtSearch = new TextBox();
+                txtSearch.Attributes["placeholder"] = Gridview_Paciente.Columns[i].HeaderText;
+                txtSearch.CssClass = "search_textbox";
+                cell.Controls.Add(txtSearch);
+                row.Controls.Add(cell);
             }
+            Gridview_Paciente.HeaderRow.Parent.Controls.AddAt(1, row);
         }
     }
 }

@@ -82,7 +82,7 @@ namespace SAC.metodos
 
         public DataTable CuentaXCobrar()
         {
-            string consulta = "select tbl_venta.codigoVenta, tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta, tbl_venta.detalleVenta, tbl_venta.montoTotalVenta, tbl_venta.saldoVenta from tbl_venta, tbl_paciente where tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente order by tbl_venta.cedulaPaciente;";
+            string consulta = "select tbl_venta.codigoVenta, tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta, tbl_venta.montoTotalVenta, tbl_venta.saldoVenta from tbl_venta, tbl_paciente where tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente order by tbl_venta.cedulaPaciente;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())
@@ -91,6 +91,17 @@ namespace SAC.metodos
                 return dt;
             }
 
+        }
+
+        public String BuscarDetalle(String codigo)
+        {
+            String detalle = "";
+            MySqlDataReader busqueda = consultar.ejecutar_consulta("select tbl_venta.detalleVenta from tbl_venta where tbl_venta.codigoVenta = '" + codigo + "';", con.abrir_conexion()).ExecuteReader();
+            while (busqueda.Read())
+            {
+                detalle = busqueda.GetString(0);
+            }
+            return detalle;
         }
 
         public DataTable DetalleAbono(String codigo)
@@ -113,7 +124,7 @@ namespace SAC.metodos
 
         public DataTable BuscarVenta(String fecha1, String fecha2)
         {
-            string consulta = "select * from tbl_venta where tbl_venta.fechaVenta between '" + fecha1 + "' and '" + fecha2 + "';";
+            string consulta = "select tbl_venta.codigoVenta, tbl_venta.cedulaPaciente, tbl_venta.fechaVenta, tbl_venta.detalleVenta, tbl_venta.montoTotalVenta, tbl_venta.saldoVenta from tbl_venta where tbl_venta.fechaVenta between '" + fecha1 + "' and '" + fecha2 + "';";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())
@@ -123,5 +134,81 @@ namespace SAC.metodos
             }
 
         }
+
+        public DataTable TodaslasVentas()
+        {
+            string consulta = "select tbl_Venta.codigoVenta, tbl_Paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta from tbl_paciente, tbl_venta where tbl_paciente.cedulaPaciente = tbl_venta.cedulaPaciente;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+
+        }
+
+        public String[] BuscarVenta(String codigo)
+        {
+            String[] vector = new String[6];
+            MySqlDataReader busqueda = consultar.ejecutar_consulta("select tbl_venta.codigoVenta, tbl_venta.CedulaPaciente, tbl_venta.fechaVenta, tbl_venta.detalleVenta, tbl_venta.montoTotalVenta, tbl_venta.saldoVenta from tbl_venta where tbl_venta.codigoVenta = '" + codigo + "';", con.abrir_conexion()).ExecuteReader();
+            while (busqueda.Read())
+            {
+                for (int i = 0; i <= 5; i++)
+                {
+                    if (busqueda.IsDBNull(i))
+                    {
+                        vector[i] = "";
+                    }
+                    else
+                    {
+                        vector[i] = busqueda.GetString(i);
+                    }
+
+                }
+            }
+            con.cerrar_Conexion();
+            return vector;
+        }
+
+        public DataTable CuentaXCobrarReporte()
+        {
+            string consulta = "select tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.nombre2Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.apellido2Paciente from tbl_venta, tbl_paciente where tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente group by tbl_venta.cedulaPaciente;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+
+        }
+
+        public DataTable CuentaXCobrarImprimir()
+        {
+            string consulta = "select tbl_venta.codigoVenta, tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta, tbl_venta.detalleVenta, tbl_venta.montoTotalVenta, tbl_venta.saldoVenta from tbl_venta, tbl_paciente where tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente order by tbl_venta.cedulaPaciente;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+
+        }
+
+        public DataTable PersonaVenta(String cedula)
+        {
+            string consulta = "select tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.nombre2Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.apellido2Paciente, tbl_venta.codigoVenta, tbl_venta.fechaVenta, tbl_venta.detalleVenta, tbl_venta.montoTotalVenta, tbl_venta.saldoVenta, tbl_abono.codigo_abono, tbl_abono.codigoVenta, tbl_abono.montoAbono, tbl_abono.fechaAbono from tbl_venta, tbl_paciente, tbl_abono where tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = '" + cedula + "' and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente and tbl_venta.codigoVenta = tbl_abono.codigoVenta order by tbl_venta.cedulaPaciente;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+
+        }
+
     }
 }
