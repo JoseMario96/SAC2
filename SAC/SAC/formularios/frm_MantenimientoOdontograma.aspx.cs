@@ -121,9 +121,6 @@ namespace SAC.formularios
             string borradoD = BDdienteO.Value;
             string borradoS = BDseccionO.Value;
             string borradoM = BDdienteM.Value;
-            TextBox4.Text = borradoC;
-            TextBox2.Text = borradoD;
-            TextBox3.Text = borradoS;
             string[] BDborradoC = borradoC.Split(",".ToCharArray());
             string[] BDborradoD = borradoD.Split(",".ToCharArray());
             string[] BDborradoS = borradoS.Split(",".ToCharArray());
