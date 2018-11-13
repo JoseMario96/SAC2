@@ -77,11 +77,11 @@
             </div>
             <div class="input-field col s2">
                 <asp:TextBox ID="BudquedaExp" runat="server" title="Cédula" placeholder="Cédula" OnTextChanged="BudquedaExp_TextChanged" AutoPostBack="true" onkeypress="return solonumeros (event)"></asp:TextBox>
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
             </div>
         </div>
-        <br />
-        <br />
 
         <asp:HiddenField ID="colorO" runat="server" />
         <asp:HiddenField ID="dienteO" runat="server" />
@@ -546,7 +546,7 @@
 
                 var y = 0;
                 var color2 = '';
-   
+
                 var seccion2 = 0;
                 var cont = 0;
 
@@ -871,10 +871,10 @@
                             }
                         }
 
-         ////////////////////////////////////////////////////////////////
+                        ////////////////////////////////////////////////////////////////
                         else if (accion == 'borrar') {
                             borrar_diente(ctx2, diente);
-                            //document.getElementById('borrarO').value = diente;
+                            document.getElementById('borrarO').value = diente;
                             ////Cargar el ultimo pintado
 
                             seccion_chk = $("input[name='seccion']:checked").val();
@@ -913,6 +913,7 @@
                                     for (var yy = 0; yy < borrarArrayD.length; yy++) {
                                         if (BDDiente[xx] == borrarArrayD[yy] && BDSeccion[xx] == borrarArrayS[yy]) {
                                             if (con == 1) {
+                                                alert("En el 1");
                                                 BDborradorC[bdcontado2] = BDColor[xx];
                                                 BDborradorD[bdcontado2] = BDDiente[xx];
                                                 BDborradorS[bdcontado2] = BDSeccion[xx];
@@ -923,6 +924,7 @@
                                                 con++;
                                             }
                                             else if (con == 2) {
+                                                alert("En el 2");
                                                 bdcontado2--;
                                                 BDborradorC[bdcontado2] = BDColor[xx];
                                                 BDborradorD[bdcontado2] = BDDiente[xx];
@@ -934,6 +936,7 @@
                                                 con++;
                                             }
                                             else if (con == 3) {
+                                                alert("En el 3");
                                                 bdcontado2--;
                                                 BDborradorC[bdcontado2] = BDColor[xx];
                                                 BDborradorD[bdcontado2] = BDDiente[xx];
@@ -1149,9 +1152,9 @@
                                 borrarArrayM[contadorBorrar2] = diente;
                                 contadorBorrar2++;
 
-                              //  alert(borrarArrayD[0]);
-                               // borrarArrayD[contadorBorrar] = diente;
-                               // alert(borrarArray[0]);
+                                //  alert(borrarArrayD[0]);
+                                // borrarArrayD[contadorBorrar] = diente;
+                                // alert(borrarArray[0]);
                                 for (var v = 0; v < BDMarca.length; v++) {
                                     for (var u = 0; u < borrarArrayM.length; u++) {
                                         if (BDMarca[v] == borrarArrayM[u]) {

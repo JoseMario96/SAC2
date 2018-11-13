@@ -125,7 +125,9 @@ namespace SAC.formularios
             string borradoD = BDdienteO.Value;
             string borradoS = BDseccionO.Value;
             string borradoM = BDdienteM.Value;
-
+            TextBox4.Text = borradoC;
+            TextBox2.Text = borradoD;
+            TextBox3.Text = borradoS;
             string[] BDborradoC = borradoC.Split(",".ToCharArray());
             string[] BDborradoD = borradoD.Split(",".ToCharArray());
             string[] BDborradoS = borradoS.Split(",".ToCharArray());
@@ -133,11 +135,12 @@ namespace SAC.formularios
 
             int num3 = BDborradoC.Count();
             int num4 = BDborradoM.Count();
-
+            int cont = 0;
             if (!BDborradoC[0].Equals(""))
             {
                 for (int x = 0; x < num3; x++)
                 {
+                    cont++;
                     odontograma.borrarOdontograma(BDborradoC[x], BDborradoD[x], BDborradoS[x], codigoExpediente.ToString());
                 }
             }
@@ -148,7 +151,6 @@ namespace SAC.formularios
                     odontograma.borrarOdontograma2(BDborradoM[x], codigoExpediente.ToString());
                 }
             }
-
             DateTime now = DateTime.Now;
             string color = colorO.Value;
             string[] colorArray = color.Split(",".ToCharArray());
@@ -168,8 +170,6 @@ namespace SAC.formularios
             string[] marcaColorArray = marcaColor.Split(",".ToCharArray());
 
             int num2 = marcaArray.Count();
-
-            TextBox1.Text = marca;
             if (!colorArray[0].Equals(""))
             {
                 for (int x = 0; x < num; x++)
@@ -184,7 +184,7 @@ namespace SAC.formularios
                 for (int y = 0; y < num2; y++)
                 {
                 
-                    //odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
+                    odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
                 }
             }
             
