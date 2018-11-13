@@ -521,6 +521,7 @@
                 var sec3 = 49;
                 var sec4 = 30;
 
+                var con = 1;
                 var contador = 0;
                 var colorArray = new Array();
                 var borrarArrayC = new Array();
@@ -891,22 +892,29 @@
                                 borrarArrayD[contadorBorrar] = diente;
                                 borrarArrayS[contadorBorrar] = seccion2;
                                 contadorBorrar++;
-
-                                var con = 1;
+                                con = 0;
+                                var usando = 0;
                                 var con2 = 0;
+                                alert(BDColor[10]);
+
                                 for (var xx = 0; xx < BDDiente.length; xx++) {
                                     for (var yy = 0; yy < borrarArrayD.length; yy++) {
                                         if (BDDiente[xx] == borrarArrayD[yy] && BDSeccion[xx] == borrarArrayS[yy]) {
+                                            con++;
+
                                             if (con == 1) {
                                                 alert("En el 1");
                                                 BDborradorC[bdcontado2] = BDColor[xx];
                                                 BDborradorD[bdcontado2] = BDDiente[xx];
                                                 BDborradorS[bdcontado2] = BDSeccion[xx];
+                                                //BDColor.splice(xx, 1);
+                                                //BDDiente.splice(xx, 1);
+                                                //BDSeccion.splice(xx, 1);
                                                 document.getElementById('BDcolorO').value = BDborradorC.join(',');
                                                 document.getElementById('BDdienteO').value = BDborradorD.join(',');
                                                 document.getElementById('BDseccionO').value = BDborradorS.join(',');
                                                 bdcontado2++;
-                                                con++;
+                                                usando++;
                                             }
                                             else if (con == 2) {
                                                 alert("En el 2");
@@ -914,11 +922,14 @@
                                                 BDborradorC[bdcontado2] = BDColor[xx];
                                                 BDborradorD[bdcontado2] = BDDiente[xx];
                                                 BDborradorS[bdcontado2] = BDSeccion[xx];
+                                                //BDColor.splice(xx, 1);
+                                                //BDDiente.splice(xx, 1);
+                                                //BDSeccion.splice(xx, 1);
                                                 document.getElementById('BDcolorO').value = BDborradorC.join(',');
                                                 document.getElementById('BDdienteO').value = BDborradorD.join(',');
                                                 document.getElementById('BDseccionO').value = BDborradorS.join(',');
                                                 bdcontado2++;
-                                                con++;
+
                                             }
                                             else if (con == 3) {
                                                 alert("En el 3");
@@ -926,11 +937,14 @@
                                                 BDborradorC[bdcontado2] = BDColor[xx];
                                                 BDborradorD[bdcontado2] = BDDiente[xx];
                                                 BDborradorS[bdcontado2] = BDSeccion[xx];
+                                                BDColor.splice(xx, 1);
+                                                BDDiente.splice(xx, 1);
+                                                BDSeccion.splice(xx, 1);
                                                 document.getElementById('BDcolorO').value = BDborradorC.join(',');
                                                 document.getElementById('BDdienteO').value = BDborradorD.join(',');
                                                 document.getElementById('BDseccionO').value = BDborradorS.join(',');
                                                 bdcontado2++;
-                                                con++;
+
                                             }
 
                                         }
@@ -1686,7 +1700,6 @@
                 }
                 //Pinta los dientes
                 function pinta_datos() {
-                    alert("Si pinta");
                     array_local = [];
                     compararBD();
 

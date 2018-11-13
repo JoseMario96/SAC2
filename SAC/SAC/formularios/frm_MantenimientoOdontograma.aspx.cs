@@ -141,14 +141,14 @@ namespace SAC.formularios
                 for (int x = 0; x < num3; x++)
                 {
                     cont++;
-                    odontograma.borrarOdontograma(BDborradoC[x], BDborradoD[x], BDborradoS[x], codigoExpediente.ToString());
+                    //odontograma.borrarOdontograma(BDborradoC[x], BDborradoD[x], BDborradoS[x], codigoExpediente.ToString());
                 }
             }
             else if (!BDborradoM[0].Equals(""))
             {
                 for (int x = 0; x < num4; x++)
                 {
-                    odontograma.borrarOdontograma2(BDborradoM[x], codigoExpediente.ToString());
+                   // odontograma.borrarOdontograma2(BDborradoM[x], codigoExpediente.ToString());
                 }
             }
             DateTime now = DateTime.Now;
