@@ -10,7 +10,13 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Login ID="Login1" runat="server"></asp:Login>
+            <asp:Login ID="Login1" runat="server" 
+                LoginButtonText="Ingresar"
+                PasswordLabelText="Contraseña:" 
+                RememberMeText="Recordarme la proxima vez." 
+                TitleText=""
+                UserNameLabelText="Usuario:" OnAuthenticate="Login1_Authenticate" >
+            </asp:Login>
         </div>
     </form>
 </body>

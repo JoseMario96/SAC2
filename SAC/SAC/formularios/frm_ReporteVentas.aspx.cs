@@ -24,24 +24,37 @@ namespace SAC.formularios
 
         protected void btn_buscar_Click(object sender, EventArgs e)
         {
-            Gridview_Venta.DataSource = buscar.BuscarVenta(txt_fecha1.Value, txt_fecha2.Value);
-            Gridview_Venta.DataBind();
-            string script = @"<script type='text/javascript'>
+            tabla1 = buscar.BuscarVenta(txt_fecha1.Value, txt_fecha2.Value);
+            if (tabla1.Rows.Count > 0)
+            {
+                Gridview_Venta.DataSource = tabla1;
+                Gridview_Venta.DataBind();
+                string script = @"<script type='text/javascript'>
                             document.getElementById('busqueda').style.display = 'block';
                             </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-            Double suma = 0;
-            Double suma2 = 0;
-            tabla1 = buscar.BuscarVenta(txt_fecha1.Value, txt_fecha2.Value);
-            int limite = tabla1.Rows.Count - 1;
-            for (int i = 0; i <= limite; i++)
-            {
-                suma = suma + Convert.ToInt32(tabla1.Rows[i][4]);
-                suma2 = suma2 + Convert.ToInt32(tabla1.Rows[i][5]);
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                Double suma = 0;
+                Double suma2 = 0;
+
+                int limite = tabla1.Rows.Count - 1;
+                for (int i = 0; i <= limite; i++)
+                {
+                    suma = suma + Convert.ToInt32(tabla1.Rows[i][4]);
+                    suma2 = suma2 + Convert.ToInt32(tabla1.Rows[i][5]);
+                }
+                lbl_total.InnerText = suma.ToString() + " ";
+                lbl_saldo.InnerText = suma2.ToString();
             }
-            lbl_total.InnerText = suma.ToString() + " ";
-            lbl_saldo.InnerText = suma2.ToString();
-            
+            else
+            {
+                string script = @"<script type='text/javascript'>
+                            alert('No hay registro de ventas en ese rango de fechas!');
+                            </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                txt_fecha1.Value = "";
+                txt_fecha2.Value = "";
+                txt_fecha1.Focus();
+            }
         }
 
         protected void btn_descargar_Click(object sender, EventArgs e)

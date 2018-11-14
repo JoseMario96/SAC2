@@ -18,6 +18,7 @@
                 <asp:ScriptManager runat="server" ID="sm">
                 </asp:ScriptManager>
                 <div class="row">
+                    <div class="col s2"></div>
                     <div class="col s4">
                         <label class="active" for="txt_fecha1" style="font-size:medium">Fecha inicio</label>
                         <input id="txt_fecha1" type="date" runat="server" class="validate" required/>
@@ -26,14 +27,15 @@
                         <label class="active" for="txt_fecha2" style="font-size:medium">Fecha fin</label>
                         <input id="txt_fecha2" type="date" runat="server" class="validate" required/>
                     </div>
-                    <div class="col s4">
+                    <div class="col s5"></div>
+                    <div class="col s2">
                         <asp:Button ID="btn_buscar" runat="server" Text="Buscar" class="waves-effect waves-light btn" OnClick="btn_buscar_Click" />
                     </div>
                 </div>
                 <div id="busqueda" style="display:none">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="Gridview_Venta" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
+                            <asp:GridView ID="Gridview_Venta" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                                 runat="server" AutoGenerateColumns="False" Height="174px" Width="100%" >
                                 <Columns>
                                     <asp:BoundField DataField="codigoVenta" HeaderText="Código" ItemStyle-Width="100">
@@ -56,7 +58,7 @@
                                     </asp:BoundField>
                                 </Columns>
                                 
-                                <HeaderStyle BackColor="#008281" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
+                                <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
                                 <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                                 <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                             </asp:GridView>

@@ -23,7 +23,7 @@
                 <div id="grid">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="Gridview_Paciente" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
+                            <asp:GridView ID="Gridview_Paciente" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                                 runat="server" AutoGenerateColumns="False" Height="174px" Width="100%" OnDataBound="Gridview_Paciente_DataBound" OnRowDataBound="Gridview_Paciente_RowDataBound" OnSelectedIndexChanged="Gridview_Paciente_SelectedIndexChanged" >
                                 <Columns>
                                     <asp:BoundField DataField="codigoVenta" HeaderText="Código" ItemStyle-Width="100">
@@ -39,7 +39,7 @@
                                         <ItemStyle Width="100px" />
                                     </asp:BoundField>
                                 </Columns>
-                                <HeaderStyle BackColor="#008281" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
+                                <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
                                 <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                                 <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                             </asp:GridView>

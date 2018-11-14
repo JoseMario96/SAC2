@@ -10,28 +10,66 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="../js/quicksearch.js"></script>
     <title></title>
+    <style>
+        .boton1{
+            width:200px;
+            height:200px;
+            background-image:url(../images/Descargar.png);
+            border:0px;
+        }
+        .boton2{
+            width:200px;
+            height:200px;
+            background-image:url(../images/Personas.png);
+            border:0px;
+            overflow:hidden;
+        }
+        .boton1:hover{
+            -webkit-transform:scale(1.25);
+            -moz-transform:scale(1.25);
+            -ms-transform:scale(1.25);
+            -o-transform:scale(1.25);
+            transform:scale(1.25);
+        }
+        .boton2:hover{
+            -webkit-transform:scale(1.25);
+            -moz-transform:scale(1.25);
+            -ms-transform:scale(1.25);
+            -o-transform:scale(1.25);
+            transform:scale(1.25);
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1 style="text-align:center">Reporte de cuentas por cobrar</h1>
     </header>
+    <br />
+    <br />
+    <br />
+    <br />
     <div class="container">
         <div class="row">
             <form id="form1" runat="server">
                 <asp:ScriptManager runat="server" ID="sm">
                 </asp:ScriptManager>
-                <div class="col s4">
-                        <asp:Button ID="btn_todos" runat="server" Text="Descargar reporte" class="waves-effect waves-light btn" OnClick="btn_todos_Click" />
+                <div id="botones">
+                    <div class="col s2"></div>
+                    <div class="col s4">
+                        <asp:Button ID="btn_todos" CssClass="boton1" runat="server" Text="" OnClick="btn_todos_Click" />
+                    </div>
+                    <div class="col s4">
+                        <asp:Button ID="btn_uno" CssClass="boton2" runat="server" Text=""  OnClick="btn_uno_Click" />
+                    </div>
                 </div>
-                <div class="col s4">
-                        <asp:Button ID="btn_uno" runat="server" Text="Pacientes" class="waves-effect waves-light btn" OnClick="btn_uno_Click" />
-                </div>
+                
                 <br />
                 <br />
-                <div id="busqueda" style="display:block">
+                <div id="busqueda" style="display:none">
+                    <div>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="Gridview_Venta" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
+                            <asp:GridView ID="Gridview_Venta" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                                 runat="server" AutoGenerateColumns="False" Height="174px" Width="100%" OnRowDataBound="Gridview_Venta_RowDataBound" OnSelectedIndexChanged="Gridview_Venta_SelectedIndexChanged" OnDataBound="Gridview_Venta_DataBound" >
                                 <Columns>
                                     <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula del paciente" ItemStyle-Width="100">
@@ -51,12 +89,21 @@
                                     </asp:BoundField>
                                 </Columns>
                                 
-                                <HeaderStyle BackColor="#008281" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
+                                <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
                                 <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                                 <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                             </asp:GridView>
                         </ContentTemplate>
                     </asp:UpdatePanel>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="col s4">
+                        <asp:Button ID="btn_descarga" CssClass="waves-effect waves-light btn" runat="server" Text="Descargar" OnClick="btn_descarga_Click" />
+                    </div>
+                    <div class="col s4">
+                        <asp:Button ID="btn_volver" CssClass="waves-effect waves-light btn" runat="server" Text="Volver" OnClick="btn_volver_Click" />
+                    </div>
                 </div>
                 
                 <script src="js/materialize.min.js"></script>
