@@ -224,7 +224,7 @@
                     <td>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <input id="telefonoA" type="number" class="validate" runat="server" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
+                                <input id="telefonoA" type="text" class="validate" runat="server" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </td>

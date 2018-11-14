@@ -33,7 +33,10 @@ namespace SAC.formularios
             }
             catch
             {
-
+                string scripts = @"<script type='text/javascript'>
+                    alert('No se pudo realizar la operación!');
+                    </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
             }
         }
 
@@ -84,7 +87,10 @@ namespace SAC.formularios
             }
             catch
             {
-
+                string scripts = @"<script type='text/javascript'>
+                    alert('No se pudo realizar la operación!');
+                    </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
             }
         }
 

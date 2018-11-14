@@ -15,13 +15,24 @@ namespace SAC.formularios
         public static String cedula = "";
         public static String[] vector = new string[100];
         public static DataTable tabla1;
+        public static DataTable tblInicio;
         public static int limite = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                Gridview_Paciente.DataSource = venta.VentaPendiente();
-                Gridview_Paciente.DataBind();
+                tblInicio = venta.VentaPendiente();
+                if (tblInicio.Rows.Count > 0) {
+                    Gridview_Paciente.DataSource = tblInicio;
+                    Gridview_Paciente.DataBind();
+                }
+                else
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('No hay ventas nuevas sin terminar');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                }
             }catch
             {
 
@@ -51,8 +62,8 @@ namespace SAC.formularios
                         }
                         lbl_total.InnerText = suma.ToString();
                         string script = @"<script type='text/javascript'>
-                    document.getElementById('cabecera').style.display = 'block';
-                    </script>";
+                        document.getElementById('cabecera').style.display = 'block';
+                        </script>";
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                     }
                     else
@@ -79,8 +90,8 @@ namespace SAC.formularios
 
         protected void btn_factura_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 double abono = 0;
                 double total = Convert.ToDouble(lbl_total.InnerText);
                 double extra = 0;
@@ -137,14 +148,14 @@ namespace SAC.formularios
                     Gridview_Paciente.DataSource = venta.VentaPendiente();
                     Gridview_Paciente.DataBind();
                 }
-            //}catch
-            //{
-            //    string scripts = @"<script type='text/javascript'>
-            //        alert('No se pudo realizar la operación!');
-            //        </script>";
-            //    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
-            //}
-        }
+            }catch
+                {
+                    string scripts = @"<script type='text/javascript'>
+                        alert('No se pudo realizar la operación!');
+                        </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+            }
+    }
 
         protected void Gridview_Paciente_DataBound(object sender, EventArgs e)
         {

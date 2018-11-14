@@ -44,16 +44,16 @@
     <header>
         <h1 style="text-align:center">Reporte de cuentas por cobrar</h1>
     </header>
-    <br />
-    <br />
-    <br />
-    <br />
     <div class="container">
         <div class="row">
             <form id="form1" runat="server">
                 <asp:ScriptManager runat="server" ID="sm">
                 </asp:ScriptManager>
                 <div id="botones">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                     <div class="col s2"></div>
                     <div class="col s4">
                         <asp:Button ID="btn_todos" CssClass="boton1" runat="server" Text="" OnClick="btn_todos_Click" />
@@ -65,7 +65,7 @@
                 
                 <br />
                 <br />
-                <div id="busqueda" style="display:none">
+                <div id="busqueda" style="display:block">
                     <div>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
@@ -98,10 +98,14 @@
                     </div>
                     <br />
                     <br />
-                    <div class="col s4">
+                    <div class="col s12"></div>
+                    <div class="col s12"></div>
+                    <div class="col s12"></div>
+                    <div class="col s4"></div>
+                    <div class="col s2">
                         <asp:Button ID="btn_descarga" CssClass="waves-effect waves-light btn" runat="server" Text="Descargar" OnClick="btn_descarga_Click" />
                     </div>
-                    <div class="col s4">
+                    <div class="col s2">
                         <asp:Button ID="btn_volver" CssClass="waves-effect waves-light btn" runat="server" Text="Volver" OnClick="btn_volver_Click" />
                     </div>
                 </div>
