@@ -107,7 +107,6 @@
     <Content Include="formularios\frm_AgregarPaciente.aspx" />
     <Content Include="formularios\frm_BuscarVenta.aspx" />
     <Content Include="formularios\frm_Calendario.aspx" />
-    <Content Include="formularios\frm_Citas.aspx" />
     <Content Include="formularios\frm_CuentasXCobrar.aspx" />
     <Content Include="formularios\frm_MantenimientoOdontograma.aspx" />
     <Content Include="formularios\frm_MantenimientoOdontograma2.aspx" />
@@ -132,6 +131,7 @@
     <Content Include="images\calendario_hoy.png" />
     <Content Include="images\cur438.cur" />
     <Content Include="images\CxC.png" />
+    <Content Include="images\Descargar.png" />
     <Content Include="images\diente.jpg" />
     <Content Include="images\eliminar.png" />
     <Content Include="images\eliminar_usuario.png" />
@@ -149,6 +149,7 @@
     <Content Include="images\person2.jpg" />
     <Content Include="images\person3.jpg" />
     <Content Include="images\person4.jpg" />
+    <Content Include="images\Personas.png" />
     <Content Include="images\reporte.png" />
     <Content Include="images\ReporteCxC.png" />
     <Content Include="images\reporteOdontograma.png" />

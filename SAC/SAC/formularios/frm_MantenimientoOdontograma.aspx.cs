@@ -68,10 +68,6 @@ namespace SAC.formularios
                     descrip.Value = "";
                 }
             }
-            else
-            {
-
-            }
         }
 
         protected void BudquedaExp_TextChanged(object sender, EventArgs e)
@@ -125,9 +121,6 @@ namespace SAC.formularios
             string borradoD = BDdienteO.Value;
             string borradoS = BDseccionO.Value;
             string borradoM = BDdienteM.Value;
-            TextBox4.Text = borradoC;
-            TextBox2.Text = borradoD;
-            TextBox3.Text = borradoS;
             string[] BDborradoC = borradoC.Split(",".ToCharArray());
             string[] BDborradoD = borradoD.Split(",".ToCharArray());
             string[] BDborradoS = borradoS.Split(",".ToCharArray());
@@ -141,14 +134,14 @@ namespace SAC.formularios
                 for (int x = 0; x < num3; x++)
                 {
                     cont++;
-                    //odontograma.borrarOdontograma(BDborradoC[x], BDborradoD[x], BDborradoS[x], codigoExpediente.ToString());
+                    odontograma.borrarOdontograma(BDborradoC[x], BDborradoD[x], BDborradoS[x], codigoExpediente.ToString());
                 }
             }
             else if (!BDborradoM[0].Equals(""))
             {
                 for (int x = 0; x < num4; x++)
                 {
-                   // odontograma.borrarOdontograma2(BDborradoM[x], codigoExpediente.ToString());
+                    odontograma.borrarOdontograma2(BDborradoM[x], codigoExpediente.ToString());
                 }
             }
             DateTime now = DateTime.Now;
@@ -178,16 +171,15 @@ namespace SAC.formularios
                     prueba++;
                 }
             }
-
             if (!marcaArray[0].Equals(""))
             {
                 for (int y = 0; y < num2; y++)
                 {
-                
+
                     odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
                 }
             }
-            
+
             string script = @"<script type='text/javascript'>
             alert('Se ha insertado exitosamente');
             </script>";

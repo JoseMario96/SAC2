@@ -199,7 +199,7 @@ namespace SAC.metodos
 
         public DataTable PersonaVenta(String cedula)
         {
-            string consulta = "select tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.nombre2Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.apellido2Paciente, tbl_venta.codigoVenta, tbl_venta.fechaVenta, tbl_venta.detalleVenta, tbl_venta.montoTotalVenta, tbl_venta.saldoVenta, tbl_abono.codigo_abono, tbl_abono.codigoVenta, tbl_abono.montoAbono, tbl_abono.fechaAbono from tbl_venta, tbl_paciente, tbl_abono where tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = '" + cedula + "' and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente and tbl_venta.codigoVenta = tbl_abono.codigoVenta order by tbl_venta.cedulaPaciente;";
+            string consulta = "select tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.nombre2Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.apellido2Paciente, tbl_venta.codigoVenta, tbl_venta.fechaVenta, tbl_venta.detalleVenta, tbl_venta.montoTotalVenta, tbl_venta.saldoVenta from tbl_venta, tbl_paciente where tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = '" + cedula + "' and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente order by tbl_venta.codigoVenta;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())
@@ -207,8 +207,18 @@ namespace SAC.metodos
                 da.Fill(dt);
                 return dt;
             }
-
         }
 
+        public DataTable PersonaCuenta(String codigo)
+        {
+            string consulta = "select tbl_abono.codigo_abono, tbl_abono.codigoVenta, tbl_abono.montoAbono, tbl_abono.fechaAbono from tbl_abono where tbl_abono.codigoVenta = '" + codigo + "' order by tbl_abono.codigoVenta;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+        }
     }
 }

@@ -24,7 +24,7 @@
                     <h4 style="text-align:center">Pacientes pendientes de pago</h4>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="Gridview_CxC" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
+                            <asp:GridView ID="Gridview_CxC" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                                 runat="server" AutoGenerateColumns="False" Height="174px" Width="90%" OnRowDataBound="Gridview_CxC_RowDataBound" OnSelectedIndexChanged="Gridview_CxC_SelectedIndexChanged" OnDataBound="Gridview_CxC_DataBound">
                                 <Columns>
                                     <asp:BoundField DataField="codigoVenta" HeaderText="Código" ItemStyle-Width="50">
@@ -49,7 +49,7 @@
                                         <ItemStyle Width="60px" />
                                     </asp:BoundField>
                                 </Columns>
-                                <HeaderStyle BackColor="#008281" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
+                                <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
                                 <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                                 <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                             </asp:GridView>
@@ -83,7 +83,7 @@
                     </asp:UpdatePanel>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="Gridview_Venta" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
+                            <asp:GridView ID="Gridview_Venta" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                                 runat="server" AutoGenerateColumns="False" Height="174px" Width="90%" >
                                 <Columns>
                                     <asp:BoundField DataField="codigo_abono" HeaderText="Código del abono" ItemStyle-Width="100">
@@ -100,7 +100,7 @@
                                     </asp:BoundField>
                                 </Columns>
                                 
-                                <HeaderStyle BackColor="#008281" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
+                                <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
                                 <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                                 <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                             </asp:GridView>
