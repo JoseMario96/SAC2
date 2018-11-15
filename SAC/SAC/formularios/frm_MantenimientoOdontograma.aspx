@@ -380,7 +380,6 @@
                         num_diente = num_diente - 16;
                         inicio_y = med + 100;
                     }
-                    //alert(num_diente);
                     inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
 
                     ctx.fillStyle = color_line;
@@ -407,7 +406,7 @@
                         num_diente = num_diente - 16;
                         inicio_y = med + 100;
                     }
-                    //alert(num_diente);
+
                     inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
                     ctx.fillStyle = 'black';
                     ctx.strokeStyle = 'black';
@@ -436,7 +435,6 @@
                         num_diente2 = num_diente2 - 16;
                         inicio_y = med + 160;
                     }
-                    //alert(num_diente);
                     inicio_x = (num_diente1 * med) + (separacion_x * num_diente1) + separacion_x + (med / 2);
                     fin_x = (num_diente2 * med) + (separacion_x * num_diente2) + separacion_x + (med / 2);
                     ctx.fillStyle = color_line;
@@ -479,7 +477,7 @@
                         num_diente = num_diente - 16;
                         inicio_y = med + 100;
                     }
-                    //alert(num_diente);
+
                     inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
 
                     ctxx.fillStyle = color_line;
@@ -659,14 +657,13 @@
                 //canvas.addEventListener("mousedown", getPosition, false);
 
                 function getPosition(event) {
-                    var x = event.x - 225;// pintar en eje x
-                    var y = event.y; // pintar en eje y
+                    var x = event.pageX-225;// pintar en eje x
+                    var y = event.pageY; // pintar en eje y
 
                     var canvas = document.getElementById("myCanvas");
                     var div_can = document.getElementById("canvasesdiv");
                     x -= div_can.offsetLeft;
                     y -= div_can.offsetTop;
-                    //alert(div_can.offsetTop);
 
                     var div = 0;
                     var color = '';
@@ -699,12 +696,12 @@
                     else if (seleccion == 'borrar') {
                         accion = 'borrar';
                     }
-                    //alert(y);
+
                     diente = 0;
                     seccion = 0;
 
                     if (y >= 20 && y <= 60) {
-                        //alert(x);
+
                         if (x >= 10 && x <= 50) {
                             diente = 1;
                         }
@@ -895,7 +892,6 @@
                                 con = 0;
                                 var usando = 0;
                                 var con2 = 0;
-                                alert(BDColor[10]);
 
                                 for (var xx = 0; xx < BDDiente.length; xx++) {
                                     for (var yy = 0; yy < borrarArrayD.length; yy++) {
@@ -1327,8 +1323,8 @@
 
                 //Marca la posicion exacta del mouse
                 function Marcar(event) {
-                    var x = event.x - 225;//Donde esta la posicion del mouse en el eje x
-                    var y = event.y;//Donde esta la posicion del mouse en el eje y
+                    var x = event.pageX - 225; // Donde esta la posicion del mouse en el eje x
+                    var y = event.pageY; // Donde esta la posicion del mouse en el eje y
                     var canvas2 = document.getElementById("myCanvas2");
                     var div_can = document.getElementById("canvasesdiv");
                     x -= div_can.offsetLeft;

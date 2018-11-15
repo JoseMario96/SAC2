@@ -65,7 +65,7 @@ namespace SAC.formularios
             }
             else if (hmno.Checked)
             {
-                pregunta7 = "no";
+                pregunta7 = "No";
             }
             else
             {
