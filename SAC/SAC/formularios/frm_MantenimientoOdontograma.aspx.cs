@@ -28,7 +28,9 @@ namespace SAC.formularios
                 DropDownList2.Items.Insert(0, new ListItem("Tratamientos", "0"));
 
             }
-            fecha.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+
+
+
         }
 
         protected void guardar_Click(object sender, EventArgs e)
@@ -55,7 +57,7 @@ namespace SAC.formularios
                 else
                 {
                     codigoT = odontograma.codigoTratamiento(DropDownList2.SelectedItem.Text);
-                    odontograma.agregarPacienteTratamiento(codigoExpediente, codigoT, fecha.Text, DropDownList2.SelectedItem.Text, diente.Value, descrip.Value, BudquedaExp.Text.ToString());
+                    odontograma.agregarPacienteTratamiento(codigoExpediente, codigoT, DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"), DropDownList2.SelectedItem.Text, diente.Value, descrip.Value, BudquedaExp.Text.ToString());
                     GridView1.DataSource = odontograma.TratamientosRealizados(codigocedula.ToString());
                     GridView1.DataBind();
                     DropDownList1.Items.Clear();
@@ -175,7 +177,6 @@ namespace SAC.formularios
             {
                 for (int y = 0; y < num2; y++)
                 {
-
                     odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
                 }
             }
@@ -213,7 +214,7 @@ namespace SAC.formularios
         }
         protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            diente.Value = DropDownList2.SelectedItem.Text;
+
 
         }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)

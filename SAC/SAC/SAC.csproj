@@ -118,7 +118,6 @@
     <Content Include="formularios\frm_tratamientos.aspx" />
     <Content Include="formularios\Prueba.aspx" />
     <Content Include="formularios\ResponsiveOdontograma.aspx" />
-    <Content Include="formularios\ResponsivePrueba.aspx" />
     <Content Include="formularios\tabla.aspx" />
     <Content Include="images\780769.png" />
     <Content Include="images\actualizar.png" />
@@ -353,13 +352,6 @@
     </Compile>
     <Compile Include="formularios\ResponsiveOdontograma.aspx.designer.cs">
       <DependentUpon>ResponsiveOdontograma.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="formularios\ResponsivePrueba.aspx.cs">
-      <DependentUpon>ResponsivePrueba.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="formularios\ResponsivePrueba.aspx.designer.cs">
-      <DependentUpon>ResponsivePrueba.aspx</DependentUpon>
     </Compile>
     <Compile Include="formularios\tabla.aspx.cs">
       <DependentUpon>tabla.aspx</DependentUpon>

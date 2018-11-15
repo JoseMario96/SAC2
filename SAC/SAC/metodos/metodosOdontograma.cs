@@ -203,20 +203,26 @@ namespace SAC.metodos
 
             return z;
         }
-        public string[] buscarPaciente(String codE)
-        {
-            int x = 0;
-            int z = 0;
-            z = cantidadOdontograma(codE);
-            string[] stringArray1 = new string[z];
-            MySqlDataReader actualizar = consultar.ejecutar_consulta("SELECT codigoOdontograma FROM bd_sac.tbl_expedienteodontograma where codigoExpediente = '" + codE + "'; ", con.abrir_conexion()).ExecuteReader();
-            while (actualizar.Read())
+        public string[] buscarPaciente(String codE) { 
+        String[] paciente = new string[6];
+        MySqlDataReader busqueda = consultar.ejecutar_consulta("select cedulaPaciente, nombre1Paciente, nombre2Paciente, apellido1Paciente, apellido2Paciente, correoPaciente, celularPaciente from bd_sac.tbl_paciente where cedulaPaciente="+ codE + ";", con.abrir_conexion()).ExecuteReader();
+            while (busqueda.Read())
             {
-                stringArray1[x] = actualizar.GetString(0);
-                x++;
+                for (int i = 0; i <= 5; i++)
+                {
+                    if (busqueda.IsDBNull(i))
+                    {
+                        paciente[i] = "";
+                    }
+                    else
+                    {
+                        paciente[i] = busqueda.GetString(i);
+                    }
+
+                }
             }
             con.cerrar_Conexion();
-            return stringArray1;
+            return paciente;
         }
         public string codigoTratamiento(string nombreT)
         {
@@ -247,5 +253,33 @@ namespace SAC.metodos
                 return dt;
             }
         }
+
+
+
+        public String[] ReporteOdontogramas (String ced)
+        {
+            String[] paciente = new string[59];
+            MySqlDataReader busqueda = consultar.ejecutar_consulta("select tbl_expediente.*, tbl_paciente.nombre1Paciente, tbl_paciente.nombre2Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.apellido2Paciente, tbl_signosvitales.*, tbl_historialmedicomujeres.* from tbl_expediente, tbl_paciente, tbl_signosvitales, tbl_historialmedicomujeres where tbl_paciente.cedulaPaciente = tbl_expediente.cedulaPaciente and tbl_expediente.cedulaPaciente = " + ced + " and tbl_expediente.codigoExpediente = tbl_signosvitales.codigoExpediente and tbl_expediente.codigoExpediente = tbl_historialmedicomujeres.codigoExpediente;", con.abrir_conexion()).ExecuteReader();
+            while (busqueda.Read())
+            {
+                for (int i = 0; i <= 58; i++)
+                {
+                    if (busqueda.IsDBNull(i))
+                    {
+                        paciente[i] = "";
+                    }
+                    else
+                    {
+                        paciente[i] = busqueda.GetString(i);
+                    }
+
+                }
+            }
+            con.cerrar_Conexion();
+            return paciente;
+        }
+       
     }
+
 }
+

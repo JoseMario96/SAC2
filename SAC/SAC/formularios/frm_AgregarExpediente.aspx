@@ -33,10 +33,13 @@
             </asp:ScriptManager>
             <div class="row">
                 <div class="col s9"></div>
+
+
                 <div class="col s3">
-                    <input id="fechaEx" type="date" runat="server" name="fechaEx" required />
-                    <label class="active" for="fecha_nacimiento">Fecha</label>
+                    <label class="active" for="fecha">Fecha: </label>
+                    <asp:Label ID="lblfecha" runat="server" Text="Label"></asp:Label>
                 </div>
+
 
             </div>
             <div class="row">
@@ -121,6 +124,8 @@
                             </label>
                         </div>
 
+
+
                         <div class="row">
                             <div class="col s12">
                                 <label><span class="ajustar" style="margin-left: 35px;">7) Ha vivido o reside fuera del país?</span></label>
@@ -136,7 +141,7 @@
                             <div class="col s12">
                                 <div class="col s1">
                                     <label style="margin-left: 35px;">
-                                        <input class="with-gap" name="hm" runat="server" type="radio" id="hmno" onclick="ocultar('fuerapais')" />
+                                        <input class="with-gap" name="hm" runat="server" type="radio" id="hmnooo" onclick="ocultar('fuerapais')" />
                                         <span>No</span>
                                     </label>
                                 </div>
@@ -154,9 +159,12 @@
                             </div>
                         </div>
 
+
+
+
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi8" runat="server" type="radio" id="hmradi8" onclick="uncheckRadio(this)" />
+                                <input class="with-gap" name="hmradi8" runat="server" type="radio" id="hmradi8"  onclick="uncheckRadio(this)" />
                                 <span>8) Aparición de equimosís (moretes)</span>
                             </label>
                         </div>

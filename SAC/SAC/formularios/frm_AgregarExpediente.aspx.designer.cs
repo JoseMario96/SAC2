@@ -22,13 +22,13 @@ namespace SAC.formularios {
         protected global::System.Web.UI.ScriptManager sm;
         
         /// <summary>
-        /// Control fechaEx.
+        /// Control lblfecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl fechaEx;
+        protected global::System.Web.UI.WebControls.Label lblfecha;
         
         /// <summary>
         /// Control cedulaEx.
@@ -130,13 +130,13 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton hmsi;
         
         /// <summary>
-        /// Control hmno.
+        /// Control hmnooo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton hmno;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton hmnooo;
         
         /// <summary>
         /// Control hmrespu3.
