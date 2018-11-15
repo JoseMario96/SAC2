@@ -28,24 +28,15 @@
         }
     </style>
     <style>
-        #myCanvas {
-            border: 2px solid #00ff90;
-        }
-
-        #myCanvas2 {
-            border: 2px solid #00ff90;
-        }
-
-        #myCanvas3 {
-            border: 2px solid #00ff90;
-        }
-
-        #myCanvas4 {
-            border: 2px solid #00ff90;
+        #myCanvas, #myCanvas2, #myCanvas3, #myCanvas4 {
+            border: 2px solid #000000;
         }
 
         body {
             text-align: center;
+        }
+        #canvasesdiv{
+            width:50%;
         }
     </style>
     <style type="text/css">
@@ -106,10 +97,10 @@
             </div>
             <br>
             <div id="canvasesdiv" style="position: relative; width: 890px; height: 200px">
-                <canvas id="myCanvas" width="890" height="200" style="z-index: 1; position: absolute; left: 25%; top: 0px;"></canvas>
-                <canvas id="myCanvas2" width="890" height="200" style="z-index: 2; position: absolute; left: 25%; top: 0px;"></canvas>
-                <canvas id="myCanvas3" width="890" height="200" style="z-index: 3; position: absolute; left: 25%; top: 0px;"></canvas>
-                <canvas id="myCanvas4" width="890" height="200" style="z-index: 4; position: absolute; left: 25%; top: 0px;"></canvas>
+                <canvas id="myCanvas" width="810" height="200" style="z-index: 1; position: absolute; left: 30%; top: 0px;"></canvas>
+                <canvas id="myCanvas2" width="810" height="200" style="z-index: 2; position: absolute; left: 30%; top: 0px;"></canvas>
+                <canvas id="myCanvas3" width="810" height="200" style="z-index: 3; position: absolute; left: 30%; top: 0px;"></canvas>
+                <canvas id="myCanvas4" width="810" height="200" style="z-index: 4; position: absolute; left: 30%; top: 0px;"></canvas>
             </div>
             <div id="radio_seccion" style='display: none'>
                 <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Seccion</label>
@@ -650,12 +641,12 @@
                         //Una vez se haya clickado se activará la siguiente función
                         getPosition
                         , false);
-                    layer4.addEventListener("mousemove", Marcar, false);
+                    layer4.addEventListener("mousemove", marcar_seccion, false);
                 }
                 //canvas.addEventListener("mousedown", getPosition, false);
 
                 function getPosition(event) {
-                    var x = event.pageX-225;// pintar en eje x
+                    var x = event.pageX - 269.5;;// pintar en eje x
                     var y = event.pageY; // pintar en eje y
 
                     var canvas = document.getElementById("myCanvas");
@@ -1316,7 +1307,7 @@
 
                 //Marca la posicion exacta del mouse
                 function Marcar(event) {
-                    var x = event.pageX - 225; // Donde esta la posicion del mouse en el eje x
+                    var x = event.pageX - 269.5; // Donde esta la posicion del mouse en el eje x
                     var y = event.pageY; // Donde esta la posicion del mouse en el eje y
                     var canvas2 = document.getElementById("myCanvas2");
                     var div_can = document.getElementById("canvasesdiv");

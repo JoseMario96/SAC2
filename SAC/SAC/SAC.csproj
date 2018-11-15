@@ -110,6 +110,7 @@
     <Content Include="formularios\frm_CuentasXCobrar.aspx" />
     <Content Include="formularios\frm_MantenimientoOdontograma.aspx" />
     <Content Include="formularios\frm_MantenimientoOdontograma2.aspx" />
+    <Content Include="formularios\frm_Odontograma.aspx" />
     <Content Include="formularios\frm_ReporteCxC.aspx" />
     <Content Include="formularios\frm_ReporteExpediente.aspx" />
     <Content Include="formularios\frm_ReporteOdontogramas.aspx" />
@@ -305,6 +306,13 @@
     </Compile>
     <Compile Include="formularios\frm_MantenimientoOdontograma2.aspx.designer.cs">
       <DependentUpon>frm_MantenimientoOdontograma2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\frm_Odontograma.aspx.cs">
+      <DependentUpon>frm_Odontograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\frm_Odontograma.aspx.designer.cs">
+      <DependentUpon>frm_Odontograma.aspx</DependentUpon>
     </Compile>
     <Compile Include="formularios\frm_ReporteCxC.aspx.cs">
       <DependentUpon>frm_ReporteCxC.aspx</DependentUpon>

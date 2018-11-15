@@ -15,7 +15,7 @@ namespace SAC.metodos
         public void agregarOdontograma(String col, String die, String secc, String codE, String fech)
         {
             string y = "";
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`, `dienteOdontograma`, `seccionOdontograma`) VALUES ('" + col + "', '" + die + "', '" + secc + "');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`, `dienteOdontograma`, `seccionOdontograma`, `tipoPacienteOdontograma`) VALUES ('" + col + "', '" + die + "', '" + secc + "','1');", con.abrir_conexion()).ExecuteNonQuery();
             MySqlDataReader contador = consultar.ejecutar_consulta("SELECT max(codigoOdontograma) from tbl_odontograma; ", con.abrir_conexion()).ExecuteReader();
             if (contador.Read())
             {
