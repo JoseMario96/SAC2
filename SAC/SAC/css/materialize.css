@@ -11,6 +11,7 @@
   color: #e51c23 !important;
 }
 
+
 .materialize-red.lighten-5 {
   background-color: #fdeaeb !important;
 }
@@ -5109,6 +5110,9 @@ small {
   height: 2px;
   background-color: #f6b2b5;
   will-change: left, right;
+}
+#boton1{
+    background-image:url(../images/Descargar.png);
 }
 
 @media only screen and (max-width: 992px) {

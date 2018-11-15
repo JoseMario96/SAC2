@@ -149,7 +149,7 @@
         <div id="grid" style="display: none; padding-left:10%;">
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
-                    <asp:GridView ID="Gridview_Hoy" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
+                    <asp:GridView ID="Gridview_Hoy" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                         runat="server" AutoGenerateColumns="False" Height="174px" Width="80%" OnRowDataBound="Gridview_Hoy_RowDataBound" OnSelectedIndexChanged="Gridview_Hoy_SelectedIndexChanged" >
                         <Columns>
                             <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula del paciente" ItemStyle-Width="100" >
@@ -165,7 +165,7 @@
                             <ItemStyle Width="100px" />
                             </asp:BoundField>
                         </Columns>
-                        <HeaderStyle BackColor="#008281" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
+                        <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
                         <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                         <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                     </asp:GridView>
@@ -224,7 +224,7 @@
                     <td>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <input id="telefonoA" type="number" class="validate" runat="server" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
+                                <input id="telefonoA" type="text" class="validate" runat="server" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </td>

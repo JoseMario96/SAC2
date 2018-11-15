@@ -41,7 +41,7 @@
         }
 
         #myCanvas4 {
-            border: 2px solid  #00ff90;
+            border: 2px solid #00ff90;
         }
 
         body {
@@ -94,8 +94,8 @@
 
         <div id="odontograma" style="display: none" tabindex="1">
             <h1>Odontograma</h1>
-            <br />
-            <br />
+            <br>
+            <br>
             <div id="radio">
                 <input type="radio" id="radio1" name="accion" value="carie" checked="checked" /><label for="radio1">Carie</label>
                 <input type="radio" id="radio6" name="accion" value="sellante" /><label for="radio6">Sellante</label>
@@ -104,7 +104,7 @@
                 <input type="radio" id="radio5" name="accion" value="exodoncia" /><label for="radio5">Exodoncia</label>
                 <input type="radio" id="radio3" name="accion" value="borrar" /><label for="radio3">Borrar</label>
             </div>
-            <br />
+            <br>
             <div id="canvasesdiv" style="position: relative; width: 890px; height: 200px">
                 <canvas id="myCanvas" width="890" height="200" style="z-index: 1; position: absolute; left: 25%; top: 0px;"></canvas>
                 <canvas id="myCanvas2" width="890" height="200" style="z-index: 2; position: absolute; left: 25%; top: 0px;"></canvas>
@@ -377,7 +377,6 @@
                         num_diente = num_diente - 16;
                         inicio_y = med + 100;
                     }
-                    //alert(num_diente);
                     inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
 
                     ctx.fillStyle = color_line;
@@ -404,7 +403,7 @@
                         num_diente = num_diente - 16;
                         inicio_y = med + 100;
                     }
-                    //alert(num_diente);
+
                     inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
                     ctx.fillStyle = 'black';
                     ctx.strokeStyle = 'black';
@@ -433,7 +432,6 @@
                         num_diente2 = num_diente2 - 16;
                         inicio_y = med + 160;
                     }
-                    //alert(num_diente);
                     inicio_x = (num_diente1 * med) + (separacion_x * num_diente1) + separacion_x + (med / 2);
                     fin_x = (num_diente2 * med) + (separacion_x * num_diente2) + separacion_x + (med / 2);
                     ctx.fillStyle = color_line;
@@ -476,7 +474,7 @@
                         num_diente = num_diente - 16;
                         inicio_y = med + 100;
                     }
-                    //alert(num_diente);
+
                     inicio_x = (num_diente * med) + (separacion_x * num_diente) + separacion_x;
 
                     ctxx.fillStyle = color_line;
@@ -657,22 +655,14 @@
                 //canvas.addEventListener("mousedown", getPosition, false);
 
                 function getPosition(event) {
-
-                    var x = event.x - 225;// pintar en eje x
-                    var y = event.y; // pintar en eje y
+                    var x = event.pageX-225;// pintar en eje x
+                    var y = event.pageY; // pintar en eje y
 
                     var canvas = document.getElementById("myCanvas");
                     var div_can = document.getElementById("canvasesdiv");
-                    //var wid = div_can.offsetHeight;
-                    //var wie = div_can.offsetWidth;
-                    //alert(wid);
-                    //alert(wie);
-
                     x -= div_can.offsetLeft;
                     y -= div_can.offsetTop;
 
-
-                    alert("y " + y);
                     var div = 0;
                     var color = '';
                     var accion = '';
@@ -704,11 +694,11 @@
                     else if (seleccion == 'borrar') {
                         accion = 'borrar';
                     }
-                    //alert(y);
+
                     diente = 0;
                     seccion = 0;
                     if (y >= 20 && y <= 60) {
-                        //alert(x);
+
                         if (x >= 10 && x <= 50) {
                             diente = 1;
                         }
@@ -736,14 +726,6 @@
                     }
 
                     if (diente) {
-
-                        alert(event.x);
-                        alert(event.y);
-
-                        alert(div_can.offsetLeft);
-                        alert(div_can.offsetTop);
-
-
                         if (accion == 'seccion') {
                             var estadoDiente = false;
                             for (var zz = 0; zz < BDMarca.length; zz++) {
@@ -751,7 +733,6 @@
                                     estadoDiente = true;
                                 }
                             }
-
                             if (estadoDiente == false) {
                                 x = x - ((div * 40) + (10 * div) + 10);
                                 y = y - 20;
@@ -909,7 +890,6 @@
                                 con = 0;
                                 var usando = 0;
                                 var con2 = 0;
-                                alert(BDColor[10]);
 
                                 for (var xx = 0; xx < BDDiente.length; xx++) {
                                     for (var yy = 0; yy < borrarArrayD.length; yy++) {
@@ -1336,13 +1316,10 @@
 
                 //Marca la posicion exacta del mouse
                 function Marcar(event) {
-
-
-                    var x = event.x - 225;//Donde esta la posicion del mouse en el eje x
-                    var y = event.y;//Donde esta la posicion del mouse en el eje y
+                    var x = event.pageX - 225; // Donde esta la posicion del mouse en el eje x
+                    var y = event.pageY; // Donde esta la posicion del mouse en el eje y
                     var canvas2 = document.getElementById("myCanvas2");
                     var div_can = document.getElementById("canvasesdiv");
-
                     x -= div_can.offsetLeft;
                     y -= div_can.offsetTop;
                     //alert(x);
@@ -1887,6 +1864,14 @@
                     <div class="col s2">
                     </div>
                     <div class="col s10">
+                        <div class="col s2">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label class="active" for="Fecha">Fecha </label>
+                                    <asp:Label ID="fecha" title="Fecha" runat="server"></asp:Label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
                         <div class="col s3">
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>

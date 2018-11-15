@@ -19,32 +19,40 @@ namespace SAC.formularios
 
         protected void Gridview_Paciente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (GridViewRow row in Gridview_Paciente.Rows)
+            try
             {
-
-                if (row.RowIndex == Gridview_Paciente.SelectedIndex)
+                foreach (GridViewRow row in Gridview_Paciente.Rows)
                 {
-                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
-                    row.ToolTip = string.Empty;
-                    String[] vector = venta.BuscarVenta((row.Cells[0].Text).ToString());
-                    lbl_codigo.Text = vector[0];
-                    lbl_cedula.Text = vector[1];
-                    lbl_fecha.Text = vector[2];
-                    lbl_detalle.Text = vector[3];
-                    lbl_monto.Text = vector[4];
-                    lbl_saldo.Text = vector[5];
-                    string script = @"<script type='text/javascript'>
+                    if (row.RowIndex == Gridview_Paciente.SelectedIndex)
+                    {
+                        row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                        row.ToolTip = string.Empty;
+                        String[] vector = venta.BuscarVenta((row.Cells[0].Text).ToString());
+                        lbl_codigo.Text = vector[0];
+                        lbl_cedula.Text = vector[1];
+                        lbl_fecha.Text = vector[2];
+                        lbl_detalle.Text = vector[3];
+                        lbl_monto.Text = vector[4];
+                        lbl_saldo.Text = vector[5];
+                        string script = @"<script type='text/javascript'>
                         document.getElementById('tabla').style.display = 'block' ;
                         document.getElementById('grid').style.display = 'none';                  
                         </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    }
+                    else
+                    {
+                        row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                        row.ToolTip = "Click to select this row.";
+                    }
                 }
-                else
-                {
-                    row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
-                    row.ToolTip = "Click to select this row.";
-
-                }
+            }
+            catch
+            {
+                string script = @"<script type='text/javascript'>
+                        alert('No se pudo realizar la operación!');                
+                        </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             }
         }
 

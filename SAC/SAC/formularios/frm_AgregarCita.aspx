@@ -22,7 +22,7 @@
                     <asp:Label ID="titulo" runat="server" style="text-align:center; font-size:medium"></asp:Label>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
+                            <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                                 runat="server" AutoGenerateColumns="False" Height="174px" Width="80%">
                                 <Columns>
                                     <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula del paciente" ItemStyle-Width="100">
@@ -38,7 +38,7 @@
                                         <ItemStyle Width="100px" />
                                     </asp:BoundField>
                                 </Columns>
-                        <HeaderStyle BackColor="#008281" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
+                        <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
                         <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                         <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                             </asp:GridView>

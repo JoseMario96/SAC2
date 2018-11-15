@@ -24,7 +24,7 @@
                     <h3 style="text-align:center">Pacientes pendientes de pago</h3>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="Gridview_Paciente" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
+                            <asp:GridView ID="Gridview_Paciente" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                                 runat="server" AutoGenerateColumns="False" Height="174px" Width="100%" OnSelectedIndexChanged="Gridview_Paciente_SelectedIndexChanged" OnRowDataBound="Gridview_Paciente_RowDataBound" OnDataBound="Gridview_Paciente_DataBound">
                                 <Columns>
                                     <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula del paciente" ItemStyle-Width="100">
@@ -43,7 +43,7 @@
                                         <ItemStyle Width="100px" />
                                     </asp:BoundField>
                                 </Columns>
-                                <HeaderStyle BackColor="#008281" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
+                                <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
                                 <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                                 <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                             </asp:GridView>

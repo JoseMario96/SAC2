@@ -108,7 +108,7 @@
 
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="GridView2" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
+                            <asp:GridView ID="GridView2" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                                 runat="server" AutoGenerateColumns="False" OnDataBound="GridView2_DataBound" Height="174px" OnRowDataBound="GridView2_RowDataBound" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
                                 <Columns>
                                     <asp:BoundField DataField="codigoTratamiento" HeaderText="Código del tratamiento" ItemStyle-Width="100" />
