@@ -29,8 +29,7 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //     Cedula.Focus();
-            GridView_reporteOdontograma.DataSource = objeto.Paciente();
+            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion();
             GridView_reporteOdontograma.DataBind();
         }
 
@@ -63,7 +62,7 @@ namespace SAC.formularios
 
             String[] datoss = new String[13];
             String[] datos2 = new String[10];
-            GridView_reporteOdontograma.DataSource = objeto.Paciente();
+            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion();
             GridView_reporteOdontograma.DataBind();
 
             foreach (GridViewRow row in GridView_reporteOdontograma.Rows)
@@ -104,7 +103,6 @@ namespace SAC.formularios
                         string seccion = datos[2];
                         string marca = datos[3];
                         counter++;
-                        nombre1.Text = datos[0];
                         Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Pintar" + counter.ToString(), "<script language='javascript'>$(document).ready(function() {pintarDiente('" + diente + "','" + seccion + "','" + color + "','" + marca + "');});</script>");
                     }
                     Panel1.Visible = true;
@@ -122,7 +120,7 @@ namespace SAC.formularios
 
         protected void GridView_reporteOdontograma_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView_reporteOdontograma.DataSource = objeto.Paciente();
+            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion();
             GridView_reporteOdontograma.PageIndex = e.NewPageIndex;
             GridView_reporteOdontograma.DataBind();
         }
