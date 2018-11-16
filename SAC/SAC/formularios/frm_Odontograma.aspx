@@ -129,6 +129,7 @@
             <br />
             <div class="input-field col s4">
                 <asp:Button ID="Button1" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" />
+                <asp:Button ID="Button2" runat="server" Text="Prueba" class="waves-effect waves-light btn" OnClick="Button2_Click" />
             </div>
             <script>
 

@@ -79,10 +79,10 @@ namespace SAC.formularios
         {
             //try
             //{
-            string borradoC = NBDcolorO.Value;
-            string borradoD = NBDdienteO.Value;
-            string borradoS = NBDseccionO.Value;
-            string borradoM = NBDdienteM.Value;
+            string borradoC = BDcolorO.Value;
+            string borradoD = BDdienteO.Value;
+            string borradoS = BDseccionO.Value;
+            string borradoM = BDdienteM.Value;
 
             string[] BDborradoC = borradoC.Split(",".ToCharArray());
             string[] BDborradoD = borradoD.Split(",".ToCharArray());
@@ -108,21 +108,21 @@ namespace SAC.formularios
                 }
             }
             DateTime now = DateTime.Now;
-            string color = NcolorO.Value;
+            string color = colorO.Value;
             string[] colorArray = color.Split(",".ToCharArray());
             int num = colorArray.Count();
 
-            string diente = NdienteO.Value;
+            string diente = dienteO.Value;
             string[] dienteArray = diente.Split(",".ToCharArray());
 
-            string posicion = NseccionO.Value;
+            string posicion = seccionO.Value;
             string[] posicionArray = posicion.Split(",".ToCharArray());
             int prueba = 0;
 
-            string marca = NmarcaO.Value;
+            string marca = marcaO.Value;
 
             string[] marcaArray = marca.Split(",".ToCharArray());
-            string marcaColor = NcolorM.Value;
+            string marcaColor = colorM.Value;
             string[] marcaColorArray = marcaColor.Split(",".ToCharArray());
 
             int num2 = marcaArray.Count();

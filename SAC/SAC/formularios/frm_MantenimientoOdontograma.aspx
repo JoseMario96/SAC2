@@ -35,8 +35,9 @@
         body {
             text-align: center;
         }
-        #canvasesdiv{
-            width:50%;
+
+        #canvasesdiv {
+            width: 50%;
         }
     </style>
     <style type="text/css">
@@ -83,6 +84,7 @@
         <asp:HiddenField ID="BDseccionO" runat="server" />
         <asp:HiddenField ID="BDdienteM" runat="server" />
 
+
         <div id="odontograma" style="display: none" tabindex="1">
             <h1>Odontograma</h1>
             <br>
@@ -102,6 +104,7 @@
                 <canvas id="myCanvas3" width="810" height="200" style="z-index: 3; position: absolute; left: 30%; top: 0px;"></canvas>
                 <canvas id="myCanvas4" width="810" height="200" style="z-index: 4; position: absolute; left: 30%; top: 0px;"></canvas>
             </div>
+
             <div id="radio_seccion" style='display: none'>
                 <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Seccion</label>
                 <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
@@ -109,6 +112,7 @@
             <br />
             <div class="input-field col s4">
                 <asp:Button ID="Button1" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" />
+                <%-- //   <asp:Button ID="Button2" runat="server" Text="Prueba" class="waves-effect waves-light btn" OnClick="Button2_Click" />--%>
             </div>
             <script>
 
@@ -641,7 +645,7 @@
                         //Una vez se haya clickado se activará la siguiente función
                         getPosition
                         , false);
-                    layer4.addEventListener("mousemove", marcar_seccion, false);
+                    layer4.addEventListener("mousemove", Marcar, false);
                 }
                 //canvas.addEventListener("mousedown", getPosition, false);
 
@@ -955,7 +959,6 @@
                                                 //dienteArray.splice(dd, 1);
                                                 //posicionArray.splice(dd, 1);
 
-                                                // alert(auxiliarArrayC[prueba]);
                                                 prueba++;
                                                 //document.getElementById('colorO').value = colorArray.join(',');
                                                 //document.getElementById('dienteO').value = dienteArray.join(',');
@@ -1313,13 +1316,11 @@
                     var div_can = document.getElementById("canvasesdiv");
                     x -= div_can.offsetLeft;
                     y -= div_can.offsetTop;
-                    //alert(x);
                     diente = 0;
                     seccion = 0;
                     var div = 0;
 
                     if (y >= 20 && y <= 60) {
-                        //alert(x);
                         if (x >= 10 && x <= 50) {
                             diente = 1;
                         }
@@ -1345,7 +1346,6 @@
                             }
                         }
                     }
-                    //alert(diente);
                     if (diente) {
                         accion = $("input[name='accion']:checked").val();
                         var seleccion = '';
@@ -1416,11 +1416,9 @@
                             }
                             //Comprobacion de si esta en una seccion
                             if (seccion) {
-                                //alert(seccion);
                                 color = 'yellow';
                                 ctx3.clearRect(0, 0, 910, 200);
                                 marcar_seccion(ctx3, diente, seccion, color);
-                                //alert(seccion);
                             } else {
                                 //ctx2.fillStyle = "white";
                                 //ctx2.fillRect(0, 0, 810, 300);
@@ -1603,7 +1601,6 @@
                         dientepitando = parseInt(itemm[0], 10);
                         seccionpintado = parseInt(itemm[1], 10);
                         colorclick = parseInt(itemm[2], 10);
-                        //alert(seccion2);
 
                         if (dientepitando == diente && seccionpintado == seccion2) {
                             pintadoVector[contPintado] = localStorage.getItem(key_namee).split(',');
@@ -1651,7 +1648,7 @@
                     compararBD();
 
                     //if (verificarseccion == "") {
-                    //  alert("condicion");
+
                     PintarVectorBD(diente, seccion2);
                     //} 
                     array_local = pintaBorrado();
@@ -1725,12 +1722,9 @@
                                 }
                                 contarvuelta++;
                             } else if (pruebaseccion[ab] == "" && pruebas[ab] == "" && marcaP == dienteM) {
-                                alert(BDMarca.length);
-                                alert(ab);
                                 pruebas.splice(ab, 1);
                                 pruebaseccion.splice(ab, 1);
                                 pruebacolor.splice(ab, 1);
-                                alert("BORRANDO DE BASE " + BDMarca[ab]);
                                 BDMarca.splice(ab, 1);
 
                             }
@@ -1913,21 +1907,21 @@
             </div>
         </div>
         <script>
-            function solonumeros(e) {
-                key = e.keyCoden || e.which;
-                teclado = String.fromCharCode(key);
-                numero = "1234567890";
-                especiales = "8-37-38-46";
-                teclado_especial = false;
-                for (var i in especiales) {
-                    if (key == especiales[i]) {
-                        teclado_especial = true;
+                function solonumeros(e) {
+                    key = e.keyCoden || e.which;
+                    teclado = String.fromCharCode(key);
+                    numero = "1234567890";
+                    especiales = "8-37-38-46";
+                    teclado_especial = false;
+                    for (var i in especiales) {
+                        if (key == especiales[i]) {
+                            teclado_especial = true;
+                        }
+                    }
+                    if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+                        return false;
                     }
                 }
-                if (numero.indexOf(teclado) == -1 && !teclado_especial) {
-                    return false;
-                }
-            }
         </script>
     </form>
 </body>

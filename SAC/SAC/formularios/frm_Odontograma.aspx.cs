@@ -222,5 +222,10 @@ namespace SAC.formularios
             GridView1.PageIndex = e.NewPageIndex;
             GridView1.DataBind();
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frm_MantenimientoOdontograma.aspx");
+        }
     }
 }
