@@ -248,29 +248,20 @@ namespace SAC.metodos
             }
         }
 
-        //public String[] ReporteOdontogramas (String ced)
-        //{
-        //    String[] paciente = new string[59];
-        //    MySqlDataReader busqueda = consultar.ejecutar_consulta("select tbl_expediente.*, tbl_paciente.nombre1Paciente, tbl_paciente.nombre2Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.apellido2Paciente, tbl_signosvitales.*, tbl_historialmedicomujeres.* from tbl_expediente, tbl_paciente, tbl_signosvitales, tbl_historialmedicomujeres where tbl_paciente.cedulaPaciente = tbl_expediente.cedulaPaciente and tbl_expediente.cedulaPaciente = " + ced + " and tbl_expediente.codigoExpediente = tbl_signosvitales.codigoExpediente and tbl_expediente.codigoExpediente = tbl_historialmedicomujeres.codigoExpediente;", con.abrir_conexion()).ExecuteReader();
-        //    while (busqueda.Read())
-        //    {
-        //        for (int i = 0; i <= 58; i++)
-        //        {
-        //            if (busqueda.IsDBNull(i))
-        //            {
-        //                paciente[i] = "";
-        //            }
-        //            else
-        //            {
-        //                paciente[i] = busqueda.GetString(i);
-        //            }
 
-        //        }
-        //    }
-        //    con.cerrar_Conexion();
-        //    return paciente;
-        //}
 
+        public DataTable Pacienteinformacion()
+        {
+            string consulta = "Select tbl_paciente.cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente from tbl_paciente, tbl_expediente  where  tbl_paciente.cedulaPaciente= tbl_expediente.cedulaPaciente;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+
+        }
     }
 
 }
