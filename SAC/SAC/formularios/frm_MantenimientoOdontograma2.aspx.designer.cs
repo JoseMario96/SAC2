@@ -13,22 +13,22 @@ namespace SAC.formularios {
     public partial class frm_MantenimientoOdontograma2 {
         
         /// <summary>
-        /// Control Nform1.
+        /// Control form1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm Nform1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control NLabel5.
+        /// Control Label5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label NLabel5;
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
         /// Control BudquedaExp.

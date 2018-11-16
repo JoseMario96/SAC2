@@ -82,7 +82,7 @@ namespace SAC.formularios
             string borradoC = BDcolorO.Value;
             string borradoD = BDdienteO.Value;
             string borradoS = BDseccionO.Value;
-            string borradoM =BDdienteM.Value;
+            string borradoM = BDdienteM.Value;
 
             string[] BDborradoC = borradoC.Split(",".ToCharArray());
             string[] BDborradoD = borradoD.Split(",".ToCharArray());
