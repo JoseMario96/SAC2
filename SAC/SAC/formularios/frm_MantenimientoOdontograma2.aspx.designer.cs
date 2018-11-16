@@ -13,22 +13,22 @@ namespace SAC.formularios {
     public partial class frm_MantenimientoOdontograma2 {
         
         /// <summary>
-        /// Control form1.
+        /// Control Nform1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Nform1;
         
         /// <summary>
-        /// Control Label5.
+        /// Control NLabel5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.Label NLabel5;
         
         /// <summary>
         /// Control BudquedaExp.
@@ -40,138 +40,111 @@ namespace SAC.formularios {
         protected global::System.Web.UI.WebControls.TextBox BudquedaExp;
         
         /// <summary>
-        /// Control TextBox4.
+        /// Control NcolorO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.HiddenField NcolorO;
         
         /// <summary>
-        /// Control TextBox2.
+        /// Control NdienteO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.HiddenField NdienteO;
         
         /// <summary>
-        /// Control TextBox3.
+        /// Control NseccionO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.HiddenField NseccionO;
         
         /// <summary>
-        /// Control colorO.
+        /// Control NcontextoO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField colorO;
+        protected global::System.Web.UI.WebControls.HiddenField NcontextoO;
         
         /// <summary>
-        /// Control dienteO.
+        /// Control NmarcaO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField dienteO;
+        protected global::System.Web.UI.WebControls.HiddenField NmarcaO;
         
         /// <summary>
-        /// Control seccionO.
+        /// Control NborrarO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField seccionO;
+        protected global::System.Web.UI.WebControls.HiddenField NborrarO;
         
         /// <summary>
-        /// Control contextoO.
+        /// Control NcolorM.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField contextoO;
+        protected global::System.Web.UI.WebControls.HiddenField NcolorM;
         
         /// <summary>
-        /// Control marcaO.
+        /// Control NBDcolorO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField marcaO;
+        protected global::System.Web.UI.WebControls.HiddenField NBDcolorO;
         
         /// <summary>
-        /// Control borrarO.
+        /// Control NBDdienteO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField borrarO;
+        protected global::System.Web.UI.WebControls.HiddenField NBDdienteO;
         
         /// <summary>
-        /// Control colorM.
+        /// Control NBDseccionO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField colorM;
+        protected global::System.Web.UI.WebControls.HiddenField NBDseccionO;
         
         /// <summary>
-        /// Control BDcolorO.
+        /// Control NBDdienteM.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField BDcolorO;
+        protected global::System.Web.UI.WebControls.HiddenField NBDdienteM;
         
         /// <summary>
-        /// Control BDdienteO.
+        /// Control NButton1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField BDdienteO;
-        
-        /// <summary>
-        /// Control BDseccionO.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField BDseccionO;
-        
-        /// <summary>
-        /// Control BDdienteM.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField BDdienteM;
-        
-        /// <summary>
-        /// Control Button1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button NButton1;
     }
 }

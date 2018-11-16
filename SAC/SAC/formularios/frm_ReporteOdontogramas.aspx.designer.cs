@@ -76,13 +76,13 @@ namespace SAC.formularios {
         protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// Control Cedula.
+        /// Control GridView_reporteOdontograma.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Cedula;
+        protected global::System.Web.UI.WebControls.GridView GridView_reporteOdontograma;
         
         /// <summary>
         /// Control Panel1.

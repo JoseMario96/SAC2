@@ -26,6 +26,7 @@ namespace SAC.formularios
 
         }
 
+
         protected void AgregarDetalle_Click(object sender, EventArgs e)
         {
             string codigoT = "";
@@ -78,13 +79,11 @@ namespace SAC.formularios
         {
             //try
             //{
-            string borradoC = BDcolorO.Value;
-            string borradoD = BDdienteO.Value;
-            string borradoS = BDseccionO.Value;
-            string borradoM = BDdienteM.Value;
-            TextBox4.Text = borradoC;
-            TextBox2.Text = borradoD;
-            TextBox3.Text = borradoS;
+            string borradoC = NBDcolorO.Value;
+            string borradoD = NBDdienteO.Value;
+            string borradoS = NBDseccionO.Value;
+            string borradoM = NBDdienteM.Value;
+
             string[] BDborradoC = borradoC.Split(",".ToCharArray());
             string[] BDborradoD = borradoD.Split(",".ToCharArray());
             string[] BDborradoS = borradoS.Split(",".ToCharArray());
@@ -109,21 +108,21 @@ namespace SAC.formularios
                 }
             }
             DateTime now = DateTime.Now;
-            string color = colorO.Value;
+            string color = NcolorO.Value;
             string[] colorArray = color.Split(",".ToCharArray());
             int num = colorArray.Count();
 
-            string diente = dienteO.Value;
+            string diente = NdienteO.Value;
             string[] dienteArray = diente.Split(",".ToCharArray());
 
-            string posicion = seccionO.Value;
+            string posicion = NseccionO.Value;
             string[] posicionArray = posicion.Split(",".ToCharArray());
             int prueba = 0;
 
-            string marca = marcaO.Value;
+            string marca = NmarcaO.Value;
 
             string[] marcaArray = marca.Split(",".ToCharArray());
-            string marcaColor = colorM.Value;
+            string marcaColor = NcolorM.Value;
             string[] marcaColorArray = marcaColor.Split(",".ToCharArray());
 
             int num2 = marcaArray.Count();
