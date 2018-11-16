@@ -167,7 +167,7 @@ namespace SAC.formularios
             {
                 for (int x = 0; x < num; x++)
                 {
-                    odontograma.agregarOdontograma(colorArray[x], dienteArray[x], posicionArray[x], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
+                    odontograma.agregarOdontograma(colorArray[x], dienteArray[x], posicionArray[x], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"),"1");
                     prueba++;
                 }
             }
@@ -176,7 +176,7 @@ namespace SAC.formularios
                 for (int y = 0; y < num2; y++)
                 {
 
-                    odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"));
+                    odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigoExpediente.ToString(), now.ToString("yyyy-MM-dd"), "1");
                 }
             }
 
