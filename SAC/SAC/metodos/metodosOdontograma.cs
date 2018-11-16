@@ -261,21 +261,6 @@ namespace SAC.metodos
             }
 
         }
-
-
-
-        public DataTable Pacienteinformacion()
-        {
-            string consulta = "Select tbl_paciente.cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente from tbl_paciente, tbl_expediente  where  tbl_paciente.cedulaPaciente= tbl_expediente.cedulaPaciente;";
-            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
-            MySqlDataAdapter da = new MySqlDataAdapter(comando);
-            using (DataTable dt = new DataTable())
-            {
-                da.Fill(dt);
-                return dt;
-            }
-
-        }
     }
 
 }
