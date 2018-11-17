@@ -59,20 +59,11 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
+            <asp:ScriptManager runat="server" ID="sm">
+            </asp:ScriptManager>
             <div class="row">
                 <br />
                 <br />
-
-                <asp:GridView ID="GridView_reporteOdontograma" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
-                    runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" AllowPaging="true" PageSize="3" OnSelectedIndexChanged="GridView_reporteOdontograma_SelectedIndexChanged" OnPageIndexChanging="GridView_reporteOdontograma_PageIndexChanging" OnRowDataBound="GridView_reporteOdontograma_RowDataBound">
-                    <Columns>
-                        <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />
-                        <asp:BoundField DataField="nombre1Paciente" HeaderText="Primer Nombre" ItemStyle-Width="100" />
-                        <asp:BoundField DataField="apellido1Paciente" HeaderText="Primer Apellido" ItemStyle-Width="100" />
-                        <asp:BoundField DataField="apellido2Paciente" HeaderText="Segundo Apellido" ItemStyle-Width="100" />
-                    </Columns>
-                </asp:GridView>
-
             </div>
             <asp:HiddenField ID="colorO" runat="server" />
             <asp:HiddenField ID="dienteO" runat="server" />
@@ -87,10 +78,12 @@
             <asp:HiddenField ID="BDdienteM" runat="server" />
 
 
-            <div id="odontograma" style="display: none" tabindex="1">
+            <div id="odontograma" style="display: block" tabindex="1">
+
                 <h1>Odontograma</h1>
                 <br>
                 <br>
+
                 <div id="radio">
                     <input type="radio" id="radio1" name="accion" value="carie" checked="checked" /><label for="radio1">Carie</label>
                     <input type="radio" id="radio6" name="accion" value="sellante" /><label for="radio6">Sellante</label>
@@ -99,6 +92,7 @@
                     <input type="radio" id="radio5" name="accion" value="exodoncia" /><label for="radio5">Exodoncia</label>
                     <input type="radio" id="radio3" name="accion" value="borrar" /><label for="radio3">Borrar</label>
                 </div>
+
                 <br>
                 <div class="row">
                     <div class="col s12">
@@ -113,10 +107,42 @@
                             <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
                         </div>
                         <br />
-                        <div class="input-field col s4">
-                            <asp:Button ID="Button1" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" />
+                        <div class="row">
+                            <div class="col s4">
+                            </div>
+                            <div class="input-field col s2">
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <asp:Button ID="Button1" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" />
+
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+                            <div class="input-field col s2">
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <asp:Button ID="cancelarOdontograma" runat="server" class="waves-effect waves-light btn" Text="Cancelar" />
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+                            <div class="col s4">
+                            </div>
+
                         </div>
+
+
                         <script>
+
+                            //function my_function(val) {
+                            //    if (val == "odontogramaG") {
+                            //        window.location.href = "frm_MantenimientoOdontograma.aspx";
+
+                            //    }
+                            //    else if (val == "odontogramaN") {
+                            //        window.location.href = "frm_MantenimientoOdontograma2.aspx";
+                            //    }
+
+                            //}
 
                             // Funcion para dibujar las lineas negras de cada diente
                             function dibuja_contorno(context, inicio_x, inicio_y, med, separacion_x, separacion_y) {
@@ -1818,48 +1844,43 @@
 
                             }
                         </script>
-                        <asp:ScriptManager runat="server" ID="sm">
-                        </asp:ScriptManager>
-                        <br />
-                        <br />
-                        <h5>Tratamientos Efectuados</h5>
-                        <br />
 
-                        <div style="margin-left: auto; margin-right: auto;">
-                            <asp:UpdatePanel runat="server">
-                                <ContentTemplate>
-                                    <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
-                                        runat="server" AutoGenerateColumns="False" Height="174px" Width="70%" HorizontalAlign="Center" AllowPaging="true" PageSize="5" OnPageIndexChanging="GridView1_PageIndexChanging">
-                                        <Columns>
-                                            <asp:BoundField DataField="fechaExpedienteTratamiento" HeaderText="Fecha" ItemStyle-Width="30" />
-                                            <asp:BoundField DataField="tratamientoExpedienteTratamiento" HeaderText="Tratamiento" ItemStyle-Width="100" />
-                                            <asp:BoundField DataField="piezaExpedienteTratamiento" HeaderText="Diente" ItemStyle-Width="100" />
-                                            <asp:BoundField DataField="descripcionExpedienteTratamiento" HeaderText="Descripción" ItemStyle-Width="100" />
-                                        </Columns>
-                                    </asp:GridView>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
+
+                        <div class="row">
+                            <div class="col s12">
+                                <h5>Tratamientos Efectuados</h5>
+                            </div>
+                        </div>
+
+                        <div class="col s12">
+                            <div style="margin-left: auto; margin-right: auto;">
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
+                                            runat="server" AutoGenerateColumns="False" Height="174px" HorizontalAlign="Center" AllowPaging="true" PageSize="5" OnPageIndexChanging="GridView1_PageIndexChanging">
+                                            <Columns>
+                                                <asp:BoundField DataField="fechaExpedienteTratamiento" HeaderText="Fecha" ItemStyle-Width="30" />
+                                                <asp:BoundField DataField="tratamientoExpedienteTratamiento" HeaderText="Tratamiento" ItemStyle-Width="100" />
+                                                <asp:BoundField DataField="piezaExpedienteTratamiento" HeaderText="Diente" ItemStyle-Width="100" />
+                                                <asp:BoundField DataField="descripcionExpedienteTratamiento" HeaderText="Descripción" ItemStyle-Width="100" />
+                                            </Columns>
+                                        </asp:GridView>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
                         </div>
                         <br />
                         <br />
-
                         <div id="tablaDetalle" style="display: block" tabindex="-1">
-                            <h5>Nuevos tratamientos</h5>
-                            <br />
-                            <br />
                             <div class="row">
-                                <div class="col s2">
-                                </div>
-                                <div class="col s10">
-                                    <div class="col s2">
-                                        <asp:UpdatePanel runat="server">
-                                            <ContentTemplate>
-                                                <label class="active" for="Fecha">Fecha </label>
-                                                <asp:Label ID="fecha" title="Fecha" runat="server"></asp:Label>
-                                            </ContentTemplate>
-                                        </asp:UpdatePanel>
-                                    </div>
-                                    <div class="col s3">
+                                <h5>Nuevos tratamientos</h5>
+                                <br />
+                                <br />
+                            </div>
+
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="col s4">
                                         <asp:UpdatePanel runat="server">
                                             <ContentTemplate>
                                                 <label class="active" for="Tratamiento">Tipo de tratamiento </label>
@@ -1868,7 +1889,7 @@
                                         </asp:UpdatePanel>
                                     </div>
 
-                                    <div class="col s3">
+                                    <div class="col s4">
                                         <asp:UpdatePanel runat="server">
                                             <ContentTemplate>
                                                 <label class="active" for="Tipotratamiento">Tratamiento</label>
@@ -1877,7 +1898,7 @@
                                         </asp:UpdatePanel>
                                     </div>
 
-                                    <div class="col s3">
+                                    <div class="col s4">
                                         <asp:UpdatePanel runat="server">
                                             <ContentTemplate>
                                                 <label class="active" for="Diente">Diente</label>
@@ -1891,20 +1912,34 @@
                             <div class="row">
                                 <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
-                                        <div class="col s2"></div>
-                                        <div class="col s8">
+                                        <div class="col s12">
                                             <label class="active" for="Descripcion">Descripción</label>
                                             <input type='text' name='debe' id="descrip" title="Descripción" runat="server" maxlength="244" />
                                         </div>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
-                                <div class="col s1">
+                            </div>
+
+                            <div class="row">
+                                <div class="col s4">
+                                </div>
+                                <div class="input-field col s2">
                                     <asp:UpdatePanel runat="server">
                                         <ContentTemplate>
-                                            <asp:Button ID="AgregarDetalle" runat="server" class="waves-effect waves-light btn" OnClick="AgregarDetalle_Click" Text="+" />
+                                            <asp:Button ID="AgregarDetalle" runat="server" class="waves-effect waves-light btn" OnClick="AgregarDetalle_Click" Text="Agregar" />
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </div>
+                                <div class="input-field col s2">
+                                    <asp:UpdatePanel runat="server">
+                                        <ContentTemplate>
+                                            <asp:Button ID="Cancelar" runat="server" class="waves-effect waves-light btn" Text="Cancelar" />
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+                                <div class="col s4">
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -1931,3 +1966,4 @@
     </form>
 </body>
 </html>
+

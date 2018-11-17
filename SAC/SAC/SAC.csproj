@@ -132,6 +132,7 @@
     <Content Include="images\CxC.png" />
     <Content Include="images\Descargar.png" />
     <Content Include="images\diente.jpg" />
+    <Content Include="images\diente.png" />
     <Content Include="images\eliminar.png" />
     <Content Include="images\eliminar_usuario.png" />
     <Content Include="images\factura.png" />
