@@ -10,7 +10,7 @@
 namespace SAC.formularios {
     
     
-    public partial class frmLogin {
+    public partial class frm_CambiarContrasena {
         
         /// <summary>
         /// Control form1.
@@ -31,30 +31,39 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_usuario;
         
         /// <summary>
-        /// Control txt_contraseña.
+        /// Control txt_contraAnte.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txt_contraseña;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txt_contraAnte;
         
         /// <summary>
-        /// Control aviso.
+        /// Control txt_contraNueva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl aviso;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txt_contraNueva;
         
         /// <summary>
-        /// Control btn_sesion.
+        /// Control txt_contraNueva2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_sesion;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txt_contraNueva2;
+        
+        /// <summary>
+        /// Control btn_guardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_guardar;
     }
 }

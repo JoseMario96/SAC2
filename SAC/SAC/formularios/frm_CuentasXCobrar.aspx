@@ -115,7 +115,7 @@
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
                                     <label class="active" for="txt_abono" style="font-size:medium; color:black">Monto del abono</label>
-                                    <input id="txt_abono" type="number" runat="server" class="validate" onkeypress="return solonumeros(event)" />
+                                    <input id="txt_abono" type="number" runat="server" class="validate" onkeydown="return solonumeros(event)" />
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>

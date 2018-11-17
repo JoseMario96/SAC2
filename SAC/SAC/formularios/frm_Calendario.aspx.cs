@@ -22,37 +22,40 @@ namespace SAC.formularios
         protected void Page_Load(object sender, EventArgs e)
         {
             _sheduleData = GetSchedule();
+            String tipo = Convert.ToString(Request.QueryString["tipo"]);
+            Response.Redirect(tipo);
         }
 
         private Hashtable GetSchedule()
         {
             String[,] matriz = objeto.Cita();
             Hashtable schedule = new Hashtable();
-            String cuerpo = "";
+            int cuerpo = 1;
             for (int i = 0; i <= matriz.GetLength(0) - 1; i++)
             {
-                if (i==0)
+                //String fecha = matriz[i, 2].Split(' ')[0];
+                //schedule[fecha] = "▄";
+                if (i == 0)
                 {
                     String fecha = matriz[i, 2].Split(' ')[0];
-                    cuerpo = matriz[i, 5] + " / " + matriz[i, 3];
-                    schedule[fecha] = cuerpo;
+                    schedule[fecha] = cuerpo.ToString();
                 }
                 if (i > 0)
                 {
-                    String fechaAnterior = matriz[i-1, 2].Split(' ')[0];
+                    String fechaAnterior = matriz[i - 1, 2].Split(' ')[0];
                     String fecha = matriz[i, 2].Split(' ')[0];
                     if (fechaAnterior == fecha)
                     {
-                        cuerpo = cuerpo + "<br />" + matriz[i, 5] + " / " + matriz[i, 3];
-                        schedule[fecha] = cuerpo;
+                        cuerpo = cuerpo + 1;
+                        schedule[fecha] = cuerpo.ToString();
                     }
                     else
                     {
-                        cuerpo = matriz[i, 5] + " / " + matriz[i, 3];
-                        schedule[fecha] = cuerpo;
+                        cuerpo = 1;
+                        schedule[fecha] = cuerpo.ToString();
                     }
                 }
-                               
+
             }
             //schedule["4/10/2018"] = "Hola probando <br/> código";
             return schedule;
@@ -109,8 +112,8 @@ namespace SAC.formularios
                 e.Cell.Controls.Add(lit);
                 Label lbl = new Label();
                 lbl.Text = (string)_sheduleData[e.Day.Date.ToShortDateString()];
-                lbl.Font.Size = new FontUnit(FontSize.Small);
-                lbl.ForeColor = System.Drawing.Color.Black;
+                lbl.Font.Size = new FontUnit(FontSize.Medium);
+                lbl.ForeColor = System.Drawing.Color.Red;
                 e.Cell.Controls.Add(lbl);
             }
         }

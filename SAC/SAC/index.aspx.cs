@@ -9,9 +9,34 @@ namespace SAC
 {
 	public partial class index : System.Web.UI.Page
 	{
-		protected void Page_Load(object sender, EventArgs e)
+        metodos.metodos_login entrar = new metodos.metodos_login();
+        protected void Page_Load(object sender, EventArgs e)
 		{
-
-		}
-	}
+            String tipo = Convert.ToString(Request.QueryString["dato"]);
+            if (tipo == "1")
+            {
+                string script = @"<script type='text/javascript'>                        
+                        
+                        document.getElementById('ocultar').style.display = 'none';
+                        </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                //string scriptt = @"<script type='text/javascript'>                        
+                //        document.getElementById('ocultar1').style.display = 'none';
+                //        </script>";
+                //ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+            }
+        }
+        public void Ocultar()
+        {
+            string user2 = (String)Session["usuario"];
+            if (entrar.Permiso(user2) == 1)
+            {
+                string script = @"<script type='text/javascript'>
+                        document.getElementById('fh5co-about').style.display = 'none';                  
+                        </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
+        }
+        
+    }
 }
