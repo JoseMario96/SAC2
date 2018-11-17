@@ -10,7 +10,7 @@
 namespace SAC.formularios {
     
     
-    public partial class frmLogin {
+    public partial class frm_RecuperarContrasena {
         
         /// <summary>
         /// Control form1.
@@ -31,30 +31,21 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_usuario;
         
         /// <summary>
-        /// Control txt_contraseña.
+        /// Control txt_correo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txt_contraseña;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txt_correo;
         
         /// <summary>
-        /// Control aviso.
+        /// Control btn_enviar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl aviso;
-        
-        /// <summary>
-        /// Control btn_sesion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_sesion;
+        protected global::System.Web.UI.WebControls.Button btn_enviar;
     }
 }

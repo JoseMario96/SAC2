@@ -90,8 +90,8 @@ namespace SAC.formularios
 
         protected void btn_factura_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 double abono = 0;
                 double total = Convert.ToDouble(lbl_total.InnerText);
                 double extra = 0;
@@ -128,11 +128,11 @@ namespace SAC.formularios
                         fecha2 = fecha.ToString("yyyy-MM-dd HH:mm:ss");
                         codigo = venta.CodigoExpedienteTratamiento(fecha2);
                         vector[i] = codigo;
-                        detalle = detalle + tabla1.Rows[i][0] + ",";
+                        detalle = detalle + tabla1.Rows[i][0] + " | ";
                     }
                     venta.AgregarVenta(cedula, date2, detalle, totalFinal.ToString(), saldo.ToString());
                     // Si el queda saldo pendiente, se agrega la venta como un abono
-                    if (abono < totalFinal)
+                    if (abono < totalFinal & abono > 0)
                     {
                         String codigoVenta = venta.UltimaVenta();
                         venta.AgregarAbono(codigoVenta, txt_abono.Value, date2);
@@ -148,13 +148,13 @@ namespace SAC.formularios
                     Gridview_Paciente.DataSource = venta.VentaPendiente();
                     Gridview_Paciente.DataBind();
                 }
-            }catch
-                {
-                    string scripts = @"<script type='text/javascript'>
-                        alert('No se pudo realizar la operación!');
-                        </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
-            }
+            //}catch
+            //    {
+            //        string scripts = @"<script type='text/javascript'>
+            //            alert('No se pudo realizar la operación!');
+            //            </script>";
+            //ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+            //}
     }
 
         protected void Gridview_Paciente_DataBound(object sender, EventArgs e)
