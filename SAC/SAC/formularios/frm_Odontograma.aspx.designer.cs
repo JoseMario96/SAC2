@@ -10,7 +10,7 @@
 namespace SAC.formularios {
     
     
-    public partial class ResponsiveOdontograma {
+    public partial class frm_Odontograma {
         
         /// <summary>
         /// Control form1.
@@ -22,48 +22,39 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control colorO.
+        /// Control GridView_reporteOdontograma.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField colorO;
+        protected global::System.Web.UI.WebControls.GridView GridView_reporteOdontograma;
         
         /// <summary>
-        /// Control dienteO.
+        /// Control sm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField dienteO;
+        protected global::System.Web.UI.ScriptManager sm;
         
         /// <summary>
-        /// Control seccionO.
+        /// Control ibOdontogramaG.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField seccionO;
+        protected global::System.Web.UI.WebControls.ImageButton ibOdontogramaG;
         
         /// <summary>
-        /// Control contextoO.
+        /// Control ibOdontogramaN.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField contextoO;
-        
-        /// <summary>
-        /// Control Label1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.ImageButton ibOdontogramaN;
     }
 }

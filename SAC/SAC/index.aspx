@@ -533,7 +533,7 @@
             <div class="row espacio">
                 <div class="col-md-3"></div>
                 <div class="col-md-3">
-                    <a href="#popup7" class="popup-link fh5co-project-item " onclick='document.getElementById("Odonto").src="formularios/frm_MantenimientoOdontograma.aspx";'>
+                    <a href="#popup7" class="popup-link fh5co-project-item " onclick='document.getElementById("Odonto").src="formularios/frm_Odontograma.aspx";'>
                         <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Odontograma</h2>
