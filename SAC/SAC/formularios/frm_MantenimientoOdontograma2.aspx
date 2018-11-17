@@ -10,7 +10,7 @@
     <script src="../js/jquery-1.7.2.min.js"></script>
     <link href="../css/jquery-ui-1.8.13.custom.css" rel="stylesheet" />
     <script src="../js/jquery-ui-1.8.13.custom.min.js"></script>
-    <style>
+    <%--<%--    <style>
         table thead {
             color: #000;
             background-color: #3AC0F2;
@@ -26,13 +26,23 @@
             font-size: medium;
             color: black;
         }
-    </style>
+    </style>--%>
     <style>
         #myCanvas, #myCanvas2, #myCanvas3, #myCanvas4 {
             border: 2px solid #000000;
+            text-align: center;
         }
 
         body {
+            text-align: center;
+        }
+
+
+        #canvasesdiv {
+            width: 510px;
+            height: 200px;
+            border: 1px solid red;
+            margin: 0px auto;
             text-align: center;
         }
     </style>
@@ -100,15 +110,19 @@
                     <input type="radio" id="radio5" name="accion" value="exodoncia" /><label for="radio5">Exodoncia</label>
                     <input type="radio" id="radio3" name="accion" value="borrar" /><label for="radio3">Borrar</label>
                 </div>
-                <br>
+                <br />
+                <div id="canvasesdiv" style="position: relative;">
+
+                    <canvas id="myCanvas" width="510" height="200" style="z-index: 1; position: absolute; left: 0%; top: 0px;"></canvas>
+                    <canvas id="myCanvas2" width="510" height="200" style="z-index: 2; position: absolute; left: 0%; top: 0px;"></canvas>
+                    <canvas id="myCanvas3" width="510" height="200" style="z-index: 3; position: absolute; left: 0%; top: 0px;"></canvas>
+                    <canvas id="myCanvas4" width="510" height="200" style="z-index: 4; position: absolute; left: 0%; top: 0px;"></canvas>
+
+
+                </div>
                 <div class="row">
                     <div class="col s12">
-                        <div id="canvasesdiv" style="position: relative; width: 510px; height: 200px">
-                            <canvas id="myCanvas" width="510" height="200" style="z-index: 1; position: absolute; left: 0%; top: 0px;"></canvas>
-                            <canvas id="myCanvas2" width="510" height="200" style="z-index: 2; position: absolute; left: 0%; top: 0px;"></canvas>
-                            <canvas id="myCanvas3" width="510" height="200" style="z-index: 3; position: absolute; left: 0%; top: 0px;"></canvas>
-                            <canvas id="myCanvas4" width="510" height="200" style="z-index: 4; position: absolute; left: 0%; top: 0px;"></canvas>
-                        </div>
+
                         <div id="radio_seccion" style='display: none'>
                             <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Seccion</label>
                             <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
@@ -1912,21 +1926,21 @@
                         </div>
                     </div>
                     <script>
-                            function solonumeros(e) {
-                                key = e.keyCoden || e.which;
-                                teclado = String.fromCharCode(key);
-                                numero = "1234567890";
-                                especiales = "8-37-38-46";
-                                teclado_especial = false;
-                                for (var i in especiales) {
-                                    if (key == especiales[i]) {
-                                        teclado_especial = true;
-                                    }
-                                }
-                                if (numero.indexOf(teclado) == -1 && !teclado_especial) {
-                                    return false;
+                        function solonumeros(e) {
+                            key = e.keyCoden || e.which;
+                            teclado = String.fromCharCode(key);
+                            numero = "1234567890";
+                            especiales = "8-37-38-46";
+                            teclado_especial = false;
+                            for (var i in especiales) {
+                                if (key == especiales[i]) {
+                                    teclado_especial = true;
                                 }
                             }
+                            if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+                                return false;
+                            }
+                        }
                     </script>
                 </div>
             </div>

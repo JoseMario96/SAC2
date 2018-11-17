@@ -36,7 +36,13 @@ namespace SAC.formularios
             }
             GridView1.HeaderRow.Parent.Controls.AddAt(1, row);
         }
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.DataSource = objeto.Paciente();
+            GridView1.PageIndex = e.NewPageIndex;
+            GridView1.DataBind();
 
+        }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -54,7 +60,7 @@ namespace SAC.formularios
             String[] datos2 = new String[10];
             GridView1.DataSource = objeto.Paciente();
             GridView1.DataBind();
-
+         
             string script = @"<script type='text/javascript'>
                 document.getElementById('formularioP').style.display = 'block' ;
                 document.getElementById('formularioP').scrollIntoView();              
@@ -101,9 +107,9 @@ namespace SAC.formularios
 
                     }
                     else
-                    {                  
+                    {
                         Label1.InnerHtml = "Si";
-                      
+
                         cedula.InnerText = datos[0];
                         nombre1.InnerText = datos[1];
                         nombre2.InnerText = datos[2];
@@ -170,11 +176,12 @@ namespace SAC.formularios
             }
         }
 
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void GridView1_PreRender(object sender, EventArgs e)
         {
-            GridView1.DataSource = objeto.Paciente();
-            GridView1.PageIndex = e.NewPageIndex;
-            GridView1.DataBind();
+            if (GridView1.Rows.Count > 0)
+            {
+                GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
         }
     }
 }

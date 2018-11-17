@@ -161,11 +161,11 @@
                 </div>
 
                 <h5 class="izquierda">Odontograma</h5>
-                <div id="canvasesdiv" style="position: relative; width: 890px; height: 200px">
-                    <canvas id="myCanvas" width="890" height="200" style="z-index: 1; position: absolute; left: 25%; top: 0px;"></canvas>
-                    <canvas id="myCanvas2" width="890" height="200" style="z-index: 2; position: absolute; left: 25%; top: 0px;"></canvas>
-                    <canvas id="myCanvas3" width="890" height="200" style="z-index: 3; position: absolute; left: 25%; top: 0px;"></canvas>
-                    <canvas id="myCanvas4" width="890" height="200" style="z-index: 4; position: absolute; left: 25%; top: 0px;"></canvas>
+                <div id="canvasesdiv" style="position: relative; width: 810px; height: 200px">
+                    <canvas id="myCanvas" width="810" height="200" style="z-index: 1; position: absolute; left: 25%; top: 0px;"></canvas>
+                    <canvas id="myCanvas2" width="810" height="200" style="z-index: 2; position: absolute; left: 25%; top: 0px;"></canvas>
+                    <canvas id="myCanvas3" width="810" height="200" style="z-index: 3; position: absolute; left: 25%; top: 0px;"></canvas>
+                    <canvas id="myCanvas4" width="810" height="200" style="z-index: 4; position: absolute; left: 25%; top: 0px;"></canvas>
                 </div>
                 <br />
                 <br />
@@ -176,7 +176,7 @@
                     <canvas id="NmyCanvas4" width="510" height="200" style="z-index: 4; position: absolute; left: 46%; top: 0px;"></canvas>
                 </div>
 
-                <div style="margin-left: auto; margin-right: auto; display: none">
+                <div style="margin-left: auto; margin-right: auto;">
                     <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
                         runat="server" AutoGenerateColumns="False" Height="174px" Width="70%" HorizontalAlign="Center">
                         <Columns>
@@ -252,7 +252,7 @@
                         }
                     }
                     // Funcion para pintar una region del diente
-                    function dibuja_seccion(contexto, num_diente, seccion, color_pas) {
+                    function dibuja_seccionNinos(contexto, num_diente, seccion, color_pas) {
                         var ctx = contexto;
                         // Definiendo puntos de dibujo
                         med = medida;
@@ -570,8 +570,8 @@
                     var canvas = document.getElementById('NmyCanvas');
                     var context = canvas.getContext('2d');
                     //
-                    var layer2 = document.getElementById("NmyCanvas2");
-                    var ctx2 = layer2.getContext("2d");
+                    var layer6 = document.getElementById("NmyCanvas2");
+                    var ctxN = layer6.getContext("2d");
                     //
                     var layer3 = document.getElementById("NmyCanvas3");
                     var ctx3 = layer3.getContext("2d");
@@ -720,365 +720,17 @@
                         }
 
                     }
-                    function pintarDiente(diente, seccion, color, marca) {
-
-                        dibuja_seccion(ctx2, diente, seccion, color);
+                    function pintarDienteNino(diente, seccion, color, marca) {
+                        dibuja_seccionNinos(ctxN, diente, seccion, color);
                         if (color == 'black') {
-                            marcar_extraccion(ctx2, marca, 'black');
+                            marcar_extraccion(ctxN, marca, 'black');
                         }
                         else {
 
-                            marcar_exodoncia(ctx2, marca, 'red');
+                            marcar_exodoncia(ctxN, marca, 'red');
                         }
 
                     }
-
-                    // Funcion para dibujar las lineas negras de cada diente
-
-                    //function Ninosdibuja_contorno(context, inicio_x, inicio_y, med, separacion_x, separacion_y) {
-                    //    var ctx = context;
-                    //    // Definiendo puntos de dibujo
-                    //    cua = med / 4;
-                    //    ter = cua * 3;
-                    //    /* 1ra zona */
-                    //    if (ctx) {
-                    //        ctx.strokeStyle = color_line;
-                    //        ctx.beginPath();
-                    //        ctx.moveTo(inicio_x, inicio_y);
-                    //        ctx.lineTo(med + inicio_x, inicio_y);
-                    //        ctx.lineTo(ter + inicio_x, cua + inicio_y);
-                    //        ctx.lineTo(cua + inicio_x, cua + inicio_y);
-                    //        ctx.closePath();
-                    //        ctx.stroke();
-                    //    }
-                    //    /* 2da zona */
-                    //    if (ctx) {
-                    //        ctx.strokeStyle = color_line;
-                    //        ctx.beginPath();
-                    //        ctx.moveTo(ter + inicio_x, cua + inicio_y);
-                    //        ctx.lineTo(med + inicio_x, inicio_y);
-                    //        ctx.lineTo(med + inicio_x, med + inicio_y);
-                    //        ctx.lineTo(ter + inicio_x, ter + inicio_y);
-                    //        ctx.closePath();
-                    //        ctx.stroke();
-                    //    }
-                    //    /* 3ra zona */
-                    //    if (ctx) {
-                    //        ctx.strokeStyle = color_line;
-                    //        ctx.beginPath();
-                    //        ctx.moveTo(cua + inicio_x, ter + inicio_y);
-                    //        ctx.lineTo(ter + inicio_x, ter + inicio_y);
-                    //        ctx.lineTo(med + inicio_x, med + inicio_y);
-                    //        ctx.lineTo(inicio_x, med + inicio_y);
-                    //        ctx.closePath();
-                    //        ctx.stroke();
-                    //    }
-                    //    /* 4ta zona */
-                    //    if (ctx) {
-                    //        ctx.strokeStyle = color_line;
-                    //        ctx.beginPath();
-                    //        ctx.moveTo(inicio_x, inicio_y);
-                    //        ctx.lineTo(cua + inicio_x, cua + inicio_y);
-                    //        ctx.lineTo(cua + inicio_x, ter + inicio_y);
-                    //        ctx.lineTo(inicio_x, med + inicio_y);
-                    //        ctx.closePath();
-                    //        ctx.stroke();
-                    //    }
-                    //}
-                    //function Ninosmarcar_seccion(contextoN, num_diente, seccion, color_pas) {
-                    //    var ctxN = contextoN;
-                    //    // Definiendo puntos de dibujo
-                    //    med = medidaN;
-                    //    cua = med / 4;
-                    //    ter = cua * 3;
-                    //    num_diente = num_diente - 1;
-                    //    color_lineN = color_pas;
-                    //    if (num_diente < 10) {
-                    //        inicio_y = 20;
-                    //    }
-                    //    else if (num_diente < 20) {
-                    //        num_diente = num_diente - 10;
-                    //        inicio_y = med + 100;
-                    //        //if(num_diente==1){num_diente=0;}
-                    //    }
-
-                    //    inicio_x = (num_diente * med) + (separacion_xN * num_diente) + separacion_xN;
-                    //    /* 1ra zona */
-                    //    if (seccion == 1) {
-                    //        if (ctxN) {
-                    //            ctxN.fillStyle = color_lineN;
-                    //            ctxN.beginPath();
-                    //            ctxN.moveTo(inicio_x, inicio_y);
-                    //            ctxN.lineTo(med + inicio_x, inicio_y);
-                    //            ctxN.lineTo(ter + inicio_x, cua + inicio_y);
-                    //            ctxN.lineTo(cua + inicio_x, cua + inicio_y);
-                    //            ctxN.closePath();
-                    //            //ctx.fill();
-                    //            ctxN.strokeStyle = 'yellow';
-                    //            ctxN.stroke();
-                    //        }
-                    //    }
-                    //    /* 2da zona */
-                    //    if (seccion == 2) {
-                    //        if (ctxN) {
-                    //            ctxN.fillStyle = color_lineN;
-                    //            ctxN.beginPath();
-                    //            ctxN.moveTo(ter + inicio_x, cua + inicio_y);
-                    //            ctxN.lineTo(med + inicio_x, inicio_y);
-                    //            ctxN.lineTo(med + inicio_x, med + inicio_y);
-                    //            ctxN.lineTo(ter + inicio_x, ter + inicio_y);
-                    //            ctxN.closePath();
-                    //            //ctx.fill();
-                    //            ctxN.strokeStyle = 'yellow';
-                    //            ctxN.stroke();
-                    //        }
-                    //    }
-                    //    /* 3ra zona */
-                    //    if (seccion == 3) {
-                    //        if (ctxN) {
-                    //            ctxN.fillStyle = color_lineN;
-                    //            ctxN.beginPath();
-                    //            ctxN.moveTo(cua + inicio_x, ter + inicio_y);
-                    //            ctxN.lineTo(ter + inicio_x, ter + inicio_y);
-                    //            ctxN.lineTo(med + inicio_x, med + inicio_y);
-                    //            ctxN.lineTo(inicio_x, med + inicio_y);
-                    //            ctxN.closePath();
-                    //            //ctx.fill();
-                    //            ctxN.strokeStyle = 'yellow';
-                    //            ctxN.stroke();
-                    //        }
-                    //    }
-                    //    /* 4ta zona */
-                    //    if (seccion == 4) {
-                    //        if (ctxN) {
-                    //            ctxN.fillStyle = color_lineN;
-                    //            ctxN.beginPath();
-                    //            ctxN.moveTo(inicio_x, inicio_y);
-                    //            ctxN.lineTo(cua + inicio_x, cua + inicio_y);
-                    //            ctxN.lineTo(cua + inicio_x, ter + inicio_y);
-                    //            ctxN.lineTo(inicio_x, med + inicio_y);
-                    //            ctxN.closePath();
-                    //            //ctx.fill();
-                    //            ctxN.strokeStyle = 'yellow';
-                    //            ctxN.stroke();
-                    //        }
-                    //    }
-                    //    /* 5ta zona(medio) */
-                    //    if (seccion == 5) {
-                    //        if (ctxN) {
-                    //            ctxN.fillStyle = color_lineN;
-                    //            ctxN.beginPath();
-                    //            ctxN.moveTo(cua + inicio_x, cua + inicio_y);
-                    //            ctxN.lineTo(ter + inicio_x, cua + inicio_y);
-                    //            ctxN.lineTo(ter + inicio_x, ter + inicio_y);
-                    //            ctxN.lineTo(cua + inicio_x, ter + inicio_y);
-                    //            ctxN.closePath();
-                    //            //ctx.fill();
-                    //            ctxN.strokeStyle = 'yellow';
-                    //            ctxN.stroke();
-                    //        }
-                    //    }
-                    //}
-                    //function Ninosmarcar_diente(contextoN, num_diente, color_pas) {
-                    //    var ctx = contextoN;
-                    //    // Definiendo puntos de dibujo
-                    //    med = medidaN;
-                    //    num_diente = num_diente - 1;
-                    //    color_lineN = color_pas;
-                    //    if (num_diente < 10) {
-                    //        inicio_y = 20;
-                    //    }
-                    //    else if (num_diente < 20) {
-                    //        num_diente = num_diente - 10;
-                    //        inicio_y = med + 100;
-                    //    }
-                    //    inicio_x = (num_diente * med) + (separacion_xN * num_diente) + separacion_xN;
-
-                    //    ctx.fillStyle = color_lineN;
-                    //    ctx.beginPath();
-                    //    ctx.moveTo(inicio_x, inicio_y);
-                    //    ctx.lineTo(inicio_x + 40, inicio_y);
-                    //    ctx.lineTo(inicio_x + 40, inicio_y + 40);
-                    //    ctx.lineTo(inicio_x, inicio_y + 40);
-                    //    ctx.closePath();
-                    //    ctx.strokeStyle = color_lineN;
-                    //    ctx.stroke();
-                    //}
-                    //function Ninosmarcar_extraccion(contextoN, num_diente, color_pas2) {
-                    //    var ctx = contextoN;
-                    //    // Definiendo puntos de dibujo
-                    //    med = medidaN;
-                    //    num_diente = num_diente - 1;
-                    //    color_lineN = color_pas2;
-                    //    if (num_diente < 10) {
-                    //        inicio_y = 20;
-                    //    }
-                    //    else if (num_diente < 20) {
-                    //        num_diente = num_diente - 10;
-                    //        inicio_y = med + 100;
-                    //    }
-
-                    //    inicio_x = (num_diente * med) + (separacion_xN * num_diente) + separacion_xN;
-                    //    ctx.fillStyle = 'black';
-                    //    ctx.strokeStyle = 'black';
-                    //    ctx.beginPath();
-                    //    ctx.lineWidth = 3;
-                    //    ctx.moveTo(inicio_x, inicio_y);
-                    //    ctx.lineTo(inicio_x + 40, inicio_y + 40);
-                    //    ctx.moveTo(inicio_x + 40, inicio_y);
-                    //    ctx.lineTo(inicio_x, inicio_y + 40);
-                    //    ctx.stroke();
-                    //    ctx.lineWidth = 1;
-                    //}
-                    //function Ninosmarcar_exodoncia(contextoN, num_diente, color_pas) {
-                    //    var ctxx = contextoN;
-                    //    // Definiendo puntos de dibujo
-                    //    med = medidaN;
-                    //    num_diente = num_diente - 1;
-                    //    color_lineN = color_pas;
-                    //    if (num_diente < 10) {
-                    //        inicio_y = 20;
-                    //    }
-                    //    else if (num_diente < 20) {
-                    //        num_diente = num_diente - 10;
-                    //        inicio_y = med + 100;
-                    //    }
-
-                    //    inicio_x = (num_diente * med) + (separacion_xN * num_diente) + separacion_xN;
-
-                    //    ctxx.fillStyle = color_lineN;
-
-                    //    ctxx.strokeStyle = 'red';
-                    //    ctxx.beginPath();
-                    //    ctxx.lineWidth = 3;
-                    //    ctxx.moveTo(inicio_x + 40, inicio_y);
-                    //    ctxx.lineTo(inicio_x, inicio_y + 40);
-                    //    ctxx.stroke();
-                    //    ctxx.lineWidth = 1;
-                    //}
-                    //function Ninosmarcar_exodoncia(contextoN, num_diente, color_pas) {
-                    //    var ctxx = contextoN;
-                    //    // Definiendo puntos de dibujo
-                    //    med = medidaN;
-                    //    num_diente = num_diente - 1;
-                    //    color_lineN = color_pas;
-                    //    if (num_diente < 10) {
-                    //        inicio_y = 20;
-                    //    }
-                    //    else if (num_diente < 20) {
-                    //        num_diente = num_diente - 10;
-                    //        inicio_y = med + 100;
-                    //    }
-
-                    //    inicio_x = (num_diente * med) + (separacion_xN * num_diente) + separacion_x;
-
-                    //    ctxx.fillStyle = color_lineN;
-
-                    //    ctxx.strokeStyle = 'red';
-                    //    ctxx.beginPath();
-                    //    ctxx.lineWidth = 3;
-                    //    ctxx.moveTo(inicio_x + 40, inicio_y);
-                    //    ctxx.lineTo(inicio_x, inicio_y + 40);
-                    //    ctxx.stroke();
-                    //    ctxx.lineWidth = 1;
-                    //}
-
-                    //var canvasN = document.getElementById('NmyCanvas');
-                    //var contextN = canvas.getContext('2d');
-                    ////
-                    //var layer2N = document.getElementById("NmyCanvas2");
-                    //var ctx2N = layer2.getContext("2d");
-                    ////
-                    //var layer3N = document.getElementById("NmyCanvas3");
-                    //var ctx3N = layer3.getContext("2d");
-                    ////
-                    //var layer4N = document.getElementById("NmyCanvas4");
-                    //var ctx4N = layer4.getContext("2d");
-                    ////
-                    //var color_lineN = 'black';
-                    //var medidaN = 40;
-                    //var separacion_xN = 10;
-                    //var separacion_x2N = 15; //SEGUNDA PARTE
-                    //var separacion_yN = 10;
-                    //var iniciar_xN = 0;
-                    //var iniciar_yN = 20;
-                    ////Dientes para el puente
-                    //var diente1N = 0;
-                    //var diente2N = 0;
-                    //// 1 - 16 dientes
-                    //var secN = 19;
-                    //var sec2N = 20;
-                    //var sec3N = 49;
-                    //var sec4N = 30;
-
-                    //for (x = 0; x < 10; x++) {
-
-                    //    if (secN > 51) {
-                    //        iniciar_x = (x * medidaN) + (separacion_xN * x) + separacion_xN;
-                    //        Ninosdibuja_contorno(contextN, iniciar_xN, iniciar_yN, medidaN, separacion_xN, 10);
-                    //        /* Numero de diente */
-                    //        context.font = '12pt Calibri';
-                    //        context.textAlign = 'center';
-                    //        context.fillStyle = 'blue';
-                    //        secN--;
-                    //        context.fillText(secN, iniciar_xN + (medidaN / 2), (iniciar_yN / 2) + 5);
-                    //    }
-                    //    else {
-
-                    //        separacion_x2N = 15;
-                    //        iniciar_xN = (x * medidaN) + (separacion_xN * x) + separacion_xN;
-                    //        Ninosdibuja_contorno(contextN, iniciar_xN, iniciar_yN, medidaN, separacion_xN, 10);
-                    //        /* Numero de diente */
-                    //        context.font = '12pt Calibri';
-                    //        context.textAlign = 'center';
-                    //        context.fillStyle = 'blue';
-                    //        sec2N++;
-                    //        context.fillText(sec2N, iniciar_xN + (medidaN / 2), (iniciar_yN / 2) + 5);
-                    //        //}
-
-                    //    }
-
-                    //}
-                    //// 11 - 20 dientes
-                    //iniciar_xN = 0;
-                    //iniciar_yN = medida + 100;
-                    //for (x = 0; x < 10; x++) {
-
-                    //    if (sec3N > 81) {
-                    //        iniciar_xN = (x * medidaN) + (separacion_xN * x) + separacion_xN;
-                    //        Ninosdibuja_contorno(contextN, iniciar_xN, iniciar_yN, medidaN, separacion_xN, 10);
-                    //        /* Numero de diente */
-                    //        context.font = '12pt Calibri';
-                    //        context.textAlign = 'center';
-                    //        context.fillStyle = 'blue';
-                    //        sec3N--;
-                    //        context.fillText(sec3N, iniciar_xN + (medidaN / 2), (iniciar_yN - 10) + 5);
-                    //    }
-                    //    else {
-                    //        separacion_x2 = 15;
-                    //        iniciar_xN = (x * medidaN) + (separacion_xN * x) + separacion_xN;
-                    //        Ninosdibuja_contorno(contextN, iniciar_xN, iniciar_yN, medidaN, separacion_xN, 10);
-                    //        /* Numero de diente */
-                    //        context.font = '12pt Calibri';
-                    //        context.textAlign = 'center';
-                    //        context.fillStyle = 'blue';
-                    //        sec4N++;
-                    //        context.fillText(sec4N, iniciar_xN + (medidaN / 2), (iniciar_yN - 10) + 5);
-                    //    }
-
-                    //}
-
-
-
-
-
-
-
-
-
-
-
-
                     //---------------------------------------------------------------------------------------
 
                     function dibuja_contorno(context, inicio_x, inicio_y, med) {
@@ -1490,20 +1142,20 @@
 
                     }
 
-                    //function pintarDiente(diente, seccion, color, marca) {
+                    function pintarDiente(diente, seccion, color, marca) {
 
-                    //    dibuja_seccion(ctx2, diente, seccion, color);
-                    //    if (color == 'black') {
-                    //        marcar_extraccion(ctx2, marca, 'black');
-                    //    }
-                    //    else {
-                    //        marcar_exodoncia(ctx2, marca, 'red');
-                    //    }
+                        dibuja_seccion(ctx2, diente, seccion, color);
+                        if (color == 'black') {
+                            marcar_extraccion(ctx2, marca, 'black');
+                        }
+                        else {
+                            marcar_exodoncia(ctx2, marca, 'red');
+                        }
 
-                    //}
+                    }
 
                     var logo = new Image();
-                    logo.src = '../images/reporteOdontograma.png';
+                    logo.src = '../images/ReporteExpediente.png';
 
 
 
@@ -1527,6 +1179,7 @@
 
                         var canvas = document.getElementById("myCanvas2");
                         var context = canvas.getContext("2d");
+
                         for (x = 0; x < 16; x++) {
                             if (sec > 11) {
                                 iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
@@ -1580,11 +1233,92 @@
                             }
                         }
 
+
+
+                        var medida = 40;
+                        var separacion_x = 10;
+                        var iniciar_x = 0;
+                        var iniciar_y = 20;
+
+                        var sec = 56;
+                        var sec2 = 60;
+                        var sec3 = 86;
+                        var sec4 = 70;
+                        color_pas = 'red';
+
+                        var canvasninos = document.getElementById("NmyCanvas2");
+                        var contextninos = canvasninos.getContext("2d");
+
+                        for (x = 0; x < 10; x++) {
+
+                            if (sec > 51) {
+                                iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
+                                dibuja_contorno(contextninos, iniciar_x, iniciar_y, medida, separacion_x, 10);
+                                /* Numero de diente */
+                                contextninos.font = '12pt Calibri';
+                                contextninos.textAlign = 'center';
+                                contextninos.fillStyle = 'blue';
+                                sec--;
+                                contextninos.fillText(sec, iniciar_x + (medida / 2), (iniciar_y / 2) + 5);
+                            }
+                            else {
+
+                                separacion_x2 = 15;
+                                iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
+                                dibuja_contorno(contextninos, iniciar_x, iniciar_y, medida, separacion_x, 10);
+                                /* Numero de diente */
+                                contextninos.font = '12pt Calibri';
+                                contextninos.textAlign = 'center';
+                                contextninos.fillStyle = 'blue';
+                                sec2++;
+                                contextninos.fillText(sec2, iniciar_x + (medida / 2), (iniciar_y / 2) + 5);
+                                //}
+
+                            }
+
+                        }
+                        // 11 - 20 dientes
+                        iniciar_x = 0;
+                        iniciar_y = medida + 100;
+                        for (x = 0; x < 10; x++) {
+
+                            if (sec3 > 81) {
+                                iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
+                                dibuja_contorno(contextninos, iniciar_x, iniciar_y, medida, separacion_x, 10);
+                                /* Numero de diente */
+                                contextninos.font = '12pt Calibri';
+                                contextninos.textAlign = 'center';
+                                contextninos.fillStyle = 'blue';
+                                sec3--;
+                                contextninos.fillText(sec3, iniciar_x + (medida / 2), (iniciar_y - 10) + 5);
+                            }
+                            else {
+                                separacion_x2 = 15;
+                                iniciar_x = (x * medida) + (separacion_x * x) + separacion_x;
+                                dibuja_contorno(contextninos, iniciar_x, iniciar_y, medida, separacion_x, 10);
+                                /* Numero de diente */
+                                contextninos.font = '12pt Calibri';
+                                contextninos.textAlign = 'center';
+                                contextninos.fillStyle = 'blue';
+                                sec4++;
+                                contextninos.fillText(sec4, iniciar_x + (medida / 2), (iniciar_y - 10) + 5);
+                            }
+
+                        }
+
+                        //Reporte PDF
+
+
                         var cedula = document.getElementById("cedulaP").innerHTML;
                         var nombre1 = document.getElementById("nombre1").innerHTML;
                         var telefono = document.getElementById("telefono").innerHTML;
                         var correo = document.getElementById("correo").innerHTML;
+
+
+                        var imgDataNino = canvasninos.toDataURL("image/png", 1.0);
                         var imgData = canvas.toDataURL("image/png", 1.0);
+
+
                         var pdf = new jsPDF('L', 'mm', 'A4');
 
                         var lMargin = 15;
@@ -1623,65 +1357,72 @@
                         pdf.setFontType("normal");
 
                         pdf.addImage(imgData, 'png', 20, 90);
+                        pdf.addImage(imgDataNino, 'png', pageCenter / 2, 145);
                         pdf.addImage(logo, 'png', 240, 95, 25, 35);
                         var numeropagina = 1;
 
                         pdf.text(260, 198, "pág." + numeropagina);
                         //----------------------------------------------------------------------------------------------
-                        pdf.addPage();
-                        pdf.setFontType("bold");
-                        lines = pdf.splitTextToSize(paragraph, (pdfInMM - lMargin - rMargin));
-                        pdf.text(lines, pageCenter, 20, 'center');
-                        pdf.setFontType("bold");
-                        pdf.text("Fecha", 20, 40);
-                        pdf.text("Diente", 80, 40);
-                        pdf.text("Tratamiento", 120, 40);
 
-                        pdf.setFontType("normal");
-                        var grid = document.getElementById("GridView1");
-                        var total, saltopagina;
-                        saltopagina = limite - 20;
-                        var y = 50;
-                        if (grid.rows.length > 0) {
+                        try {
+                            var grid = document.getElementById("GridView1");
 
-                            for (i = 1; i < grid.rows.length; i++) {
-                                try {
-                                    nom1 = grid.rows[i].cells[0].innerHTML;
-                                    nom2 = grid.rows[i].cells[1].innerHTML;
-                                    ape1 = grid.rows[i].cells[2].innerHTML;
+                            var total, saltopagina;
+                            saltopagina = limite - 20;
+                            var y = 50;
+                            if (grid.rows.length > 0) {
+                                pdf.addPage();
+                                pdf.setFontType("bold");
+                                lines = pdf.splitTextToSize(paragraph, (pdfInMM - lMargin - rMargin));
+                                pdf.text(lines, pageCenter, 20, 'center');
+                                pdf.setFontType("bold");
+                                pdf.text("Fecha", 20, 40);
+                                pdf.text("Diente", 80, 40);
+                                pdf.text("Tratamiento", 120, 40);
+                                pdf.setFontType("normal");
+
+                                for (i = 1; i < grid.rows.length; i++) {
+                                    try {
+                                        nom1 = grid.rows[i].cells[0].innerHTML;
+                                        nom2 = grid.rows[i].cells[1].innerHTML;
+                                        ape1 = grid.rows[i].cells[2].innerHTML;
 
 
-                                    total = nom1 + " " + nom2 + " " + ape1;
-                                    pdf.text(20, y, nom1);
-                                    pdf.text(80, y, nom2);
-                                    pdf.text(120, y, ape1);
-                                } catch{
-                                    alert("Se callo");
+                                        total = nom1 + " " + nom2 + " " + ape1;
+                                        pdf.text(20, y, nom1);
+                                        pdf.text(80, y, nom2);
+                                        pdf.text(120, y, ape1);
+                                    } catch{
 
+
+                                    }
+                                    if (y == 195) {
+                                        numeropagina = numeropagina + 1;
+                                        pdf.text(250, 198, "pág." + numeropagina);
+                                    }
+
+                                    if (y >= saltopagina) {
+                                        numeropagina = numeropagina + 1;
+                                        y = 40;
+                                        pdf.addPage();
+                                        pdf.setFontType("bold");
+                                        lines = pdf.splitTextToSize(paragraph, (pdfInMM - lMargin - rMargin));
+                                        pdf.text(lines, pageCenter, 20, 'center');
+                                        pdf.setFontType("bold");
+                                        pdf.text("Fecha", 20, 40);
+                                        pdf.text("Diente", 80, 40);
+                                        pdf.text("Tratamiento", 120, 40);
+                                        pdf.setFontType("normal");
+                                        pdf.text(250, 198, "pág." + numeropagina);
+                                    }
+                                    y = y + 5;
                                 }
-                                if (y == 195) {
-                                    numeropagina = numeropagina + 1;
-                                    pdf.text(250, 198, "pág." + numeropagina);
-                                }
-
-                                if (y >= saltopagina) {
-                                    numeropagina = numeropagina + 1;
-                                    y = 40;
-                                    pdf.addPage();
-                                    pdf.setFontType("bold");
-                                    lines = pdf.splitTextToSize(paragraph, (pdfInMM - lMargin - rMargin));
-                                    pdf.text(lines, pageCenter, 20, 'center');
-                                    pdf.setFontType("bold");
-                                    pdf.text("Fecha", 20, 40);
-                                    pdf.text("Diente", 80, 40);
-                                    pdf.text("Tratamiento", 120, 40);
-                                    pdf.setFontType("normal");
-                                    pdf.text(250, 198, "pág." + numeropagina);
-                                }
-                                y = y + 5;
+                                nom1, nom1, ape1, total = " ";
                             }
-                            nom1, nom1, ape1, total = " ";
+                        } catch{
+
                         }
+
                         //----------------------------------------------------------------------------------------------
                         pdf.save(nombre1 + ".pdf");
                         alert("Reporte descargado");

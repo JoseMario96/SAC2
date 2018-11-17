@@ -149,7 +149,7 @@ namespace SAC.metodos
 
         }
 
-        public void agregarOdontograma2(String marc, String col, String codE, String fech,String odont)
+        public void agregarOdontograma2(String marc, String col, String codE, String fech, String odont)
         {
             string y = "";
             consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`,`marcaOdontograma`,`tipoPacienteOdontograma`) VALUES ('" + col + "','" + marc + "','" + odont + "');", con.abrir_conexion()).ExecuteNonQuery();
@@ -249,9 +249,21 @@ namespace SAC.metodos
                 return dt;
             }
         }
-        public DataTable Pacienteinformacion()
+        public DataTable Pacienteinformacion(String ced)
         {
-            string consulta = "Select tbl_paciente.cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente from tbl_paciente, tbl_expediente  where  tbl_paciente.cedulaPaciente= tbl_expediente.cedulaPaciente;";
+            string consulta = "Select tbl_paciente.cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente from tbl_paciente, tbl_expediente  where tbl_paciente.cedulaPaciente= tbl_expediente.cedulaPaciente;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+
+        }
+        public DataTable Pacienteinformacion2(String ced)
+        {
+            string consulta = "Select tbl_paciente.cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente from tbl_paciente, tbl_expediente  where tbl_paciente.cedulaPaciente like '%"+ced+"%' and  tbl_paciente.cedulaPaciente= tbl_expediente.cedulaPaciente;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())

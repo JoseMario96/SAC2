@@ -22,7 +22,7 @@ namespace SAC.formularios
         {
             if (!IsPostBack)
             {
-                GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion();
+                GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("hola");
                 GridView_reporteOdontograma.DataBind();
                 DropDownList1.DataSource = odontograma.TiposdeTratamientos();
                 DropDownList1.DataBind();
@@ -64,7 +64,7 @@ namespace SAC.formularios
         {
 
             String[] datos2 = new String[10];
-            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion();
+            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("sa");
             GridView_reporteOdontograma.DataBind();
 
             foreach (GridViewRow row in GridView_reporteOdontograma.Rows)
@@ -118,7 +118,7 @@ namespace SAC.formularios
 
         protected void GridView_reporteOdontograma_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion();
+            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("ds");
             GridView_reporteOdontograma.PageIndex = e.NewPageIndex;
             GridView_reporteOdontograma.DataBind();
         }
