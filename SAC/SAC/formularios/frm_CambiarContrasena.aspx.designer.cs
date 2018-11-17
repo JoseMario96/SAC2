@@ -10,7 +10,7 @@
 namespace SAC.formularios {
     
     
-    public partial class frm_Odontograma {
+    public partial class frm_CambiarContrasena {
         
         /// <summary>
         /// Control form1.
@@ -22,39 +22,48 @@ namespace SAC.formularios {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control GridView_reporteOdontograma.
+        /// Control txt_usuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView_reporteOdontograma;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_usuario;
         
         /// <summary>
-        /// Control sm.
+        /// Control txt_contraAnte.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager sm;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txt_contraAnte;
         
         /// <summary>
-        /// Control ibOdontogramaG.
+        /// Control txt_contraNueva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ibOdontogramaG;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txt_contraNueva;
         
         /// <summary>
-        /// Control ibOdontogramaN.
+        /// Control txt_contraNueva2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ibOdontogramaN;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txt_contraNueva2;
+        
+        /// <summary>
+        /// Control btn_guardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_guardar;
     }
 }

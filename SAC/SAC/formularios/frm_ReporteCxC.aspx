@@ -65,7 +65,7 @@
                 
                 <br />
                 <br />
-                <div id="busqueda" style="display:block">
+                <div id="busqueda" style="display:none">
                     <div>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>

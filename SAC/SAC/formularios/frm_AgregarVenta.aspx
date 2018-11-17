@@ -57,7 +57,7 @@
                     <h3 style="text-align:center">Detalle del pago</h3>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="Gridview_Venta" aligne="center" HeaderStyle-BackColor="#008281" HeaderStyle-ForeColor="White" class="col s12"
+                            <asp:GridView ID="Gridview_Venta" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                                 runat="server" AutoGenerateColumns="False" Height="174px" Width="100%" >
                                 <Columns>
                                     <asp:BoundField DataField="nombreTratamiento" HeaderText="Tratamiento" ItemStyle-Width="100">
@@ -74,7 +74,7 @@
                                     </asp:BoundField>
                                 </Columns>
                                 
-                                <HeaderStyle BackColor="#008281" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
+                                <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
                                 <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                                 <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                             </asp:GridView>
@@ -93,7 +93,7 @@
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
                                     <label class="active" for="txt_abono" style="font-size:medium; color:black">Abono</label>
-                                    <input id="txt_abono" type="number" runat="server" class="validate" onkeypress="return solonumeros(event)" />
+                                    <input id="txt_abono" type="number" runat="server" class="validate" onkeydown="return solonumeros(event)" />
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
@@ -101,7 +101,7 @@
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
                                     <label class="active" for="txt_extra" style="font-size:medium; color:black">Extra</label>
-                                    <input id="txt_extra" type="number" runat="server" class="validate" onkeypress="return solonumeros(event)" />
+                                    <input id="txt_extra" type="number" runat="server" class="validate" onkeydown="return solonumeros(event)" />
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>

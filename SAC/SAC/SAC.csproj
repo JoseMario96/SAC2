@@ -79,6 +79,7 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\icomoon.css" />
     <Content Include="css\jquery-ui-1.8.13.custom.css" />
+    <Content Include="css\login.css" />
     <Content Include="css\magnific-popup.css" />
     <Content Include="css\materialize.css" />
     <Content Include="css\materialize.min.css" />
@@ -107,10 +108,12 @@
     <Content Include="formularios\frm_AgregarPaciente.aspx" />
     <Content Include="formularios\frm_BuscarVenta.aspx" />
     <Content Include="formularios\frm_Calendario.aspx" />
+    <Content Include="formularios\frm_CambiarContrasena.aspx" />
     <Content Include="formularios\frm_CuentasXCobrar.aspx" />
     <Content Include="formularios\frm_MantenimientoOdontograma.aspx" />
     <Content Include="formularios\frm_MantenimientoOdontograma2.aspx" />
     <Content Include="formularios\frm_Odontograma.aspx" />
+    <Content Include="formularios\frm_RecuperarContrasena.aspx" />
     <Content Include="formularios\frm_ReporteCxC.aspx" />
     <Content Include="formularios\frm_ReporteExpediente.aspx" />
     <Content Include="formularios\frm_ReporteOdontogramas.aspx" />
@@ -132,11 +135,15 @@
     <Content Include="images\CxC.png" />
     <Content Include="images\Descargar.png" />
     <Content Include="images\diente.jpg" />
+    <Content Include="images\diente.png" />
     <Content Include="images\eliminar.png" />
     <Content Include="images\eliminar_usuario.png" />
     <Content Include="images\factura.png" />
+    <Content Include="images\fondo_login.jpg" />
     <Content Include="images\full_image_1.jpg" />
     <Content Include="images\full_image_2.jpg" />
+    <Content Include="images\icons_password.png" />
+    <Content Include="images\icons_user.png" />
     <Content Include="images\img_10.jpg" />
     <Content Include="images\img_7.jpg" />
     <Content Include="images\img_8.jpg" />
@@ -284,6 +291,13 @@
     <Compile Include="formularios\frm_Calendario.aspx.designer.cs">
       <DependentUpon>frm_Calendario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="formularios\frm_CambiarContrasena.aspx.cs">
+      <DependentUpon>frm_CambiarContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\frm_CambiarContrasena.aspx.designer.cs">
+      <DependentUpon>frm_CambiarContrasena.aspx</DependentUpon>
+    </Compile>
     <Compile Include="formularios\frm_CuentasXCobrar.aspx.cs">
       <DependentUpon>frm_CuentasXCobrar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -304,6 +318,13 @@
     </Compile>
     <Compile Include="formularios\frm_MantenimientoOdontograma2.aspx.designer.cs">
       <DependentUpon>frm_MantenimientoOdontograma2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\frm_RecuperarContrasena.aspx.cs">
+      <DependentUpon>frm_RecuperarContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formularios\frm_RecuperarContrasena.aspx.designer.cs">
+      <DependentUpon>frm_RecuperarContrasena.aspx</DependentUpon>
     </Compile>
     <Compile Include="formularios\frm_Odontograma.aspx.cs">
       <DependentUpon>frm_Odontograma.aspx</DependentUpon>
@@ -375,6 +396,7 @@
     <Compile Include="metodos\metodosPaciente.cs" />
     <Compile Include="metodos\metodosTratamientos.cs" />
     <Compile Include="metodos\metodos_Citas.cs" />
+    <Compile Include="metodos\metodos_login.cs" />
     <Compile Include="metodos\Metodos_Ventas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

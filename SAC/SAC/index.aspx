@@ -273,6 +273,7 @@
 </head>
 <body>
     <header role="banner" id="fh5co-header">
+        
         <div class="container">
             <div class="row">
                 <nav class="navbar navbar-default">
@@ -287,7 +288,7 @@
                             <li><a href="#" data-nav-section="pacientes"><span>Pacientes</span></a></li>
                             <li><a href="#" data-nav-section="expedientes"><span>Expedientes</span></a></li>
                             <li><a href="#" data-nav-section="factura"><span>Factura</span></a></li>
-                            <li><a href="#" data-nav-section="usuario"><span>Usuarios</span></a></li>
+                            <li id="ocultar"><a href="#" data-nav-section="usuario"><span>Usuarios</span></a></li>
                             <li><a href="#" data-nav-section=""><span>Cerrar sesión</span></a></li>
                         </ul>
                     </div>
@@ -295,7 +296,9 @@
             </div>
         </div>
     </header>
-
+    <form runat="server" style="display:none">
+        <asp:Label runat="server" ID="prueba">jhgfhgfjhgfjghf</asp:Label>
+    </form>
     <%--<form id="form1" runat="server">--%>
     <section id="fh5co-home" data-section="home" style="background-image: url(images/diente.jpg);" data-stellar-background-ratio="0.5">
         <div class="gradient"></div>
@@ -530,7 +533,7 @@
             <div class="row espacio">
                 <div class="col-md-3"></div>
                 <div class="col-md-3">
-                    <a href="#popup7" class="popup-link fh5co-project-item " onclick='document.getElementById("Odonto").src="formularios/frm_MantenimientoOdontograma.aspx";'>
+                    <a href="#popup7" class="popup-link fh5co-project-item " onclick='document.getElementById("Odonto").src="formularios/frm_Odontograma.aspx";'>
                         <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Odontograma</h2>
@@ -687,6 +690,7 @@
             </div>
     </section>
     <%--------------------------------------------------------------Usuario---------------------------------------------------------------------%>
+    <div id="ocultar1">
     <section id="fh5co-about" data-section="usuario">
         <div class="container">
             <div class="row">
@@ -702,7 +706,7 @@
 
             <div class="row row-bottom-padded-sm">
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/agregar_usuario.png" class="fh5co-project-item">
+                    <a id="usu1" href="../images/agregar_usuario.png" class="fh5co-project-item">
                         <img src="../images/agregar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Agregar</h2>
@@ -710,7 +714,7 @@
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/inhabilitar_usuario.png" class="fh5co-project-item">
+                    <a id="usu2" href="../images/inhabilitar_usuario.png" class="fh5co-project-item">
                         <img src="../images/inhabilitar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Inhabilitar</h2>
@@ -719,7 +723,7 @@
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/actualizar_usuario.png" class="fh5co-project-item">
+                    <a id="usu3" href="../images/actualizar_usuario.png" class="fh5co-project-item">
                         <img src="../images/actualizar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Actualizar</h2>
@@ -728,54 +732,17 @@
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xxs-12">
-                    <a href="../images/eliminar_usuario.png" class="fh5co-project-item">
+                    <a id="usu4" href="../images/eliminar_usuario.png" class="fh5co-project-item">
                         <img src="../images/eliminar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
                         <div class="fh5co-text">
                             <h2 style="text-align: center;">Eliminar</h2>
                         </div>
                     </a>
                 </div>
-
             </div>
-            <%-- <div class="container">
-            <div class="row">
-                <div class="col-md-12 section-heading text-center to-animate">
-                    <h2>Usuarios</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="fh5co-counter to-animate">
-                        <i class="fh5co-counter-icon icon-briefcase to-animate-2"></i>
-                        <span class="fh5co-counter-number js-counter" data-from="0" data-to="89" data-speed="5000" data-refresh-interval="50">89</span>
-                        <span class="fh5co-counter-label">Finished projects</span>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="fh5co-counter to-animate">
-                        <i class="fh5co-counter-icon icon-code to-animate-2"></i>
-                        <span class="fh5co-counter-number js-counter" data-from="0" data-to="2343409" data-speed="5000" data-refresh-interval="50">2343409</span>
-                        <span class="fh5co-counter-label">Line of codes</span>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="fh5co-counter to-animate">
-                        <i class="fh5co-counter-icon icon-cup to-animate-2"></i>
-                        <span class="fh5co-counter-number js-counter" data-from="0" data-to="1302" data-speed="5000" data-refresh-interval="50">1302</span>
-                        <span class="fh5co-counter-label">Cup of coffees</span>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="fh5co-counter to-animate">
-                        <i class="fh5co-counter-icon icon-people to-animate-2"></i>
-                        <span class="fh5co-counter-number js-counter" data-from="0" data-to="52" data-speed="5000" data-refresh-interval="50">52</span>
-                        <span class="fh5co-counter-label">Happy clients</span>
-                    </div>
-                </div>
-            </div>
-        </div>--%>
         </div>
     </section>
+    </div>
 
     <footer id="footer" role="contentinfo">
         <a href="#" class="gotop js-gotop"><i class="icon-arrow-up2">Inicio</i></a>
@@ -819,7 +786,12 @@
 
     <script src="../js/main.js"></script>
 
-
+    <script type="text/javascript">
+        function ocultar(){
+            document.getElementById('usuario').style.display = 'none';
+            document.getElementById('usuarios').style.display = 'none';
+        }
+    </script>
 
     <%--    <script type="text/javascript">
         function popUp(URL) {
