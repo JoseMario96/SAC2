@@ -32,6 +32,13 @@
             border: 2px solid #000000;
         }
 
+        #canvasesdiv {
+            width: 510px;
+            height: 200px;
+            margin: 0px auto;
+            text-align: center;
+        }
+
         body {
             text-align: center;
         }
@@ -66,7 +73,7 @@
                     alert("2");
                 }
             });
- </script>
+    </script>
 
 </head>
 <body>
@@ -106,7 +113,7 @@
                 <br>
                 <div class="row">
                     <div class="col s12">
-                        <div id="canvasesdiv" style="position: relative; width: 510px; height: 200px">
+                        <div id="canvasesdiv" style="position: relative;">
                             <canvas id="myCanvas" width="510" height="200" style="z-index: 1; position: absolute; left: 0%; top: 0px;"></canvas>
                             <canvas id="myCanvas2" width="510" height="200" style="z-index: 2; position: absolute; left: 0%; top: 0px;"></canvas>
                             <canvas id="myCanvas3" width="510" height="200" style="z-index: 3; position: absolute; left: 0%; top: 0px;"></canvas>
