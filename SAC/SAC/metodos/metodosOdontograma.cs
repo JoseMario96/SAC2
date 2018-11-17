@@ -12,10 +12,10 @@ namespace SAC.metodos
         consulta.consulta consultar = new consulta.consulta();
         conexion.conexion con = new conexion.conexion();
 
-        public void agregarOdontograma(String col, String die, String secc, String codE, String fech)
+        public void agregarOdontograma(String col, String die, String secc, String codE, String fech, String odont)
         {
             string y = "";
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`, `dienteOdontograma`, `seccionOdontograma`, `tipoPacienteOdontograma`) VALUES ('" + col + "', '" + die + "', '" + secc + "','1');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`, `dienteOdontograma`, `seccionOdontograma`, `tipoPacienteOdontograma`) VALUES ('" + col + "', '" + die + "', '" + secc + "'', '" + odont + "');", con.abrir_conexion()).ExecuteNonQuery();
             MySqlDataReader contador = consultar.ejecutar_consulta("SELECT max(codigoOdontograma) from tbl_odontograma; ", con.abrir_conexion()).ExecuteReader();
             if (contador.Read())
             {
@@ -149,10 +149,10 @@ namespace SAC.metodos
 
         }
 
-        public void agregarOdontograma2(String marc, String col, String codE, String fech)
+        public void agregarOdontograma2(String marc, String col, String codE, String fech,String odont)
         {
             string y = "";
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`,`marcaOdontograma`) VALUES ('" + col + "','" + marc + "');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`,`marcaOdontograma`,`tipoPacienteOdontograma`) VALUES ('" + col + "','" + marc + "','" + odont + "');", con.abrir_conexion()).ExecuteNonQuery();
             MySqlDataReader contador = consultar.ejecutar_consulta("SELECT max(codigoOdontograma) from tbl_odontograma; ", con.abrir_conexion()).ExecuteReader();
             if (contador.Read())
             {
@@ -164,8 +164,8 @@ namespace SAC.metodos
         }
         public String[] buscarOdontograma(String odo)
         {
-            string[] stringArray1 = new string[4];
-            MySqlDataReader actualizar = consultar.ejecutar_consulta("SELECT colorOdontograma, dienteOdontograma,seccionOdontograma,marcaOdontograma FROM bd_sac.tbl_odontograma,bd_sac.tbl_expedienteodontograma  where tbl_odontograma.codigoOdontograma= tbl_expedienteodontograma.codigoOdontograma and tbl_odontograma.codigoOdontograma = '" + odo + "'; ", con.abrir_conexion()).ExecuteReader();
+            string[] stringArray1 = new string[5];
+            MySqlDataReader actualizar = consultar.ejecutar_consulta("SELECT colorOdontograma, dienteOdontograma,seccionOdontograma,marcaOdontograma,tipoPacienteOdontograma FROM bd_sac.tbl_odontograma,bd_sac.tbl_expedienteodontograma  where tbl_odontograma.codigoOdontograma= tbl_expedienteodontograma.codigoOdontograma and tbl_odontograma.codigoOdontograma = '" + odo + "'; ", con.abrir_conexion()).ExecuteReader();
 
 
             while (actualizar.Read())
@@ -175,12 +175,14 @@ namespace SAC.metodos
                     stringArray1[0] = actualizar.GetString(0);
                     stringArray1[1] = actualizar.GetString(1);
                     stringArray1[2] = actualizar.GetString(2);
+                    stringArray1[4] = actualizar.GetString(4);
 
                 }
                 else
                 {
                     stringArray1[0] = actualizar.GetString(0);
                     stringArray1[3] = actualizar.GetString(3);
+                    stringArray1[4] = actualizar.GetString(4);
                 }
 
             }
@@ -247,9 +249,6 @@ namespace SAC.metodos
                 return dt;
             }
         }
-
-
-
         public DataTable Pacienteinformacion()
         {
             string consulta = "Select tbl_paciente.cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente from tbl_paciente, tbl_expediente  where  tbl_paciente.cedulaPaciente= tbl_expediente.cedulaPaciente;";
