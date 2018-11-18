@@ -133,7 +133,7 @@
                     <div class="input-field col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:Button ID="Button1" runat="server" OnClick="Guardar_Click" Text="Guardar" class="waves-effect waves-light btn" />
+                                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Guardar" class="waves-effect waves-light btn" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -148,16 +148,16 @@
                     </div>
                 </div>
                 <script>
-                    function my_function(val) {
-                        if (val == "odontogramaG") {
-                            window.location.href = "frm_MantenimientoOdontograma.aspx";
+                    //function my_function(val) {
+                    //    if (val == "odontogramaG") {
+                    //        window.location.href = "frm_MantenimientoOdontograma.aspx";
 
-                        }
-                        else if (val == "odontogramaN") {
-                            window.location.href = "frm_MantenimientoOdontograma2.aspx";
-                        }
+                    //    }
+                    //    else if (val == "odontogramaN") {
+                    //        window.location.href = "frm_MantenimientoOdontograma2.aspx";
+                    //    }
 
-                    }
+                    //}
                     // Funcion para dibujar las lineas negras de cada diente
                     function dibuja_contorno(context, inicio_x, inicio_y, med, separacion_x, separacion_y) {
                         var ctx = context;
@@ -705,7 +705,6 @@
                         var color = '';
                         var accion = '';
                         seleccion = $("input[name='accion']:checked").val();
-                        alert(seleccion);
                         if (seleccion == 'carie') {
                             color = 'red';
                             accion = 'seccion';
@@ -1970,7 +1969,8 @@
                     </div>
                 </div>
             </div>
-            <script>
+        </div>
+        <script>
                     function solonumeros(e) {
                         key = e.keyCoden || e.which;
                         teclado = String.fromCharCode(key);
@@ -1986,7 +1986,7 @@
                             return false;
                         }
                     }
-            </script>
+        </script>
         </div>
     </form>
 </body>

@@ -16,7 +16,7 @@ namespace SAC.formularios
         metodos.metodosTratamientos tratamiento = new metodos.metodosTratamientos();
         metodos.metodosPaciente objeto = new metodos.metodosPaciente();
         static int codigocedula = 0;
-        static int codigoExpediente = 0;
+
         static string ced = "";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace SAC.formularios
                     string marca = datos[3];
                     counter++;
                     // ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text" + counter.ToString(), "Func('" + diente + "','" + seccion + "','" + color + "','" + marca + "','" + cantidadO + "')", true);
-                    if (datos[4] == "1")
+                    if (datos[4] == "0")
                     {
                         Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Pintar" + counter.ToString(), "<script language='javascript'>$(document).ready(function() {pintarDiente('" + diente + "','" + seccion + "','" + color + "','" + marca + "');});</script>");
                     }
@@ -121,7 +121,7 @@ namespace SAC.formularios
             GridView1.DataBind();
         }
 
-        protected void Guardar_Click(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)
         {
             //try
             //{

@@ -171,9 +171,6 @@ namespace SAC.formularios
             string[] marcaColorArray = marcaColor.Split(",".ToCharArray());
 
             int num2 = marcaArray.Count();
-            TextBox1.Text = color;
-            TextBox2.Text = diente;
-            TextBox3.Text = posicion;
             if (!colorArray[0].Equals(""))
             {
                 for (int x = 0; x < num; x++)
