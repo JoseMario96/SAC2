@@ -10,7 +10,7 @@
     <script src="../js/jquery-1.7.2.min.js"></script>
     <link href="../css/jquery-ui-1.8.13.custom.css" rel="stylesheet" />
     <script src="../js/jquery-ui-1.8.13.custom.min.js"></script>
-    <script type="text/javascript">
+    <%--    <script type="text/javascript">
         $(function () {
             $('.search_textbox').each(function (i) {
                 $(this).quicksearch("[id*=GridView1] tr:not(:has(th))", {
@@ -20,7 +20,7 @@
                 });
             });
         });
-    </script>
+    </script>--%>
     <style>
         .espacio {
             padding-top: 5%;
@@ -77,8 +77,10 @@
 
     </form>
     <script type="text/javascript">
+
         $(document).ready(function () {
             $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+          
                 $('#<%=InvisButton.ClientID%>').click();
 
             });

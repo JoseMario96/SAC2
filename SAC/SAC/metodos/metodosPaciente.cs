@@ -148,6 +148,19 @@ namespace SAC.metodos
 
         }
 
+        public DataTable Paciente2(String nom)
+        {
+            string consulta = "SELECT cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente FROM tbl_paciente where nombre1Paciente like '%"+nom+"%';";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+
+        }
+
 
 
         public void ActualizarPacienteNuevoEncargado(int estado,String ced, String cedEnc, String nom1Enc, String nom2Enc, String ape1Enc, String ape2Enc, String generoEnc, String telEnc, String celEnc, String dirEnc, String correoEnc, String parentezco)

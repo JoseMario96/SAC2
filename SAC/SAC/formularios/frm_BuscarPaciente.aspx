@@ -35,21 +35,30 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <form id="form1" runat="server">
-            <div class="row">
-                <br />
-                <br />
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" ID="ScriptManager1">
+        </asp:ScriptManager>
+        <div class="container">
 
-                <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
-                    runat="server" UseAccessibleHeader="true" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="true" PageSize="3" OnPageIndexChanging="GridView1_PageIndexChanging" OnPreRender="GridView1_PreRender">
-                    <Columns>
-                        <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />
-                        <asp:BoundField DataField="nombre1Paciente" HeaderText="Primer Nombre" ItemStyle-Width="100" />
-                        <asp:BoundField DataField="apellido1Paciente" HeaderText="Primer Apellido" ItemStyle-Width="100" />
-                        <asp:BoundField DataField="apellido2Paciente" HeaderText="Segundo Apellido" ItemStyle-Width="100" />
-                    </Columns>
-                </asp:GridView>
+            <div class="row espacio">
+                <div class="input-field col s3 ">
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
+                    <label class="active" for="first_name2">Nombre:</label>
+                </div>
+                <asp:UpdatePanel runat="server">
+                    <ContentTemplate>
+                        <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
+                        <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
+                            runat="server" UseAccessibleHeader="true" AutoGenerateColumns="False" Height="174px" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="true" PageSize="3" OnPageIndexChanging="GridView1_PageIndexChanging" OnPreRender="GridView1_PreRender">
+                            <Columns>
+                                <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />
+                                <asp:BoundField DataField="nombre1Paciente" HeaderText="Primer Nombre" ItemStyle-Width="100" />
+                                <asp:BoundField DataField="apellido1Paciente" HeaderText="Primer Apellido" ItemStyle-Width="100" />
+                                <asp:BoundField DataField="apellido2Paciente" HeaderText="Segundo Apellido" ItemStyle-Width="100" />
+                            </Columns>
+                        </asp:GridView>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
                 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
                 <script type="text/javascript" src="../js/quicksearch.js"></script>
 
@@ -79,19 +88,39 @@
                     </tr>
                     <tr class="colorLetra">
                         <td>
-                            <label id="cedula" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="cedula" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="nombre1" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="nombre1" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="nombre2" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="nombre2" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="apellido1" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="apellido1" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="apellido2" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="apellido2" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                     </tr>
 
@@ -104,19 +133,39 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="telefono" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="telefono" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="celular" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="celular" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="correo" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="correo" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="sexo" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="sexo" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="Label1" type="text" runat="server" />
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="Label1" type="text" runat="server" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                     </tr>
                     <tr>
@@ -126,14 +175,26 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="fechaN" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
 
+                                    <label id="fechaN" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="fechaI" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="fechaI" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="direcion" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="direcion" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
 
                     </tr>
@@ -156,19 +217,39 @@
 
                     <tr>
                         <td>
-                            <label id="cedula_encargado" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="cedula_encargado" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="nombre1_encargado" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="nombre1_encargado" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="nombre2_encargado" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="nombre2_encargado" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="apellido1_encargado" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="apellido1_encargado" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="apellido2_encargado" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="apellido2_encargado" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
 
                     </tr>
@@ -183,19 +264,39 @@
 
                     <tr>
                         <td>
-                            <label id="telefono_encargado" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="telefono_encargado" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="celular_encargado" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="celular_encargado" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="correo_encargado" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="correo_encargado" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="parentezco" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="parentezco" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td>
-                            <label id="sexoE" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="sexoE" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                     </tr>
 
@@ -204,15 +305,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="direccion_encargado" runat="server"></label>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="direccion_encargado" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                     </tr>
                 </table>
 
             </div>
-        </form>
-    </div>
 
+        </div>
+    </form>
     <script type="text/javascript">
         var valor = document.getElementById("Label1").innerHTML;
         if (valor == "Si") {
@@ -233,6 +338,19 @@
             document.getElementById('encargado').style.display = 'none';
 
         }
+
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            document.getElementById("apellido1").required = false;
+            document.getElementById("apellido2").required = false;
+            $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+
+                $('#<%=InvisButton.ClientID%>').click();
+
+            });
+        });
 
     </script>
     <script src="js/materialize.min.js"></script>
