@@ -11,21 +11,21 @@
     <script type="text/javascript" src="../js/quicksearch.js"></script>
 
     <style>
-        /*.colorLetra {
-            color: black;
-        }*/
-
         .espacio {
             padding-top: 5%;
         }
 
-        #formularioP {
+        /*#formularioP {
             border: 1px solid white;
-        }
+        }*/
 
-            #formularioP.highlighted {
+        /*#formularioP.highlighted {
                 border: 3px solid red;
-            }
+            }*/
+
+        /*#encargado {
+            border: 1px solid white;
+        }*/
 
         label, tr, th {
             font-family: sans-serif;
@@ -34,7 +34,7 @@
         }
     </style>
 </head>
-<body>
+<body oncopy="return false" onpaste="return false">
     <div class="container">
         <form id="form1" runat="server">
             <div class="row">
@@ -65,7 +65,7 @@
                     });
                 </script>
             </div>
-            <div id="formularioP" style="display: none" class="espacio centrar">
+            <div id="formularioP" style="display: none" class="espacio">
                 <table class="striped">
                     <tr>
                         <th colspan="5" style="text-align: center; font-size: 15px;">Datos del paciente</th>
@@ -143,7 +143,7 @@
             <div id="encargado" style="display: none" tabindex="-1" class="espacio">
                 <table class="striped">
                     <tr>
-                        <th colspan="5" style="text-align: center">Datos del encargado</th>
+                        <th colspan="5" style="text-align: center; font-size: 15px;">Datos del encargado</th>
                     </tr>
 
                     <tr>
@@ -210,6 +210,7 @@
                 </table>
 
             </div>
+
         </form>
     </div>
 

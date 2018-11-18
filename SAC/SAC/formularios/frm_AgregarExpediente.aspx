@@ -21,7 +21,7 @@
     </style>
 </head>
 
-<body>
+<body oncopy="return false" onpaste="return false">
     <header>
         <h1 style="text-align: center">Registro de Expediente</h1>
     </header>

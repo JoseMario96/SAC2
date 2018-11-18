@@ -63,7 +63,7 @@
         });
     </script>
 </head>
-<body>
+<body oncopy="return false" onpaste="return false">
     <form id="form1" runat="server">
         <div class="container">
             <asp:ScriptManager runat="server" ID="sm">

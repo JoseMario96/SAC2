@@ -30,7 +30,7 @@
         }
     </style>
 </head>
-<body>
+<body oncopy="return false" onpaste="return false">
     <div class="container">
         <br />
         <br />

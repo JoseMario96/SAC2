@@ -11,7 +11,7 @@
     <link href="../css/jquery-ui-1.8.13.custom.css" rel="stylesheet" />
     <script src="../js/jquery-ui-1.8.13.custom.min.js"></script>
 </head>
-<body>
+<body oncopy="return false" onpaste="return false">
     <form id="form1" runat="server">
         <div class="container">
             <div class="row">

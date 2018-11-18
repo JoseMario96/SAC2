@@ -8,7 +8,7 @@
     <link href="../css/materialize.css" rel="stylesheet" />
     <title></title>
 </head>
-<body>
+<body oncopy="return false" onpaste="return false">
     <header>
         <h1 style="text-align:center">Reporte de ventas</h1>
     </header>

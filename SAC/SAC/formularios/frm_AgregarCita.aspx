@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <title></title>
 </head>
-<body>
+<body oncopy="return false" onpaste="return false">
     <header style="text-align: center">
         <h2>CITAS DE HOY</h2>
     </header>

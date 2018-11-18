@@ -274,11 +274,9 @@ namespace SAC.formularios
                 else
                 {
                     hmsi.Focus();
-                    Response.Write("<script language='javascript'>window.alert('No#7');</script>");
-
+                    Response.Write("<script language='javascript'>window.alert('La pregunta 7 es obligatoria');</script>");
                 }
             }
-
             catch
             {
                 string scrippt = @"<script type='text/javascript'>

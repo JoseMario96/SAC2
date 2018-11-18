@@ -40,7 +40,7 @@
         });
     </script>
 </head>
-<body>
+<body oncopy="return false" onpaste="return false">
     <div class="container">
         <form id="form1" runat="server">
             <div class="row">
@@ -152,7 +152,6 @@
 
                     <tr>
                         <td>
-
                             <asp:TextBox ID="fechaN" runat="server" required  onkeypress="return solofechas(event)"></asp:TextBox>
                         </td>
                         <td>

@@ -11,7 +11,7 @@
     <script type="text/javascript" src="../js/quicksearch.js"></script>
     <title></title>
 </head>
-<body>
+<body oncopy="return false" onpaste="return false">
     <header>
         <h1 style="text-align:center">Cuentas por cobrar</h1>
     </header>
