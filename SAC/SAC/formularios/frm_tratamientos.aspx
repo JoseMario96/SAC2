@@ -21,7 +21,7 @@
         }
     </style>
 </head>
-<body style="margin: 5%;">
+<body style="margin: 5%;" oncopy="return false" onpaste="return false">
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server" ID="sm">
         </asp:ScriptManager>

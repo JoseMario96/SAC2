@@ -21,7 +21,7 @@
         }
     </style>
 </head>
-<body>
+<body oncopy="return false" onpaste="return false">
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="Label1" runat="server" Font-Bold="True" Text="Prueba"></asp:Label>

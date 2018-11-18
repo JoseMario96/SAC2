@@ -99,7 +99,7 @@
         }
     </style>
 </head>
-<body>
+<body oncopy="return false" onpaste="return false">
 
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server" ID="sm">

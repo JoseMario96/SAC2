@@ -15,7 +15,7 @@
             font-size: medium;
             color: black;
         }
-        
+
         #encargado {
             border: 1px solid white;
         }
@@ -25,7 +25,7 @@
             }
     </style>
 </head>
-<body>
+<body oncopy="return false" onpaste="return false">
     <header>
         <h1 style="text-align: center">Registro de pacientes</h1>
     </header>
@@ -142,137 +142,137 @@
                     </p>
                 </div>
             </div>
-    <div id="encargado" style="display: none" tabindex="-1">
-        <div class="row">
-            <div class="col s12 m6 13">
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
-                        <label class="active" for="cedula_encargado2">Cédula del encargado</label>
-                        <asp:TextBox ID="cedula_encargad" class="validate" MaxLength="14" runat="server" OnTextChanged="cedula_encargad_TextChanged" AutoPostBack="true" onkeypress="return solonumeros(event)"></asp:TextBox>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s6">
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
-                        <label class="active" for="nombre1_encargado">Primer nombre</label>
-                        <input id="nombre1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-            <div class="col s6">
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
-                        <label class="active" for="nombre2_encargado">Segundo nombre</label>
-                        <input id="nombre2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s6">
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
-                        <label class="active" for="apellido1_encargado">Primer apellido</label>
-                        <input id="apellido1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-            <div class="col s6">
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
-                        <label class="active" for="apellido2_encargado">Segundo apellido</label>
-                        <input id="apellido2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s6">
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
-                        <label class="active" for="telefono_encargado">Teléfono</label>
-                        <input id="telefono_encargado" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-            <div class="col s6">
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
-                        <label class="active" for="celular_encargado">Celular</label>
-                        <input id="celular_encargado" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
-                        <label class="active" for="direccion_encargado">Dirección</label>
-                        <input id="direccion_encargado" type="text" runat="server" class="validate" maxlength="249" />
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-        </div>
-        <div class="row">
+            <div id="encargado" style="display: none" tabindex="-1">
+                <div class="row">
+                    <div class="col s12 m6 13">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <label class="active" for="cedula_encargado2">Cédula del encargado</label>
+                                <asp:TextBox ID="cedula_encargad" class="validate" MaxLength="14" runat="server" OnTextChanged="cedula_encargad_TextChanged" AutoPostBack="true" onkeypress="return solonumeros(event)"></asp:TextBox>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <label class="active" for="nombre1_encargado">Primer nombre</label>
+                                <input id="nombre1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="col s6">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <label class="active" for="nombre2_encargado">Segundo nombre</label>
+                                <input id="nombre2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <label class="active" for="apellido1_encargado">Primer apellido</label>
+                                <input id="apellido1_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="col s6">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <label class="active" for="apellido2_encargado">Segundo apellido</label>
+                                <input id="apellido2_encargado" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <label class="active" for="telefono_encargado">Teléfono</label>
+                                <input id="telefono_encargado" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="col s6">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <label class="active" for="celular_encargado">Celular</label>
+                                <input id="celular_encargado" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <label class="active" for="direccion_encargado">Dirección</label>
+                                <input id="direccion_encargado" type="text" runat="server" class="validate" maxlength="249" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <div class="row">
 
-            <div class="col s6">
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
-                        <label class="active" for="correo_encargado">Correo electrónico</label>
-                        <input id="correo_encargado" type="email" runat="server" class="validate" maxlength="44" />
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                    <div class="col s6">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <label class="active" for="correo_encargado">Correo electrónico</label>
+                                <input id="correo_encargado" type="email" runat="server" class="validate" maxlength="44" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="col s6">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <label class="active" for="parentezco">Parentezco con el menor</label>
+                                <input id="parentezco" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <div>
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <label>Género </label>
+                            <br />
+                            <p>
+                                <label>
+                                    <input class="with-gap" name="group5" runat="server" type="radio" id="masculinoE" />
+                                    <span>Masculino</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input class="with-gap" name="group5" runat="server" type="radio" id="femeninoE" />
+                                    <span>Femenino</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input class="with-gap" name="group5" runat="server" type="radio" id="otroE" />
+                                    <span>Otro</span>
+                                </label>
+                            </p>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
             </div>
-            <div class="col s6">
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
-                        <label class="active" for="parentezco">Parentezco con el menor</label>
-                        <input id="parentezco" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+            <div class="row">
+                <div class="input-field col s4">
+                    <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
+                </div>
+                <div class="input-field col s4">
+                    <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Limpiar" OnClick="Cancelar_Click" />
+                </div>
             </div>
-        </div>
-        <div>
-            <asp:UpdatePanel runat="server">
-                <ContentTemplate>
-                    <label>Género </label>
-                    <br />
-                    <p>
-                        <label>
-                            <input class="with-gap" name="group5" runat="server" type="radio" id="masculinoE" />
-                            <span>Masculino</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input class="with-gap" name="group5" runat="server" type="radio" id="femeninoE" />
-                            <span>Femenino</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input class="with-gap" name="group5" runat="server" type="radio" id="otroE" />
-                            <span>Otro</span>
-                        </label>
-                    </p>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s4">
-            <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
-        </div>
-        <div class="input-field col s4">
-            <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Limpiar" OnClick="Cancelar_Click" />
-        </div>
-    </div>
-    </form>
-    
+        </form>
+
     </div>
     <script type="text/javascript">
         function mostrar() {
