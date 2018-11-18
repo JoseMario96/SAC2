@@ -20,26 +20,15 @@ namespace SAC.formularios
         static string ced = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
-            GridView_reporteOdontograma.DataBind();
-
-        }
-
-        protected void OnDataBound(object sender, EventArgs e)
-        {
-            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
-            for (int i = 0; i < GridView_reporteOdontograma.Columns.Count; i++)
+            if (!this.IsPostBack)
             {
-                TableHeaderCell cell = new TableHeaderCell();
-                TextBox txtSearch = new TextBox();
-                txtSearch.Attributes["placeholder"] = GridView_reporteOdontograma.Columns[i].HeaderText;
-                txtSearch.CssClass = "search_textbox";
-                cell.Controls.Add(txtSearch);
-                row.Controls.Add(cell);
+                GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
+                GridView_reporteOdontograma.DataBind();
+
             }
-            GridView_reporteOdontograma.HeaderRow.Parent.Controls.AddAt(1, row);
+
         }
+
 
         protected void GridView_reporteOdontograma_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -53,7 +42,7 @@ namespace SAC.formularios
         {
 
             String[] datos2 = new String[10];
-            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
+            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion2(txtSearch.Text.Trim());
             GridView_reporteOdontograma.DataBind();
 
             foreach (GridViewRow row in GridView_reporteOdontograma.Rows)
@@ -108,11 +97,18 @@ namespace SAC.formularios
 
         protected void GridView_reporteOdontograma_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
+            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion2(txtSearch.Text.Trim());
             GridView_reporteOdontograma.PageIndex = e.NewPageIndex;
             GridView_reporteOdontograma.DataBind();
         }
+        protected void InvisButton_Click(object sender, EventArgs e)
+        {
+            // place your wanted code here
+            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion2(txtSearch.Text.Trim());
 
+            GridView_reporteOdontograma.DataBind();
+
+        }
         protected void ibOdontogramaG_Click(object sender, ImageClickEventArgs e)
         {
             if (!ced.Equals(""))
