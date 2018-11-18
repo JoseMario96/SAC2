@@ -66,8 +66,8 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
-            <%-- <asp:ScriptManager runat="server" ID="sm">
-            </asp:ScriptManager>--%>
+            <asp:ScriptManager runat="server" ID="sm">
+            </asp:ScriptManager>
             <div class="row">
                 <br />
                 <br />
@@ -1958,24 +1958,25 @@
                         </div>
                     </div>
                 </div>
-                <script>
-                    function solonumeros(e) {
-                        key = e.keyCoden || e.which;
-                        teclado = String.fromCharCode(key);
-                        numero = "1234567890";
-                        especiales = "8-37-38-46";
-                        teclado_especial = false;
-                        for (var i in especiales) {
-                            if (key == especiales[i]) {
-                                teclado_especial = true;
+            </div>
+            <script>
+                        function solonumeros(e) {
+                            key = e.keyCoden || e.which;
+                            teclado = String.fromCharCode(key);
+                            numero = "1234567890";
+                            especiales = "8-37-38-46";
+                            teclado_especial = false;
+                            for (var i in especiales) {
+                                if (key == especiales[i]) {
+                                    teclado_especial = true;
+                                }
+                            }
+                            if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+                                return false;
                             }
                         }
-                        if (numero.indexOf(teclado) == -1 && !teclado_especial) {
-                            return false;
-                        }
-                    }
-                </script>
-            </div>
+            </script>
+        </div>
     </form>
 </body>
 </html>
