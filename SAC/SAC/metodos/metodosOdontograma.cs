@@ -11,11 +11,11 @@ namespace SAC.metodos
     {
         consulta.consulta consultar = new consulta.consulta();
         conexion.conexion con = new conexion.conexion();
-
+        //Insertar colores en la BD
         public void agregarOdontograma(String col, String die, String secc, String codE, String fech, String odont)
         {
             string y = "";
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`, `dienteOdontograma`, `seccionOdontograma`, `tipoPacienteOdontograma`) VALUES ('" + col + "', '" + die + "', '" + secc + "'', '" + odont + "');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`, `dienteOdontograma`, `seccionOdontograma`, `tipoPacienteOdontograma`) VALUES ('" + col + "', '" + die + "', '" + secc + "', '" + odont + "');", con.abrir_conexion()).ExecuteNonQuery();
             MySqlDataReader contador = consultar.ejecutar_consulta("SELECT max(codigoOdontograma) from tbl_odontograma; ", con.abrir_conexion()).ExecuteReader();
             if (contador.Read())
             {
@@ -263,7 +263,7 @@ namespace SAC.metodos
         }
         public DataTable Pacienteinformacion2(String ced)
         {
-            string consulta = "Select tbl_paciente.cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente from tbl_paciente, tbl_expediente  where tbl_paciente.cedulaPaciente like '%"+ced+"%' and  tbl_paciente.cedulaPaciente= tbl_expediente.cedulaPaciente;";
+            string consulta = "Select tbl_paciente.cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente from tbl_paciente, tbl_expediente  where tbl_paciente.cedulaPaciente like '%" + ced + "%' and  tbl_paciente.cedulaPaciente= tbl_expediente.cedulaPaciente;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())

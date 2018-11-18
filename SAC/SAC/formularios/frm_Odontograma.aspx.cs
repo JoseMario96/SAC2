@@ -21,7 +21,7 @@ namespace SAC.formularios
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion();
+            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
             GridView_reporteOdontograma.DataBind();
 
         }
@@ -53,7 +53,7 @@ namespace SAC.formularios
         {
 
             String[] datos2 = new String[10];
-            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion();
+            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
             GridView_reporteOdontograma.DataBind();
 
             foreach (GridViewRow row in GridView_reporteOdontograma.Rows)
@@ -108,7 +108,7 @@ namespace SAC.formularios
 
         protected void GridView_reporteOdontograma_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion();
+            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
             GridView_reporteOdontograma.PageIndex = e.NewPageIndex;
             GridView_reporteOdontograma.DataBind();
         }
@@ -119,7 +119,7 @@ namespace SAC.formularios
             {
                 ced = "";
                 Response.Redirect("frm_MantenimientoOdontograma.aspx");
-                GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion();
+                GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
                 GridView_reporteOdontograma.DataBind();
             }
             else
@@ -139,7 +139,7 @@ namespace SAC.formularios
             {
                 ced = "";
                 Response.Redirect("frm_MantenimientoOdontograma2.aspx");
-                GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion();
+                GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
                 GridView_reporteOdontograma.DataBind();
             }
             else
