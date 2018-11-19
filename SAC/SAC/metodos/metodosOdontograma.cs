@@ -263,12 +263,20 @@ namespace SAC.metodos
         }
         public DataTable Pacienteinformacion2(String nom)
         {
-            string consulta = "Select tbl_paciente.cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente from tbl_paciente, tbl_expediente  where tbl_paciente.nombre1Paciente like '%" + nom + "%' and  tbl_paciente.cedulaPaciente= tbl_expediente.cedulaPaciente;";
-            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
-            MySqlDataAdapter da = new MySqlDataAdapter(comando);
-            using (DataTable dt = new DataTable())
+            DataTable dt = new DataTable();
+            try
             {
-                da.Fill(dt);
+                string consulta = "Select tbl_paciente.cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente from tbl_paciente, tbl_expediente  where tbl_paciente.nombre1Paciente like '%" + nom + "%' and  tbl_paciente.cedulaPaciente= tbl_expediente.cedulaPaciente;";
+                MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                using (dt)
+                {
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch
+            {
                 return dt;
             }
 

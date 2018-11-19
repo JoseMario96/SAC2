@@ -40,7 +40,8 @@ namespace SAC.formularios
             }
             catch
             {
-
+                GridView2.DataSource = funciones.Grid1();
+                GridView2.DataBind();
             }
 
 

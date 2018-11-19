@@ -34,7 +34,7 @@ namespace SAC.formularios
 
             String[] datos = new String[13];
             String[] datos2 = new String[10];
-            GridView1.DataSource = objeto.Paciente();
+            GridView1.DataSource = objeto.Paciente2(txtSearch.Text.Trim());
             GridView1.DataBind();
 
             string script = @"<script type='text/javascript'>
