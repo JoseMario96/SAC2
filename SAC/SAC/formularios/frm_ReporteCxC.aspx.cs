@@ -152,7 +152,7 @@ namespace SAC.formularios
         {
             try
             {
-                Gridview_Venta.DataSource = cuenta.CuentaXCobrarReporte();
+                Gridview_Venta.DataSource = cuenta.CuentaXCobrarReporte2(txtSearch.Text.Trim());
                 Gridview_Venta.DataBind();
                 string script = @"<script type='text/javascript'>
                             document.getElementById('botones').style.display = 'none';
@@ -169,23 +169,6 @@ namespace SAC.formularios
             }
         }
 
-        
-
-        protected void Gridview_Venta_DataBound(object sender, EventArgs e)
-        {
-            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
-            for (int i = 0; i < Gridview_Venta.Columns.Count; i++)
-            {
-                TableHeaderCell cell = new TableHeaderCell();
-                TextBox txtSearch = new TextBox();
-                txtSearch.Attributes["placeholder"] = Gridview_Venta.Columns[i].HeaderText;
-                txtSearch.CssClass = "search_textbox";
-                cell.Controls.Add(txtSearch);
-                row.Controls.Add(cell);
-            }
-            Gridview_Venta.HeaderRow.Parent.Controls.AddAt(1, row);
-        }
-
         protected void Gridview_Venta_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -199,7 +182,7 @@ namespace SAC.formularios
         {
             try
             {
-                Gridview_Venta.DataSource = cuenta.CuentaXCobrarReporte();
+                Gridview_Venta.DataSource = cuenta.CuentaXCobrarReporte2(txtSearch.Text.Trim());
                 Gridview_Venta.DataBind();
                 foreach (GridViewRow row in Gridview_Venta.Rows)
                 {
@@ -413,6 +396,19 @@ namespace SAC.formularios
                             document.getElementById('botones').style.display = 'block';
                             </script>";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+        }
+
+        protected void Gridview_Venta_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            Gridview_Venta.DataSource = cuenta.CuentaXCobrarReporte2(txtSearch.Text.Trim());
+            Gridview_Venta.PageIndex = e.NewPageIndex;
+            Gridview_Venta.DataBind();
+        }
+
+        protected void InvisButton_Click(object sender, EventArgs e)
+        {
+            Gridview_Venta.DataSource = cuenta.CuentaXCobrarReporte2(txtSearch.Text.Trim());
+            Gridview_Venta.DataBind();
         }
     }
 }

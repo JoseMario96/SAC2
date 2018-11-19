@@ -113,6 +113,18 @@ namespace SAC.metodos
             }
 
         }
+        public DataTable BuscarExpediente2(String nom)
+        {
+            string consulta = "select tbl_expediente.codigoExpediente, tbl_expediente.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.apellido2Paciente from tbl_expediente, tbl_paciente where tbl_paciente.cedulaPaciente = tbl_expediente.cedulaPaciente and nombre1Paciente like '%"+nom+"%';";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+
+        }
 
         public String[] BuscarPaciente(String ced)
         {

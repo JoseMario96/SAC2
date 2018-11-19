@@ -26,10 +26,22 @@ namespace SAC.metodos
             }
 
         }
-
-        public DataTable DetalleVenta( String cedula)
+        public DataTable VentaPendiente2(String nom)
         {
-            string consulta = "select tbl_tratamiento.nombreTratamiento, tbl_expedientetramiento.fechaExpedienteTratamiento, tbl_expedientetramiento.descripcionExpedienteTratamiento, tbl_tratamiento.precioTratamiento from tbl_tratamiento, tbl_expedientetramiento, tbl_paciente, tbl_expediente where tbl_expediente.cedulaPaciente = '"+cedula+"' and tbl_expediente.codigoExpediente = tbl_expedientetramiento.codigoExpediente and tbl_expedientetramiento.EstadoPago = false and tbl_expedientetramiento.codigoTratamiento = tbl_tratamiento.codigoTratamiento group by tbl_expedientetramiento.fechaExpedienteTratamiento;";
+            string consulta = "select tbl_paciente.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.nombre2Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.apellido2Paciente from tbl_paciente, tbl_expediente, tbl_expedientetramiento where nombre1Paciente like '%" + nom + "%' and tbl_paciente.cedulaPaciente = tbl_expediente.cedulaPaciente and tbl_expediente.codigoExpediente = tbl_expedientetramiento.codigoExpediente and tbl_expedientetramiento.EstadoPago = false group by tbl_expedientetramiento.codigoExpediente;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+
+        }
+
+        public DataTable DetalleVenta(String cedula)
+        {
+            string consulta = "select tbl_tratamiento.nombreTratamiento, tbl_expedientetramiento.fechaExpedienteTratamiento, tbl_expedientetramiento.descripcionExpedienteTratamiento, tbl_tratamiento.precioTratamiento from tbl_tratamiento, tbl_expedientetramiento, tbl_paciente, tbl_expediente where tbl_expediente.cedulaPaciente = '" + cedula + "' and tbl_expediente.codigoExpediente = tbl_expedientetramiento.codigoExpediente and tbl_expedientetramiento.EstadoPago = false and tbl_expedientetramiento.codigoTratamiento = tbl_tratamiento.codigoTratamiento group by tbl_expedientetramiento.fechaExpedienteTratamiento;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())
@@ -66,7 +78,7 @@ namespace SAC.metodos
         public String CodigoExpedienteTratamiento(String fecha)
         {
             String codigo = "";
-            MySqlDataReader busqueda = consultar.ejecutar_consulta("select codigoExpedienteTratamiento from tbl_expedientetramiento where fechaExpedienteTratamiento = '"+fecha+"';", con.abrir_conexion()).ExecuteReader();
+            MySqlDataReader busqueda = consultar.ejecutar_consulta("select codigoExpedienteTratamiento from tbl_expedientetramiento where fechaExpedienteTratamiento = '" + fecha + "';", con.abrir_conexion()).ExecuteReader();
             while (busqueda.Read())
             {
                 codigo = busqueda.GetString(0);
@@ -93,6 +105,18 @@ namespace SAC.metodos
 
         }
 
+        public DataTable CuentaXCobrar2(String nom)
+        {
+            string consulta = "select tbl_venta.codigoVenta, tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta, tbl_venta.montoTotalVenta, tbl_venta.saldoVenta from tbl_venta, tbl_paciente where nombre1Paciente like'%" + nom + "%' and tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente order by tbl_venta.cedulaPaciente;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+
+        }
         public String BuscarDetalle(String codigo)
         {
             String detalle = "";
@@ -106,7 +130,7 @@ namespace SAC.metodos
 
         public DataTable DetalleAbono(String codigo)
         {
-            string consulta = "select tbl_abono.codigo_abono, tbl_abono.codigoVenta, tbl_abono.fechaAbono, tbl_abono.montoAbono from tbl_abono where tbl_abono.codigoVenta = '"+codigo+"';";
+            string consulta = "select tbl_abono.codigo_abono, tbl_abono.codigoVenta, tbl_abono.fechaAbono, tbl_abono.montoAbono from tbl_abono where tbl_abono.codigoVenta = '" + codigo + "';";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())
@@ -118,7 +142,7 @@ namespace SAC.metodos
         }
         public void ActualizarSaldo(String codigoVenta, Double saldoVenta)
         {
-            consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_venta` SET `saldoVenta`= "+saldoVenta+" WHERE `codigoVenta`='" + codigoVenta + "';", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_venta` SET `saldoVenta`= " + saldoVenta + " WHERE `codigoVenta`='" + codigoVenta + "';", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
 
@@ -138,6 +162,20 @@ namespace SAC.metodos
         public DataTable TodaslasVentas()
         {
             string consulta = "select tbl_Venta.codigoVenta, tbl_Paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta from tbl_paciente, tbl_venta where tbl_paciente.cedulaPaciente = tbl_venta.cedulaPaciente;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+
+        }
+
+
+        public DataTable TodaslasVentas2(String nom)
+        {
+            string consulta = "select tbl_Venta.codigoVenta, tbl_Paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta from tbl_paciente, tbl_venta where nombre1Paciente like '%" + nom + "%' and tbl_paciente.cedulaPaciente = tbl_venta.cedulaPaciente;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())
@@ -183,7 +221,18 @@ namespace SAC.metodos
             }
 
         }
+        public DataTable CuentaXCobrarReporte2(String nom)
+        {
+            string consulta = "select tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.nombre2Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.apellido2Paciente from tbl_venta, tbl_paciente where nombre1Paciente like '%" + nom + "%' and tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente group by tbl_venta.cedulaPaciente;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
 
+        }
         public DataTable CuentaXCobrarImprimir()
         {
             string consulta = "select tbl_venta.codigoVenta, tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta, tbl_venta.detalleVenta, tbl_venta.montoTotalVenta, tbl_venta.saldoVenta from tbl_venta, tbl_paciente where tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente order by tbl_venta.cedulaPaciente;";

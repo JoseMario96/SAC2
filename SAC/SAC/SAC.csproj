@@ -117,12 +117,9 @@
     <Content Include="formularios\frm_Odontograma.aspx" />
     <Content Include="formularios\frm_RecuperarContrasena.aspx" />
     <Content Include="formularios\frm_ReporteCxC.aspx" />
-    <Content Include="formularios\frm_ReporteExpediente.aspx" />
     <Content Include="formularios\frm_ReporteOdontogramas.aspx" />
     <Content Include="formularios\frm_ReporteVentas.aspx" />
     <Content Include="formularios\frm_tratamientos.aspx" />
-    <Content Include="formularios\Prueba.aspx" />
-    <Content Include="formularios\tabla.aspx" />
     <Content Include="images\780769.png" />
     <Content Include="images\actualizar.png" />
     <Content Include="images\actualizarEncargado.png" />
@@ -163,7 +160,7 @@
     <Content Include="images\Personas1.png" />
     <Content Include="images\reporte.png" />
     <Content Include="images\ReporteCxC.png" />
-    <Content Include="images\reporteOdontograma.png" />
+    <Content Include="images\ReporteExpediente.png" />
     <Content Include="images\reporte_factura.png" />
     <Content Include="images\tratamientos.png" />
     <Content Include="images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -359,13 +356,6 @@
     <Compile Include="formularios\frm_ReporteCxC.aspx.designer.cs">
       <DependentUpon>frm_ReporteCxC.aspx</DependentUpon>
     </Compile>
-    <Compile Include="formularios\frm_ReporteExpediente.aspx.cs">
-      <DependentUpon>frm_ReporteExpediente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="formularios\frm_ReporteExpediente.aspx.designer.cs">
-      <DependentUpon>frm_ReporteExpediente.aspx</DependentUpon>
-    </Compile>
     <Compile Include="formularios\frm_ReporteOdontogramas.aspx.cs">
       <DependentUpon>frm_ReporteOdontogramas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -386,20 +376,6 @@
     </Compile>
     <Compile Include="formularios\frm_tratamientos.aspx.designer.cs">
       <DependentUpon>frm_tratamientos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="formularios\Prueba.aspx.cs">
-      <DependentUpon>Prueba.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="formularios\Prueba.aspx.designer.cs">
-      <DependentUpon>Prueba.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="formularios\tabla.aspx.cs">
-      <DependentUpon>tabla.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="formularios\tabla.aspx.designer.cs">
-      <DependentUpon>tabla.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

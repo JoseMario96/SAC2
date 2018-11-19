@@ -14,6 +14,7 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            cedulaEx.Focus();
             lblfecha.Text = DateTime.Now.ToString("yyyy/MM/dd");
         }
 
@@ -274,11 +275,9 @@ namespace SAC.formularios
                 else
                 {
                     hmsi.Focus();
-                    Response.Write("<script language='javascript'>window.alert('No#7');</script>");
-
+                    Response.Write("<script language='javascript'>window.alert('La pregunta 7 es obligatoria');</script>");
                 }
             }
-
             catch
             {
                 string scrippt = @"<script type='text/javascript'>

@@ -19,17 +19,39 @@
             background-color: #008281;
             color: black;
         }
+
+        .espacio {
+            padding-top: 5%;
+        }
+
+        label, tr, th {
+            font-family: sans-serif;
+            font-size: medium;
+            color: black;
+        }
+
     </style>
 </head>
-<body style="margin: 5%;">
+<body oncopy="return false" onpaste="return false">
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server" ID="sm">
         </asp:ScriptManager>
         <div class="container">
             <header>
-                <h2>Mantenimiento de tratamientos</h2>
+                <h2 style="text-align: center">Mantenimiento de tratamientos</h2>
             </header>
-            <div class="navbar-fixed">
+
+<%--            <nav>
+                <div class="nav-wrapper">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="#" onclick="mostrarAgregar()">Agregar</a></li>
+                        <li><a href="#" onclick="mostrarActualizar()">Actualizar</a></li>
+                        <li><a href="#" onclick="mostrarEliminar()">Eliminar</a></li>
+                    </ul>
+                </div>
+            </nav>--%>
+
+              <div class="navbar-fixed">
                 <nav id="menu" style="background-color: rgba(0, 163, 162, 0.8)">
                     <div class="row" id="barraMenu">
                         <div class="col s6"></div>
@@ -45,71 +67,96 @@
                     </div>
                 </nav>
             </div>
-            <div class="row">
 
-                <%--Sección agregar--%>
+            <%--Sección agregar--%>
+            <div id="seccionAgregar" style="display: block">
+                <h4 style="text-align: center">Agregar</h4>
+                <h5>Tipos de tratamientos</h5>
+                <div class="row">
+                    <div class="col s7">
+                        <p>
+                            <b>Nuevos: </b>
+                        </p>
+                    </div>
+                    <div class="col s5">
+                        <p><b>Existentes:</b></p>
+                    </div>
+                </div>
 
-                <div id="seccionAgregar" style="display: block">
-                    <h4 style="text-align: center">Agregar</h4>
-                    Tipos de tratamientos
-        <br />
-                    Nuevo:
-        <br />
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
-                            <asp:TextBox class="validate" ID="txt_codigoTipo" runat="server" Width="56px" Placeholder="Código" AutoPostBack="true" onkeypress="return solonumeros(event)" OnTextChanged="txt_codigoTipo_TextChanged1"></asp:TextBox>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>                    
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
-                            <asp:TextBox class="validate" ID="txt_nombreTipo" runat="server" Width="234px" Placeholder="Nombre" AutoPostBack="true" onkeypress="return sololetras(event)"></asp:TextBox>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                    <br />
-                    Existentes:
-        <br />
-                    <div style="width: 238px">
+                <div class="row">
+                    <div class="col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:DropDownList ID="DropDownList2" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                <asp:TextBox class="validate" title="Código" ID="txt_codigoTipo" runat="server" Placeholder="Código" AutoPostBack="true" onkeypress="return solonumeros(event)" OnTextChanged="txt_codigoTipo_TextChanged1"></asp:TextBox>
                             </ContentTemplate>
                         </asp:UpdatePanel>
+                    </div>
+                    <div class="col s5">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <asp:TextBox class="validate" title="Nombre" ID="txt_nombreTipo" runat="server" Placeholder="Nombre" AutoPostBack="true" onkeypress="return sololetras(event)"></asp:TextBox>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="col s5">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <asp:DropDownList ID="DropDownList2" title="Tipo de tratamiento" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+
+                <h5>Tratamientos</h5>
+                <div class="row">
+                    <div class="col s2">
+                        <asp:TextBox class="validate" ID="txt_codigoTratamiento" title="Código" runat="server" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
 
                     </div>
+                    <div class="col s5">
+                        <asp:TextBox class="validate" ID="txt_nombreTratamiento" title="Nombre" runat="server" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
 
-                    <br />
-
-                    <br />
-
-                    Tratamientos:
-                    <br />
-                    <asp:TextBox class="validate" ID="txt_codigoTratamiento" runat="server" Width="56px" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
-                    <asp:TextBox class="validate" ID="txt_nombreTratamiento" runat="server" Width="234px" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
-                    <asp:TextBox class="validate" ID="txt_precioTratamiento" runat="server" Width="79px" Placeholder="Precio" onkeypress="return solonumeros(event)"></asp:TextBox>
-                    <br />
-                    Descripción del tratamiento:<br />
-                    <textarea id="txt_descripcion" name="S1" rows="2" runat="server"></textarea>
-                    <br />
-                    <asp:Button class="waves-effect waves-light btn" ID="btn_guardar" runat="server" Text="Guardar" OnClick="btn_guardar_Click" />
-
+                    </div>
+                    <div class="col s5">
+                        <asp:TextBox class="validate" ID="txt_precioTratamiento" title="Precio" runat="server" Placeholder="Precio" onkeypress="return solonumeros(event)"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <p>Descripción del tratamiento:</p>
+                        <textarea id="txt_descripcion" name="S1" rows="2" title="Descripción" runat="server"></textarea>
+                    </div>
                 </div>
 
 
+                <div class="row espacio">
+                    <div class="col s5"></div>
+                    <div class="col s2">
+                        <asp:Button class="waves-effect waves-light btn" ID="btn_guardar" runat="server" Text="Guardar" OnClick="btn_guardar_Click" />
+                    </div>
+                    <div class="col s5"></div>
+                </div>
+            </div>
+            <%-- Sección de modificar--%>
 
-                <%-- Sección de modificar--%>
+            <div class="row espacio" id="grid" style="display: none">
+                <div class="input-field col s3 ">
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
+                    <label class="active" for="first_name2">Nombre:</label>
+                </div>
+                <asp:UpdatePanel runat="server">
+                    <ContentTemplate>
+                        <h4 id="titulo1" style="text-align: center; display: none">Actualizar</h4>
+                        <h4 id="titulo2" style="text-align: center; display: none">Eliminar</h4>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
 
-                <div class="row" id="grid" style="display: none">
+                <div class="row">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <h4 id="titulo1" style="text-align: center; display: none">Modificar</h4>
-                            <h4 id="titulo2" style="text-align: center; display: none">Eliminar</h4>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
+                            <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
                             <asp:GridView ID="GridView2" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
-                                runat="server" AutoGenerateColumns="False" OnDataBound="GridView2_DataBound" Height="174px" OnRowDataBound="GridView2_RowDataBound" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
+                                runat="server" AutoGenerateColumns="False" AllowPaging="true" PageSize="3" Height="174px"  OnRowDataBound="GridView2_RowDataBound" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
                                 <Columns>
                                     <asp:BoundField DataField="codigoTratamiento" HeaderText="Código del tratamiento" ItemStyle-Width="100" />
                                     <asp:BoundField DataField="nombreTratamiento" HeaderText="Nombre" ItemStyle-Width="100" />
@@ -121,151 +168,185 @@
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
-                <br />
-                <br />
-                <div id="camposModificar" style="display: none" tabindex="-1">
-                    <br />
-                    <br />
-                    Tipos de tratamientos
-        <br />
-                    Nuevo:
-        <br />
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
-                            <asp:TextBox class="validate" ID="txt_codigoTipoAct" runat="server" Width="56px" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
-                            <asp:TextBox class="validate" ID="txt_nombreTipoAct" runat="server" Width="234px" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                    <br />
-                    Existentes:
-        <br />
-                    <div class="col s6">
+            </div>
+            <div id="camposModificar" style="display: none" tabindex="-1">
+                <h5>Tipos de tratamientos</h5>
+                <div class="row">
+                    <div class="col s7">
+                        <p>
+                            <b>Nuevos: </b>
+                        </p>
+                    </div>
+                    <div class="col s5">
+                        <p><b>Existentes:</b></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:DropDownList ID="DropDownList1" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento"></asp:DropDownList>
+                                <asp:TextBox class="validate" ID="txt_codigoTipoAct" title="Código" runat="server" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
-
-                    <br />
-                    <br />
-                    Tratamientos:
-        <br />
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
-                            <asp:TextBox class="validate" ID="txt_codigoTratamientoAct" runat="server" Width="56px" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
-                            <asp:TextBox class="validate" ID="txt_nombreTratamientoAct" runat="server" Width="234px" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
-                            <asp:TextBox class="validate" ID="txt_precioAct" runat="server" Width="79px" Placeholder="Precio" onkeypress="return solonumeros(event)"></asp:TextBox>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-
-                    <br />
-                    Descripción del tratamiento:<br />
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
-                            <textarea id="txt_descripcionAct" name="S1" rows="2" runat="server"></textarea>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-
-                    <br />
-                    <asp:Button class="waves-effect waves-light btn" ID="btn_actualizar" runat="server" Text="Actualizar" OnClick="btn_actualizar_Click" />
+                    <div class="col s5">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <asp:TextBox class="validate" ID="txt_nombreTipoAct" title="Nombre" runat="server" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="col s5">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <asp:DropDownList ID="DropDownList1" title="Tipo de tratamiento" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento"></asp:DropDownList>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
 
 
+                <h5>Tratamientos</h5>
 
+                <div class="row">
+                    <div class="col s2">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <asp:TextBox class="validate" ID="txt_codigoTratamientoAct" title="Código" runat="server" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="col s5">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <asp:TextBox class="validate" ID="txt_nombreTratamientoAct" title="Nombre" runat="server" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="col s5">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <asp:TextBox class="validate" ID="txt_precioAct" runat="server" title="Precio" Placeholder="Precio" onkeypress="return solonumeros(event)"></asp:TextBox>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col s12">
+                        <p>Descripción del tratamiento:</p>
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <textarea id="txt_descripcionAct" name="S1" title="Descripción" rows="2" runat="server"></textarea>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <div class="row espacio">
+                    <div class="col s5"></div>
+                    <div class="col s2">
+                        <asp:Button class="waves-effect waves-light btn" ID="btn_actualizar" runat="server" Text="Actualizar" OnClick="btn_actualizar_Click" />
+                    </div>
+                    <div class="col s5"></div>
+                </div>
+                <br />
+            </div>
 
-                <%--Sección Eliminar--%>
+            <%--Sección Eliminar--%>
 
-                <div id="seccionEliminar" style="display: none">
-
-                    <table class="striped">
-                        <tr>
-                            <th colspan="5" style="text-align: center">Tratamiento</th>
-                        </tr>
-                        <tr>
-                            <th>Código tratamiento</th>
-                            <th>Nombre tratamiento</th>
-                            <th>Precio tratamiento</th>
-                            <th colspan="2">Descripción tratamiento</th>
-                        </tr>
-                        <tr>
-
-                            <td>
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label id="codigoTraEli" runat="server"></label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td>
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label id="NombreTraEli" runat="server"></label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td>
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label id="PrecioTraEli" runat="server"></label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td colspan="2">
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label id="DescriTraEli" runat="server"></label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <th colspan="5" style="text-align: center">Tipo Tratamiento</th>
-                        </tr>
-                        <tr>
-                            <th>Código tipo tratamiento</th>
-                            <th>Nombre tipo tratamiento</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label id="codigoTipoTraEli" runat="server"></label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td>
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label id="nombreTipoTraEli" runat="server"></label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
-                        </tr>
-                    </table>
-                    <br />
-                    <asp:Button class="waves-effect waves-light btn" ID="btn_eliminar" runat="server" Text="Eliminar" OnClick="btn_eliminar_Click" />
+            <div id="seccionEliminar" style="display: none" class="espacio">
+                <table class="striped">
+                    <tr>
+                        <th colspan="5" style="text-align: center">Tratamiento</th>
+                    </tr>
+                    <tr>
+                        <th>Código tratamiento</th>
+                        <th>Nombre tratamiento</th>
+                        <th>Precio tratamiento</th>
+                        <th colspan="2">Descripción tratamiento</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="codigoTraEli" runat="server" title="Código"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="NombreTraEli" runat="server" title="Nombre"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="PrecioTraEli" runat="server" title="Precio"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                        <td colspan="2">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="DescriTraEli" runat="server" title="Descripción"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="5" style="text-align: center">Tipo Tratamiento</th>
+                    </tr>
+                    <tr>
+                        <th>Código tipo tratamiento</th>
+                        <th>Nombre tipo tratamiento</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="codigoTipoTraEli" runat="server" title="Código"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="nombreTipoTraEli" runat="server" title="Nombre"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <div class="row espacio">
+                    <div class="col s5"></div>
+                    <div class="col s2">
+                        <asp:Button class="waves-effect waves-light btn" ID="btn_eliminar" runat="server" Text="Eliminar" OnClick="btn_eliminar_Click" />
+                    </div>
+                    <div class="col s5"></div>
                 </div>
             </div>
-            <asp:TextBox ID="txtTabla" runat="server"></asp:TextBox>
         </div>
+        <asp:TextBox ID="txtTabla" runat="server"></asp:TextBox>
     </form>
-
+    <script src="../js/materialize.js"></script>
+    <script src="../js/materialize.min.js"></script>
     <script type="text/javascript">
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
+
         function mostrarAgregar() {
             document.getElementById('seccionAgregar').style.display = 'block';
             ocultarActualizar();
@@ -347,13 +428,10 @@
     <script type="text/javascript" src="../js/quicksearch.js"></script>
 
     <script type="text/javascript">
-        $(function () {
-            $('.search_textbox').each(function (i) {
-                $(this).quicksearch("[id*=GridView2] tr:not(:has(th))", {
-                    'testQuery': function (query, txt, row) {
-                        return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
-                    }
-                });
+        $(document).ready(function () {
+            $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+                $('#<%=InvisButton.ClientID%>').click();
+
             });
         });
     </script>

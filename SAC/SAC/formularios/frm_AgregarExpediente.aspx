@@ -9,6 +9,9 @@
     <link href="../css/materialize.css" rel="stylesheet" />
 
     <style>
+         .espacio {
+            padding-top: 5%;
+        }
         .ajustar {
             font-size: 15px;
         }
@@ -21,9 +24,9 @@
     </style>
 </head>
 
-<body>
+<body oncopy="return false" onpaste="return false">
     <header>
-        <h1 style="text-align: center">Registro de Expediente</h1>
+        <h2 style="text-align: center">Registro de expedientes</h2>
     </header>
 
     <div class="container">
@@ -36,7 +39,7 @@
 
 
                 <div class="col s3">
-                    <label class="active" for="fecha">Fecha: </label>
+                    <label class="active" for="fecha" title="Fecha actual">Fecha: </label>
                     <asp:Label ID="lblfecha" runat="server" Text="Label"></asp:Label>
                 </div>
 
@@ -46,7 +49,7 @@
                 <div class="col s4">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <asp:TextBox ID="cedulaEx" runat="server" AutoPostBack="true" class="validate" required onkeypress="return solonumeros(event)" OnTextChanged="cedulaEx_TextChanged" MaxLength="14"></asp:TextBox>
+                            <asp:TextBox ID="cedulaEx" runat="server" AutoPostBack="true" title="Cédula" class="validate" required onkeypress="return solonumeros(event)" OnTextChanged="cedulaEx_TextChanged" MaxLength="14"></asp:TextBox>
                             <label class="active" for="cedula">Cédula</label>
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -164,7 +167,7 @@
 
                         <div class="col s12">
                             <label>
-                                <input class="with-gap" name="hmradi8" runat="server" type="radio" id="hmradi8"  onclick="uncheckRadio(this)" />
+                                <input class="with-gap" name="hmradi8" runat="server" type="radio" id="hmradi8" onclick="uncheckRadio(this)" />
                                 <span>8) Aparición de equimosís (moretes)</span>
                             </label>
                         </div>
@@ -447,23 +450,30 @@
                         </label>
                     </div>
                     <div id="gine" style="display: none">
-                        <div class="col 1">
-                            <input id="smrespu2" type="text" runat="server" class="validate" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                        <div class="col s2">
+                            <input id="smrespu2" type="text" runat="server" title="Partos" class="validate" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             <label class="active" for="smrespu2"># partos</label>
                         </div>
-                        <div class="col 1">
+                        <div class="col s2">
 
-                            <input id="smrespu3" type="text" runat="server" class="validate" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                            <input id="smrespu3" type="text" runat="server" title="Abortos" class="validate" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             <label class="active" for="smrespu4"># abortos</label>
                         </div>
-                        <div class="col 1">
-                            <input id="smrespu4" type="text" runat="server" class="validate" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                        <div class="col s2">
+                            <input id="smrespu4" type="text" runat="server" class="validate" title="Cesáreas" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             <label class="active" for="smrespu5"># cesáreas</label>
                         </div>
                     </div>
-                    <input id="smrespu5" type="text" runat="server" class="validate" maxlength="44" />
-                    <label class="active" for="smrespu6">Observaciones</label>
+
+
                 </div>
+                <div class="row">
+                    <div class="col s12">
+                        <input id="smrespu5" type="text" runat="server" class="validate" maxlength="44" />
+                        <label class="active" for="smrespu6">Observaciones</label>
+                    </div>
+                </div>
+
 
             </div>
             <%--------------------------------------------Signos vitales-----------------------------------------------------%>
@@ -476,17 +486,17 @@
                 <div class="row">
                     <div class="col s4">
                         <span>Presión arterial</span>
-                        <input id="svrespu1" type="text" runat="server" class="validate" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                        <input id="svrespu1" type="text" runat="server" class="validate" title="Presión" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                         <label class="active" for="svrespu1">mm/Hg</label>
                     </div>
                     <div class="col s4">
                         <span>Pulso</span>
-                        <input id="svrespu2" type="text" runat="server" class="validate" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                        <input id="svrespu2" type="text" runat="server" class="validate" title="Pulso" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                         <label class="active" for="svrespu2">ppm</label>
                     </div>
                     <div class="col s4">
                         <span>Frecuencia respiratoria</span>
-                        <input id="svrespu3" type="text" runat="server" class="validate" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                        <input id="svrespu3" type="text" runat="server" class="validate" title="Frecuencia respiratoria" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                         <label class="active" for="svrespu3">pm</label>
                     </div>
                 </div>
@@ -496,12 +506,14 @@
             <br />
             <br />
             <div class="row">
-                <div class="input-field col s4">
+                <div class=" col s4"></div>
+                <div class="input-field col s2">
                     <asp:Button class=" btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" BackColor="#009999" />
                 </div>
-                <div class="input-field col s4">
+                <div class="input-field col s2">
                     <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
                 </div>
+                <div class=" col s4"></div>
             </div>
         </form>
 
