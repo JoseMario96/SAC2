@@ -46,7 +46,7 @@
         </asp:ScriptManager>
         <div class="container">
 
-            <div class="row">
+            <div class="row espacio">
                 <div class="input-field col s3 ">
                     <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
                     <label class="active" for="first_name2">Nombre:</label>

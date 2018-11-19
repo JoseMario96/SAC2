@@ -34,33 +34,23 @@ namespace SAC.formularios
         public static string alcohol;
         public static string shock;
         public static string embarazada;
+        public static string fuma;
         public static string anticonceptivo;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                GridView1.DataSource = metodo.BuscarExpediente();
-                GridView1.DataBind();
+                if (!this.IsPostBack)
+                {
+                    GridView1.DataSource = metodo.BuscarExpediente();
+                    GridView1.DataBind();
+                }
+
             }
             catch
             {
 
             }
-        }
-
-        protected void OnDataBound(object sender, EventArgs e)
-        {
-            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                TableHeaderCell cell = new TableHeaderCell();
-                TextBox txtSearch = new TextBox();
-                txtSearch.Attributes["placeholder"] = GridView1.Columns[i].HeaderText;
-                txtSearch.CssClass = "search_textbox";
-                cell.Controls.Add(txtSearch);
-                row.Controls.Add(cell);
-            }
-            GridView1.HeaderRow.Parent.Controls.AddAt(1, row);
         }
 
 
@@ -85,7 +75,8 @@ namespace SAC.formularios
             </script>";
 
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-
+            GridView1.DataSource = metodo.BuscarExpediente2(txtSearch.Text.Trim());
+            GridView1.DataBind();
             foreach (GridViewRow row in GridView1.Rows)
             {
                 if (row.RowIndex == GridView1.SelectedIndex)
@@ -360,13 +351,15 @@ namespace SAC.formularios
 
                     if (datos[35].Equals("Si"))
                     {
-                        fuma.Text = datos[35];
+                        fumaN.Checked = false;
+                        fumaS.Checked = true;
                         cigarroDia.Text = datos[36];
                         cigarroPeriodo.Text = datos[37];
                     }
                     else
                     {
-                        fuma.Text = "";
+                        fumaS.Checked = false;
+                        fumaN.Checked = true;
                         cigarroDia.Text = datos[36];
                         cigarroPeriodo.Text = datos[37];
                     }
@@ -642,12 +635,16 @@ namespace SAC.formularios
             {
                 anticonceptivo = "No";
             }
-            if (fuma.Text == "")
+            if (fumaS.Checked)
             {
-                fuma.Text = "No";
+                fuma = "Si";
             }
-   
-            metodo.actualizarExpediente(expediente.InnerText, cardiaco.Text, presion.Text, reumatica, sida, derrame, anemia, sangre, pais, donde.Text, tiempo.Text, moretes, rinnon.Text, gastro.Text, vision, cortico, diabetes, epilepsia, respiratoria, quimio, reumatismo, hepatico.Text, herpes, perdida_peso.Text, aumento_peso.Text, artritis, psiquiatrico, tiroides.Text, transmision, osteoporosis, migranna, bifos.Text, drogas.Text, fuma.Text, cigarroDia.Text, cigarroPeriodo.Text, alcohol, frecuenciaAlcohol.Text, cicatriz.Text, shock, arterialSignos.Text, pulsoSignos.Text, frecuenciaSignos.Text, embarazada, semanas.Text, anticonceptivo, gineco.Text, abortos.Text, cesareas.Text, observacionesMujer.Text);
+            else
+            {
+                fuma = "No";
+            }
+
+            metodo.actualizarExpediente(expediente.InnerText, cardiaco.Text, presion.Text, reumatica, sida, derrame, anemia, sangre, pais, donde.Text, tiempo.Text, moretes, rinnon.Text, gastro.Text, vision, cortico, diabetes, epilepsia, respiratoria, quimio, reumatismo, hepatico.Text, herpes, perdida_peso.Text, aumento_peso.Text, artritis, psiquiatrico, tiroides.Text, transmision, osteoporosis, migranna, bifos.Text, drogas.Text, fuma, cigarroDia.Text, cigarroPeriodo.Text, alcohol, frecuenciaAlcohol.Text, cicatriz.Text, shock, arterialSignos.Text, pulsoSignos.Text, frecuenciaSignos.Text, embarazada, semanas.Text, anticonceptivo, gineco.Text, abortos.Text, cesareas.Text, observacionesMujer.Text);
 
             string script = @"<script type='text/javascript'>
             alert('Se han actualizado adecuadamente los datos');
@@ -658,6 +655,13 @@ namespace SAC.formularios
         protected void Cancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("frm_ActualizarExpediente.aspx");
+        }
+
+        protected void InvisButton_Click(object sender, EventArgs e)
+        {
+            GridView1.DataSource = metodo.BuscarExpediente2(txtSearch.Text.Trim());
+            GridView1.DataBind();
+
         }
     }
 }

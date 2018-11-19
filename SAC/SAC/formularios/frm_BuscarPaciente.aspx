@@ -62,7 +62,7 @@
                 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
                 <script type="text/javascript" src="../js/quicksearch.js"></script>
 
-                <script type="text/javascript">
+<%--                <script type="text/javascript">
                     $(function () {
                         $('.search_textbox').each(function (i) {
                             $(this).quicksearch("[id*=GridView1] tr:not(:has(th))", {
@@ -72,7 +72,7 @@
                             });
                         });
                     });
-                </script>
+                </script>--%>
             </div>
             <div id="formularioP" style="display: none" class="espacio centrar">
                 <table class="striped">
@@ -340,19 +340,17 @@
         }
 
     </script>
-    <script type="text/javascript">
 
+    <script type="text/javascript">
         $(document).ready(function () {
             document.getElementById("apellido1").required = false;
             document.getElementById("apellido2").required = false;
             $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
-
                 $('#<%=InvisButton.ClientID%>').click();
-
             });
         });
-
     </script>
+
     <script src="js/materialize.min.js"></script>
 </body>
 </html>
