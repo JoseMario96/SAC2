@@ -15,24 +15,18 @@
     <script src="../js/html2canvas.js"></script>
     <script src="../js/html2canvas.min.js"></script>
     <style>
-        #myCanvas {
-            border: 2px solid #000000;
+        #canvasesdiv2 {
+            width: 510px;
+            height: 200px;
+            margin: 0px auto;
+            text-align: center;
         }
 
-        #myCanvas2 {
-            border: 2px solid #000000;
-        }
-
-        #myCanvas3 {
-            border: 2px solid #000000;
-        }
-
-        #myCanvas4 {
-            border: 2px solid #000000;
-        }
-
-        #NmyCanvas, #NmyCanvas2, #NmyCanvas3, #NmyCanvas4 {
-            border: 2px solid #000000;
+        #canvasesdiv {
+            width: 810px;
+            height: 200px;
+            margin: 0px auto;
+            text-align: center;
         }
 
         body {
@@ -54,10 +48,6 @@
     </style>
 
     <style type="text/css">
-        body, a, a:hover {
-            cursor: url(C:\Users\dtrej\source\repos\SAC2\SAC\SAC\images\cur438.cur), progress;
-        }
-
         .auto-style6 {
             width: 96px;
             height: 10px;
@@ -161,22 +151,23 @@
                 </div>
 
                 <h5 class="izquierda">Odontograma</h5>
-                <div id="canvasesdiv" style="position: relative; width: 810px; height: 200px">
-                    <canvas id="myCanvas" width="810" height="200" style="z-index: 1; position: absolute; left: 25%; top: 0px;"></canvas>
-                    <canvas id="myCanvas2" width="810" height="200" style="z-index: 2; position: absolute; left: 25%; top: 0px;"></canvas>
-                    <canvas id="myCanvas3" width="810" height="200" style="z-index: 3; position: absolute; left: 25%; top: 0px;"></canvas>
-                    <canvas id="myCanvas4" width="810" height="200" style="z-index: 4; position: absolute; left: 25%; top: 0px;"></canvas>
+                <div id="canvasesdiv" style="position: relative;">
+                    <canvas id="myCanvas" width="810" height="200" style="z-index: 1; position: absolute; left: 0%; top: 0px;"></canvas>
+                    <canvas id="myCanvas2" width="810" height="200" style="z-index: 2; position: absolute; left: 0%; top: 0px;"></canvas>
+                    <canvas id="myCanvas3" width="810" height="200" style="z-index: 3; position: absolute; left: 0%; top: 0px;"></canvas>
+                    <canvas id="myCanvas4" width="810" height="200" style="z-index: 4; position: absolute; left: 0%; top: 0px;"></canvas>
                 </div>
                 <br />
                 <br />
-                <div id="canvasesdiv2" style="position: relative; width: 890px; height: 200px">
-                    <canvas id="NmyCanvas" width="510" height="200" style="z-index: 1; position: absolute; left: 46%; top: 0px;"></canvas>
-                    <canvas id="NmyCanvas2" width="510" height="200" style="z-index: 2; position: absolute; left: 46%; top: 0px;"></canvas>
-                    <canvas id="NmyCanvas3" width="510" height="200" style="z-index: 3; position: absolute; left: 46%; top: 0px;"></canvas>
-                    <canvas id="NmyCanvas4" width="510" height="200" style="z-index: 4; position: absolute; left: 46%; top: 0px;"></canvas>
+                <div id="canvasesdiv2" style="position: relative;">
+                    <canvas id="NmyCanvas" width="510" height="200" style="z-index: 1; position: absolute; left: 0%; top: 0px;"></canvas>
+                    <canvas id="NmyCanvas2" width="510" height="200" style="z-index: 2; position: absolute; left: 0%; top: 0px;"></canvas>
+                    <canvas id="NmyCanvas3" width="510" height="200" style="z-index: 3; position: absolute; left: 0%; top: 0px;"></canvas>
+                    <canvas id="NmyCanvas4" width="510" height="200" style="z-index: 4; position: absolute; left: 0%; top: 0px;"></canvas>
                 </div>
 
-                <div style="margin-left: auto; margin-right: auto;">
+
+                <div style="margin-left: auto; margin-right: auto; display: none">
                     <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
                         runat="server" AutoGenerateColumns="False" Height="174px" Width="70%" HorizontalAlign="Center">
                         <Columns>
@@ -186,7 +177,10 @@
                         </Columns>
                     </asp:GridView>
                 </div>
+
                 <div class="row botones">
+                    <div class="col s4">
+                    </div>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <div class="input-field col s2">
@@ -196,6 +190,8 @@
                     </asp:UpdatePanel>
                     <div class="input-field col s2">
                         <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="cancelar" />
+                    </div>
+                    <div class="col s4">
                     </div>
                 </div>
                 <script>
@@ -469,7 +465,7 @@
                         ctx.stroke();
                     }
                     // Funcion para sombrear diente completo(extraccion)
-                    function marcar_extraccion(contexto, num_diente, color_pas2) {
+                    function marcar_extraccionNino(contexto, num_diente, color_pas2) {
                         var ctx = contexto;
                         // Definiendo puntos de dibujo
                         med = medida;
@@ -540,7 +536,7 @@
 
                         ctx.clearRect(inicio_x, inicio_y, med, med);
                     }
-                    function marcar_exodoncia(contexto, num_diente, color_pas) {
+                    function marcar_exodonciaNino(contexto, num_diente, color_pas) {
                         var ctxx = contexto;
                         // Definiendo puntos de dibujo
                         med = medida;
@@ -723,15 +719,26 @@
                     function pintarDienteNino(diente, seccion, color, marca) {
                         dibuja_seccionNinos(ctxN, diente, seccion, color);
                         if (color == 'black') {
-                            marcar_extraccion(ctxN, marca, 'black');
+                            marcar_extraccionNino(ctxN, marca, 'black');
                         }
                         else {
-
-                            marcar_exodoncia(ctxN, marca, 'red');
+                            marcar_exodonciaNino(ctxN, marca, 'red');
                         }
-
                     }
-                    //---------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    //----------------------------------------ADULTO -----------------------------------------------
 
                     function dibuja_contorno(context, inicio_x, inicio_y, med) {
                         var ctx = context;

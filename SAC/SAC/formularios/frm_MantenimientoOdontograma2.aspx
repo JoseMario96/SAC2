@@ -140,7 +140,7 @@
                     <div class="input-field col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:Button ID="cancelarOdontograma" runat="server" class="waves-effect waves-light btn" Text="Cancelar" />
+                                <asp:Button ID="cancelarOdontograma" runat="server" class="waves-effect waves-light btn" Text="Cancelar" OnClick="cancelarOdontograma_Click" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -1968,7 +1968,7 @@
                         <div class="input-field col s2">
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:Button ID="Cancelar" runat="server" class="waves-effect waves-light btn" Text="Cancelar" />
+                                    <asp:Button ID="Cancelar" runat="server" class="waves-effect waves-light btn" Text="Cancelar" OnClick="Cancelar_Click" />
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
