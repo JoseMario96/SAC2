@@ -16,27 +16,34 @@ namespace SAC.formularios
         public static String[] vector = new string[100];
         public static DataTable tabla1;
         public static DataTable tblInicio;
+
         public static int limite = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!this.IsPostBack)
             {
-                tblInicio = venta.VentaPendiente();
-                if (tblInicio.Rows.Count > 0) {
-                    Gridview_Paciente.DataSource = tblInicio;
-                    Gridview_Paciente.DataBind();
-                }
-                else
+                try
                 {
-                    string script = @"<script type='text/javascript'>
+                    tblInicio = venta.VentaPendiente();
+                    if (tblInicio.Rows.Count > 0)
+                    {
+                        Gridview_Paciente.DataSource = tblInicio;
+                        Gridview_Paciente.DataBind();
+                    }
+                    else
+                    {
+                        string script = @"<script type='text/javascript'>
                     alert('No hay ventas nuevas sin terminar');
                     </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    }
                 }
-            }catch
-            {
+                catch
+                {
 
+                }
             }
+
         }
 
         protected void Gridview_Paciente_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,7 +83,7 @@ namespace SAC.formularios
             catch
             {
 
-            }  
+            }
         }
 
         protected void Gridview_Paciente_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -92,62 +99,62 @@ namespace SAC.formularios
         {
             //try
             //{
-                double abono = 0;
-                double total = Convert.ToDouble(lbl_total.InnerText);
-                double extra = 0;
-                if (txt_extra.Value != "")
-                {
-                    extra = Convert.ToDouble(txt_extra.Value);
-                }
-                if (txt_abono.Value != "")
-                {
-                    abono = Convert.ToDouble(txt_abono.Value);
-                }
-                double totalFinal = total + extra;
-                double saldo = totalFinal - abono;
-                if (abono > totalFinal)
-                {
-                    string scripts = @"<script type='text/javascript'>
+            double abono = 0;
+            double total = Convert.ToDouble(lbl_total.InnerText);
+            double extra = 0;
+            if (txt_extra.Value != "")
+            {
+                extra = Convert.ToDouble(txt_extra.Value);
+            }
+            if (txt_abono.Value != "")
+            {
+                abono = Convert.ToDouble(txt_abono.Value);
+            }
+            double totalFinal = total + extra;
+            double saldo = totalFinal - abono;
+            if (abono > totalFinal)
+            {
+                string scripts = @"<script type='text/javascript'>
                     alert('El abono no puede ser mayor al total de la venta!');
                     document.getElementById('cabecera').style.display = 'block';
                     </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
-                    txt_abono.Value = "";
-                    txt_abono.Focus();
-                }
-                else
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+                txt_abono.Value = "";
+                txt_abono.Focus();
+            }
+            else
+            {
+                String codigo = "";
+                String fecha2 = "";
+                String detalle = "";
+                DateTime date = DateTime.Now;
+                String date2 = date.ToString("yyyy-MM-dd HH:mm:ss");
+                for (int i = 0; i <= limite; i++)
                 {
-                    String codigo = "";
-                    String fecha2 = "";
-                    String detalle = "";
-                    DateTime date = DateTime.Now;
-                    String date2 = date.ToString("yyyy-MM-dd HH:mm:ss");
-                    for (int i = 0; i <= limite; i++)
-                    {
-                        DateTime fecha = Convert.ToDateTime(tabla1.Rows[i][1]);
-                        fecha2 = fecha.ToString("yyyy-MM-dd HH:mm:ss");
-                        codigo = venta.CodigoExpedienteTratamiento(fecha2);
-                        vector[i] = codigo;
-                        detalle = detalle + tabla1.Rows[i][0] + " | ";
-                    }
-                    venta.AgregarVenta(cedula, date2, detalle, totalFinal.ToString(), saldo.ToString());
-                    // Si el queda saldo pendiente, se agrega la venta como un abono
-                    if (abono < totalFinal & abono > 0)
-                    {
-                        String codigoVenta = venta.UltimaVenta();
-                        venta.AgregarAbono(codigoVenta, txt_abono.Value, date2);
-                    }
-
-                    // Asigna valor de true a los tratamientos que ya se pagaron
-                    for (int i = 0; i <= limite; i++)
-                    {
-                        venta.TerminarVenta(vector[i]);
-                    }
-                    txt_abono.Value = "";
-                    txt_extra.Value = "";
-                    Gridview_Paciente.DataSource = venta.VentaPendiente();
-                    Gridview_Paciente.DataBind();
+                    DateTime fecha = Convert.ToDateTime(tabla1.Rows[i][1]);
+                    fecha2 = fecha.ToString("yyyy-MM-dd HH:mm:ss");
+                    codigo = venta.CodigoExpedienteTratamiento(fecha2);
+                    vector[i] = codigo;
+                    detalle = detalle + tabla1.Rows[i][0] + " | ";
                 }
+                venta.AgregarVenta(cedula, date2, detalle, totalFinal.ToString(), saldo.ToString());
+                // Si el queda saldo pendiente, se agrega la venta como un abono
+                if (abono < totalFinal & abono > 0)
+                {
+                    String codigoVenta = venta.UltimaVenta();
+                    venta.AgregarAbono(codigoVenta, txt_abono.Value, date2);
+                }
+
+                // Asigna valor de true a los tratamientos que ya se pagaron
+                for (int i = 0; i <= limite; i++)
+                {
+                    venta.TerminarVenta(vector[i]);
+                }
+                txt_abono.Value = "";
+                txt_extra.Value = "";
+                Gridview_Paciente.DataSource = venta.VentaPendiente();
+                Gridview_Paciente.DataBind();
+            }
             //}catch
             //    {
             //        string scripts = @"<script type='text/javascript'>
@@ -155,21 +162,20 @@ namespace SAC.formularios
             //            </script>";
             //ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
             //}
-    }
+        }
 
-        protected void Gridview_Paciente_DataBound(object sender, EventArgs e)
+
+        protected void InvisButton_Click(object sender, EventArgs e)
         {
-            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
-            for (int i = 0; i < Gridview_Paciente.Columns.Count; i++)
-            {
-                TableHeaderCell cell = new TableHeaderCell();
-                TextBox txtSearch = new TextBox();
-                txtSearch.Attributes["placeholder"] = Gridview_Paciente.Columns[i].HeaderText;
-                txtSearch.CssClass = "search_textbox";
-                cell.Controls.Add(txtSearch);
-                row.Controls.Add(cell);
-            }
-            Gridview_Paciente.HeaderRow.Parent.Controls.AddAt(1, row);
+            Gridview_Paciente.DataSource = venta.VentaPendiente2(txtSearch.Text.Trim());
+            Gridview_Paciente.DataBind();
+        }
+
+        protected void Gridview_Paciente_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            Gridview_Paciente.DataSource = venta.VentaPendiente2(txtSearch.Text.Trim());
+            Gridview_Paciente.PageIndex = e.NewPageIndex;
+            Gridview_Paciente.DataBind();
         }
     }
 }

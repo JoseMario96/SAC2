@@ -26,7 +26,10 @@
         <form id="form1" runat="server">
             <asp:ScriptManager runat="server" ID="sm">
             </asp:ScriptManager>
-
+<div class="input-field col s3 ">
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
+                    <label class="active" for="first_name2">Nombre:</label>
+                </div>
             <div class="row">
                 <div class="col s12">
                     <h5><b>Pacientes pendientes de pago:</b></h5>
@@ -36,8 +39,9 @@
             <div class="row">
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
+ <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
                         <asp:GridView ID="Gridview_Paciente" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
-                            runat="server" AutoGenerateColumns="False" Height="174px" Width="100%" OnSelectedIndexChanged="Gridview_Paciente_SelectedIndexChanged" OnRowDataBound="Gridview_Paciente_RowDataBound" OnDataBound="Gridview_Paciente_DataBound">
+                            runat="server" AutoGenerateColumns="False" AllowPaging="true" PageSize="3" Height="174px" Width="100%" OnSelectedIndexChanged="Gridview_Paciente_SelectedIndexChanged" OnPageIndexChanging="Gridview_Paciente_PageIndexChanging" OnRowDataBound="Gridview_Paciente_RowDataBound">
                             <Columns>
                                 <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula del paciente" ItemStyle-Width="100">
                                     <ItemStyle Width="100px" />
@@ -158,13 +162,10 @@
     <script type="text/javascript" src="../js/quicksearch.js"></script>
 
     <script type="text/javascript">
-        $(function () {
-            $('.search_textbox').each(function (i) {
-                $(this).quicksearch("[id*=Gridview_Paciente] tr:not(:has(th))", {
-                    'testQuery': function (query, txt, row) {
-                        return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
-                    }
-                });
+        $(document).ready(function () {
+            $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+                $('#<%=InvisButton.ClientID%>').click();
+
             });
         });
     </script>

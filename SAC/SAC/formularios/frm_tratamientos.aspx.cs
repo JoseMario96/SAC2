@@ -18,6 +18,8 @@ namespace SAC.formularios
             {
                 if (!IsPostBack)
                 {
+                    GridView2.DataSource = funciones.Grid1();
+                    GridView2.DataBind();
                     DropDownList2.DataSource = funciones.TipoTratamiento();
                     DropDownList2.DataBind();
                     DropDownList2.DataTextField = "nombreTipoTratamiento";
@@ -29,8 +31,7 @@ namespace SAC.formularios
 
                 }
 
-                GridView2.DataSource = funciones.Grid1();
-                GridView2.DataBind();
+                
                 txtTabla.Attributes.Add("style", "DISPLAY: none");
 
                 //GridView1.DataSource = funciones.Grid1();
@@ -289,6 +290,19 @@ namespace SAC.formularios
                 txt_codigoTipo.Text = "";
                 txt_nombreTipo.Text = "";
             }
+        }
+
+        protected void InvisButton_Click(object sender, EventArgs e)
+        {
+            GridView2.DataSource = funciones.Grid2(txtSearch.Text.Trim());
+            GridView2.DataBind();
+        }
+
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.DataSource = funciones.Grid2(txtSearch.Text.Trim());
+            GridView2.PageIndex = e.NewPageIndex;
+            GridView2.DataBind();
         }
     }
 }

@@ -31,10 +31,15 @@
             <asp:ScriptManager runat="server" ID="sm">
             </asp:ScriptManager>
             <div id="grid" class="row espacio">
+ <div class="input-field col s3 ">
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
+                    <label class="active" for="first_name2">Nombre:</label>
+                </div>
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
+<asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
                         <asp:GridView ID="Gridview_Paciente" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
-                            runat="server" AutoGenerateColumns="False" Height="174px" Width="100%" OnDataBound="Gridview_Paciente_DataBound" OnRowDataBound="Gridview_Paciente_RowDataBound" OnSelectedIndexChanged="Gridview_Paciente_SelectedIndexChanged">
+                            runat="server" AutoGenerateColumns="False" Height="174px" Width="100%" AllowPaging="true" PageSize="3" OnPageIndexChanging="Gridview_Paciente_PageIndexChanging" OnRowDataBound="Gridview_Paciente_RowDataBound" OnSelectedIndexChanged="Gridview_Paciente_SelectedIndexChanged">
                             <Columns>
                                 <asp:BoundField DataField="codigoVenta" HeaderText="Código" ItemStyle-Width="100">
                                     <ItemStyle Width="100px" />
@@ -127,18 +132,15 @@
             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
             <script type="text/javascript" src="../js/quicksearch.js"></script>
 
-            <script type="text/javascript">
-                $(function () {
-                    $('.search_textbox').each(function (i) {
-                        $(this).quicksearch("[id*=Gridview_Paciente] tr:not(:has(th))", {
-                            'testQuery': function (query, txt, row) {
-                                return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
-                            }
-                        });
-                    });
-                });
-            </script>
-        </form>
-    </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+                $('#<%=InvisButton.ClientID%>').click();
+            });
+        });
+    </script>
 </body>
 </html>

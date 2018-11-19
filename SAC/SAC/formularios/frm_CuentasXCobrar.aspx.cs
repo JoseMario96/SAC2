@@ -16,28 +16,33 @@ namespace SAC.formularios
         public static Double saldoVenta = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!this.IsPostBack)
             {
-                if (cuenta.CuentaXCobrar().Rows.Count == 0)
+                try
+                {
+
+                    if (cuenta.CuentaXCobrar().Rows.Count == 0)
+                    {
+                        string scripts = @"<script type='text/javascript'>
+                    alert('No hay cuentas por cobrar');
+                    </script>";
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+                    }
+                    else
+                    {
+                        Gridview_CxC.DataSource = cuenta.CuentaXCobrar();
+                        Gridview_CxC.DataBind();
+                    }
+                }
+                catch
                 {
                     string scripts = @"<script type='text/javascript'>
-                    alert('No hay cuentas por cobrar');
+                    alert('No se pudo realizar la operación!');
                     </script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
                 }
-                else
-                {
-                    Gridview_CxC.DataSource = cuenta.CuentaXCobrar();
-                    Gridview_CxC.DataBind();
-                }
             }
-            catch
-            {
-                string scripts = @"<script type='text/javascript'>
-                    alert('No se pudo realizar la operación!');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
-            }
+
         }
 
         protected void Gridview_CxC_SelectedIndexChanged(object sender, EventArgs e)
@@ -144,7 +149,7 @@ namespace SAC.formularios
                             cuenta.ActualizarSaldo(codigoVenta, saldoVenta - abono);
                             cuenta.AgregarAbono(codigoVenta, abono.ToString(), date2);
                         }
-                        Gridview_CxC.DataSource = cuenta.CuentaXCobrar();
+                        Gridview_CxC.DataSource = cuenta.CuentaXCobrar2(txtSearch.Text.Trim());
                         Gridview_CxC.DataBind();
                         txt_abono.Value = "";
                     }
@@ -160,19 +165,19 @@ namespace SAC.formularios
             }
         }
 
-        protected void Gridview_CxC_DataBound(object sender, EventArgs e)
+
+
+        protected void InvisButton_Click(object sender, EventArgs e)
         {
-            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
-            for (int i = 0; i < Gridview_CxC.Columns.Count; i++)
-            {
-                TableHeaderCell cell = new TableHeaderCell();
-                TextBox txtSearch = new TextBox();
-                txtSearch.Attributes["placeholder"] = Gridview_CxC.Columns[i].HeaderText;
-                txtSearch.CssClass = "search_textbox";
-                cell.Controls.Add(txtSearch);
-                row.Controls.Add(cell);
-            }
-            Gridview_CxC.HeaderRow.Parent.Controls.AddAt(1, row);
+            Gridview_CxC.DataSource = cuenta.CuentaXCobrar2(txtSearch.Text.Trim());
+            Gridview_CxC.DataBind();
+        }
+
+        protected void Gridview_CxC_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            Gridview_CxC.DataSource = cuenta.CuentaXCobrar2(txtSearch.Text.Trim());
+            Gridview_CxC.PageIndex = e.NewPageIndex;
+            Gridview_CxC.DataBind();
         }
     }
 }

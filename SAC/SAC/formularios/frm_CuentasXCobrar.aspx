@@ -10,6 +10,11 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="../js/quicksearch.js"></script>
     <title></title>
+    <style>
+        .espacio {
+            padding-top: 5%;
+        }
+    </style>
 </head>
 <body oncopy="return false" onpaste="return false">
     <header>
@@ -25,12 +30,16 @@
                     <h5><b>Pacientes pendientes de pago:</b></h5>
                 </div>
             </div>
-
+ <div class="input-field col s3 ">
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
+                    <label class="active" for="first_name2">Nombre:</label>
+                </div>
             <div class="row">
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
+<asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
                         <asp:GridView ID="Gridview_CxC" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
-                            runat="server" AutoGenerateColumns="False" Height="174px" OnRowDataBound="Gridview_CxC_RowDataBound" OnSelectedIndexChanged="Gridview_CxC_SelectedIndexChanged" OnDataBound="Gridview_CxC_DataBound">
+                            runat="server" AutoGenerateColumns="False" AllowPaging="true" PageSize="3" OnPageIndexChanging="Gridview_CxC_PageIndexChanging" Height="174px" OnRowDataBound="Gridview_CxC_RowDataBound" OnSelectedIndexChanged="Gridview_CxC_SelectedIndexChanged">
                             <Columns>
                                 <asp:BoundField DataField="codigoVenta" HeaderText="Código" ItemStyle-Width="50">
                                     <ItemStyle Width="40px" />
@@ -170,18 +179,17 @@
             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
             <script type="text/javascript" src="../js/quicksearch.js"></script>
 
-            <script type="text/javascript">
-                $(function () {
-                    $('.search_textbox').each(function (i) {
-                        $(this).quicksearch("[id*=Gridview_CxC] tr:not(:has(th))", {
-                            'testQuery': function (query, txt, row) {
-                                return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
-                            }
-                        });
-                    });
-                });
-            </script>
+
+    
         </form>
     </div>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+                $('#<%=InvisButton.ClientID%>').click();
+
+            });
+        });
+        </script>
 </body>
 </html>

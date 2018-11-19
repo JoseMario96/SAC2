@@ -664,5 +664,12 @@ namespace SAC.formularios
             GridView1.DataBind();
 
         }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.DataSource = metodo.BuscarExpediente2(txtSearch.Text.Trim());
+            GridView1.PageIndex = e.NewPageIndex;
+            GridView1.DataBind();
+        }
     }
 }
