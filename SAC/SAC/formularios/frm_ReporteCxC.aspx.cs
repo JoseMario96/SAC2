@@ -155,8 +155,8 @@ namespace SAC.formularios
                 Gridview_Venta.DataSource = cuenta.CuentaXCobrarReporte();
                 Gridview_Venta.DataBind();
                 string script = @"<script type='text/javascript'>
-                            document.getElementById('busqueda').style.display = 'block';
                             document.getElementById('botones').style.display = 'none';
+                            document.getElementById('busqueda').style.display = 'block';
                             </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             }

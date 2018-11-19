@@ -13,8 +13,19 @@ namespace SAC.formularios
         metodos.Metodos_Ventas venta = new metodos.Metodos_Ventas();
         protected void Page_Load(object sender, EventArgs e)
         {
-            Gridview_Paciente.DataSource = venta.TodaslasVentas();
-            Gridview_Paciente.DataBind();
+            if (venta.TodaslasVentas().Rows.Count > 0)
+            {
+                Gridview_Paciente.DataSource = venta.TodaslasVentas();
+                Gridview_Paciente.DataBind();
+            }
+            else
+            {
+                string script = @"<script type='text/javascript'>
+                        alert('No hay ventas registradas!');                
+                        </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
+            
         }
 
         protected void Gridview_Paciente_SelectedIndexChanged(object sender, EventArgs e)

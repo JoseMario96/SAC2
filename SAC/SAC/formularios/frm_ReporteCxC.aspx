@@ -11,18 +11,18 @@
     <script type="text/javascript" src="../js/quicksearch.js"></script>
     <title></title>
     <style>
-        .boton1{
-            width:200px;
-            height:200px;
-            background-image:url(../images/Descargar.png);
-            border:0px;
+        .boton1 {
+            width: 123px;
+            height: 150px;
+            background-image: url(../images/Descargar1.png);
+            border: 0px;
         }
-        .boton2{
-            width:200px;
-            height:200px;
-            background-image:url(../images/Personas.png);
-            border:0px;
-            overflow:hidden;
+        .boton2 {
+            width: 123px;
+            height: 150px;
+            background-image: url(../images/Personas1.png);
+            border: 0px;
+            overflow: hidden;
         }
         .boton1:hover{
             -webkit-transform:scale(1.25);

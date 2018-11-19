@@ -38,9 +38,6 @@
                                         <ItemStyle Width="100px" />
                                     </asp:BoundField>
                                 </Columns>
-                        <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
-                        <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
-                        <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                             </asp:GridView>
                         </ContentTemplate>
                     </asp:UpdatePanel>

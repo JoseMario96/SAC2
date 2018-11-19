@@ -95,7 +95,7 @@
                 <input class="entrada" runat="server" id="txt_usuario" type="text" placeholder="Usuario" required="required" autocomplete="off" onkeydown="return sololetras(event)" maxlength="15" />
                 <br />
                 <br />
-                <input class="entrada" runat="server" id="txt_contraseña" type="password" placeholder="Contraseña" required="required" onkeydown="return sololetras(event)" maxlength="15" />
+                <input class="entrada" runat="server" id="txt_contrasena" type="password" placeholder="Contraseña" required="required" onkeydown="return sololetras(event)" maxlength="15" />
                 <label runat="server" id="aviso" style="display: none; text-align: center; color: red">Solo se permiten letras y números!</label>
                 <br />
                 <br />
@@ -132,7 +132,7 @@
         function solonumeros(e) {
             key = e.keyCoden || e.which;
             teclado = String.fromCharCode(key);
-            numero = " 1234567890áéíóúabcdefghijklmnñopqrstuvwxyz";
+            numero = "1234567890";
             especiales = "8-37-38-46";
             teclado_especial = false;
             for (var i in especiales) {
@@ -141,14 +141,16 @@
                 }
             }
             if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+                document.getElementById('aviso').style.display = 'block';
                 return false;
             }
+            document.getElementById('aviso').style.display = 'none';
         }
 
         function sololetras(e) {
             key = e.keyCoden || e.which;
             teclado = String.fromCharCode(key).toLowerCase();
-            letras = " 1234567890áéíóúabcdefghijklmnñopqrstuvwxyz";
+            letras = "0123456789áéíóúabcdefghijklmnñopqrstuvwxyz";
             especiales = "8-37-38-46-164";
             teclado_especial = false;
 
@@ -165,6 +167,18 @@
             }
             document.getElementById('aviso').style.display = 'none';
         }
+        //window.onload = function () {
+        //    var myInput = document.getElementById('txt_usuario');
+        //    myInput.onpaste = function (e) {
+        //        e.preventDefault();
+        //        alert("esta acción está prohibida");
+        //    }
+
+        //    myInput.oncopy = function (e) {
+        //        e.preventDefault();
+        //        alert("esta acción está prohibida");
+        //    }
+        //}
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>

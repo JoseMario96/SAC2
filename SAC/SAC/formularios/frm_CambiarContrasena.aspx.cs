@@ -31,9 +31,9 @@ namespace SAC.formularios
                     //Especificamos el correo desde el que se enviará el Email y el nombre de la persona que lo envía
                     mail.From = new MailAddress("clinicadental.alinacamacho@gmail.com");
                     //Aquí ponemos el asunto del correo
-                    mail.Subject = "Restauración de contraseña";
+                    mail.Subject = "Cambio de contraseña";
                     //Aquí ponemos el mensaje que incluirá el correo
-                    mail.Body = "Se ha registrado un cambio de su contraseña, sino ha sido usted, por favor comuníquese con los administradores del sitio web.\n" +
+                    mail.Body = "Se ha registrado un cambio de su contraseña, si no ha sido usted, por favor comuníquese con los administradores del sitio web.\n" +
                         "Su usuario es: " + txt_usuario.Value + ".\n" +
                         "Su contraseña nueva es: " + txt_contraNueva.Value + ".\n" +
                         "Clínica Dental Alina Camacho";
@@ -48,6 +48,7 @@ namespace SAC.formularios
                     SmtpServer.Credentials = new System.Net.NetworkCredential("clinicadental.alinacamacho@gmail.com", "SAC-corredores.2018");
                     SmtpServer.EnableSsl = true;
                     SmtpServer.Send(mail);
+                    txt_usuario.Value = "";
                     string script = @"<script type='text/javascript'>
                     alert('Contraseña actualizada!');
                     </script>";

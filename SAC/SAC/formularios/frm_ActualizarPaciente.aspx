@@ -57,6 +57,7 @@
                             <asp:BoundField DataField="apellido2Paciente" HeaderText="Segundo Apellido" ItemStyle-Width="100" />
 
                         </Columns>
+
                     </asp:GridView>
 
                 </div>

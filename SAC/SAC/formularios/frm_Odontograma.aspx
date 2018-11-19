@@ -25,6 +25,7 @@
                         <asp:BoundField DataField="apellido1Paciente" HeaderText="Primer Apellido" ItemStyle-Width="100" />
                         <asp:BoundField DataField="apellido2Paciente" HeaderText="Segundo Apellido" ItemStyle-Width="100" />
                     </Columns>
+
                 </asp:GridView>
 
                 <asp:ScriptManager runat="server" ID="sm">
