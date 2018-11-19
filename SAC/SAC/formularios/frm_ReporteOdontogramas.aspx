@@ -22,6 +22,10 @@
             text-align: center;
         }
 
+        .espacio {
+            padding-top: 5%;
+        }
+
         #canvasesdiv {
             width: 810px;
             height: 200px;
@@ -96,55 +100,94 @@
         </asp:ScriptManager>
         <div class="container">
 
-            <div class="row">
-                <br />
-                <br />
-                <asp:GridView ID="GridView_reporteOdontograma" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
-                    runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" AllowPaging="true" PageSize="3" OnSelectedIndexChanged="GridView_reporteOdontograma_SelectedIndexChanged" OnPageIndexChanging="GridView_reporteOdontograma_PageIndexChanging" OnRowDataBound="GridView_reporteOdontograma_RowDataBound">
-                    <Columns>
-                        <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />
-                        <asp:BoundField DataField="nombre1Paciente" HeaderText="Primer Nombre" ItemStyle-Width="100" />
-                        <asp:BoundField DataField="apellido1Paciente" HeaderText="Primer Apellido" ItemStyle-Width="100" />
-                        <asp:BoundField DataField="apellido2Paciente" HeaderText="Segundo Apellido" ItemStyle-Width="100" />
-                    </Columns>
-                </asp:GridView>
+            <div class="row espacio">
+                <div class="input-field col s3 ">
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
+                    <label class="active" for="first_name2">Nombre:</label>
+                </div>
+                <div class="row">
+                <%--    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>--%>
+                            <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
+                            <asp:GridView ID="GridView_reporteOdontograma" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
+                                runat="server" AutoGenerateColumns="False" Height="174px" AllowPaging="true" PageSize="3" OnSelectedIndexChanged="GridView_reporteOdontograma_SelectedIndexChanged" OnPageIndexChanging="GridView_reporteOdontograma_PageIndexChanging" OnRowDataBound="GridView_reporteOdontograma_RowDataBound">
+                                <Columns>
+                                    <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />
+                                    <asp:BoundField DataField="nombre1Paciente" HeaderText="Primer Nombre" ItemStyle-Width="100" />
+                                    <asp:BoundField DataField="apellido1Paciente" HeaderText="Primer Apellido" ItemStyle-Width="100" />
+                                    <asp:BoundField DataField="apellido2Paciente" HeaderText="Segundo Apellido" ItemStyle-Width="100" />
+                                </Columns>
+                            </asp:GridView>
+                     <%--   </ContentTemplate>
+                    </asp:UpdatePanel>--%>
+                </div>
             </div>
-
             <asp:Panel ID="Panel1" runat="server" Visible="false" TabIndex="-1">
                 <h5 class="izquierda">Datos personales</h5>
                 <div>
                     <table class="margen" style="border: hidden;">
                         <tr>
                             <td class="auto-style8" style="border: hidden;">
-                                <asp:Label ID="Label2" runat="server" Text="Paciente:"></asp:Label>
+                                <%--<asp:UpdatePanel runat="server">
+                                    <ContentTemplate>--%>
+                                        <asp:Label ID="Label2" runat="server" Text="Paciente:"></asp:Label>
+                            <%--        </ContentTemplate>
+                                </asp:UpdatePanel>--%>
                             </td>
                             <td class="auto-style9" style="border: hidden;">
-                                <asp:Label ID="nombre1" runat="server" Text="paciente"></asp:Label>
+                    <%--            <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>--%>
+                                        <asp:Label ID="nombre1" runat="server" Text="paciente"></asp:Label>
+                                  <%--  </ContentTemplate>
+                                </asp:UpdatePanel>--%>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style8" style="border: hidden">
-                                <asp:Label ID="Label1" runat="server" Text="Cédula:"></asp:Label>
+                          <%--      <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>--%>
+                                        <asp:Label ID="Label1" runat="server" Text="Cédula:"></asp:Label>
+                                  <%--  </ContentTemplate>
+                                </asp:UpdatePanel>--%>
                             </td>
                             <td class="auto-style9" style="border: hidden">
-
-                                <asp:Label ID="cedulaP" runat="server" Text="cedula"></asp:Label>
+                           <%--     <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>--%>
+                                        <asp:Label ID="cedulaP" runat="server" Text="cedula"></asp:Label>
+                                   <%-- </ContentTemplate>
+                                </asp:UpdatePanel>--%>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style8" style="border: hidden">
-                                <asp:Label ID="Label3" runat="server" Text="Télefono:"></asp:Label>
+                               <%-- <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>--%>
+                                        <asp:Label ID="Label3" runat="server" Text="Télefono:"></asp:Label>
+                                   <%-- </ContentTemplate>
+                                </asp:UpdatePanel>--%>
                             </td>
                             <td class="auto-style9" style="border: hidden">
-                                <asp:Label ID="telefono" runat="server" Text="telefono"></asp:Label>
+                               <%-- <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>--%>
+                                        <asp:Label ID="telefono" runat="server" Text="telefono"></asp:Label>
+                                    <%--</ContentTemplate>
+                                </asp:UpdatePanel>--%>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style6" style="border: hidden">
-                                <asp:Label ID="Label4" runat="server" Text="Correo:"></asp:Label>
+                             <%--   <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>--%>
+                                        <asp:Label ID="Label4" runat="server" Text="Correo:"></asp:Label>
+                                    <%--</ContentTemplate>
+                                </asp:UpdatePanel>--%>
                             </td>
                             <td class="auto-style7" style="border: hidden">
-                                <asp:Label ID="correo" runat="server" Text="correo"></asp:Label>
+                             <%--   <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>--%>
+                                        <asp:Label ID="correo" runat="server" Text="correo"></asp:Label>
+                                   <%-- </ContentTemplate>
+                                </asp:UpdatePanel>--%>
                             </td>
                         </tr>
                     </table>
@@ -168,26 +211,30 @@
 
 
                 <div style="margin-left: auto; margin-right: auto; display: none">
-                    <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
-                        runat="server" AutoGenerateColumns="False" Height="174px" Width="70%" HorizontalAlign="Center">
-                        <Columns>
-                            <asp:BoundField DataField="date_format(fechaExpedienteTratamiento,'%Y-%m-%d')" HeaderText="Fecha" ItemStyle-Width="30" />
-                            <asp:BoundField DataField="piezaExpedienteTratamiento" HeaderText="Diente" ItemStyle-Width="100" />
-                            <asp:BoundField DataField="tratamientoExpedienteTratamiento" HeaderText="Tratamiento" ItemStyle-Width="100" />
-                        </Columns>
-                    </asp:GridView>
+                   <%-- <asp:UpdatePanel runat="server">
+                        <ContentTemplate>--%>
+                            <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
+                                runat="server" AutoGenerateColumns="False" Height="174px" Width="70%" HorizontalAlign="Center">
+                                <Columns>
+                                    <asp:BoundField DataField="date_format(fechaExpedienteTratamiento,'%Y-%m-%d')" HeaderText="Fecha" ItemStyle-Width="30" />
+                                    <asp:BoundField DataField="piezaExpedienteTratamiento" HeaderText="Diente" ItemStyle-Width="100" />
+                                    <asp:BoundField DataField="tratamientoExpedienteTratamiento" HeaderText="Tratamiento" ItemStyle-Width="100" />
+                                </Columns>
+                            </asp:GridView>
+                        <%--</ContentTemplate>
+                    </asp:UpdatePanel>--%>
                 </div>
 
                 <div class="row botones">
                     <div class="col s4">
                     </div>
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
+                  <%--  <asp:UpdatePanel runat="server">
+                        <ContentTemplate>--%>
                             <div class="input-field col s2">
                                 <asp:Button class="waves-effect waves-light btn" ID="btnSave" runat="server" Text="Generar reporte" />
                             </div>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                       <%-- </ContentTemplate>
+                    </asp:UpdatePanel>--%>
                     <div class="input-field col s2">
                         <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="cancelar" />
                     </div>
@@ -1438,5 +1485,13 @@
             </asp:Panel>
         </div>
     </form>
+    <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+                            $('#<%=InvisButton.ClientID%>').click();
+
+                        });
+                    });
+    </script>
 </body>
 </html>

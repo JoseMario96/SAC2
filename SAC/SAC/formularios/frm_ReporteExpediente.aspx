@@ -19,10 +19,15 @@
         .auto-style4 {
             height: 26px;
         }
+         .espacio {
+            padding-top: 5%;
+        }
     </style>
 </head>
 <body oncopy="return false" onpaste="return false">
     <form id="form1" runat="server">
+         <asp:ScriptManager runat="server" ID="ScriptManager1">
+        </asp:ScriptManager>
         <div>
             <asp:Label ID="Label1" runat="server" Font-Bold="True" Text="Prueba"></asp:Label>
             <br />
