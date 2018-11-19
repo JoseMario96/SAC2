@@ -41,7 +41,7 @@ namespace SAC.formularios
         }
         protected void GridView_reporteOdontograma_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+           
             String[] datos2 = new String[10];
             GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion2(txtSearch.Text.Trim());
             GridView_reporteOdontograma.DataBind();
