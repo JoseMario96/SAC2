@@ -202,5 +202,15 @@ namespace SAC.formularios
 
 
         }
+
+        protected void Cancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frm_Odontograma.aspx");
+        }
+
+        protected void cancelarOdontograma_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frm_Odontograma.aspx");
+        }
     }
 }

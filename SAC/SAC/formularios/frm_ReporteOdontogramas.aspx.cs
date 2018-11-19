@@ -63,7 +63,7 @@ namespace SAC.formularios
             String[] datoss = new String[13];
             String[] datos2 = new String[10];
 
-            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("sad");
+            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
             GridView_reporteOdontograma.DataBind();
 
             foreach (GridViewRow row in GridView_reporteOdontograma.Rows)

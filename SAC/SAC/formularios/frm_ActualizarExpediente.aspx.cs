@@ -97,6 +97,7 @@ namespace SAC.formularios
                     datos = metodo.BuscarPaciente(ced);
                     expediente.InnerText = datos[0];
                     cedula.InnerText = datos[1];
+
                     fecha.InnerText = datos[2];
 
 
@@ -386,7 +387,7 @@ namespace SAC.formularios
 
                     }
 
-                    frecuenciaAlcohol.Text = datos[39];
+                    // frecuenciaAlcohol.Text = datos[39];
                     cicatriz.Text = datos[40];
 
                     if (datos[41].Equals("Si"))
@@ -646,7 +647,7 @@ namespace SAC.formularios
             {
                 fuma.Text = "No";
             }
-   
+
             metodo.actualizarExpediente(expediente.InnerText, cardiaco.Text, presion.Text, reumatica, sida, derrame, anemia, sangre, pais, donde.Text, tiempo.Text, moretes, rinnon.Text, gastro.Text, vision, cortico, diabetes, epilepsia, respiratoria, quimio, reumatismo, hepatico.Text, herpes, perdida_peso.Text, aumento_peso.Text, artritis, psiquiatrico, tiroides.Text, transmision, osteoporosis, migranna, bifos.Text, drogas.Text, fuma.Text, cigarroDia.Text, cigarroPeriodo.Text, alcohol, frecuenciaAlcohol.Text, cicatriz.Text, shock, arterialSignos.Text, pulsoSignos.Text, frecuenciaSignos.Text, embarazada, semanas.Text, anticonceptivo, gineco.Text, abortos.Text, cesareas.Text, observacionesMujer.Text);
 
             string script = @"<script type='text/javascript'>
