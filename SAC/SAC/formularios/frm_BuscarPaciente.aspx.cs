@@ -16,29 +16,21 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            GridView1.DataSource = objeto.Paciente();
-            GridView1.DataBind();
+            if (!this.IsPostBack)
+            {
+                GridView1.DataSource = objeto.Paciente();
+                GridView1.DataBind();
+
+            }
+           
 
             ScriptManager.RegisterClientScriptBlock(this, GetType(), "myfunction", "mostrar();", true);
         }
 
-        protected void OnDataBound(object sender, EventArgs e)
-        {
-            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                TableHeaderCell cell = new TableHeaderCell();
-                TextBox txtSearch = new TextBox();
-                txtSearch.Attributes["placeholder"] = GridView1.Columns[i].HeaderText;
-                txtSearch.CssClass = "search_textbox";
-                cell.Controls.Add(txtSearch);
-                row.Controls.Add(cell);
-            }
-            GridView1.HeaderRow.Parent.Controls.AddAt(1, row);
-        }
+
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.DataSource = objeto.Paciente();
+            GridView1.DataSource = objeto.Paciente2(txtSearch.Text.Trim());
             GridView1.PageIndex = e.NewPageIndex;
             GridView1.DataBind();
 
@@ -58,9 +50,9 @@ namespace SAC.formularios
 
             String[] datos = new String[13];
             String[] datos2 = new String[10];
-            GridView1.DataSource = objeto.Paciente();
+            GridView1.DataSource = objeto.Paciente2(txtSearch.Text.Trim());
             GridView1.DataBind();
-         
+
             string script = @"<script type='text/javascript'>
                 document.getElementById('formularioP').style.display = 'block' ;
                 document.getElementById('formularioP').scrollIntoView();              
@@ -182,6 +174,13 @@ namespace SAC.formularios
             {
                 GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
+        }
+
+        protected void InvisButton_Click(object sender, EventArgs e)
+        {
+            GridView1.DataSource = objeto.Paciente2(txtSearch.Text.Trim());
+            GridView1.DataBind();
+
         }
     }
 }

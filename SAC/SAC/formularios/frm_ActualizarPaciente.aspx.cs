@@ -184,20 +184,7 @@ namespace SAC.formularios
         }
 
         // Metodo con el header de la tabla para la busqueda
-        protected void OnDataBound(object sender, EventArgs e)
-        {
-            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                TableHeaderCell cell = new TableHeaderCell();
-                TextBox txtSearch = new TextBox();
-                txtSearch.Attributes["placeholder"] = GridView1.Columns[i].HeaderText;
-                txtSearch.CssClass = "search_textbox";
-                cell.Controls.Add(txtSearch);
-                row.Controls.Add(cell);
-            }
-            GridView1.HeaderRow.Parent.Controls.AddAt(1, row);
-        }
+ 
 
         protected void Guardar_Click(object sender, EventArgs e)
         {
@@ -270,8 +257,8 @@ namespace SAC.formularios
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", mensaje, false);
                 }
                 datos = objeto.buscarPaciente(cedula.InnerHtml);
-                if ( SiE.Checked & cedula_encargado.Text != "" & nombre1_encargado.Text != "" & nombre2_encargado.Text != "" & apellido1_encargado.Text != "" & apellido2_encargado.Text != "" & celular_encargado.Text != "" & direccion_encargado.Text != "" & correo_encargado.Text != "" & parentezco.Text != "")
-                {     
+                if (SiE.Checked & cedula_encargado.Text != "" & nombre1_encargado.Text != "" & nombre2_encargado.Text != "" & apellido1_encargado.Text != "" & apellido2_encargado.Text != "" & celular_encargado.Text != "" & direccion_encargado.Text != "" & correo_encargado.Text != "" & parentezco.Text != "")
+                {
                     objeto.ActualizarPacienteNuevoEncargado(estado, cedula.InnerHtml, cedula_encargado.Text, nombre1_encargado.Text, nombre2_encargado.Text, apellido1_encargado.Text, apellido2_encargado.Text, generoE, telefono_encargado.Text, celular_encargado.Text, direccion_encargado.Text, correo_encargado.Text, parentezco.Text);
                 }
             }
@@ -291,7 +278,7 @@ namespace SAC.formularios
                 }
             }
 
-            GridView1.DataSource = objeto.Paciente();
+            GridView1.DataSource = objeto.Paciente2(txtSearch.Text.Trim());
             GridView1.DataBind();
 
             string script = @"<script type='text/javascript'>
@@ -390,5 +377,17 @@ namespace SAC.formularios
             Response.Redirect("frm_ActualizarPaciente.aspx");
         }
 
+        protected void InvisButton_Click(object sender, EventArgs e)
+        {
+            GridView1.DataSource = objeto.Paciente2(txtSearch.Text.Trim());
+            GridView1.DataBind();
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.DataSource = objeto.Paciente2(txtSearch.Text.Trim());
+            GridView1.PageIndex = e.NewPageIndex;
+            GridView1.DataBind();
+        }
     }
 }
