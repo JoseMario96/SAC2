@@ -9,6 +9,9 @@
     <link href="../css/materialize.css" rel="stylesheet" />
 
     <style>
+         .espacio {
+            padding-top: 5%;
+        }
         .ajustar {
             font-size: 15px;
         }

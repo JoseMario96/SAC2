@@ -16,13 +16,16 @@ namespace SAC.formularios
         {
             try
             {
-                GridView1.DataSource = metodo.BuscarExpediente();
-                GridView1.DataBind();
+                if (!this.IsPostBack)
+                {
+                    GridView1.DataSource = metodo.BuscarExpediente();
+                    GridView1.DataBind();
+                }
             }
             catch
             {
-            
-            }            
+
+            }
         }
 
         protected void OnDataBound(object sender, EventArgs e)
@@ -67,7 +70,7 @@ namespace SAC.formularios
             {
                 if (row.RowIndex == GridView1.SelectedIndex)
                 {
-                    
+
                     row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
                     ced = row.Cells[1].Text;
@@ -136,6 +139,19 @@ namespace SAC.formularios
                     row.ToolTip = "Click to select this row.";
                 }
             }
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.DataSource = metodo.BuscarExpediente2(txtSearch.Text.Trim());
+            GridView1.PageIndex = e.NewPageIndex;
+            GridView1.DataBind();
+        }
+
+        protected void InvisButton_Click(object sender, EventArgs e)
+        {
+            GridView1.DataSource = metodo.BuscarExpediente2(txtSearch.Text.Trim());
+            GridView1.DataBind();
         }
     }
 }
