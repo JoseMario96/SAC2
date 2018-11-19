@@ -13,18 +13,22 @@ namespace SAC.formularios
         metodos.Metodos_Ventas venta = new metodos.Metodos_Ventas();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (venta.TodaslasVentas().Rows.Count > 0)
+            if (!this.IsPostBack)
             {
-                Gridview_Paciente.DataSource = venta.TodaslasVentas();
-                Gridview_Paciente.DataBind();
-            }
-            else
-            {
-                string script = @"<script type='text/javascript'>
+                if (venta.TodaslasVentas().Rows.Count > 0)
+                {
+                    Gridview_Paciente.DataSource = venta.TodaslasVentas();
+                    Gridview_Paciente.DataBind();
+                }
+                else
+                {
+                    string script = @"<script type='text/javascript'>
                         alert('No hay ventas registradas!');                
                         </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                }
             }
+
 
         }
 
@@ -67,20 +71,7 @@ namespace SAC.formularios
             }
         }
 
-        protected void Gridview_Paciente_DataBound(object sender, EventArgs e)
-        {
-            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
-            for (int i = 0; i < Gridview_Paciente.Columns.Count; i++)
-            {
-                TableHeaderCell cell = new TableHeaderCell();
-                TextBox txtSearch = new TextBox();
-                txtSearch.Attributes["placeholder"] = Gridview_Paciente.Columns[i].HeaderText;
-                txtSearch.CssClass = "search_textbox";
-                cell.Controls.Add(txtSearch);
-                row.Controls.Add(cell);
-            }
-            Gridview_Paciente.HeaderRow.Parent.Controls.AddAt(1, row);
-        }
+
 
         protected void Gridview_Paciente_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -98,6 +89,19 @@ namespace SAC.formularios
                         document.getElementById('tabla').style.display = 'none';                  
                         </script>";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+        }
+
+        protected void Gridview_Paciente_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            Gridview_Paciente.DataSource = venta.TodaslasVentas2(txtSearch.Text.Trim());
+            Gridview_Paciente.PageIndex = e.NewPageIndex;
+            Gridview_Paciente.DataBind();
+        }
+
+        protected void InvisButton_Click(object sender, EventArgs e)
+        {
+            Gridview_Paciente.DataSource = venta.TodaslasVentas2(txtSearch.Text.Trim());
+            Gridview_Paciente.DataBind();
         }
     }
 }

@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="../css/materialize.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -13,43 +13,51 @@
 </head>
 <body oncopy="return false" onpaste="return false">
     <header>
-        <h1 style="text-align:center">Ventas</h1>
+        <h1 style="text-align: center">Ventas</h1>
     </header>
-    <div class="container">
-        <div class="row">
-            <form id="form1" runat="server">
-                <asp:ScriptManager runat="server" ID="sm">
-                </asp:ScriptManager>
-                <div id="grid">
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
-                            <asp:GridView ID="Gridview_Paciente" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
-                                runat="server" AutoGenerateColumns="False" Height="174px" Width="100%" OnDataBound="Gridview_Paciente_DataBound" OnRowDataBound="Gridview_Paciente_RowDataBound" OnSelectedIndexChanged="Gridview_Paciente_SelectedIndexChanged" >
-                                <Columns>
-                                    <asp:BoundField DataField="codigoVenta" HeaderText="Código" ItemStyle-Width="100">
-                                        <ItemStyle Width="100px" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="nombre1Paciente" HeaderText="Primer nombre" ItemStyle-Width="100">
-                                        <ItemStyle Width="100px" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="apellido1Paciente" HeaderText="Primer apellido" ItemStyle-Width="100">
-                                        <ItemStyle Width="100px" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="fechaVenta" HeaderText="Fecha" ItemStyle-Width="100">
-                                        <ItemStyle Width="100px" />
-                                    </asp:BoundField>
-                                </Columns>
-                                <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
-                                <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
-                                <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
-                            </asp:GridView>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" ID="sm">
+        </asp:ScriptManager>
+        <div class="container">
+            <div class="row">
+
+                <div class="input-field col s3 ">
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
+                    <label class="active" for="first_name2">Nombre:</label>
                 </div>
-                <br />
-                <br />
-                <br />
-                <div id="tabla" style="display:none">
+
+                <div class="row">
+                    <div id="grid">
+
+
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
+                                <asp:GridView ID="Gridview_Paciente" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
+                                    runat="server" AutoGenerateColumns="False" Height="174px" Width="100%" AllowPaging="true" PageSize="3" OnRowDataBound="Gridview_Paciente_RowDataBound" OnSelectedIndexChanged="Gridview_Paciente_SelectedIndexChanged" OnPageIndexChanging="Gridview_Paciente_PageIndexChanging">
+                                    <Columns>
+                                        <asp:BoundField DataField="codigoVenta" HeaderText="Código" ItemStyle-Width="100">
+                                            <ItemStyle Width="100px" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="nombre1Paciente" HeaderText="Primer nombre" ItemStyle-Width="100">
+                                            <ItemStyle Width="100px" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="apellido1Paciente" HeaderText="Primer apellido" ItemStyle-Width="100">
+                                            <ItemStyle Width="100px" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="fechaVenta" HeaderText="Fecha" ItemStyle-Width="100">
+                                            <ItemStyle Width="100px" />
+                                        </asp:BoundField>
+                                    </Columns>
+                                    <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
+                                    <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
+                                    <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
+                                </asp:GridView>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <div id="tabla" style="display: none">
                     <table class="striped">
                         <tr>
                             <th colspan="6" style="text-align: center">Detalles de la venta</th>
@@ -123,8 +131,17 @@
                         });
                     });
                 </script>
-            </form>
+
+            </div>
         </div>
-    </div>
+    </form>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+                $('#<%=InvisButton.ClientID%>').click();
+
+            });
+        });
+    </script>
 </body>
 </html>

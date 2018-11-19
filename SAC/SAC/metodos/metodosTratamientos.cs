@@ -41,9 +41,9 @@ namespace SAC.metodos
         public void agregarTratamiento(String codigoTratamiento, String nombre, Double precio, String descripcion, String codigoTipo)
         {
             try
-            { 
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_tratamiento` (`codigoTratamiento`, `nombreTratamiento`, `precioTratamiento`, `descripcionTratamiento`, `codigoTipoTratamiento`) VALUES ('" + codigoTratamiento + "', '" + nombre + "', '" + precio + "', '" + descripcion + "', '" + codigoTipo + "');", con.abrir_conexion()).ExecuteNonQuery();
-            con.cerrar_Conexion();
+            {
+                consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_tratamiento` (`codigoTratamiento`, `nombreTratamiento`, `precioTratamiento`, `descripcionTratamiento`, `codigoTipoTratamiento`) VALUES ('" + codigoTratamiento + "', '" + nombre + "', '" + precio + "', '" + descripcion + "', '" + codigoTipo + "');", con.abrir_conexion()).ExecuteNonQuery();
+                con.cerrar_Conexion();
             }
             catch
             {
@@ -67,7 +67,8 @@ namespace SAC.metodos
         {
             String codigo = "";
             MySqlDataReader buscar = consultar.ejecutar_consulta("Select codigoTipoTratamiento from tbl_tipotratamiento where nombreTipoTratamiento = '" + nombre + "';", con.abrir_conexion()).ExecuteReader();
-            while (buscar.Read()) {
+            while (buscar.Read())
+            {
                 codigo = buscar.GetString(0);
             }
             return codigo;
@@ -83,10 +84,21 @@ namespace SAC.metodos
                 return dt;
             }
         }
+        public DataTable Grid2(String nom)
+        {
+            string consulta = "Select tbl_tratamiento.codigoTratamiento, tbl_tratamiento.nombreTratamiento, tbl_tratamiento.precioTratamiento, tbl_tipotratamiento.nombreTipoTratamiento from tbl_tratamiento, tbl_tipotratamiento where nombreTratamiento like '%" + nom + "%' and tbl_tratamiento.codigoTipoTratamiento = tbl_tipotratamiento.codigoTipoTratamiento order by codigoTratamiento;";
+            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+            MySqlDataAdapter da = new MySqlDataAdapter(comando);
+            using (DataTable dt = new DataTable())
+            {
+                da.Fill(dt);
+                return dt;
+            }
+        }
         public String[] mostrarDatos(String codigo)
         {
             String[] tratamiento = new string[6];
-            MySqlDataReader busqueda = consultar.ejecutar_consulta("select tbl_tipotratamiento.codigoTipoTratamiento, tbl_tipotratamiento.nombreTipoTratamiento, tbl_tratamiento.codigoTratamiento, tbl_tratamiento.nombreTratamiento, tbl_tratamiento.precioTratamiento, tbl_tratamiento.descripcionTratamiento from tbl_tipotratamiento, tbl_tratamiento where tbl_tratamiento.codigoTratamiento = '"+codigo+"' and tbl_tratamiento.codigoTipoTratamiento = tbl_tipotratamiento.codigoTipoTratamiento;", con.abrir_conexion()).ExecuteReader();
+            MySqlDataReader busqueda = consultar.ejecutar_consulta("select tbl_tipotratamiento.codigoTipoTratamiento, tbl_tipotratamiento.nombreTipoTratamiento, tbl_tratamiento.codigoTratamiento, tbl_tratamiento.nombreTratamiento, tbl_tratamiento.precioTratamiento, tbl_tratamiento.descripcionTratamiento from tbl_tipotratamiento, tbl_tratamiento where tbl_tratamiento.codigoTratamiento = '" + codigo + "' and tbl_tratamiento.codigoTipoTratamiento = tbl_tipotratamiento.codigoTipoTratamiento;", con.abrir_conexion()).ExecuteReader();
             while (busqueda.Read())
             {
                 for (int i = 0; i <= 5; i++)
@@ -107,7 +119,7 @@ namespace SAC.metodos
         }
         public void eliminarTratamiento(String codigo)
         {
-            consultar.ejecutar_consulta("delete from tbl_tratamiento where codigoTratamiento = '"+codigo+"';", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("delete from tbl_tratamiento where codigoTratamiento = '" + codigo + "';", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
 
@@ -120,7 +132,7 @@ namespace SAC.metodos
                 retorno = true;
             }
             con.cerrar_Conexion();
-            return retorno;            
+            return retorno;
         }
 
         public String mostrarTipoTratamiento(String codigo)

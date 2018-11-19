@@ -122,7 +122,11 @@
             </div>
             <%-- Sección de modificar--%>
 
-            <div class="row" id="grid" style="display: none">
+            <div class="row espacio" id="grid" style="display: none">
+                <div class="input-field col s3 ">
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
+                    <label class="active" for="first_name2">Nombre:</label>
+                </div>
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
                         <h4 id="titulo1" style="text-align: center; display: none">Actualizar</h4>
@@ -130,24 +134,24 @@
                     </ContentTemplate>
                 </asp:UpdatePanel>
 
+                <div class="row">
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
+                            <asp:GridView ID="GridView2" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
+                                runat="server" AutoGenerateColumns="False" AllowPaging="true" PageSize="3" Height="174px"  OnRowDataBound="GridView2_RowDataBound" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
+                                <Columns>
+                                    <asp:BoundField DataField="codigoTratamiento" HeaderText="Código del tratamiento" ItemStyle-Width="100" />
+                                    <asp:BoundField DataField="nombreTratamiento" HeaderText="Nombre" ItemStyle-Width="100" />
+                                    <asp:BoundField DataField="precioTratamiento" HeaderText="Precio" ItemStyle-Width="100" />
+                                    <asp:BoundField DataField="nombreTipoTratamiento" HeaderText="Tipo de tratamiento" ItemStyle-Width="100" />
+                                </Columns>
 
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
-                        <asp:GridView ID="GridView2" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
-                            runat="server" AutoGenerateColumns="False" OnDataBound="GridView2_DataBound" Height="174px" OnRowDataBound="GridView2_RowDataBound" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
-                            <Columns>
-                                <asp:BoundField DataField="codigoTratamiento" HeaderText="Código del tratamiento" ItemStyle-Width="100" />
-                                <asp:BoundField DataField="nombreTratamiento" HeaderText="Nombre" ItemStyle-Width="100" />
-                                <asp:BoundField DataField="precioTratamiento" HeaderText="Precio" ItemStyle-Width="100" />
-                                <asp:BoundField DataField="nombreTipoTratamiento" HeaderText="Tipo de tratamiento" ItemStyle-Width="100" />
-                            </Columns>
-
-                        </asp:GridView>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                            </asp:GridView>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
             </div>
-            <br />
-            <br />
             <div id="camposModificar" style="display: none" tabindex="-1">
                 <h5>Tipos de tratamientos</h5>
                 <div class="row">
@@ -394,13 +398,10 @@
     <script type="text/javascript" src="../js/quicksearch.js"></script>
 
     <script type="text/javascript">
-        $(function () {
-            $('.search_textbox').each(function (i) {
-                $(this).quicksearch("[id*=GridView2] tr:not(:has(th))", {
-                    'testQuery': function (query, txt, row) {
-                        return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
-                    }
-                });
+        $(document).ready(function () {
+            $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+                $('#<%=InvisButton.ClientID%>').click();
+
             });
         });
     </script>
