@@ -19,7 +19,7 @@ namespace SAC.formularios
         public static DataTable tabla1;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            txt_fecha1.Focus();
         }
 
         protected void btn_buscar_Click(object sender, EventArgs e)

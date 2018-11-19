@@ -188,7 +188,7 @@ namespace SAC.formularios
             }
 
             string script = @"<script type='text/javascript'>
-            alert('Se ha insertado exitosamente');
+            alert('Los cambios se han realizado exitosamente');
             </script>";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             //}

@@ -17,6 +17,7 @@ namespace SAC.formularios
         public static int estado = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtSearch.Focus();
             ImageButton1.ImageUrl = "/images/actualizarEncargado.png";
             if (!this.IsPostBack)
             {

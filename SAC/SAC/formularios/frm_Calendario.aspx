@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <link href="../css/materialize.css" rel="stylesheet" />
-    <!-- Place favicon.ico and apple-touchm-icon.png in the root directory -->
+    <%--<!-- Place favicon.ico and apple-touchm-icon.png in the root directory -->
     <link rel="shortcut icon" href="favicon.ico" />
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css' />
     <!-- Animate.css -->
@@ -24,7 +24,7 @@
 
     <!-- Bootstrap  -->
     <link href="../css/bootstrap.css" rel="stylesheet" />
-    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />--%>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
     <script type="text/javascript">
@@ -37,7 +37,7 @@
         });
     </script>
     <style>
-        #popup {
+        /*#popup {
             visibility: hidden;
             opacity: 0;
             margin-top: -300px;
@@ -62,7 +62,7 @@
             margin: 7% auto;
             padding: 30px 50px;
             background-color: #fafafa;
-            /*color: #333;*/
+            color: #333;
             border-radius: 3px;
             width: 65%;
             height: 75%;
@@ -81,7 +81,7 @@
         }
 
         .responsiveContent {
-            /*position: relative;*/
+            position: relative;
             height: 0;
             overflow: hidden;
             padding-bottom: 56.2%;
@@ -95,7 +95,7 @@
                 width: 100%;
                 height: 100%;
             }
-
+           
         .espacio {
             padding-top: 21%;
         }
@@ -111,300 +111,306 @@
         .centrar {
             display: block;
             margin: auto;
+        } */
+
+        td th .calendario {
+            text-align: center;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .calendario {
+            text-align: center;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body oncopy="return false" onpaste="return false">
     <form id="form1" runat="server">
-        <asp:ScriptManager runat="server" ID="sm">
-        </asp:ScriptManager>
-        <div style="padding-left:10%; padding-top:5%">
-            <asp:UpdatePanel runat="server">
-                <ContentTemplate>
-                    <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Full" Font-Names="Arial" Font-Size="15pt" ForeColor="#003399" Height="432px" Width="80%" OnDayRender="Calendar1_DayRender" OnSelectionChanged="Calendar1_SelectionChanged" >
-                        <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" Font-Underline="true" />
-                        <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
-                        <OtherMonthDayStyle ForeColor="#999999" HorizontalAlign="Center" />
-                        <SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
-                        <SelectorStyle BackColor="#99CCCC" ForeColor="#336666" />
-                        <TitleStyle BackColor="#003399" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="10pt" ForeColor="#CCCCFF" Height="25px" />
-                        <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
-                        <WeekendDayStyle BackColor="#CCCCFF" />
-                    </asp:Calendar>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
-        <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="86400000"></asp:Timer>
-        <br />
-        <br />
-        <%-- HOY--%>
-        <div id="cabecera" style="text-align:center; padding-right:18%; padding-left:10%; display:none">
-            <h3>Citas de hoy</h3>
-            <asp:UpdatePanel runat="server">
-                <ContentTemplate>
-                    <label id="fechaCabecera" runat="server" style="font-size:large"></label>
-                </ContentTemplate>
-            </asp:UpdatePanel>    
-        </div>
-        <div id="grid" style="display: none; padding-left:10%;">
-            <asp:UpdatePanel runat="server">
-                <ContentTemplate>
-                    <asp:GridView ID="Gridview_Hoy" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
-                        runat="server" AutoGenerateColumns="False" Height="174px" Width="80%" OnRowDataBound="Gridview_Hoy_RowDataBound" OnSelectedIndexChanged="Gridview_Hoy_SelectedIndexChanged" >
-                        <Columns>
-                            <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula del paciente" ItemStyle-Width="100" >
-                            <ItemStyle Width="100px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="nombre" HeaderText="Nombre del paciente" ItemStyle-Width="100" >
-                            <ItemStyle Width="100px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="horaCita" HeaderText="Hora de la cita" ItemStyle-Width="100" >
-                            <ItemStyle Width="100px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="telefonoCita" HeaderText="Contacto" ItemStyle-Width="100" >
-                            <ItemStyle Width="100px" />
-                            </asp:BoundField>
-                        </Columns>
-                        <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
-                        <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
-                        <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
-                    </asp:GridView>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
-        <br />
-        <br />
-        <div id="Actualizar_Eliminar" style="display:none; width:70%; margin-left:15%" >
+        <div class="container">
+            <asp:ScriptManager runat="server" ID="sm">
+            </asp:ScriptManager>
+            <header>
+                <h2 style="text-align: center">Agenda de citas</h2>
+            </header>
 
-            <table class="striped">
-                <tr>
-                    <th colspan="4" style="text-align:center">Datos de la cita</th>
-                </tr>
-                <tr>
-                    <th>Cédula</th>
-                    <th>Nombre</th>
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <input id="cedulaA" type="text" class="validate" runat="server" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </td>
-                    <td>
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <input id="nombreA" type="text" class="validate" runat="server" maxlength="44" onkeypress="return sololetras(event)" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </td>
-                    <td>
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <input id="fechaA" type="text" class="validate" runat="server"/>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </td>
-                    <td>
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <input id="horaA" type="time" class="validate" runat="server" step="1800" onkeypress="return solonumeros(event)"/>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Teléfono</th>
-                    <th colspan="3">Correo electrónico</th>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <input id="telefonoA" type="text" class="validate" runat="server" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </td>
-                    <td colspan="3">
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <input id="correoA" type="email" class="validate" runat="server" maxlength="44" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </td>
-                </tr>
-                    
-                
-            </table>
-           
             <div class="row">
-
-                <div class="input-field col s3">
-                    <asp:Button class="waves-effect waves-light btn" ID="btn_Actualizar" runat="server" Text="Actualizar" OnClick="btn_Actualizar_Click" />
-                </div>
-                <div class="input-field col s3">
-                    <asp:Button class="waves-effect waves-light btn" ID="btn_Eliminar" runat="server" Text=" Eliminar " OnClick="btn_Eliminar_Click" />
-                </div>
-                <div class="input-field col s3">
-                    <asp:Button class="waves-effect waves-light btn" ID="btn_Nuevo" runat="server" Text="   Nueva  " OnClick="btn_Nuevo_Click" />
-                </div>
-                <div class="input-field col s3">
-                    <asp:Button class="waves-effect waves-light btn" ID="btn_Notificación" runat="server" Text="Notificar " OnClick="btn_Notificación_Click" />
+                <div class="col s12 calendario">
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Full" Font-Names="Arial" Font-Size="15pt" ForeColor="#003399" Height="432px" OnDayRender="Calendar1_DayRender" OnSelectionChanged="Calendar1_SelectionChanged">
+                                <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" Font-Underline="true" />
+                                <NextPrevStyle Font-Size="18pt" ForeColor="#CCCCFF" />
+                                <OtherMonthDayStyle ForeColor="#999999" HorizontalAlign="Center" />
+                                <SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+                                <SelectorStyle BackColor="#99CCCC" ForeColor="#336666" />
+                                <TitleStyle BackColor="#003399" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="18pt" ForeColor="#CCCCFF" Height="25px" />
+                                <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
+                                <WeekendDayStyle BackColor="#CCCCFF" />
+                            </asp:Calendar>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             </div>
-        </div>
+            <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="86400000"></asp:Timer>
+            <%-- HOY--%>
+            <div id="cabecera" style="text-align: center; /*padding-right: 18%; padding-left: 10%; */ display: none">
+                <h3>Citas de hoy</h3>
+                <asp:UpdatePanel runat="server">
+                    <ContentTemplate>
+                        <center> <label id="fechaCabecera" runat="server" style="font-size: large"></label></center>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
 
-        <div id="cabecera2" style="text-align:center; padding-right:18%; padding-left:10%; display:none">
-            <h3>Agregar una nueva cita</h3>  
-        </div>
-
-        <div id="agregar" class="container" style="display: none; margin-left:20%" >
-            <div class="row">
-
+            <div id="grid" style="display: none; /*padding-left: 10%; */">
                 <div class="row">
-                    <div class="col s4">
-                        <label class="active" for="cedula" style="font-size:medium">Cédula del paciente</label>
+                    <div class="col s12">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <input id="cedula" type="text" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
-
-                    <div class="col s4">
-                        <label class="active" for="nombre" style="font-size:medium">Nombre completo</label>
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <input id="nombre" type="text" runat="server" class="validate" maxlength="44" onkeypress="return sololetras(event)" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>       
-                </div>
-                <div class="row">
-                    <div class="col s4">
-                        <label class="active" for="fechaC" style="font-size:medium">Fecha de la cita</label>
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <input id="fechaC" type="text" runat="server" class="validate" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
-
-                    <div class="col s4">
-                        <label class="active" for="hora" style="font-size:medium">Hora de la cita</label>
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <input id="hora" type="time" runat="server" class="validate" step="1800" onkeypress="return solonumeros(event)" />
+                                <asp:GridView ID="Gridview_Hoy" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
+                                    runat="server" AutoGenerateColumns="False" Height="174px" OnRowDataBound="Gridview_Hoy_RowDataBound" OnSelectedIndexChanged="Gridview_Hoy_SelectedIndexChanged">
+                                    <Columns>
+                                        <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula del paciente" ItemStyle-Width="100">
+                                            <ItemStyle Width="100px" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="nombre" HeaderText="Nombre del paciente" ItemStyle-Width="100">
+                                            <ItemStyle Width="100px" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="horaCita" HeaderText="Hora de la cita" ItemStyle-Width="100">
+                                            <ItemStyle Width="100px" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="telefonoCita" HeaderText="Contacto" ItemStyle-Width="100">
+                                            <ItemStyle Width="100px" />
+                                        </asp:BoundField>
+                                    </Columns>
+                                    <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
+                                    <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
+                                    <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
+                                </asp:GridView>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
                 </div>
+            </div>
+            <div id="Actualizar_Eliminar" style="display: none; /*width: 70%; margin-left: 15%*/">
+                <table class="striped">
+                    <tr>
+                        <th colspan="4" style="text-align: center">Datos de la cita</th>
+                    </tr>
+                    <tr>
+                        <th>Cédula</th>
+                        <th>Nombre</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <input id="cedulaA" type="text" class="validate" title="Cédula" runat="server" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <input id="nombreA" type="text" class="validate" title="Nombre" runat="server" maxlength="44" onkeypress="return sololetras(event)" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <input id="fechaA" type="text" class="validate" title="Fecha" runat="server" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <input id="horaA" type="time" class="validate" title="Hora" runat="server" step="1800" onkeypress="return solonumeros(event)" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Teléfono</th>
+                        <th colspan="3">Correo electrónico</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <input id="telefonoA" type="text" class="validate" title="Teléfono" runat="server" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                        <td colspan="3">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <input id="correoA" type="email" class="validate" title="Correo" runat="server" maxlength="44" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                    </tr>
+                </table>
+
                 <div class="row">
+                    <div class="input-field col s3">
+                        <asp:Button class="waves-effect waves-light btn" ID="btn_Actualizar" runat="server" Text="Actualizar" OnClick="btn_Actualizar_Click" />
+                    </div>
+                    <div class="input-field col s3">
+                        <asp:Button class="waves-effect waves-light btn" ID="btn_Eliminar" runat="server" Text=" Eliminar " OnClick="btn_Eliminar_Click" />
+                    </div>
+                    <div class="input-field col s3">
+                        <asp:Button class="waves-effect waves-light btn" ID="btn_Nuevo" runat="server" Text="   Nueva  " OnClick="btn_Nuevo_Click" />
+                    </div>
+                    <div class="input-field col s3">
+                        <asp:Button class="waves-effect waves-light btn" ID="btn_Notificación" runat="server" Text="Notificar " OnClick="btn_Notificación_Click" />
+                    </div>
+                </div>
+            </div>
+
+            <div id="agregar" class="row" style="display: none;">
+                <div class="row">
+                    <center><div class="col s12">
+                    <div id="cabecera2" style="display: none">
+                        <h2>Agregar una nueva cita</h2>
+                    </div>
+                </div></center>
+                </div>
+                <div class="row">
+                    <div class="col s2"></div>
                     <div class="col s4">
-                        <label class="active" for="telefono" style="font-size:medium">Teléfono de contacto </label>
+                        <label class="active" for="cedula" style="font-size: medium">Cédula del paciente</label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <input id="telefono" type="number" runat="server" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                                <input id="cedula" type="text" runat="server" class="validate" title="Cédula" maxlength="14" onkeypress="return solonumeros(event)" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
 
                     <div class="col s4">
-                        <label class="active" for="correo" style="font-size:medium">Correo electrónico </label>
+                        <label class="active" for="nombre" style="font-size: medium">Nombre completo</label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <input id="correo" type="email" runat="server" class="validate" maxlength="44" />
+                                <input id="nombre" type="text" runat="server" class="validate" title="Nombre" maxlength="44" onkeypress="return sololetras(event)" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
+                    <div class="col s2"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col s2"></div>
+                    <div class="col s4">
+                        <label class="active" for="fechaC" style="font-size: medium">Fecha de la cita</label>
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <input id="fechaC" type="text" runat="server" title="Fecha de la cita" class="validate" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+
+                    <div class="col s4">
+                        <label class="active" for="hora" style="font-size: medium">Hora de la cita</label>
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <input id="hora" type="time" runat="server" title="Hora de la cita" class="validate" step="1800" onkeypress="return solonumeros(event)" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="col s2"></div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
+                    <div class="col s2"></div>
+                    <div class="col s4">
+                        <label class="active" for="telefono" style="font-size: medium">Teléfono de contacto </label>
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <input id="telefono" type="number" runat="server" title="Teléfono" class="validate" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+
+                    <div class="col s4">
+                        <label class="active" for="correo" style="font-size: medium">Correo electrónico </label>
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <input id="correo" type="email" runat="server" title="Correo" class="validate" maxlength="44" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="col s2"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col s4"></div>
+                    <div class="input-field col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <asp:Button class="waves-effect waves-light btn" ID="btn_Agregar" runat="server" Text="Guardar" OnClick="btn_Agregar_Click" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
-                    <div class="input-field col s4">
+                    <div class="input-field col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <asp:Button class="waves-effect waves-light btn" ID="btn_Limpiar" runat="server" Text="Limpiar" OnClick="btn_Limpiar_Click" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
+                    <div class="col s4"></div>
                 </div>
-
             </div>
         </div>
-
-        <%--<div class="col-md-3 col-xs-12">
-            <asp:UpdatePanel runat="server">
-                <ContentTemplate>
-                    <a id="btnEvento" href="#popup" class="popup-link fh5co-project-item" onclick="ventana()">
-                        <img src="../images/agregar.png" alt="Image" class="img-responsive centrar" />
-                        <div class=" letrasgrande">
-                            <h2 style="text-align: center;">Agregar</h2>
-                        </div>
-                    </a>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-            <div class="modal-wrapper" id="popup">
-                <div class="popup-contenedor">
-                    <div id="po" class="responsiveContent">
-                        <iframe id="agregarP"></iframe>
-                        <a class="popup-cerrar" href="#fh5co-work">X</a>
-                    </div>
-                </div>
-            </div>
-        </div>--%>
     </form>
 </body>
 <script type="text/javascript">
     function ventana() {
-       // alert('sAS');
-       document.getElementById("agregarP").src = "frm_AgregarCita.aspx";
+        // alert('sAS');
+        document.getElementById("agregarP").src = "frm_AgregarCita.aspx";
         //window.showModalDialog('frm_AgregarCita.aspx', '', 'dialogHeight:450 px;dialogWidth:670px;center:Yes;help:No;resizable: No;status:No;');
     }
 
     function solonumeros(e) {
-            key = e.keyCoden || e.which;
-            teclado = String.fromCharCode(key);
-            numero = ":1234567890";
-            especiales = "8-37-38-46";
-            teclado_especial = false;
-            for (var i in especiales) {
-                if (key == especiales[i]) {
-                    teclado_especial = true;
-                }
-            }
-            if (numero.indexOf(teclado) == -1 && !teclado_especial) {
-                return false;
+        key = e.keyCoden || e.which;
+        teclado = String.fromCharCode(key);
+        numero = ":1234567890";
+        especiales = "8-37-38-46";
+        teclado_especial = false;
+        for (var i in especiales) {
+            if (key == especiales[i]) {
+                teclado_especial = true;
             }
         }
-
-        function sololetras(e) {
-            key = e.keyCoden || e.which;
-            teclado = String.fromCharCode(key).toLowerCase();
-            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-            especiales = "8-37-38-46-164";
-            teclado_especial = false;
-
-            for (var i in especiales) {
-                if (key == especiales[i]) {
-                    teclado_especial = true; break;
-
-                }
-
-            }
-            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
-                return false;
-
-            }
+        if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+            return false;
         }
+    }
+
+    function sololetras(e) {
+        key = e.keyCoden || e.which;
+        teclado = String.fromCharCode(key).toLowerCase();
+        letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+        especiales = "8-37-38-46-164";
+        teclado_especial = false;
+
+        for (var i in especiales) {
+            if (key == especiales[i]) {
+                teclado_especial = true; break;
+
+            }
+
+        }
+        if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+            return false;
+
+        }
+    }
 
 </script>
 

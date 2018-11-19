@@ -31,17 +31,18 @@
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server" ID="ScriptManager1">
         </asp:ScriptManager>
+        <header style="text-align: center">
+            <h2>Odontograma</h2>
+        </header>
         <%-- <asp:TextBox ID="BudquedaExp" runat="server" OnTextChanged="BudquedaExp_TextChanged"></asp:TextBox>--%>
 
         <div class="container">
             <div class="row espacio">
                 <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
-                    <label class="active" for="first_name2">Nombre:</label>
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                    <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
                 </div>
-
                 <div class="row">
-
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
@@ -75,10 +76,26 @@
 
     </form>
     <script type="text/javascript">
+        function sololetras(e) {
+            key = e.keyCoden || e.which;
+            teclado = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-38-46-164";
+            teclado_especial = false;
 
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true; break;
+
+                }
+            }
+            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                return false;
+            }
+        }
         $(document).ready(function () {
             $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
-          
+
                 $('#<%=InvisButton.ClientID%>').click();
 
             });

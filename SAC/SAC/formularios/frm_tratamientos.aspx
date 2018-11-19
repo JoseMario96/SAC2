@@ -23,17 +23,35 @@
         .espacio {
             padding-top: 5%;
         }
+
+        label, tr, th {
+            font-family: sans-serif;
+            font-size: medium;
+            color: black;
+        }
+
     </style>
 </head>
-<body style="margin: 5%;" oncopy="return false" onpaste="return false">
+<body oncopy="return false" onpaste="return false">
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server" ID="sm">
         </asp:ScriptManager>
         <div class="container">
             <header>
-                <h2>Mantenimiento de tratamientos</h2>
+                <h2 style="text-align: center">Mantenimiento de tratamientos</h2>
             </header>
-            <div class="navbar-fixed">
+
+<%--            <nav>
+                <div class="nav-wrapper">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="#" onclick="mostrarAgregar()">Agregar</a></li>
+                        <li><a href="#" onclick="mostrarActualizar()">Actualizar</a></li>
+                        <li><a href="#" onclick="mostrarEliminar()">Eliminar</a></li>
+                    </ul>
+                </div>
+            </nav>--%>
+
+              <div class="navbar-fixed">
                 <nav id="menu" style="background-color: rgba(0, 163, 162, 0.8)">
                     <div class="row" id="barraMenu">
                         <div class="col s6"></div>
@@ -51,7 +69,6 @@
             </div>
 
             <%--Sección agregar--%>
-
             <div id="seccionAgregar" style="display: block">
                 <h4 style="text-align: center">Agregar</h4>
                 <h5>Tipos de tratamientos</h5>
@@ -70,21 +87,21 @@
                     <div class="col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:TextBox class="validate" ID="txt_codigoTipo" runat="server" Placeholder="Código" AutoPostBack="true" onkeypress="return solonumeros(event)" OnTextChanged="txt_codigoTipo_TextChanged1"></asp:TextBox>
+                                <asp:TextBox class="validate" title="Código" ID="txt_codigoTipo" runat="server" Placeholder="Código" AutoPostBack="true" onkeypress="return solonumeros(event)" OnTextChanged="txt_codigoTipo_TextChanged1"></asp:TextBox>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
                     <div class="col s5">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:TextBox class="validate" ID="txt_nombreTipo" runat="server" Placeholder="Nombre" AutoPostBack="true" onkeypress="return sololetras(event)"></asp:TextBox>
+                                <asp:TextBox class="validate" title="Nombre" ID="txt_nombreTipo" runat="server" Placeholder="Nombre" AutoPostBack="true" onkeypress="return sololetras(event)"></asp:TextBox>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
                     <div class="col s5">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:DropDownList ID="DropDownList2" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                <asp:DropDownList ID="DropDownList2" title="Tipo de tratamiento" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -93,21 +110,21 @@
                 <h5>Tratamientos</h5>
                 <div class="row">
                     <div class="col s2">
-                        <asp:TextBox class="validate" ID="txt_codigoTratamiento" runat="server" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
+                        <asp:TextBox class="validate" ID="txt_codigoTratamiento" title="Código" runat="server" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
 
                     </div>
                     <div class="col s5">
-                        <asp:TextBox class="validate" ID="txt_nombreTratamiento" runat="server" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                        <asp:TextBox class="validate" ID="txt_nombreTratamiento" title="Nombre" runat="server" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
 
                     </div>
                     <div class="col s5">
-                        <asp:TextBox class="validate" ID="txt_precioTratamiento" runat="server" Placeholder="Precio" onkeypress="return solonumeros(event)"></asp:TextBox>
+                        <asp:TextBox class="validate" ID="txt_precioTratamiento" title="Precio" runat="server" Placeholder="Precio" onkeypress="return solonumeros(event)"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s12">
                         <p>Descripción del tratamiento:</p>
-                        <textarea id="txt_descripcion" name="S1" rows="2" runat="server"></textarea>
+                        <textarea id="txt_descripcion" name="S1" rows="2" title="Descripción" runat="server"></textarea>
                     </div>
                 </div>
 
@@ -165,21 +182,21 @@
                     <div class="col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:TextBox class="validate" ID="txt_codigoTipoAct" runat="server" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
+                                <asp:TextBox class="validate" ID="txt_codigoTipoAct" title="Código" runat="server" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
                     <div class="col s5">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:TextBox class="validate" ID="txt_nombreTipoAct" runat="server" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                                <asp:TextBox class="validate" ID="txt_nombreTipoAct" title="Nombre" runat="server" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
                     <div class="col s5">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:DropDownList ID="DropDownList1" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento"></asp:DropDownList>
+                                <asp:DropDownList ID="DropDownList1" title="Tipo de tratamiento" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento"></asp:DropDownList>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -192,21 +209,21 @@
                     <div class="col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:TextBox class="validate" ID="txt_codigoTratamientoAct" runat="server" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
+                                <asp:TextBox class="validate" ID="txt_codigoTratamientoAct" title="Código" runat="server" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
                     <div class="col s5">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:TextBox class="validate" ID="txt_nombreTratamientoAct" runat="server" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                                <asp:TextBox class="validate" ID="txt_nombreTratamientoAct" title="Nombre" runat="server" Placeholder="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
                     <div class="col s5">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:TextBox class="validate" ID="txt_precioAct" runat="server" Placeholder="Precio" onkeypress="return solonumeros(event)"></asp:TextBox>
+                                <asp:TextBox class="validate" ID="txt_precioAct" runat="server" title="Precio" Placeholder="Precio" onkeypress="return solonumeros(event)"></asp:TextBox>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -217,7 +234,7 @@
                         <p>Descripción del tratamiento:</p>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <textarea id="txt_descripcionAct" name="S1" rows="2" runat="server"></textarea>
+                                <textarea id="txt_descripcionAct" name="S1" title="Descripción" rows="2" runat="server"></textarea>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -234,7 +251,7 @@
 
             <%--Sección Eliminar--%>
 
-            <div id="seccionEliminar" style="display: none">
+            <div id="seccionEliminar" style="display: none" class="espacio">
                 <table class="striped">
                     <tr>
                         <th colspan="5" style="text-align: center">Tratamiento</th>
@@ -249,28 +266,28 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="codigoTraEli" runat="server"></label>
+                                    <label id="codigoTraEli" runat="server" title="Código"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="NombreTraEli" runat="server"></label>
+                                    <label id="NombreTraEli" runat="server" title="Nombre"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="PrecioTraEli" runat="server"></label>
+                                    <label id="PrecioTraEli" runat="server" title="Precio"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td colspan="2">
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="DescriTraEli" runat="server"></label>
+                                    <label id="DescriTraEli" runat="server" title="Descripción"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -286,14 +303,14 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="codigoTipoTraEli" runat="server"></label>
+                                    <label id="codigoTipoTraEli" runat="server" title="Código"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="nombreTipoTraEli" runat="server"></label>
+                                    <label id="nombreTipoTraEli" runat="server" title="Nombre"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -311,8 +328,21 @@
         </div>
         <asp:TextBox ID="txtTabla" runat="server"></asp:TextBox>
     </form>
-
+    <script src="../js/materialize.js"></script>
+    <script src="../js/materialize.min.js"></script>
     <script type="text/javascript">
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
+
         function mostrarAgregar() {
             document.getElementById('seccionAgregar').style.display = 'block';
             ocultarActualizar();

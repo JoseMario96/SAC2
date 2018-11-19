@@ -14,6 +14,7 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            cedulaEx.Focus();
             lblfecha.Text = DateTime.Now.ToString("yyyy/MM/dd");
         }
 

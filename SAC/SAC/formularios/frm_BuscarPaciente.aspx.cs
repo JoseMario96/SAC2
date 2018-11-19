@@ -16,6 +16,7 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtSearch.Focus();
             if (!this.IsPostBack)
             {
                 GridView1.DataSource = objeto.Paciente();

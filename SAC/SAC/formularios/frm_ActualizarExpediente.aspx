@@ -40,11 +40,13 @@
         </asp:ScriptManager>
 
         <div class="container">
+            <header style="text-align: center">
+                <h2>Actualización de expedientes</h2>
+            </header>
             <div class="row espacio">
-
                 <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
-                    <label class="active" for="first_name2">Nombre:</label>
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                    <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
                 </div>
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
@@ -80,35 +82,35 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="cedula" runat="server"></label>
+                                    <label id="cedula" runat="server" title="Cédula"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="nombre1" runat="server"></label>
+                                    <label id="nombre1" runat="server" title="Nombre"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="nombre2" runat="server"></label>
+                                    <label id="nombre2" runat="server" title="Nombre"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="apellido1" runat="server"></label>
+                                    <label id="apellido1" runat="server" title="Primer apellido"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="apellido2" runat="server"></label>
+                                    <label id="apellido2" runat="server" title="Segundo apellido"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -125,21 +127,21 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="expediente" runat="server"></label>
+                                    <label id="expediente" runat="server" title="N° de expediente"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="fecha" runat="server"></label>
+                                    <label id="fecha" runat="server" title="Fecha"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td colspan="3">
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="observaciones" runat="server"></label>
+                                    <label id="observaciones" runat="server" title="Observaciones"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -158,14 +160,14 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="cardiaco" runat="server" MaxLength="44"></asp:TextBox>
+                                    <asp:TextBox ID="cardiaco" runat="server" MaxLength="44" title="Cardiacas"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="presion" runat="server" MaxLength="44"></asp:TextBox>
+                                    <asp:TextBox ID="presion" runat="server" MaxLength="44" title="Arterial"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -271,39 +273,39 @@
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>
-                        <td>
-                            <asp:UpdatePanel runat="server">
-                                <ContentTemplate>
-                                    <label>
-                                        <input class="with-gap" name="group6" runat="server" type="radio" id="paisS" onclick="pais(1)" />
-                                        <span>Sí</span>
-                                    </label>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                            <asp:UpdatePanel runat="server">
-                                <ContentTemplate>
-                                    <label>
-                                        <input class="with-gap" name="group6" runat="server" type="radio" id="paisN" onclick="pais(0)" />
-                                        <span>No</span>
-                                    </label>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </td>
-                        <td>
-                            <asp:UpdatePanel runat="server">
-                                <ContentTemplate>
-                                    <asp:TextBox ID="donde" runat="server" Style="display: none"></asp:TextBox>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </td>
+                            <td>
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label>
+                                            <input class="with-gap" name="group6" runat="server" type="radio" id="paisS" onclick="pais(1)" />
+                                            <span>Sí</span>
+                                        </label>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <label>
+                                            <input class="with-gap" name="group6" runat="server" type="radio" id="paisN" onclick="pais(0)" />
+                                            <span>No</span>
+                                        </label>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td>
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="donde" runat="server" title="Dónde?" Style="display: none"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
 
-                        <td>
-                            <asp:UpdatePanel runat="server">
-                                <ContentTemplate>
-                                    <asp:TextBox ID="tiempo" runat="server" Style="display: none"></asp:TextBox>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </td>
+                            <td>
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="tiempo" runat="server" title="Tiempo" Style="display: none"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
                     </tr>
                     <tr>
                         <th>11-Moretes</th>
@@ -334,14 +336,14 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="rinnon" runat="server" MaxLength="44"></asp:TextBox>
+                                    <asp:TextBox ID="rinnon" runat="server" title="Riñón" MaxLength="44"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="gastro" runat="server" MaxLength="44"></asp:TextBox>
+                                    <asp:TextBox ID="gastro" runat="server" title="Gastrointestinal" MaxLength="44"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -498,7 +500,7 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="hepatico" runat="server" MaxLength="44"></asp:TextBox>
+                                    <asp:TextBox ID="hepatico" runat="server" MaxLength="44" title="Hepáticos"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -524,14 +526,14 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="perdida_peso" runat="server" onkeypress="return solonumeros(event)" MaxLength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
+                                    <asp:TextBox ID="perdida_peso" runat="server" title="Pérdida peso" onkeypress="return solonumeros(event)" MaxLength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="aumento_peso" runat="server" onkeypress="return solonumeros(event)" MaxLength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
+                                    <asp:TextBox ID="aumento_peso" runat="server" title="Aumento peso" onkeypress="return solonumeros(event)" MaxLength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -584,7 +586,7 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="tiroides" runat="server" MaxLength="44"></asp:TextBox>
+                                    <asp:TextBox ID="tiroides" runat="server" MaxLength="44" title="tiroides"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -656,14 +658,14 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="bifos" runat="server" MaxLength="44"></asp:TextBox>
+                                    <asp:TextBox ID="bifos" runat="server" MaxLength="44" title="Bifosfonados"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="drogas" runat="server" MaxLength="44"></asp:TextBox>
+                                    <asp:TextBox ID="drogas" runat="server" MaxLength="44" title="Drogas"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -729,14 +731,14 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="frecuenciaAlcohol" runat="server" MaxLength="44"></asp:TextBox>
+                                    <asp:TextBox ID="frecuenciaAlcohol" runat="server" MaxLength="44" title="Frecuencia"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="cicatriz" runat="server" MaxLength="44"></asp:TextBox>
+                                    <asp:TextBox ID="cicatriz" runat="server" MaxLength="44" title="Cicatriz"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -771,21 +773,21 @@
                         <td class="auto-style1">
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="arterialSignos" runat="server" onkeypress="return solonumeros(event)" MaxLength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
+                                    <asp:TextBox ID="arterialSignos" runat="server" title="Presión" onkeypress="return solonumeros(event)" MaxLength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td class="auto-style1">
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="pulsoSignos" runat="server" onkeypress="return solonumeros(event)" MaxLength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
+                                    <asp:TextBox ID="pulsoSignos" runat="server" title="Pulso" onkeypress="return solonumeros(event)" MaxLength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td class="auto-style1">
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="frecuenciaSignos" runat="server" onkeypress="return solonumeros(event)" MaxLength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
+                                    <asp:TextBox ID="frecuenciaSignos" runat="server" title="Frecuencia respiratoria" onkeypress="return solonumeros(event)" MaxLength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -797,7 +799,7 @@
                         <th>Embarazada</th>
                         <th>Semanas</th>
                         <th>Tratamientos anticonceptivos</th>
-                        <th>Ginecoobstetricos</th>
+                        <th>Partos</th>
                         <th>Abortos</th>
                     </tr>
                     <tr>
@@ -822,7 +824,7 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="semanas" runat="server" MaxLength="10" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
+                                    <asp:TextBox ID="semanas" runat="server" title="Semanas" MaxLength="10" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -847,14 +849,14 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="gineco" runat="server" onkeypress="return solonumeros(event)" MaxLength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
+                                    <asp:TextBox ID="gineco" runat="server" title="Partos" onkeypress="return solonumeros(event)" MaxLength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="abortos" runat="server" MaxLength="10" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
+                                    <asp:TextBox ID="abortos" runat="server" title="Aborto" MaxLength="10" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -867,14 +869,14 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="cesareas" runat="server" MaxLength="10" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
+                                    <asp:TextBox ID="cesareas" runat="server" title="Cesareas" MaxLength="10" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td colspan="4">
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="observacionesMujer" runat="server" MaxLength="44"></asp:TextBox>
+                                    <asp:TextBox ID="observacionesMujer" title="Observaciones" runat="server" MaxLength="44"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -882,20 +884,22 @@
                 </table>
             </div>
             <div class="row" id="botones" style="display: none">
-                <div class="input-field col s4">
+                <div class=" col s4"></div>
+                <div class="input-field col s2">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
-                <div class="input-field col s4">
+                <div class="input-field col s2">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
+                <div class=" col s4"></div>
             </div>
 
             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -974,13 +978,13 @@
         </div>
     </form>
     <script type="text/javascript">
-                $(document).ready(function () {
-                    document.getElementById("apellido1").required = false;
-                    document.getElementById("apellido2").required = false;
-                    $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
-                        $('#<%=InvisButton.ClientID%>').click();
-                    });
-                });
+        $(document).ready(function () {
+            document.getElementById("apellido1").required = false;
+            document.getElementById("apellido2").required = false;
+            $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+                $('#<%=InvisButton.ClientID%>').click();
+            });
+        });
     </script>
 </body>
 </html>

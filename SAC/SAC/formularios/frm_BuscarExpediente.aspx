@@ -19,8 +19,8 @@
             #formularioP.highlighted {
                 border: 3px solid red;
             }
-            
-        label, tr,th {
+
+        label, tr, th {
             font-family: sans-serif;
             font-size: medium;
             color: black;
@@ -28,8 +28,10 @@
     </style>
 </head>
 <body oncopy="return false" onpaste="return false">
+    <header style="text-align: center">
+        <h2>Busqueda de expediente </h2>
+    </header>
     <div class="container">
-
         <form id="form1" runat="server">
             <div class="row">
                 <br />
@@ -64,19 +66,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="cedula" runat="server"></label>
+                            <label id="cedula" runat="server" title="Cédula"></label>
                         </td>
                         <td>
-                            <label id="nombre1" runat="server"></label>
+                            <label id="nombre1" runat="server" title="Nombre"></label>
                         </td>
                         <td>
-                            <label id="nombre2" runat="server"></label>
+                            <label id="nombre2" runat="server" title="Nombre"></label>
                         </td>
                         <td>
-                            <label id="apellido1" runat="server"></label>
+                            <label id="apellido1" runat="server" title="Primer apellido"></label>
                         </td>
                         <td>
-                            <label id="apellido2" runat="server"></label>
+                            <label id="apellido2" runat="server" title="Segundo apellido"></label>
                         </td>
                     </tr>
                     <tr>
@@ -89,13 +91,13 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="expediente" runat="server"></label>
+                            <label id="expediente" runat="server" title="N° de Expediente"></label>
                         </td>
                         <td>
-                            <label id="fecha" runat="server"></label>
+                            <label id="fecha" runat="server" title="Fecha"></label>
                         </td>
                         <td colspan="3">
-                            <label id="observaciones" runat="server"></label>
+                            <label id="observaciones" runat="server" title="Observaciones"></label>
                         </td>
                     </tr>
                     <tr>
@@ -110,19 +112,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="cardiaco" runat="server"></label>
+                            <label id="cardiaco" runat="server" title="Cardiacas"></label>
                         </td>
                         <td>
-                            <label id="presion" runat="server"></label>
+                            <label id="presion" runat="server" title="Arterial"></label>
                         </td>
                         <td>
-                            <label id="reumatica" runat="server"></label>
+                            <label id="reumatica" runat="server" title="Reumática"></label>
                         </td>
                         <td>
-                            <label id="sida" runat="server"></label>
+                            <label id="sida" runat="server" title="SIDA"></label>
                         </td>
                         <td>
-                            <label id="derrame" runat="server"></label>
+                            <label id="derrame" runat="server" title="Derrame"></label>
                         </td>
                     </tr>
                     <tr>
@@ -134,19 +136,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="anemia" runat="server"></label>
+                            <label id="anemia" runat="server" title="Anemia"></label>
                         </td>
                         <td>
-                            <label id="sangre" runat="server"></label>
+                            <label id="sangre" runat="server" title="Transfusión"></label>
                         </td>
                         <td>
-                            <label id="pais" runat="server"></label>
+                            <label id="pais" runat="server" title=""></label>
                         </td>
                         <td>
-                            <label id="donde" runat="server"></label>
+                            <label id="donde" runat="server" title="Dónde?"></label>
                         </td>
                         <td>
-                            <label id="tiempo" runat="server"></label>
+                            <label id="tiempo" runat="server" title="Tiempo"></label>
                         </td>
                     </tr>
                     <tr>
@@ -158,19 +160,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="moretes" runat="server"></label>
+                            <label id="moretes" runat="server" title="Moretes"></label>
                         </td>
                         <td>
-                            <label id="rinnon" runat="server"></label>
+                            <label id="rinnon" runat="server" title="Riñón"></label>
                         </td>
                         <td>
-                            <label id="gastro" runat="server"></label>
+                            <label id="gastro" runat="server" title="Gastrointestinales"></label>
                         </td>
                         <td>
-                            <label id="vision" runat="server"></label>
+                            <label id="vision" runat="server" title="Visión"></label>
                         </td>
                         <td>
-                            <label id="cortico" runat="server"></label>
+                            <label id="cortico" runat="server" title="corticoesteroides"></label>
                         </td>
                     </tr>
                     <tr>
@@ -182,19 +184,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="diabetes" runat="server"></label>
+                            <label id="diabetes" runat="server" title="Diabetes"></label>
                         </td>
                         <td>
-                            <label id="epilepsia" runat="server"></label>
+                            <label id="epilepsia" runat="server" title="Epilepsia"></label>
                         </td>
                         <td>
-                            <label id="respiratorias" runat="server"></label>
+                            <label id="respiratorias" runat="server" title="Respiratorias"></label>
                         </td>
                         <td>
-                            <label id="radio_quimio" runat="server"></label>
+                            <label id="radio_quimio" runat="server" title="Radioterapia"></label>
                         </td>
                         <td>
-                            <label id="reumatismo" runat="server"></label>
+                            <label id="reumatismo" runat="server" title="Reumatismo"></label>
                         </td>
                     </tr>
                     <tr>
@@ -206,19 +208,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="hepaticos" runat="server"></label>
+                            <label id="hepaticos" runat="server"  title="Hepáticos"></label>
                         </td>
                         <td>
-                            <label id="herpes" runat="server"></label>
+                            <label id="herpes" runat="server"  title="Herpes"></label>
                         </td>
                         <td>
-                            <label id="perdidaP" runat="server"></label>
+                            <label id="perdidaP" runat="server"  title="Pérdida de peso"></label>
                         </td>
                         <td>
-                            <label id="aumentoP" runat="server"></label>
+                            <label id="aumentoP" runat="server"  title="Aumento de peso"></label>
                         </td>
                         <td>
-                            <label id="artritis" runat="server"></label>
+                            <label id="artritis" runat="server"  title="Artritis"></label>
                         </td>
                     </tr>
                     <tr>
@@ -230,19 +232,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="psiquiatra" runat="server"></label>
+                            <label id="psiquiatra" runat="server" title="Psiquiátrico"></label>
                         </td>
                         <td>
-                            <label id="tiroides" runat="server"></label>
+                            <label id="tiroides" runat="server" title="Tiroides"></label>
                         </td>
                         <td>
-                            <label id="transmision" runat="server"></label>
+                            <label id="transmision" runat="server" title="Transmisión sexual"></label>
                         </td>
                         <td>
-                            <label id="osteoporosis" runat="server"></label>
+                            <label id="osteoporosis" runat="server" title="Osteoporosis"></label>
                         </td>
                         <td>
-                            <label id="migranna" runat="server"></label>
+                            <label id="migranna" runat="server" title="Migraña"></label>
                         </td>
                     </tr>
                     <tr>
@@ -254,19 +256,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="bifos" runat="server"></label>
+                            <label id="bifos" runat="server" title="Bifosfonados"></label>
                         </td>
                         <td>
-                            <label id="drogas" runat="server"></label>
+                            <label id="drogas" runat="server" title="Drogas"></label>
                         </td>
                         <td>
-                            <label id="fuma" runat="server"></label>
+                            <label id="fuma" runat="server" title="Fuma"></label>
                         </td>
                         <td>
-                            <label id="cigarroDia" runat="server"></label>
+                            <label id="cigarroDia" runat="server" title="Cigarros por día"></label>
                         </td>
                         <td>
-                            <label id="cigarroPeriodo" runat="server"></label>
+                            <label id="cigarroPeriodo" runat="server" title="Periodo"></label>
                         </td>
                     </tr>
                     <tr>
@@ -277,16 +279,16 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="alcohol" runat="server"></label>
+                            <label id="alcohol" runat="server" title="Alcohólicas"></label>
                         </td>
                         <td>
-                            <label id="frecuenciaAlcohol" runat="server"></label>
+                            <label id="frecuenciaAlcohol" runat="server" title="Frecuencia"></label>
                         </td>
                         <td>
-                            <label id="cicatrices" runat="server"></label>
+                            <label id="cicatrices" runat="server" title="Cicatrices"></label>
                         </td>
                         <td>
-                            <label id="shock" runat="server"></label>
+                            <label id="shock" runat="server" title="Shock anafiláctico"></label>
                         </td>
                     </tr>
                     <tr>
@@ -299,40 +301,40 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="arterialSignos" runat="server"></label>
+                            <label id="arterialSignos" runat="server"  title="Presión"></label>
                         </td>
                         <td>
-                            <label id="pulsoSignos" runat="server"></label>
+                            <label id="pulsoSignos" runat="server" title="Pulso"></label>
                         </td>
                         <td>
-                            <label id="FrecuenciaSignos" runat="server"></label>
+                            <label id="FrecuenciaSignos" runat="server" title="Frecuencia respiratoria"></label>
                         </td>
                     </tr>
                     <tr>
-                        <th colspan="5" style="text-align: center">Historial médico solo mujeres</th>
+                        <th colspan="5" style="text-align: center" title="">Historial médico solo mujeres</th>
                     </tr>
                     <tr>
                         <th>Embarazada</th>
                         <th>Semanas</th>
                         <th>Tratamientos anticonceptivos</th>
-                        <th>Ginecoobstetricos</th>
+                        <th>Partos</th>
                         <th>Abortos</th>
                     </tr>
                     <tr>
                         <td>
-                            <label id="embarazo" runat="server"></label>
+                            <label id="embarazo" runat="server" title="Embarazada"></></label>
                         </td>
                         <td>
-                            <label id="semanas" runat="server"></label>
+                            <label id="semanas" runat="server" title="Semanas"></label>
                         </td>
                         <td>
-                            <label id="anticonceptivos" runat="server"></label>
+                            <label id="anticonceptivos" runat="server" title="Anticonceptivos"></label>
                         </td>
                         <td>
-                            <label id="gineco" runat="server"></label>
+                            <label id="gineco" runat="server" title="Partos"></label>
                         </td>
                         <td>
-                            <label id="abortos" runat="server"></label>
+                            <label id="abortos" runat="server" title="Abortos"></label>
                         </td>
                     </tr>
                     <tr>
@@ -341,10 +343,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <label id="cesareas" runat="server"></label>
+                            <label id="cesareas" runat="server" title="Cesareas"></label>
                         </td>
                         <td colspan="4">
-                            <label id="observacionesMujer" runat="server"></label>
+                            <label id="observacionesMujer" runat="server" title="Observaciones"></label>
                         </td>
                     </tr>
                 </table>

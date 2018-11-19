@@ -186,9 +186,8 @@ namespace SAC.formularios
                     odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigocedula.ToString(), now.ToString("yyyy-MM-dd"), "1");
                 }
             }
-
             string script = @"<script type='text/javascript'>
-            alert('Se ha insertado exitosamente');
+            alert('Los cambios se han realizado exitosamente');
             </script>";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             //}

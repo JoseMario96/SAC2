@@ -11,7 +11,7 @@
 </head>
 <body oncopy="return false" onpaste="return false">
     <header style="text-align: center">
-        <h2>CITAS DE HOY</h2>
+        <h2>Citas del día</h2>
     </header>
     <div class="container">
         <div class="row">

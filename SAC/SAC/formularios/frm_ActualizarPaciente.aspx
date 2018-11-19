@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeBehind="frm_ActualizarPaciente.aspx.cs" Inherits="SAC.formularios.frm_ActualizarPaciente" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frm_ActualizarPaciente.aspx.cs" Inherits="SAC.formularios.frm_ActualizarPaciente" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -44,12 +44,15 @@
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server" ID="ScriptManager1">
         </asp:ScriptManager>
-        <div class="container">
 
+        <div class="container">
+            <header style="text-align: center">
+                <h2>Actualización de pacientes</h2>
+            </header>
             <div class="row espacio">
                 <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
-                    <label class="active" for="first_name2">Nombre:</label>
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                    <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
                 </div>
 
                 <div>
@@ -90,35 +93,35 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="cedula" runat="server" class="validate" maxlength="44" required onkeypress="return solonumeros(event)"></label>
+                                    <label id="cedula" runat="server" class="validate" maxlength="44" title="Cédula" required onkeypress="return solonumeros(event)"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="nombre1" runat="server" class="validate" MaxLength="44" required onkeypress="return sololetras(event)"></asp:TextBox>
+                                    <asp:TextBox ID="nombre1" runat="server" class="validate" MaxLength="44" title="Nombre" required onkeypress="return sololetras(event)"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="nombre2" runat="server" class="validate" MaxLength="44" onkeypress="return sololetras(event)"></asp:TextBox>
+                                    <asp:TextBox ID="nombre2" runat="server" class="validate" MaxLength="44" title="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="apellido1" runat="server" class="validate" MaxLength="44" required onkeypress="return sololetras(event)"></asp:TextBox>
+                                    <asp:TextBox ID="apellido1" runat="server" class="validate" MaxLength="44" title="Primer apellido" required onkeypress="return sololetras(event)"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="apellido2" runat="server" class="validate" MaxLength="44" required onkeypress="return sololetras(event)"></asp:TextBox>
+                                    <asp:TextBox ID="apellido2" runat="server" class="validate" MaxLength="44" title="Segundo apellido" required onkeypress="return sololetras(event)"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -126,7 +129,7 @@
 
                     <tr>
                         <th>Teléfono</th>
-                        <th>Celulare</th>
+                        <th>Celular</th>
                         <th>Correo electrónico</th>
                         <th>Sexo</th>
                         <th>Encargado</th>
@@ -135,21 +138,21 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="telefono" runat="server" class="validate" MaxLength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
+                                    <asp:TextBox ID="telefono" runat="server" class="validate" MaxLength="14" title="Teléfono" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="celular" runat="server" class="validate" MaxLength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required></asp:TextBox>
+                                    <asp:TextBox ID="celular" runat="server" class="validate" MaxLength="14" title="Celular" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="correo" runat="server" class="validate" MaxLength="44" required></asp:TextBox>
+                                    <asp:TextBox ID="correo" runat="server" class="validate" MaxLength="44" title="Correo" required></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -159,7 +162,6 @@
                                     <label>
 
                                         <input class="with-gap" name="group6" runat="server" type="radio" id="generoM" />
-
                                         <span>Masculino</span>
 
                                     </label>
@@ -221,22 +223,21 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="fechaN" runat="server" required onkeypress="return solofechas(event)"></asp:TextBox>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </td>
-                        <td>
-                        <td>
-                            <asp:UpdatePanel runat="server">
-                                <ContentTemplate>
-                                    <asp:TextBox ID="fechaI" runat="server" required onkeypress="return solofechas(event)"></asp:TextBox>
+                                    <asp:TextBox ID="fechaN" runat="server" title="Fecha de nacimiento" required onkeypress="return solofechas(event)"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:TextBox ID="direccion" runat="server" class="validate" MaxLength="249" required></asp:TextBox>
+                                    <asp:TextBox ID="fechaI" runat="server" title="Fecha de inscripción" required onkeypress="return solofechas(event)"></asp:TextBox>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <asp:TextBox ID="direccion" runat="server" title="Dirección" class="validate" MaxLength="249" required></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -249,13 +250,11 @@
                         <div>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <asp:ImageButton ID="ImageButton1" runat="server" OnClick="actualizarE_Click" />
+                                    <asp:ImageButton ID="ImageButton1" runat="server" title="Actualizar encargado" OnClick="actualizarE_Click" />
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
-
                         <table class="striped">
-
                             <tr>
                                 <th colspan="5" style="text-align: center">Encargado</th>
                             </tr>
@@ -271,35 +270,35 @@
                                 <td>
                                     <asp:UpdatePanel runat="server">
                                         <ContentTemplate>
-                                            <asp:TextBox ID="cedula_encargado" runat="server" OnTextChanged="cedula_encargado_TextChanged" AutoPostBack="true" class="validate" MaxLength="14" onkeypress="return solonumeros(event)"></asp:TextBox>
+                                            <asp:TextBox ID="cedula_encargado" runat="server" title="Cédula" OnTextChanged="cedula_encargado_TextChanged" AutoPostBack="true" class="validate" MaxLength="14" onkeypress="return solonumeros(event)"></asp:TextBox>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </td>
                                 <td>
                                     <asp:UpdatePanel runat="server">
                                         <ContentTemplate>
-                                            <asp:TextBox ID="nombre1_encargado" runat="server" class="validate" MaxLength="44" onkeypress="return sololetras(event)"></asp:TextBox>
+                                            <asp:TextBox ID="nombre1_encargado" runat="server" title="Nombre" class="validate" MaxLength="44" onkeypress="return sololetras(event)"></asp:TextBox>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </td>
                                 <td>
                                     <asp:UpdatePanel runat="server">
                                         <ContentTemplate>
-                                            <asp:TextBox ID="nombre2_encargado" runat="server" class="validate" MaxLength="44" onkeypress="return sololetras(event)"></asp:TextBox>
+                                            <asp:TextBox ID="nombre2_encargado" runat="server" title="Nombre" class="validate" MaxLength="44" onkeypress="return sololetras(event)"></asp:TextBox>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </td>
                                 <td>
                                     <asp:UpdatePanel runat="server">
                                         <ContentTemplate>
-                                            <asp:TextBox ID="apellido1_encargado" runat="server" class="validate" MaxLength="44" onkeypress="return sololetras(event)"></asp:TextBox>
+                                            <asp:TextBox ID="apellido1_encargado" runat="server" title="Primer apellido" class="validate" MaxLength="44" onkeypress="return sololetras(event)"></asp:TextBox>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </td>
                                 <td>
                                     <asp:UpdatePanel runat="server">
                                         <ContentTemplate>
-                                            <asp:TextBox ID="apellido2_encargado" runat="server" class="validate" MaxLength="44" onkeypress="return sololetras(event)"></asp:TextBox>
+                                            <asp:TextBox ID="apellido2_encargado" runat="server" title="Segundo apellido" class="validate" MaxLength="44" onkeypress="return sololetras(event)"></asp:TextBox>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </td>
@@ -317,28 +316,28 @@
                                 <td>
                                     <asp:UpdatePanel runat="server">
                                         <ContentTemplate>
-                                            <asp:TextBox ID="telefono_encargado" runat="server" class="validate" MaxLength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
+                                            <asp:TextBox ID="telefono_encargado" runat="server" title="Teléfono" class="validate" MaxLength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </td>
                                 <td>
                                     <asp:UpdatePanel runat="server">
                                         <ContentTemplate>
-                                            <asp:TextBox ID="celular_encargado" runat="server" class="validate" MaxLength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
+                                            <asp:TextBox ID="celular_encargado" runat="server" title="Celular" class="validate" MaxLength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></asp:TextBox>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </td>
                                 <td>
                                     <asp:UpdatePanel runat="server">
                                         <ContentTemplate>
-                                            <asp:TextBox ID="correo_encargado" runat="server" class="validate" MaxLength="44"></asp:TextBox>
+                                            <asp:TextBox ID="correo_encargado" runat="server" title="Correo" class="validate" MaxLength="44"></asp:TextBox>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </td>
                                 <td>
                                     <asp:UpdatePanel runat="server">
                                         <ContentTemplate>
-                                            <asp:TextBox ID="parentezco" runat="server" class="validate" MaxLength="44" onkeypress="return sololetras(event)"></asp:TextBox>
+                                            <asp:TextBox ID="parentezco" runat="server" title="Parentezco" class="validate" MaxLength="44" onkeypress="return sololetras(event)"></asp:TextBox>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </td>
@@ -347,7 +346,7 @@
                                         <ContentTemplate>
                                             <label>
 
-                                                <input class="with-gap" name="group5" runat="server" type="radio" id="generoEM" />
+                                                <input class="with-gap" name="group5" title="Sexo" runat="server" type="radio" id="generoEM" />
 
                                                 <span>Masculino</span>
                                             </label>
@@ -357,7 +356,7 @@
                                         <ContentTemplate>
                                             <label>
 
-                                                <input class="with-gap" name="group5" runat="server" type="radio" id="generoEF" />
+                                                <input class="with-gap" name="group5" title="Sexo" runat="server" type="radio" id="generoEF" />
 
                                                 <span>Femenino</span>
                                             </label>
@@ -367,7 +366,7 @@
                                         <ContentTemplate>
                                             <label>
 
-                                                <input class="with-gap" name="group5" runat="server" type="radio" id="generoEO" />
+                                                <input class="with-gap" name="group5" title="Sexo" runat="server" type="radio" id="generoEO" />
 
                                                 <span>Otro</span>
                                             </label>
@@ -383,7 +382,7 @@
                                 <td>
                                     <asp:UpdatePanel runat="server">
                                         <ContentTemplate>
-                                            <asp:TextBox ID="direccion_encargado" runat="server" class="validate" MaxLength="249"></asp:TextBox>
+                                            <asp:TextBox ID="direccion_encargado" runat="server" title="Dirección" class="validate" MaxLength="249"></asp:TextBox>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </td>
@@ -395,20 +394,22 @@
             </div>
             <div id="Botones" style="display: none">
                 <div class="row">
-                    <div class="input-field col s4">
+                    <div class=" col s4"></div>
+                    <div class="input-field col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
-                    <div class="input-field col s4">
+                    <div class="input-field col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
+                    <div class=" col s4"></div>
                 </div>
             </div>
 
@@ -476,23 +477,23 @@
     </form>
     <script type="text/javascript">
 
-                $(document).ready(function () {
+        $(document).ready(function () {
 
 
-                    $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
-                        document.getElementById("cedula").required = false;
-                        document.getElementById("nombre1").required = false;
-                        document.getElementById("apellido1").required = false;
-                        document.getElementById("apellido2").required = false;
-                        document.getElementById("celular").required = false;
-                        document.getElementById("correo").required = false;
-                        document.getElementById("fechaN").required = false;
-                        document.getElementById("fechaI").required = false;
-                        document.getElementById("direccion").required = false;
-                        $('#<%=InvisButton.ClientID%>').click();
+            $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+                document.getElementById("cedula").required = false;
+                document.getElementById("nombre1").required = false;
+                document.getElementById("apellido1").required = false;
+                document.getElementById("apellido2").required = false;
+                document.getElementById("celular").required = false;
+                document.getElementById("correo").required = false;
+                document.getElementById("fechaN").required = false;
+                document.getElementById("fechaI").required = false;
+                document.getElementById("direccion").required = false;
+                $('#<%=InvisButton.ClientID%>').click();
 
-                    });
-                });
+            });
+        });
 
     </script>
     <script src="js/materialize.min.js"></script>

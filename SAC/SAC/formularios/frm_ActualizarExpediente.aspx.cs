@@ -40,6 +40,7 @@ namespace SAC.formularios
         {
             try
             {
+                txtSearch.Focus();
                 if (!this.IsPostBack)
                 {
                     GridView1.DataSource = metodo.BuscarExpediente();

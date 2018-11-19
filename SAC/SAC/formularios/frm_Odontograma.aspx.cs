@@ -20,7 +20,7 @@ namespace SAC.formularios
         static string ced = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            txtSearch.Focus();
             if (!this.IsPostBack)
             {
                 GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");

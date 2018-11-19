@@ -582,7 +582,7 @@
                     <h2 class="to-animate">Factura</h2>
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 subtext to-animate">
-                            <h3>En esta sección se puede terminar las facturas, ralizar abonos a cuentas por cobrar y ver reportes de cuentas por cobrar y ventas a los pacientes</h3>
+                            <h3>En esta sección se puede facturar, realizar abonos a cuentas por cobrar y ver reportes de cuentas por cobrar y ventas a los pacientes</h3>
                         </div>
                     </div>
                 </div>

@@ -38,10 +38,6 @@
             margin: 0px auto;
             text-align: center;
         }
-
-        body {
-            text-align: center;
-        }
     </style>
     <style type="text/css">
         body, a, a:hover {
@@ -78,11 +74,13 @@
 </head>
 <body oncopy="return false" onpaste="return false">
     <form id="form1" runat="server">
-
         <div class="container">
             <asp:ScriptManager runat="server" ID="sm">
             </asp:ScriptManager>
 
+            <header style="text-align: center">
+                <h2>Odontograma de niños</h2>
+            </header>
             <asp:HiddenField ID="colorO" runat="server" />
             <asp:HiddenField ID="dienteO" runat="server" />
             <asp:HiddenField ID="seccionO" runat="server" />
@@ -95,13 +93,7 @@
             <asp:HiddenField ID="BDseccionO" runat="server" />
             <asp:HiddenField ID="BDdienteM" runat="server" />
 
-
-            <div id="odontograma" style="display: block" tabindex="1">
-
-                <h1>Odontograma</h1>
-                <br>
-                <br>
-
+            <div style="text-align: center;">
                 <div id="radio">
                     <input type="radio" id="radio1" name="accion" value="carie" checked="checked" /><label for="radio1">Carie</label>
                     <input type="radio" id="radio6" name="accion" value="sellante" /><label for="radio6">Sellante</label>
@@ -110,44 +102,45 @@
                     <input type="radio" id="radio5" name="accion" value="exodoncia" /><label for="radio5">Exodoncia</label>
                     <input type="radio" id="radio3" name="accion" value="borrar" /><label for="radio3">Borrar</label>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col s12">
-                        <div id="canvasesdiv" style="position: relative;">
-                            <canvas id="myCanvas" width="510" height="200" style="z-index: 1; position: absolute; left: 0%; top: 0px;"></canvas>
-                            <canvas id="myCanvas2" width="510" height="200" style="z-index: 2; position: absolute; left: 0%; top: 0px;"></canvas>
-                            <canvas id="myCanvas3" width="510" height="200" style="z-index: 3; position: absolute; left: 0%; top: 0px;"></canvas>
-                            <canvas id="myCanvas4" width="510" height="200" style="z-index: 4; position: absolute; left: 0%; top: 0px;"></canvas>
-                        </div>
-                        <div id="radio_seccion" style='display: none'>
-                            <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Seccion</label>
-                            <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
-                        </div>
-                        <br />
+            </div>
+            <br>
+            <div class="row">
+                <div class="col s12">
+                    <div id="canvasesdiv" style="position: relative;">
+                        <canvas id="myCanvas" width="510" height="200" style="z-index: 1; position: absolute; left: 0%; top: 0px;"></canvas>
+                        <canvas id="myCanvas2" width="510" height="200" style="z-index: 2; position: absolute; left: 0%; top: 0px;"></canvas>
+                        <canvas id="myCanvas3" width="510" height="200" style="z-index: 3; position: absolute; left: 0%; top: 0px;"></canvas>
+                        <canvas id="myCanvas4" width="510" height="200" style="z-index: 4; position: absolute; left: 0%; top: 0px;"></canvas>
                     </div>
+                    <div id="radio_seccion" style='display: none'>
+                        <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Seccion</label>
+                        <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
+                    </div>
+                    <br />
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="col s4">
-                    </div>
-                    <div class="input-field col s2">
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Guardar" class="waves-effect waves-light btn" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
-                    <div class="input-field col s2">
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <asp:Button ID="cancelarOdontograma" runat="server" class="waves-effect waves-light btn" Text="Cancelar" OnClick="cancelarOdontograma_Click" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
-                    <div class="col s4">
-                    </div>
+            <div class="row">
+                <div class="col s4">
                 </div>
-                <script>
+                <div class="input-field col s2">
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Guardar" class="waves-effect waves-light btn" />
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="input-field col s2">
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:Button ID="cancelarOdontograma" runat="server" class="waves-effect waves-light btn" Text="Cancelar" OnClick="cancelarOdontograma_Click" />
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="col s4">
+                </div>
+            </div>
+            <script>
             //function my_function(val) {
             //    if (val == "odontogramaG") {
             //        window.location.href = "frm_MantenimientoOdontograma.aspx";
@@ -1623,7 +1616,7 @@
                     resultado[0] = colorV[0];
                 }
 
- 
+
                 for (var c = 0; c < resultado.length; c++) {
                     if (resultado[c] == 1) {
 
@@ -1879,19 +1872,20 @@
 
 
             }
-                </script>
+            </script>
 
+            <div class="row">
                 <div class="row">
-                    <div class="col s12">
-                        <h5>Tratamientos Efectuados</h5>
+                    <div class=" col s12">
+                        <h5><b>Tratamientos Efectuados:</b></h5>
                     </div>
                 </div>
-                <div class="col s12">
-                    <div style="margin-left: auto; margin-right: auto;">
+                <div class="row">
+                    <div class="col s12">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
-                                    runat="server" AutoGenerateColumns="False" Height="174px" Width="70%" HorizontalAlign="Center" AllowPaging="true" PageSize="5" OnPageIndexChanging="GridView1_PageIndexChanging">
+                                    runat="server" AutoGenerateColumns="False" Height="174px" HorizontalAlign="Center" AllowPaging="true" PageSize="3" OnPageIndexChanging="GridView1_PageIndexChanging">
                                     <Columns>
                                         <asp:BoundField DataField="fechaExpedienteTratamiento" HeaderText="Fecha" ItemStyle-Width="30" />
                                         <asp:BoundField DataField="tratamientoExpedienteTratamiento" HeaderText="Tratamiento" ItemStyle-Width="100" />
@@ -1903,14 +1897,11 @@
                         </asp:UpdatePanel>
                     </div>
                 </div>
-                <br />
-                <br />
-
-                <div id="tablaDetalle" style="display: block" tabindex="-1">
+                <div id="tablaDetalle">
                     <div class="row">
-                        <h5>Nuevos tratamientos</h5>
-                        <br />
-                        <br />
+                        <div class="col s12">
+                            <h5><b>Nuevos tratamientos:</b></h5>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col s12">
@@ -1952,9 +1943,6 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
-
-
-
                     <div class="row">
                         <div class="col s4">
                         </div>
@@ -1996,7 +1984,6 @@
                     }
                 }
         </script>
-        </div>
     </form>
 </body>
 </html>

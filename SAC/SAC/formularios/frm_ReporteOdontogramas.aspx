@@ -95,10 +95,11 @@
         <asp:ScriptManager runat="server" ID="sm">
         </asp:ScriptManager>
         <div class="container">
+            <header style="text-align: center">
+                <h2>Reporte de expediente</h2>
+            </header>
 
             <div class="row">
-                <br />
-                <br />
                 <asp:GridView ID="GridView_reporteOdontograma" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
                     runat="server" AutoGenerateColumns="False" OnDataBound="OnDataBound" Height="174px" AllowPaging="true" PageSize="3" OnSelectedIndexChanged="GridView_reporteOdontograma_SelectedIndexChanged" OnPageIndexChanging="GridView_reporteOdontograma_PageIndexChanging" OnRowDataBound="GridView_reporteOdontograma_RowDataBound">
                     <Columns>
@@ -111,8 +112,13 @@
             </div>
 
             <asp:Panel ID="Panel1" runat="server" Visible="false" TabIndex="-1">
-                <h5 class="izquierda">Datos personales</h5>
-                <div>
+                <div class="row">
+                    <div class=" izquierda col s5">
+                        <h5><b>Datos personales:</b></h5>
+                    </div>
+                </div>
+
+                <div class="row">
                     <table class="margen" style="border: hidden;">
                         <tr>
                             <td class="auto-style8" style="border: hidden;">
@@ -149,16 +155,24 @@
                         </tr>
                     </table>
                 </div>
+                <div class="row">
+                    <div class=" izquierda col s5">
+                        <h5><b>Odontograma de adulto:</b></h5>
+                    </div>
+                </div>
 
-                <h5 class="izquierda">Odontograma</h5>
                 <div id="canvasesdiv" style="position: relative;">
                     <canvas id="myCanvas" width="810" height="200" style="z-index: 1; position: absolute; left: 0%; top: 0px;"></canvas>
                     <canvas id="myCanvas2" width="810" height="200" style="z-index: 2; position: absolute; left: 0%; top: 0px;"></canvas>
                     <canvas id="myCanvas3" width="810" height="200" style="z-index: 3; position: absolute; left: 0%; top: 0px;"></canvas>
                     <canvas id="myCanvas4" width="810" height="200" style="z-index: 4; position: absolute; left: 0%; top: 0px;"></canvas>
                 </div>
-                <br />
-                <br />
+                <div class="row">
+                    <div class=" izquierda col s5">
+                        <h5><b>Odontograma de niño:</b></h5>
+                    </div>
+                </div>
+
                 <div id="canvasesdiv2" style="position: relative;">
                     <canvas id="NmyCanvas" width="510" height="200" style="z-index: 1; position: absolute; left: 0%; top: 0px;"></canvas>
                     <canvas id="NmyCanvas2" width="510" height="200" style="z-index: 2; position: absolute; left: 0%; top: 0px;"></canvas>
@@ -166,16 +180,17 @@
                     <canvas id="NmyCanvas4" width="510" height="200" style="z-index: 4; position: absolute; left: 0%; top: 0px;"></canvas>
                 </div>
 
-
-                <div style="margin-left: auto; margin-right: auto; display: none">
-                    <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
-                        runat="server" AutoGenerateColumns="False" Height="174px" Width="70%" HorizontalAlign="Center">
-                        <Columns>
-                            <asp:BoundField DataField="date_format(fechaExpedienteTratamiento,'%Y-%m-%d')" HeaderText="Fecha" ItemStyle-Width="30" />
-                            <asp:BoundField DataField="piezaExpedienteTratamiento" HeaderText="Diente" ItemStyle-Width="100" />
-                            <asp:BoundField DataField="tratamientoExpedienteTratamiento" HeaderText="Tratamiento" ItemStyle-Width="100" />
-                        </Columns>
-                    </asp:GridView>
+                <div class="row">
+                    <div style="margin-left: auto; margin-right: auto; display: none">
+                        <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
+                            runat="server" AutoGenerateColumns="False" Height="174px" Width="70%" HorizontalAlign="Center">
+                            <Columns>
+                                <asp:BoundField DataField="date_format(fechaExpedienteTratamiento,'%Y-%m-%d')" HeaderText="Fecha" ItemStyle-Width="30" />
+                                <asp:BoundField DataField="piezaExpedienteTratamiento" HeaderText="Diente" ItemStyle-Width="100" />
+                                <asp:BoundField DataField="tratamientoExpedienteTratamiento" HeaderText="Tratamiento" ItemStyle-Width="100" />
+                            </Columns>
+                        </asp:GridView>
+                    </div>
                 </div>
 
                 <div class="row botones">

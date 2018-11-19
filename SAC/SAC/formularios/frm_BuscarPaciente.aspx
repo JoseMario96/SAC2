@@ -34,16 +34,18 @@
         }
     </style>
 </head>
-<body  oncopy="return false" onpaste="return false">
+<body oncopy="return false" onpaste="return false">
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server" ID="ScriptManager1">
         </asp:ScriptManager>
         <div class="container">
-
+            <header style="text-align: center">
+                <h2>Busqueda de pacientes</h2>
+            </header>
             <div class="row espacio">
                 <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
-                    <label class="active" for="first_name2">Nombre:</label>
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                    <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
                 </div>
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
@@ -62,7 +64,7 @@
                 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
                 <script type="text/javascript" src="../js/quicksearch.js"></script>
 
-<%--                <script type="text/javascript">
+                <%--                <script type="text/javascript">
                     $(function () {
                         $('.search_textbox').each(function (i) {
                             $(this).quicksearch("[id*=GridView1] tr:not(:has(th))", {
@@ -90,35 +92,35 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="cedula" runat="server"></label>
+                                    <label id="cedula" runat="server" title="Cédula"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="nombre1" runat="server"></label>
+                                    <label id="nombre1" runat="server" title="Nombre"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="nombre2" runat="server"></label>
+                                    <label id="nombre2" runat="server" title="Nombre"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="apellido1" runat="server"></label>
+                                    <label id="apellido1" runat="server" title="Primer apellido"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="apellido2" runat="server"></label>
+                                    <label id="apellido2" runat="server" title="Segundo apellido"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -135,21 +137,21 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="telefono" runat="server"></label>
+                                    <label id="telefono" runat="server" title="Teléfono"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="celular" runat="server"></label>
+                                    <label id="celular" runat="server" title="Celular"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="correo" runat="server"></label>
+                                    <label id="correo" runat="server" title="Correo"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -163,7 +165,7 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="Label1" type="text" runat="server" />
+                                    <label id="Label1" type="text" runat="server" title="Encargado" />
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -178,21 +180,21 @@
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
 
-                                    <label id="fechaN" runat="server"></label>
+                                    <label id="fechaN" runat="server" title="Fecha nacimiento"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="fechaI" runat="server"></label>
+                                    <label id="fechaI" runat="server" title="Fecha inscripción"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="direcion" runat="server"></label>
+                                    <label id="direcion" runat="server" title="Dirección"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -219,35 +221,35 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="cedula_encargado" runat="server"></label>
+                                    <label id="cedula_encargado" runat="server" title="Cédula"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="nombre1_encargado" runat="server"></label>
+                                    <label id="nombre1_encargado" runat="server" title="Nombre"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="nombre2_encargado" runat="server"></label>
+                                    <label id="nombre2_encargado" runat="server" title="Nombre"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="apellido1_encargado" runat="server"></label>
+                                    <label id="apellido1_encargado" runat="server" title="Primer apellido"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="apellido2_encargado" runat="server"></label>
+                                    <label id="apellido2_encargado" runat="server" title="Segundo apellido"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -266,28 +268,28 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="telefono_encargado" runat="server"></label>
+                                    <label id="telefono_encargado" runat="server" title="Teléfono"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="celular_encargado" runat="server"></label>
+                                    <label id="celular_encargado" runat="server" title="Celular"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="correo_encargado" runat="server"></label>
+                                    <label id="correo_encargado" runat="server" title="Correo"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="parentezco" runat="server"></label>
+                                    <label id="parentezco" runat="server" title="Parentezco"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -307,7 +309,7 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                                    <label id="direccion_encargado" runat="server"></label>
+                                    <label id="direccion_encargado" runat="server" title="Dirección"></label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -349,6 +351,25 @@
                 $('#<%=InvisButton.ClientID%>').click();
             });
         });
+
+
+        function sololetras(e) {
+            key = e.keyCoden || e.which;
+            teclado = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-38-46-164";
+            teclado_especial = false;
+
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true; break;
+
+                }
+            }
+            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                return false;
+            }
+        }
     </script>
 
     <script src="js/materialize.min.js"></script>

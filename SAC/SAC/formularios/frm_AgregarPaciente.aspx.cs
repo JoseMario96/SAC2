@@ -18,7 +18,7 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           // cedula.Focus();
+            cedula.Focus();
         }
         public void agregarPaciente()
         {
