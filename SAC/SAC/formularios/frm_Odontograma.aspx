@@ -29,9 +29,7 @@
                     <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
                     <label class="active" for="first_name2">Nombre:</label>
                 </div>
-
                 <div class="row">
-
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
@@ -46,7 +44,6 @@
                             </asp:GridView>
                         </ContentTemplate>
                     </asp:UpdatePanel>
-
                 </div>
             </div>
             <div id="dienteOdontograma" style="display: block" tabindex="1">

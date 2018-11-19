@@ -29,13 +29,13 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-            //if (!this.IsPostBack)
-            //{
-                //txtSearch.Focus();
+
+            if (!this.IsPostBack)
+            {
+                txtSearch.Focus();
                 GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("das");
                 GridView_reporteOdontograma.DataBind();
-            //}
+            }
         }
 
         protected void GridView_reporteOdontograma_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -55,7 +55,7 @@ namespace SAC.formularios
 
             GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion(txtSearch.Text.Trim());
             GridView_reporteOdontograma.DataBind();
-            txtSearch.Text = "Prueba";
+            TextBox1.Text = "Prueba";
             foreach (GridViewRow row in GridView_reporteOdontograma.Rows)
             {
                 if (row.RowIndex == GridView_reporteOdontograma.SelectedIndex)
