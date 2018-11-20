@@ -33,9 +33,13 @@
 </head>
 <body oncopy="return false" onpaste="return false">
     <form id="form1" runat="server">
+
         <asp:ScriptManager runat="server" ID="sm">
         </asp:ScriptManager>
+
+
         <div class="container">
+
             <header>
                 <h2 style="text-align: center">Mantenimiento de tratamientos</h2>
             </header>
@@ -59,8 +63,13 @@
 
             <%--Sección agregar--%>
             <div id="seccionAgregar" style="display: block">
-                <h4 style="text-align: center">Agregar</h4>
-                <h5>Tipos de tratamientos</h5>
+
+                <h5 style="text-align: center"><b>Agregar</b></h5>
+                <div class="row">
+                    <div class=" col s12">
+                        <h5><b>Tipos de tratamientos:</b></h5>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col s7">
                         <p>
@@ -96,7 +105,11 @@
                     </div>
                 </div>
 
-                <h5>Tratamientos</h5>
+                <div class="row">
+                    <div class=" col s12">
+                        <h5><b>Tratamientos:</b></h5>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col s2">
                         <asp:TextBox class="validate" ID="txt_codigoTratamiento" title="Código" runat="server" Placeholder="Código" onkeypress="return solonumeros(event)"></asp:TextBox>
@@ -127,18 +140,20 @@
                 </div>
             </div>
             <%-- Sección de modificar--%>
-
-            <div class="row espacio" id="grid" style="display: none">
-                <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)" MaxLength="20"></asp:TextBox>
-                    <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
-                </div>
+            <div class="row" id="grid" style="display: none">
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
-                        <h4 id="titulo1" style="text-align: center; display: none">Actualizar</h4>
-                        <h4 id="titulo2" style="text-align: center; display: none">Eliminar</h4>
+                        <h5 id="titulo1" style="display: none; text-align: center"><b>Actualizar</b></h5>
+                        <h5 id="titulo2" style="display: none; text-align: center"><b>Eliminar</b></h5>
                     </ContentTemplate>
                 </asp:UpdatePanel>
+
+                <div class="row">
+                    <div class="input-field col s3">
+                        <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)" MaxLength="20" autofocus="autofocus"></asp:TextBox>
+                        <label style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
+                    </div>
+                </div>
 
                 <div class="row">
                     <asp:UpdatePanel runat="server">
@@ -158,8 +173,13 @@
                     </asp:UpdatePanel>
                 </div>
             </div>
+
             <div id="camposModificar" style="display: none" tabindex="-1">
-                <h5>Tipos de tratamientos</h5>
+                <div class="row">
+                    <div class=" col s12">
+                        <h5><b>Tipos de tratamientos:</b></h5>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col s7">
                         <p>
@@ -195,7 +215,11 @@
                     </div>
                 </div>
 
-                <h5>Tratamientos</h5>
+                <div class="row">
+                    <div class=" col s12">
+                        <h5><b>Tratamientos:</b></h5>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col s2">

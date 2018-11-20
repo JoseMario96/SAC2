@@ -14,6 +14,12 @@
         .espacio {
             padding-top: 5%;
         }
+
+        label, th, tr {
+            font-family: sans-serif;
+            font-size: medium;
+            color: black;
+        }
     </style>
 </head>
 <body oncopy="return false" onpaste="return false">
@@ -26,10 +32,10 @@
             </header>
 
 
-            <div class="row">
+            <div id="presentar" class="row">
                 <div class="row">
                     <div class="input-field col s3 ">
-                        <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)"  maxlength="20"></asp:TextBox>
+                        <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)" MaxLength="20"></asp:TextBox>
                         <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
                     </div>
                 </div>
@@ -67,9 +73,6 @@
                                     <ItemStyle Width="60px" />
                                 </asp:BoundField>
                             </Columns>
-                            <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
-                            <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
-                            <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                         </asp:GridView>
                     </ContentTemplate>
                 </asp:UpdatePanel>
@@ -79,7 +82,7 @@
             <div id="abonosNo" style="display: none">
                 <div class="row">
                     <div class="col s5">
-                        <h5><b>>Detalle de la venta y desglose de abonos:</b></h5>
+                        <h5><b>Detalle de la venta y desglose de abonos:</b></h5>
                     </div>
                 </div>
                 <p style="font-weight: bold; font-size: medium">Detalle:</p>

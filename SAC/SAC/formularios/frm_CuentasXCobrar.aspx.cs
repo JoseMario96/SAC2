@@ -31,6 +31,10 @@ namespace SAC.formularios
                     }
                     else
                     {
+                        string scripts = @"<script type='text/javascript'>
+                                document.getElementById('presentar').style.display = 'block';
+                                </script>";
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
                         Gridview_CxC.DataSource = cuenta.CuentaXCobrar();
                         Gridview_CxC.DataBind();
                     }
@@ -106,7 +110,7 @@ namespace SAC.formularios
             {
                 e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(Gridview_CxC, "select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click para seleccionar esta fila.";
-            }
+            }               
         }
 
         protected void btn_factura_Click(object sender, EventArgs e)

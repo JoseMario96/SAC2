@@ -18,6 +18,7 @@ namespace SAC.formularios
             {
                 if (!IsPostBack)
                 {
+                    
                     GridView2.DataSource = funciones.Grid1();
                     GridView2.DataBind();
                     DropDownList2.DataSource = funciones.TipoTratamiento();
@@ -165,8 +166,6 @@ namespace SAC.formularios
 
         }
 
-
-
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
             String codigo;
@@ -263,10 +262,6 @@ namespace SAC.formularios
             funciones.eliminarTratamiento(codigoTraEli.InnerText);
             Response.Write("<script language='javascript'>window.alert('Se eliminó la información correctamente');window.location='frm_tratamientos.aspx';</script>");
         }
-
-
-
-
 
         protected void txt_codigoTipo_TextChanged1(object sender, EventArgs e)
         {

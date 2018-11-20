@@ -36,6 +36,9 @@
             text-align: center;
             text-transform: uppercase;
         }
+        .espacio {
+            padding-top: 5%;
+        }
     </style>
 </head>
 <body oncopy="return false" onpaste="return false">
@@ -47,17 +50,17 @@
                 <h2 style="text-align: center">Agenda de citas</h2>
             </header>
 
-            <div class="row">
+            <div class="row espacio">
                 <div class="col s12 calendario">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Full" Font-Names="Arial" Font-Size="15pt" ForeColor="#003399" Height="432px" OnDayRender="Calendar1_DayRender" OnSelectionChanged="Calendar1_SelectionChanged">
                                 <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" Font-Underline="true" />
-                                <NextPrevStyle Font-Size="18pt" ForeColor="#CCCCFF" />
+                                <NextPrevStyle Font-Size="18pt" ForeColor="#000606" />
                                 <OtherMonthDayStyle ForeColor="#999999" HorizontalAlign="Center" />
                                 <SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
                                 <SelectorStyle BackColor="#99CCCC" ForeColor="#336666" />
-                                <TitleStyle BackColor="#003399" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="18pt" ForeColor="#CCCCFF" Height="25px" />
+                                <TitleStyle BackColor="#009999" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="18pt" ForeColor="#CCCCFF" Height="25px" />
                                 <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
                                 <WeekendDayStyle BackColor="#CCCCFF" />
                             </asp:Calendar>
@@ -102,10 +105,7 @@
                                         <asp:BoundField DataField="telefonoCita" HeaderText="Contacto" ItemStyle-Width="100">
                                             <ItemStyle Width="100px" />
                                         </asp:BoundField>
-                                    </Columns>
-                                    <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
-                                    <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
-                                    <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
+                                    </Columns>                                
                                 </asp:GridView>
                             </ContentTemplate>
                         </asp:UpdatePanel>

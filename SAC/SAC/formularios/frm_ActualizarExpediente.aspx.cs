@@ -654,10 +654,10 @@ namespace SAC.formularios
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
         }
 
-        protected void Cancelar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("frm_ActualizarExpediente.aspx");
-        }
+        //protected void Cancelar_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("frm_ActualizarExpediente.aspx");
+        //}
 
         protected void InvisButton_Click(object sender, EventArgs e)
         {

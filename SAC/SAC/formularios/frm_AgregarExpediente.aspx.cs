@@ -311,9 +311,9 @@ namespace SAC.formularios
             }
         }
 
-        protected void Cancelar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("frm_AgregarExpediente.aspx");
-        }
+        //protected void Cancelar_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("frm_AgregarExpediente.aspx");
+        //}
     }
 }

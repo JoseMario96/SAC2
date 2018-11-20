@@ -99,7 +99,7 @@
                         <canvas id="myCanvas3" width="810" height="200" style="z-index: 3; position: absolute; left: 0%; top: 0px;"></canvas>
                         <canvas id="myCanvas4" width="810" height="200" style="z-index: 4; position: absolute; left: 0%; top: 0px;"></canvas>
                     </div>
-                    <div id="radio_seccion" style='display: none'>
+                    <div id="radio_seccion" style='text-align: center; display: none'>
                         <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Seccion</label>
                         <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
                     </div>
@@ -921,7 +921,6 @@
                                                 //BDColor.splice(xx, 1);
                                                 //BDDiente.splice(xx, 1);
                                                 //BDSeccion.splice(xx, 1);
-                                                alert("Se booro");
                                                 document.getElementById('BDcolorO').value = BDborradorC.join(',');
                                                 document.getElementById('BDdienteO').value = BDborradorD.join(',');
                                                 document.getElementById('BDseccionO').value = BDborradorS.join(',');
@@ -936,7 +935,6 @@
                                                 //BDColor.splice(xx, 1);
                                                 //BDDiente.splice(xx, 1);
                                                 //BDSeccion.splice(xx, 1);
-                                                alert("Se booro");
                                                 document.getElementById('BDcolorO').value = BDborradorC.join(',');
                                                 document.getElementById('BDdienteO').value = BDborradorD.join(',');
                                                 document.getElementById('BDseccionO').value = BDborradorS.join(',');
@@ -951,7 +949,6 @@
                                                 BDColor.splice(xx, 1);
                                                 BDDiente.splice(xx, 1);
                                                 BDSeccion.splice(xx, 1);
-                                                alert("Se booro");
                                                 document.getElementById('BDcolorO').value = BDborradorC.join(',');
                                                 document.getElementById('BDdienteO').value = BDborradorD.join(',');
                                                 document.getElementById('BDseccionO').value = BDborradorS.join(',');
@@ -1023,7 +1020,6 @@
                                 if (contando == 1) {
                                     dienteArray.splice(contadorB1, 1);
                                     posicionArray.splice(contadorB1, 1);
-                                    alert("Se booro");
                                     document.getElementById('colorO').value = colorArray.join(',');
                                     document.getElementById('dienteO').value = dienteArray.join(',');
                                     document.getElementById('seccionO').value = posicionArray.join(',');
@@ -1031,7 +1027,6 @@
                                 else if (contando == 2) {
                                     dienteArray.splice(contadorB2, 1);
                                     posicionArray.splice(contadorB2, 1);
-                                    alert("Se booro");
                                     document.getElementById('colorO').value = colorArray.join(',');
                                     document.getElementById('dienteO').value = dienteArray.join(',');
                                     document.getElementById('seccionO').value = posicionArray.join(',');
@@ -1041,7 +1036,6 @@
                                     //posicionArray.splice(contadorB2, 1);
                                     dienteArray.splice(contadorB3, 1);
                                     posicionArray.splice(contadorB3, 1);
-                                    alert("Se booro");
                                     document.getElementById('colorO').value = colorArray.join(',');
                                     document.getElementById('dienteO').value = dienteArray.join(',');
                                     document.getElementById('seccionO').value = posicionArray.join(',');

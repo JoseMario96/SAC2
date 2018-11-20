@@ -370,13 +370,14 @@ namespace SAC.formularios
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
 
         }
-        protected void Cancelar_Click(object sender, EventArgs e)
-        {
-            GridView1.DataSource = objeto.Paciente();
-            GridView1.DataBind();
-            this.Controls.Clear();
-            Response.Redirect("frm_ActualizarPaciente.aspx");
-        }
+
+        //protected void Cancelar_Click(object sender, EventArgs e)
+        //{
+        //    GridView1.DataSource = objeto.Paciente();
+        //    GridView1.DataBind();
+        //    this.Controls.Clear();
+        //    Response.Redirect("frm_ActualizarPaciente.aspx");
+        //}
 
         protected void InvisButton_Click(object sender, EventArgs e)
         {

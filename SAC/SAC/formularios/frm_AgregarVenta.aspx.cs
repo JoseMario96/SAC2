@@ -31,13 +31,13 @@ namespace SAC.formularios
                         Gridview_Paciente.DataSource = tblInicio;
                         Gridview_Paciente.DataBind();
                     }
-                    else
-                    {
-                        string script = @"<script type='text/javascript'>
-                    alert('No hay ventas nuevas sin terminar');
-                    </script>";
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                    }
+                    //else
+                    //{
+                    //    string script = @"<script type='text/javascript'>
+                    //alert('No hay ventas nuevas sin terminar');
+                    //</script>";
+                    //    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    //}
                 }
                 catch
                 {

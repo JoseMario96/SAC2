@@ -181,33 +181,35 @@
             display: block;
             margin: auto;
         }
-        .derecha{
-            float:right;
-            margin-top:0px;
-            margin-right:5px;
-            padding-top:5px;
+
+        .derecha {
+            float: right;
+            margin-top: 0px;
+            margin-right: 5px;
+            padding-top: 5px;
         }
-        .derecha:hover{
-            -webkit-transform:scale(1.25);
-            -moz-transform:scale(1.25);
-            -ms-transform:scale(1.25);
-            -o-transform:scale(1.25);
-            transform:scale(1.25);
-        }
+
+            .derecha:hover {
+                -webkit-transform: scale(1.25);
+                -moz-transform: scale(1.25);
+                -ms-transform: scale(1.25);
+                -o-transform: scale(1.25);
+                transform: scale(1.25);
+            }
     </style>
 
     <script src="../js/modernizr-2.6.2.min.js"></script>
     <script type="text/javascript">
-    </script>
+</script>
 
 </head>
-<body">
+<body>
     <form runat="server">
         <asp:ScriptManager runat="server" ID="sm">
-                </asp:ScriptManager>
-        
+        </asp:ScriptManager>
+
         <header role="banner" id="fh5co-header">
-        <asp:ImageButton CssClass="derecha" ID="img_cerrarsesion" ImageUrl="~/images/logout.png" runat="server" OnClick="img_cerrarsesion_Click" title="Cerrar sesión" />
+            <asp:ImageButton CssClass="derecha" ID="img_cerrarsesion" ImageUrl="~/images/logout.png" runat="server" OnClick="img_cerrarsesion_Click" title="Cerrar sesión" />
             <br />
             <div class="container">
                 <div class="row">
@@ -235,486 +237,486 @@
                 <asp:Timer ID="refrescar" runat="server" Interval="600000" OnTick="refrescar_Tick"></asp:Timer>
             </ContentTemplate>
         </asp:UpdatePanel>
-        
-    
-    <%--<form id="form1" runat="server">--%>
-    <section id="fh5co-home" data-section="home" style="background-image: url(images/diente.jpg);" data-stellar-background-ratio="0.5">
-        <div class="gradient"></div>
-        <div class="container">
-            <div class="text-wrap">
-                <div class="text-inner">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <h1 class="to-animate">Clínica Dental Doctora Alina Camacho</h1>
-                            <h2 class="to-animate">Ciudad Neily, Puntarenas, Costa Rica</h2>
+
+
+        <%--<form id="form1" runat="server">--%>
+        <section id="fh5co-home" data-section="home" style="background-image: url(images/diente.jpg);" data-stellar-background-ratio="0.5">
+            <div class="gradient"></div>
+            <div class="container">
+                <div class="text-wrap">
+                    <div class="text-inner">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <h1 class="to-animate">Clínica Dental Doctora Alina Camacho</h1>
+                                <h2 class="to-animate">Ciudad Neily, Puntarenas, Costa Rica</h2>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="slant"></div>
-    </section>
+            <div class="slant"></div>
+        </section>
 
-    <%--  <section id="fh5co-intro">
+        <%--  <section id="fh5co-intro">
 	</section>--%>
 
-    <%------------------------------------------------------------------Citas---------------------------------------------------------------------------%>
-    <section id="fh5co-contact" data-section="citas">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 section-heading text-center">
-                    <h2 class="to-animate">Citas</h2>
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 subtext to-animate">
-                            <h3>En esta sección se puede agregar, buscar, actualizar y eliminar citas</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <a href="#popup9" class="popup-link fh5co-project-item" onclick='document.getElementById("calendario").src="formularios/frm_Calendario.aspx";'>
-                    <img src="../images/calendario.png" alt="Image" class="img-responsive centrar" />
-                    <div class="letrasgrande">
-                        <h2 style="text-align: center;">Ver calendario</h2>
-                    </div>
-                </a>
-                <div class="modal-wrapper" id="popup9">
-                    <div class="popup-contenedorC">
-                        <div class="responsiveContent">
-                            <iframe id="calendario"></iframe>
-                            <a class="popup-cerrar" href="#fh5co-contact">X</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <a href="#popup10" class="popup-link fh5co-project-item" onclick='document.getElementById("citas_Hoy").src="formularios/frm_AgregarCita.aspx";'>
-                    <img src="../images/calendario_hoy.png" alt="Image" class="img-responsive centrar" />
-                    <div class="letrasgrande">
-                        <h2 style="text-align: center;">Ver citas de hoy</h2>
-                    </div>
-                </a>
-                <div class="modal-wrapper" id="popup10">
-                    <div class="popup-contenedor">
-                        <div class="responsiveContent">
-                            <iframe id="citas_Hoy"></iframe>
-                            <a class="popup-cerrar" href="#fh5co-contact">X</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <%--------------------------------------------------------------Paciente---------------------------------------------------------------------%>
-    <section id="fh5co-work" data-section="pacientes">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 section-heading text-center">
-                    <h2 class="to-animate">Pacientes</h2>
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 subtext to-animate">
-                            <h3>En esta sección se puede agregar, buscar y actualizar la información personal de un paciente</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row row-bottom-padded-sm">
-                <div class="col-md-3 col-xs-12">
-                    <a href="#popup" class="popup-link fh5co-project-item" onclick='document.getElementById("agregarP").src="formularios/frm_AgregarPaciente.aspx";'>
-                        <img src="../images/agregar.png" alt="Image" class="img-responsive centrar" />
-                        <div class="letrasgrande">
-                            <h2 style="text-align: center;">Agregar</h2>
-                        </div>
-                    </a>
-                    <div class="modal-wrapper" id="popup">
-                        <div class="popup-contenedor">
-                            <div id="po" class="responsiveContent">
-                                <iframe id="agregarP"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-work">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-1">
-                </div>
-                <%--Actualizar--%>
-                <div class="col-md-3 col-xs-12">
-                    <a href="#popup1" class="popup-link fh5co-project-item " onclick='document.getElementById("actuP").src="formularios/frm_ActualizarPaciente.aspx";'>
-                        <img src="../images/actualizar.png" alt="Image" class="img-responsive centrar" />
-                        <div class="letrasgrande">
-                            <h2 style="text-align: center;">Actualizar</h2>
-                        </div>
-                    </a>
-                    <div id="popup1" class="modal-wrapper">
-                        <div class="popup-contenedor">
-                            <div id="actualizar" class="responsiveContent">
-                                <iframe id="actuP"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-work">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-1">
-                </div>
-                <%--Buscar--%>
-                <div class="col-md-3 col-xs-12 abajo">
-                    <a href="#popup2" class="popup-link fh5co-project-item " onclick='document.getElementById("buscarP").src="formularios/frm_BuscarPaciente.aspx";'>
-                        <img src="../images/buscar.png" alt="Image" class="img-responsive centrar" />
-                        <div class="letrasgrande">
-                            <h2 style="text-align: center;">Buscar</h2>
-                        </div>
-                    </a>
-                    <div id="popup2" class="modal-wrapper">
-                        <div class="popup-contenedor">
-                            <div class="responsiveContent">
-                                <iframe id="buscarP"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-work">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <%---------------------------------------------------------------Expediente--------------------------------------------------------------------%>
-    <section id="fh5co-testimonials" data-section="expedientes">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 section-heading text-center">
-                    <h2 class="to-animate">Expedientes</h2>
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 subtext to-animate">
-                            <h3>En esta sección se puede agregar, buscar, actualizar y generar el reporte de un expediente</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-
-                <%--Agregar--%>
-                <div class="col-md-3 ">
-                    <a href="#popup3" class="popup-link fh5co-project-item" onclick='document.getElementById("agregarE").src="formularios/frm_AgregarExpediente.aspx";'>
-                        <img src="../images/agregar.png" alt="Image" class="img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Agregar</h2>
-                        </div>
-                    </a>
-                    <div id="popup3" class="modal-wrapper">
-                        <div class="popup-contenedor">
-                            <div class="responsiveContent">
-                                <iframe id="agregarE"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <%--Actualizar--%>
-                <div class="col-md-3">
-                    <a href="#popup4" class="popup-link fh5co-project-item " onclick='document.getElementById("actuE").src="formularios/frm_ActualizarExpediente.aspx";'>
-                        <img src="../images/actualizar.png" alt="Image" class="img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Actualizar</h2>
-                        </div>
-                    </a>
-                    <div id="popup4" class="modal-wrapper">
-                        <div class="popup-contenedor">
-                            <div class="responsiveContent">
-                                <iframe id="actuE"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <%--Buscar--%>
-                <div class="col-md-3">
-                    <a href="#popup5" class="popup-link fh5co-project-item " onclick='document.getElementById("buscarE").src="formularios/frm_BuscarExpediente.aspx";'>
-                        <img src="../images/buscar.png" alt="Image" class="img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Buscar</h2>
-                        </div>
-                    </a>
-                    <div id="popup5" class="modal-wrapper">
-                        <div class="popup-contenedor">
-                            <div class="responsiveContent">
-                                <iframe id="buscarE"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <%--Reporte--%>
-                <div class="col-md-3 ">
-                    <a href="#popup6" class="popup-link fh5co-project-item " onclick='document.getElementById("reporteE").src="formularios/frm_ReporteOdontogramas.aspx";'>
-                        <img src="../images/reporte.png" alt="Image" class="img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Reporte</h2>
-                        </div>
-                    </a>
-                    <div id="popup6" class="modal-wrapper">
-                        <div class="popup-contenedorO">
-                            <div class="responsiveContent">
-                                <iframe id="reporteE"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <%--Odontograma--%>
-            <div class="row espacio">
-                <div class="col-md-3"></div>
-                <div class="col-md-3">
-                    <a href="#popup7" class="popup-link fh5co-project-item " onclick='document.getElementById("Odonto").src="formularios/frm_Odontograma.aspx";'>
-                        <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive centrar" />
-                        <div class="fh5co-text">
-                            <h2 style="text-align: center;">Odontograma</h2>
-                        </div>
-                    </a>
-                    <div id="popup7" class="modal-wrapper">
-                        <div class="popup-contenedorO">
-                            <div class="responsiveContent">
-                                <iframe id="Odonto"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-3">
-                    <a href="#popup8" class="popup-link fh5co-project-item" onclick='document.getElementById("tratamientos").src="formularios/frm_tratamientos.aspx";'>
-                        <img src="../images/tratamientos.png" alt="Image" class="img-responsive centrar" />
-                        <div class="fh5co-text">
-
-                            <h2 style="text-align: center;">Tratamientos</h2>
-                        </div>
-                    </a>
-                    <div id="popup8" class="modal-wrapper">
-                        <div class="popup-contenedor">
-                            <div class="responsiveContent">
-                                <iframe id="tratamientos"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <br />
-    <br />
-    <br />
-    <br />
-
-    <%--------------------------------------------------------------Factura---------------------------------------------------------------------%>
-    <section id="fh5co-services" data-section="factura">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 section-heading text-center">
-                    <h2 class="to-animate">Factura</h2>
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 subtext to-animate">
-                            <h3>En esta sección se puede facturar, realizar abonos a cuentas por cobrar y ver reportes de cuentas por cobrar y ventas a los pacientes</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row row-bottom-padded-sm">
-                <%--Ventas--%>
-                <div class="col-md-3 col-xs-12">
-                    <a href="#popup11" class="popup-link fh5co-project-item" onclick='document.getElementById("ventas").src="formularios/frm_AgregarVenta.aspx";'>
-                        <img src="../images/factura.png" alt="Image" class="img-responsive centrar" />
-                        <div class="letrasgrande">
-                            <h2 style="text-align: center;">Ventas</h2>
-                        </div>
-                    </a>
-                    <div class="modal-wrapper" id="popup11">
-                        <div class="popup-contenedorC">
-                            <div class="responsiveContent">
-                                <iframe id="ventas"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-services">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-1">
-                </div>
-                <%--Mostrar Ventas--%>
-                <div class="col-md-3 col-xs-12">
-                    <a href="#popup12" class="popup-link fh5co-project-item" onclick='document.getElementById("mostrarVentas").src="formularios/frm_BuscarVenta.aspx";'>
-                        <img src="../images/mostrar_facturas.png" alt="Image" class="img-responsive centrar" />
-                        <div class="letrasgrande">
-                            <h2 style="text-align: center;">Buscar ventas</h2>
-                        </div>
-                    </a>
-                    <div class="modal-wrapper" id="popup12">
-                        <div class="popup-contenedorC">
-                            <div class="responsiveContent">
-                                <iframe id="mostrarVentas"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-services">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-1">
-                </div>
-                <%--Reporte Factura--%>
-                <div class="col-md-3 col-xs-12 abajo">
-                    <a href="#popup13" class="popup-link fh5co-project-item" onclick='document.getElementById("reporteVentas").src="formularios/frm_ReporteVentas.aspx";'>
-                        <img src="../images/reporte_factura.png" alt="Image" class="img-responsive centrar" />
-                        <div class="letrasgrande">
-                            <h2 style="text-align: center;">Reporte de ventas</h2>
-                        </div>
-                    </a>
-                    <div class="modal-wrapper" id="popup13">
-                        <div class="popup-contenedorC">
-                            <div class="responsiveContent">
-                                <iframe id="reporteVentas"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-services">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row row-bottom-padded-sm">
-                <%--Cuentas por cobrar--%>
-                <div class="col-md-1">
-                </div>
-                <div class="col-md-1">
-                </div>
-                <div class="col-md-3 col-xs-12">
-                    <a href="#popup14" class="popup-link fh5co-project-item" onclick='document.getElementById("Cuentas").src="formularios/frm_CuentasXCobrar.aspx";'>
-                        <img src="../images/CxC.png" alt="Image" class="img-responsive centrar" />
-                        <div class="letrasgrande">
-                            <h2 style="text-align: center;">Cuentas por cobrar</h2>
-                        </div>
-                    </a>
-                    <div class="modal-wrapper" id="popup14">
-                        <div class="popup-contenedorC">
-                            <div class="responsiveContent">
-                                <iframe id="Cuentas"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-services">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-1">
-                </div>
-                <%--Reporte Cuentas por Cobrar--%>
-                <div class="col-md-3 col-xs-12 abajo">
-                    <a href="#popup16" class="popup-link fh5co-project-item" onclick='document.getElementById("reporteCuentas").src="formularios/frm_ReporteCxC.aspx";'>
-                        <img src="../images/ReporteCxC.png" alt="Image" class="img-responsive centrar" />
-                        <div class="letrasgrande">
-                            <h2 style="text-align: center;">Reporte de CxC</h2>
-                        </div>
-                    </a>
-                    <div class="modal-wrapper" id="popup16">
-                        <div class="popup-contenedorC">
-                            <div class="responsiveContent">
-                                <iframe id="reporteCuentas"></iframe>
-                                <a class="popup-cerrar" href="#fh5co-services">X</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <%--------------------------------------------------------------Usuario---------------------------------------------------------------------%>
-    <div id="ocultar1">
-        <section id="fh5co-about" data-section="usuario">
+        <%------------------------------------------------------------------Citas---------------------------------------------------------------------------%>
+        <section id="fh5co-contact" data-section="citas">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 section-heading text-center">
-                        <h2 class="to-animate">Usuario</h2>
+                        <h2 class="to-animate">Citas</h2>
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2 subtext to-animate">
-                                <h3>En esta sección se puede agregar, buscar, actualizar y eliminar los usuarios del sistema</h3>
+                                <h3>En esta sección se puede agregar, buscar, actualizar y eliminar citas</h3>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6 col-xxs-12">
+
+                <div class="col-md-6">
+                    <a href="#popup9" class="popup-link fh5co-project-item" onclick='document.getElementById("calendario").src="formularios/frm_Calendario.aspx";'>
+                        <img src="../images/calendario.png" alt="Image" class="img-responsive centrar" />
+                        <div class="letrasgrande">
+                            <h2 style="text-align: center;">Ver Agenda</h2>
+                        </div>
+                    </a>
+                    <div class="modal-wrapper" id="popup9">
+                        <div class="popup-contenedorC">
+                            <div class="responsiveContent">
+                                <iframe id="calendario"></iframe>
+                                <a class="popup-cerrar" href="#fh5co-contact">X</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="col-md-6">
+                    <a href="#popup10" class="popup-link fh5co-project-item" onclick='document.getElementById("citas_Hoy").src="formularios/frm_AgregarCita.aspx";'>
+                        <img src="../images/calendario_hoy.png" alt="Image" class="img-responsive centrar" />
+                        <div class="letrasgrande">
+                            <h2 style="text-align: center;">Ver citas de hoy</h2>
+                        </div>
+                    </a>
+                    <div class="modal-wrapper" id="popup10">
+                        <div class="popup-contenedor">
+                            <div class="responsiveContent">
+                                <iframe id="citas_Hoy"></iframe>
+                                <a class="popup-cerrar" href="#fh5co-contact">X</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <%--------------------------------------------------------------Paciente---------------------------------------------------------------------%>
+        <section id="fh5co-work" data-section="pacientes">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-heading text-center">
+                        <h2 class="to-animate">Pacientes</h2>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 subtext to-animate">
+                                <h3>En esta sección se puede agregar, buscar y actualizar la información personal de un paciente</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row row-bottom-padded-sm">
-                    <div class="col-md-3 col-sm-6 col-xxs-12">
-                        <a id="usu1" href="#popup17" class="fh5co-project-item" onclick='document.getElementById("agregarUsuario").src="formularios/frm_AgregarUsuario.aspx";'>
-                            <img src="../images/agregar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
-                            <div class="fh5co-text">
+                    <div class="col-md-3 col-xs-12">
+                        <a href="#popup" class="popup-link fh5co-project-item" onclick='document.getElementById("agregarP").src="formularios/frm_AgregarPaciente.aspx";'>
+                            <img src="../images/agregar.png" alt="Image" class="img-responsive centrar" />
+                            <div class="letrasgrande">
                                 <h2 style="text-align: center;">Agregar</h2>
                             </div>
                         </a>
-                        <div class="modal-wrapper" id="popup17">
+                        <div class="modal-wrapper" id="popup">
                             <div class="popup-contenedor">
-                                <div class="responsiveContent">
-                                    <iframe id="agregarUsuario"></iframe>
-                                    <a class="popup-cerrar" href="#fh5co-about">X</a>
+                                <div id="po" class="responsiveContent">
+                                    <iframe id="agregarP"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-work">X</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-3 col-sm-6 col-xxs-12">
-                        <a id="usu3" href="#popup18" class="fh5co-project-item" onclick='document.getElementById("actualizarUsuario").src="formularios/frm_ActualizarUsuario.aspx";'>
-                            <img src="../images/actualizar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
-                            <div class="fh5co-text">
+                    <div class="col-md-1">
+                    </div>
+                    <%--Actualizar--%>
+                    <div class="col-md-3 col-xs-12">
+                        <a href="#popup1" class="popup-link fh5co-project-item " onclick='document.getElementById("actuP").src="formularios/frm_ActualizarPaciente.aspx";'>
+                            <img src="../images/actualizar.png" alt="Image" class="img-responsive centrar" />
+                            <div class="letrasgrande">
                                 <h2 style="text-align: center;">Actualizar</h2>
                             </div>
                         </a>
-                        <div class="modal-wrapper" id="popup18">
+                        <div id="popup1" class="modal-wrapper">
                             <div class="popup-contenedor">
-                                <div class="responsiveContent">
-                                    <iframe id="actualizarUsuario"></iframe>
-                                    <a class="popup-cerrar" href="#fh5co-about">X</a>
+                                <div id="actualizar" class="responsiveContent">
+                                    <iframe id="actuP"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-work">X</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <div class="col-md-1">
+                    </div>
+                    <%--Buscar--%>
+                    <div class="col-md-3 col-xs-12 abajo">
+                        <a href="#popup2" class="popup-link fh5co-project-item " onclick='document.getElementById("buscarP").src="formularios/frm_BuscarPaciente.aspx";'>
+                            <img src="../images/buscar.png" alt="Image" class="img-responsive centrar" />
+                            <div class="letrasgrande">
+                                <h2 style="text-align: center;">Buscar</h2>
+                            </div>
+                        </a>
+                        <div id="popup2" class="modal-wrapper">
+                            <div class="popup-contenedor">
+                                <div class="responsiveContent">
+                                    <iframe id="buscarP"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-work">X</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <footer id="footer" role="contentinfo">
 
-        <a href="#" class="gotop js-gotop"><i class="icon-arrow-up2">Inicio</i></a>
-    </footer>
+        <%---------------------------------------------------------------Expediente--------------------------------------------------------------------%>
+        <section id="fh5co-testimonials" data-section="expedientes">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-heading text-center">
+                        <h2 class="to-animate">Expedientes</h2>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 subtext to-animate">
+                                <h3>En esta sección se puede agregar, buscar, actualizar y generar el reporte de un expediente</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
 
-    <script src="../js/jquery.min.js"></script>
+                    <%--Agregar--%>
+                    <div class="col-md-3 ">
+                        <a href="#popup3" class="popup-link fh5co-project-item" onclick='document.getElementById("agregarE").src="formularios/frm_AgregarExpediente.aspx";'>
+                            <img src="../images/agregar.png" alt="Image" class="img-responsive centrar" />
+                            <div class="fh5co-text">
+                                <h2 style="text-align: center;">Agregar</h2>
+                            </div>
+                        </a>
+                        <div id="popup3" class="modal-wrapper">
+                            <div class="popup-contenedor">
+                                <div class="responsiveContent">
+                                    <iframe id="agregarE"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%--Actualizar--%>
+                    <div class="col-md-3">
+                        <a href="#popup4" class="popup-link fh5co-project-item " onclick='document.getElementById("actuE").src="formularios/frm_ActualizarExpediente.aspx";'>
+                            <img src="../images/actualizar.png" alt="Image" class="img-responsive centrar" />
+                            <div class="fh5co-text">
+                                <h2 style="text-align: center;">Actualizar</h2>
+                            </div>
+                        </a>
+                        <div id="popup4" class="modal-wrapper">
+                            <div class="popup-contenedor">
+                                <div class="responsiveContent">
+                                    <iframe id="actuE"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%--Buscar--%>
+                    <div class="col-md-3">
+                        <a href="#popup5" class="popup-link fh5co-project-item " onclick='document.getElementById("buscarE").src="formularios/frm_BuscarExpediente.aspx";'>
+                            <img src="../images/buscar.png" alt="Image" class="img-responsive centrar" />
+                            <div class="fh5co-text">
+                                <h2 style="text-align: center;">Buscar</h2>
+                            </div>
+                        </a>
+                        <div id="popup5" class="modal-wrapper">
+                            <div class="popup-contenedor">
+                                <div class="responsiveContent">
+                                    <iframe id="buscarE"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <script src="../js/jquery.easing.1.3.js"></script>
+                    <%--Reporte--%>
+                    <div class="col-md-3 ">
+                        <a href="#popup6" class="popup-link fh5co-project-item " onclick='document.getElementById("Odonto").src="formularios/frm_Odontograma.aspx";'>
+                            <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive centrar" />
+                            <div class="fh5co-text">
+                                <h2 style="text-align: center;">Odontograma</h2>
+                            </div>
+                        </a>
+                        <div id="popup6" class="modal-wrapper">
+                            <div class="popup-contenedorO">
+                                <div class="responsiveContent">
+                                    <iframe id="Odonto"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <script src="../js/bootstrap.min.js"></script>
+                </div>
+                <%--Odontograma--%>
+                <div class="row espacio">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">
+                        <a href="#popup7" class="popup-link fh5co-project-item " onclick='document.getElementById("reporteE").src="formularios/frm_ReporteOdontogramas.aspx";'>
+                            <img src="../images/reporte.png" alt="Image" class="img-responsive centrar" />
+                            <div class="fh5co-text">
+                                <h2 style="text-align: center;">Reporte</h2>
+                            </div>
+                        </a>
+                        <div id="popup7" class="modal-wrapper">
+                            <div class="popup-contenedorO">
+                                <div class="responsiveContent">
+                                    <iframe id="reporteE"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <a href="#popup8" class="popup-link fh5co-project-item" onclick='document.getElementById("tratamientos").src="formularios/frm_tratamientos.aspx";'>
+                            <img src="../images/tratamientos.png" alt="Image" class="img-responsive centrar" />
+                            <div class="fh5co-text">
 
-    <script src="../js/jquery.waypoints.min.js"></script>
+                                <h2 style="text-align: center;">Tratamientos</h2>
+                            </div>
+                        </a>
+                        <div id="popup8" class="modal-wrapper">
+                            <div class="popup-contenedor">
+                                <div class="responsiveContent">
+                                    <iframe id="tratamientos"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br />
+        <br />
+        <br />
+        <br />
 
-    <script src="../js/jquery.stellar.min.js"></script>
+        <%--------------------------------------------------------------Factura---------------------------------------------------------------------%>
+        <section id="fh5co-services" data-section="factura">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-heading text-center">
+                        <h2 class="to-animate">Factura</h2>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 subtext to-animate">
+                                <h3>En esta sección se puede facturar, realizar abonos a cuentas por cobrar y ver reportes de cuentas por cobrar y ventas a los pacientes</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-bottom-padded-sm">
+                    <%--Ventas--%>
+                    <div class="col-md-3 col-xs-12">
+                        <a href="#popup11" class="popup-link fh5co-project-item" onclick='document.getElementById("ventas").src="formularios/frm_AgregarVenta.aspx";'>
+                            <img src="../images/factura.png" alt="Image" class="img-responsive centrar" />
+                            <div class="letrasgrande">
+                                <h2 style="text-align: center;">Ventas</h2>
+                            </div>
+                        </a>
+                        <div class="modal-wrapper" id="popup11">
+                            <div class="popup-contenedorC">
+                                <div class="responsiveContent">
+                                    <iframe id="ventas"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-services">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <%--Mostrar Ventas--%>
+                    <div class="col-md-3 col-xs-12">
+                        <a href="#popup12" class="popup-link fh5co-project-item" onclick='document.getElementById("mostrarVentas").src="formularios/frm_BuscarVenta.aspx";'>
+                            <img src="../images/mostrar_facturas.png" alt="Image" class="img-responsive centrar" />
+                            <div class="letrasgrande">
+                                <h2 style="text-align: center;">Buscar ventas</h2>
+                            </div>
+                        </a>
+                        <div class="modal-wrapper" id="popup12">
+                            <div class="popup-contenedorC">
+                                <div class="responsiveContent">
+                                    <iframe id="mostrarVentas"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-services">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <%--Reporte Factura--%>
+                    <div class="col-md-3 col-xs-12 abajo">
+                        <a href="#popup13" class="popup-link fh5co-project-item" onclick='document.getElementById("reporteVentas").src="formularios/frm_ReporteVentas.aspx";'>
+                            <img src="../images/reporte_factura.png" alt="Image" class="img-responsive centrar" />
+                            <div class="letrasgrande">
+                                <h2 style="text-align: center;">Reporte de ventas</h2>
+                            </div>
+                        </a>
+                        <div class="modal-wrapper" id="popup13">
+                            <div class="popup-contenedorC">
+                                <div class="responsiveContent">
+                                    <iframe id="reporteVentas"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-services">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-bottom-padded-sm">
+                    <%--Cuentas por cobrar--%>
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-3 col-xs-12">
+                        <a href="#popup14" class="popup-link fh5co-project-item" onclick='document.getElementById("Cuentas").src="formularios/frm_CuentasXCobrar.aspx";'>
+                            <img src="../images/CxC.png" alt="Image" class="img-responsive centrar" />
+                            <div class="letrasgrande">
+                                <h2 style="text-align: center;">Cuentas por cobrar</h2>
+                            </div>
+                        </a>
+                        <div class="modal-wrapper" id="popup14">
+                            <div class="popup-contenedorC">
+                                <div class="responsiveContent">
+                                    <iframe id="Cuentas"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-services">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <script src="../js/jquery.countTo.js"></script>
+                    <div class="col-md-1">
+                    </div>
+                    <%--Reporte Cuentas por Cobrar--%>
+                    <div class="col-md-3 col-xs-12 abajo">
+                        <a href="#popup16" class="popup-link fh5co-project-item" onclick='document.getElementById("reporteCuentas").src="formularios/frm_ReporteCxC.aspx";'>
+                            <img src="../images/ReporteCxC.png" alt="Image" class="img-responsive centrar" />
+                            <div class="letrasgrande">
+                                <h2 style="text-align: center;">Reporte de CxC</h2>
+                            </div>
+                        </a>
+                        <div class="modal-wrapper" id="popup16">
+                            <div class="popup-contenedorC">
+                                <div class="responsiveContent">
+                                    <iframe id="reporteCuentas"></iframe>
+                                    <a class="popup-cerrar" href="#fh5co-services">X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%--------------------------------------------------------------Usuario---------------------------------------------------------------------%>
+        <div id="ocultar1">
+            <section id="fh5co-about" data-section="usuario">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 section-heading text-center">
+                            <h2 class="to-animate">Usuario</h2>
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2 subtext to-animate">
+                                    <h3>En esta sección se puede agregar, buscar, actualizar y eliminar los usuarios del sistema</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xxs-12">
+                    </div>
+                    <div class="row row-bottom-padded-sm">
+                        <div class="col-md-3 col-sm-6 col-xxs-12">
+                            <a id="usu1" href="#popup17" class="fh5co-project-item" onclick='document.getElementById("agregarUsuario").src="formularios/frm_AgregarUsuario.aspx";'>
+                                <img src="../images/agregar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
+                                <div class="fh5co-text">
+                                    <h2 style="text-align: center;">Agregar</h2>
+                                </div>
+                            </a>
+                            <div class="modal-wrapper" id="popup17">
+                                <div class="popup-contenedor">
+                                    <div class="responsiveContent">
+                                        <iframe id="agregarUsuario"></iframe>
+                                        <a class="popup-cerrar" href="#fh5co-about">X</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    <script src="../js/jquery.magnific-popup.min.js"></script>
+                        <div class="col-md-3 col-sm-6 col-xxs-12">
+                            <a id="usu3" href="#popup18" class="fh5co-project-item" onclick='document.getElementById("actualizarUsuario").src="formularios/frm_ActualizarUsuario.aspx";'>
+                                <img src="../images/actualizar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
+                                <div class="fh5co-text">
+                                    <h2 style="text-align: center;">Actualizar</h2>
+                                </div>
+                            </a>
+                            <div class="modal-wrapper" id="popup18">
+                                <div class="popup-contenedor">
+                                    <div class="responsiveContent">
+                                        <iframe id="actualizarUsuario"></iframe>
+                                        <a class="popup-cerrar" href="#fh5co-about">X</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xxs-12">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <footer id="footer" role="contentinfo" style="text-align: center">
+            <a href="#" class="gotop js-gotop"><i class="icon-arrow-up2">Inicio</i></a>
+            <p>&copy; 2018 - Clínica Dental Alina Camacho. Todos los derechos reservados.</p>
+        </footer>
+        <script src="../js/jquery.min.js"></script>
 
-    <script src="../js/magnific-popup-options.js"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-    <script src="../js/google_map.js"></script>
+        <script src="../js/jquery.easing.1.3.js"></script>
 
-    <script src="../js/jquery.style.switcher.js"></script>
-    <script src="../js/materialize.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
 
-    <script src="../js/main.js"></script>
+        <script src="../js/jquery.waypoints.min.js"></script>
+
+        <script src="../js/jquery.stellar.min.js"></script>
+
+        <script src="../js/jquery.countTo.js"></script>
+
+        <script src="../js/jquery.magnific-popup.min.js"></script>
+
+        <script src="../js/magnific-popup-options.js"></script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+        <script src="../js/google_map.js"></script>
+
+        <script src="../js/jquery.style.switcher.js"></script>
+        <script src="../js/materialize.js"></script>
+
+        <script src="../js/main.js"></script>
     </form>
 </body>
 </html>
