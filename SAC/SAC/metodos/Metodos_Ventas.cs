@@ -22,6 +22,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -34,6 +35,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -47,9 +49,9 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
-
         }
 
         public void TerminarVenta(String codigo)
@@ -72,6 +74,7 @@ namespace SAC.metodos
             {
                 codigo = busqueda.GetString(0);
             }
+            con.cerrar_Conexion();
             return codigo;
         }
 
@@ -83,6 +86,7 @@ namespace SAC.metodos
             {
                 codigo = busqueda.GetString(0);
             }
+            con.cerrar_Conexion();
             return codigo;
         }
 
@@ -100,6 +104,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -113,6 +118,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -125,6 +131,7 @@ namespace SAC.metodos
             {
                 detalle = busqueda.GetString(0);
             }
+            con.cerrar_Conexion();
             return detalle;
         }
 
@@ -136,6 +143,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -154,6 +162,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -167,6 +176,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -181,6 +191,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -217,6 +228,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -229,6 +241,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -241,6 +254,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -254,6 +268,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
         }
@@ -266,6 +281,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
         }

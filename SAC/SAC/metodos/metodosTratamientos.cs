@@ -21,6 +21,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -33,7 +34,7 @@ namespace SAC.metodos
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             da.Fill(dt);
-
+            con.cerrar_Conexion();
             return dt;
 
         }
@@ -71,6 +72,7 @@ namespace SAC.metodos
             {
                 codigo = buscar.GetString(0);
             }
+            con.cerrar_Conexion();
             return codigo;
         }
         public DataTable Grid1()
@@ -81,6 +83,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
         }
@@ -92,6 +95,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
         }

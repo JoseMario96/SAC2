@@ -21,6 +21,7 @@ namespace SAC.metodos
             {
                 esta = true;
             }
+            con.cerrar_Conexion();
             return esta;
         }
 
@@ -32,6 +33,7 @@ namespace SAC.metodos
             {
                 esta = busqueda.GetString(0);
             }
+            con.cerrar_Conexion();
             return esta;
         }
 
@@ -43,6 +45,7 @@ namespace SAC.metodos
             {
                 esta = true;
             }
+            con.cerrar_Conexion();
             return esta;
         }
 
@@ -54,6 +57,7 @@ namespace SAC.metodos
             {
                 esta = true;
             }
+            con.cerrar_Conexion();
             return esta;
         }
 
@@ -65,6 +69,7 @@ namespace SAC.metodos
             {
                 retorno = Convert.ToInt32(busqueda.GetString(0));
             }
+            con.cerrar_Conexion();
             return retorno;
         }
 
@@ -88,6 +93,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
         }
@@ -104,7 +110,6 @@ namespace SAC.metodos
             return estado;
         }
 
-        //call bd_sac.pa_Habilitacion('601221', w);
         public void ActualizarUsuario(String usuario, String correo, int tipo)
         {
             consultar.ejecutar_consulta("call bd_sac.pa_ActUsuario('"+usuario+"', '"+correo+"', "+tipo+");", con.abrir_conexion()).ExecuteNonQuery();

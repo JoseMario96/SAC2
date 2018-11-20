@@ -29,6 +29,7 @@ namespace SAC.metodos
                         matriz[i, j] = System.Convert.ToString(dt.Tables[0].Rows[i].ItemArray[j]);
                     }
                 }
+                con.cerrar_Conexion();
             }
             return matriz;
 
@@ -42,6 +43,7 @@ namespace SAC.metodos
             {
                 conteo = Convert.ToInt32(busqueda.GetString(0));
             }
+            con.cerrar_Conexion();
             return conteo;
         }
 
@@ -65,6 +67,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -79,6 +82,7 @@ namespace SAC.metodos
             {
                 codigo = busqueda.GetString(0);
             }
+            con.cerrar_Conexion();
             return codigo;
         }
 
@@ -124,7 +128,8 @@ namespace SAC.metodos
             {
                 esta = true;
             }
-                return esta;
+            con.cerrar_Conexion();
+            return esta;
         }
 
         public Boolean ValidarCita(String fecha, String hora)
@@ -135,6 +140,7 @@ namespace SAC.metodos
             {
                 esta = true;
             }
+            con.cerrar_Conexion();
             return esta;
         }
 
@@ -155,6 +161,7 @@ namespace SAC.metodos
                         matriz[i, j] = System.Convert.ToString(dt.Tables[0].Rows[i].ItemArray[j]);
                     }
                 }
+                con.cerrar_Conexion();
             }
             return matriz;
 

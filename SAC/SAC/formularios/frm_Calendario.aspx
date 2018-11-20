@@ -154,7 +154,6 @@
                     </asp:UpdatePanel>
                 </div>
             </div>
-            <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="86400000"></asp:Timer>
             <%-- HOY--%>
             <div id="cabecera" style="text-align: center; /*padding-right: 18%; padding-left: 10%; */ display: none">
                 <h3>Citas de hoy</h3>

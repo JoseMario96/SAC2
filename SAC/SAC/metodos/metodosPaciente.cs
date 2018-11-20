@@ -143,6 +143,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -156,6 +157,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -209,6 +211,7 @@ namespace SAC.metodos
             {
                 confirmar = true;
             }
+            con.cerrar_Conexion();
             return confirmar;
         }
 
