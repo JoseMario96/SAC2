@@ -180,7 +180,7 @@ namespace SAC.metodos
             DataTable dt = new DataTable();
             try
             {
-                string consulta = "select tbl_Venta.codigoVenta, tbl_Paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta from tbl_paciente, tbl_venta where tbl_paciente.cedulaPaciente = tbl_venta.cedulaPaciente;";
+                string consulta = "select tbl_Venta.codigoVenta, tbl_Paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, DATE_FORMAT(tbl_venta.fechaVenta,'%d-%m-%Y') from tbl_paciente, tbl_venta where tbl_paciente.cedulaPaciente = tbl_venta.cedulaPaciente;";
                 MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
                 MySqlDataAdapter da = new MySqlDataAdapter(comando);
                 using (dt)

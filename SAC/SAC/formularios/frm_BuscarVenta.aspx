@@ -55,7 +55,7 @@
                                 <asp:BoundField DataField="apellido1Paciente" HeaderText="Primer apellido" ItemStyle-Width="100">
                                     <ItemStyle Width="100px" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="fechaVenta" HeaderText="Fecha" ItemStyle-Width="100">
+                                <asp:BoundField DataField="DATE_FORMAT(tbl_venta.fechaVenta,'%d-%m-%Y')" HeaderText="Fecha" ItemStyle-Width="100">
                                     <ItemStyle Width="100px" />
                                 </asp:BoundField>
                             </Columns>

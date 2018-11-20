@@ -134,7 +134,7 @@ namespace SAC.formularios
                         String codigo = objeto.Codigo(cedulaAA, fechaAA, horaAA);
                         datos = objeto.MostrarCita(codigo);
                         cedulaA.Value = datos[0];
-                        fechaA.Value = datos[1];
+                        fechaA.Value = datos[1].Substring(0, 10);
                         horaA.Value = datos[2];
                         telefonoA.Value = datos[3];
                         nombreA.Value = datos[4];
