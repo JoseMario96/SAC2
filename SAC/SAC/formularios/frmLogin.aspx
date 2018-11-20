@@ -158,7 +158,7 @@
             key = e.keyCoden || e.which;
             teclado = String.fromCharCode(key).toLowerCase();
             letras = "0123456789áéíóúabcdefghijklmnñopqrstuvwxyz";
-            especiales = "8-37-38-46-164";
+            especiales = "8-37-38-46-164-9";
             teclado_especial = false;
 
             for (var i in especiales) {
@@ -166,7 +166,6 @@
                     teclado_especial = true; break;
 
                 }
-
             }
             if (letras.indexOf(teclado) == -1 && !teclado_especial) {
                 document.getElementById('aviso').style.display = 'block';
@@ -174,18 +173,7 @@
             }
             document.getElementById('aviso').style.display = 'none';
         }
-        //window.onload = function () {
-        //    var myInput = document.getElementById('txt_usuario');
-        //    myInput.onpaste = function (e) {
-        //        e.preventDefault();
-        //        alert("esta acción está prohibida");
-        //    }
-
-        //    myInput.oncopy = function (e) {
-        //        e.preventDefault();
-        //        alert("esta acción está prohibida");
-        //    }
-        //}
+      
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>

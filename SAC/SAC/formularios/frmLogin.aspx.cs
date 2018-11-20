@@ -16,6 +16,7 @@ namespace SAC.formularios
         metodos.metodos_Citas objeto = new metodos.metodos_Citas();
         protected void Page_Load(object sender, EventArgs e)
         {
+            txt_usuario.Focus();
         }
 
         protected void btn_sesion_Click(object sender, EventArgs e)

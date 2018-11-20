@@ -17,6 +17,7 @@
             background-image: url(../images/Descargar1.png);
             border: 0px;
         }
+
         .boton2 {
             width: 123px;
             height: 150px;
@@ -44,6 +45,12 @@
         .espacio {
             padding-top: 5%;
         }
+
+        label, th, tr {
+            font-family: sans-serif;
+            font-size: medium;
+            color: black;
+        }
     </style>
 </head>
 <body oncopy="return false" onpaste="return false">
@@ -55,25 +62,28 @@
             <asp:ScriptManager runat="server" ID="sm">
             </asp:ScriptManager>
             <div id="botones" class="espacio row">
-
                 <center><div class="col s6">
-                    <asp:Button ID="btn_todos" CssClass="boton1" runat="server" Text=""  title="Reporte general" OnClick="btn_todos_Click" />
-                </div></center>
-                <center> <div class="col s6">
+                    <asp:Button ID="btn_todos" CssClass="boton1" runat="server" Text=""   title="Reporte general" OnClick="btn_todos_Click" />
+                </div>
+                 <div class="col s6">
                     <asp:Button ID="btn_uno" CssClass="boton2" runat="server" Text="" title="Reporte individual" OnClick="btn_uno_Click" />
                 </div></center>
             </div>
-  <div class="input-field col s3 ">
-                            <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
-                            <label class="active" for="first_name2">Nombre:</label>
-                        </div>
+
             <div id="busqueda" style="display: none" class="espacio">
+                <div class="row">
+                    <div class="input-field col s3 ">
+                        <asp:TextBox ID="txtSearch" runat="server" title="Nombre" MaxLength="20" onkeypress="return sololetras(event)"></asp:TextBox>
+                        <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
+                    </div>
+                </div>
+
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
-                      <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
-                                <asp:GridView ID="Gridview_Venta" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
-                                    runat="server" AutoGenerateColumns="False" Height="174px" AllowPaging="true" PageSize="3" Width="100%" OnRowDataBound="Gridview_Venta_RowDataBound" OnSelectedIndexChanged="Gridview_Venta_SelectedIndexChanged" OnPageIndexChanging="Gridview_Venta_PageIndexChanging">
-                                    <Columns>
+                        <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
+                        <asp:GridView ID="Gridview_Venta" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
+                            runat="server" AutoGenerateColumns="False" Height="174px" AllowPaging="true" PageSize="3" Width="100%" OnRowDataBound="Gridview_Venta_RowDataBound" OnSelectedIndexChanged="Gridview_Venta_SelectedIndexChanged" OnPageIndexChanging="Gridview_Venta_PageIndexChanging">
+                            <Columns>
                                 <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula del paciente" ItemStyle-Width="100">
                                     <ItemStyle Width="100px" />
                                 </asp:BoundField>
@@ -90,18 +100,11 @@
                                     <ItemStyle Width="100px" />
                                 </asp:BoundField>
                             </Columns>
-
-                            <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
-                            <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
-                            <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                         </asp:GridView>
                     </ContentTemplate>
                 </asp:UpdatePanel>
 
                 <div class="row espacio">
-                    <div class="col s12"></div>
-                    <div class="col s12"></div>
-                    <div class="col s12"></div>
                     <div class="col s4"></div>
                     <div class="col s2">
                         <asp:Button ID="btn_descarga" CssClass="waves-effect waves-light btn" runat="server" Text="Descargar" OnClick="btn_descarga_Click" />
@@ -109,6 +112,7 @@
                     <div class="col s2">
                         <asp:Button ID="btn_volver" CssClass="waves-effect waves-light btn" runat="server" Text="Volver" OnClick="btn_volver_Click" />
                     </div>
+                    <div class="col s4"></div>
                 </div>
             </div>
 
@@ -116,16 +120,34 @@
             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
             <script type="text/javascript" src="../js/quicksearch.js"></script>
 
-            
         </form>
     </div>
-  <script type="text/javascript">
-         $(document).ready(function () {
-             $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
                 $('#<%=InvisButton.ClientID%>').click();
 
-             });
-         });
+            });
+        });
+        function sololetras(e) {
+            key = e.keyCoden || e.which;
+            teclado = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-38-46-164";
+            teclado_especial = false;
+
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true; break;
+
+                }
+
+            }
+            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                return false;
+
+            }
+        }
     </script>
 </body>
 </html>

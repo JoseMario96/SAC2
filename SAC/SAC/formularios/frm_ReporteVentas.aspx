@@ -12,6 +12,12 @@
         .espacio {
             padding-top: 5%;
         }
+
+        label, th, tr {
+            font-family: sans-serif;
+            font-size: medium;
+            color: black;
+        }
     </style>
 </head>
 <body oncopy="return false" onpaste="return false">
@@ -49,7 +55,7 @@
                                 <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="100">
                                     <ItemStyle Width="50px" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="fechaVenta" HeaderText="Fecha" ItemStyle-Width="100">
+                                <asp:BoundField DataField="DATE_FORMAT(tbl_venta.fechaVenta,'%d-%m-%Y')" HeaderText="Fecha" ItemStyle-Width="100">
                                     <ItemStyle Width="70px" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="detalleVenta" HeaderText="Detalle" ItemStyle-Width="100">
@@ -62,9 +68,6 @@
                                     <ItemStyle Width="70px" />
                                 </asp:BoundField>
                             </Columns>
-                            <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
-                            <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
-                            <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                         </asp:GridView>
                     </ContentTemplate>
                 </asp:UpdatePanel>

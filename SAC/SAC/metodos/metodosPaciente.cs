@@ -151,24 +151,30 @@ namespace SAC.metodos
 
         public DataTable Paciente2(String nom)
         {
-            string consulta = "SELECT cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente FROM tbl_paciente where nombre1Paciente like '%"+nom+"%';";
-            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
-            MySqlDataAdapter da = new MySqlDataAdapter(comando);
-            using (DataTable dt = new DataTable())
+            DataTable dt = new DataTable();
+            try
             {
-                da.Fill(dt);
-                con.cerrar_Conexion();
+                string consulta = "SELECT cedulaPaciente, nombre1Paciente , apellido1Paciente, apellido2Paciente FROM tbl_paciente where nombre1Paciente like '%" + nom + "%';";
+                MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                using (dt)
+                {
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch
+            {
                 return dt;
             }
-
         }
 
 
 
-        public void ActualizarPacienteNuevoEncargado(int estado,String ced, String cedEnc, String nom1Enc, String nom2Enc, String ape1Enc, String ape2Enc, String generoEnc, String telEnc, String celEnc, String dirEnc, String correoEnc, String parentezco)
+        public void ActualizarPacienteNuevoEncargado(int estado, String ced, String cedEnc, String nom1Enc, String nom2Enc, String ape1Enc, String ape2Enc, String generoEnc, String telEnc, String celEnc, String dirEnc, String correoEnc, String parentezco)
         {
 
-            if (estado==1)
+            if (estado == 1)
             {
                 consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_encargado` (`cedulaEncargado`, `nombre1Encargado`, `nombre2Encargado`, `apellido1Encargado`, `apellido2Encargado`, `generoEncargado`, `telefonoEncargado`, `celularEncargado`, `direccionEncargado`, `parentescoEncargado`, `correoEncargado`) VALUES('" + cedEnc + "', '" + nom1Enc + "', '" + nom2Enc + "','" + ape1Enc + "','" + ape2Enc + "','" + generoEnc + "','" + telEnc + "','" + celEnc + "','" + dirEnc + "','" + parentezco + "','" + correoEnc + "');", con.abrir_conexion()).ExecuteNonQuery();
                 consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_paciente` SET `cedulaEncargado`='" + cedEnc + "' WHERE `cedulaPaciente`='" + ced + "';", con.abrir_conexion()).ExecuteNonQuery();

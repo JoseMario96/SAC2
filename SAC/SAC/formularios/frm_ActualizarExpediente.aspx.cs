@@ -40,9 +40,10 @@ namespace SAC.formularios
         {
             try
             {
-                txtSearch.Focus();
+
                 if (!this.IsPostBack)
                 {
+                    txtSearch.Focus();
                     GridView1.DataSource = metodo.BuscarExpediente();
                     GridView1.DataBind();
                 }
@@ -89,7 +90,7 @@ namespace SAC.formularios
                     datos = metodo.BuscarPaciente(ced);
                     expediente.InnerText = datos[0];
                     cedula.InnerText = datos[1];
-                    fecha.InnerText = datos[2];
+                    fecha.InnerText = datos[2].Substring(0, 10); ;
 
 
                     cardiaco.Text = datos[3];
@@ -653,10 +654,10 @@ namespace SAC.formularios
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
         }
 
-        protected void Cancelar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("frm_ActualizarExpediente.aspx");
-        }
+        //protected void Cancelar_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("frm_ActualizarExpediente.aspx");
+        //}
 
         protected void InvisButton_Click(object sender, EventArgs e)
         {

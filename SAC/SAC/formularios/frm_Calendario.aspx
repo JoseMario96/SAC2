@@ -7,25 +7,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <link href="../css/materialize.css" rel="stylesheet" />
-    <%--<!-- Place favicon.ico and apple-touchm-icon.png in the root directory -->
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css' />
-    <!-- Animate.css -->
-
-    <link href="../css/animate.css" rel="stylesheet" />
-    <!-- Icomoon Icon Fonts-->
-    <link href="../css/icomoon.css" rel="stylesheet" />
-
-    <!-- Simple Line Icons -->
-    <link href="../css/simple-line-icons.css" rel="stylesheet" />
-
-    <!-- Magnific Popup -->
-    <link href="../css/magnific-popup.css" rel="stylesheet" />
-
-    <!-- Bootstrap  -->
-    <link href="../css/bootstrap.css" rel="stylesheet" />
-    <link href="../css/style.css" rel="stylesheet" />--%>
-
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
     <script type="text/javascript">
         $(function () {
@@ -37,81 +18,11 @@
         });
     </script>
     <style>
-        /*#popup {
-            visibility: hidden;
-            opacity: 0;
-            margin-top: -300px;
+        label, tr, th {
+            font-family: sans-serif;
+            font-size: medium;
+            color: black;
         }
-
-            #popup:target {
-                visibility: visible;
-                opacity: 1;
-                background-color: rgba(0,0,0,0.8);
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                margin: 0;
-                z-index: 999;
-                transition: all 1s;
-            }
-
-        .popup-contenedor {
-            position: relative;
-            margin: 7% auto;
-            padding: 30px 50px;
-            background-color: #fafafa;
-            color: #333;
-            border-radius: 3px;
-            width: 65%;
-            height: 75%;
-        }
-
-        a.popup-cerrar {
-            position: absolute;
-            top: 3px;
-            right: 3px;
-            background-color: rgb(255, 0, 0);
-            padding: 7px 10px;
-            font-size: 24px;
-            text-decoration: none;
-            line-height: 1;
-            color: #fff;
-        }
-
-        .responsiveContent {
-            position: relative;
-            height: 0;
-            overflow: hidden;
-            padding-bottom: 56.2%;
-            margin-bottom: 20px;
-        }
-
-            .responsiveContent iframe {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
-           
-        .espacio {
-            padding-top: 21%;
-        }
-
-        .abajo {
-            padding-bottom: 10%;
-        }
-
-        .letrasgrande {
-            font-size: 24px;
-        }
-
-        .centrar {
-            display: block;
-            margin: auto;
-        } */
 
         td th .calendario {
             text-align: center;
@@ -125,6 +36,9 @@
             text-align: center;
             text-transform: uppercase;
         }
+        .espacio {
+            padding-top: 5%;
+        }
     </style>
 </head>
 <body oncopy="return false" onpaste="return false">
@@ -136,17 +50,17 @@
                 <h2 style="text-align: center">Agenda de citas</h2>
             </header>
 
-            <div class="row">
+            <div class="row espacio">
                 <div class="col s12 calendario">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Full" Font-Names="Arial" Font-Size="15pt" ForeColor="#003399" Height="432px" OnDayRender="Calendar1_DayRender" OnSelectionChanged="Calendar1_SelectionChanged">
                                 <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" Font-Underline="true" />
-                                <NextPrevStyle Font-Size="18pt" ForeColor="#CCCCFF" />
+                                <NextPrevStyle Font-Size="18pt" ForeColor="#000606" />
                                 <OtherMonthDayStyle ForeColor="#999999" HorizontalAlign="Center" />
                                 <SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
                                 <SelectorStyle BackColor="#99CCCC" ForeColor="#336666" />
-                                <TitleStyle BackColor="#003399" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="18pt" ForeColor="#CCCCFF" Height="25px" />
+                                <TitleStyle BackColor="#009999" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="18pt" ForeColor="#CCCCFF" Height="25px" />
                                 <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
                                 <WeekendDayStyle BackColor="#CCCCFF" />
                             </asp:Calendar>
@@ -155,16 +69,21 @@
                 </div>
             </div>
             <%-- HOY--%>
-            <div id="cabecera" style="text-align: center; /*padding-right: 18%; padding-left: 10%; */ display: none">
-                <h3>Citas de hoy</h3>
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
-                        <center> <label id="fechaCabecera" runat="server" style="font-size: large"></label></center>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+            <div id="cabecera" style="display: none">
+                <div class="row">
+                    <div class=" col s3">
+                        <h5><b>Citas de hoy:
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label id="fechaCabecera" runat="server"></label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </b></h5>
+                    </div>
+                </div>
             </div>
 
-            <div id="grid" style="display: none; /*padding-left: 10%; */">
+            <div id="grid" style="display: none;">
                 <div class="row">
                     <div class="col s12">
                         <asp:UpdatePanel runat="server">
@@ -184,17 +103,14 @@
                                         <asp:BoundField DataField="telefonoCita" HeaderText="Contacto" ItemStyle-Width="100">
                                             <ItemStyle Width="100px" />
                                         </asp:BoundField>
-                                    </Columns>
-                                    <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
-                                    <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
-                                    <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
+                                    </Columns>                                
                                 </asp:GridView>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
                 </div>
             </div>
-            <div id="Actualizar_Eliminar" style="display: none; /*width: 70%; margin-left: 15%*/">
+            <div id="Actualizar_Eliminar" style="display: none;">
                 <table class="striped">
                     <tr>
                         <th colspan="4" style="text-align: center">Datos de la cita</th>
@@ -275,15 +191,15 @@
 
             <div id="agregar" class="row" style="display: none;">
                 <div class="row">
-                    <center><div class="col s12">
-                    <div id="cabecera2" style="display: none">
-                        <h2>Agregar una nueva cita</h2>
+                    <div class="col s12">
+                        <div id="cabecera2" style="display: none">
+                            <h5><b>Agregar una nueva cita</b></h5>
+                        </div>
                     </div>
-                </div></center>
                 </div>
+
                 <div class="row">
-                    <div class="col s2"></div>
-                    <div class="col s4">
+                    <div class="col s6">
                         <label class="active" for="cedula" style="font-size: medium">Cédula del paciente</label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
@@ -292,7 +208,7 @@
                         </asp:UpdatePanel>
                     </div>
 
-                    <div class="col s4">
+                    <div class="col s6">
                         <label class="active" for="nombre" style="font-size: medium">Nombre completo</label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
@@ -300,12 +216,11 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
-                    <div class="col s2"></div>
                 </div>
 
                 <div class="row">
-                    <div class="col s2"></div>
-                    <div class="col s4">
+
+                    <div class="col s6">
                         <label class="active" for="fechaC" style="font-size: medium">Fecha de la cita</label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
@@ -314,7 +229,7 @@
                         </asp:UpdatePanel>
                     </div>
 
-                    <div class="col s4">
+                    <div class="col s6">
                         <label class="active" for="hora" style="font-size: medium">Hora de la cita</label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
@@ -322,11 +237,10 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
-                    <div class="col s2"></div>
                 </div>
+
                 <div class="row">
-                    <div class="col s2"></div>
-                    <div class="col s4">
+                    <div class="col s6">
                         <label class="active" for="telefono" style="font-size: medium">Teléfono de contacto </label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
@@ -335,7 +249,7 @@
                         </asp:UpdatePanel>
                     </div>
 
-                    <div class="col s4">
+                    <div class="col s6">
                         <label class="active" for="correo" style="font-size: medium">Correo electrónico </label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
@@ -343,9 +257,7 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
-                    <div class="col s2"></div>
                 </div>
-
                 <div class="row">
                     <div class="col s4"></div>
                     <div class="input-field col s2">

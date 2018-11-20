@@ -22,6 +22,37 @@
         });
     </script>--%>
     <style>
+        .boton1 {
+            width: 123px;
+            height: 150px;
+            background-image: url(../images/odontoAdultos.png);
+            border: 0px;
+        }
+
+        .boton2 {
+            width: 123px;
+            height: 150px;
+            background-image: url(../images/odontoNiños.png);
+            border: 0px;
+            overflow: hidden;
+        }
+
+        .boton1:hover {
+            -webkit-transform: scale(1.25);
+            -moz-transform: scale(1.25);
+            -ms-transform: scale(1.25);
+            -o-transform: scale(1.25);
+            transform: scale(1.25);
+        }
+
+        .boton2:hover {
+            -webkit-transform: scale(1.25);
+            -moz-transform: scale(1.25);
+            -ms-transform: scale(1.25);
+            -o-transform: scale(1.25);
+            transform: scale(1.25);
+        }
+
         .espacio {
             padding-top: 5%;
         }
@@ -34,12 +65,10 @@
         <header style="text-align: center">
             <h2>Odontograma</h2>
         </header>
-        <%-- <asp:TextBox ID="BudquedaExp" runat="server" OnTextChanged="BudquedaExp_TextChanged"></asp:TextBox>--%>
-
         <div class="container">
             <div class="row espacio">
                 <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)" MaxLength="20"></asp:TextBox>
                     <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
                 </div>
                 <div class="row">
@@ -60,18 +89,21 @@
 
                 </div>
             </div>
-            <div id="dienteOdontograma" style="display: block" tabindex="1">
-                <div class="row">
-                    <div class="col s6">
-                        <asp:ImageButton ID="ibOdontogramaG" runat="server" src="../images/diente.png" Height="60px" Width="125px" OnClick="ibOdontogramaG_Click" />
-                    </div>
 
-                    <div class="col s6">
-                        <asp:ImageButton ID="ibOdontogramaN" runat="server" src="../images/diente.png" Height="60px" Width="125px" OnClick="ibOdontogramaN_Click" />
+            <div id="dienteOdontograma" class="row espacio" style="display: block" tabindex="1">
+                <div class="row">
+                    <center>
+                    <div class="col s2"></div>
+                    <div class="col s4">
+                        <asp:ImageButton CssClass="boton1" ID="ibOdontogramaG" runat="server" title="Odontograma de Adultos" src="../images/odontoAdultos.png" OnClick="ibOdontogramaG_Click" />
                     </div>
+                    <div class="col s4">
+                        <asp:ImageButton CssClass="boton2" ID="ibOdontogramaN" runat="server"  title="Odontograma de Niños" src="../images/odontoNiños.png" OnClick="ibOdontogramaN_Click" />
+                    </div>
+                    <div class="col s2"></div>
+                </center>
                 </div>
             </div>
-
         </div>
 
     </form>

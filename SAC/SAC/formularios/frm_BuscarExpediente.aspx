@@ -12,9 +12,10 @@
     <script type="text/javascript" src="../js/quicksearch.js"></script>
 
     <style>
-         .espacio {
+        .espacio {
             padding-top: 5%;
         }
+
         #formularioP {
             border: 1px solid white;
         }
@@ -35,11 +36,13 @@
         <asp:ScriptManager runat="server" ID="ScriptManager1">
         </asp:ScriptManager>
         <div class="container">
-
+            <header style="text-align: center">
+                <h2>Busqueda de expediente </h2>
+            </header>
             <div class="row espacio">
                 <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
-                    <label class="active" for="first_name2">Nombre:</label>
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)"  maxlength="20"></asp:TextBox>
+                    <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
                 </div>
                 <div class="row espacio">
                     <asp:UpdatePanel runat="server">
@@ -127,8 +130,8 @@
                         <td>
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
-                            <label id="fecha" runat="server"></label>
-                                 </ContentTemplate>
+                                    <label id="fecha" runat="server"></label>
+                                </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
                         <td colspan="3">
@@ -593,6 +596,24 @@
         </div>
     </form>
     <script type="text/javascript">
+        function sololetras(e) {
+            key = e.keyCoden || e.which;
+            teclado = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-38-46-164";
+            teclado_especial = false;
+
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true; break;
+
+                }
+            }
+            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                return false;
+            }
+        }
+
         $(document).ready(function () {
             $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
                 $('#<%=InvisButton.ClientID%>').click();

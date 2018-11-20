@@ -89,15 +89,23 @@ namespace SAC.metodos
         }
         public DataTable Grid2(String nom)
         {
-            string consulta = "Select tbl_tratamiento.codigoTratamiento, tbl_tratamiento.nombreTratamiento, tbl_tratamiento.precioTratamiento, tbl_tipotratamiento.nombreTipoTratamiento from tbl_tratamiento, tbl_tipotratamiento where nombreTratamiento like '%" + nom + "%' and tbl_tratamiento.codigoTipoTratamiento = tbl_tipotratamiento.codigoTipoTratamiento order by codigoTratamiento;";
-            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
-            MySqlDataAdapter da = new MySqlDataAdapter(comando);
-            using (DataTable dt = new DataTable())
+            DataTable dt = new DataTable();
+            try
             {
-                da.Fill(dt);
-                con.cerrar_Conexion();
+                string consulta = "Select tbl_tratamiento.codigoTratamiento, tbl_tratamiento.nombreTratamiento, tbl_tratamiento.precioTratamiento, tbl_tipotratamiento.nombreTipoTratamiento from tbl_tratamiento, tbl_tipotratamiento where nombreTratamiento like '%" + nom + "%' and tbl_tratamiento.codigoTipoTratamiento = tbl_tipotratamiento.codigoTipoTratamiento order by codigoTratamiento;";
+                MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                using (dt)
+                {
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch
+            {
                 return dt;
             }
+
         }
         public String[] mostrarDatos(String codigo)
         {

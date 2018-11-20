@@ -17,11 +17,11 @@ namespace SAC.formularios
         public static int estado = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            txtSearch.Focus();
+           
             ImageButton1.ImageUrl = "/images/actualizarEncargado.png";
             if (!this.IsPostBack)
             {
-
+                txtSearch.Focus();
                 GridView1.DataSource = objeto.Paciente();
                 GridView1.DataBind();
 
@@ -34,7 +34,7 @@ namespace SAC.formularios
 
             String[] datos = new String[13];
             String[] datos2 = new String[10];
-            GridView1.DataSource = objeto.Paciente();
+            GridView1.DataSource = objeto.Paciente2(txtSearch.Text.Trim());
             GridView1.DataBind();
 
             string script = @"<script type='text/javascript'>
@@ -370,13 +370,14 @@ namespace SAC.formularios
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
 
         }
-        protected void Cancelar_Click(object sender, EventArgs e)
-        {
-            GridView1.DataSource = objeto.Paciente();
-            GridView1.DataBind();
-            this.Controls.Clear();
-            Response.Redirect("frm_ActualizarPaciente.aspx");
-        }
+
+        //protected void Cancelar_Click(object sender, EventArgs e)
+        //{
+        //    GridView1.DataSource = objeto.Paciente();
+        //    GridView1.DataBind();
+        //    this.Controls.Clear();
+        //    Response.Redirect("frm_ActualizarPaciente.aspx");
+        //}
 
         protected void InvisButton_Click(object sender, EventArgs e)
         {

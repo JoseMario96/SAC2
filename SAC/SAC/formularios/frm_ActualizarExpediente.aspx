@@ -45,7 +45,7 @@
             </header>
             <div class="row espacio">
                 <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)"></asp:TextBox>
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)"  maxlength="20"></asp:TextBox>
                     <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
                 </div>
                 <asp:UpdatePanel runat="server">
@@ -883,8 +883,8 @@
                     </tr>
                 </table>
             </div>
-            <div class="row" id="botones" style="display: none">
-                <div class=" col s4"></div>
+            <div class="row  espacio" id="botones" style="display: none">
+                <div class="col s5"></div>
                 <div class="input-field col s2">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
@@ -892,14 +892,7 @@
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
-                <div class="input-field col s2">
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
-                            <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                </div>
-                <div class=" col s4"></div>
+                <div class="col s5"></div>
             </div>
 
             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>

@@ -16,14 +16,15 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            txtSearch.Focus();
+
             if (!this.IsPostBack)
             {
+                txtSearch.Focus();
                 GridView1.DataSource = objeto.Paciente();
                 GridView1.DataBind();
 
             }
-           
+
 
             ScriptManager.RegisterClientScriptBlock(this, GetType(), "myfunction", "mostrar();", true);
         }
@@ -52,18 +53,16 @@ namespace SAC.formularios
             String[] datos = new String[13];
             String[] datos2 = new String[10];
             GridView1.DataSource = objeto.Paciente2(txtSearch.Text.Trim());
-            GridView1.DataBind();
-
-            string script = @"<script type='text/javascript'>
-                document.getElementById('formularioP').style.display = 'block' ;
-                document.getElementById('formularioP').scrollIntoView();              
-            </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
 
             foreach (GridViewRow row in GridView1.Rows)
             {
                 if (row.RowIndex == GridView1.SelectedIndex)
                 {
+                    string script = @"<script type='text/javascript'>
+                document.getElementById('formularioP').style.display = 'block' ;
+                document.getElementById('formularioP').scrollIntoView();              
+            </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                     row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
 

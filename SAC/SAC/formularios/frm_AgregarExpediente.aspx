@@ -9,9 +9,10 @@
     <link href="../css/materialize.css" rel="stylesheet" />
 
     <style>
-         .espacio {
+        .espacio {
             padding-top: 5%;
         }
+
         .ajustar {
             font-size: 15px;
         }
@@ -34,16 +35,12 @@
         <form runat="server">
             <asp:ScriptManager runat="server" ID="sm">
             </asp:ScriptManager>
-            <div class="row">
+            <div class="row espacio">
                 <div class="col s9"></div>
-
-
                 <div class="col s3">
                     <label class="active" for="fecha" title="Fecha actual">Fecha: </label>
                     <asp:Label ID="lblfecha" runat="server" Text="Label"></asp:Label>
                 </div>
-
-
             </div>
             <div class="row">
                 <div class="col s4">
@@ -57,12 +54,15 @@
             </div>
 
             <%--------------------------------------------Historia medica-----------------------------------------------------%>
-            <div class="section">
-                <center><h5>Historia médica</h5></center>
+            <div>
+                <div class="row">
+                    <div class="col s12">
+                        <h5><b>Historia médica</b></h5>
+                    </div>
+                </div>
                 <div class="row">
                     <div>
-                        <p>Ha padecido o padece alguna de las siguientes enfermedades:</p>
-                        <br />
+                        <p style="margin-left: 14px;">Ha padecido o padece alguna de las siguientes enfermedades:</p>
 
                         <div class="row">
                             <div class="col s12">
@@ -413,12 +413,13 @@
                     </div>
                 </div>
             </div>
-
-
             <%--------------------------------------------Solo mujeres-----------------------------------------------------%>
-            <div class="section">
-                <center><h5>Historial médico de Mujer</h5></center>
-
+            <div>
+                <div class="row">
+                    <div class="col s12">
+                        <h5><b>Historial médico de Mujer</b></h5>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col s4">
                         <label>
@@ -464,8 +465,6 @@
                             <label class="active" for="smrespu5"># cesáreas</label>
                         </div>
                     </div>
-
-
                 </div>
                 <div class="row">
                     <div class="col s12">
@@ -473,16 +472,14 @@
                         <label class="active" for="smrespu6">Observaciones</label>
                     </div>
                 </div>
-
-
             </div>
             <%--------------------------------------------Signos vitales-----------------------------------------------------%>
-            <div class="section">
-                <br />
-                <br />
-                <br />
-                <br />
-                <center><h5>Signos vitales</h5></center>
+            <div>
+                <div class="row">
+                    <div class="col s12">
+                        <h5><b>Signos vitales</b></h5>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col s4">
                         <span>Presión arterial</span>
@@ -501,22 +498,14 @@
                     </div>
                 </div>
             </div>
-
-
-            <br />
-            <br />
-            <div class="row">
-                <div class=" col s4"></div>
+            <div class="row espacio">
+                <div class=" col s5"></div>
                 <div class="input-field col s2">
                     <asp:Button class=" btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" BackColor="#009999" />
-                </div>
-                <div class="input-field col s2">
-                    <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click" />
-                </div>
-                <div class=" col s4"></div>
+                </div>                
+                <div class=" col s5"></div>
             </div>
         </form>
-
         <script type="text/javascript">
 
             var era;

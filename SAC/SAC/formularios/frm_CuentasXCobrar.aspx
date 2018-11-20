@@ -14,30 +14,40 @@
         .espacio {
             padding-top: 5%;
         }
+
+        label, th, tr {
+            font-family: sans-serif;
+            font-size: medium;
+            color: black;
+        }
     </style>
 </head>
 <body oncopy="return false" onpaste="return false">
-    <header>
-        <h2 style="text-align: center">Cuentas por cobrar</h2>
-    </header>
     <div class="container">
         <form id="form1" runat="server">
             <asp:ScriptManager runat="server" ID="sm">
             </asp:ScriptManager>
+            <header>
+                <h2 style="text-align: center">Cuentas por cobrar</h2>
+            </header>
 
-            <div class="row">
-                <div class="col s5">
-                    <h5><b>Pacientes pendientes de pago:</b></h5>
+
+            <div id="presentar" class="row">
+                <div class="row">
+                    <div class="input-field col s3 ">
+                        <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)" MaxLength="20"></asp:TextBox>
+                        <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
+                    </div>
                 </div>
-            </div>
- <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
-                    <label class="active" for="first_name2">Nombre:</label>
+                <div class="row">
+                    <div class="col s12">
+                        <h5><b>Pacientes pendientes de pago:</b></h5>
+                    </div>
                 </div>
-            <div class="row">
+
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
-<asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
+                        <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
                         <asp:GridView ID="Gridview_CxC" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                             runat="server" AutoGenerateColumns="False" AllowPaging="true" PageSize="3" OnPageIndexChanging="Gridview_CxC_PageIndexChanging" Height="174px" OnRowDataBound="Gridview_CxC_RowDataBound" OnSelectedIndexChanged="Gridview_CxC_SelectedIndexChanged">
                             <Columns>
@@ -53,7 +63,7 @@
                                 <asp:BoundField DataField="apellido1Paciente" HeaderText="Segundo nombre" ItemStyle-Width="90">
                                     <ItemStyle Width="60px" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="fechaVenta" HeaderText="Fecha" ItemStyle-Width="70">
+                                <asp:BoundField DataField="DATE_FORMAT(tbl_venta.fechaVenta,'%d-%m-%Y')" HeaderText="Fecha" ItemStyle-Width="70">
                                     <ItemStyle Width="60px" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="montoTotalVenta" HeaderText="Monto" ItemStyle-Width="60">
@@ -63,9 +73,6 @@
                                     <ItemStyle Width="60px" />
                                 </asp:BoundField>
                             </Columns>
-                            <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
-                            <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
-                            <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                         </asp:GridView>
                     </ContentTemplate>
                 </asp:UpdatePanel>
@@ -75,7 +82,7 @@
             <div id="abonosNo" style="display: none">
                 <div class="row">
                     <div class="col s5">
-                        <h5><b>>Detalle de la venta y desglose de abonos:</b></h5>
+                        <h5><b>Detalle de la venta y desglose de abonos:</b></h5>
                     </div>
                 </div>
                 <p style="font-weight: bold; font-size: medium">Detalle:</p>
@@ -114,7 +121,7 @@
                                     <asp:BoundField DataField="codigoVenta" HeaderText="Código de la venta" ItemStyle-Width="100">
                                         <ItemStyle Width="100px" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="fechaAbono" HeaderText="Fecha del abono" ItemStyle-Width="100">
+                                    <asp:BoundField DataField="DATE_FORMAT(fechaAbono,'%d-%m-%Y')" HeaderText="Fecha del abono" ItemStyle-Width="100">
                                         <ItemStyle Width="100px" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="montoAbono" HeaderText="Monto abonado" ItemStyle-Width="100">
@@ -176,16 +183,36 @@
             <script type="text/javascript" src="../js/quicksearch.js"></script>
 
 
-    
+
         </form>
     </div>
-<script type="text/javascript">
+    <script type="text/javascript">
+        function sololetras(e) {
+            key = e.keyCoden || e.which;
+            teclado = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-38-46-164";
+            teclado_especial = false;
+
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true; break;
+
+                }
+
+            }
+            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                return false;
+
+            }
+        }
+
         $(document).ready(function () {
             $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
                 $('#<%=InvisButton.ClientID%>').click();
 
             });
         });
-        </script>
+    </script>
 </body>
 </html>

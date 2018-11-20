@@ -18,6 +18,7 @@ namespace SAC.formularios
             {
                 if (!IsPostBack)
                 {
+                    
                     GridView2.DataSource = funciones.Grid1();
                     GridView2.DataBind();
                     DropDownList2.DataSource = funciones.TipoTratamiento();
@@ -40,7 +41,8 @@ namespace SAC.formularios
             }
             catch
             {
-
+                GridView2.DataSource = funciones.Grid1();
+                GridView2.DataBind();
             }
 
 
@@ -176,8 +178,6 @@ namespace SAC.formularios
             }
         }
 
-
-
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -270,10 +270,6 @@ namespace SAC.formularios
 
             }
         }
-
-
-
-
 
         protected void txt_codigoTipo_TextChanged1(object sender, EventArgs e)
         {

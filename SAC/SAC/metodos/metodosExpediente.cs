@@ -116,13 +116,20 @@ namespace SAC.metodos
         }
         public DataTable BuscarExpediente2(String nom)
         {
-            string consulta = "select tbl_expediente.codigoExpediente, tbl_expediente.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.apellido2Paciente from tbl_expediente, tbl_paciente where tbl_paciente.cedulaPaciente = tbl_expediente.cedulaPaciente and nombre1Paciente like '%"+nom+"%';";
-            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
-            MySqlDataAdapter da = new MySqlDataAdapter(comando);
-            using (DataTable dt = new DataTable())
+            DataTable dt = new DataTable();
+            try
             {
-                da.Fill(dt);
-                con.cerrar_Conexion();
+                string consulta = "select tbl_expediente.codigoExpediente, tbl_expediente.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.apellido2Paciente from tbl_expediente, tbl_paciente where tbl_paciente.cedulaPaciente = tbl_expediente.cedulaPaciente and nombre1Paciente like '%" + nom + "%';";
+                MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                using (dt) 
+                {
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch
+            {
                 return dt;
             }
 
@@ -154,9 +161,9 @@ namespace SAC.metodos
         {
             MySqlDataReader actualizar = consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_expediente` SET `enfermedadesCardiacos`='" + car + "', `presionArterial`='" + art + "', `fiebreReumatica`='" + reum + "', `VIH+SIDA`='" + vih + "', `derrame`='" + derr + "', `anemia`='" + ane + "', `transfusionSangre`='" + sang + "', `fueraDelPais`='" + paisF + "', `lugarFueraDelPais`='" + paisL + "', `tiempoFueraDelPais`='" + paisT + "', `moretes`='" + mor + "', `problemasDeRinnon`='" + rinn + "', `problemasGastrointestinales`='" + gas + "', `problemasVision`='" + vis + "', `tratamientosCorticoesteroides`='" + cort + "', `diabetes`='" + diab + "', `epilepsia`='" + epi + "', `enfermedadesRespiratorias`='" + resp + "', `radioterapiaQuimioterapia`='" + quim + "', `reumatismo`='" + reu + "', `problemasHepaticos`='" + hep + "', `virusHerpes`='" + her + "', `perdidaDePeso`='" + pesoP + "', `aumentoDePeso`='" + pesoA + "', `artitris`='" + arti + "', `tratamientoPsiquiatrico`='" + psi + "', `problemaDeTiroides`='" + tir + "', `enfermedadesTransmisionSexual`='" + sex + "', `osteoporosis`='" + ost + "', `migranna`='" + mig + "', `tratamientoBifosfonados`='" + bif + "', `consumeDrogas`='" + dro + "', `fumador`='" + fum + "', `cigarrosXdia`='" + cigD + "', `periodoFumado`='" + perF + "', `bebedor`='" + beb + "', `frecuenciaBebedor`='" + bebF + "', `cicatrices/tatuajes`='" + tat + "', `shockAnafilactico`='" + sho + "' WHERE `codigoExpediente`='" + codE + "';", con.abrir_conexion()).ExecuteReader();
             con.cerrar_Conexion();
-            MySqlDataReader actualizarSignos = consultar.ejecutar_consulta("update tbl_signosvitales set presionArterial='"+arter+"', pulso='"+pulso+"', frecuenciaRespiratoria='"+ frecuen+"' where codigoExpediente='"+ codE+"';", con.abrir_conexion()).ExecuteReader();
+            MySqlDataReader actualizarSignos = consultar.ejecutar_consulta("update tbl_signosvitales set presionArterial='" + arter + "', pulso='" + pulso + "', frecuenciaRespiratoria='" + frecuen + "' where codigoExpediente='" + codE + "';", con.abrir_conexion()).ExecuteReader();
             con.cerrar_Conexion();
-            MySqlDataReader actualizarHM = consultar.ejecutar_consulta("update tbl_historialmedicomujeres set embarazada='"+embarazada+"', semanasEmbarazada='"+semanas+"',`tratamientoAnticonceptivo/hormonal`='"+anticonceptivo+"', ginecoobstetricos='"+gineco+"',abortos='"+abortos+ "', cesareas='"+cesareas+ "',observasionesHM='"+observacionesMujer+ "' where codigoExpediente='"+codE+"';", con.abrir_conexion()).ExecuteReader();
+            MySqlDataReader actualizarHM = consultar.ejecutar_consulta("update tbl_historialmedicomujeres set embarazada='" + embarazada + "', semanasEmbarazada='" + semanas + "',`tratamientoAnticonceptivo/hormonal`='" + anticonceptivo + "', ginecoobstetricos='" + gineco + "',abortos='" + abortos + "', cesareas='" + cesareas + "',observasionesHM='" + observacionesMujer + "' where codigoExpediente='" + codE + "';", con.abrir_conexion()).ExecuteReader();
             con.cerrar_Conexion();
         }
     }
