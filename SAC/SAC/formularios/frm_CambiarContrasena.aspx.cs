@@ -15,7 +15,7 @@ namespace SAC.formularios
         metodos.metodos_login entrar = new metodos.metodos_login();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            txt_usuario.Focus();
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)

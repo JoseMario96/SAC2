@@ -73,8 +73,8 @@ namespace SAC.formularios
                     mail.Subject = "Usuario nuevo";
                     //Aquí ponemos el mensaje que incluirá el correo
                     mail.Body = "Se ha creado un usuario en el sitio web de la Clinica Dental Alina Camacho. Estos son sus credenciales para iniciar sesión.\n" +
-                        "Su usuario es: " + txt_usuario.Text + ".\n" +
-                        "Su contraseña es: " + aleatorio + ".\n" +
+                        "Su usuario es: " + txt_usuario.Text + "\n" +
+                        "Su contraseña es: " + aleatorio + "\n" +
                         "Tipo de usuario: " + tipousuario + ".\n" +
                         "Clínica Dental Alina Camacho";
                     //Especificamos a quien enviaremos el Email, no es necesario que sea Gmail, puede ser cualquier otro proveedor

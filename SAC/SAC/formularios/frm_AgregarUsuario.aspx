@@ -32,6 +32,7 @@
                 <div class="col s4">
                 </div>
             </div>
+
             <div class="row">
                 <div class="col s4">
                 </div>

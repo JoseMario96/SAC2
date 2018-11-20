@@ -15,8 +15,10 @@ namespace SAC.formularios
         public static String estado;
         protected void Page_Load(object sender, EventArgs e)
         {
+            txt_correo.Focus();
             if (entrar.BuscarUsuarios().Rows.Count > 0)
             {
+                this.Gridview_Usuario.Columns[2].Visible = false;
                 Gridview_Usuario.DataSource = entrar.BuscarUsuarios();
                 Gridview_Usuario.DataBind();
             }

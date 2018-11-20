@@ -688,6 +688,7 @@
     <br />
     <br />
     <footer id="footer" role="contentinfo">
+
         <a href="#" class="gotop js-gotop"><i class="icon-arrow-up2">Inicio</i></a>
     </footer>
 

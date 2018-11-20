@@ -9,9 +9,10 @@
     <link href="../css/materialize.css" rel="stylesheet" />
 
     <style>
-         .espacio {
+        .espacio {
             padding-top: 5%;
         }
+
         .ajustar {
             font-size: 15px;
         }
@@ -464,8 +465,6 @@
                             <label class="active" for="smrespu5"># cesáreas</label>
                         </div>
                     </div>
-
-
                 </div>
                 <div class="row">
                     <div class="col s12">
@@ -473,15 +472,9 @@
                         <label class="active" for="smrespu6">Observaciones</label>
                     </div>
                 </div>
-
-
             </div>
             <%--------------------------------------------Signos vitales-----------------------------------------------------%>
             <div class="section">
-                <br />
-                <br />
-                <br />
-                <br />
                 <center><h5>Signos vitales</h5></center>
                 <div class="row">
                     <div class="col s4">
@@ -501,10 +494,6 @@
                     </div>
                 </div>
             </div>
-
-
-            <br />
-            <br />
             <div class="row">
                 <div class=" col s4"></div>
                 <div class="input-field col s2">
@@ -516,7 +505,6 @@
                 <div class=" col s4"></div>
             </div>
         </form>
-
         <script type="text/javascript">
 
             var era;
