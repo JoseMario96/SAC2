@@ -23,21 +23,26 @@
     </style>
 </head>
 <body oncopy="return false" onpaste="return false">
-    <header>
-        <h2 style="text-align: center">Busqueda de ventas</h2>
-    </header>
-    <div class="container">
-        <form id="form1" runat="server">
+    <form id="form1" runat="server">
+        <header>
+            <h2 style="text-align: center">Busqueda de ventas</h2>
+        </header>
+        <div class="container">
+
             <asp:ScriptManager runat="server" ID="sm">
             </asp:ScriptManager>
-            <div id="grid" class="row espacio">
- <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
-                    <label class="active" for="first_name2">Nombre:</label>
+
+            <div class="row">
+                <div class="input-field col s3 ">
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)" MaxLength="20"></asp:TextBox>
+                    <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
                 </div>
+            </div>
+
+            <div id="grid" class="row">
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
-<asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
+                        <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
                         <asp:GridView ID="Gridview_Paciente" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                             runat="server" AutoGenerateColumns="False" Height="174px" Width="100%" AllowPaging="true" PageSize="3" OnPageIndexChanging="Gridview_Paciente_PageIndexChanging" OnRowDataBound="Gridview_Paciente_RowDataBound" OnSelectedIndexChanged="Gridview_Paciente_SelectedIndexChanged">
                             <Columns>
@@ -132,15 +137,34 @@
             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
             <script type="text/javascript" src="../js/quicksearch.js"></script>
 
-            </div>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+                        $('#<%=InvisButton.ClientID%>').click();
+                    });
+                });
+
+                function sololetras(e) {
+                    key = e.keyCoden || e.which;
+                    teclado = String.fromCharCode(key).toLowerCase();
+                    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+                    especiales = "8-37-38-46-164";
+                    teclado_especial = false;
+
+                    for (var i in especiales) {
+                        if (key == especiales[i]) {
+                            teclado_especial = true; break;
+
+                        }
+
+                    }
+                    if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                        return false;
+
+                    }
+                }
+            </script>
         </div>
     </form>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
-                $('#<%=InvisButton.ClientID%>').click();
-            });
-        });
-    </script>
 </body>
 </html>

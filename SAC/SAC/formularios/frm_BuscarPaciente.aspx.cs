@@ -16,14 +16,15 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            txtSearch.Focus();
+
             if (!this.IsPostBack)
             {
+                txtSearch.Focus();
                 GridView1.DataSource = objeto.Paciente();
                 GridView1.DataBind();
 
             }
-           
+
 
             ScriptManager.RegisterClientScriptBlock(this, GetType(), "myfunction", "mostrar();", true);
         }

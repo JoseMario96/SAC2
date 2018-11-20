@@ -10,7 +10,7 @@
 namespace SAC.formularios {
     
     
-    public partial class frm_CuentasXCobrar {
+    public partial class frm_ActualizarUsuario {
         
         /// <summary>
         /// Control form1.
@@ -31,75 +31,75 @@ namespace SAC.formularios {
         protected global::System.Web.UI.ScriptManager sm;
         
         /// <summary>
-        /// Control txtSearch.
+        /// Control Gridview_Usuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::System.Web.UI.WebControls.GridView Gridview_Usuario;
         
         /// <summary>
-        /// Control InvisButton.
+        /// Control txt_usuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button InvisButton;
+        protected global::System.Web.UI.WebControls.TextBox txt_usuario;
         
         /// <summary>
-        /// Control Gridview_CxC.
+        /// Control txt_correo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Gridview_CxC;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txt_correo;
         
         /// <summary>
-        /// Control lbl_detalle1.
+        /// Control admin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_detalle1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton admin;
         
         /// <summary>
-        /// Control lbl_detalle.
+        /// Control asist.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_detalle;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton asist;
         
         /// <summary>
-        /// Control Gridview_Venta.
+        /// Control btn_Guardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Gridview_Venta;
+        protected global::System.Web.UI.WebControls.Button btn_Guardar;
         
         /// <summary>
-        /// Control txt_abono.
+        /// Control btn_Volver.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txt_abono;
+        protected global::System.Web.UI.WebControls.Button btn_Volver;
         
         /// <summary>
-        /// Control btn_factura.
+        /// Control btn_Estado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_factura;
+        protected global::System.Web.UI.WebControls.Button btn_Estado;
     }
 }

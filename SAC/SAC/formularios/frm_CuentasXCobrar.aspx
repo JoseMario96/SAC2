@@ -17,27 +17,31 @@
     </style>
 </head>
 <body oncopy="return false" onpaste="return false">
-    <header>
-        <h2 style="text-align: center">Cuentas por cobrar</h2>
-    </header>
     <div class="container">
         <form id="form1" runat="server">
             <asp:ScriptManager runat="server" ID="sm">
             </asp:ScriptManager>
+            <header>
+                <h2 style="text-align: center">Cuentas por cobrar</h2>
+            </header>
+
 
             <div class="row">
-                <div class="col s5">
-                    <h5><b>Pacientes pendientes de pago:</b></h5>
+                <div class="row">
+                    <div class="input-field col s3 ">
+                        <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)"  maxlength="20"></asp:TextBox>
+                        <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
+                    </div>
                 </div>
-            </div>
- <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
-                    <label class="active" for="first_name2">Nombre:</label>
+                <div class="row">
+                    <div class="col s12">
+                        <h5><b>Pacientes pendientes de pago:</b></h5>
+                    </div>
                 </div>
-            <div class="row">
+
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
-<asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
+                        <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
                         <asp:GridView ID="Gridview_CxC" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
                             runat="server" AutoGenerateColumns="False" AllowPaging="true" PageSize="3" OnPageIndexChanging="Gridview_CxC_PageIndexChanging" Height="174px" OnRowDataBound="Gridview_CxC_RowDataBound" OnSelectedIndexChanged="Gridview_CxC_SelectedIndexChanged">
                             <Columns>
@@ -121,10 +125,6 @@
                                         <ItemStyle Width="100px" />
                                     </asp:BoundField>
                                 </Columns>
-
-                                <HeaderStyle BackColor="#3AC0F2" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" />
-                                <PagerStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
-                                <RowStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                             </asp:GridView>
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -180,16 +180,36 @@
             <script type="text/javascript" src="../js/quicksearch.js"></script>
 
 
-    
+
         </form>
     </div>
-<script type="text/javascript">
+    <script type="text/javascript">
+        function sololetras(e) {
+            key = e.keyCoden || e.which;
+            teclado = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-38-46-164";
+            teclado_especial = false;
+
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true; break;
+
+                }
+
+            }
+            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                return false;
+
+            }
+        }
+
         $(document).ready(function () {
             $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
                 $('#<%=InvisButton.ClientID%>').click();
 
             });
         });
-        </script>
+    </script>
 </body>
 </html>

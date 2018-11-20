@@ -12,16 +12,15 @@
     <title></title>
     <style>
         .boton1 {
-            width: 200px;
-            height: 200px;
-            background-image: url(../images/Descargar.png);
+            width: 123px;
+            height: 150px;
+            background-image: url(../images/Descargar1.png);
             border: 0px;
         }
-
         .boton2 {
-            width: 200px;
-            height: 200px;
-            background-image: url(../images/Personas.png);
+            width: 123px;
+            height: 150px;
+            background-image: url(../images/Personas1.png);
             border: 0px;
             overflow: hidden;
         }
@@ -64,17 +63,18 @@
                     <asp:Button ID="btn_uno" CssClass="boton2" runat="server" Text="" title="Reporte individual" OnClick="btn_uno_Click" />
                 </div></center>
             </div>
-  <div class="input-field col s3 ">
-                            <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
-                            <label class="active" for="first_name2">Nombre:</label>
-                        </div>
+        
             <div id="busqueda" style="display: none" class="espacio">
+                    <div class="input-field col s3 ">
+                <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
+                <label class="active" for="first_name2">Nombre:</label>
+            </div>
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
-                      <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
-                                <asp:GridView ID="Gridview_Venta" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
-                                    runat="server" AutoGenerateColumns="False" Height="174px" AllowPaging="true" PageSize="3" Width="100%" OnRowDataBound="Gridview_Venta_RowDataBound" OnSelectedIndexChanged="Gridview_Venta_SelectedIndexChanged" OnPageIndexChanging="Gridview_Venta_PageIndexChanging">
-                                    <Columns>
+                        <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
+                        <asp:GridView ID="Gridview_Venta" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" class="col s12"
+                            runat="server" AutoGenerateColumns="False" Height="174px" AllowPaging="true" PageSize="3" Width="100%" OnRowDataBound="Gridview_Venta_RowDataBound" OnSelectedIndexChanged="Gridview_Venta_SelectedIndexChanged" OnPageIndexChanging="Gridview_Venta_PageIndexChanging">
+                            <Columns>
                                 <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula del paciente" ItemStyle-Width="100">
                                     <ItemStyle Width="100px" />
                                 </asp:BoundField>
@@ -117,16 +117,16 @@
             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
             <script type="text/javascript" src="../js/quicksearch.js"></script>
 
-            
+
         </form>
     </div>
-  <script type="text/javascript">
-         $(document).ready(function () {
-             $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
-                $('#<%=InvisButton.ClientID%>').click();
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
+                 $('#<%=InvisButton.ClientID%>').click();
 
-             });
-         });
+            });
+        });
     </script>
 </body>
 </html>

@@ -28,15 +28,22 @@ namespace SAC.metodos
         }
         public DataTable VentaPendiente2(String nom)
         {
-            string consulta = "select tbl_paciente.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.nombre2Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.apellido2Paciente from tbl_paciente, tbl_expediente, tbl_expedientetramiento where nombre1Paciente like '%" + nom + "%' and tbl_paciente.cedulaPaciente = tbl_expediente.cedulaPaciente and tbl_expediente.codigoExpediente = tbl_expedientetramiento.codigoExpediente and tbl_expedientetramiento.EstadoPago = false group by tbl_expedientetramiento.codigoExpediente;";
-            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
-            MySqlDataAdapter da = new MySqlDataAdapter(comando);
-            using (DataTable dt = new DataTable())
+            DataTable dt = new DataTable();
+            try
             {
-                da.Fill(dt);
+                string consulta = "select tbl_paciente.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.nombre2Paciente, tbl_paciente.apellido1Paciente, tbl_paciente.apellido2Paciente from tbl_paciente, tbl_expediente, tbl_expedientetramiento where nombre1Paciente like '%" + nom + "%' and tbl_paciente.cedulaPaciente = tbl_expediente.cedulaPaciente and tbl_expediente.codigoExpediente = tbl_expedientetramiento.codigoExpediente and tbl_expedientetramiento.EstadoPago = false group by tbl_expedientetramiento.codigoExpediente;";
+                MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                using (dt)
+                {
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch
+            {
                 return dt;
             }
-
         }
 
         public DataTable DetalleVenta(String cedula)
@@ -107,14 +114,23 @@ namespace SAC.metodos
 
         public DataTable CuentaXCobrar2(String nom)
         {
-            string consulta = "select tbl_venta.codigoVenta, tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta, tbl_venta.montoTotalVenta, tbl_venta.saldoVenta from tbl_venta, tbl_paciente where nombre1Paciente like'%" + nom + "%' and tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente order by tbl_venta.cedulaPaciente;";
-            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
-            MySqlDataAdapter da = new MySqlDataAdapter(comando);
-            using (DataTable dt = new DataTable())
+            DataTable dt = new DataTable();
+            try
             {
-                da.Fill(dt);
+                string consulta = "select tbl_venta.codigoVenta, tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta, tbl_venta.montoTotalVenta, tbl_venta.saldoVenta from tbl_venta, tbl_paciente where nombre1Paciente like'%" + nom + "%' and tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente order by tbl_venta.cedulaPaciente;";
+                MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                using (dt)
+                {
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch
+            {
                 return dt;
             }
+
 
         }
         public String BuscarDetalle(String codigo)
@@ -161,28 +177,46 @@ namespace SAC.metodos
 
         public DataTable TodaslasVentas()
         {
-            string consulta = "select tbl_Venta.codigoVenta, tbl_Paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta from tbl_paciente, tbl_venta where tbl_paciente.cedulaPaciente = tbl_venta.cedulaPaciente;";
-            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
-            MySqlDataAdapter da = new MySqlDataAdapter(comando);
-            using (DataTable dt = new DataTable())
+            DataTable dt = new DataTable();
+            try
             {
-                da.Fill(dt);
+                string consulta = "select tbl_Venta.codigoVenta, tbl_Paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta from tbl_paciente, tbl_venta where tbl_paciente.cedulaPaciente = tbl_venta.cedulaPaciente;";
+                MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                using (dt)
+                {
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch
+            {
                 return dt;
             }
+
 
         }
 
 
         public DataTable TodaslasVentas2(String nom)
         {
-            string consulta = "select tbl_Venta.codigoVenta, tbl_Paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta from tbl_paciente, tbl_venta where nombre1Paciente like '%" + nom + "%' and tbl_paciente.cedulaPaciente = tbl_venta.cedulaPaciente;";
-            MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
-            MySqlDataAdapter da = new MySqlDataAdapter(comando);
-            using (DataTable dt = new DataTable())
+            DataTable dt = new DataTable();
+            try
             {
-                da.Fill(dt);
+                string consulta = "select tbl_Venta.codigoVenta, tbl_Paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta from tbl_paciente, tbl_venta where nombre1Paciente like '%" + nom + "%' and tbl_paciente.cedulaPaciente = tbl_venta.cedulaPaciente;";
+                MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                using (dt)
+                {
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch
+            {
                 return dt;
             }
+
 
         }
 

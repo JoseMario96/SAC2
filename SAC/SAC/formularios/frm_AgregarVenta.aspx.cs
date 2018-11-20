@@ -22,6 +22,7 @@ namespace SAC.formularios
         {
             if (!this.IsPostBack)
             {
+                txtSearch.Focus();
                 try
                 {
                     tblInicio = venta.VentaPendiente();

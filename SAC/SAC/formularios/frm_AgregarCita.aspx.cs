@@ -16,8 +16,18 @@ namespace SAC.formularios
             {
                 DateTime fecha = DateTime.Now;
                 titulo.Text = fecha.ToString("d");
-                GridView1.DataSource = objeto.CitaHoy(fecha.ToString("yyyy-MM-dd"));
-                GridView1.DataBind();
+                if (objeto.CitaHoy(fecha.ToString("yyyy-MM-dd")).Rows.Count > 0)
+                {
+                    GridView1.DataSource = objeto.CitaHoy(fecha.ToString("yyyy-MM-dd"));
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    string scripts = @"<script type='text/javascript'>
+                    alert('No hay citas para hoy!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+                }
             }
             catch
             {

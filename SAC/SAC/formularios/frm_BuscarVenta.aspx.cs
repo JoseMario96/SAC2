@@ -15,6 +15,7 @@ namespace SAC.formularios
         {
             if (!this.IsPostBack)
             {
+                txtSearch.Focus();
                 if (venta.TodaslasVentas().Rows.Count > 0)
                 {
                     Gridview_Paciente.DataSource = venta.TodaslasVentas();

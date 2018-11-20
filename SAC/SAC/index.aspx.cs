@@ -13,11 +13,15 @@ namespace SAC
         protected void Page_Load(object sender, EventArgs e)
 		{
             String tipo = Convert.ToString(Request.QueryString["dato"]);
-            if (tipo == "1")
+            if (Session["acceder"] == null)
+            {
+                Response.Redirect("formularios/frmLogin.aspx");
+            }
+            else if (Session["tipo"].ToString() == "1")
             {
                 string script = @"<script type='text/javascript'>                        
-                        
                         document.getElementById('ocultar').style.display = 'none';
+                        document.getElementById('ocultar1').style.display = 'none';
                         </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 //string scriptt = @"<script type='text/javascript'>                        
@@ -37,6 +41,20 @@ namespace SAC
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             }
         }
-        
+
+        protected void refrescar_Tick(object sender, EventArgs e)
+        {
+            if (Session["acceder"] == null)
+            {
+                Session.Contents.Remove("acceder");
+                Response.Redirect("formularios/frmLogin.aspx");
+            }
+        }
+
+        protected void img_cerrarsesion_Click(object sender, ImageClickEventArgs e)
+        {
+            Session.Contents.Remove("acceder");
+            Response.Redirect("formularios/frmLogin.aspx");
+        }
     }
 }

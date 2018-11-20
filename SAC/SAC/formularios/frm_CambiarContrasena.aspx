@@ -34,8 +34,8 @@
         function sololetras(e) {
             key = e.keyCoden || e.which;
             teclado = String.fromCharCode(key).toLowerCase();
-            letras = " 1234567890áéíóúabcdefghijklmnñopqrstuvwxyz";
-            especiales = "8-37-38-46-164";
+            letras = "1234567890áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-38-46-164-9";
             teclado_especial = false;
 
             for (var i in especiales) {

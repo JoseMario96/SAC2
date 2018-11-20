@@ -12,23 +12,42 @@ namespace SAC.formularios
         metodos.metodos_login entrar = new metodos.metodos_login();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            txt_usuario.Focus();
         }
 
         protected void btn_sesion_Click(object sender, EventArgs e)
         {
-            if (entrar.Login(txt_usuario.Value.ToString(), txt_contraseña.Value.ToString()) == true)
+            if (txt_usuario.Value.Contains("'") || txt_usuario.Value.Contains("="))
             {
-                String tipo = entrar.Permiso(txt_usuario.Value).ToString();
-                //Session["usuario"] = txt_usuario.Value;
-                Response.Redirect("\\index.aspx?dato="+tipo);
+                txt_usuario.Value = "";
+                string script = @"<script type='text/javascript'>
+                    alert('No se permite usar valores como ' o =');</script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
+            else if(txt_contrasena.Value.Contains("'") || txt_contrasena.Value.Contains("="))
+            {
+                string script = @"<script type='text/javascript'>
+                    alert('No se permite usar valores como ' o =');</script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             }
             else
             {
-                string script = @"<script type='text/javascript'>
+                if (entrar.Login(txt_usuario.Value.ToString(), txt_contrasena.Value.ToString()) == true)
+                {
+                    String tipo = entrar.Permiso(txt_usuario.Value).ToString();
+                    Session["acceder"] = "entro";
+                    Session["tipo"] = tipo;
+                    Response.Redirect("\\index.aspx");
+                    
+                }
+                else
+                {
+                    txt_usuario.Value = "";
+                    string script = @"<script type='text/javascript'>
                     alert('Usuario o contraseña incorrecto');
                     </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                }
             }
         }
     }

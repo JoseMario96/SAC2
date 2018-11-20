@@ -22,8 +22,6 @@ namespace SAC.formularios
         protected void Page_Load(object sender, EventArgs e)
         {
             _sheduleData = GetSchedule();
-            String tipo = Convert.ToString(Request.QueryString["tipo"]);
-            //Response.Redirect(tipo);
         }
 
         private Hashtable GetSchedule()
