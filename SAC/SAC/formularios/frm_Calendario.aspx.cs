@@ -98,7 +98,7 @@ namespace SAC.formularios
             catch
             {
 
-            } 
+            }
         }
 
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
@@ -156,7 +156,7 @@ namespace SAC.formularios
             catch
             {
 
-            }  
+            }
         }
 
         protected void Gridview_Hoy_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -229,6 +229,8 @@ namespace SAC.formularios
                     alert('La información se actualizó correctamente!');
                     </script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
+                
                     this.Controls.Clear();
                     Response.Redirect("frm_Calendario.aspx");
                 }
@@ -257,8 +259,8 @@ namespace SAC.formularios
             }
             catch
             {
-
-            } 
+                Response.Write("<script language='JavaScript'>alert('Se registraron correctamente los datos...!!!');</script>");
+            }
         }
 
         protected void btn_Eliminar_Click(object sender, EventArgs e)
@@ -266,10 +268,10 @@ namespace SAC.formularios
             try
             {
                 objeto.EliminarCita(cedulaAA, fechaAA, horaAA);
-                string script = @"<script type='text/javascript'>
+                string eliminar = @"<script type='text/javascript'>
                     alert('La información se eliminó correctamente!');
                     </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", eliminar, false);
                 this.Controls.Clear();
                 Response.Redirect("frm_Calendario.aspx");
             }
@@ -399,7 +401,7 @@ namespace SAC.formularios
                 mail.Body = "Estimado " + nombreA.Value + "! Este es un mensaje para recordarle su cita para la fecha: " + fecha + " y hora: " + horaA.Value + ". Sin más por el momento, le esperamos.\nClínica Dental Doctora Alina Camacho";
                 //Especificamos a quien enviaremos el Email, no es necesario que sea Gmail, puede ser cualquier otro proveedor
                 mail.To.Add(correoA.Value);
-                
+
 
                 //Configuracion del SMTP
                 SmtpServer.Port = 587; //Puerto que utiliza Gmail para sus servicios
@@ -408,7 +410,7 @@ namespace SAC.formularios
                 SmtpServer.Credentials = new System.Net.NetworkCredential("clinicadental.alinacamacho@gmail.com", "SAC-corredores.2018");
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
-                
+
             }
             catch
             {
@@ -428,14 +430,14 @@ namespace SAC.formularios
                 String hora = "";
                 String nombre = "";
                 String correo = "";
-                
+
                 for (int i = 0; i <= matriz.GetLength(0) - 1; i++)
                 {
                     DateTime f = Convert.ToDateTime(matriz[i, 0]);
                     fecha = f.ToString("d");
-                    hora = matriz[i,1];
-                    nombre = matriz[i,2];
-                    correo = matriz[i,3];
+                    hora = matriz[i, 1];
+                    nombre = matriz[i, 2];
+                    correo = matriz[i, 3];
 
                     //Configuración del Mensaje
                     MailMessage mail = new MailMessage();
@@ -459,7 +461,7 @@ namespace SAC.formularios
                     SmtpServer.Send(mail);
                 }
 
-                
+
 
             }
             catch (Exception ex)

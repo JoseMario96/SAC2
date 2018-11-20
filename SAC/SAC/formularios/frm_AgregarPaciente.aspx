@@ -23,6 +23,10 @@
             #encargado.highlighted {
                 border: 3px solid red;
             }
+
+        .espacio {
+            padding-top: 5%;
+        }
     </style>
 </head>
 <body oncopy="return false" onpaste="return false">
@@ -34,7 +38,7 @@
             <div class="row">
                 <asp:ScriptManager runat="server" ID="sm">
                 </asp:ScriptManager>
-                <div class="row">
+                <div class="row espacio">
                     <div class="col s6">
                         <label class="active" for="cedula">Cédula </label>
                         <asp:TextBox ID="cedula" runat="server" class="validate" MaxLength="14" title="Cédula" required onkeypress="return solonumeros(event)" AutoPostBack="true" OnTextChanged="cedula_TextChanged"></asp:TextBox>
@@ -72,7 +76,7 @@
                     </div>
                     <div class="col s6">
                         <label class="active" for="celular">Celular</label>
-                        <input id="celular" type="number" runat="server" class="validate" maxlength="14"  title="Celular" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required />
+                        <input id="celular" type="number" runat="server" class="validate" maxlength="14" title="Celular" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required />
 
                     </div>
                 </div>
@@ -101,13 +105,13 @@
                     </p>
                     <p>
                         <label>
-                            <input class="with-gap" name="group3" runat="server"  title="Sexo"  type="radio" id="femenino" />
+                            <input class="with-gap" name="group3" runat="server" title="Sexo" type="radio" id="femenino" />
                             <span>Femenino</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input class="with-gap" name="group3" runat="server"  title="Sexo"  type="radio" id="otro" />
+                            <input class="with-gap" name="group3" runat="server" title="Sexo" type="radio" id="otro" />
                             <span>Otro</span>
                         </label>
                     </p>
@@ -115,12 +119,12 @@
                 <div class="row">
                     <div class="col s4">
                         <label class="active" for="fecha_nacimiento">Fecha de nacimiento</label>
-                        <input id="fecha_nacimiento" type="date" runat="server"  title="Fecha de nacimiento"  name="fecha" required />
+                        <input id="fecha_nacimiento" type="date" runat="server" title="Fecha de nacimiento" name="fecha" required />
 
                     </div>
                     <div class="col s4">
                         <label class="active" for="fecha_ingreso">Fecha de ingreso</label>
-                        <input id="fecha_ingreso" type="date" runat="server" title="Fecha de  ingreso"  name="fecha" required />
+                        <input id="fecha_ingreso" type="date" runat="server" title="Fecha de  ingreso" name="fecha" required />
 
                     </div>
                 </div>
@@ -130,7 +134,7 @@
                     <br />
                     <p>
                         <label>
-                            <input class="with-gap" name="group4" runat="server"  type="radio" id="siE" onclick="mostrar()" />
+                            <input class="with-gap" name="group4" runat="server" type="radio" id="siE" onclick="mostrar()" />
                             <span>Sí</span>
                         </label>
                     </p>
@@ -194,7 +198,7 @@
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <label class="active" for="telefono_encargado">Teléfono</label>
-                                <input id="telefono_encargado" type="text" runat="server" class="validate"  title="Teléfono"  maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                                <input id="telefono_encargado" type="text" runat="server" class="validate" title="Teléfono" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -202,7 +206,7 @@
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <label class="active" for="celular_encargado">Celular</label>
-                                <input id="celular_encargado" type="text" runat="server" class="validate" title="Celular"  maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                                <input id="celular_encargado" type="text" runat="server" class="validate" title="Celular" maxlength="14" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -212,7 +216,7 @@
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <label class="active" for="direccion_encargado">Dirección</label>
-                                <input id="direccion_encargado" type="text" runat="server" class="validate" title="Dirección"  maxlength="249" />
+                                <input id="direccion_encargado" type="text" runat="server" class="validate" title="Dirección" maxlength="249" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -223,7 +227,7 @@
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <label class="active" for="correo_encargado">Correo electrónico</label>
-                                <input id="correo_encargado" type="email" runat="server" class="validate" title="Correo electrónico"  maxlength="44" />
+                                <input id="correo_encargado" type="email" runat="server" class="validate" title="Correo electrónico" maxlength="44" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -231,7 +235,7 @@
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <label class="active" for="parentezco">Parentezco con el menor</label>
-                                <input id="parentezco" type="text" runat="server" class="validate" maxlength="44"  title="Parentezco" onkeypress="return sololetras(event)" />
+                                <input id="parentezco" type="text" runat="server" class="validate" maxlength="44" title="Parentezco" onkeypress="return sololetras(event)" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -264,14 +268,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s4"></div>
+                <div class="col s5"></div>
                 <div class="input-field col s2">
-                    <asp:Button class="waves-effect waves-light btn" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
-                </div>
-                <div class="input-field col s2">
-                    <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Limpiar" OnClick="Cancelar_Click" />
-                </div>
-                <div class="col s4"></div>
+                    <asp:Button class="waves-effect waves-light btn" style="text-align: center" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
+                </div>               
+                <div class="col s5"></div>
             </div>
         </form>
 

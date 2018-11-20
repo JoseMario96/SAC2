@@ -112,7 +112,7 @@
                         <canvas id="myCanvas3" width="510" height="200" style="z-index: 3; position: absolute; left: 0%; top: 0px;"></canvas>
                         <canvas id="myCanvas4" width="510" height="200" style="z-index: 4; position: absolute; left: 0%; top: 0px;"></canvas>
                     </div>
-                    <div id="radio_seccion" style='display: none'>
+                    <div id="radio_seccion" style='display: none; text-align: center;'>
                         <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Seccion</label>
                         <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
                     </div>
@@ -1353,7 +1353,6 @@
                         marcar_exodoncia(ctx2, diente, 'red');
                     }
                 }
-                alert("Volver a pintar");
                 ordenartodoclick();
 
             }

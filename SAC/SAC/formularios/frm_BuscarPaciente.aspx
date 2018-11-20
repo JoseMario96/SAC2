@@ -44,7 +44,7 @@
             </header>
             <div class="row espacio">
                 <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)" maxlength="20"></asp:TextBox>
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)" MaxLength="20"></asp:TextBox>
                     <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
                 </div>
                 <asp:UpdatePanel runat="server">
@@ -64,19 +64,9 @@
                 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
                 <script type="text/javascript" src="../js/quicksearch.js"></script>
 
-                <%--                <script type="text/javascript">
-                    $(function () {
-                        $('.search_textbox').each(function (i) {
-                            $(this).quicksearch("[id*=GridView1] tr:not(:has(th))", {
-                                'testQuery': function (query, txt, row) {
-                                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
-                                }
-                            });
-                        });
-                    });
-                </script>--%>
             </div>
-            <div id="formularioP" style="display: none" class="espacio centrar">
+           
+            <div id="formularioP" style="display: none" class="espacio centrar" tabindex="-1">
                 <table class="striped">
                     <tr>
                         <th colspan="5" style="text-align: center; font-size: 15px;">Datos del paciente</th>

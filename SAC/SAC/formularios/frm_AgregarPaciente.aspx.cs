@@ -166,14 +166,6 @@ namespace SAC.formularios
             }
 
         }
-
-        protected void Cancelar_Click(object sender, EventArgs e)
-        {
-            //limpieza.CleanControl(this.Controls);
-            this.Controls.Clear();
-            Response.Redirect("frm_AgregarPaciente.aspx");
-        }
-
         protected void cedula_TextChanged(object sender, EventArgs e)
         {
             if (agregarP.VerificarPaciente(cedula.Text) == true)
