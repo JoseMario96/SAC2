@@ -1886,7 +1886,7 @@
                                 <asp:GridView ID="GridView1" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
                                     runat="server" AutoGenerateColumns="False" Height="174px" HorizontalAlign="Center" AllowPaging="true" PageSize="3" OnPageIndexChanging="GridView1_PageIndexChanging">
                                     <Columns>
-                                        <asp:BoundField DataField="fechaExpedienteTratamiento" HeaderText="Fecha" ItemStyle-Width="30" />
+                                        <asp:BoundField DataField="DATE_FORMAT(fechaExpedienteTratamiento,'%d-%m-%Y')" HeaderText="Fecha" ItemStyle-Width="30" />
                                         <asp:BoundField DataField="tratamientoExpedienteTratamiento" HeaderText="Tratamiento" ItemStyle-Width="100" />
                                         <asp:BoundField DataField="piezaExpedienteTratamiento" HeaderText="Diente" ItemStyle-Width="100" />
                                         <asp:BoundField DataField="descripcionExpedienteTratamiento" HeaderText="Descripción" ItemStyle-Width="100" />

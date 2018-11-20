@@ -20,6 +20,7 @@ namespace SAC.formularios
         static string ced = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+          
             if (!this.IsPostBack)
             {
                 txtSearch.Focus();
@@ -27,9 +28,7 @@ namespace SAC.formularios
                 GridView_reporteOdontograma.DataBind();
 
             }
-
         }
-
 
         protected void GridView_reporteOdontograma_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -40,8 +39,7 @@ namespace SAC.formularios
             }
         }
         protected void GridView_reporteOdontograma_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+        {       
             String[] datos2 = new String[10];
             GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion2(txtSearch.Text.Trim());
             GridView_reporteOdontograma.DataBind();
@@ -83,7 +81,6 @@ namespace SAC.formularios
                             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Pintar" + counter.ToString(), "<script language='javascript'>$(document).ready(function() {pintarDiente('" + diente + "','" + seccion + "','" + color + "','" + marca + "');});</script>");
                         }
                     }
-
                 }
                 else
                 {

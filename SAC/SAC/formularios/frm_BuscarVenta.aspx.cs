@@ -46,7 +46,7 @@ namespace SAC.formularios
                         String[] vector = venta.BuscarVenta((row.Cells[0].Text).ToString());
                         lbl_codigo.Text = vector[0];
                         lbl_cedula.Text = vector[1];
-                        lbl_fecha.Text = vector[2];
+                        lbl_fecha.Text = vector[2].Substring(0, 10);
                         lbl_detalle.Text = vector[3];
                         lbl_monto.Text = vector[4];
                         lbl_saldo.Text = vector[5];

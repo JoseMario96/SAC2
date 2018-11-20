@@ -63,7 +63,7 @@
                                 <asp:BoundField DataField="apellido1Paciente" HeaderText="Segundo nombre" ItemStyle-Width="90">
                                     <ItemStyle Width="60px" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="fechaVenta" HeaderText="Fecha" ItemStyle-Width="70">
+                                <asp:BoundField DataField="DATE_FORMAT(tbl_venta.fechaVenta,'%d-%m-%Y')" HeaderText="Fecha" ItemStyle-Width="70">
                                     <ItemStyle Width="60px" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="montoTotalVenta" HeaderText="Monto" ItemStyle-Width="60">
@@ -121,7 +121,7 @@
                                     <asp:BoundField DataField="codigoVenta" HeaderText="Código de la venta" ItemStyle-Width="100">
                                         <ItemStyle Width="100px" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="fechaAbono" HeaderText="Fecha del abono" ItemStyle-Width="100">
+                                    <asp:BoundField DataField="DATE_FORMAT(fechaAbono,'%d-%m-%Y')" HeaderText="Fecha del abono" ItemStyle-Width="100">
                                         <ItemStyle Width="100px" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="montoAbono" HeaderText="Monto abonado" ItemStyle-Width="100">

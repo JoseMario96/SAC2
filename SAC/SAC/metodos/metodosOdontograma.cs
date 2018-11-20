@@ -67,7 +67,7 @@ namespace SAC.metodos
 
         public DataTable TratamientosRealizados(string numexpediente)
         {
-            string consulta = "select fechaExpedienteTratamiento,tratamientoExpedienteTratamiento,piezaExpedienteTratamiento,descripcionExpedienteTratamiento from bd_sac.tbl_expedientetramiento where codigoExpediente='" + numexpediente + "'order by fechaExpedienteTratamiento desc;";
+            string consulta = "select DATE_FORMAT(fechaExpedienteTratamiento,'%d-%m-%Y'),tratamientoExpedienteTratamiento,piezaExpedienteTratamiento,descripcionExpedienteTratamiento from bd_sac.tbl_expedientetramiento where codigoExpediente='" + numexpediente + "'order by fechaExpedienteTratamiento desc;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())

@@ -78,7 +78,7 @@ namespace SAC.formularios
                     datos = metodo.BuscarPaciente(ced);
                     expediente.InnerText = datos[0];
                     cedula.InnerText = datos[1];
-                    fecha.InnerText = datos[2];
+                    fecha.InnerText = datos[2].Substring(0, 10);
                     cardiaco.InnerText = datos[3];
                     presion.InnerText = datos[4];
                     reumatica.InnerText = datos[5];

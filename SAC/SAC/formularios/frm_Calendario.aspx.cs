@@ -129,7 +129,7 @@ namespace SAC.formularios
                         row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                         row.ToolTip = string.Empty;
                         cedulaAA = row.Cells[0].Text;
-                        fechaAA = Calendar1.SelectedDate.ToString(@"yyyy-MM-dd");
+                        fechaAA = Calendar1.SelectedDate.ToString(@"yyyy-MM-dd").Substring(0, 10);
                         horaAA = row.Cells[2].Text;
                         String codigo = objeto.Codigo(cedulaAA, fechaAA, horaAA);
                         datos = objeto.MostrarCita(codigo);
