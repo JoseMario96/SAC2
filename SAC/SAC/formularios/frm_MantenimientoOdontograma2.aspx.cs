@@ -145,7 +145,7 @@ namespace SAC.formularios
                     odontograma.borrarOdontograma(BDborradoC[x], BDborradoD[x], BDborradoS[x], codigocedula.ToString());
                 }
             }
-            else if (!BDborradoM[0].Equals(""))
+            if (!BDborradoM[0].Equals(""))
             {
                 for (int x = 0; x < num4; x++)
                 {

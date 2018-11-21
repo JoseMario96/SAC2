@@ -129,6 +129,7 @@ namespace SAC.formularios
             string borradoD = BDdienteO.Value;
             string borradoS = BDseccionO.Value;
             string borradoM = BDdienteM.Value;
+            TextBox1.Text = borradoD;
             string[] BDborradoC = borradoC.Split(",".ToCharArray());
             string[] BDborradoD = borradoD.Split(",".ToCharArray());
             string[] BDborradoS = borradoS.Split(",".ToCharArray());
@@ -137,6 +138,10 @@ namespace SAC.formularios
             int num3 = BDborradoC.Count();
             int num4 = BDborradoM.Count();
             int cont = 0;
+            int cont2 = 0;
+            //TextBox1.Text = borradoC;
+            //TextBox2.Text = borradoD;
+            
             if (!BDborradoC[0].Equals(""))
             {
                 for (int x = 0; x < num3; x++)
@@ -145,13 +150,18 @@ namespace SAC.formularios
                     odontograma.borrarOdontograma(BDborradoC[x], BDborradoD[x], BDborradoS[x], codigocedula.ToString());
                 }
             }
-            else if (!BDborradoM[0].Equals(""))
+          
+            if (!BDborradoM[0].Equals(""))
             {
                 for (int x = 0; x < num4; x++)
                 {
+                    cont2++;
                     odontograma.borrarOdontograma2(BDborradoM[x], codigocedula.ToString());
                 }
             }
+            TextBox1.Text = cont.ToString();
+            TextBox2.Text = cont2.ToString();
+         /*   TextBox2.Text = borradoC*/;
             DateTime now = DateTime.Now;
             string color = colorO.Value;
             string[] colorArray = color.Split(",".ToCharArray());
