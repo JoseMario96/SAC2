@@ -34,6 +34,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -185,7 +187,7 @@
     <Content Include="images\work_6.jpg" />
     <Content Include="images\work_7.jpg" />
     <Content Include="images\work_8.jpg" />
-    <Content Include="index.aspx" />
+    <Content Include="default.aspx" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\html2canvas.js" />
     <Content Include="js\html2canvas.min.js" />
@@ -377,12 +379,12 @@
     <Compile Include="formularios\frm_tratamientos.aspx.designer.cs">
       <DependentUpon>frm_tratamientos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="limpiar\limpiar.cs" />
     <Compile Include="metodos\Buscar.cs" />
@@ -498,6 +500,7 @@
     <Content Include="sass\bootstrap\_bootstrap-compass.scss" />
     <Content Include="sass\bootstrap\_bootstrap-mincer.scss" />
     <Content Include="sass\bootstrap\_bootstrap-sprockets.scss" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

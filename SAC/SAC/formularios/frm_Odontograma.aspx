@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frm_Odontograma.aspx.cs" EnableEventValidation="false" Inherits="SAC.formularios.frm_Odontograma" %>
+﻿<%@ Page Language="C#" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeBehind="frm_Odontograma.aspx.cs" EnableEventValidation="false" Inherits="SAC.formularios.frm_Odontograma" %>
 
 <!DOCTYPE html>
 
@@ -89,10 +89,11 @@
 
                 </div>
             </div>
-
-            <div id="dienteOdontograma" class="row espacio" style="display: block" tabindex="1">
-                <div class="row">
-                    <center>
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                    <div id="dienteOdontograma" class="row espacio" style="display: block" tabindex="1">
+                        <div class="row">
+                            <center>
                     <div class="col s2"></div>
                     <div class="col s4">
                         <asp:ImageButton CssClass="boton1" ID="ibOdontogramaG" runat="server" title="Odontograma de Adultos" src="../images/odontoAdultos.png" OnClick="ibOdontogramaG_Click" />
@@ -102,8 +103,10 @@
                     </div>
                     <div class="col s2"></div>
                 </center>
-                </div>
-            </div>
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
 
     </form>
@@ -137,6 +140,12 @@
             document.getElementById('dienteOdontograma').scrollIntoView();
         }
 
+    </script>
+    <script>
+        function scrollToDiv() {
+            document.getElementById('dienteOdontograma').scrollIntoView();
+            //setTimeout(scrollToDiv, 1);
+        }
     </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="SAC.index" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="SAC.index" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -51,6 +51,179 @@
                 }
             });
         });
+
+        $(window).resize(function () {
+            //aqui el codigo que se ejecutara cuando se redimencione la ventana
+            var ancho = $(window).width();
+            if (ancho <= 520) {
+                //calendario
+                $("#calendariocss").removeClass("col-md-6");
+                $("#calendariocss").addClass("row abajo2");
+                $("#calendariocss2").removeClass("col-md-6");
+                $("#calendariocss2").addClass("row abajo4");
+                //pacientes
+                $("#pacientecss").removeClass("col-md-3 col-xs-12");
+                $("#pacientecss").addClass("row abajo3");
+                $("#pacientecss2").removeClass("col-md-3 col-xs-12");
+                $("#pacientecss2").addClass("row abajo3");
+                $("#pacientecss3").removeClass("col-md-3 col-xs-12 abajo");
+                $("#pacientecss3").addClass("row abajo");
+                //expedientes
+                $("#expedientecss").removeClass("col-md-3");
+                $("#expedientecss").addClass("row abajo2");
+                $("#expedientecss2").removeClass("col-md-3");
+                $("#expedientecss2").addClass("row abajo2");
+                $("#expedientecss3").removeClass("col-md-3");
+                $("#expedientecss3").addClass("row abajo2");
+                $("#expedientecss4").removeClass("col-md-3");
+                $("#expedientecss4").addClass("row abajo2");
+
+                $("#quitarcss").removeClass("row espacio");
+                $("#quitarcss2").removeClass("col-md-3");
+                $("#quitarcss3").removeClass("col-md-4");
+
+                $("#expedientecss5").removeClass("col-md-3");
+                $("#expedientecss5").addClass("row abajo2");
+                $("#expedientecss6").removeClass("col-md-3");
+                $("#expedientecss6").addClass("row abajo4");
+                //ventas
+                $("#ventascss").removeClass("col-md-3 col-xs-12");
+                $("#ventascss").addClass("row abajo3");
+                $("#quitarcss4").removeClass("col-md-1");
+                $("#quitarcss5").removeClass("col-md-1");
+                $("#ventascss2").removeClass("col-md-3 col-xs-12");
+                $("#ventascss2").addClass("row abajo3");
+                $("#ventascss3").removeClass("col-md-3 col-xs-12");
+                $("#ventascss3").addClass("row abajo3");
+                $("#quitarcss9").removeClass("row row-bottom-padded-sm");
+                $("#quitarcss6").removeClass("col-md-1");
+                $("#quitarcss7").removeClass("col-md-1");
+                $("#ventascss4").removeClass("col-md-3 col-xs-12");
+                $("#ventascss4").addClass("row abajo3");
+                $("#quitarcss8").removeClass("col-md-1");
+                $("#ventascss5").removeClass("col-md-3 col-xs-12 abajo");
+                $("#ventascss5").addClass("row abajo");
+                //usuarios
+                $("#usuarioscss").removeClass("col-md-3 col-sm-6 col-xxs-12");
+                $("#usuarioscss").addClass("row abajo2");
+                $("#usuarioscss2").removeClass("col-md-3 col-sm-6 col-xxs-12");
+                $("#usuarioscss2").addClass("row abajo4");
+            }
+            else{
+                //calendario
+                $("#calendariocss").removeClass("row abajo2");
+                $("#calendariocss").addClass("col-md-6");
+                $("#calendariocss2").removeClass("row abajo4");
+                $("#calendariocss2").addClass("col-md-6");
+                //pacientes
+                $("#pacientecss").removeClass("row abajo3");
+                $("#pacientecss").addClass("col-md-3 col-xs-12");
+                $("#pacientecss2").removeClass("row abajo3");
+                $("#pacientecss2").addClass("col-md-3 col-xs-12");
+                $("#pacientecss3").removeClass("row abajo");
+                $("#pacientecss3").addClass("col-md-3 col-xs-12 abajo");
+                //expedientes
+                $("#expedientecss").removeClass("row abajo2");
+                $("#expedientecss").addClass("col-md-3");
+                $("#expedientecss2").removeClass("row abajo2");
+                $("#expedientecss2").addClass("col-md-3");
+                $("#expedientecss3").removeClass("row abajo2");
+                $("#expedientecss3").addClass("col-md-3");
+                $("#expedientecss4").removeClass("row abajo2");
+                $("#expedientecss4").addClass("col-md-3");
+
+                $("#quitarcss").addClass("row espacio");
+                $("#quitarcss2").addClass("col-md-3");
+                $("#quitarcss3").addClass("col-md-4");
+
+                $("#expedientecss5").removeClass("row abajo2");
+                $("#expedientecss5").addClass("col-md-3");
+                $("#expedientecss6").removeClass("row abajo4");
+                $("#expedientecss6").addClass("col-md-3");
+                //ventas
+                $("#ventascss").removeClass("row abajo3");
+                $("#ventascss").addClass("col-md-3 col-xs-12");
+                $("#quitarcss4").addClass("col-md-1");
+                $("#quitarcss5").addClass("col-md-1");
+                $("#ventascss2").removeClass("row abajo3");
+                $("#ventascss2").addClass("col-md-3 col-xs-12");
+                $("#ventascss3").removeClass("row abajo3");
+                $("#ventascss3").addClass("col-md-3 col-xs-12");
+                $("#quitarcss9").addClass("row row-bottom-padded-sm");
+                $("#quitarcss6").addClass("col-md-1");
+                $("#quitarcss7").addClass("col-md-1");
+                $("#ventascss4").removeClass("row abajo3");
+                $("#ventascss4").addClass("col-md-3 col-xs-12");
+                $("#quitarcss8").addClass("col-md-1");
+                $("#ventascss5").removeClass("row abajo");
+                $("#ventascss5").addClass("col-md-3 col-xs-12 abajo");
+                //usuarios
+                $("#usuarioscss").removeClass("row abajo2");
+                $("#usuarioscss").addClass("col-md-3 col-sm-6 col-xxs-12");
+                $("#usuarioscss2").removeClass("row abajo4");
+                $("#usuarioscss2").addClass("col-md-3 col-sm-6 col-xxs-12");
+            }
+        })
+
+        $(document).ready(function () {
+            //aqui el codigo que se ejecutara cuando se redimencione la ventana
+            var ancho = $(window).width();
+            if (ancho < 520) {
+                //calendario
+                $("#calendariocss").removeClass("col-md-6");
+                $("#calendariocss").addClass("row abajo2");
+                $("#calendariocss2").removeClass("col-md-6");
+                $("#calendariocss2").addClass("row abajo4");
+                //pacientes
+                $("#pacientecss").removeClass("col-md-3 col-xs-12");
+                $("#pacientecss").addClass("row abajo3");
+                $("#pacientecss2").removeClass("col-md-3 col-xs-12");
+                $("#pacientecss2").addClass("row abajo3");
+                $("#pacientecss3").removeClass("col-md-3 col-xs-12 abajo");
+                $("#pacientecss3").addClass("row abajo");
+                //expedientes
+                $("#expedientecss").removeClass("col-md-3");
+                $("#expedientecss").addClass("row abajo3");
+                $("#expedientecss2").removeClass("col-md-3");
+                $("#expedientecss2").addClass("row abajo3");
+                $("#expedientecss3").removeClass("col-md-3");
+                $("#expedientecss3").addClass("row abajo3");
+                $("#expedientecss4").removeClass("col-md-3");
+                $("#expedientecss4").addClass("row abajo2");
+
+                $("#quitarcss").removeClass("row espacio");
+                $("#quitarcss2").removeClass("col-md-3");
+                $("#quitarcss3").removeClass("col-md-4");
+
+                $("#expedientecss5").removeClass("col-md-3");
+                $("#expedientecss5").addClass("row abajo2");
+                $("#expedientecss6").removeClass("col-md-3");
+                $("#expedientecss6").addClass("row abajo4");
+                //ventas
+                $("#ventascss").removeClass("col-md-3 col-xs-12");
+                $("#ventascss").addClass("row abajo3");
+                $("#quitarcss4").removeClass("col-md-1");
+                $("#quitarcss5").removeClass("col-md-1");
+                $("#ventascss2").removeClass("col-md-3 col-xs-12");
+                $("#ventascss2").addClass("row abajo3");
+                $("#ventascss3").removeClass("col-md-3 col-xs-12");
+                $("#ventascss3").addClass("row abajo3");
+                $("#quitarcss9").removeClass("row row-bottom-padded-sm");
+                $("#quitarcss6").removeClass("col-md-1");
+                $("#quitarcss7").removeClass("col-md-1");
+                $("#ventascss4").removeClass("col-md-3 col-xs-12");
+                $("#ventascss4").addClass("row abajo3");
+                $("#quitarcss8").removeClass("col-md-1");
+                $("#ventascss5").removeClass("col-md-3 col-xs-12 abajo");
+                $("#ventascss5").addClass("row abajo");
+                //usuarios
+                $("#usuarioscss").removeClass("col-md-3 col-sm-6 col-xxs-12");
+                $("#usuarioscss").addClass("row abajo3");
+                $("#usuarioscss2").removeClass("col-md-3 col-sm-6 col-xxs-12");
+                $("#usuarioscss2").addClass("row abajo4");
+            }
+            
+        })
     </script>
     <style>
         .option-toggle {
@@ -173,6 +346,18 @@
             padding-bottom: 10%;
         }
 
+        .abajo2 {
+            padding-bottom: 15%;
+        }
+
+        .abajo3 {
+            padding-bottom: 25%;
+        }
+
+        .abajo4 {
+            padding-bottom: 30%;
+        }
+
         .letrasgrande {
             font-size: 24px;
         }
@@ -199,8 +384,6 @@
     </style>
 
     <script src="../js/modernizr-2.6.2.min.js"></script>
-    <script type="text/javascript">
-</script>
 
 </head>
 <body>
@@ -225,7 +408,7 @@
                                 <li><a href="#" data-nav-section="pacientes"><span>Pacientes</span></a></li>
                                 <li><a href="#" data-nav-section="expedientes"><span>Expedientes</span></a></li>
                                 <li><a href="#" data-nav-section="factura"><span>Factura</span></a></li>
-                                <li id="ocultar"><a href="#" data-nav-section="usuario"><span>Usuarios</span></a></li>
+                                <li id="ocultar" style="display:none"><a href="#" data-nav-section="usuario"><span>Usuarios</span></a></li>
                             </ul>
                         </div>
                     </nav>
@@ -274,7 +457,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div id="calendariocss" class="col-md-6">
                     <a href="#popup9" class="popup-link fh5co-project-item" onclick='document.getElementById("calendario").src="formularios/frm_Calendario.aspx";'>
                         <img src="../images/calendario.png" alt="Image" class="img-responsive centrar" />
                         <div class="letrasgrande">
@@ -291,7 +474,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div id="calendariocss2" class="col-md-6">
                     <a href="#popup10" class="popup-link fh5co-project-item" onclick='document.getElementById("citas_Hoy").src="formularios/frm_AgregarCita.aspx";'>
                         <img src="../images/calendario_hoy.png" alt="Image" class="img-responsive centrar" />
                         <div class="letrasgrande">
@@ -325,7 +508,7 @@
                 </div>
 
                 <div class="row row-bottom-padded-sm">
-                    <div class="col-md-3 col-xs-12">
+                    <div id="pacientecss" class="col-md-3 col-xs-12">
                         <a href="#popup" class="popup-link fh5co-project-item" onclick='document.getElementById("agregarP").src="formularios/frm_AgregarPaciente.aspx";'>
                             <img src="../images/agregar.png" alt="Image" class="img-responsive centrar" />
                             <div class="letrasgrande">
@@ -344,7 +527,7 @@
                     <div class="col-md-1">
                     </div>
                     <%--Actualizar--%>
-                    <div class="col-md-3 col-xs-12">
+                    <div id="pacientecss2" class="col-md-3 col-xs-12">
                         <a href="#popup1" class="popup-link fh5co-project-item " onclick='document.getElementById("actuP").src="formularios/frm_ActualizarPaciente.aspx";'>
                             <img src="../images/actualizar.png" alt="Image" class="img-responsive centrar" />
                             <div class="letrasgrande">
@@ -363,7 +546,7 @@
                     <div class="col-md-1">
                     </div>
                     <%--Buscar--%>
-                    <div class="col-md-3 col-xs-12 abajo">
+                    <div id="pacientecss3" class="col-md-3 col-xs-12 abajo">
                         <a href="#popup2" class="popup-link fh5co-project-item " onclick='document.getElementById("buscarP").src="formularios/frm_BuscarPaciente.aspx";'>
                             <img src="../images/buscar.png" alt="Image" class="img-responsive centrar" />
                             <div class="letrasgrande">
@@ -399,7 +582,7 @@
                 <div class="row">
 
                     <%--Agregar--%>
-                    <div class="col-md-3 ">
+                    <div id="expedientecss" class="col-md-3 ">
                         <a href="#popup3" class="popup-link fh5co-project-item" onclick='document.getElementById("agregarE").src="formularios/frm_AgregarExpediente.aspx";'>
                             <img src="../images/agregar.png" alt="Image" class="img-responsive centrar" />
                             <div class="fh5co-text">
@@ -416,7 +599,7 @@
                         </div>
                     </div>
                     <%--Actualizar--%>
-                    <div class="col-md-3">
+                    <div id="expedientecss2" class="col-md-3">
                         <a href="#popup4" class="popup-link fh5co-project-item " onclick='document.getElementById("actuE").src="formularios/frm_ActualizarExpediente.aspx";'>
                             <img src="../images/actualizar.png" alt="Image" class="img-responsive centrar" />
                             <div class="fh5co-text">
@@ -433,7 +616,7 @@
                         </div>
                     </div>
                     <%--Buscar--%>
-                    <div class="col-md-3">
+                    <div id="expedientecss3" class="col-md-3">
                         <a href="#popup5" class="popup-link fh5co-project-item " onclick='document.getElementById("buscarE").src="formularios/frm_BuscarExpediente.aspx";'>
                             <img src="../images/buscar.png" alt="Image" class="img-responsive centrar" />
                             <div class="fh5co-text">
@@ -451,7 +634,7 @@
                     </div>
 
                     <%--Reporte--%>
-                    <div class="col-md-3 ">
+                    <div id="expedientecss4" class="col-md-3 ">
                         <a href="#popup6" class="popup-link fh5co-project-item " onclick='document.getElementById("Odonto").src="formularios/frm_Odontograma.aspx";'>
                             <img src="../images/Odontogroma.jpg" alt="Image" class="img-responsive centrar" />
                             <div class="fh5co-text">
@@ -470,9 +653,9 @@
 
                 </div>
                 <%--Odontograma--%>
-                <div class="row espacio">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3">
+                <div id="quitarcss" class="row espacio">
+                    <div id="quitarcss2" class="col-md-3"></div>
+                    <div id="expedientecss5" class="col-md-3">
                         <a href="#popup7" class="popup-link fh5co-project-item " onclick='document.getElementById("reporteE").src="formularios/frm_ReporteOdontogramas.aspx";'>
                             <img src="../images/reporte.png" alt="Image" class="img-responsive centrar" />
                             <div class="fh5co-text">
@@ -488,8 +671,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-3">
+                    <div id="quitarcss3" class="col-md-4"></div>
+                    <div id="expedientecss6" class="col-md-3">
                         <a href="#popup8" class="popup-link fh5co-project-item" onclick='document.getElementById("tratamientos").src="formularios/frm_tratamientos.aspx";'>
                             <img src="../images/tratamientos.png" alt="Image" class="img-responsive centrar" />
                             <div class="fh5co-text">
@@ -529,7 +712,7 @@
                 </div>
                 <div class="row row-bottom-padded-sm">
                     <%--Ventas--%>
-                    <div class="col-md-3 col-xs-12">
+                    <div id="ventascss" class="col-md-3 col-xs-12">
                         <a href="#popup11" class="popup-link fh5co-project-item" onclick='document.getElementById("ventas").src="formularios/frm_AgregarVenta.aspx";'>
                             <img src="../images/factura.png" alt="Image" class="img-responsive centrar" />
                             <div class="letrasgrande">
@@ -545,10 +728,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-1">
+                    <div id="quitarcss4" class="col-md-1">
                     </div>
                     <%--Mostrar Ventas--%>
-                    <div class="col-md-3 col-xs-12">
+                    <div id="ventascss2" class="col-md-3 col-xs-12">
                         <a href="#popup12" class="popup-link fh5co-project-item" onclick='document.getElementById("mostrarVentas").src="formularios/frm_BuscarVenta.aspx";'>
                             <img src="../images/mostrar_facturas.png" alt="Image" class="img-responsive centrar" />
                             <div class="letrasgrande">
@@ -564,10 +747,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-1">
+                    <div id="quitarcss5" class="col-md-1">
                     </div>
                     <%--Reporte Factura--%>
-                    <div class="col-md-3 col-xs-12 abajo">
+                    <div id="ventascss3" class="col-md-3 col-xs-12 abajo">
                         <a href="#popup13" class="popup-link fh5co-project-item" onclick='document.getElementById("reporteVentas").src="formularios/frm_ReporteVentas.aspx";'>
                             <img src="../images/reporte_factura.png" alt="Image" class="img-responsive centrar" />
                             <div class="letrasgrande">
@@ -584,13 +767,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row row-bottom-padded-sm">
+                <div id="quitarcss9" class="row row-bottom-padded-sm">
                     <%--Cuentas por cobrar--%>
-                    <div class="col-md-1">
+                    <div id="quitarcss6" class="col-md-1">
                     </div>
-                    <div class="col-md-1">
+                    <div id="quitarcss7" class="col-md-1">
                     </div>
-                    <div class="col-md-3 col-xs-12">
+                    <div id="ventascss4" class="col-md-3 col-xs-12">
                         <a href="#popup14" class="popup-link fh5co-project-item" onclick='document.getElementById("Cuentas").src="formularios/frm_CuentasXCobrar.aspx";'>
                             <img src="../images/CxC.png" alt="Image" class="img-responsive centrar" />
                             <div class="letrasgrande">
@@ -607,10 +790,10 @@
                         </div>
                     </div>
 
-                    <div class="col-md-1">
+                    <div id="quitarcss8" class="col-md-1">
                     </div>
                     <%--Reporte Cuentas por Cobrar--%>
-                    <div class="col-md-3 col-xs-12 abajo">
+                    <div id="ventascss5" class="col-md-3 col-xs-12 abajo">
                         <a href="#popup16" class="popup-link fh5co-project-item" onclick='document.getElementById("reporteCuentas").src="formularios/frm_ReporteCxC.aspx";'>
                             <img src="../images/ReporteCxC.png" alt="Image" class="img-responsive centrar" />
                             <div class="letrasgrande">
@@ -630,7 +813,7 @@
             </div>
         </section>
         <%--------------------------------------------------------------Usuario---------------------------------------------------------------------%>
-        <div id="ocultar1">
+        <div id="ocultar1" style="display:none">
             <section id="fh5co-about" data-section="usuario">
                 <div class="container">
                     <div class="row">
@@ -643,10 +826,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xxs-12">
+                    <div id="quitarcss10" class="col-md-3 col-sm-6 col-xxs-12">
                     </div>
                     <div class="row row-bottom-padded-sm">
-                        <div class="col-md-3 col-sm-6 col-xxs-12">
+                        <div id="usuarioscss" class="col-md-3 col-sm-6 col-xxs-12">
                             <a id="usu1" href="#popup17" class="fh5co-project-item" onclick='document.getElementById("agregarUsuario").src="formularios/frm_AgregarUsuario.aspx";'>
                                 <img src="../images/agregar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
                                 <div class="fh5co-text">
@@ -663,7 +846,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 col-xxs-12">
+                        <div id="usuarioscss2" class="col-md-3 col-sm-6 col-xxs-12">
                             <a id="usu3" href="#popup18" class="fh5co-project-item" onclick='document.getElementById("actualizarUsuario").src="formularios/frm_ActualizarUsuario.aspx";'>
                                 <img src="../images/actualizar_usuario.png" alt="Image" class="imagen img-responsive centrar" />
                                 <div class="fh5co-text">
@@ -679,7 +862,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-xxs-12">
+                        <div id="quitarcss11" class="col-md-3 col-sm-6 col-xxs-12">
                         </div>
                     </div>
                 </div>

@@ -41,7 +41,7 @@ namespace SAC.formularios
                     String tipo = entrar.Permiso(txt_usuario.Value).ToString();
                     Session["acceder"] = "entro";
                     Session["tipo"] = tipo;
-                    Response.Redirect("\\index.aspx");
+                    Response.Redirect("\\default.aspx");
                     
                 }
                 else

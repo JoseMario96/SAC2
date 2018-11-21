@@ -6,7 +6,7 @@ namespace SAC.conexion
     {
         MySql.Data.MySqlClient.MySqlConnection conn;
 
-        private string myConnectionString = "server=127.0.0.1;user=root;database=bd_sac;password=sac;SslMode=none;";
+        private string myConnectionString = "server=204.93.216.11;user=alina23_alina;database=alina23_bd_sac;password=sac2018;SslMode=none;";
 
         public MySqlConnection abrir_conexion()
         {

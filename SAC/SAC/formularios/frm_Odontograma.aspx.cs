@@ -43,7 +43,7 @@ namespace SAC.formularios
             String[] datos2 = new String[10];
             GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion2(txtSearch.Text.Trim());
             GridView_reporteOdontograma.DataBind();
-
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "ScrollToADiv", "setTimeout(scrollToDiv, 1);", true);
             foreach (GridViewRow row in GridView_reporteOdontograma.Rows)
             {
                 if (row.RowIndex == GridView_reporteOdontograma.SelectedIndex)
