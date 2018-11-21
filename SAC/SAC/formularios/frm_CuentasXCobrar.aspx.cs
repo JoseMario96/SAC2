@@ -35,6 +35,8 @@ namespace SAC.formularios
                                 document.getElementById('presentar').style.display = 'block';
                                 </script>";
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+              
+
                         Gridview_CxC.DataSource = cuenta.CuentaXCobrar();
                         Gridview_CxC.DataBind();
                     }
@@ -82,10 +84,13 @@ namespace SAC.formularios
                                     document.getElementById('seccionAbono').style.display = 'block';
                                     </script>";
                             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                            ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollCXC", "setTimeout(scrollCXC, 1);", true);
+
                             lbl_detalle.Text = detalle;
                             Gridview_Venta.DataSource = tabla;
                             Gridview_Venta.DataBind();
                         }
+
                         txt_abono.Focus();
                     }
                     else
@@ -110,7 +115,7 @@ namespace SAC.formularios
             {
                 e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(Gridview_CxC, "select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click para seleccionar esta fila.";
-            }               
+            }
         }
 
         protected void btn_factura_Click(object sender, EventArgs e)

@@ -39,7 +39,6 @@
 
 
         <div class="container">
-
             <header>
                 <h2 style="text-align: center">Mantenimiento de tratamientos</h2>
             </header>
@@ -139,6 +138,7 @@
                     <div class="col s5"></div>
                 </div>
             </div>
+    
             <%-- Sección de modificar--%>
             <div class="row" id="grid" style="display: none">
                 <asp:UpdatePanel runat="server">
@@ -174,7 +174,7 @@
                 </div>
             </div>
 
-            <div id="camposModificar" style="display: none" tabindex="-1">
+            <div id="camposModificar" style="display: none" class="espacio">
                 <div class="row">
                     <div class=" col s12">
                         <h5><b>Tipos de tratamientos:</b></h5>
@@ -445,6 +445,12 @@
 
             });
         });
+        function scrollTratamientoModi() {
+            document.getElementById('camposModificar').scrollIntoView();
+        }
+        function scrollTratamientoEli() {
+            document.getElementById('seccionEliminar').scrollIntoView();
+        }
 
         function sololetras(e) {
             key = e.keyCoden || e.which;

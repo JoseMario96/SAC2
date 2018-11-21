@@ -45,7 +45,7 @@
             </header>
             <div class="row espacio">
                 <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)"  maxlength="20"></asp:TextBox>
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)" MaxLength="20"></asp:TextBox>
                     <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
                 </div>
                 <asp:UpdatePanel runat="server">
@@ -65,7 +65,7 @@
                 </asp:UpdatePanel>
             </div>
 
-            <div id="formularioP" style="display: none" tabindex="-1">
+            <div id="formularioP" style="display: none" class="espacio">
 
                 <table class="striped">
                     <tr>
@@ -978,6 +978,10 @@
                 $('#<%=InvisButton.ClientID%>').click();
             });
         });
+
+        function scrollExped() {
+            document.getElementById('formularioP').scrollIntoView();
+        }
     </script>
 </body>
 </html>

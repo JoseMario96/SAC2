@@ -65,7 +65,7 @@
                 <script type="text/javascript" src="../js/quicksearch.js"></script>
 
             </div>
-           
+
             <div id="formularioP" style="display: none" class="espacio centrar" tabindex="-1">
                 <table class="striped">
                     <tr>
@@ -193,7 +193,7 @@
                 </table>
             </div>
 
-            <div id="encargado" style="display: none" tabindex="-1" class="espacio">
+            <div id="encargado" style="display: none" class="espacio">
                 <table class="striped">
                     <tr>
                         <th colspan="5" style="text-align: center">Datos del encargado</th>
@@ -359,6 +359,10 @@
             if (letras.indexOf(teclado) == -1 && !teclado_especial) {
                 return false;
             }
+        }
+
+        function scrollToDiv() {
+            document.getElementById('formularioP').scrollIntoView();
         }
     </script>
 

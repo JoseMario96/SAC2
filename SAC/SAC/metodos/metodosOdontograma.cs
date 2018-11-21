@@ -167,27 +167,31 @@ namespace SAC.metodos
             string[] stringArray1 = new string[5];
             MySqlDataReader actualizar = consultar.ejecutar_consulta("SELECT colorOdontograma, dienteOdontograma,seccionOdontograma,marcaOdontograma,tipoPacienteOdontograma FROM bd_sac.tbl_odontograma,bd_sac.tbl_expedienteodontograma  where tbl_odontograma.codigoOdontograma= tbl_expedienteodontograma.codigoOdontograma and tbl_odontograma.codigoOdontograma = '" + odo + "'; ", con.abrir_conexion()).ExecuteReader();
 
-
-            while (actualizar.Read())
+            try
             {
-                if (!actualizar.IsDBNull(1))
+                while (actualizar.Read())
                 {
-                    stringArray1[0] = actualizar.GetString(0);
-                    stringArray1[1] = actualizar.GetString(1);
-                    stringArray1[2] = actualizar.GetString(2);
-                    stringArray1[4] = actualizar.GetString(4);
+                    if (!actualizar.IsDBNull(1))
+                    {
+                        stringArray1[0] = actualizar.GetString(0);
+                        stringArray1[1] = actualizar.GetString(1);
+                        stringArray1[2] = actualizar.GetString(2);
+                        stringArray1[4] = actualizar.GetString(4);
+
+                    }
+                    else
+                    {
+                        stringArray1[0] = actualizar.GetString(0);
+                        stringArray1[3] = actualizar.GetString(3);
+                        stringArray1[4] = actualizar.GetString(4);
+                    }
 
                 }
-                else
-                {
-                    stringArray1[0] = actualizar.GetString(0);
-                    stringArray1[3] = actualizar.GetString(3);
-                    stringArray1[4] = actualizar.GetString(4);
-                }
+            }
+            catch
+            {
 
             }
-
-
             con.cerrar_Conexion();
             return stringArray1;
         }

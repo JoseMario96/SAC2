@@ -73,6 +73,8 @@ namespace SAC.formularios
                         document.getElementById('cabecera').style.display = 'block';
                         </script>";
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                        ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollVenta", "setTimeout(scrollVenta, 1);", true);
+
                     }
                     else
                     {

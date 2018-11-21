@@ -75,6 +75,10 @@ namespace SAC.formularios
                     document.getElementById('Actualizar_Eliminar').style.display = 'none' ;
                     </script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
+                    ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollToday", "setTimeout(scrollToday, 1);", true);
+
+
                     fechaCabecera.InnerText = fecha;
                     Gridview_Hoy.DataSource = objeto.CitaHoy(fecha);
                     Gridview_Hoy.DataBind();
@@ -92,6 +96,7 @@ namespace SAC.formularios
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                     fechaC.Value = fecha;
                     fechaC.Disabled = true;
+                    ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollreporte", "setTimeout(scrollreporte, 1);", true);
                     cedula.Focus();
                 }
             }
@@ -257,7 +262,7 @@ namespace SAC.formularios
             }
             catch
             {
-                Response.Write("<script language='JavaScript'>alert('Se registraron correctamente los datos...!!!');</script>");
+                Response.Write("<script language='JavaScript'>alert('Se registraron correctamente los datos!');</script>");
             }
         }
 
@@ -374,11 +379,12 @@ namespace SAC.formularios
                     document.getElementById('cabecera').style.display = 'none';
                     document.getElementById('grid').style.display = 'none' ;
                     document.getElementById('Actualizar_Eliminar').style.display = 'none' ;
-                    document.getElementById('agregar').scrollIntoView(); 
                     </script>";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             fechaC.Value = Calendar1.SelectedDate.ToString(@"yyyy-MM-dd");
             cedula.Focus();
+            //ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollAgregar", "setTimeout(scrollAgregar, 1);", true);
+
         }
 
         protected void btn_Notificación_Click(object sender, EventArgs e)

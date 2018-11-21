@@ -72,14 +72,16 @@
                     </ContentTemplate>
                 </asp:UpdatePanel>
 
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
-                        <label id="lbl_totalTitulo" runat="server" style="padding-left: 70%; font-size: medium; color: black; font-weight: bold">Total: ₡</label>
-                        <label id="lbl_total" runat="server" style="font-size: medium; color: black; font-weight: bold"></label>
-                        <label id="lbl_saldoTitulo" runat="server" style="font-size: medium; color: black; font-weight: bold">| Total: ₡</label>
-                        <label id="lbl_saldo" runat="server" style="font-size: medium; color: black; font-weight: bold"></label>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                <div class="row" id="monto">
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <label id="lbl_totalTitulo" runat="server" style="padding-left: 70%; font-size: medium; color: black; font-weight: bold">Total: ₡</label>
+                            <label id="lbl_total" runat="server" style="font-size: medium; color: black; font-weight: bold"></label>
+                            <label id="lbl_saldoTitulo" runat="server" style="font-size: medium; color: black; font-weight: bold">| Total: ₡</label>
+                            <label id="lbl_saldo" runat="server" style="font-size: medium; color: black; font-weight: bold"></label>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
                 <div class="row">
                     <div class="col s5"></div>
                     <div class="col s2">
@@ -89,6 +91,11 @@
                 </div>
             </div>
         </form>
+        <script>
+            function scrollreporte() {
+                document.getElementById('monto').scrollIntoView();
+            }
+        </script>
     </div>
 </body>
 </html>

@@ -36,6 +36,7 @@
             text-align: center;
             text-transform: uppercase;
         }
+
         .espacio {
             padding-top: 5%;
         }
@@ -103,7 +104,7 @@
                                         <asp:BoundField DataField="telefonoCita" HeaderText="Contacto" ItemStyle-Width="100">
                                             <ItemStyle Width="100px" />
                                         </asp:BoundField>
-                                    </Columns>                                
+                                    </Columns>
                                 </asp:GridView>
                             </ContentTemplate>
                         </asp:UpdatePanel>
@@ -322,10 +323,16 @@
 
         }
     }
+    function scrollAgregar() {
+        document.getElementById('agregar').scrollIntoView();
+    }
+    function scrollToday() {
+        document.getElementById('cabecera').scrollIntoView();
+    }
 
 </script>
 
-<!-- End demo purposes only -->
+<%--<!-- End demo purposes only -->
 <!-- jQuery -->
 <script src="../js/jquery.min.js"></script>
 <!-- jQuery Easing -->
@@ -349,5 +356,5 @@
 <script src="../js/jquery.style.switcher.js"></script>
 <script src="../js/materialize.js"></script>
 
-<script src="../js/main.js"></script>
+<script src="../js/main.js"></script>--%>
 </html>

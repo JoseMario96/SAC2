@@ -133,6 +133,10 @@
             });
         });
 
+        function scrollOdonto() {
+            document.getElementById('dienteOdontograma').scrollIntoView();
+        }
+
     </script>
 </body>
 </html>

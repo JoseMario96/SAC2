@@ -65,6 +65,8 @@ namespace SAC.formularios
             </script>";
 
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollExpe", "setTimeout(scrollExpe, 1);", true);
+
 
 
             foreach (GridViewRow row in GridView1.Rows)

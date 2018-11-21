@@ -206,6 +206,9 @@
 
             }
         }
+        function scrollCXC() {
+            document.getElementById('cabecera').scrollIntoView();
+        }
 
         $(document).ready(function () {
             $('#<%=txtSearch.ClientID%>').bind('keyup', function () {

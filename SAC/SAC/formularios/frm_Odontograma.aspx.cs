@@ -61,6 +61,8 @@ namespace SAC.formularios
  document.getElementById('dienteOdontograma').scrollIntoView();   
              </script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollOdonto", "setTimeout(scrollOdonto, 1);", true);
+
                     cantidadO = odontograma.cantidadOdontograma(codigocedula.ToString());
                     string[] paciente = new string[cantidadO];
                     paciente = odontograma.buscarPaciente(codigocedula.ToString());

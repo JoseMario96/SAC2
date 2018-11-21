@@ -18,7 +18,7 @@ namespace SAC.formularios
             {
                 if (!IsPostBack)
                 {
-                    
+
                     GridView2.DataSource = funciones.Grid1();
                     GridView2.DataBind();
                     DropDownList2.DataSource = funciones.TipoTratamiento();
@@ -32,7 +32,7 @@ namespace SAC.formularios
 
                 }
 
-                
+
                 txtTabla.Attributes.Add("style", "DISPLAY: none");
 
                 //GridView1.DataSource = funciones.Grid1();
@@ -213,6 +213,8 @@ namespace SAC.formularios
                             row.ToolTip = "Click to select this row.";
                         }
                     }
+                    ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollTratamientoModi", "setTimeout(scrollTratamientoModi, 1);", true);
+
                 }
                 if (txtTabla.Text == "eliminar")
                 {
@@ -241,6 +243,7 @@ namespace SAC.formularios
                             row.ToolTip = "Click to select this row.";
                         }
                     }
+                    ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollTratamientoEli", "setTimeout(scrollTratamientoEli, 1);", true);
                 }
             }
             catch

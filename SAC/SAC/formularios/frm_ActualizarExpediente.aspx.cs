@@ -77,6 +77,8 @@ namespace SAC.formularios
             </script>";
 
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollExped", "setTimeout(scrollExped, 1);", true);
+
             GridView1.DataSource = metodo.BuscarExpediente2(txtSearch.Text.Trim());
             GridView1.DataBind();
             foreach (GridViewRow row in GridView1.Rows)

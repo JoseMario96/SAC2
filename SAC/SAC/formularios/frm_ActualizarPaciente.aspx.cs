@@ -17,7 +17,7 @@ namespace SAC.formularios
         public static int estado = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
             ImageButton1.ImageUrl = "/images/actualizarEncargado.png";
             if (!this.IsPostBack)
             {
@@ -38,12 +38,12 @@ namespace SAC.formularios
             GridView1.DataBind();
 
             string script = @"<script type='text/javascript'>
-                document.getElementById('formularioP').style.display = 'block' ;
-                document.getElementById('formularioP').scrollIntoView();                  
+                document.getElementById('formularioP').style.display = 'block' ;                
                 document.getElementById('Botones').style.display = 'block';
             </script>";
-
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollPaciente", "setTimeout(scrollPaciente, 1);", true);
+
             foreach (GridViewRow row in GridView1.Rows)
             {
 
@@ -185,7 +185,7 @@ namespace SAC.formularios
         }
 
         // Metodo con el header de la tabla para la busqueda
- 
+
 
         protected void Guardar_Click(object sender, EventArgs e)
         {

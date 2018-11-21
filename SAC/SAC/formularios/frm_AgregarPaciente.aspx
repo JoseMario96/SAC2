@@ -270,8 +270,8 @@
             <div class="row">
                 <div class="col s5"></div>
                 <div class="input-field col s2">
-                    <asp:Button class="waves-effect waves-light btn" style="text-align: center" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
-                </div>               
+                    <asp:Button class="waves-effect waves-light btn" Style="text-align: center" ID="Guardar" runat="server" Text="Guardar" OnClick="Guardar_Click" />
+                </div>
                 <div class="col s5"></div>
             </div>
         </form>

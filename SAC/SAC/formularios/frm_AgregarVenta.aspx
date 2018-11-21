@@ -32,9 +32,6 @@
             <header>
                 <h2 style="text-align: center">Ventas</h2>
             </header>
-
-
-
             <div class="row">
                 <div class="row">
                     <div class="input-field col s3 ">
@@ -73,7 +70,7 @@
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
-            <div id="cabecera" style="display: none">
+            <div id="cabecera" style="display: none" class="espacio">
                 <div class="row">
                     <div class=" col s12">
                         <h5><b>Detalle del pago:</b></h5>
@@ -184,7 +181,9 @@
 
             }
         }
-
+        function scrollVenta() {
+            document.getElementById('cabecera').scrollIntoView();
+        }
         $(document).ready(function () {
             $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
                 $('#<%=InvisButton.ClientID%>').click();

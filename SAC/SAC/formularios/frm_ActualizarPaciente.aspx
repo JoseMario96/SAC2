@@ -75,7 +75,7 @@
                 <br />
             </div>
 
-            <div id="formularioP" style="display: none" tabindex="-1">
+            <div id="formularioP" style="display: none" class="espacio">
 
                 <table class="striped">
                     <tr>
@@ -488,6 +488,10 @@
             });
         });
 
+
+        function scrollPaciente() {
+            document.getElementById('formularioP').scrollIntoView();
+        }
     </script>
     <script src="js/materialize.min.js"></script>
 

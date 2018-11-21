@@ -198,6 +198,8 @@ namespace SAC.formularios
                         row.ToolTip = "Click para seleccionar esta fila.";
                     }
                 }
+                ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollAgregar", "setTimeout(scrollAgregar, 1);", true);
+
             }
             catch
             {

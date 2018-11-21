@@ -54,24 +54,25 @@ namespace SAC.formularios
             String[] datos2 = new String[10];
             GridView1.DataSource = objeto.Paciente2(txtSearch.Text.Trim());
 
+            string script = @"<script type='text/javascript'>
+                document.getElementById('formularioP').style.display = 'block' ;           
+            </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
             foreach (GridViewRow row in GridView1.Rows)
             {
                 if (row.RowIndex == GridView1.SelectedIndex)
                 {
-                    string script = @"<script type='text/javascript'>
-                document.getElementById('formularioP').style.display = 'block' ;
-                document.getElementById('formularioP').scrollIntoView();              
-            </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                     row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
 
                     ced = row.Cells[0].Text;
                     datos = objeto.buscarPaciente(ced);
+                    ScriptManager.RegisterStartupScript(Page, typeof(Page), "ScrollToADiv", "setTimeout(scrollToDiv, 1);", true);
                     if (datos[9] == null)
                     {
                         Label1.InnerHtml = "No";
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "ocultar();", true);
+                        ScriptManager.RegisterStartupScript(Page, typeof(Page), "Prueba", "ocultar();", true);
 
                         cedula.InnerText = datos[0];
                         nombre1.InnerText = datos[1];
@@ -101,7 +102,11 @@ namespace SAC.formularios
                     else
                     {
                         Label1.InnerHtml = "Si";
+                        string scriptt = @"<script type='text/javascript'>
+                        document.getElementById('encargado').style.display = 'block' ;              
+                        </script>";
 
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
                         cedula.InnerText = datos[0];
                         nombre1.InnerText = datos[1];
                         nombre2.InnerText = datos[2];
@@ -127,7 +132,8 @@ namespace SAC.formularios
                         fechaN.InnerText = datos[11].Substring(0, 9);
                         fechaI.InnerText = datos[12].Substring(0, 9);
 
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "mostrar();", true);
+
+                        //     Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "mostrar();", true);
 
 
 

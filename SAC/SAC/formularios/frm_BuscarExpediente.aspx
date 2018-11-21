@@ -41,7 +41,7 @@
             </header>
             <div class="row espacio">
                 <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)"  maxlength="20"></asp:TextBox>
+                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre" onkeypress="return sololetras(event)" MaxLength="20"></asp:TextBox>
                     <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
                 </div>
                 <div class="row espacio">
@@ -62,7 +62,7 @@
                     </asp:UpdatePanel>
                 </div>
             </div>
-            <div id="formularioP" style="display: none" tabindex="-1">
+            <div id="formularioP" style="display: none" class="espacio">
                 <table class="striped">
                     <tr>
                         <th colspan="5" style="text-align: center">Datos personales</th>
@@ -612,6 +612,9 @@
             if (letras.indexOf(teclado) == -1 && !teclado_especial) {
                 return false;
             }
+        }
+        function scrollExpe() {
+            document.getElementById('formularioP').scrollIntoView();
         }
 
         $(document).ready(function () {
