@@ -15,13 +15,13 @@ namespace SAC.metodos
         public void agregarOdontograma(String col, String die, String secc, String codE, String fech, String odont)
         {
             string y = "";
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`, `dienteOdontograma`, `seccionOdontograma`, `tipoPacienteOdontograma`) VALUES ('" + col + "', '" + die + "', '" + secc + "', '" + odont + "');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO tbl_odontograma (`colorOdontograma`, `dienteOdontograma`, `seccionOdontograma`, `tipoPacienteOdontograma`) VALUES ('" + col + "', '" + die + "', '" + secc + "', '" + odont + "');", con.abrir_conexion()).ExecuteNonQuery();
             MySqlDataReader contador = consultar.ejecutar_consulta("SELECT max(codigoOdontograma) from tbl_odontograma; ", con.abrir_conexion()).ExecuteReader();
             if (contador.Read())
             {
                 y = contador.GetString(0);
             }
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_expedienteodontograma` (`codigoExpediente`, `codigoOdontograma`, `fechaTratamientoOdontograma`) VALUES ('" + codE + "','" + y + "', '" + fech + "');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO tbl_expedienteodontograma (`codigoExpediente`, `codigoOdontograma`, `fechaTratamientoOdontograma`) VALUES ('" + codE + "','" + y + "', '" + fech + "');", con.abrir_conexion()).ExecuteNonQuery();
 
             con.cerrar_Conexion();
         }
@@ -33,8 +33,8 @@ namespace SAC.metodos
             {
                 y = contador.GetString(0);
             }
-            consultar.ejecutar_consulta("DELETE FROM `bd_sac`.`tbl_expedienteodontograma` WHERE `codigoOdontograma`='" + y + "';", con.abrir_conexion()).ExecuteNonQuery();
-            consultar.ejecutar_consulta("DELETE FROM `bd_sac`.`tbl_odontograma` WHERE `codigoOdontograma`='" + y + "';", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("DELETE FROM tbl_expedienteodontograma WHERE `codigoOdontograma`='" + y + "';", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("DELETE FROM tbl_odontograma WHERE `codigoOdontograma`='" + y + "';", con.abrir_conexion()).ExecuteNonQuery();
 
             con.cerrar_Conexion();
 
@@ -47,8 +47,8 @@ namespace SAC.metodos
             {
                 y = contador.GetString(0);
             }
-            consultar.ejecutar_consulta("DELETE FROM `bd_sac`.`tbl_expedienteodontograma` WHERE `codigoOdontograma`='" + y + "';", con.abrir_conexion()).ExecuteNonQuery();
-            consultar.ejecutar_consulta("DELETE FROM `bd_sac`.`tbl_odontograma` WHERE `codigoOdontograma`='" + y + "';", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("DELETE FROM tbl_expedienteodontograma WHERE `codigoOdontograma`='" + y + "';", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("DELETE FROM tbl_odontograma WHERE `codigoOdontograma`='" + y + "';", con.abrir_conexion()).ExecuteNonQuery();
 
             con.cerrar_Conexion();
         }
@@ -67,7 +67,7 @@ namespace SAC.metodos
 
         public DataTable TratamientosRealizados(string numexpediente)
         {
-            string consulta = "select DATE_FORMAT(fechaExpedienteTratamiento,'%d-%m-%Y'),tratamientoExpedienteTratamiento,piezaExpedienteTratamiento,descripcionExpedienteTratamiento from bd_sac.tbl_expedientetramiento where codigoExpediente='" + numexpediente + "'order by fechaExpedienteTratamiento desc;";
+            string consulta = "select DATE_FORMAT(fechaExpedienteTratamiento,'%d-%m-%Y'),tratamientoExpedienteTratamiento,piezaExpedienteTratamiento,descripcionExpedienteTratamiento from tbl_expedientetramiento where codigoExpediente='" + numexpediente + "'order by fechaExpedienteTratamiento desc;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())
@@ -79,7 +79,7 @@ namespace SAC.metodos
 
         public DataTable ReporteOdontograma(string numexpediente)
         {
-            string consulta = "select date_format(fechaExpedienteTratamiento,'%Y-%m-%d'),tratamientoExpedienteTratamiento,piezaExpedienteTratamiento from bd_sac.tbl_expedientetramiento where codigoExpediente='" + numexpediente + "'order by fechaExpedienteTratamiento desc;";
+            string consulta = "select date_format(fechaExpedienteTratamiento,'%Y-%m-%d'),tratamientoExpedienteTratamiento,piezaExpedienteTratamiento from tbl_expedientetramiento where codigoExpediente='" + numexpediente + "'order by fechaExpedienteTratamiento desc;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())
@@ -94,7 +94,7 @@ namespace SAC.metodos
         public string NumTipoTratamiento(string nombreTratamiento)
         {
             string codigo = "";
-            MySqlDataReader existencia = consultar.ejecutar_consulta("select codigoTipoTratamiento from bd_sac.tbl_tipotratamiento where  nombreTipoTratamiento='" + nombreTratamiento + "';", con.abrir_conexion()).ExecuteReader();
+            MySqlDataReader existencia = consultar.ejecutar_consulta("select codigoTipoTratamiento from tbl_tipotratamiento where  nombreTipoTratamiento='" + nombreTratamiento + "';", con.abrir_conexion()).ExecuteReader();
             if (existencia.Read())
             {
                 codigo = existencia.GetString(0);
@@ -108,7 +108,7 @@ namespace SAC.metodos
         public DataTable TiposdeTratamientos()
         {
             DataTable dt = new DataTable();
-            string consulta = "select nombreTipoTratamiento from bd_sac.tbl_tipotratamiento;";
+            string consulta = "select nombreTipoTratamiento from tbl_tipotratamiento;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             da.Fill(dt);
@@ -119,7 +119,7 @@ namespace SAC.metodos
             int numero = 0;
             string precio = "";
 
-            MySqlDataReader existencia = consultar.ejecutar_consulta("select precioTratamiento from bd_sac.tbl_tratamiento where nombreTratamiento='" + tratamiento + "';", con.abrir_conexion()).ExecuteReader();
+            MySqlDataReader existencia = consultar.ejecutar_consulta("select precioTratamiento from tbl_tratamiento where nombreTratamiento='" + tratamiento + "';", con.abrir_conexion()).ExecuteReader();
             if (existencia.Read())
             {
                 precio = existencia.GetString(0);
@@ -152,20 +152,20 @@ namespace SAC.metodos
         public void agregarOdontograma2(String marc, String col, String codE, String fech, String odont)
         {
             string y = "";
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_odontograma` (`colorOdontograma`,`marcaOdontograma`,`tipoPacienteOdontograma`) VALUES ('" + col + "','" + marc + "','" + odont + "');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO tbl_odontograma (`colorOdontograma`,`marcaOdontograma`,`tipoPacienteOdontograma`) VALUES ('" + col + "','" + marc + "','" + odont + "');", con.abrir_conexion()).ExecuteNonQuery();
             MySqlDataReader contador = consultar.ejecutar_consulta("SELECT max(codigoOdontograma) from tbl_odontograma; ", con.abrir_conexion()).ExecuteReader();
             if (contador.Read())
             {
                 y = contador.GetString(0);
             }
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_expedienteodontograma` (`codigoExpediente`, `codigoOdontograma`, `fechaTratamientoOdontograma`) VALUES ('" + codE + "','" + y + "', '" + fech + "');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO tbl_expedienteodontograma (`codigoExpediente`, `codigoOdontograma`, `fechaTratamientoOdontograma`) VALUES ('" + codE + "','" + y + "', '" + fech + "');", con.abrir_conexion()).ExecuteNonQuery();
 
             con.cerrar_Conexion();
         }
         public String[] buscarOdontograma(String odo)
         {
             string[] stringArray1 = new string[5];
-            MySqlDataReader actualizar = consultar.ejecutar_consulta("SELECT colorOdontograma, dienteOdontograma,seccionOdontograma,marcaOdontograma,tipoPacienteOdontograma FROM bd_sac.tbl_odontograma,bd_sac.tbl_expedienteodontograma  where tbl_odontograma.codigoOdontograma= tbl_expedienteodontograma.codigoOdontograma and tbl_odontograma.codigoOdontograma = '" + odo + "'; ", con.abrir_conexion()).ExecuteReader();
+            MySqlDataReader actualizar = consultar.ejecutar_consulta("SELECT colorOdontograma, dienteOdontograma,seccionOdontograma,marcaOdontograma,tipoPacienteOdontograma FROM tbl_odontograma, tbl_expedienteodontograma  where tbl_odontograma.codigoOdontograma= tbl_expedienteodontograma.codigoOdontograma and tbl_odontograma.codigoOdontograma = '" + odo + "'; ", con.abrir_conexion()).ExecuteReader();
 
 
             while (actualizar.Read())
@@ -211,7 +211,7 @@ namespace SAC.metodos
             int z = 0;
             z = cantidadOdontograma(codE);
             string[] stringArray1 = new string[z];
-            MySqlDataReader actualizar = consultar.ejecutar_consulta("SELECT codigoOdontograma FROM bd_sac.tbl_expedienteodontograma where codigoExpediente = '" + codE + "'; ", con.abrir_conexion()).ExecuteReader();
+            MySqlDataReader actualizar = consultar.ejecutar_consulta("SELECT codigoOdontograma FROM tbl_expedienteodontograma where codigoExpediente = '" + codE + "'; ", con.abrir_conexion()).ExecuteReader();
             while (actualizar.Read())
             {
                 stringArray1[x] = actualizar.GetString(0);
@@ -224,7 +224,7 @@ namespace SAC.metodos
         {
             string codi = "";
 
-            MySqlDataReader existencia = consultar.ejecutar_consulta("select codigoTratamiento from bd_sac.tbl_tratamiento where nombreTratamiento='" + nombreT + "';", con.abrir_conexion()).ExecuteReader();
+            MySqlDataReader existencia = consultar.ejecutar_consulta("select codigoTratamiento from tbl_tratamiento where nombreTratamiento='" + nombreT + "';", con.abrir_conexion()).ExecuteReader();
             if (existencia.Read())
             {
                 codi = existencia.GetString(0);
@@ -235,12 +235,12 @@ namespace SAC.metodos
         }
         public void agregarPacienteTratamiento(int codigoEx, string tratamiento, string fecha, string tratamientorealizado, string pieza, string descripcion, string cedula)
         {
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_expedientetramiento` (`codigoExpediente`, `codigoTratamiento`, `fechaExpedienteTratamiento`, `tratamientoExpedienteTratamiento`, `piezaExpedienteTratamiento`, `descripcionExpedienteTratamiento`, `EstadoPago`) VALUES('" + codigoEx + "', '" + tratamiento + "', '" + fecha + "', '" + tratamientorealizado + "','" + pieza + "','" + descripcion + "', false);", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO tbl_expedientetramiento (`codigoExpediente`, `codigoTratamiento`, `fechaExpedienteTratamiento`, `tratamientoExpedienteTratamiento`, `piezaExpedienteTratamiento`, `descripcionExpedienteTratamiento`, `EstadoPago`) VALUES('" + codigoEx + "', '" + tratamiento + "', '" + fecha + "', '" + tratamientorealizado + "','" + pieza + "','" + descripcion + "', false);", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
         public DataTable tratamientosEfectuados()
         {
-            string consulta = "SELECT date_format(fechaExpedienteTratamiento,'%Y-%m-%d'), piezaExpedienteTratamiento , descripcionExpedienteTratamiento from bd_sac.tbl_expedientetramiento;";
+            string consulta = "SELECT date_format(fechaExpedienteTratamiento,'%Y-%m-%d'), piezaExpedienteTratamiento , descripcionExpedienteTratamiento from tbl_expedientetramiento;";
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             using (DataTable dt = new DataTable())

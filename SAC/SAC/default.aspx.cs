@@ -17,11 +17,11 @@ namespace SAC
             {
                 Response.Redirect("formularios/frmLogin.aspx");
             }
-            else if (Session["tipo"].ToString() == "1")
+            else if (Session["tipo"].ToString() == "0")
             {
                 string script = @"<script type='text/javascript'>                        
-                        document.getElementById('ocultar').style.display = 'none';
-                        document.getElementById('ocultar1').style.display = 'none';
+                        document.getElementById('ocultar').style.display = 'block';
+                        document.getElementById('ocultar1').style.display = 'block';
                         </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 //string scriptt = @"<script type='text/javascript'>                        
