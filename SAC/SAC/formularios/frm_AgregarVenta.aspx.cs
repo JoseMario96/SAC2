@@ -98,9 +98,9 @@ namespace SAC.formularios
 
         protected void btn_factura_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            double abono = 0;
+            try
+            {
+                double abono = 0;
             double total = Convert.ToDouble(lbl_total.InnerText);
             double extra = 0;
             if (txt_extra.Value != "")
@@ -156,13 +156,14 @@ namespace SAC.formularios
                 Gridview_Paciente.DataSource = venta.VentaPendiente();
                 Gridview_Paciente.DataBind();
             }
-            //}catch
-            //    {
-            //        string scripts = @"<script type='text/javascript'>
-            //            alert('No se pudo realizar la operación!');
-            //            </script>";
-            //ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
-            //}
+            }
+            catch
+            {
+                string scripts = @"<script type='text/javascript'>
+                        alert('No se pudo realizar la operación!');
+                        </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+            }
         }
 
 

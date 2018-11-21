@@ -21,6 +21,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -33,7 +34,7 @@ namespace SAC.metodos
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             da.Fill(dt);
-
+            con.cerrar_Conexion();
             return dt;
 
         }
@@ -42,7 +43,7 @@ namespace SAC.metodos
         {
             try
             {
-                consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_tratamiento` (`codigoTratamiento`, `nombreTratamiento`, `precioTratamiento`, `descripcionTratamiento`, `codigoTipoTratamiento`) VALUES ('" + codigoTratamiento + "', '" + nombre + "', '" + precio + "', '" + descripcion + "', '" + codigoTipo + "');", con.abrir_conexion()).ExecuteNonQuery();
+                consultar.ejecutar_consulta("INSERT INTO tbl_tratamiento (`codigoTratamiento`, `nombreTratamiento`, `precioTratamiento`, `descripcionTratamiento`, `codigoTipoTratamiento`) VALUES ('" + codigoTratamiento + "', '" + nombre + "', '" + precio + "', '" + descripcion + "', '" + codigoTipo + "');", con.abrir_conexion()).ExecuteNonQuery();
                 con.cerrar_Conexion();
             }
             catch
@@ -53,13 +54,13 @@ namespace SAC.metodos
 
         public void agregarTipoTratamiento(String codigo, String nombre)
         {
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_tipotratamiento` (`codigoTipoTratamiento`, `nombreTipoTratamiento`) VALUES('" + codigo + "', '" + nombre + "');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO tbl_tipotratamiento (`codigoTipoTratamiento`, `nombreTipoTratamiento`) VALUES('" + codigo + "', '" + nombre + "');", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
 
         public void actualizarTratamiento(String codigoTratamiento, String nombre, Double precio, String descripcion, String codigoTipo)
         {
-            consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_tratamiento` SET `nombreTratamiento`='" + nombre + "', `precioTratamiento`='" + precio + "', `descripcionTratamiento`='" + descripcion + "', `codigoTipoTratamiento`='" + codigoTipo + "' WHERE `codigoTratamiento`='" + codigoTratamiento + "';", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("UPDATE tbl_tratamiento SET `nombreTratamiento`='" + nombre + "', `precioTratamiento`='" + precio + "', `descripcionTratamiento`='" + descripcion + "', `codigoTipoTratamiento`='" + codigoTipo + "' WHERE `codigoTratamiento`='" + codigoTratamiento + "';", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
 
@@ -71,6 +72,7 @@ namespace SAC.metodos
             {
                 codigo = buscar.GetString(0);
             }
+            con.cerrar_Conexion();
             return codigo;
         }
         public DataTable Grid1()
@@ -81,6 +83,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
         }

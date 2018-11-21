@@ -68,8 +68,6 @@
                     </asp:UpdatePanel>
                 </div>
             </div>
-
-            <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="86400000"></asp:Timer>
             <%-- HOY--%>
             <div id="cabecera" style="display: none">
                 <div class="row">

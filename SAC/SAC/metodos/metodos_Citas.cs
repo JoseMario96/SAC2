@@ -29,6 +29,7 @@ namespace SAC.metodos
                         matriz[i, j] = System.Convert.ToString(dt.Tables[0].Rows[i].ItemArray[j]);
                     }
                 }
+                con.cerrar_Conexion();
             }
             return matriz;
 
@@ -42,12 +43,13 @@ namespace SAC.metodos
             {
                 conteo = Convert.ToInt32(busqueda.GetString(0));
             }
+            con.cerrar_Conexion();
             return conteo;
         }
 
         public void AgregarCita(String cedula, String fecha, String hora, String telefono, String nombre, String correo)
         {
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_cita` (`cedulaPaciente`, `fechaReservaCita`, `horaCita`, `telefonoCita`, `nombre`, `correo`) VALUES('" + cedula + "','" + fecha + "','" + hora + "','" + telefono + "','" + nombre + "','" + correo + "');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO tbl_cita (`cedulaPaciente`, `fechaReservaCita`, `horaCita`, `telefonoCita`, `nombre`, `correo`) VALUES('" + cedula + "','" + fecha + "','" + hora + "','" + telefono + "','" + nombre + "','" + correo + "');", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
 
@@ -65,6 +67,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -79,6 +82,7 @@ namespace SAC.metodos
             {
                 codigo = busqueda.GetString(0);
             }
+            con.cerrar_Conexion();
             return codigo;
         }
 
@@ -107,12 +111,12 @@ namespace SAC.metodos
 
         public void ActualizarCita(String codigo, String cedula, String fecha, String hora, String telefono, String nombre, String correo)
         {
-            consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_Cita` SET `cedulaPaciente`='" + cedula + "', `fechaReservaCita`='" + fecha + "', `horaCita`='" + hora + "', `telefonoCita`='" + telefono + "', `nombre`='" + nombre + "', `correo`='" + correo + "' WHERE `codigoCita`='" + codigo + "';", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("UPDATE tbl_Cita SET `cedulaPaciente`='" + cedula + "', `fechaReservaCita`='" + fecha + "', `horaCita`='" + hora + "', `telefonoCita`='" + telefono + "', `nombre`='" + nombre + "', `correo`='" + correo + "' WHERE `codigoCita`='" + codigo + "';", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
         public void ActualizarCitaSFecha(String codigo, String cedula, String telefono, String nombre, String correo)
         {
-            consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_Cita` SET `cedulaPaciente`='" + cedula + "', `telefonoCita`='" + telefono + "', `nombre`='" + nombre + "', `correo`='" + correo + "' WHERE `codigoCita`='" + codigo + "';", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("UPDATE tbl_Cita SET `cedulaPaciente`='" + cedula + "', `telefonoCita`='" + telefono + "', `nombre`='" + nombre + "', `correo`='" + correo + "' WHERE `codigoCita`='" + codigo + "';", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
 
@@ -124,7 +128,8 @@ namespace SAC.metodos
             {
                 esta = true;
             }
-                return esta;
+            con.cerrar_Conexion();
+            return esta;
         }
 
         public Boolean ValidarCita(String fecha, String hora)
@@ -135,6 +140,7 @@ namespace SAC.metodos
             {
                 esta = true;
             }
+            con.cerrar_Conexion();
             return esta;
         }
 
@@ -155,6 +161,7 @@ namespace SAC.metodos
                         matriz[i, j] = System.Convert.ToString(dt.Tables[0].Rows[i].ItemArray[j]);
                     }
                 }
+                con.cerrar_Conexion();
             }
             return matriz;
 

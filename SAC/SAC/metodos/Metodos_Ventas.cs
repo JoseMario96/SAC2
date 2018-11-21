@@ -22,6 +22,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -54,20 +55,20 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
-
         }
 
         public void TerminarVenta(String codigo)
         {
-            consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_expedientetramiento` SET `estadoPago`= true WHERE `codigoExpedienteTratamiento`='" + codigo + "';", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("UPDATE tbl_expedientetramiento SET `estadoPago`= true WHERE `codigoExpedienteTratamiento`='" + codigo + "';", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
 
         public void AgregarVenta(String cedula, String fecha, String detalle, String total, String saldo)
         {
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_venta` (`cedulaPaciente`, `fechaVenta`, `detalleVenta`, `montoTotalVenta`, `saldoVenta`) VALUES('" + cedula + "','" + fecha + "','" + detalle + "','" + total + "','" + saldo + "');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO tbl_venta (`cedulaPaciente`, `fechaVenta`, `detalleVenta`, `montoTotalVenta`, `saldoVenta`) VALUES('" + cedula + "','" + fecha + "','" + detalle + "','" + total + "','" + saldo + "');", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
 
@@ -79,6 +80,7 @@ namespace SAC.metodos
             {
                 codigo = busqueda.GetString(0);
             }
+            con.cerrar_Conexion();
             return codigo;
         }
 
@@ -90,12 +92,13 @@ namespace SAC.metodos
             {
                 codigo = busqueda.GetString(0);
             }
+            con.cerrar_Conexion();
             return codigo;
         }
 
         public void AgregarAbono(String codigoVenta, String abono, String fecha)
         {
-            consultar.ejecutar_consulta("INSERT INTO `bd_sac`.`tbl_abono` (`codigoVenta`, `montoAbono`, `fechaAbono`) VALUES('" + codigoVenta + "','" + abono + "','" + fecha + "');", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("INSERT INTO tbl_abono (`codigoVenta`, `montoAbono`, `fechaAbono`) VALUES('" + codigoVenta + "','" + abono + "','" + fecha + "');", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
 
@@ -107,6 +110,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -141,6 +145,7 @@ namespace SAC.metodos
             {
                 detalle = busqueda.GetString(0);
             }
+            con.cerrar_Conexion();
             return detalle;
         }
 
@@ -152,13 +157,14 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
         }
         public void ActualizarSaldo(String codigoVenta, Double saldoVenta)
         {
-            consultar.ejecutar_consulta("UPDATE `bd_sac`.`tbl_venta` SET `saldoVenta`= " + saldoVenta + " WHERE `codigoVenta`='" + codigoVenta + "';", con.abrir_conexion()).ExecuteNonQuery();
+            consultar.ejecutar_consulta("UPDATE tbl_venta SET `saldoVenta`= " + saldoVenta + " WHERE `codigoVenta`='" + codigoVenta + "';", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
 
@@ -170,6 +176,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -251,6 +258,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -263,6 +271,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -275,6 +284,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -288,6 +298,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
         }
@@ -300,6 +311,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
         }

@@ -50,186 +50,202 @@ namespace SAC.formularios
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-            if (DropDownList2.SelectedIndex == 0)
+            try
             {
-                if (txt_codigoTipo.Text == "")
+                if (DropDownList2.SelectedIndex == 0)
                 {
-                    string scriptt = @"<script type='text/javascript'>
+                    if (txt_codigoTipo.Text == "")
+                    {
+                        string scriptt = @"<script type='text/javascript'>
                     alert('Completa este campo');
                     </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
-                    txt_codigoTipo.Focus();
-                }
-                else if (txt_nombreTipo.Text == "")
-                {
-                    string scriptt = @"<script type='text/javascript'>
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                        txt_codigoTipo.Focus();
+                    }
+                    else if (txt_nombreTipo.Text == "")
+                    {
+                        string scriptt = @"<script type='text/javascript'>
                     alert('Completa este campo');
                     </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
-                    txt_nombreTipo.Focus();
-                }
-                else if (txt_codigoTratamiento.Text == "")
-                {
-                    string scriptt = @"<script type='text/javascript'>
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                        txt_nombreTipo.Focus();
+                    }
+                    else if (txt_codigoTratamiento.Text == "")
+                    {
+                        string scriptt = @"<script type='text/javascript'>
                     alert('Completa este campo');
                     </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
-                    txt_codigoTratamiento.Focus();
-                }
-                else if (txt_nombreTratamiento.Text == "")
-                {
-                    string scriptt = @"<script type='text/javascript'>
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                        txt_codigoTratamiento.Focus();
+                    }
+                    else if (txt_nombreTratamiento.Text == "")
+                    {
+                        string scriptt = @"<script type='text/javascript'>
                     alert('Completa este campo');
                     </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
-                    txt_nombreTratamiento.Focus();
-                }
-                else if (txt_precioTratamiento.Text == "")
-                {
-                    string scriptt = @"<script type='text/javascript'>
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                        txt_nombreTratamiento.Focus();
+                    }
+                    else if (txt_precioTratamiento.Text == "")
+                    {
+                        string scriptt = @"<script type='text/javascript'>
                     alert('Completa este campo');
                     </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
-                    txt_precioTratamiento.Focus();
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                        txt_precioTratamiento.Focus();
+                    }
+                    else
+                    {
+                        funciones.agregarTipoTratamiento(txt_codigoTipo.Text, txt_nombreTipo.Text);
+                        funciones.agregarTratamiento(txt_codigoTratamiento.Text, txt_nombreTratamiento.Text, Convert.ToDouble(txt_precioTratamiento.Text), txt_descripcion.Value, txt_codigoTipo.Text);
+                        Response.Write("<script language='javascript'>window.alert('Se registró la información correctamente');window.location='frm_tratamientos.aspx';</script>");
+                    }
                 }
                 else
                 {
-                    funciones.agregarTipoTratamiento(txt_codigoTipo.Text, txt_nombreTipo.Text);
-                    funciones.agregarTratamiento(txt_codigoTratamiento.Text, txt_nombreTratamiento.Text, Convert.ToDouble(txt_precioTratamiento.Text), txt_descripcion.Value, txt_codigoTipo.Text);
-                    Response.Write("<script language='javascript'>window.alert('Se registró la información correctamente');window.location='frm_tratamientos.aspx';</script>");
+                    if (txt_codigoTratamiento.Text == "")
+                    {
+                        string scriptt = @"<script type='text/javascript'>
+                    alert('Completa este campo');
+                    </script>";
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                        txt_codigoTratamiento.Focus();
+                    }
+                    else if (txt_nombreTratamiento.Text == "")
+                    {
+                        string scriptt = @"<script type='text/javascript'>
+                    alert('Completa este campo');
+                    </script>";
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                        txt_nombreTratamiento.Focus();
+                    }
+                    else if (txt_precioTratamiento.Text == "")
+                    {
+                        string scriptt = @"<script type='text/javascript'>
+                    alert('Completa este campo');
+                    </script>";
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                        txt_precioTratamiento.Focus();
+                    }
+                    else
+                    {
+                        String codigo = funciones.buscarCodigo(DropDownList2.SelectedItem.Text);
+                        funciones.agregarTratamiento(txt_codigoTratamiento.Text, txt_nombreTratamiento.Text, Convert.ToDouble(txt_precioTratamiento.Text), txt_descripcion.Value, codigo);
+                        Response.Write("<script language='javascript'>window.alert('Se registró la información correctamente');window.location='frm_tratamientos.aspx';</script>");
+                    }
                 }
             }
-            else
+            catch
             {
-                if (txt_codigoTratamiento.Text == "")
-                {
-                    string scriptt = @"<script type='text/javascript'>
-                    alert('Completa este campo');
-                    </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
-                    txt_codigoTratamiento.Focus();
-                }
-                else if (txt_nombreTratamiento.Text == "")
-                {
-                    string scriptt = @"<script type='text/javascript'>
-                    alert('Completa este campo');
-                    </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
-                    txt_nombreTratamiento.Focus();
-                }
-                else if (txt_precioTratamiento.Text == "")
-                {
-                    string scriptt = @"<script type='text/javascript'>
-                    alert('Completa este campo');
-                    </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
-                    txt_precioTratamiento.Focus();
-                }
-                else
-                {
-                    String codigo = funciones.buscarCodigo(DropDownList2.SelectedItem.Text);
-                    funciones.agregarTratamiento(txt_codigoTratamiento.Text, txt_nombreTratamiento.Text, Convert.ToDouble(txt_precioTratamiento.Text), txt_descripcion.Value, codigo);
-                    Response.Write("<script language='javascript'>window.alert('Se registró la información correctamente');window.location='frm_tratamientos.aspx';</script>");
-                }
+
             }
         }
 
         protected void btn_actualizar_Click(object sender, EventArgs e)
         {
-
-            String codigo_tipo = "";
-            Boolean validacion = false;
-            if (txt_codigoTipoAct.Text != "" & txt_nombreTipoAct.Text != "" & txt_codigoTratamientoAct.Text != "" & txt_precioAct.Text != "")
+            try
             {
-                validacion = true;
-            }
-            if (DropDownList1.SelectedIndex == 0)
-            {
-                codigo_tipo = txt_codigoTipoAct.Text;
-            }
-            else
-            {
-                codigo_tipo = funciones.buscarCodigo(DropDownList1.SelectedItem.Text);
-            }
-            if (validacion == true)
-            {
-                funciones.actualizarTratamiento(txt_codigoTratamientoAct.Text, txt_nombreTratamientoAct.Text, Convert.ToDouble(txt_precioAct.Text), txt_descripcionAct.InnerText, codigo_tipo);
-                Response.Write("<script language='javascript'>window.alert('Se actualizó la información correctamente');window.location='frm_tratamientos.aspx';</script>");
-            }
-            else
-            {
-                string scriptt = @"<script type='text/javascript'>
+                String codigo_tipo = "";
+                Boolean validacion = false;
+                if (txt_codigoTipoAct.Text != "" & txt_nombreTipoAct.Text != "" & txt_codigoTratamientoAct.Text != "" & txt_precioAct.Text != "")
+                {
+                    validacion = true;
+                }
+                if (DropDownList1.SelectedIndex == 0)
+                {
+                    codigo_tipo = txt_codigoTipoAct.Text;
+                }
+                else
+                {
+                    codigo_tipo = funciones.buscarCodigo(DropDownList1.SelectedItem.Text);
+                }
+                if (validacion == true)
+                {
+                    funciones.actualizarTratamiento(txt_codigoTratamientoAct.Text, txt_nombreTratamientoAct.Text, Convert.ToDouble(txt_precioAct.Text), txt_descripcionAct.InnerText, codigo_tipo);
+                    Response.Write("<script language='javascript'>window.alert('Se actualizó la información correctamente');window.location='frm_tratamientos.aspx';</script>");
+                }
+                else
+                {
+                    string scriptt = @"<script type='text/javascript'>
                     alert('No pueden haber campos vacíos');
                     </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+                }
             }
+            catch
+            {
 
+            }
         }
 
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String codigo;
-            String[] datos = new string[6];
-
-
-
-            if (txtTabla.Text == "modificar")
+            try
             {
-                string script = @"<script type='text/javascript'>
+                String codigo;
+                String[] datos = new string[6];
+                if (txtTabla.Text == "modificar")
+                {
+                    string script = @"<script type='text/javascript'>
                 document.getElementById('titulo1').style.display = 'block' ;
                     </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                foreach (GridViewRow row in GridView2.Rows)
-                {
-                    if (row.RowIndex == GridView2.SelectedIndex)
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    foreach (GridViewRow row in GridView2.Rows)
                     {
-                        row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
-                        row.ToolTip = string.Empty;
-                        codigo = row.Cells[0].Text;
-                        datos = funciones.mostrarDatos(codigo);
-                        txt_codigoTipoAct.Text = datos[0];
-                        txt_nombreTipoAct.Text = datos[1];
-                        txt_codigoTratamientoAct.Text = datos[2];
-                        txt_nombreTratamientoAct.Text = datos[3];
-                        txt_precioAct.Text = datos[4];
-                        txt_descripcionAct.InnerText = datos[5];
-                        txt_codigoTipoAct.Enabled = false;
-                        txt_codigoTratamientoAct.Enabled = false;
+                        if (row.RowIndex == GridView2.SelectedIndex)
+                        {
+                            row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                            row.ToolTip = string.Empty;
+                            codigo = row.Cells[0].Text;
+                            datos = funciones.mostrarDatos(codigo);
+                            txt_codigoTipoAct.Text = datos[0];
+                            txt_nombreTipoAct.Text = datos[1];
+                            txt_codigoTratamientoAct.Text = datos[2];
+                            txt_nombreTratamientoAct.Text = datos[3];
+                            txt_precioAct.Text = datos[4];
+                            txt_descripcionAct.InnerText = datos[5];
+                            txt_codigoTipoAct.Enabled = false;
+                            txt_codigoTratamientoAct.Enabled = false;
+                        }
+                        else
+                        {
+                            row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                            row.ToolTip = "Click to select this row.";
+                        }
                     }
-                    else
+                }
+                if (txtTabla.Text == "eliminar")
+                {
+                    string script = @"<script type='text/javascript'>
+                document.getElementById('titulo2').style.display = 'block' ;
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    foreach (GridViewRow row in GridView2.Rows)
                     {
-                        row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
-                        row.ToolTip = "Click to select this row.";
+                        if (row.RowIndex == GridView2.SelectedIndex)
+                        {
+                            row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                            row.ToolTip = string.Empty;
+                            codigo = row.Cells[0].Text;
+                            datos = funciones.mostrarDatos(codigo);
+                            codigoTipoTraEli.InnerText = datos[0];
+                            nombreTipoTraEli.InnerText = datos[1];
+                            codigoTraEli.InnerText = datos[2];
+                            NombreTraEli.InnerText = datos[3];
+                            PrecioTraEli.InnerText = datos[4];
+                            DescriTraEli.InnerText = datos[5];
+                        }
+                        else
+                        {
+                            row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                            row.ToolTip = "Click to select this row.";
+                        }
                     }
                 }
             }
-            if (txtTabla.Text == "eliminar")
+            catch
             {
-                string script = @"<script type='text/javascript'>
-                document.getElementById('titulo2').style.display = 'block' ;
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                foreach (GridViewRow row in GridView2.Rows)
-                {
-                    if (row.RowIndex == GridView2.SelectedIndex)
-                    {
-                        row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
-                        row.ToolTip = string.Empty;
-                        codigo = row.Cells[0].Text;
-                        datos = funciones.mostrarDatos(codigo);
-                        codigoTipoTraEli.InnerText = datos[0];
-                        nombreTipoTraEli.InnerText = datos[1];
-                        codigoTraEli.InnerText = datos[2];
-                        NombreTraEli.InnerText = datos[3];
-                        PrecioTraEli.InnerText = datos[4];
-                        DescriTraEli.InnerText = datos[5];
-                    }
-                    else
-                    {
-                        row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
-                        row.ToolTip = "Click to select this row.";
-                    }
-                }
+
             }
         }
 
@@ -242,49 +258,55 @@ namespace SAC.formularios
             }
         }
 
-        protected void GridView2_DataBound(object sender, EventArgs e)
-        {
-            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
-            for (int i = 0; i < GridView2.Columns.Count; i++)
-            {
-                TableHeaderCell cell = new TableHeaderCell();
-                TextBox txtSearch = new TextBox();
-                txtSearch.Attributes["placeholder"] = GridView2.Columns[i].HeaderText;
-                txtSearch.CssClass = "search_textbox";
-                cell.Controls.Add(txtSearch);
-                row.Controls.Add(cell);
-            }
-            GridView2.HeaderRow.Parent.Controls.AddAt(1, row);
-        }
-
         protected void btn_eliminar_Click(object sender, EventArgs e)
         {
-            funciones.eliminarTratamiento(codigoTraEli.InnerText);
-            Response.Write("<script language='javascript'>window.alert('Se eliminó la información correctamente');window.location='frm_tratamientos.aspx';</script>");
+            try
+            {
+                funciones.eliminarTratamiento(codigoTraEli.InnerText);
+                Response.Write("<script language='javascript'>window.alert('Se eliminó la información correctamente');window.location='frm_tratamientos.aspx';</script>");
+            }
+            catch
+            {
+
+            }
         }
 
         protected void txt_codigoTipo_TextChanged1(object sender, EventArgs e)
         {
-            if (funciones.tratamientoExiste(txt_codigoTipo.Text) == true)
+            try
             {
-                txt_nombreTipo.Text = funciones.mostrarTipoTratamiento(txt_codigoTipo.Text);
-                string cod = txt_codigoTipo.Text;
-                int codigo = Convert.ToInt32(cod.Substring(1));
-                DropDownList2.SelectedIndex = codigo;
+                if (funciones.tratamientoExiste(txt_codigoTipo.Text) == true)
+                {
+                    txt_nombreTipo.Text = funciones.mostrarTipoTratamiento(txt_codigoTipo.Text);
+                    string cod = txt_codigoTipo.Text;
+                    int codigo = Convert.ToInt32(cod);
+                    DropDownList2.SelectedIndex = codigo;
+                }
+            }
+            catch
+            {
+
             }
         }
 
         protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (DropDownList2.SelectedIndex != 0)
+            try
             {
-                txt_codigoTipo.Text = funciones.buscarCodigo(DropDownList2.SelectedItem.Text);
-                txt_nombreTipo.Text = DropDownList2.SelectedItem.Text;
+                if (DropDownList2.SelectedIndex != 0)
+                {
+                    txt_codigoTipo.Text = funciones.buscarCodigo(DropDownList2.SelectedItem.Text);
+                    txt_nombreTipo.Text = DropDownList2.SelectedItem.Text;
+                }
+                if (DropDownList2.SelectedIndex == 0)
+                {
+                    txt_codigoTipo.Text = "";
+                    txt_nombreTipo.Text = "";
+                }
             }
-            if (DropDownList2.SelectedIndex == 0)
+            catch
             {
-                txt_codigoTipo.Text = "";
-                txt_nombreTipo.Text = "";
+
             }
         }
 
