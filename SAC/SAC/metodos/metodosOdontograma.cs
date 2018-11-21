@@ -61,6 +61,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
         }
@@ -73,6 +74,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
         }
@@ -85,6 +87,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
         }
@@ -103,6 +106,7 @@ namespace SAC.metodos
             {
 
             }
+            con.cerrar_Conexion();
             return codigo;
         }
         public DataTable TiposdeTratamientos()
@@ -112,6 +116,7 @@ namespace SAC.metodos
             MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
             MySqlDataAdapter da = new MySqlDataAdapter(comando);
             da.Fill(dt);
+            con.cerrar_Conexion();
             return dt;
         }
         public int obtenerPrecio(string tratamiento)
@@ -128,6 +133,7 @@ namespace SAC.metodos
             {
 
             }
+            con.cerrar_Conexion();
             numero = Int32.Parse(precio);
 
             return numero;
@@ -144,7 +150,7 @@ namespace SAC.metodos
             {
                 estado = 1;
             }
-
+            con.cerrar_Conexion();
             return estado;
 
         }
@@ -187,6 +193,7 @@ namespace SAC.metodos
                     }
 
                 }
+
             }
             catch
             {
@@ -206,7 +213,7 @@ namespace SAC.metodos
                 y = contador.GetString(0);
             }
             z = Int32.Parse(y);
-
+            con.cerrar_Conexion();
             return z;
         }
         public string[] buscarPaciente(String codE)
@@ -233,7 +240,7 @@ namespace SAC.metodos
             {
                 codi = existencia.GetString(0);
             }
-
+            con.cerrar_Conexion();
             return codi;
 
         }
@@ -250,6 +257,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
         }
@@ -261,6 +269,7 @@ namespace SAC.metodos
             using (DataTable dt = new DataTable())
             {
                 da.Fill(dt);
+                con.cerrar_Conexion();
                 return dt;
             }
 
@@ -276,6 +285,7 @@ namespace SAC.metodos
                 using (dt)
                 {
                     da.Fill(dt);
+                    con.cerrar_Conexion();
                     return dt;
                 }
             }

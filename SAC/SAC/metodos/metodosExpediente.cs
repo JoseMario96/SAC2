@@ -74,6 +74,7 @@ namespace SAC.metodos
             {
                 resultado = existencia.GetString(0);
             }
+            con.cerrar_Conexion();
             if (resultado != "")
             {
                 estado = 1;
@@ -85,6 +86,7 @@ namespace SAC.metodos
                 {
                     resultado = existencia2.GetString(0);
                 }
+                con.cerrar_Conexion();
                 if (resultado != "")
                 {
                     estado = 2;
@@ -95,8 +97,6 @@ namespace SAC.metodos
                 }
 
             }
-
-            con.cerrar_Conexion();
             return estado;
 
         }
@@ -125,6 +125,7 @@ namespace SAC.metodos
                 using (dt) 
                 {
                     da.Fill(dt);
+                    con.cerrar_Conexion();
                     return dt;
                 }
             }

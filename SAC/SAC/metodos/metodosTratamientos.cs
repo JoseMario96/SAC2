@@ -98,6 +98,7 @@ namespace SAC.metodos
                 using (dt)
                 {
                     da.Fill(dt);
+                    con.cerrar_Conexion();
                     return dt;
                 }
             }
