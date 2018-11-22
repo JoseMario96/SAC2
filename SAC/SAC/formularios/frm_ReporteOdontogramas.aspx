@@ -106,8 +106,8 @@
                     <label class="active" for="first_name2">Nombre:</label>
                 </div>
                 <div class="row">
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
+                    <%--<asp:UpdatePanel runat="server">
+                        <ContentTemplate>--%>
                             <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
                             <asp:GridView ID="GridView_reporteOdontograma" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
                                 runat="server" AutoGenerateColumns="False" Height="174px" AllowPaging="true" PageSize="3" OnSelectedIndexChanged="GridView_reporteOdontograma_SelectedIndexChanged" OnPageIndexChanging="GridView_reporteOdontograma_PageIndexChanging" OnRowDataBound="GridView_reporteOdontograma_RowDataBound">
@@ -118,8 +118,8 @@
                                     <asp:BoundField DataField="apellido2Paciente" HeaderText="Segundo Apellido" ItemStyle-Width="100" />
                                 </Columns>
                             </asp:GridView>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                        <%--</ContentTemplate>
+                    </asp:UpdatePanel>--%>
                     <%--<asp:GridView ID="GridView_reporteOdontograma" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
                         runat="server" AutoGenerateColumns="False" Height="174px" AllowPaging="true" PageSize="3" OnSelectedIndexChanged="GridView_reporteOdontograma_SelectedIndexChanged" OnPageIndexChanging="GridView_reporteOdontograma_PageIndexChanging" OnRowDataBound="GridView_reporteOdontograma_RowDataBound">
                         <Columns>
