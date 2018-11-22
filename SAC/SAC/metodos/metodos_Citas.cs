@@ -166,5 +166,28 @@ namespace SAC.metodos
             return matriz;
 
         }
+
+        public String[] Persona(String cedula)
+        {
+            String[] persona = new string[6];
+            MySqlDataReader busqueda = consultar.ejecutar_consulta("select nombre1Paciente, nombre2Paciente, apellido1Paciente, apellido2Paciente, celularPaciente, correoPaciente from tbl_paciente where cedulaPaciente = '" + cedula + "';", con.abrir_conexion()).ExecuteReader();
+            while (busqueda.Read())
+            {
+                for (int i = 0; i <= 5; i++)
+                {
+                    if (busqueda.IsDBNull(i))
+                    {
+                        persona[i] = "";
+                    }
+                    else
+                    {
+                        persona[i] = busqueda.GetString(i);
+                    }
+
+                }
+            }
+            con.cerrar_Conexion();
+            return persona;
+        }
     }
 }

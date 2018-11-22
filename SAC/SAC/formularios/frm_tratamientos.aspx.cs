@@ -161,8 +161,16 @@ namespace SAC.formularios
                 }
                 if (validacion == true)
                 {
-                    funciones.actualizarTratamiento(txt_codigoTratamientoAct.Text, txt_nombreTratamientoAct.Text, Convert.ToDouble(txt_precioAct.Text), txt_descripcionAct.InnerText, codigo_tipo);
-                    Response.Write("<script language='javascript'>window.alert('Se actualizó la información correctamente');window.location='frm_tratamientos.aspx';</script>");
+                    if (funciones.mostrarTipoTratamiento(txt_codigoTipoAct.Text) == "")
+                    {
+                        Response.Write("<script language='javascript'>window.alert('Este tratamiento no existe');window.location='frm_tratamientos.aspx';</script>");
+                    }
+                    else
+                    {
+                        funciones.actualizarTipoTratamiento(txt_codigoTipoAct.Text, txt_nombreTipoAct.Text);
+                        funciones.actualizarTratamiento(txt_codigoTratamientoAct.Text, txt_nombreTratamientoAct.Text, Convert.ToDouble(txt_precioAct.Text), txt_descripcionAct.InnerText, codigo_tipo);
+                        Response.Write("<script language='javascript'>window.alert('Se actualizó la información correctamente');window.location='frm_tratamientos.aspx';</script>");
+                    }
                 }
                 else
                 {
@@ -219,7 +227,7 @@ namespace SAC.formularios
                 if (txtTabla.Text == "eliminar")
                 {
                     string script = @"<script type='text/javascript'>
-                document.getElementById('titulo2').style.display = 'block' ;
+                    document.getElementById('titulo2').style.display = 'block' ;
                     </script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                     foreach (GridViewRow row in GridView2.Rows)
@@ -265,8 +273,15 @@ namespace SAC.formularios
         {
             try
             {
-                funciones.eliminarTratamiento(codigoTraEli.InnerText);
-                Response.Write("<script language='javascript'>window.alert('Se eliminó la información correctamente');window.location='frm_tratamientos.aspx';</script>");
+                if (codigoTraEli.InnerText == "")
+                {
+                    Response.Write("<script language='javascript'>window.alert('No se ha seleccionado un tratamiento');window.location='frm_tratamientos.aspx';</script>");
+                }
+                else
+                {
+                    funciones.eliminarTratamiento(codigoTraEli.InnerText);
+                    Response.Write("<script language='javascript'>window.alert('Se eliminó la información correctamente');window.location='frm_tratamientos.aspx';</script>");
+                }
             }
             catch
             {
@@ -284,6 +299,16 @@ namespace SAC.formularios
                     string cod = txt_codigoTipo.Text;
                     int codigo = Convert.ToInt32(cod);
                     DropDownList2.SelectedIndex = codigo;
+                    DropDownList2.Enabled = false;
+                }
+                else
+                {
+                    DropDownList2.Enabled = false;
+                }
+                if (txt_codigoTipo.Text == "")
+                {
+                    DropDownList2.Enabled = true;
+                    txt_nombreTipo.Text = "";
                 }
             }
             catch
@@ -300,11 +325,15 @@ namespace SAC.formularios
                 {
                     txt_codigoTipo.Text = funciones.buscarCodigo(DropDownList2.SelectedItem.Text);
                     txt_nombreTipo.Text = DropDownList2.SelectedItem.Text;
+                    txt_codigoTipo.Enabled = false;
+                    txt_nombreTipo.Enabled = false;
                 }
                 if (DropDownList2.SelectedIndex == 0)
                 {
                     txt_codigoTipo.Text = "";
                     txt_nombreTipo.Text = "";
+                    txt_codigoTipo.Enabled = true;
+                    txt_nombreTipo.Enabled = true;
                 }
             }
             catch
@@ -324,6 +353,27 @@ namespace SAC.formularios
             GridView2.DataSource = funciones.Grid2(txtSearch.Text.Trim());
             GridView2.PageIndex = e.NewPageIndex;
             GridView2.DataBind();
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DropDownList1.SelectedIndex != 0)
+                {
+                    txt_codigoTipoAct.Text = funciones.buscarCodigo(DropDownList1.SelectedItem.Text);
+                    txt_nombreTipoAct.Text = DropDownList1.SelectedItem.Text;
+                }
+                if (DropDownList1.SelectedIndex == 0)
+                {
+                    txt_codigoTipoAct.Text = "";
+                    txt_nombreTipoAct.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }
