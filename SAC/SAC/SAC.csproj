@@ -141,6 +141,7 @@
     <Content Include="images\eliminar_usuario.png" />
     <Content Include="images\factura.png" />
     <Content Include="images\fondo_login.jpg" />
+    <Content Include="images\help.png" />
     <Content Include="images\icons_password.png" />
     <Content Include="images\icons_user.png" />
     <Content Include="images\inhabilitar_usuario.png" />
@@ -402,6 +403,7 @@
     <Content Include="css\style3.css.map" />
     <Content Include="css\style4.css.map" />
     <Content Include="images\Thumbs.db" />
+    <Content Include="documentos\Manual de Usuario.pdf" />
     <None Include="packages.config" />
     <Content Include="sass\bootstrap\_alerts.scss" />
     <Content Include="sass\bootstrap\_badges.scss" />

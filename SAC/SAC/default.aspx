@@ -392,6 +392,9 @@
         </asp:ScriptManager>
 
         <header role="banner" id="fh5co-header">
+            <a href="documentos/Manual de Usuario.pdf" target="_blank">
+                <img class="derecha" src="images/help.png" title="Ayuda"/>
+            </a>
             <asp:ImageButton CssClass="derecha" ID="img_cerrarsesion" ImageUrl="~/images/logout.png" runat="server" OnClick="img_cerrarsesion_Click" title="Cerrar sesión" />
             <br />
             <div class="container">
