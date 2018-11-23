@@ -19,6 +19,51 @@
             padding-top: 5%;
         }
     </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(window).resize(function () {
+            //aqui el codigo que se ejecutara cuando se redimencione la ventana
+            var ancho = $(window).width();
+            if (ancho <= 720) {
+                $("#css1").removeClass("row");
+                $("#css2").removeClass("col s3");
+                $("#css3").removeClass("input-field col s2");
+                $("#css4").removeClass("input-field col s2");
+                $("#css5").removeClass("input-field col s2");
+                $("#css6").removeClass("col s3");
+                $("#css3").addClass("row");
+                $("#css4").addClass("row");
+                $("#css5").addClass("row");
+            }
+            if (ancho > 720) {
+                $("#css3").removeClass("row");
+                $("#css4").removeClass("row");
+                $("#css5").removeClass("row");
+                $("#css1").addClass("row");
+                $("#css2").addClass("col s3");
+                $("#css3").addClass("input-field col s2");
+                $("#css4").addClass("input-field col s2");
+                $("#css5").addClass("input-field col s2");
+                $("#css6").addClass("col s3");
+            }
+        })
+
+        $(document).ready(function () {
+            //aqui el codigo que se ejecutara cuando se redimencione la ventana
+            var ancho = $(window).width();
+            if (ancho < 520) {
+                $("#css1").removeClass("row");
+                $("#css2").removeClass("col s3");
+                $("#css3").removeClass("input-field col s2");
+                $("#css4").removeClass("input-field col s2");
+                $("#css5").removeClass("input-field col s2");
+                $("#css6").removeClass("col s3");
+                $("#css3").addClass("row");
+                $("#css4").addClass("row");
+                $("#css5").addClass("row");
+            }
+        })
+    </script>
 </head>
 <body>
     <header>
@@ -107,23 +152,23 @@
                     <div class="col s2">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s3">
+                <div id="css1" class="row">
+                    <div id="css2" class="col s3">
                     </div>
-                    <div class="input-field col s2">
+                    <div id="css3" class="input-field col s2">
                         <asp:Button class="waves-effect waves-light btn" ID="btn_Guardar" runat="server" Text="Guardar" OnClick="btn_Guardar_Click" />
                     </div>
-                    <div class="input-field col s2">
+                    <div id="css4" class="input-field col s2">
                         <asp:Button class="waves-effect waves-light btn" ID="btn_Volver" runat="server" Text="Volver" OnClick="btn_Volver_Click" />
                     </div>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <div class="input-field col s2">
+                            <div id="css5" class="input-field col s2">
                                 <asp:Button class="waves-effect waves-light btn" ID="btn_Estado" runat="server" Text="Habilitar" OnClick="btn_Estado_Click" />
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
-                    <div class="col s3">
+                    <div id="css6" class="col s3">
                     </div>
                 </div>
             </div>

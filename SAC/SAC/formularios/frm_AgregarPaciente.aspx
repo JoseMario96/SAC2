@@ -76,7 +76,7 @@
                     </div>
                     <div class="col s6">
                         <label class="active" for="celular">Celular</label>
-                        <input id="celular" type="number" runat="server" class="validate" maxlength="14" title="Celular" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required />
+                        <input id="celular" type="number" runat="server" onfocusout="celular()" class="validate" maxlength="14" title="Celular" onkeypress="return solonumeros(event)" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required />
 
                     </div>
                 </div>
@@ -285,6 +285,9 @@
             document.getElementById('encargado').style.display = 'none';
         }
 
+        function celular() {
+            
+        }
 
         function solonumeros(e) {
             key = e.keyCoden || e.which;

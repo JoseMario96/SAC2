@@ -168,18 +168,28 @@ namespace SAC.formularios
         }
         protected void cedula_TextChanged(object sender, EventArgs e)
         {
-            if (agregarP.VerificarPaciente(cedula.Text) == true)
+            if (cedula.Text.Length >= 9)
             {
-                string insertar = @"<script type='text/javascript'>
-                alert('Ya existe este paciente');
-                </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
-                cedula.Text = "";
-                cedula.Focus();
+                if (agregarP.VerificarPaciente(cedula.Text) == true)
+                {
+                    string insertar = @"<script type='text/javascript'>
+                        alert('Ya existe este paciente');
+                        </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
+                    cedula.Text = "";
+                    cedula.Focus();
+                }
+                else
+                {
+                    nombre1.Focus();
+                }
             }
             else
             {
-                nombre1.Focus();
+                string insertar = @"<script type='text/javascript'>
+                        alert('La cantidad mínima de dígitos de la cédula es 9');
+                        </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
             }
         }
 
