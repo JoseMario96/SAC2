@@ -39,7 +39,7 @@
                         <label class="active" for="first_name2" style="font-family: sans-serif; font-size: x-large; color: black;">Nombre:</label>
                     </div>
                 </div>
-                <div class="row">
+                <div id="titulo1" class="row" style="display: none" >
                     <div class="col s12">
                         <h5><b>Pacientes pendientes de pago:</b></h5>
                     </div>
@@ -100,8 +100,6 @@
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
-
-
 
                 <div class="row">
                     <div class="col s4">

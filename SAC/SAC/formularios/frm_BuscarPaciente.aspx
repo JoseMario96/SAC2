@@ -66,7 +66,7 @@
 
             </div>
 
-            <div id="formularioP" style="display: none" class="espacio centrar" tabindex="-1">
+            <div id="formularioP" style="display: none" class="espacio centrar">
                 <table class="striped">
                     <tr>
                         <th colspan="5" style="text-align: center; font-size: 15px;">Datos del paciente</th>

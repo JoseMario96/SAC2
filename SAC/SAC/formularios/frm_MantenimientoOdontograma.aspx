@@ -103,7 +103,7 @@
                         <canvas id="myCanvas4" width="810" height="200" style="z-index: 4; position: absolute; left: 0%; top: 0px;"></canvas>
                     </div>
                     <div id="radio_seccion" style='text-align: center; display: none'>
-                        <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Seccion</label>
+                        <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Superficie</label>
                         <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
                     </div>
                     <br />
@@ -113,7 +113,7 @@
                 <div class="col s4">
                 </div>
                 <div class="input-field col s2">
-                    <asp:UpdatePanel runat="server">
+                   <%-- <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                         </ContentTemplate>
@@ -127,7 +127,7 @@
                         <ContentTemplate>
                             <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
                         </ContentTemplate>
-                    </asp:UpdatePanel>
+                    </asp:UpdatePanel>--%>
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Guardar" class="waves-effect waves-light btn" />

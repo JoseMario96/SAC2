@@ -30,6 +30,18 @@ namespace SAC.formularios
                     {
                         Gridview_Paciente.DataSource = tblInicio;
                         Gridview_Paciente.DataBind();
+                        string script = @"<script type='text/javascript'>
+                        document.getElementById('titulo1').style.display = 'block';
+                        </script>";
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    }
+                    else
+                    {
+                        string script = @"<script type='text/javascript'>
+                        document.getElementById('titulo1').style.display = 'none';
+                        </script>";
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
                     }
                     //else
                     //{
@@ -177,6 +189,25 @@ namespace SAC.formularios
         {
             Gridview_Paciente.DataSource = venta.VentaPendiente2(txtSearch.Text.Trim());
             Gridview_Paciente.DataBind();
+
+            if (Gridview_Paciente.Rows.Count > 0)
+            {
+                string script = @"<script type='text/javascript'>
+                        document.getElementById('cabecera').style.display = 'none';
+                        document.getElementById('titulo1').style.display = 'block';
+                        </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
+            else
+            {
+                string script = @"<script type='text/javascript'>
+                        document.getElementById('cabecera').style.display = 'none';
+                        document.getElementById('titulo1').style.display = 'none';
+                        </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
+
+
         }
 
         protected void Gridview_Paciente_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -184,6 +215,11 @@ namespace SAC.formularios
             Gridview_Paciente.DataSource = venta.VentaPendiente2(txtSearch.Text.Trim());
             Gridview_Paciente.PageIndex = e.NewPageIndex;
             Gridview_Paciente.DataBind();
+            string script = @"<script type='text/javascript'>
+                        document.getElementById('cabecera').style.display = 'none';
+                        document.getElementById('titulo1').style.display = 'none';
+                        </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
         }
     }
 }

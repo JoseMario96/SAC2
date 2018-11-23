@@ -99,6 +99,12 @@ namespace SAC.formularios
             GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion2(txtSearch.Text.Trim());
             GridView_reporteOdontograma.PageIndex = e.NewPageIndex;
             GridView_reporteOdontograma.DataBind();
+
+            string script = @"<script type='text/javascript'>
+            document.getElementById('dienteOdontograma').style.display = 'none' ;
+            document.getElementById('dienteOdontograma').scrollIntoView();   
+             </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
         }
         protected void InvisButton_Click(object sender, EventArgs e)
         {
@@ -106,6 +112,11 @@ namespace SAC.formularios
             GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion2(txtSearch.Text.Trim());
 
             GridView_reporteOdontograma.DataBind();
+            string script = @"<script type='text/javascript'>
+            document.getElementById('dienteOdontograma').style.display = 'none' ;
+            document.getElementById('dienteOdontograma').scrollIntoView();   
+             </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
 
         }
         protected void ibOdontogramaG_Click(object sender, ImageClickEventArgs e)

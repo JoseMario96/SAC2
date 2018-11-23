@@ -26,6 +26,7 @@ namespace SAC.formularios
                 GridView1.DataBind();
 
             }
+            ScriptManager.RegisterClientScriptBlock(this, GetType(), "myfunction", "ocultar();", true);
         }
         //Llenar los formularios con la selección en el grid
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -57,7 +58,11 @@ namespace SAC.formularios
                     if (datos[9] == null)
                     {
                         NoE.Checked = true;
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "ocultar()", true);
+                        string scriptt = @"<script type='text/javascript'>
+                        document.getElementById('encargado').style.display = 'none' ;              
+                        </script>";
+
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alelkmrta", scriptt, false);
 
                         cedula.InnerHtml = datos[0];
                         nombre1.Text = datos[1];
@@ -125,7 +130,11 @@ namespace SAC.formularios
                         fechaN.Text = datos[11].Substring(0, 9);
                         fechaI.Text = datos[12].Substring(0, 9);
 
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "mostrar()", true);
+                        string scriptt = @"<script type='text/javascript'>
+                        document.getElementById('encargado').style.display = 'block' ;              
+                        </script>";
+
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alelkmrta", scriptt, false);
 
                         datos2 = objeto.buscarEncargado(datos[9]);
 
@@ -383,6 +392,15 @@ namespace SAC.formularios
         {
             GridView1.DataSource = objeto.Paciente2(txtSearch.Text.Trim());
             GridView1.DataBind();
+
+            string script = @"<script type='text/javascript'>
+                document.getElementById('formularioP').style.display = 'none' ;  
+                document.getElementById('encargado').style.display = 'none' ;  
+         document.getElementById('Botones').style.display = 'none';
+
+            </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -390,6 +408,14 @@ namespace SAC.formularios
             GridView1.DataSource = objeto.Paciente2(txtSearch.Text.Trim());
             GridView1.PageIndex = e.NewPageIndex;
             GridView1.DataBind();
+
+            string script = @"<script type='text/javascript'>
+                document.getElementById('formularioP').style.display = 'none' ;   
+                document.getElementById('encargado').style.display = 'none' ; 
+         document.getElementById('Botones').style.display = 'none';
+            </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
         }
     }
 }

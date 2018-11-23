@@ -94,9 +94,17 @@ namespace SAC.formularios
 
         protected void Gridview_Paciente_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            Gridview_Paciente.DataSource = venta.TodaslasVentas2(txtSearch.Text.Trim());
-            Gridview_Paciente.PageIndex = e.NewPageIndex;
-            Gridview_Paciente.DataBind();
+            try
+            {
+                Gridview_Paciente.DataSource = venta.TodaslasVentas2(txtSearch.Text.Trim());
+                Gridview_Paciente.PageIndex = e.NewPageIndex;
+                Gridview_Paciente.DataBind();
+            }
+            catch
+            {
+
+            }
+            
         }
 
         protected void InvisButton_Click(object sender, EventArgs e)

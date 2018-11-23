@@ -122,7 +122,7 @@ namespace SAC.metodos
             DataTable dt = new DataTable();
             try
             {
-                string consulta = "select tbl_venta.codigoVenta, tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta, tbl_venta.montoTotalVenta, tbl_venta.saldoVenta from tbl_venta, tbl_paciente where nombre1Paciente like'%" + nom + "%' and tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente order by tbl_venta.cedulaPaciente;";
+                string consulta = "select tbl_venta.codigoVenta, tbl_venta.cedulaPaciente, tbl_paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, DATE_FORMAT(tbl_venta.fechaVenta,'%d-%m-%Y'), tbl_venta.montoTotalVenta, tbl_venta.saldoVenta from tbl_venta, tbl_paciente where nombre1Paciente like'%" + nom + "%' and tbl_venta.saldoVenta > 0 and tbl_venta.cedulaPaciente = tbl_paciente.cedulaPaciente order by tbl_venta.cedulaPaciente;";
                 MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
                 MySqlDataAdapter da = new MySqlDataAdapter(comando);
                 using (dt)
@@ -213,7 +213,7 @@ namespace SAC.metodos
             DataTable dt = new DataTable();
             try
             {
-                string consulta = "select tbl_Venta.codigoVenta, tbl_Paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, tbl_venta.fechaVenta from tbl_paciente, tbl_venta where nombre1Paciente like '%" + nom + "%' and tbl_paciente.cedulaPaciente = tbl_venta.cedulaPaciente;";
+                string consulta = "select tbl_Venta.codigoVenta, tbl_Paciente.nombre1Paciente, tbl_paciente.apellido1Paciente, DATE_FORMAT(tbl_venta.fechaVenta,'%d-%m-%Y') from tbl_paciente, tbl_venta where nombre1Paciente like '%" + nom + "%' and tbl_paciente.cedulaPaciente = tbl_venta.cedulaPaciente;";
                 MySqlCommand comando = new MySqlCommand(consulta, con.abrir_conexion());
                 MySqlDataAdapter da = new MySqlDataAdapter(comando);
                 using (dt)
