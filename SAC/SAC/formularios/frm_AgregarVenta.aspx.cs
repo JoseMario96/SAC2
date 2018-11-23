@@ -167,6 +167,10 @@ namespace SAC.formularios
                     }
                     txt_abono.Value = "";
                     txt_extra.Value = "";
+                    string script = @"<script type='text/javascript'>
+                    alert('La venta se registró correctamente!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                     Gridview_Paciente.DataSource = venta.VentaPendiente();
                     Gridview_Paciente.DataBind();
                 }

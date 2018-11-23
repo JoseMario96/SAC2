@@ -16,6 +16,42 @@
                 }
             });
         });
+
+        $(window).resize(function () {
+            var ancho = $(window).width();
+            if (ancho <= 520) {
+                $("#eliminarcss").removeClass("col s4");
+                $("#eliminarcss2").removeClass("col s4");
+                $("#botoncss1").removeClass("input-field col s2");
+                $("#botoncss3").removeClass("input-field col s2");
+                $("#botoncss1").addClass("input-field col s4");
+                $("#botoncss2").addClass("col s4");
+                $("#botoncss3").addClass("input-field col s4");
+                
+            }
+            if (ancho > 520) {
+                $("#botoncss1").removeClass("input-field col s4");
+                $("#botoncss2").removeClass("col s4");
+                $("#botoncss3").removeClass("input-field col s4");
+                $("#eliminarcss").addClass("col s4");
+                $("#eliminarcss2").addClass("col s4");
+                $("#botoncss1").addClass("input-field col s2");
+                $("#botoncss3").addClass("input-field col s2");
+            }
+        })
+
+        $(document).ready(function () {
+            var ancho = $(window).width();
+            if (ancho <= 520) {
+                $("#eliminarcss").removeClass("col s4");
+                $("#eliminarcss2").removeClass("col s4");
+                $("#botoncss1").removeClass("input-field col s2");
+                $("#botoncss3").removeClass("input-field col s2");
+                $("#botoncss1").addClass("input-field col s4");
+                $("#botoncss2").addClass("col s4");
+                $("#botoncss3").addClass("input-field col s4");
+            }
+        })
     </script>
     <style>
         label, tr, th {
@@ -204,7 +240,7 @@
                         <label class="active" for="cedula" style="font-size: medium">Cédula del paciente</label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <input id="cedula" type="text" runat="server" class="validate" title="Cédula" maxlength="14" onkeypress="return solonumeros(event)" />
+                                <asp:TextBox ID="ide" runat="server" CssClass="validate" AutoPostBack="true" title="Cédula" MaxLength="14" onkeypress="return solonumeros(event)" OnTextChanged="ide_TextChanged"></asp:TextBox>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -260,22 +296,23 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s4"></div>
-                    <div class="input-field col s2">
+                    <div id="eliminarcss" class="col s4"></div>
+                    <div id="botoncss1" class="input-field col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <asp:Button class="waves-effect waves-light btn" ID="btn_Agregar" runat="server" Text="Guardar" OnClick="btn_Agregar_Click" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
-                    <div class="input-field col s2">
+                    <div id="botoncss2"></div>
+                    <div id="botoncss3" class="input-field col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <asp:Button class="waves-effect waves-light btn" ID="btn_Limpiar" runat="server" Text="Limpiar" OnClick="btn_Limpiar_Click" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
-                    <div class="col s4"></div>
+                    <div id="eliminarcss2" class="col s4"></div>
                 </div>
             </div>
         </div>

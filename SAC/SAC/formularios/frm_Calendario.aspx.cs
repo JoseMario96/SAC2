@@ -97,7 +97,7 @@ namespace SAC.formularios
                     fechaC.Value = fecha;
                     fechaC.Disabled = true;
                     ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollreporte", "setTimeout(scrollreporte, 1);", true);
-                    cedula.Focus();
+                    ide.Focus();
                 }
             }
             catch
@@ -288,13 +288,13 @@ namespace SAC.formularios
         {
             try
             {
-                if (cedula.Value == "")
+                if (ide.Text == "")
                 {
                     string script = @"<script type='text/javascript'>
                     alert('El campo cédula no puede estar vacío!');
                     </script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                    cedula.Focus();
+                    ide.Focus();
                 }
                 else if (nombre.Value == "")
                 {
@@ -346,7 +346,7 @@ namespace SAC.formularios
                 }
                 else
                 {
-                    objeto.AgregarCita(cedula.Value, Calendar1.SelectedDate.ToString(@"yyyy-MM-dd"), hora.Value.ToString(), telefono.Value, nombre.Value, correo.Value);
+                    objeto.AgregarCita(ide.Text, Calendar1.SelectedDate.ToString(@"yyyy-MM-dd"), hora.Value.ToString(), telefono.Value, nombre.Value, correo.Value);
                     string script = @"<script type='text/javascript'>
                     alert('Se agregó correctamente la información');
                     </script>";
@@ -363,12 +363,12 @@ namespace SAC.formularios
 
         protected void btn_Limpiar_Click(object sender, EventArgs e)
         {
-            cedula.Value = "";
+            ide.Text = "";
             nombre.Value = "";
             hora.Value = "";
             telefono.Value = "";
             correo.Value = "";
-            cedula.Focus();
+            ide.Focus();
         }
 
         protected void btn_Nuevo_Click(object sender, EventArgs e)
@@ -382,7 +382,7 @@ namespace SAC.formularios
                     </script>";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             fechaC.Value = Calendar1.SelectedDate.ToString(@"yyyy-MM-dd");
-            cedula.Focus();
+            ide.Focus();
             //ScriptManager.RegisterStartupScript(Page, typeof(Page), "scrollAgregar", "setTimeout(scrollAgregar, 1);", true);
 
         }
@@ -411,7 +411,7 @@ namespace SAC.formularios
                 SmtpServer.Port = 587; //Puerto que utiliza Gmail para sus servicios
                 //Especificamos las credenciales con las que enviaremos el mail
                 SmtpServer.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("clinicadental.alinacamacho@gmail.com", "SAC-corredores.2018");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("clinicadental.alinacamacho@gmail.com", "Citas.2018-Alina");
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
 
@@ -422,6 +422,18 @@ namespace SAC.formularios
                     alert('No se pudo enviar el correo!');
                     </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
+        }
+
+        protected void ide_TextChanged(object sender, EventArgs e)
+        {
+            String[] persona = new String[6];
+            persona = objeto.Persona(ide.Text);
+            if (persona.Length > 0)
+            {
+                nombre.Value = persona[0] + " " + persona[1] + " " + persona[2] + " " + persona[3];
+                telefono.Value = persona[4];
+                correo.Value = persona[5];
             }
         }
     }

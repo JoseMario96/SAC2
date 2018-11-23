@@ -132,7 +132,7 @@
 
                 <div class="row espacio">
                     <div class="col s5"></div>
-                    <div class="col s2">
+                    <div class="input-field col s2">
                         <asp:Button class="waves-effect waves-light btn" ID="btn_guardar" runat="server" Text="Guardar" OnClick="btn_guardar_Click" />
                     </div>
                     <div class="col s5"></div>
@@ -209,7 +209,7 @@
                     <div class="col s5">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <asp:DropDownList ID="DropDownList1" title="Tipo de tratamiento" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento"></asp:DropDownList>
+                                <asp:DropDownList ID="DropDownList1" title="Tipo de tratamiento" AppendDataBoundItems="true" class="browser-default" runat="server" DataTextField="nombreTipoTratamiento" DataValueField="nombreTipoTratamiento" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -257,7 +257,7 @@
                 </div>
                 <div class="row espacio">
                     <div class="col s5"></div>
-                    <div class="col s2">
+                    <div class="input-field col s2">
                         <asp:Button class="waves-effect waves-light btn" ID="btn_actualizar" runat="server" Text="Actualizar" OnClick="btn_actualizar_Click" />
                     </div>
                     <div class="col s5"></div>
@@ -335,7 +335,7 @@
                 <br />
                 <div class="row espacio">
                     <div class="col s5"></div>
-                    <div class="col s2">
+                    <div class="input-field col s2">
                         <asp:Button class="waves-effect waves-light btn" ID="btn_eliminar" runat="server" Text="Eliminar" OnClick="btn_eliminar_Click" />
                     </div>
                     <div class="col s5"></div>
