@@ -150,8 +150,8 @@
                         <th colspan="5" style="text-align: center">Historia médica</th>
                     </tr>
                     <tr>
-                        <th>1-Enfermedades cardiacas</th>
-                        <th>2-Presión arterial</th>
+                        <th style="color:#FF0000">1-Enfermedades cardiacas</th>
+                        <th  style="color:#FF0000">2-Presión arterial</th>
                         <th>3-Fiebre reumática</th>
                         <th>4-VIH+ ó SIDA</th>
                         <th>5-Accidente cerebrovascular (derrame)</th>
@@ -159,8 +159,8 @@
                     <tr>
                         <td>
                             <asp:UpdatePanel runat="server">
-                                <ContentTemplate>
-                                    <asp:TextBox ID="cardiaco" runat="server" MaxLength="44" title="Cardiacas"></asp:TextBox>
+                                <ContentTemplate>                                   
+                                     <asp:TextBox ID="cardiaco" runat="server" MaxLength="44" title="Cardiacas"></asp:TextBox>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
@@ -255,57 +255,58 @@
                                     </td>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
-                            <td>
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label>
-                                            <input class="with-gap" name="group5" runat="server" type="radio" id="sangreS" onclick="" />
-                                            <span>Sí</span>
-                                        </label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label>
-                                            <input class="with-gap" name="group5" runat="server" type="radio" id="sangreN" onclick="" />
-                                            <span>No</span>
-                                        </label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td>
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label>
-                                            <input class="with-gap" name="group6" runat="server" type="radio" id="paisS" onclick="pais(1)" />
-                                            <span>Sí</span>
-                                        </label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <label>
-                                            <input class="with-gap" name="group6" runat="server" type="radio" id="paisN" onclick="pais(0)" />
-                                            <span>No</span>
-                                        </label>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td>
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <asp:TextBox ID="donde" runat="server" title="Dónde?" Style="display: none"></asp:TextBox>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
+                        </td>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label>
+                                        <input class="with-gap" name="group5" runat="server" type="radio" id="sangreS" onclick="" />
+                                        <span>Sí</span>
+                                    </label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label>
+                                        <input class="with-gap" name="group5" runat="server" type="radio" id="sangreN" onclick="" />
+                                        <span>No</span>
+                                    </label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label>
+                                        <input class="with-gap" name="group6" runat="server" type="radio" id="paisS" onclick="pais(1)" />
+                                        <span>Sí</span>
+                                    </label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <label>
+                                        <input class="with-gap" name="group6" runat="server" type="radio" id="paisN" onclick="pais(0)" />
+                                        <span>No</span>
+                                    </label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <asp:TextBox ID="donde" runat="server" title="Dónde?" Style="display: none"></asp:TextBox>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
 
-                            <td>
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <asp:TextBox ID="tiempo" runat="server" title="Tiempo" Style="display: none"></asp:TextBox>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
+                        <td>
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <asp:TextBox ID="tiempo" runat="server" title="Tiempo" Style="display: none"></asp:TextBox>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
                     </tr>
                     <tr>
                         <th>11-Moretes</th>
@@ -382,11 +383,10 @@
                                     </label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
-
                         </td>
                     </tr>
                     <tr>
-                        <th>16-Diabetes</th>
+                        <th style="color:#FF0000">16-Diabetes</th>
                         <th>17-Epilepsia</th>
                         <th>18-Enfermedades respiratorias</th>
                         <th>19-Radioterapia o quimioterapia</th>

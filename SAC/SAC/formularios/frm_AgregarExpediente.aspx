@@ -131,7 +131,8 @@
 
                         <div class="row">
                             <div class="col s12">
-                                <label><span class="ajustar" style="margin-left: 35px;">7) Ha vivido o reside fuera del país?</span></label>
+                                 <label><span class="ajustar" style="margin-left: 35px; color:#FF0000">*</span></label>
+                                <label><span class="ajustar" title="Pregunta obligatoria">7) Ha vivido o reside fuera del país?</span></label>
                             </div>
                             <div class="col s12">
                                 <div class="col s1">
@@ -483,7 +484,7 @@
                 <div class="row">
                     <div class="col s4">
                         <span>Presión arterial</span>
-                        <input id="svrespu1" type="text" runat="server" class="validate" title="Presión" onkeypress="return solonumeros(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                        <input id="svrespu1" type="text" runat="server" class="validate" title="Presión" onkeypress="return presion(event)" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                         <label class="active" for="svrespu1">mm/Hg</label>
                     </div>
                     <div class="col s4">
@@ -544,6 +545,23 @@
         </script>
 
         <script>
+
+            function presion(e) {
+                key = e.keyCoden || e.which;
+                teclado = String.fromCharCode(key);
+                numero = "1234567890/";
+                especiales = "8-37-38-46";
+                teclado_especial = false;
+                for (var i in especiales) {
+                    if (key == especiales[i]) {
+                        teclado_especial = true;
+                    }
+                }
+                if (numero.indexOf(teclado) == -1 && !teclado_especial) {
+                    return false;
+                }
+            }
+
             function solonumeros(e) {
                 key = e.keyCoden || e.which;
                 teclado = String.fromCharCode(key);

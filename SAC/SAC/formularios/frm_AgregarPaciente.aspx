@@ -40,6 +40,8 @@
                 </asp:ScriptManager>
                 <div class="row espacio">
                     <div class="col s6">
+
+
                         <label class="active" for="cedula">Cédula </label>
                         <asp:TextBox ID="cedula" runat="server" class="validate" MaxLength="14" title="Cédula" required onkeypress="return solonumeros(event)" AutoPostBack="true" OnTextChanged="cedula_TextChanged"></asp:TextBox>
                     </div>
