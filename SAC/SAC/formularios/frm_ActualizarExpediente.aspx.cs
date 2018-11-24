@@ -47,7 +47,6 @@ namespace SAC.formularios
                     GridView1.DataSource = metodo.BuscarExpediente();
                     GridView1.DataBind();
                 }
-
             }
             catch
             {
@@ -71,9 +70,7 @@ namespace SAC.formularios
             String[] datos = new string[59];
             string script = @"<script type='text/javascript'>
                 document.getElementById('formularioP').style.display = 'block' ;
-                document.getElementById('botones').style.display = 'block' ;
-                document.getElementById('formularioP').scrollIntoView();   
-
+                document.getElementById('botones').style.display = 'block' ; 
             </script>";
 
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
@@ -85,7 +82,6 @@ namespace SAC.formularios
             {
                 if (row.RowIndex == GridView1.SelectedIndex)
                 {
-
                     row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
                     ced = row.Cells[1].Text;
@@ -665,6 +661,12 @@ namespace SAC.formularios
         {
             GridView1.DataSource = metodo.BuscarExpediente2(txtSearch.Text.Trim());
             GridView1.DataBind();
+            string script = @"<script type='text/javascript'>
+                document.getElementById('formularioP').style.display = 'none' ;
+                document.getElementById('botones').style.display = 'none' ; 
+            </script>";
+
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
 
         }
 
@@ -673,6 +675,13 @@ namespace SAC.formularios
             GridView1.DataSource = metodo.BuscarExpediente2(txtSearch.Text.Trim());
             GridView1.PageIndex = e.NewPageIndex;
             GridView1.DataBind();
+
+            string script = @"<script type='text/javascript'>
+                document.getElementById('formularioP').style.display = 'none' ;
+                document.getElementById('botones').style.display = 'none' ; 
+            </script>";
+
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
         }
     }
 }

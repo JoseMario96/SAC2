@@ -1226,11 +1226,7 @@
                                     }
 
                                     var logo = new Image();
-                                    logo.src = '../images/ReporteExpediente.png';
-
-
-
-
+                                    logo.src = '../images/reporteOdontograma.png';
                                     btnSave.addEventListener("click", function () {
 
                                         var medida = 40;

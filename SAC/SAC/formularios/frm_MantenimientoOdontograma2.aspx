@@ -44,7 +44,43 @@
             cursor: url("..images/cur438.cur");
         }
     </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
     <script>
+
+        $(window).resize(function () {
+            //aqui el codigo que se ejecutara cuando se redimencione la ventana
+            var ancho = $(window).width();
+            if (ancho <= 520) {
+                $("#quitarcss").removeClass("col s4");
+                $("#quitarcss2").removeClass("col s4");
+                $("#quitarcss3").removeClass("col s4");
+                $("#quitarcss4").removeClass("col s4");
+                $("#agregarcss").addClass("col s2");
+                $("#agregarcss2").addClass("col s2");
+            }
+            if (ancho > 520) {
+                $("#agregarcss").removeClass("col s2");
+                $("#agregarcss2").removeClass("col s2");
+                $("#quitarcss").addClass("col s4");
+                $("#quitarcss2").addClass("col s4");
+                $("#quitarcss3").addClass("col s4");
+                $("#quitarcss4").addClass("col s4");
+            }
+        })
+
+        $(document).ready(function () {
+            //aqui el codigo que se ejecutara cuando se redimencione la ventana
+            var ancho = $(window).width();
+            if (ancho < 520) {
+                $("#quitarcss").removeClass("col s4");
+                $("#quitarcss2").removeClass("col s4");
+                $("#quitarcss3").removeClass("col s4");
+                $("#quitarcss4").removeClass("col s4");
+                $("#agregarcss").addClass("col s2");
+                $("#agregarcss2").addClass("col s2");
+            }
+        })
+
         $(function () {
             $("#radio").buttonset();
             $("#radio_seccion").buttonset();
@@ -113,7 +149,7 @@
                         <canvas id="myCanvas4" width="510" height="200" style="z-index: 4; position: absolute; left: 0%; top: 0px;"></canvas>
                     </div>
                     <div id="radio_seccion" style='display: none; text-align: center;'>
-                        <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Seccion</label>
+                        <input type="radio" id="radio_1" name="seccion" value="seccion" checked="checked" /><label for="radio_1">Superficie</label>
                         <input type="radio" id="radio_2" name="seccion" value="diente" /><label for="radio_2">Diente</label>
                     </div>
                     <br />
@@ -121,7 +157,7 @@
             </div>
 
             <div class="row">
-                <div class="col s4">
+                <div id="quitarcss3" class="col s4">
                 </div>
                 <div class="input-field col s2">
                     <asp:UpdatePanel runat="server">
@@ -130,6 +166,7 @@
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
+                <div id="agregarcss2"></div>
                 <div class="input-field col s2">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
@@ -137,7 +174,7 @@
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
-                <div class="col s4">
+                <div id="quitarcss4" class="col s4">
                 </div>
             </div>
             <script>
@@ -1982,7 +2019,7 @@
                         </asp:UpdatePanel>
                     </div>
                     <div class="row">
-                        <div class="col s4">
+                        <div id="quitarcss" class="col s4">
                         </div>
                         <div class="input-field col s2">
                             <asp:UpdatePanel runat="server">
@@ -1991,6 +2028,7 @@
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
+                        <div id="agregarcss"></div>
                         <div class="input-field col s2">
                             <asp:UpdatePanel runat="server">
                                 <ContentTemplate>
@@ -1998,7 +2036,7 @@
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
-                        <div class="col s4">
+                        <div id="quitarcss2" class="col s4">
                         </div>
 
                     </div>

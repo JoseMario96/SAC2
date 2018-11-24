@@ -146,8 +146,8 @@
                         <th colspan="5" style="text-align: center">Historia médica</th>
                     </tr>
                     <tr>
-                        <th>1-Enfermedades cardiacas</th>
-                        <th>2-Presión arterial</th>
+                        <th style="color:#FF0000">1-Enfermedades cardiacas</th>
+                        <th style="color:#FF0000">2-Presión arterial</th>
                         <th>3-Fiebre reumática</th>
                         <th>4-VIH+ ó SIDA</th>
                         <th>5-Accidente cerebrovascular (derrame)</th>
@@ -278,7 +278,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>16-Diabetes</th>
+                        <th style="color:#FF0000">16-Diabetes</th>
                         <th>17-Epilepsia</th>
                         <th>18-Enfermedades respiratorias</th>
                         <th>19-Radioterapia o quimioterapia</th>

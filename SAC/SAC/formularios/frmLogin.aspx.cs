@@ -90,7 +90,7 @@ namespace SAC.formularios
                     SmtpServer.Port = 587; //Puerto que utiliza Gmail para sus servicios
                                            //Especificamos las credenciales con las que enviaremos el mail
                     SmtpServer.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-                    SmtpServer.Credentials = new System.Net.NetworkCredential("clinicadental.alinacamacho@gmail.com", "SAC-corredores.2018");
+                    SmtpServer.Credentials = new System.Net.NetworkCredential("clinicadental.alinacamacho@gmail.com", "Citas.2018-Alina");
                     SmtpServer.EnableSsl = true;
                     SmtpServer.Send(mail);
                 }

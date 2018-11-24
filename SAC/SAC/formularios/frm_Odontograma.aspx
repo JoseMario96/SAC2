@@ -91,7 +91,7 @@
             </div>
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
-                    <div id="dienteOdontograma" class="row espacio" style="display: block" tabindex="1">
+                    <div id="dienteOdontograma" class="row espacio" style="display: none">
                         <div class="row">
                             <center>
                     <div class="col s2"></div>

@@ -35,7 +35,7 @@ namespace SAC.formularios
                                 document.getElementById('presentar').style.display = 'block';
                                 </script>";
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
-              
+
 
                         Gridview_CxC.DataSource = cuenta.CuentaXCobrar();
                         Gridview_CxC.DataBind();
@@ -123,48 +123,52 @@ namespace SAC.formularios
             try
             {
                 if (txt_abono.Value == "")
-                {
-                    string scripts = @"<script type='text/javascript'>
+            {
+                string scripts = @"<script type='text/javascript'>
                     alert('Para guardar un abono tiene que digitar un monto!');
                     document.getElementById('cabecera').style.display = 'block';
                     document.getElementById('seccionAbono').style.display = 'block';
                     </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+                txt_abono.Focus();
+            }
+            else
+            {
+                DateTime date = DateTime.Now;
+                String date2 = date.ToString("yyyy-MM-dd");
+                Double abono = Convert.ToDouble(txt_abono.Value);
+                if (abono > saldoVenta)
+                {
+                    string scripts = @"<script type='text/javascript'>
+                            alert('El monto del abono no puede ser mayor al saldo pendiente!');
+                            document.getElementById('cabecera').style.display = 'block';
+                            </script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+                    txt_abono.Value = "";
                     txt_abono.Focus();
                 }
                 else
                 {
-                    DateTime date = DateTime.Now;
-                    String date2 = date.ToString("yyyy-MM-dd");
-                    Double abono = Convert.ToDouble(txt_abono.Value);
-                    if (abono > saldoVenta)
+                    if (abono == saldoVenta)
                     {
-                        string scripts = @"<script type='text/javascript'>
-                            alert('El monto del abono no puede ser mayor al saldo pendiente!');
-                            document.getElementById('cabecera').style.display = 'block';
-                            </script>";
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
-                        txt_abono.Value = "";
-                        txt_abono.Focus();
+                        cuenta.ActualizarSaldo(codigoVenta, 0);
+                        cuenta.AgregarAbono(codigoVenta, abono.ToString(), date2);
                     }
                     else
                     {
-                        if (abono == saldoVenta)
-                        {
-                            cuenta.ActualizarSaldo(codigoVenta, 0);
-                            cuenta.AgregarAbono(codigoVenta, abono.ToString(), date2);
-                        }
-                        else
-                        {
-                            cuenta.ActualizarSaldo(codigoVenta, saldoVenta - abono);
-                            cuenta.AgregarAbono(codigoVenta, abono.ToString(), date2);
-                        }
-                        Gridview_CxC.DataSource = cuenta.CuentaXCobrar2(txtSearch.Text.Trim());
-                        Gridview_CxC.DataBind();
-                        txt_abono.Value = "";
+                        cuenta.ActualizarSaldo(codigoVenta, saldoVenta - abono);
+                        cuenta.AgregarAbono(codigoVenta, abono.ToString(), date2);
                     }
-
+                    string script = @"<script type='text/javascript'>
+                            alert('El abono se registró correctamente!');
+                            </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    Gridview_CxC.DataSource = cuenta.CuentaXCobrar();
+                    Gridview_CxC.DataBind();
+                    txt_abono.Value = "";
                 }
+
+            }
             }
             catch
             {

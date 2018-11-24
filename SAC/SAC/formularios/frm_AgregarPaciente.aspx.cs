@@ -14,6 +14,7 @@ namespace SAC.formularios
         public static Boolean enviar = false;
         public static string tipo;
         public static string generoEncargado;
+        public static Boolean estado;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -112,26 +113,29 @@ namespace SAC.formularios
 
                     if (agregarP.validacioncorreo(corre) == true & noE.Checked)
                     {
+                        estado = true;
                         agregarPaciente();
                         string scriptt = @"<script type='text/javascript'>
                 alert('Se registro la información correctamente');
                 </script>";
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+
                     }
                     else if (agregarP.validacioncorreo(corre) == true & agregarP.validacioncorreo(correE) == true & siE.Checked)
                     {
                         agregarPaciente();
-
+                        estado = true;
                         string script = @"<script type='text/javascript'>
                 alert('Se registro la información correctamente');
                 </script>";
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                         //Response.Redirect("Index.aspx");
-                        //this.Controls.Clear();
+                        //
                         //Response.Redirect("frm_AgregarPaciente.aspx");
                     }
                     else
                     {
+                        estado = false;
                         string script = @"<script type='text/javascript'>
                 alert('Correo inválido');
                 </script>";
@@ -149,6 +153,7 @@ namespace SAC.formularios
                 }
                 catch
                 {
+                    estado = false;
                     string script = @"<script type='text/javascript'>
                     alert('No se registro la información correctamente');
                     </script>";
@@ -160,26 +165,48 @@ namespace SAC.formularios
                 agregarP.agregarPaciente2(cedula.Text, nombre1.Value, nombre2.Value, apellido1.Value, apellido2.Value, tipo, telefono.Value, celular.Value, direccion.Value, cedula_encargad.Text, correo.Value, fecha_nacimiento.Value, fecha_ingreso.Value, nombre1_encargado.Value, nombre2_encargado.Value, apellido1_encargado.Value, apellido2_encargado.Value, generoEncargado, telefono_encargado.Value, celular_encargado.Value, direccion_encargado.Value, correo_encargado.Value, parentezco.Value);
                 string insertar = @"<script type='text/javascript'>
                 alert('Se registro la información correctamente');
+
                 </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
-
+                estado = true;
             }
 
+            if (estado == true)
+            {
+                cedula.Text = ""; nombre1.Value = ""; nombre2.Value = ""; apellido1.Value = ""; apellido2.Value = ""; telefono.Value = ""; celular.Value = "";
+                direccion.Value = ""; correo.Value = ""; cedula_encargad.Text = ""; nombre1_encargado.Value = ""; nombre2_encargado.Value = ""; apellido1_encargado.Value = "";
+                apellido2_encargado.Value = ""; telefono_encargado.Value = ""; celular_encargado.Value = ""; direccion_encargado.Value = ""; correo_encargado.Value = ""; parentezco.Value = "";
+                siE.Checked = false; fecha_ingreso.Value = ""; fecha_nacimiento.Value = ""; masculino.Checked = false; masculinoE.Checked = false; femeninoE.Checked = false;
+                femenino.Checked = false; otro.Checked = false; otroE.Checked = false; 
+
+
+
+            }
         }
         protected void cedula_TextChanged(object sender, EventArgs e)
         {
-            if (agregarP.VerificarPaciente(cedula.Text) == true)
+            if (cedula.Text.Length >= 9)
             {
-                string insertar = @"<script type='text/javascript'>
-                alert('Ya existe este paciente');
-                </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
-                cedula.Text = "";
-                cedula.Focus();
+                if (agregarP.VerificarPaciente(cedula.Text) == true)
+                {
+                    string insertar = @"<script type='text/javascript'>
+                        alert('Ya existe este paciente');
+                        </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
+                    cedula.Text = "";
+                    cedula.Focus();
+                }
+                else
+                {
+                    nombre1.Focus();
+                }
             }
             else
             {
-                nombre1.Focus();
+                string insertar = @"<script type='text/javascript'>
+                        alert('La cantidad mínima de dígitos de la cédula es 9');
+                        </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", insertar, false);
             }
         }
 

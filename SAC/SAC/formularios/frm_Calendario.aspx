@@ -16,6 +16,58 @@
                 }
             });
         });
+
+        $(window).resize(function () {
+            var ancho = $(window).width();
+            if (ancho <= 720) {
+                $("#eliminarcss").removeClass("col s4");
+                $("#eliminarcss2").removeClass("col s4");
+                $("#botoncss1").removeClass("input-field col s2");
+                $("#botoncss3").removeClass("input-field col s2");
+                $("#botoncss3").removeClass("input-field col s2");
+                $("#botoncssquitar").removeClass("row");
+                $("#botoncss02").addClass("row");
+                $("#botoncss01").addClass("row");
+                $("#botoncss2").addClass("col s4");
+                $("#botoncss3").addClass("input-field col s4");
+                $("#botoncss03").addClass("col s2");
+                $("#botoncss04").addClass("col s2");
+                
+            }
+            if (ancho > 720) {
+                $("#botoncss1").removeClass("input-field col s4");
+                $("#botoncss2").removeClass("col s4");
+                $("#botoncss3").removeClass("input-field col s4");
+                $("#eliminarcss").addClass("col s4");
+                $("#eliminarcss2").addClass("col s4");
+                $("#botoncss1").addClass("input-field col s2");
+                $("#botoncss3").addClass("input-field col s2");
+                $("#botoncss03").removeClass("col s2");
+                $("#botoncss04").removeClass("col s2");
+                $("#botoncssquitar").addClass("row");
+                $("#botoncss02").removeClass("row");
+                $("#botoncss01").removeClass("row");
+            }
+        })
+
+        $(document).ready(function () {
+            var ancho = $(window).width();
+            if (ancho <= 520) {
+                $("#eliminarcss").removeClass("col s4");
+                $("#eliminarcss2").removeClass("col s4");
+                $("#botoncss1").removeClass("input-field col s2");
+                $("#botoncss3").removeClass("input-field col s2");
+                $("#botoncss1").addClass("input-field col s4");
+                $("#botoncss2").addClass("col s4");
+                $("#botoncss3").addClass("input-field col s4");
+
+                $("#botoncssquitar").removeClass("row");
+                $("#botoncss02").addClass("row");
+                $("#botoncss01").addClass("row");
+                $("#botoncss03").addClass("col s2");
+                $("#botoncss04").addClass("col s2");
+            }
+        })
     </script>
     <style>
         label, tr, th {
@@ -174,18 +226,26 @@
                     </tr>
                 </table>
 
-                <div class="row">
+                <div id="botoncssquitar" class="row">
+                    <div id="botoncss01">
                     <div class="input-field col s3">
                         <asp:Button class="waves-effect waves-light btn" ID="btn_Actualizar" runat="server" Text="Actualizar" OnClick="btn_Actualizar_Click" />
+                    </div>
+                    <div id="botoncss03">
                     </div>
                     <div class="input-field col s3">
                         <asp:Button class="waves-effect waves-light btn" ID="btn_Eliminar" runat="server" Text=" Eliminar " OnClick="btn_Eliminar_Click" />
                     </div>
+                    </div>
+                    <div id="botoncss02">
                     <div class="input-field col s3">
                         <asp:Button class="waves-effect waves-light btn" ID="btn_Nuevo" runat="server" Text="   Nueva  " OnClick="btn_Nuevo_Click" />
                     </div>
+                        <div id="botoncss04">
+                    </div>
                     <div class="input-field col s3">
                         <asp:Button class="waves-effect waves-light btn" ID="btn_Notificación" runat="server" Text="Notificar " OnClick="btn_Notificación_Click" />
+                    </div>
                     </div>
                 </div>
             </div>
@@ -204,7 +264,7 @@
                         <label class="active" for="cedula" style="font-size: medium">Cédula del paciente</label>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <input id="cedula" type="text" runat="server" class="validate" title="Cédula" maxlength="14" onkeypress="return solonumeros(event)" />
+                                <asp:TextBox ID="ide" runat="server" CssClass="validate" AutoPostBack="true" title="Cédula" MaxLength="14" onkeypress="return solonumeros(event)" OnTextChanged="ide_TextChanged"></asp:TextBox>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -260,22 +320,23 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s4"></div>
-                    <div class="input-field col s2">
+                    <div id="eliminarcss" class="col s4"></div>
+                    <div id="botoncss1" class="input-field col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <asp:Button class="waves-effect waves-light btn" ID="btn_Agregar" runat="server" Text="Guardar" OnClick="btn_Agregar_Click" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
-                    <div class="input-field col s2">
+                    <div id="botoncss2"></div>
+                    <div id="botoncss3" class="input-field col s2">
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <asp:Button class="waves-effect waves-light btn" ID="btn_Limpiar" runat="server" Text="Limpiar" OnClick="btn_Limpiar_Click" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
-                    <div class="col s4"></div>
+                    <div id="eliminarcss2" class="col s4"></div>
                 </div>
             </div>
         </div>
