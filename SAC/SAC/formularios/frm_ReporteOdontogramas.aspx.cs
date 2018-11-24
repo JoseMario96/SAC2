@@ -53,6 +53,7 @@ namespace SAC.formularios
 
             GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion(txtSearch.Text.Trim());
             GridView_reporteOdontograma.DataBind();
+
             foreach (GridViewRow row in GridView_reporteOdontograma.Rows)
             {
                 if (row.RowIndex == GridView_reporteOdontograma.SelectedIndex)
@@ -97,7 +98,7 @@ namespace SAC.formularios
                         {
                             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Pintar" + counter.ToString(), "<script language='javascript'>$(document).ready(function() {pintarDiente('" + diente + "','" + seccion + "','" + color + "','" + marca + "');});</script>");
                         }
-                        else if (datos[4] == "0")
+                       else if (datos[4] == "0")
                         {
                             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Pintar2" + counter.ToString(), "<script language='javascript'>$(document).ready(function() {pintarDienteNino('" + diente + "','" + seccion + "','" + color + "','" + marca + "');});</script>");
                         }
