@@ -28,19 +28,12 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(
-                      upPanel,
-                      this.GetType(),
-                      "MyAction",
-                      "mae();",
-                      true);
-            //Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Pintar22", "<script language='javascript'>$(document).ready(function() {mae();});</script>");
-            //if (!this.IsPostBack)
-            //{
-            txtSearch.Focus();
-                GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("das");
+            if (!this.IsPostBack)
+            {
+                txtSearch.Focus();
+                GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
                 GridView_reporteOdontograma.DataBind();
-            //}
+            }
         }
 
         protected void GridView_reporteOdontograma_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -60,7 +53,6 @@ namespace SAC.formularios
 
             GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion(txtSearch.Text.Trim());
             GridView_reporteOdontograma.DataBind();
-            txtSearch.Text = "Prueba";
             foreach (GridViewRow row in GridView_reporteOdontograma.Rows)
             {
                 if (row.RowIndex == GridView_reporteOdontograma.SelectedIndex)
@@ -138,6 +130,8 @@ namespace SAC.formularios
 
         protected void InvisButton_Click(object sender, EventArgs e)
         {
+            txtSearch.Attributes["onfocus"] = "var value = this.value; this.value = ''; this.value = value; onfocus = null;";
+            txtSearch.Focus();
             GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion2(txtSearch.Text.Trim());
             GridView_reporteOdontograma.DataBind();
         }

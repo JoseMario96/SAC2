@@ -103,13 +103,13 @@
                 <br />
                 <br />
                 <input class="entrada" runat="server" id="txt_contrasena" type="password" placeholder="Contraseña" required="required" onkeydown="return sololetras(event)" maxlength="15" />
-                <label runat="server" id="aviso" style="display: none; text-align: center; color: red">Solo se permiten letras y números!</label>
+                <label runat="server" id="aviso" style="display: none; text-align: center; color: red">!Solo se permiten letras y números!</label>
                 <br />
                 <br />
                 <asp:Button CssClass="boton" ID="btn_sesion" runat="server" Text="Ingresar" OnClick="btn_sesion_Click" />
                 <br />
                 <br />
-                <a href="#popup" class="popup-link fh5co-project-item" onclick='document.getElementById("recuperar").src="frm_RecuperarContrasena.aspx";'>Olvidó su contraseña?</a>
+                <a href="#popup" class="popup-link fh5co-project-item" onclick='document.getElementById("recuperar").src="frm_RecuperarContrasena.aspx";'>¿Olvidó su contraseña?</a>
                 <br />
                 <br />
                 <a href="#popup1" class="popup-link fh5co-project-item" onclick='document.getElementById("cambiar").src="frm_CambiarContrasena.aspx";'>Cambiar contraseña</a>

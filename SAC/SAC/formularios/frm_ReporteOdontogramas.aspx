@@ -93,7 +93,7 @@
         }
     </style>
 </head>
-<body oncopy="return false" onpaste="return false">
+<body>
 
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server" ID="sm">
@@ -102,23 +102,24 @@
 
             <div class="row espacio">
                 <div class="input-field col s3 ">
-                    <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>
+                    <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+                  <%--  <asp:TextBox ID="txtSearch" runat="server" title="Nombre"></asp:TextBox>--%>
                     <label class="active" for="first_name2">Nombre:</label>
                 </div>
                 <div class="row">
                     <%--<asp:UpdatePanel runat="server">
                         <ContentTemplate>--%>
-                            <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
-                            <asp:GridView ID="GridView_reporteOdontograma" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
-                                runat="server" AutoGenerateColumns="False" Height="174px" AllowPaging="true" PageSize="3" OnSelectedIndexChanged="GridView_reporteOdontograma_SelectedIndexChanged" OnPageIndexChanging="GridView_reporteOdontograma_PageIndexChanging" OnRowDataBound="GridView_reporteOdontograma_RowDataBound">
-                                <Columns>
-                                    <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />
-                                    <asp:BoundField DataField="nombre1Paciente" HeaderText="Primer Nombre" ItemStyle-Width="100" />
-                                    <asp:BoundField DataField="apellido1Paciente" HeaderText="Primer Apellido" ItemStyle-Width="100" />
-                                    <asp:BoundField DataField="apellido2Paciente" HeaderText="Segundo Apellido" ItemStyle-Width="100" />
-                                </Columns>
-                            </asp:GridView>
-                        <%--</ContentTemplate>
+                    <asp:Button ID="InvisButton" runat="server" Style="display: none;" OnClick="InvisButton_Click" />
+                    <asp:GridView ID="GridView_reporteOdontograma" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
+                        runat="server" AutoGenerateColumns="False" Height="174px" AllowPaging="true" PageSize="3" OnSelectedIndexChanged="GridView_reporteOdontograma_SelectedIndexChanged" OnPageIndexChanging="GridView_reporteOdontograma_PageIndexChanging" OnRowDataBound="GridView_reporteOdontograma_RowDataBound">
+                        <Columns>
+                            <asp:BoundField DataField="cedulaPaciente" HeaderText="Cédula" ItemStyle-Width="30" />
+                            <asp:BoundField DataField="nombre1Paciente" HeaderText="Primer Nombre" ItemStyle-Width="100" />
+                            <asp:BoundField DataField="apellido1Paciente" HeaderText="Primer Apellido" ItemStyle-Width="100" />
+                            <asp:BoundField DataField="apellido2Paciente" HeaderText="Segundo Apellido" ItemStyle-Width="100" />
+                        </Columns>
+                    </asp:GridView>
+                    <%--</ContentTemplate>
                     </asp:UpdatePanel>--%>
                     <%--<asp:GridView ID="GridView_reporteOdontograma" aligne="center" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="black" class="col s12"
                         runat="server" AutoGenerateColumns="False" Height="174px" AllowPaging="true" PageSize="3" OnSelectedIndexChanged="GridView_reporteOdontograma_SelectedIndexChanged" OnPageIndexChanging="GridView_reporteOdontograma_PageIndexChanging" OnRowDataBound="GridView_reporteOdontograma_RowDataBound">
@@ -255,12 +256,10 @@
                             <div class="col s4">
                             </div>
                         </div>
-                        <asp:UpdatePanel ID="upPanel"  runat="server">
+                        <asp:UpdatePanel ID="upPanel" runat="server">
                             <ContentTemplate>
                                 <script>
-                                    function mae() {
-                                        alert("[ffsjnfksjfs");
-                                    }
+
                                     // Funcion para dibujar las lineas negras de cada diente
                                     function dibuja_contorno(context, inicio_x, inicio_y, med, separacion_x, separacion_y) {
                                         var ctx = context;
@@ -1512,10 +1511,27 @@
     <script type="text/javascript">
                                     $(document).ready(function () {
                                         $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
-                            $('#<%=InvisButton.ClientID%>').click();
+                                            $('#<%=InvisButton.ClientID%>').click();
 
                                         });
                                     });
+    </script>
+    <script type="text/javascript">
+                                    function setCursorPosition(element, pos) {
+                                        var ctrl = document.getElementById(element);
+
+                                        if (ctrl.setSelectionRange) {
+                                            ctrl.focus();
+                                            ctrl.setSelectionRange(pos, pos);
+                                        }
+                                        else if (ctrl.createTextRange) {
+                                            var range = ctrl.createTextRange();
+                                            range.collapse(true);
+                                            range.moveEnd('character', pos);
+                                            range.moveStart('character', pos);
+                                            range.select();
+                                        }
+                                    }
     </script>
 </body>
 </html>
