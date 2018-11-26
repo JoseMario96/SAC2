@@ -106,7 +106,7 @@
                 <br />
                 <br />
                 <input class="entrada" runat="server" id="txt_contrasena" type="password" placeholder="Contraseña" required="required" onkeypress="return sololetras(event)" maxlength="15" />
-                <label runat="server" id="aviso" style="display: none; text-align: center; color: red">Solo se permiten letras y números!</label>
+                <label runat="server" id="aviso" style="display: none; text-align: center; color: red">¡Solo se permiten letras y números!</label>
                 <br />
                 <br />
                 <asp:Button CssClass="boton" ID="btn_sesion" runat="server" Text="Ingresar" OnClick="btn_sesion_Click" />
