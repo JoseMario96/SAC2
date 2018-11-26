@@ -44,7 +44,6 @@
             cursor: url("..images/cur438.cur");
         }
     </style>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
     <script>
 
         $(window).resize(function () {

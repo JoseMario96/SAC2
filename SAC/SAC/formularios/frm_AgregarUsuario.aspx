@@ -31,7 +31,7 @@
                 </div>
                 <div class="col s8">
                     <label class="active" for="txt_usuario">Nombre de Usuario</label>
-                    <asp:TextBox ID="txt_usuario" runat="server" class="validate" MaxLength="15" required="required" AutoCompleteType="Disabled" onkeydown="return sololetras(event)" AutoPostBack="true" OnTextChanged="txt_usuario_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txt_usuario" runat="server" class="validate" MaxLength="15" required="required" AutoCompleteType="Disabled" onkeypress="return sololetras(event)" AutoPostBack="true" OnTextChanged="txt_usuario_TextChanged"></asp:TextBox>
                 </div>
                 <div class="col s2">
                 </div>

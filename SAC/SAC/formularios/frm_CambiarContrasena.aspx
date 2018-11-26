@@ -13,16 +13,16 @@
         <div class="contenedor2">
             <div class="caja2">
                 <h4>Cambio de contraseña</h4>
-                <input class="entrada2" runat="server" id="txt_usuario" type="text" placeholder="Usuario" required="required" autocomplete="off" onkeydown="return sololetras(event)" maxlength="15" />
+                <input class="entrada2" runat="server" id="txt_usuario" type="text" placeholder="Usuario" required="required" autocomplete="off" onkeypress="return sololetras(event)" maxlength="15" />
                 <br />
                 <br />
-                <input class="entrada2" runat="server" id="txt_contraAnte" type="password" placeholder="Contraseña anterior" required="required" onkeydown="return sololetras(event)" maxlength="15" />
+                <input class="entrada2" runat="server" id="txt_contraAnte" type="password" placeholder="Contraseña anterior" required="required" onkeypress="return sololetras(event)" maxlength="15" />
                 <br />
                 <br />
-                <input class="entrada2" runat="server" id="txt_contraNueva" type="password" placeholder="Contraseña nueva" required="required" onkeydown="return sololetras(event)" maxlength="15" />
+                <input class="entrada2" runat="server" id="txt_contraNueva" type="password" placeholder="Contraseña nueva" required="required" onkeypress="return sololetras(event)" maxlength="15" />
                 <br />
                 <br />
-                <input class="entrada2" runat="server" id="txt_contraNueva2" type="password" placeholder="Repita la nueva contraseña" required="required" onkeydown="return sololetras(event)" maxlength="15" />
+                <input class="entrada2" runat="server" id="txt_contraNueva2" type="password" placeholder="Repita la nueva contraseña" required="required" onkeypress="return sololetras(event)" maxlength="15" />
                 <br />
                 <br />
                 <asp:Button CssClass="boton2" ID="btn_guardar" runat="server" Text="Guardar" OnClick="btn_guardar_Click" />
