@@ -16,7 +16,14 @@ namespace SAC.formularios
         metodos.metodos_login entrar = new metodos.metodos_login();
         protected void Page_Load(object sender, EventArgs e)
         {
-            txt_usuario.Focus();
+            if (Session["acceder"] == null)
+            {
+                Response.Redirect("frmLogin.aspx");
+            }
+            else
+            {
+                txt_usuario.Focus();
+            }
         }
 
         protected void Guardar_Click(object sender, EventArgs e)

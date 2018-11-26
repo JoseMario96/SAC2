@@ -14,38 +14,43 @@ namespace SAC.formularios
         metodos.metodosTratamientos funciones = new metodos.metodosTratamientos();
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (Session["acceder"] == null)
             {
-                if (!IsPostBack)
+                Response.Redirect("frmLogin.aspx");
+            }
+            else
+            {
+                try
                 {
+                    if (!IsPostBack)
+                    {
 
-                    GridView2.DataSource = funciones.Grid1();
-                    GridView2.DataBind();
-                    DropDownList2.DataSource = funciones.TipoTratamiento();
-                    DropDownList2.DataBind();
-                    DropDownList2.DataTextField = "nombreTipoTratamiento";
-                    DropDownList2.Items.Insert(0, new ListItem("Tipos de tratamientos", "0"));
-                    DropDownList1.DataSource = funciones.TipoTratamiento();
-                    DropDownList1.DataBind();
-                    DropDownList1.DataTextField = "nombreTipoTratamiento";
-                    DropDownList1.Items.Insert(0, new ListItem("Tipos de tratamientos", "0"));
+                        GridView2.DataSource = funciones.Grid1();
+                        GridView2.DataBind();
+                        DropDownList2.DataSource = funciones.TipoTratamiento();
+                        DropDownList2.DataBind();
+                        DropDownList2.DataTextField = "nombreTipoTratamiento";
+                        DropDownList2.Items.Insert(0, new ListItem("Tipos de tratamientos", "0"));
+                        DropDownList1.DataSource = funciones.TipoTratamiento();
+                        DropDownList1.DataBind();
+                        DropDownList1.DataTextField = "nombreTipoTratamiento";
+                        DropDownList1.Items.Insert(0, new ListItem("Tipos de tratamientos", "0"));
+
+                    }
+
+
+                    txtTabla.Attributes.Add("style", "DISPLAY: none");
+
+                    //GridView1.DataSource = funciones.Grid1();
+                    //GridView1.DataBind();
 
                 }
-
-
-                txtTabla.Attributes.Add("style", "DISPLAY: none");
-
-                //GridView1.DataSource = funciones.Grid1();
-                //GridView1.DataBind();
-
+                catch
+                {
+                    GridView2.DataSource = funciones.Grid1();
+                    GridView2.DataBind();
+                }
             }
-            catch
-            {
-                GridView2.DataSource = funciones.Grid1();
-                GridView2.DataBind();
-            }
-
-
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)

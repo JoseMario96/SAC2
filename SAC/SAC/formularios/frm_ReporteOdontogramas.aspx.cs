@@ -28,11 +28,18 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            if (Session["acceder"] == null)
             {
-                txtSearch.Focus();
-                GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
-                GridView_reporteOdontograma.DataBind();
+                Response.Redirect("frmLogin.aspx");
+            }
+            else
+            {
+                if (!this.IsPostBack)
+                {
+                    txtSearch.Focus();
+                    GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
+                    GridView_reporteOdontograma.DataBind();
+                }
             }
         }
 

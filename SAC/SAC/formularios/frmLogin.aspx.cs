@@ -16,6 +16,15 @@ namespace SAC.formularios
         metodos.metodos_Citas objeto = new metodos.metodos_Citas();
         protected void Page_Load(object sender, EventArgs e)
         {
+            DateTime date = DateTime.Now;
+            String hoy = date.ToString("yyyy-MM-dd");
+            String fecha = entrar.fecha();
+            if (hoy != fecha)
+            {
+                EnviarCorreo();
+                entrar.ActualizarFecha(hoy);
+            }
+
             txt_usuario.Focus();
         }
 
@@ -54,8 +63,7 @@ namespace SAC.formularios
                 }
             }
         }
-
-        protected void Timer1_Tick(object sender, EventArgs e)
+        public void EnviarCorreo()
         {
             try
             {

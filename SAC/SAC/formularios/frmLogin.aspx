@@ -94,11 +94,6 @@
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server" ID="sm">
         </asp:ScriptManager>
-        <asp:UpdatePanel runat="server">
-            <ContentTemplate>
-                <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="86400000"></asp:Timer>
-            </ContentTemplate>
-        </asp:UpdatePanel>
         <div class="contenedor">
             <div class="caja">
                 <h2>Inicio de sesión</h2>

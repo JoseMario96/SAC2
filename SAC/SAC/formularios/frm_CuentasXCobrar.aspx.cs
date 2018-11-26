@@ -16,40 +16,46 @@ namespace SAC.formularios
         public static Double saldoVenta = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            if (Session["acceder"] == null)
             {
-                txtSearch.Focus();
-                try
+                Response.Redirect("frmLogin.aspx");
+            }
+            else
+            {
+                if (!this.IsPostBack)
                 {
-
-                    if (cuenta.CuentaXCobrar().Rows.Count == 0)
+                    txtSearch.Focus();
+                    try
                     {
-                        string scripts = @"<script type='text/javascript'>
+
+                        if (cuenta.CuentaXCobrar().Rows.Count == 0)
+                        {
+                            string scripts = @"<script type='text/javascript'>
                     alert('No hay cuentas por cobrar');
                     </script>";
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
-                    }
-                    else
-                    {
-                        string scripts = @"<script type='text/javascript'>
+                            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+                        }
+                        else
+                        {
+                            string scripts = @"<script type='text/javascript'>
                                 document.getElementById('presentar').style.display = 'block';
                                 </script>";
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+                            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
 
 
-                        Gridview_CxC.DataSource = cuenta.CuentaXCobrar();
-                        Gridview_CxC.DataBind();
+                            Gridview_CxC.DataSource = cuenta.CuentaXCobrar();
+                            Gridview_CxC.DataBind();
+                        }
                     }
-                }
-                catch
-                {
-                    string scripts = @"<script type='text/javascript'>
+                    catch
+                    {
+                        string scripts = @"<script type='text/javascript'>
                     alert('No se pudo realizar la operación!');
                     </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scripts, false);
+                    }
                 }
             }
-
         }
 
         protected void Gridview_CxC_SelectedIndexChanged(object sender, EventArgs e)

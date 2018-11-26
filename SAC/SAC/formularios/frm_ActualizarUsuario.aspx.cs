@@ -15,19 +15,26 @@ namespace SAC.formularios
         public static String estado;
         protected void Page_Load(object sender, EventArgs e)
         {
-            txt_correo.Focus();
-            if (entrar.BuscarUsuarios().Rows.Count > 0)
+            if (Session["acceder"] == null)
             {
-                this.Gridview_Usuario.Columns[2].Visible = false;
-                Gridview_Usuario.DataSource = entrar.BuscarUsuarios();
-                Gridview_Usuario.DataBind();
+                Response.Redirect("frmLogin.aspx");
             }
             else
             {
-                string script = @"<script type='text/javascript'>
+                txt_correo.Focus();
+                if (entrar.BuscarUsuarios().Rows.Count > 0)
+                {
+                    this.Gridview_Usuario.Columns[2].Visible = false;
+                    Gridview_Usuario.DataSource = entrar.BuscarUsuarios();
+                    Gridview_Usuario.DataBind();
+                }
+                else
+                {
+                    string script = @"<script type='text/javascript'>
                         alert('No hay usuarios registrados!');                
                         </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                }
             }
         }
 

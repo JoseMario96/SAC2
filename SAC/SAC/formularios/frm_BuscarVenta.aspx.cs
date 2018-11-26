@@ -13,24 +13,29 @@ namespace SAC.formularios
         metodos.Metodos_Ventas venta = new metodos.Metodos_Ventas();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            if (Session["acceder"] == null)
             {
-                txtSearch.Focus();
-                if (venta.TodaslasVentas().Rows.Count > 0)
+                Response.Redirect("frmLogin.aspx");
+            }
+            else
+            {
+                if (!this.IsPostBack)
                 {
-                    Gridview_Paciente.DataSource = venta.TodaslasVentas();
-                    Gridview_Paciente.DataBind();
-                }
-                else
-                {
-                    string script = @"<script type='text/javascript'>
+                    txtSearch.Focus();
+                    if (venta.TodaslasVentas().Rows.Count > 0)
+                    {
+                        Gridview_Paciente.DataSource = venta.TodaslasVentas();
+                        Gridview_Paciente.DataBind();
+                    }
+                    else
+                    {
+                        string script = @"<script type='text/javascript'>
                         alert('No hay ventas registradas!');                
                         </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                    }
                 }
             }
-
-
         }
 
         protected void Gridview_Paciente_SelectedIndexChanged(object sender, EventArgs e)

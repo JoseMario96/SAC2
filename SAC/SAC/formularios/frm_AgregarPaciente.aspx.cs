@@ -19,7 +19,14 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            cedula.Focus();
+            if (Session["acceder"] == null)
+            {
+                Response.Redirect("frmLogin.aspx");
+            }
+            else
+            {
+                cedula.Focus();
+            }
         }
         public void agregarPaciente()
         {

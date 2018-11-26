@@ -24,10 +24,6 @@ namespace SAC
                         document.getElementById('ocultar1').style.display = 'block';
                         </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                //string scriptt = @"<script type='text/javascript'>                        
-                //        document.getElementById('ocultar1').style.display = 'none';
-                //        </script>";
-                //ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
             }
         }
         public void Ocultar()

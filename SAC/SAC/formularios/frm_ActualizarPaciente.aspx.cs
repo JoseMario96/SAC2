@@ -17,16 +17,22 @@ namespace SAC.formularios
         public static int estado = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            ImageButton1.ImageUrl = "/images/actualizarEncargado.png";
-            if (!this.IsPostBack)
+            if (Session["acceder"] == null)
             {
-                txtSearch.Focus();
-                GridView1.DataSource = objeto.Paciente();
-                GridView1.DataBind();
-
+                Response.Redirect("frmLogin.aspx");
             }
-            ScriptManager.RegisterClientScriptBlock(this, GetType(), "myfunction", "ocultar();", true);
+            else
+            {
+                ImageButton1.ImageUrl = "/images/actualizarEncargado.png";
+                if (!this.IsPostBack)
+                {
+                    txtSearch.Focus();
+                    GridView1.DataSource = objeto.Paciente();
+                    GridView1.DataBind();
+
+                }
+                ScriptManager.RegisterClientScriptBlock(this, GetType(), "myfunction", "ocultar();", true);
+            }
         }
         //Llenar los formularios con la selección en el grid
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

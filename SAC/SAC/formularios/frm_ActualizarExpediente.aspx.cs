@@ -40,13 +40,20 @@ namespace SAC.formularios
         {
             try
             {
-
-                if (!this.IsPostBack)
+                if (Session["acceder"] == null)
                 {
-                    txtSearch.Focus();
-                    GridView1.DataSource = metodo.BuscarExpediente();
-                    GridView1.DataBind();
+                    Response.Redirect("frmLogin.aspx");
                 }
+                else
+                {
+                    if (!this.IsPostBack)
+                    {
+                        txtSearch.Focus();
+                        GridView1.DataSource = metodo.BuscarExpediente();
+                        GridView1.DataBind();
+                    }
+                }
+                
             }
             catch
             {
