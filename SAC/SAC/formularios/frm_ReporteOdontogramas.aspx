@@ -209,28 +209,42 @@
 
                     </div>
 
-                    <div class="row botones">
-                        <div class="col s4">
-                        </div>
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <div class="input-field col s2">
+                    <div class="row  espacio" id="botones">
+                        <div id="Reporte" class="col s5"></div>
+                        <div class="input-field col s2">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
                                     <asp:Button class="waves-effect waves-light btn" ID="btnSave" runat="server" Text="Generar reporte" />
-                                </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <div class="input-field col s2">
-                                    <asp:Button class="waves-effect waves-light btn" ID="Cancelar" runat="server" Text="Cancelar" />
-                                </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                        <div class="col s4">
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </div>
+                        <div class="col s5"></div>
                     </div>
+
                 </div>
                 <script>
+                    $(window).resize(function () {
+                        //aqui el codigo que se ejecutara cuando se redimencione la ventana
+                        var ancho = $(window).width();
+                        if (ancho <= 520) {
+
+                            $("#Reporte").removeClass("col s5");
+                            $("#Reporte").addClass("col s2");
+                        }
+                        else {
+                            $("#Reporte").removeClass("col s2");
+                            $("#Reporte").addClass("col s5");
+
+                        }
+                    })
+                    $(document).ready(function () {
+                        //aqui el codigo que se ejecutara cuando se redimencione la ventana
+                        var ancho = $(window).width();
+                        if (ancho < 520) {
+                            $("#Reporte").removeClass("col s5");
+                            $("#Reporte").addClass("col s2");
+                        }
+                    })
                     // Funcion para dibujar las lineas negras de cada diente
                     function dibuja_contorno(context, inicio_x, inicio_y, med, separacion_x, separacion_y) {
                         var ctx = context;
