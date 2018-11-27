@@ -16,15 +16,21 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (!this.IsPostBack)
+            if (Session["acceder"] == null)
             {
-                txtSearch.Focus();
-                GridView1.DataSource = objeto.Paciente();
-                GridView1.DataBind();
-
+                Response.Redirect("frmLogin.aspx");
             }
-            ScriptManager.RegisterClientScriptBlock(this, GetType(), "myfunction", "ocultar();", true);
+            else
+            {
+                if (!this.IsPostBack)
+                {
+                    txtSearch.Focus();
+                    GridView1.DataSource = objeto.Paciente();
+                    GridView1.DataBind();
+
+                }
+                ScriptManager.RegisterClientScriptBlock(this, GetType(), "myfunction", "ocultar();", true);
+            }
         }
 
 

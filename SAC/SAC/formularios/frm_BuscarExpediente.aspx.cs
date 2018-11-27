@@ -16,11 +16,18 @@ namespace SAC.formularios
         {
             try
             {
-                txtSearch.Focus();
-                if (!this.IsPostBack)
+                if (Session["acceder"] == null)
                 {
-                    GridView1.DataSource = metodo.BuscarExpediente();
-                    GridView1.DataBind();
+                    Response.Redirect("frmLogin.aspx");
+                }
+                else
+                {
+                    txtSearch.Focus();
+                    if (!this.IsPostBack)
+                    {
+                        GridView1.DataSource = metodo.BuscarExpediente();
+                        GridView1.DataBind();
+                    }
                 }
             }
             catch

@@ -28,14 +28,19 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            if (Session["acceder"] == null)
             {
-                txtSearch.Focus();
-                GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
-                GridView_reporteOdontograma.DataBind();
-
+                Response.Redirect("frmLogin.aspx");
             }
-
+            else
+            {
+                if (!this.IsPostBack)
+                {
+                    txtSearch.Focus();
+                    GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion("");
+                    GridView_reporteOdontograma.DataBind();
+                }
+            }
         }
 
         protected void GridView_reporteOdontograma_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -63,7 +68,6 @@ namespace SAC.formularios
 
             GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion2(txtSearch.Text);
             GridView_reporteOdontograma.DataBind();
-
 
             foreach (GridViewRow row in GridView_reporteOdontograma.Rows)
             {
@@ -115,7 +119,6 @@ namespace SAC.formularios
                         }
                     }
 
-                    // Panel1.Visible = true;
 
                 }
                 else

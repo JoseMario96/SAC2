@@ -20,43 +20,50 @@ namespace SAC.formularios
         public static int limite = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            if (Session["acceder"] == null)
             {
-                txtSearch.Focus();
-                try
+                Response.Redirect("frmLogin.aspx");
+            }
+            else
+            {
+                if (!this.IsPostBack)
                 {
-                    tblInicio = venta.VentaPendiente();
-                    if (tblInicio.Rows.Count > 0)
+                    txtSearch.Focus();
+                    try
                     {
-                        Gridview_Paciente.DataSource = tblInicio;
-                        Gridview_Paciente.DataBind();
-                        string script = @"<script type='text/javascript'>
+                        tblInicio = venta.VentaPendiente();
+                        if (tblInicio.Rows.Count > 0)
+                        {
+                            Gridview_Paciente.DataSource = tblInicio;
+                            Gridview_Paciente.DataBind();
+                            string script = @"<script type='text/javascript'>
                         document.getElementById('titulo1').style.display = 'block';
                         </script>";
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                    }
-                    else
-                    {
-                        string script = @"<script type='text/javascript'>
+                            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                        }
+                        else
+                        {
+                            string script = @"<script type='text/javascript'>
                         document.getElementById('titulo1').style.display = 'none';
+                        alert('No hay ventas nuevas sin terminar');
                         </script>";
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
+                        }
+                        //else
+                        //{
+                        //    string script = @"<script type='text/javascript'>
+                        //alert('No hay ventas nuevas sin terminar');
+                        //</script>";
+                        //    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                        //}
+                    }
+                    catch
+                    {
 
                     }
-                    //else
-                    //{
-                    //    string script = @"<script type='text/javascript'>
-                    //alert('No hay ventas nuevas sin terminar');
-                    //</script>";
-                    //    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-                    //}
-                }
-                catch
-                {
-
                 }
             }
-
         }
 
         protected void Gridview_Paciente_SelectedIndexChanged(object sender, EventArgs e)

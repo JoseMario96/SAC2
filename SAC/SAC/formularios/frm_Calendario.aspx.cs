@@ -21,7 +21,14 @@ namespace SAC.formularios
         public static String horaAA;
         protected void Page_Load(object sender, EventArgs e)
         {
-            _sheduleData = GetSchedule();
+            if (Session["acceder"] == null)
+            {
+                Response.Redirect("frmLogin.aspx");
+            }
+            else
+            {
+                _sheduleData = GetSchedule();
+            }
         }
 
         private Hashtable GetSchedule()

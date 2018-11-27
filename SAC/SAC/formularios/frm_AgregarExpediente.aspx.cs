@@ -14,8 +14,15 @@ namespace SAC.formularios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            cedulaEx.Focus();
-            lblfecha.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            if (Session["acceder"] == null)
+            {
+                Response.Redirect("frmLogin.aspx");
+            }
+            else
+            {
+                cedulaEx.Focus();
+                lblfecha.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            }
         }
 
         

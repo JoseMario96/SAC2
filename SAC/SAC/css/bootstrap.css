@@ -10,6 +10,21 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+.abajo {
+    padding-bottom: 10%;
+}
+
+.abajo2 {
+    padding-bottom: 15%;
+}
+
+.abajo3 {
+    padding-bottom: 25%;
+}
+
+.abajo4 {
+    padding-bottom: 30%;
+}
 
 body {
   margin: 0;

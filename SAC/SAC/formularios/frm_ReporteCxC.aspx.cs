@@ -22,7 +22,10 @@ namespace SAC.formularios
         public static String cedula = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["acceder"] == null)
+            {
+                Response.Redirect("frmLogin.aspx");
+            }
         }
 
         protected void btn_todos_Click(object sender, EventArgs e)

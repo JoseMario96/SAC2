@@ -14,7 +14,7 @@
             <div class="caja2">
                 <h4>Recuperar contraseña</h4>
                 <p>Se le enviará a su correo una contraseña temporal.</p>
-                <input class="entrada2" runat="server" id="txt_usuario" type="text" placeholder="Usuario" required="required" autocomplete="off" onkeydown="return sololetras(event)" maxlength="15" />
+                <input class="entrada2" runat="server" id="txt_usuario" type="text" placeholder="Usuario" required="required" autocomplete="off" onkeypress="return sololetras(event)" maxlength="15" />
                 <br />
                 <br />
                 <input class="entrada2" runat="server" id="txt_correo" type="email" placeholder="Correo electrónico" required="required" maxlength="45" />
