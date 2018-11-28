@@ -130,6 +130,13 @@ namespace SAC.formularios
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            string scriptt = @"<script type='text/javascript'>
+                document.getElementById('cerrar').style.display = 'none' ;
+                </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
+            AgregarDetalle.Enabled = false;
+            Cancelar.Enabled = false;
+            cancelarOdontograma.Enabled = false;
             //try
             //{
             string borradoC = BDcolorO.Value;
@@ -203,6 +210,9 @@ namespace SAC.formularios
                     odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigocedula.ToString(), now.ToString("yyyy-MM-dd"), "1");
                 }
             }
+            AgregarDetalle.Enabled = true;
+            Cancelar.Enabled = true;
+            cancelarOdontograma.Enabled = true;
             string script = @"<script type='text/javascript'>
             alert('Los cambios se han realizado exitosamente');
             </script>";

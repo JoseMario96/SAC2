@@ -11,18 +11,6 @@
     <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
     <meta name="keywords" content="Dental, Clinica, Clínica, Alina, Camacho, Ciudad Neily, Puntarenas" />
 
-    <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content="" />
-    <meta property="og:image" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="" />
-    <meta property="og:description" content="" />
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:image" content="" />
-    <meta name="twitter:url" content="" />
-    <meta name="twitter:card" content="" />
-
-
     <!-- Place favicon.ico and apple-touchm-icon.png in the root directory -->
     <link rel="shortcut icon" href="favicon.ico" />
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css' />
@@ -648,7 +636,7 @@
                             <div class="popup-contenedorO">
                                 <div class="responsiveContent">
                                     <iframe id="Odonto"></iframe>
-                                    <a class="popup-cerrar" href="#fh5co-testimonials">X</a>
+                                    <a id="cerrar" class="popup-cerrar" href="#fh5co-testimonials">X</a>
                                 </div>
                             </div>
                         </div>

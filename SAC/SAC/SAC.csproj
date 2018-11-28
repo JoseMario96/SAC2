@@ -192,7 +192,6 @@
     <Content Include="js\materialize.min.js" />
     <Content Include="js\modernizr-2.6.2.min.js" />
     <Content Include="js\respond.min.js" />
-    <Content Include="prueba.html" />
     <Content Include="sass\bootstrap\untitled.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
