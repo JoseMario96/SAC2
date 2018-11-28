@@ -269,23 +269,17 @@ namespace SAC.formularios
             {
                 nombre1_encargado.Focus();
 
-                Boolean validar = false;
-                Boolean validar2 = false;
-
                 if (masculino.Checked)
                 {
                     tipo = "Masculino";
-                    validar = true;
                 }
                 else if (femenino.Checked)
                 {
                     tipo = "Femenino";
-                    validar = true;
                 }
                 else if (otro.Checked)
                 {
                     tipo = "Otro";
-                    validar = true;
                 }
                 else
                 {
@@ -299,17 +293,14 @@ namespace SAC.formularios
                 if (masculinoE.Checked)
                 {
                     generoEncargado = "Masculino";
-                    validar2 = true;
                 }
                 else if (femeninoE.Checked)
                 {
                     generoEncargado = "Femenino";
-                    validar2 = true;
                 }
                 else if (otroE.Checked)
                 {
                     generoEncargado = "Otro";
-                    validar2 = true;
                 }
 
             }

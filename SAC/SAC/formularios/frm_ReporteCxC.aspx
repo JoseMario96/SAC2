@@ -105,14 +105,15 @@
                 </asp:UpdatePanel>
 
                 <div class="row espacio">
-                    <div class="col s4"></div>
-                    <div class="col s2">
+                    <div id="boton1" class="col s4"></div>
+                    <div id="boton2" class="col s2">
                         <asp:Button ID="btn_descarga" CssClass="waves-effect waves-light btn" runat="server" Text="Descargar" OnClick="btn_descarga_Click" />
                     </div>
-                    <div class="col s2">
+                    <div id="boton3"></div>
+                    <div id="boton4" class="col s2">
                         <asp:Button ID="btn_volver" CssClass="waves-effect waves-light btn" runat="server" Text="Volver" OnClick="btn_volver_Click" />
                     </div>
-                    <div class="col s4"></div>
+                    <div id="boton5" class="col s4"></div>
                 </div>
             </div>
 
@@ -123,6 +124,36 @@
         </form>
     </div>
     <script type="text/javascript">
+        $(document).ready(function () {
+            var ancho = $(window).width();
+            if (ancho < 820) {
+                $("#boton1").removeClass("col s4");
+                $("#boton5").removeClass("col s4");
+                $("#boton1").addClass("col s2");
+                $("#boton5").addClass("col s2");
+                $("#boton3").addClass("col s3");
+            }
+        });
+
+        $(window).resize(function () {
+            //aqui el codigo que se ejecutara cuando se redimencione la ventana
+            var ancho = $(window).width();
+            if (ancho <= 820) {
+                $("#boton1").removeClass("col s4");
+                $("#boton5").removeClass("col s4");
+                $("#boton1").addClass("col s2");
+                $("#boton5").addClass("col s2");
+                $("#boton3").addClass("col s3");
+            }
+            else {
+                $("#boton1").removeClass("col s2");
+                $("#boton5").removeClass("col s2");
+                $("#boton3").removeClass("col s3");
+                $("#boton1").addClass("col s4");
+                $("#boton5").addClass("col s4");
+            }
+        });
+
         $(document).ready(function () {
             $('#<%=txtSearch.ClientID%>').bind('keyup', function () {
                 $('#<%=InvisButton.ClientID%>').click();

@@ -103,7 +103,7 @@ namespace SAC.formularios
                     SmtpServer.Send(mail);
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 string script = @"<script type='text/javascript'>
                     alert('No se pudo enviar el correo!');

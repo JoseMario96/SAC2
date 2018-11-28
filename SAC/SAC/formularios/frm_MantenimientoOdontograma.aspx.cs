@@ -130,10 +130,6 @@ namespace SAC.formularios
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string scriptt = @"<script type='text/javascript'>
-                document.getElementById('cerrar').style.display = 'none' ;
-                </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", scriptt, false);
             AgregarDetalle.Enabled = false;
             Cancelar.Enabled = false;
             cancelarOdontograma.Enabled = false;

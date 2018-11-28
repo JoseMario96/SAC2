@@ -46,13 +46,15 @@
             <div class="navbar-fixed">
                 <nav id="menu" style="background-color: rgba(0, 163, 162, 0.8)">
                     <div class="row" id="barraMenu">
-                        <div class="col s6"></div>
+                        <div id="menucss" class="col s6"></div>
                         <div class="col s2">
                             <a href="#" class="btnMenu" style="color: black; font-weight: bold;" onclick="mostrarAgregar()">Agregar</a>
                         </div>
+                        <div id="mediocss"></div>
                         <div class="col s2">
                             <a href="#" class="btnMenu" style="color: black; font-weight: bold;" onclick="mostrarActualizar()">Actualizar</a>
                         </div>
+                        <div id="mediocss2"></div>
                         <div class="col s2">
                             <a href="#" class="btnMenu" style="color: black; font-weight: bold;" onclick="mostrarEliminar()">Eliminar</a>
                         </div>
@@ -351,12 +353,36 @@
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems, options);
-        });
+        })
 
         // Or with jQuery
 
+        //$(document).ready(function () {
+        //    $('.sidenav').sidenav();
+        //});
+
         $(document).ready(function () {
-            $('.sidenav').sidenav();
+            var ancho = $(window).width();
+            if (ancho < 520) {
+                $("#menucss").removeClass("col s6");
+                $("#mediocss").addClass("col s1");
+                $("#mediocss2").addClass("col s2");
+            }
+        });
+
+        $(window).resize(function () {
+            //aqui el codigo que se ejecutara cuando se redimencione la ventana
+            var ancho = $(window).width();
+            if (ancho <= 520) {
+                $("#menucss").removeClass("col s6");
+                $("#mediocss").addClass("col s1");
+                $("#mediocss2").addClass("col s2");
+            }
+            else {
+                $("#menucss").addClass("col s6");
+                $("#mediocss").removeClass("col s1");
+                $("#mediocss2").removeClass("col s2");
+            }
         });
 
         function mostrarAgregar() {
@@ -450,24 +476,6 @@
         }
         function scrollTratamientoEli() {
             document.getElementById('seccionEliminar').scrollIntoView();
-        }
-
-        function sololetras(e) {
-            key = e.keyCoden || e.which;
-            teclado = String.fromCharCode(key).toLowerCase();
-            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-            especiales = "8-37-38-46-164";
-            teclado_especial = false;
-
-            for (var i in especiales) {
-                if (key == especiales[i]) {
-                    teclado_especial = true; break;
-
-                }
-            }
-            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
-                return false;
-            }
         }
     </script>
 </body>
