@@ -139,5 +139,17 @@ namespace SAC.metodos
             consultar.ejecutar_consulta("update tbl_correo set tbl_correo.fecha = '"+ fecha + "' where codigo = '1';", con.abrir_conexion()).ExecuteNonQuery();
             con.cerrar_Conexion();
         }
+
+        public String BuscarTipo(String usuario)
+        {
+            String estado = "";
+            MySqlDataReader busqueda = consultar.ejecutar_consulta("call pa_Tipo('" + usuario + "');", con.abrir_conexion()).ExecuteReader();
+            while (busqueda.Read())
+            {
+                estado = busqueda.GetString(0);
+            }
+            con.cerrar_Conexion();
+            return estado;
+        }
     }
 }

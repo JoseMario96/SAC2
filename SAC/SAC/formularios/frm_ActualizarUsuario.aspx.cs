@@ -91,7 +91,8 @@ namespace SAC.formularios
                         }
                         txt_usuario.Text = row.Cells[0].Text;
                         txt_correo.Value = row.Cells[1].Text;
-                        if (row.Cells[2].Text == "0")
+                        String tipo = entrar.BuscarTipo(row.Cells[0].Text);
+                        if (tipo == "0")
                         {
                             asist.Checked = false;
                             admin.Checked = true;
