@@ -58,7 +58,15 @@ namespace SAC.formularios
             String[] datoss = new String[13];
             String[] datos2 = new String[10];
 
-            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion(txtSearch.Text.Trim());
+            string script = @"<script type='text/javascript'>
+                document.getElementById('ReporteO').style.display = 'block' ;
+                document.getElementById('ReporteO').scrollIntoView();
+            </script>";
+
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
+
+            GridView_reporteOdontograma.DataSource = odontograma.Pacienteinformacion2(txtSearch.Text);
             GridView_reporteOdontograma.DataBind();
 
             foreach (GridViewRow row in GridView_reporteOdontograma.Rows)
@@ -105,13 +113,12 @@ namespace SAC.formularios
                         {
                             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Pintar" + counter.ToString(), "<script language='javascript'>$(document).ready(function() {pintarDiente('" + diente + "','" + seccion + "','" + color + "','" + marca + "');});</script>");
                         }
-                       else if (datos[4] == "0")
+                        else if (datos[4] == "0")
                         {
                             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Pintar2" + counter.ToString(), "<script language='javascript'>$(document).ready(function() {pintarDienteNino('" + diente + "','" + seccion + "','" + color + "','" + marca + "');});</script>");
                         }
                     }
 
-                    Panel1.Visible = true;
 
                 }
                 else
@@ -131,10 +138,6 @@ namespace SAC.formularios
             GridView_reporteOdontograma.DataBind();
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void InvisButton_Click(object sender, EventArgs e)
         {

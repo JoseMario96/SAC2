@@ -138,7 +138,7 @@
             key = e.keyCoden || e.which;
             teclado = String.fromCharCode(key).toLowerCase();
             letras = "0123456789áéíóúabcdefghijklmnñopqrstuvwxyz";
-            especiales = "8-37-38-46-164-9";
+            especiales = "8-37-38-46-164-9-13";
             teclado_especial = false;
 
             for (var i in especiales) {
