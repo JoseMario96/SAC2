@@ -36,10 +36,7 @@ namespace SAC.formularios
                     GridView1.DataBind();
 
                     int cantidadO = 0;
-                    string script = @"<script type='text/javascript'>
-            document.getElementById('odontograma').style.display = 'block' ;
-             </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
                     cantidadO = odontograma.cantidadOdontograma(codigocedula.ToString());
                     string[] paciente = new string[cantidadO];
                     paciente = odontograma.buscarPaciente(codigocedula.ToString());
@@ -132,6 +129,9 @@ namespace SAC.formularios
         {
             try
             {
+                AgregarDetalle.Enabled = false;
+                Cancelar.Enabled = false;
+                cancelarOdontograma.Enabled = false;
                 string borradoC = BDcolorO.Value;
                 string borradoD = BDdienteO.Value;
                 string borradoS = BDseccionO.Value;
@@ -193,18 +193,22 @@ namespace SAC.formularios
                         odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigocedula.ToString(), now.ToString("yyyy-MM-dd"), "0");
                     }
                 }
-
+                AgregarDetalle.Enabled = true;
+                Cancelar.Enabled = true;
+                cancelarOdontograma.Enabled = true;
                 string script = @"<script type='text/javascript'>
-            alert('Los cambios se han realizado exitosamente');
-            </script>";
+                alert('Los cambios se han realizado exitosamente');
+                </script>";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                //Response.Write("<script language='javascript'>window.alert('Los cambios se han realizado exitosamente');window.location='frm_MantenimientoOdontograma.aspx';</script>");
             }
             catch
             {
-                string script = @"<script type='text/javascript'>
-                    alert('Los cambios no se han podido realizar exitosamente');
-                    </script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                string script2 = @"<script type='text/javascript'>
+                alert('Realice cambios en el odontograma');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta2", script2, false);
+                //Response.Write("<script language='javascript'>window.alert('Realice cambios en el odontograma');window.location='frm_MantenimientoOdontograma.aspx';</script>");
             }
         }
 

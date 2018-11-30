@@ -36,10 +36,7 @@ namespace SAC.formularios
                     GridView1.DataBind();
 
                     int cantidadO = 0;
-                    string script = @"<script type='text/javascript'>
-            document.getElementById('odontograma').style.display = 'block' ;
-             </script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+
                     cantidadO = odontograma.cantidadOdontograma(codigocedula.ToString());
                     string[] paciente = new string[cantidadO];
                     paciente = odontograma.buscarPaciente(codigocedula.ToString());
@@ -130,97 +127,96 @@ namespace SAC.formularios
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            AgregarDetalle.Enabled = false;
-            Cancelar.Enabled = false;
-            cancelarOdontograma.Enabled = false;
-            //try
-            //{
-            string borradoC = BDcolorO.Value;
-            string borradoD = BDdienteO.Value;
-            string borradoS = BDseccionO.Value;
-            string borradoM = BDdienteM.Value;
-            //TextBox1.Text = borradoD;
-            string[] BDborradoC = borradoC.Split(",".ToCharArray());
-            string[] BDborradoD = borradoD.Split(",".ToCharArray());
-            string[] BDborradoS = borradoS.Split(",".ToCharArray());
-            string[] BDborradoM = borradoM.Split(",".ToCharArray());
 
-            int num3 = BDborradoC.Count();
-            int num4 = BDborradoM.Count();
-            int cont = 0;
-            int cont2 = 0;
-            //TextBox1.Text = borradoC;
-            //TextBox2.Text = borradoD;
-            
-            if (!BDborradoC[0].Equals(""))
+            try
             {
-                for (int x = 0; x < num3; x++)
+                AgregarDetalle.Enabled = false;
+                Cancelar.Enabled = false;
+                cancelarOdontograma.Enabled = false;
+                string borradoC = BDcolorO.Value;
+                string borradoD = BDdienteO.Value;
+                string borradoS = BDseccionO.Value;
+                string borradoM = BDdienteM.Value;
+                string[] BDborradoC = borradoC.Split(",".ToCharArray());
+                string[] BDborradoD = borradoD.Split(",".ToCharArray());
+                string[] BDborradoS = borradoS.Split(",".ToCharArray());
+                string[] BDborradoM = borradoM.Split(",".ToCharArray());
+
+                int num3 = BDborradoC.Count();
+                int num4 = BDborradoM.Count();
+                int cont = 0;
+                int cont2 = 0;
+
+                if (!BDborradoC[0].Equals(""))
                 {
-                    cont++;
-                    odontograma.borrarOdontograma(BDborradoC[x], BDborradoD[x], BDborradoS[x], codigocedula.ToString());
+                    for (int x = 0; x < num3; x++)
+                    {
+                        cont++;
+                        odontograma.borrarOdontograma(BDborradoC[x], BDborradoD[x], BDborradoS[x], codigocedula.ToString());
+                    }
                 }
+
+                if (!BDborradoM[0].Equals(""))
+                {
+                    for (int x = 0; x < num4; x++)
+                    {
+                        cont2++;
+                        odontograma.borrarOdontograma2(BDborradoM[x], codigocedula.ToString());
+                    }
+                }
+                ;
+                DateTime now = DateTime.Now;
+                string color = colorO.Value;
+                string[] colorArray = color.Split(",".ToCharArray());
+                int num = colorArray.Count();
+
+                string diente = dienteO.Value;
+                string[] dienteArray = diente.Split(",".ToCharArray());
+
+                string posicion = seccionO.Value;
+                string[] posicionArray = posicion.Split(",".ToCharArray());
+                int prueba = 0;
+
+                string marca = marcaO.Value;
+
+                string[] marcaArray = marca.Split(",".ToCharArray());
+                string marcaColor = colorM.Value;
+                string[] marcaColorArray = marcaColor.Split(",".ToCharArray());
+
+                int num2 = marcaArray.Count();
+                if (!colorArray[0].Equals(""))
+                {
+                    for (int x = 0; x < num; x++)
+                    {
+                        odontograma.agregarOdontograma(colorArray[x], dienteArray[x], posicionArray[x], codigocedula.ToString(), now.ToString("yyyy-MM-dd"), "1");
+                        prueba++;
+                    }
+                }
+                if (!marcaArray[0].Equals(""))
+                {
+                    for (int y = 0; y < num2; y++)
+                    {
+                        odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigocedula.ToString(), now.ToString("yyyy-MM-dd"), "1");
+                    }
+                }
+
+                AgregarDetalle.Enabled = true;
+                Cancelar.Enabled = true;
+                cancelarOdontograma.Enabled = true;
+                string script = @"<script type='text/javascript'>
+                alert('Los cambios se han realizado exitosamente');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                //Response.Write("<script language='javascript'>window.alert('Los cambios se han realizado exitosamente');window.location='frm_MantenimientoOdontograma.aspx';</script>");
             }
-          
-            if (!BDborradoM[0].Equals(""))
+            catch
             {
-                for (int x = 0; x < num4; x++)
-                {
-                    cont2++;
-                    odontograma.borrarOdontograma2(BDborradoM[x], codigocedula.ToString());
-                }
+                string script2 = @"<script type='text/javascript'>
+                alert('Los cambios se han realizado exitosamente');
+                </script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta2", script2, false);
+                //Response.Write("<script language='javascript'>window.alert('Realice cambios en el odontograma');window.location='frm_MantenimientoOdontograma.aspx';</script>");
             }
-          //  TextBox1.Text = cont.ToString();
-            //TextBox2.Text = cont2.ToString();
-         /*   TextBox2.Text = borradoC*/;
-            DateTime now = DateTime.Now;
-            string color = colorO.Value;
-            string[] colorArray = color.Split(",".ToCharArray());
-            int num = colorArray.Count();
-
-            string diente = dienteO.Value;
-            string[] dienteArray = diente.Split(",".ToCharArray());
-
-            string posicion = seccionO.Value;
-            string[] posicionArray = posicion.Split(",".ToCharArray());
-            int prueba = 0;
-
-            string marca = marcaO.Value;
-
-            string[] marcaArray = marca.Split(",".ToCharArray());
-            string marcaColor = colorM.Value;
-            string[] marcaColorArray = marcaColor.Split(",".ToCharArray());
-
-            int num2 = marcaArray.Count();
-            if (!colorArray[0].Equals(""))
-            {
-                for (int x = 0; x < num; x++)
-                {
-                    odontograma.agregarOdontograma(colorArray[x], dienteArray[x], posicionArray[x], codigocedula.ToString(), now.ToString("yyyy-MM-dd"), "1");
-                    prueba++;
-                }
-            }
-            if (!marcaArray[0].Equals(""))
-            {
-                for (int y = 0; y < num2; y++)
-                {
-                    odontograma.agregarOdontograma2(marcaArray[y], marcaColorArray[y], codigocedula.ToString(), now.ToString("yyyy-MM-dd"), "1");
-                }
-            }
-            AgregarDetalle.Enabled = true;
-            Cancelar.Enabled = true;
-            cancelarOdontograma.Enabled = true;
-            string script = @"<script type='text/javascript'>
-            alert('Los cambios se han realizado exitosamente');
-            </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-            //}
-            //catch
-            //{
-            //    string script = @"<script type='text/javascript'>
-            //    alert('Realice cambios en el odontograma');
-            //    </script>";
-            //    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-            ////}
 
 
         }
