@@ -1920,11 +1920,12 @@
                     var sec = seccion;
                     var dient = diente;
                     var marc = marca;
-                    pruebas[BDcontador3] = dient;
-                    pruebaseccion[BDcontador3] = sec;
-                    pruebacolor[BDcontador3] = col;
-                    BDcontador3++;
+                  
                     if (!seccion == "") {
+                        pruebas[BDcontador3] = dient;
+                        pruebaseccion[BDcontador3] = sec;
+                        pruebacolor[BDcontador3] = col;
+                        BDcontador3++;
                         BDColor[BDcontador] = col;
                         BDSeccion[BDcontador] = sec;
                         BDDiente[BDcontador] = dient;
