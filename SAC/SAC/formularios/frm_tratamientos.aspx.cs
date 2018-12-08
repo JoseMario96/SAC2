@@ -380,5 +380,12 @@ namespace SAC.formularios
 
             }
         }
+
+        protected void GridView2_PageIndexChanging1(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.DataSource = funciones.Grid2(txtSearch.Text.Trim());
+            GridView2.PageIndex = e.NewPageIndex;
+            GridView2.DataBind();
+        }
     }
 }
