@@ -69,7 +69,8 @@ namespace SAC.formularios
         {
             string codigoT = "";
 
-            if (odontograma.buscarExpediente(codigocedula) != 0)
+            //if (odontograma.buscarExpediente(codigocedula) != 0)
+            if (codigocedula != 0)
             {
                 if (DropDownList2.SelectedItem.Text.Equals("Tratamientos") || String.IsNullOrEmpty(DropDownList2.SelectedItem.Text))
                 {
@@ -94,6 +95,12 @@ namespace SAC.formularios
                     diente.Value = "";
                     descrip.Value = "";
                 }
+            }
+            else
+            {
+                string script = @"<script type='text/javascript'>
+                       alert('Seleccione un paciente');</script>";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
             }
         }
 
